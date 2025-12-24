@@ -1,4 +1,9 @@
-
+<script>
+    // Eğer kullanıcı şifre ekranından gelmemişse geri gönder
+    if (document.referrer === "" || !document.referrer.includes(window.location.hostname)) {
+        window.location.href = "index.html";
+    }
+</script>
 <!DOCTYPE html>
 <html lang="tr">
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
