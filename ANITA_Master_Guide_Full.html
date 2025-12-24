@@ -102,5 +102,39 @@
             </div>
         </div>
     </div>
+
+<div class='card' id='order-panel' style='border-top: 8px solid #25D366; background: rgba(37, 211, 102, 0.05); margin-top: 50px; padding: 30px; border-radius: 12px;'>
+    <h2 style='color: #25D366; text-transform: uppercase; letter-spacing: 2px;'>🚀 Tasarımı Başlat</h2>
+    <p style='color: #ccc; font-size: 0.9rem;'>Hekim ve hasta bilgilerini girerek doğrudan WhatsApp üzerinden vaka bildirebilirsiniz.</p>
+    <div style='display: flex; flex-direction: column; gap: 15px; margin-top: 20px;'>
+        <input type='text' id='doc_name' placeholder='Hekim Adı ve Soyadı' style='padding:15px; border-radius:8px; border:1px solid #444; background:#000; color:#fff; font-size:1rem;'>
+        <input type='text' id='pat_name' placeholder='Hasta Adı / Protokol No' style='padding:15px; border-radius:8px; border:1px solid #444; background:#000; color:#fff; font-size:1rem;'>
+        <textarea id='notes' placeholder='Vaka Notları (Örn: Diş boyları, yüzey dokusu, özel istekler...)' rows='4' style='padding:15px; border-radius:8px; border:1px solid #444; background:#000; color:#fff; font-size:1rem;'></textarea>
+        
+        <button onclick='sendAtlasOrder()' style='background:#25D366; color:#fff; padding:18px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);'>
+            BİLGİLERİ VE FOTOĞRAFLARI GÖNDER
+        </button>
+    </div>
+</div>
+
+<script>
+function sendAtlasOrder() {
+    const doc = document.getElementById('doc_name').value;
+    const pat = document.getElementById('pat_name').value;
+    const nts = document.getElementById('notes').value;
+    const formTitle = document.querySelector('h1').innerText;
+    
+    if(!doc || !pat) { alert('Lütfen Hekim ve Hasta adını giriniz.'); return; }
+    
+    const msg = `🦷 *ATLAS VAKA BİLDİRİMİ* 🦷%0A%0A` +
+                `👤 *Hekim:* ${doc}%0A` +
+                `🆔 *Hasta:* ${pat}%0A` +
+                `💎 *Seçilen Form:* ${formTitle}%0A` +
+                `📝 *Notlar:* ${nts}%0A%0A` +
+                `📸 _Mesajı gönderdikten sonra lütfen vaka fotoğraflarını ekleyiniz._`;
+    
+    window.open(`https://wa.me/905XXXXXXXXX?text=${msg}`, '_blank');
+}
+</script>
 </body>
 </html>
