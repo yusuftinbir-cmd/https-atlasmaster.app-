@@ -224,3 +224,26 @@ footer{border-top:1px solid var(--line2);padding:26px 0 40px}
   #evrim .evtime li{border-left:0;border-top:1px solid var(--line2);padding:18px 0 0}
   #evrim .evtime li::before{left:0;top:-5px}
 }
+
+/* genel: üçlü hücre, SSS, örnek bloğu, marka feragatı */
+@media (min-width:600px){.cells.three{grid-template-columns:repeat(3,1fr)}}
+.sec-head p[data-icerik]{max-width:30em}
+.disclaimer{color:var(--mut);font-size:.8125rem;line-height:1.55;max-width:44em;margin-top:12px}
+.exbox{margin-top:36px;display:grid;gap:18px}
+.ba img{display:block;width:100%;height:auto}
+.ba-stage{display:grid;gap:1px;background:var(--line)}
+.ba-pane{position:relative;background:var(--bg)}
+.ba-lab{position:absolute;left:10px;top:10px;font:500 .6875rem var(--mono);letter-spacing:.08em;background:var(--bg);color:var(--fg);padding:3px 8px;border:1px solid var(--line2)}
+@media (min-width:600px){.ba-stage:not(.js){grid-template-columns:1fr 1fr}}
+.ba-stage.js{display:block;position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/9;touch-action:pan-y}
+.ba-stage.js .ba-pane{position:absolute;inset:0}
+.ba-stage.js .ba-pane:first-child{clip-path:inset(0 calc(100% - var(--p,50%)) 0 0);z-index:2}
+.ba-stage.js .ba-pane img{height:100%;object-fit:cover}
+.ba-stage.js .ba-pane:nth-child(2) .ba-lab{left:auto;right:10px}
+.ba-bar{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;margin-left:-1px;background:var(--acc);z-index:3;pointer-events:none}
+.ba-bar::after{content:"";position:absolute;top:50%;left:50%;width:22px;height:22px;margin:-11px 0 0 -11px;border:2px solid var(--acc);background:var(--bg);border-radius:50%}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:4}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.strip li{border:1px solid var(--line2);background:var(--surface)}
+.strip img{display:block;width:100%;height:auto}
+.strip span{display:block;font:500 .625rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding:6px 8px;border-top:1px solid var(--line)}

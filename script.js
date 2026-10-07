@@ -22,3 +22,17 @@
     });
   });
 })();
+
+// Önce/sonra kaydırıcı (örnek bloğu) — JS yoksa iki kare yan yana/alt alta görünür
+document.addEventListener('DOMContentLoaded', function () {
+  var st = document.querySelector('[data-ba]');
+  if (!st) return;
+  var tr = document.documentElement.lang === 'tr';
+  st.classList.add('js');
+  var bar = document.createElement('div'); bar.className = 'ba-bar'; bar.setAttribute('aria-hidden', 'true');
+  var r = document.createElement('input'); r.type = 'range'; r.min = 0; r.max = 100; r.value = 50; r.className = 'ba-range';
+  r.setAttribute('aria-label', tr ? 'Önce / sonra kaydırıcı' : 'Before / after slider');
+  st.appendChild(bar); st.appendChild(r);
+  function set() { st.style.setProperty('--p', r.value + '%'); }
+  r.addEventListener('input', set); set();
+});

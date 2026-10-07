@@ -4,68 +4,517 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas — yapay zekâ ile gülüş tasarımı</title>
-<meta name="description" content="Atlas: diş hekimi ve diş teknisyeni için fotoğraftan form önerisi, kılavuz çizgili mockup ve ExoCAD'e giden tasarım akışı. Claude ile orkestre edilen çok ajanlı sistem.">
-<style>
-  :root{--bg:#0f1216;--fg:#eaeef2;--mut:#9aa4ad;--acc:#2fbf8f;--card:#161b22}
-  @media (prefers-color-scheme: light){:root{--bg:#fafafa;--fg:#111;--mut:#555;--card:#fff}}
-  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
-  h1{font-size:34px;line-height:1.15;margin:0 0 8px}h2{font-size:20px;margin:36px 0 10px}
-  .sub{color:var(--mut);font-size:18px;margin:0 0 24px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .card{background:var(--card);border:1px solid rgba(128,128,128,.25);border-radius:12px;padding:16px}
-  .card b{display:block;margin-bottom:6px}
-  ol li{margin:6px 0}
-  .pill{display:inline-block;border:1px solid var(--acc);color:var(--acc);border-radius:999px;padding:2px 10px;font-size:13px;margin:0 6px 6px 0}
-  footer{margin-top:48px;color:var(--mut);font-size:14px}
-  a{color:var(--acc)}
-</style>
+<meta name="description" content="Atlas: Diş hekimi ve diş teknisyeni için fotoğraftan form önerisi, kılavuz çizgili mockup ve ExoCAD&#x27;e giden tasarım akışı. Claude ile orkestre edilen çok ajanlı sistem.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Atlas — yapay zekâ ile gülüş tasarımı">
+<meta property="og:description" content="Fotoğraftan form önerisi, kılavuz çizgili mockup, ExoCAD&#x27;e giden akış.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="en.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
 <body>
-<main>
-  <h1>Atlas</h1>
-  <p class="sub">Diş hekimi ve diş teknisyeni için yapay zekâ destekli gülüş tasarımı: fotoğraftan form önerisi, kılavuz çizgili mockup, ExoCAD'e giden akış.</p>
+<a class="skip" href="#icerik">İçeriğe geç</a>
 
-  <span class="pill">dental tasarım</span><span class="pill">form önerisi</span><span class="pill">mockup</span><span class="pill">ExoCAD</span><span class="pill">çok ajanlı orkestrasyon</span>
-
-  <h2>Ne yapar</h2>
-  <div class="grid">
-    <div class="card"><b>Fotoğraftan analiz</b>Gülüş ve ekartör karelerinden diş oranı, orta hat, kesici görünürlük ve diş eti ölçümleri; hasta verisi cihazda kalır.</div>
-    <div class="card"><b>Form önerisi</b>441 formluk diş kütüphanesi; ölçüm, profil ve kütüphane geometrisinden (kök hariç kron oranı, aile/varyant) sıralanan 5 isabet + 3 keşif listesi; her kartta gerekçe.</div>
-    <div class="card"><b>Kılavuz çizgili mockup</b>Seçilen formun dış hattı ve sırt çizgileri hastanın fotoğrafına oturtulur; görsel model yalnız bu kılavuza göre üretir. Önce/sonra kaydırıcı tek dosya olarak hekime gider.</div>
-    <div class="card"><b>ExoCAD akışı</b>Kabul edilen form ve kısıtlar (kompozit, moulding, kalınlık sınırları) teknisyenin dizim adımına iş paketi olarak aktarılır.</div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" aria-label="Bölümler">
+      <a href="#ne-yapar">Ne yapar</a>
+      <a href="#nasil">Nasıl çalışır</a>
+      <a href="#evrim">Ajan evrimi</a>
+      <a href="#ornek">Örnek</a>
+      <a href="#yontem">Yöntem</a>
+      <a href="#sss">SSS</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+    <a class="lang" href="en.html" lang="en" hreflang="en" aria-label="English">EN</a>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
   </div>
+</header>
 
-  <h2>Nasıl çalışır</h2>
-  <ol>
-    <li>Hekim iki fotoğraf çeker: gülüş ve ekartör.</li>
-    <li>Yerel ölçüm zinciri koşar; profil ve diş oranı kayda girer.</li>
-    <li>Form motoru listeyi üretir, hekim bir form seçer ya da hat tercihini söyler.</li>
-    <li>Kılavuz çizgili mockup üretilir; hekim hastayla birlikte kaydırıcıda bakar.</li>
-    <li>Kabul edilen tasarım ExoCAD iş paketine dönüşür.</li>
-  </ol>
+<main id="icerik">
 
-  <h2>Teknoloji</h2>
-  <p>Atlas, Claude ile orkestre edilen çok ajanlı bir sistemdir: karar ve emir katmanı Claude, ölçüm ve kod işleri model kademesine göre dağıtılır (Opus, Sonnet, Haiku), görsel üretim ve araştırma için diğer modeller köprüyle bağlanır. Her alet kendi öz sınamasını taşır; her değişiklik ölçülebilir bir kapıdan geçer. Kütüphane geometrisi doğrudan ExoCAD dosyalarından okunur.</p>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" data-icerik="hero.0.slogan">Yapay zekâ ile gülüş tasarımı</p>
+      <h1 data-icerik="hero.0.baslik">Fotoğraftan form önerisi, kılavuz çizgili mockup, <em>ExoCAD'e giden akış.</em></h1>
+      <p class="lead" data-icerik="hero.0.giris">Diş hekimi ve diş teknisyeni için yapay zekâ destekli gülüş tasarımı. <strong>Claude ile orkestre edilen çok ajanlı sistem.</strong></p>
+      <ul class="tags" aria-label="Tags">
+        <li class="tag">dental tasarım</li><li class="tag">form önerisi</li><li class="tag">mockup</li><li class="tag">ExoCAD</li><li class="tag">çok ajanlı orkestrasyon</li>
+      </ul>
+      <div class="cta">
+        <a class="btn pri" href="#nasil">Nasıl çalışır <span aria-hidden="true">↓</span></a>
+        <a class="btn " href="/rehber/index.html">Form rehberi <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
 
-  <h2>Diş form rehberi</h2>
-  <p>19 diş kütüphanesi formu için kimlik kartı, görsel analiz ve dizilim notları: <a href="rehber/index.html">Atlas Form Rehberi</a>. Teknisyen ve hekim için başvuru kaynağı; Atlas form motorunun rehber katmanı da buradan beslenir.</p>
-
-  <h2>Yöntem</h2>
-  <div class="grid">
-    <div class="card"><b>Emir ve kapı</b>Her iş makine dilinde bir emirle verilir: kapsam, yasaklar, tur bütçesi ve tek jetonlu doğrulama kapısı. Kapıdan geçmeyen değişiklik canlıya girmez.</div>
-    <div class="card"><b>Ölçüm önce</b>"Bulgu yok" bir sonuç sayılmaz, çoğu zaman ölçüm arızasıdır. İddialar çürütülebilir hipotez olarak yazılır, bir sonraki ölçümde ayakta ya da düşmüş diye damgalanır.</div>
-    <div class="card"><b>Kıvılcım turları</b>Zor sorularda birbirini duymayan modellerden tez, kuram, kaynak, karşı tez ve düşer testi istenir; kaynaklar doğrulanır, ön beklenti önceden yazılır, tur sonunda karar değişti mi puanlanır.</div>
-    <div class="card"><b>Ajan evrimi</b>Ajanların kuralları hipotez kütüğünden türeyen adaylarla, kör yargıç ve plasebo kıyasıyla sınanır; gerçek işe yalnız insan onaylı haftalık paketle girer.</div>
+    <figure class="sheet">
+      <svg viewBox="56 8 528 250" role="img" aria-labelledby="f1t f1d">
+        <title id="f1t">Ölçüm ve kılavuz çizgileri (şematik)</title>
+        <desc id="f1d">Altı ön dişin şematik dış hattı; üzerinde orta hat, diş eti hattı, kesici kenar eğrisi, sırt çizgileri ve diş oranı ölçüsü.</desc>
+        <!-- dişler: şematik dış hat -->
+        <path class="t" d="M127,158 C127,104.5 132.2,66 153,66 C173.8,66 179,104.5 179,158 L179,160 Q179,166 173,169 L153,177 L133,169 Q127,166 127,160 Z"/>
+        <path class="t" d="M181,168 C181,110.4 186.8,74 210,74 C233.2,74 239,110.4 239,168 Q239,178 229,178 L191,178 Q181,178 181,168 Z"/>
+        <path class="t" d="M241,180 C241,105.5 248.8,60 280,60 C311.2,60 319,105.5 319,180 Q319,190 309,190 L251,190 Q241,190 241,180 Z"/>
+        <path class="t" d="M321,180 C321,105.5 328.8,60 360,60 C391.2,60 399,105.5 399,180 Q399,190 389,190 L331,190 Q321,190 321,180 Z"/>
+        <path class="t" d="M401,168 C401,110.4 406.8,74 430,74 C453.2,74 459,110.4 459,168 Q459,178 449,178 L411,178 Q401,178 401,168 Z"/>
+        <path class="t" d="M461,158 C461,104.5 466.2,66 487,66 C507.8,66 513,104.5 513,158 L513,160 Q513,166 507,169 L487,177 L467,169 Q461,166 461,160 Z"/>
+        <!-- sırt çizgileri -->
+        <path class="r" d="M153,168 C151,140 152,100 153,80 M199,166 C196,140 199,108 205,90 M221,166 C224,140 221,108 215,90 M262,176 C257,140 261,100 271,78 M298,176 C303,140 299,100 289,78 M342,176 C337,140 341,100 351,78 M378,176 C383,140 379,100 369,78 M419,166 C416,140 419,108 425,90 M441,166 C444,140 441,108 435,90 M487,168 C489,140 488,100 487,80"/>
+        <!-- diş eti hattı -->
+        <path class="gs" d="M153,66 L210,74 L280,60 L360,60 L430,74 L487,66"/>
+        <g class="gd"><circle cx="153" cy="66" r="3.5"/><circle cx="210" cy="74" r="3.5"/><circle cx="280" cy="60" r="3.5"/><circle cx="360" cy="60" r="3.5"/><circle cx="430" cy="74" r="3.5"/><circle cx="487" cy="66" r="3.5"/></g>
+        <!-- orta hat ve kesici kenar eğrisi -->
+        <path class="g" d="M320,40 V224"/>
+        <path class="g" d="M100,176 Q320,206 540,176"/>
+        <!-- diş oranı -->
+        <rect class="d" x="241" y="60" width="78" height="130" stroke-dasharray="2 4"/>
+        <path class="d" d="M241,214 H319 M241,208 V220 M319,208 V220"/>
+        <!-- etiketler -->
+        <path class="ld" d="M114,44 L149,63 M520,228 L503,185"/>
+        <text class="lb ac" x="320" y="30" text-anchor="middle">ORTA HAT</text>
+        <text class="lb" x="64" y="36">DİŞ ETİ HATTI</text>
+        <text class="lb wn" x="280" y="246" text-anchor="middle">DİŞ ORANI</text>
+        <text class="lb" x="576" y="246" text-anchor="end">KESİCİ KENAR</text>
+      </svg>
+      <figcaption class="cap"><span>Şekil 1 — ölçüm ve kılavuz çizgileri</span><span>şematik · hasta görseli değil</span></figcaption>
+    </figure>
   </div>
+</section>
 
-  <h2>Daha fazlası</h2>
-  <p><a href="program.html">What we are building (EN)</a> · <a href="atlas-overview.pdf">PDF</a></p>
+<div class="ruler" aria-hidden="true"></div>
 
-  <h2>İletişim</h2>
-  <p><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a></p>
+<section class="sec" id="ne-yapar">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 01</span>
+      <h2 data-icerik="ne_yapar.0.baslik">Ne Yapar</h2>
+    </header>
+    <div class="cells four">
+      <article class="cell">
+        <span class="idx">A — analiz</span>
+        <h3 data-icerik="ne_yapar.1.baslik">Fotoğraftan Analiz</h3>
+        <p data-icerik="ne_yapar.1.metin">Gülüş ve ekartör karelerinden diş oranı, orta hat, kesici görünürlük ve diş eti ölçümleri; hasta verisi cihazda kalır.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">B — form</span>
+        <h3 data-icerik="ne_yapar.2.baslik">Form Önerisi</h3>
+        <p data-icerik="ne_yapar.2.metin">441 formluk diş kütüphanesi; ölçüm, profil ve kütüphane geometrisinden sıralanan 5 isabet ve 3 keşif listesi; her kartta gerekçe.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">C — mockup</span>
+        <h3 data-icerik="ne_yapar.3.baslik">Kılavuz Çizgili Mockup</h3>
+        <p data-icerik="ne_yapar.3.metin">Seçilen formun dış hattı ve sırt çizgileri hastanın fotoğrafına oturtulur; görsel model yalnız bu kılavuza göre üretir. Önce ve sonra kaydırıcı tek dosya olarak hekime gider.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">D — teslim</span>
+        <h3 data-icerik="ne_yapar.4.baslik">ExoCAD Akışı</h3>
+        <p data-icerik="ne_yapar.4.metin">Kabul edilen form ve kısıtlar teknisyenin dizim adımına iş paketi olarak aktarılır.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <footer>Atlas · 2026 · Hasta verisi cihazda kalır; dışarıya yalnız kimliksiz ağız kırpımı gider.</footer>
+<section class="sec" id="nasil">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 02</span>
+      <h2 data-icerik="nasil_calisir.0.baslik">Nasıl Çalışır</h2>
+      <p data-icerik="nasil_calisir.0.altbaslik">İki fotoğraftan ExoCAD iş paketine beş adım.</p>
+    </header>
+    <ol class="pipe">
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><rect x="4" y="7" width="17" height="13" rx="1"/><rect class="a" x="11" y="13" width="17" height="13" rx="1" fill="var(--surface)"/><path class="a" d="M15 19q4.5 3.4 9 0"/></svg></span>
+        <b>Fotoğraf</b>
+        <p data-icerik="nasil_calisir.1.adim">Hekim iki fotoğraf çeker: gülüş ve ekartör.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path class="a" d="M9 19V12a7 7 0 0 1 14 0v7"/><path d="M4 25h24M4 22v6M28 22v6M10 25v-2M16 25v-3M22 25v-2"/></svg></span>
+        <b>Ölçüm</b>
+        <p data-icerik="nasil_calisir.2.adim">Yerel ölçüm zinciri koşar; profil ve diş oranı kayda girer.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path d="M4 22v-8a3.5 3.5 0 0 1 7 0v8z"/><path class="a" d="M12.5 22V11a3.5 3.5 0 0 1 7 0v11z"/><path d="M21 22v-8a3.5 3.5 0 0 1 7 0v8zM4 27h24"/></svg></span>
+        <b>Form önerisi</b>
+        <p data-icerik="nasil_calisir.3.adim">Form motoru listeyi üretir, hekim bir form seçer ya da hat tercihini söyler.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path d="M8 25V13a8 8 0 0 1 16 0v12z"/><path class="a" stroke-dasharray="2 2.5" d="M16 2v28"/><circle class="a" cx="16" cy="17" r="2.6" fill="var(--surface)"/></svg></span>
+        <b>Kılavuz çizgili mockup</b>
+        <p data-icerik="nasil_calisir.4.adim">Kılavuz çizgili mockup üretilir; hekim kaydırıcıda inceler.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path d="M16 4l10 6v12l-10 6-10-6V10z"/><path class="a" d="M6 10l10 6 10-6M16 16v12"/></svg></span>
+        <b>ExoCAD</b>
+        <p data-icerik="nasil_calisir.5.adim">Kabul edilen tasarım ExoCAD iş paketine dönüşür.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="teknoloji">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 03</span>
+      <h2 data-icerik="teknoloji.0.baslik">Teknoloji</h2>
+      <p data-icerik="teknoloji.0.altbaslik">Üst akıl → ajanlar → kapılar.</p>
+    </header>
+    <div class="tech">
+      <div>
+        <p class="prose" data-icerik="teknoloji.1.metin">Atlas, Claude ile orkestre edilen çok ajanlı bir sistemdir: karar ve emir katmanı Claude, ölçüm ve kod işleri model kademesine göre dağıtılır (Opus, Sonnet, Haiku), görsel üretim ve araştırma için diğer modeller köprüyle bağlanır.</p>
+        <p class="prose" data-icerik="teknoloji.2.metin">Her alet kendi öz sınamasını taşır; her değişiklik ölçülebilir bir kapıdan geçer. Kütüphane geometrisi doğrudan ExoCAD dosyalarından okunur.</p>
+        <p class="pull" data-icerik="teknoloji.3.alinti">Kapıdan geçmeyen değişiklik canlıya girmez.</p>
+      </div>
+      <figure class="sheet schema">
+        <svg viewBox="0 0 368 348" role="img" aria-labelledby="f2t f2d">
+          <title id="f2t">Üst akıl, ajanlar ve kapılar şeması</title>
+          <desc id="f2d">Üst akıl (Claude) emir yazar; Opus, Sonnet ve Haiku ajanları işi yürütür; her iş bir kapıdan geçerek canlıya girer; sonuç tek satır rapor olarak üst akla döner. Diğer modeller köprüyle bağlanır.</desc>
+          <rect class="bx core" x="24" y="12" width="172" height="64"/>
+          <text class="k inv" x="36" y="32">ÜST AKIL</text>
+          <text class="n inv" x="36" y="52">Claude</text>
+          <text class="m inv" x="36" y="67">karar ve emir katmanı</text>
+          <path class="wire br" d="M196,44 H226"/>
+          <rect class="bx dash" x="226" y="12" width="118" height="64"/>
+          <text class="k" x="238" y="32">KÖPRÜ</text>
+          <text class="m" x="238" y="50">diğer modeller:</text>
+          <text class="m" x="238" y="65">görsel, araştırma</text>
+
+          <path class="wire" d="M110,76 V96 M74,105 V96 H294 V105 M184,96 V105"/>
+          <path class="ah" d="M70,105h8l-4,7z M180,105h8l-4,7z M290,105h8l-4,7z"/>
+          <text class="k" x="120" y="91">EMİR</text>
+
+          <rect class="bx" x="24" y="112" width="100" height="64"/>
+          <text class="n" x="34" y="133">Opus</text>
+          <text class="m" x="34" y="151">yargı ağırlıklı</text>
+          <text class="m" x="34" y="165">değişiklik</text>
+          <rect class="bx" x="134" y="112" width="100" height="64"/>
+          <text class="n" x="144" y="133">Sonnet</text>
+          <text class="m" x="144" y="151">uygulama</text>
+          <rect class="bx" x="244" y="112" width="100" height="64"/>
+          <text class="n" x="254" y="133">Haiku</text>
+          <text class="m" x="254" y="151">yüksek hacimli</text>
+          <text class="m" x="254" y="165">ölçüm ve özet</text>
+
+          <path class="wire" d="M74,176 V200 M184,176 V200 M294,176 V200 M74,232 V256 H294 V232 M184,232 V277"/>
+          <path class="gate" d="M74,200l16,16l-16,16l-16,-16z M184,200l16,16l-16,16l-16,-16z M294,200l16,16l-16,16l-16,-16z"/>
+          <text class="k ac" x="96" y="220">KAPI</text>
+          <text class="k ac" x="206" y="220">KAPI</text>
+          <text class="k ac" x="316" y="220">KAPI</text>
+          <path class="ah" d="M180,277h8l-4,7z"/>
+
+          <rect class="bx" x="84" y="284" width="200" height="52"/>
+          <text class="k" x="96" y="305">CANLI</text>
+          <text class="m" x="96" y="323">kapıdan geçen değişiklik</text>
+
+          <path class="wire back" d="M84,310 H8 V44 H17"/>
+          <path class="ah back" d="M17,40v8l7,-4z"/>
+          <text class="k wn" transform="translate(21,286) rotate(-90)">TEK SATIR RAPOR</text>
+        </svg>
+        <figcaption class="cap"><span>Şekil 2 — üst akıl → ajanlar → kapılar</span><span>öz sınama · ölçülebilir kapı</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="evrim">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 03b</span>
+      <h2>Ajan evrimi</h2>
+      <p>Üç ajan, dört adım, kapalı halka.</p>
+    </header>
+    <div class="evrim">
+      <div class="cells three">
+      <article class="cell">
+        <span class="idx">yapıcı ses</span>
+        <h3>Enki</h3>
+        <p>Bağlamı ve brifi görür, seçenek üretir. Her önerisi ölçülebilir bir kapıyla gelir: sayı, eşik, dosya. Hüküm vermez, icra emri yazmaz.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">renksiz zemin</span>
+        <h3>Enlil</h3>
+        <p>Kör yargıç. Bağlamı görmez: adayı çıplak görür ve damgalar. Yakınlık yok, güncellik yanlılığı yok, demirleme yok. Enki ile aynı odada bulunmaz, birbirini duymaz.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">mekanik işçi</span>
+        <h3>Enkidu</h3>
+        <p>Sayar, çeker, tasnif eder, ölçer; yerel ve ucuz modellerle. Sonucu hüküm değil, ölçümdür.</p>
+      </article>
+      </div>
+      <div class="tech">
+        <div>
+          <ol class="evsteps" aria-label="Ajan evrimi adımları">
+          <li><span><b>Çürüyen kurallar</b> <i>Enkidu</i> — hipotez kütüğünden düşen kuralları listeler; yanlarına kör karşılaştırma için PLASEBO (sahte) adaylar üretir.</span></li>
+          <li><span><b>Aday</b> <i>Enki</i> — çürüyenlerden günde en çok 3 aday değişiklik yazar; hüküm değil, aday.</span></li>
+          <li><span><b>Kör damga</b> <i>Enlil</i> — adayları ve plaseboları karışık, bağlamsız görür ve damgalar; sızıntı ve ödül hilesi burada yakalanır.</span></li>
+          <li><span><b>Gölge sınama</b> <i>Enkidu</i> — adayı mevcut kuralla aynı girdilerde gölgede koşturur. İstatistik kapısı (Wilson aralığı, asgari saptanabilir fark; kol başına 240 epizot) geçmeden hiçbir şey canlıya girmez.</span></li>
+          </ol>
+          <p class="pull">Evrilen şey ajan değil, kural kümesidir.</p>
+          <p class="prose">Halkanın dışında iki şey var: üst akıl (emir yazar, kanıt ister) ve insan (son söz; haftalık elle kanal, düşer testi).</p>
+        </div>
+        <figure class="sheet schema">
+<svg viewBox="0 0 420 490" role="img" aria-labelledby="f3t f3d">
+  <title id="f3t">Enki, Enlil ve Enkidu ajan evrimi halkası</title>
+  <desc id="f3d">Dört adımlı kapalı halka: 1 çürüyen kurallar (Enkidu), 2 aday (Enki), 3 kör damga (Enlil), 4 gölge sınama (Enkidu). Enki ile Enlil arasında doğrudan hat yoktur; ikisi de yalnız halka üzerinden bağlanır. Halkanın dışında üst akıl emir yazar, en dışta insan son sözü söyler.</desc>
+  <path class="gate" d="M210,10l16,16l-16,16l-16,-16z"/>
+  <text class="k ac" x="234" y="23">İNSAN</text>
+  <text class="m" x="234" y="37">son söz</text>
+  <path class="wire" d="M210,42 V56"/><path class="ah" d="M206,56h8l-4,8z"/>
+  <rect class="bx core" x="130" y="64" width="160" height="52"/>
+  <text class="k inv" x="142" y="84">ÜST AKIL</text>
+  <text class="m inv" x="142" y="103">emir yazar · kanıt ister</text>
+  <path class="wire" d="M210,116 V176"/><path class="ah" d="M206,176h8l-4,8z"/>
+  <circle class="wire" cx="210" cy="280" r="84"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,220.6) rotate(45)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,339.4) rotate(135)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,339.4) rotate(225)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,220.6) rotate(315)"/>
+  <text class="k" x="210" y="276" text-anchor="middle">EVRİLEN</text>
+  <text class="m" x="210" y="294" text-anchor="middle">kural kümesi</text>
+  <rect class="bx" x="4" y="252" width="76" height="56"/>
+  <text class="n" x="12" y="273">Enkidu</text>
+  <text class="m" x="12" y="289">mekanik</text>
+  <text class="m" x="12" y="302">işçi</text>
+  <rect class="bx" x="338" y="252" width="78" height="56"/>
+  <text class="n" x="346" y="273">Enki</text>
+  <text class="m" x="346" y="289">yapıcı ses</text>
+  <rect class="bx" x="150" y="424" width="120" height="56"/>
+  <text class="n" x="158" y="445">Enlil</text>
+  <text class="m" x="158" y="461">kör yargıç</text>
+  <path class="wire br" d="M80,280 H114 M42,252 V196 H198 M306,280 H338 M210,376 V424"/>
+  <circle class="gd" cx="210" cy="196" r="12"/>
+  <text class="k ac" x="210" y="199.5" text-anchor="middle">1</text>
+  <circle class="gd" cx="294" cy="280" r="12"/>
+  <text class="k ac" x="294" y="283.5" text-anchor="middle">2</text>
+  <circle class="gd" cx="210" cy="364" r="12"/>
+  <text class="k ac" x="210" y="367.5" text-anchor="middle">3</text>
+  <circle class="gd" cx="126" cy="280" r="12"/>
+  <text class="k ac" x="126" y="283.5" text-anchor="middle">4</text>
+  <text class="k ac" x="228" y="192">ÇÜRÜYEN</text>
+  <text class="k ac" x="306" y="268">ADAY</text>
+  <text class="k ac" x="228" y="368">KÖR DAMGA</text>
+  <text class="k ac" x="118" y="300" text-anchor="end">GÖLGE</text>
+  <text class="k wn" x="296" y="432">BİRBİRİNİ</text>
+  <text class="k wn" x="296" y="446">DUYMAZ</text>
+</svg>
+          <figcaption class="cap"><span>Şekil 3 — Enki · Enlil · Enkidu halkası</span><span>Enki ile Enlil arasında doğrudan hat yok</span></figcaption>
+        </figure>
+      </div>
+      <ol class="evtime" aria-label="Ajan evrimi zaman çizgisi">
+      <li><b>14 Eyl</b><span>Enlil kuruldu (kör denetçi).</span></li>
+      <li><b>15–21 Eyl</b><span>Enki tek ses oldu (yapıcı; önceki iki ses birleşti).</span></li>
+      <li><b>22 Eyl</b><span>Enkidu kuruldu (mekanik işler Enki ve Enlil’den alındı).</span></li>
+      <li><b>7 Eki</b><span>EVRİM-2: üçü bir döngüye bağlandı.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="olcek">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 04</span>
+      <h2 data-icerik="olcek.0.baslik">Bugünkü ölçek</h2>
+    </header>
+    <ul class="stats">
+      <li class="stat"><strong>441</strong><span>formluk diş kütüphanesi</span></li>
+      <li class="stat"><strong>19</strong><span>form rehberi</span></li>
+      <li class="stat"><strong>180</strong><span>öz sınamalı alet</span></li>
+      <li class="stat"><strong>~650k</strong><span>satır Python</span></li>
+      <li class="stat"><strong>33</strong><span>Kıvılcım sentezi</span></li>
+      <li class="stat"><strong>150+</strong><span>stratejik rapor</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="form-motoru">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 05</span>
+      <h2 data-icerik="form_motoru.0.baslik">Form Motoru</h2>
+      <p data-icerik="form_motoru.0.giris">Atlas'ın form motoru, diş kütüphanesi geometrisini ve ölçümleri kullanarak hastaya en uygun formları listeler.</p>
+    </header>
+    <div class="cells three">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3 data-icerik="form_motoru.1.baslik">Öneri Yapısı</h3>
+        <p data-icerik="form_motoru.1.metin">Sistem, ölçüm ve kütüphane verilerinden 5 isabet ve 3 keşif yuvası sunar. Aile başına sadece 1 form gösterilerek çeşitlilik sağlanır.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3 data-icerik="form_motoru.2.baslik">Yalnız Profil</h3>
+        <p data-icerik="form_motoru.2.metin">Diş oranı ölçülemediğinde veya tercih belirtilmediğinde sistem yalnız profil işaretiyle çalışır ve hekime tercihini sorar.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">03</span>
+        <h3 data-icerik="form_motoru.3.baslik">Kök Hariç Kron Oranı</h3>
+        <p data-icerik="form_motoru.3.metin">Ölçümler galeri dağılımları ile yüzdelik olarak eşlenir. Form seçimi kök hariç kron oranına göre hassas bir şekilde yönlendirilir.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mockup">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 06</span>
+      <h2 data-icerik="kilavuz_mockup.0.baslik">Kılavuz Mockup</h2>
+      <p data-icerik="kilavuz_mockup.0.giris">Görsel modele giden kurallar, estetik sadakat ve kısıtlarla çerçevelenir.</p>
+    </header>
+    <div>
+    <div class="cells two">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3 data-icerik="kilavuz_mockup.1.baslik">Çizgisel Rehberlik</h3>
+        <p data-icerik="kilavuz_mockup.1.metin">Seçilen formun yeşil dış hattı ve turuncu sırt çizgileri hastanın fotoğrafına oturtulur.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3 data-icerik="kilavuz_mockup.2.baslik">Sadakat</h3>
+        <p data-icerik="kilavuz_mockup.2.metin">Görsel model tamamen bu rehber kılavuza sadık kalarak üretimi gerçekleştirir, kompozit ve kalınlık kısıtlarını dikkate alır.</p>
+      </article>
+    </div>
+    <div class="exbox">
+    <figure class="sheet ba" id="ornek">
+      <div class="ba-stage" data-ba>
+        <div class="ba-pane"><img class="ba-b" src="ornek/ekartor-once.jpg" width="1600" height="900" alt="Ekartörlü kare, tasarım öncesi: üst ve alt dişler, dudaklar açık tutulmuş" loading="lazy"><span class="ba-lab">ÖNCE</span></div>
+        <div class="ba-pane"><img class="ba-a" src="ornek/ekartor-sonra.jpg" width="1600" height="900" alt="Ekartörlü kare, kabul edilen tasarımla: aynı dişler, yeni form" loading="lazy"><span class="ba-lab">SONRA</span></div>
+      </div>
+      <figcaption class="cap"><span data-icerik="ornek.1.altyazi">Klinik vakası, kabul edilen tasarım; ekartörlü kare ölçüm, gülüş karesi resim. Hasta kimliği yok.</span></figcaption>
+    </figure>
+    <ul class="strip" aria-label="Örnek">
+      <li><img src="ornek/gulus-once.jpg" width="1600" height="900" alt="Gülüş karesi, öncesi (yüzsüz ağız kırpımı)" loading="lazy"><span>ÖNCE</span></li>
+      <li><img src="ornek/gulus-kilavuz.jpg" width="900" height="506" alt="Gülüş karesi, seçilen formun yeşil dış hattı kılavuz olarak oturtulmuş" loading="lazy"><span>KILAVUZ</span></li>
+      <li><img src="ornek/gulus-sonra.jpg" width="1600" height="900" alt="Gülüş karesi, kabul edilen tasarım sonrası" loading="lazy"><span>SONRA</span></li>
+    </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rehber">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 07</span>
+      <h2 data-icerik="form_rehberi.0.baslik">Form Rehberi</h2>
+    </header>
+    <div>
+      <p class="prose" data-icerik="form_rehberi.0.giris">Atlas, 19 formluk bir rehber katmanına sahiptir. Hekim ve teknisyen için bir başvuru kaynağı olan bu rehber, formların kimlik kartını ve dizilim notlarını içerir.</p>
+      <a class="guide" href="/rehber/index.html" style="margin-top:24px">
+        <span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <strong>Atlas Form Rehberi <span aria-hidden="true">→</span></strong>
+        <small>19 form · kimlik kartı · görsel analiz · dizilim notları</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="yontem">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 08</span>
+      <h2 data-icerik="yontem.0.baslik">Yöntem</h2>
+      <p data-icerik="yontem.0.giris">Atlas, kararların otonom ajanlarla alındığı, ölçülebilir ve sınanabilir bir sisteme dayanır.</p>
+    </header>
+    <div class="cells four">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3 data-icerik="yontem.1.baslik">Emir ve Kapı</h3>
+        <p data-icerik="yontem.1.metin">Her iş makine dilinde, kapsamı ve tek jetonlu doğrulama kapısı belirlenmiş bir emirle verilir. Kapıdan geçmeyen iş canlıya girmez.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3 data-icerik="yontem.2.baslik">Ölçüm Önce</h3>
+        <p data-icerik="yontem.2.metin">Her değişiklik ve iddia ölçülebilir bir hipotez olarak yazılır. Sistem önce ölçümü yapar, iddia ancak bu ölçümle ayakta kalır.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">03</span>
+        <h3 data-icerik="yontem.3.baslik">Kıvılcım Turları</h3>
+        <p data-icerik="yontem.3.metin">Zor kararlarda bağımsız modellerden tez, kuram, karşı tez ve düşer testi istenir. Sentez aşamasında kaynaklar doğrulanır ve ön beklentiler sınanır.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">04</span>
+        <h3 data-icerik="yontem.4.baslik">Ajan Evrimi</h3>
+        <p data-icerik="yontem.4.metin">Ajan kuralları kör yargıç sistemiyle plasebo kıyasına sokulur, onaylanan değişiklikler haftalık paketler halinde işleme alınır.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="sss">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 09</span>
+      <h2 data-icerik="sss.0.baslik">Sık Sorulan Sorular</h2>
+    </header>
+    <div class="cells two">
+      <article class="cell">
+        <span class="idx">S01</span>
+        <h3 data-icerik="sss.1.soru">Hasta verisi nerede saklanıyor?</h3>
+        <p data-icerik="sss.1.cevap">Hasta verisi tamamen cihazda kalır; dışarıya yalnız kimliksiz ağız kırpımı gönderilir.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">S02</span>
+        <h3 data-icerik="sss.2.soru">Atlas hangi modelleri kullanıyor?</h3>
+        <p data-icerik="sss.2.cevap">Karar ve emir katmanı Claude tarafından yönetilirken, ölçüm ve kod işleri model kademesine göre dağıtılır. Araştırma ve görsel üretim için farklı modeller çok ajanlı bir sistemde çalışır.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">S03</span>
+        <h3 data-icerik="sss.3.soru">ExoCAD şart mı?</h3>
+        <p data-icerik="sss.3.cevap">Atlas, tasarım akışını ExoCAD iş paketlerine dönüştürür; ancak kütüphane geometrisi ve kılavuz çizgili mockup bağımsız olarak da form motorundan beslenir.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">S04</span>
+        <h3 data-icerik="sss.4.soru">Hekim ne yapar?</h3>
+        <p data-icerik="sss.4.cevap">Hekim yalnız gülüş ve ekartör fotoğraflarını çeker, Atlas'ın form önerilerinden birini seçer veya hat tercihini belirterek kılavuzlu mockupu inceler.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">S05</span>
+        <h3 data-icerik="sss.5.soru">Teknisyen ne yapar?</h3>
+        <p data-icerik="sss.5.cevap">Teknisyen, hekimin onayladığı formu ve kalınlık sınırları gibi kısıtları içeren iş paketini alarak tasarımın dizim adımını gerçekleştirir.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">S06</span>
+        <h3 data-icerik="sss.6.soru">Bu bir ürün mü?</h3>
+        <p data-icerik="sss.6.cevap">Hayır, Atlas tek bir şirketin sinir sistemi gibi çalışan, yapay zekâ ile orkestre edilen çok ajanlı bir operasyon katmanıdır.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="iletisim">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 10</span>
+      <h2 data-icerik="iletisim.0.baslik">İletişim</h2>
+    </header>
+    <div>
+      <a class="mail" href="mailto:yusuf@atlasmaster.app" data-icerik="iletisim.1.eposta">yusuf@atlasmaster.app</a>
+      <p class="more">Daha fazlası: <a href="program.html">Program ve ihtiyaçlar</a> · <a href="en.html" lang="en" hreflang="en">English</a></p>
+    </div>
+  </div>
+</section>
+
 </main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy" data-icerik="footer.0.gizlilik">Hasta verisi cihazda kalır; dışarıya yalnız kimliksiz ağız kırpımı gider.</p>
+    <p class="disclaimer" data-icerik="footer.0.feragat">Diş kütüphanesi ve form adları ilgili üreticilerin tescilli markalarıdır; Atlas bağımsızdır ve hiçbir üreticiyle bağlantılı değildir.</p>
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><a href="/rehber/index.html">Form rehberi</a><a href="program.html">Program</a><a href="en.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
 </body>
 </html>

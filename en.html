@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas — AI-powered smile design</title>
+<meta name="description" content="Atlas: AI-powered smile design for dentists and dental technicians. Includes form recommendation from photos, guideline mockup, and ExoCAD workflow. A multi-agent system orchestrated by Claude.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Atlas — AI-powered smile design">
+<meta property="og:description" content="Form recommendation from photos, guideline mockup, and the ExoCAD workflow.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="tr" href="index.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#what">What it does</a>
+      <a href="#how">How it works</a>
+      <a href="#evrim">Agent evolution</a>
+      <a href="#ornek">Example</a>
+      <a href="#method">Method</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="lang" href="index.html" lang="tr" hreflang="tr" aria-label="Türkçe ana sayfa">TR</a>
+    <button class="theme" type="button" hidden aria-label="Dark / light theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="content">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow" data-icerik="hero.0.slogan">AI-powered smile design</p>
+      <h1 data-icerik="hero.0.baslik">Form recommendation from photos, guideline mockup, <em>the ExoCAD workflow.</em></h1>
+      <p class="lead" data-icerik="hero.0.giris">AI-powered smile design for dentists and dental technicians. <strong>A multi-agent system orchestrated by Claude.</strong></p>
+      <ul class="tags" aria-label="Tags">
+        <li class="tag">dental design</li><li class="tag">form recommendation</li><li class="tag">mockup</li><li class="tag">ExoCAD</li><li class="tag">multi-agent orchestration</li>
+      </ul>
+      <div class="cta">
+        <a class="btn pri" href="#how">How it works <span aria-hidden="true">↓</span></a>
+        <a class="btn " href="/rehber/index.html">Form guide (TR) <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <figure class="sheet">
+      <svg viewBox="56 8 528 250" role="img" aria-labelledby="f1t f1d">
+        <title id="f1t">Measurement and guide lines (schematic)</title>
+        <desc id="f1d">Schematic outline of six front teeth with midline, gingival margin, incisal edge curve, ridge lines and tooth-proportion measure.</desc>
+        <!-- dişler: şematik dış hat -->
+        <path class="t" d="M127,158 C127,104.5 132.2,66 153,66 C173.8,66 179,104.5 179,158 L179,160 Q179,166 173,169 L153,177 L133,169 Q127,166 127,160 Z"/>
+        <path class="t" d="M181,168 C181,110.4 186.8,74 210,74 C233.2,74 239,110.4 239,168 Q239,178 229,178 L191,178 Q181,178 181,168 Z"/>
+        <path class="t" d="M241,180 C241,105.5 248.8,60 280,60 C311.2,60 319,105.5 319,180 Q319,190 309,190 L251,190 Q241,190 241,180 Z"/>
+        <path class="t" d="M321,180 C321,105.5 328.8,60 360,60 C391.2,60 399,105.5 399,180 Q399,190 389,190 L331,190 Q321,190 321,180 Z"/>
+        <path class="t" d="M401,168 C401,110.4 406.8,74 430,74 C453.2,74 459,110.4 459,168 Q459,178 449,178 L411,178 Q401,178 401,168 Z"/>
+        <path class="t" d="M461,158 C461,104.5 466.2,66 487,66 C507.8,66 513,104.5 513,158 L513,160 Q513,166 507,169 L487,177 L467,169 Q461,166 461,160 Z"/>
+        <!-- sırt çizgileri -->
+        <path class="r" d="M153,168 C151,140 152,100 153,80 M199,166 C196,140 199,108 205,90 M221,166 C224,140 221,108 215,90 M262,176 C257,140 261,100 271,78 M298,176 C303,140 299,100 289,78 M342,176 C337,140 341,100 351,78 M378,176 C383,140 379,100 369,78 M419,166 C416,140 419,108 425,90 M441,166 C444,140 441,108 435,90 M487,168 C489,140 488,100 487,80"/>
+        <!-- diş eti hattı -->
+        <path class="gs" d="M153,66 L210,74 L280,60 L360,60 L430,74 L487,66"/>
+        <g class="gd"><circle cx="153" cy="66" r="3.5"/><circle cx="210" cy="74" r="3.5"/><circle cx="280" cy="60" r="3.5"/><circle cx="360" cy="60" r="3.5"/><circle cx="430" cy="74" r="3.5"/><circle cx="487" cy="66" r="3.5"/></g>
+        <!-- orta hat ve kesici kenar eğrisi -->
+        <path class="g" d="M320,40 V224"/>
+        <path class="g" d="M100,176 Q320,206 540,176"/>
+        <!-- diş oranı -->
+        <rect class="d" x="241" y="60" width="78" height="130" stroke-dasharray="2 4"/>
+        <path class="d" d="M241,214 H319 M241,208 V220 M319,208 V220"/>
+        <!-- etiketler -->
+        <path class="ld" d="M114,44 L149,63 M520,228 L503,185"/>
+        <text class="lb ac" x="320" y="30" text-anchor="middle">MIDLINE</text>
+        <text class="lb" x="64" y="36">GINGIVAL MARGIN</text>
+        <text class="lb wn" x="280" y="246" text-anchor="middle">TOOTH PROPORTION</text>
+        <text class="lb" x="576" y="246" text-anchor="end">INCISAL EDGE</text>
+      </svg>
+      <figcaption class="cap"><span>Fig. 1 — measurement and guide lines</span><span>schematic · not a patient image</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="sec" id="what">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 01</span>
+      <h2 data-icerik="ne_yapar.0.baslik">What It Does</h2>
+    </header>
+    <div class="cells four">
+      <article class="cell">
+        <span class="idx">A — analysis</span>
+        <h3 data-icerik="ne_yapar.1.baslik">Analysis from Photos</h3>
+        <p data-icerik="ne_yapar.1.metin">Measures tooth proportions, midline, incisal display, and gingival margins from smile and retracted photos; patient data stays on the device.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">B — form</span>
+        <h3 data-icerik="ne_yapar.2.baslik">Form Recommendation</h3>
+        <p data-icerik="ne_yapar.2.metin">Ranks a 441-form dental library using measurements, profile, and library geometry to provide a list of 5 hits and 3 exploration slots, with reasons for each.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">C — mockup</span>
+        <h3 data-icerik="ne_yapar.3.baslik">Guideline Mockup</h3>
+        <p data-icerik="ne_yapar.3.metin">Places the chosen form's outline and ridge lines on the patient's photo; the visual model generates solely based on this guide. A before/after slider is sent to the dentist.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">D — handover</span>
+        <h3 data-icerik="ne_yapar.4.baslik">ExoCAD Workflow</h3>
+        <p data-icerik="ne_yapar.4.metin">The accepted form and its constraints are transferred to the technician's arrangement step as a work package.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 02</span>
+      <h2 data-icerik="nasil_calisir.0.baslik">How It Works</h2>
+      <p data-icerik="nasil_calisir.0.altbaslik">Five steps from two photos to an ExoCAD work package.</p>
+    </header>
+    <ol class="pipe">
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><rect x="4" y="7" width="17" height="13" rx="1"/><rect class="a" x="11" y="13" width="17" height="13" rx="1" fill="var(--surface)"/><path class="a" d="M15 19q4.5 3.4 9 0"/></svg></span>
+        <b>Photo</b>
+        <p data-icerik="nasil_calisir.1.adim">The dentist takes two photos: smile and retracted.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path class="a" d="M9 19V12a7 7 0 0 1 14 0v7"/><path d="M4 25h24M4 22v6M28 22v6M10 25v-2M16 25v-3M22 25v-2"/></svg></span>
+        <b>Measurement</b>
+        <p data-icerik="nasil_calisir.2.adim">The local measurement chain runs; profile and tooth proportions are recorded.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path d="M4 22v-8a3.5 3.5 0 0 1 7 0v8z"/><path class="a" d="M12.5 22V11a3.5 3.5 0 0 1 7 0v11z"/><path d="M21 22v-8a3.5 3.5 0 0 1 7 0v8zM4 27h24"/></svg></span>
+        <b>Form recommendation</b>
+        <p data-icerik="nasil_calisir.3.adim">The form engine generates the list; the dentist selects a form or states a line preference.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path d="M8 25V13a8 8 0 0 1 16 0v12z"/><path class="a" stroke-dasharray="2 2.5" d="M16 2v28"/><circle class="a" cx="16" cy="17" r="2.6" fill="var(--surface)"/></svg></span>
+        <b>Guideline mockup</b>
+        <p data-icerik="nasil_calisir.4.adim">A guideline mockup is generated; the dentist examines it with a slider.</p>
+      </li>
+      <li>
+        <span class="ico"><svg viewBox="0 0 32 32" class="s" aria-hidden="true"><path d="M16 4l10 6v12l-10 6-10-6V10z"/><path class="a" d="M6 10l10 6 10-6M16 16v12"/></svg></span>
+        <b>ExoCAD</b>
+        <p data-icerik="nasil_calisir.5.adim">The accepted design turns into an ExoCAD work package.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="technology">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 03</span>
+      <h2 data-icerik="teknoloji.0.baslik">Technology</h2>
+      <p data-icerik="teknoloji.0.altbaslik">Upper mind → agents → gates.</p>
+    </header>
+    <div class="tech">
+      <div>
+        <p class="prose" data-icerik="teknoloji.1.metin">Atlas is a multi-agent system orchestrated by Claude: the decision and order layer is Claude, measurement and code tasks are distributed by model tier (Opus, Sonnet, Haiku), and other models for visual generation and research connect through a bridge.</p>
+        <p class="prose" data-icerik="teknoloji.2.metin">Every tool carries its own self-test; every change passes a measurable gate. Library geometry is read directly from ExoCAD files.</p>
+        <p class="pull" data-icerik="teknoloji.3.alinti">A change that fails the gate does not go live.</p>
+      </div>
+      <figure class="sheet schema">
+      <svg viewBox="0 0 368 348" role="img" aria-labelledby="f2t f2d">
+        <title id="f2t">Upper mind, agents and gates</title>
+        <desc id="f2d">The upper mind (Claude) writes orders; Opus, Sonnet and Haiku agents execute them; every change passes a gate before going live; results return to the upper mind as one-line reports. Other models connect through a bridge.</desc>
+        <rect class="bx core" x="24" y="12" width="172" height="64"/>
+        <text class="k inv" x="36" y="32">UPPER MIND</text>
+        <text class="n inv" x="36" y="52">Claude</text>
+        <text class="m inv" x="36" y="67">plans · delegates · verifies</text>
+        <path class="wire br" d="M196,44 H226"/>
+        <rect class="bx dash" x="226" y="12" width="118" height="64"/>
+        <text class="k" x="238" y="32">BRIDGE</text>
+        <text class="m" x="238" y="50">other models:</text>
+        <text class="m" x="238" y="65">images, research</text>
+
+        <path class="wire" d="M110,76 V96 M74,105 V96 H294 V105 M184,96 V105"/>
+        <path class="ah" d="M70,105h8l-4,7z M180,105h8l-4,7z M290,105h8l-4,7z"/>
+        <text class="k" x="120" y="91">ORDER</text>
+
+        <rect class="bx" x="24" y="112" width="100" height="64"/>
+        <text class="n" x="34" y="133">Opus</text>
+        <text class="m" x="34" y="151">judgment-heavy</text>
+        <text class="m" x="34" y="165">changes</text>
+        <rect class="bx" x="134" y="112" width="100" height="64"/>
+        <text class="n" x="144" y="133">Sonnet</text>
+        <text class="m" x="144" y="151">implementation</text>
+        <rect class="bx" x="244" y="112" width="100" height="64"/>
+        <text class="n" x="254" y="133">Haiku</text>
+        <text class="m" x="254" y="151">high-volume</text>
+        <text class="m" x="254" y="165">measurement</text>
+
+        <path class="wire" d="M74,176 V200 M184,176 V200 M294,176 V200 M74,232 V256 H294 V232 M184,232 V277"/>
+        <path class="gate" d="M74,200l16,16l-16,16l-16,-16z M184,200l16,16l-16,16l-16,-16z M294,200l16,16l-16,16l-16,-16z"/>
+        <text class="k ac" x="96" y="220">GATE</text>
+        <text class="k ac" x="206" y="220">GATE</text>
+        <text class="k ac" x="316" y="220">GATE</text>
+        <path class="ah" d="M180,277h8l-4,7z"/>
+
+        <rect class="bx" x="84" y="284" width="200" height="52"/>
+        <text class="k" x="96" y="305">LIVE</text>
+        <text class="m" x="96" y="323">changes that passed the gate</text>
+
+        <path class="wire back" d="M84,310 H8 V44 H17"/>
+        <path class="ah back" d="M17,40v8l7,-4z"/>
+        <text class="k wn" transform="translate(21,286) rotate(-90)">ONE-LINE REPORT</text>
+      </svg>
+      <figcaption class="cap"><span>Fig. 2 — upper mind → agents → gates</span><span>self-test · measurable gate</span></figcaption>
+    </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="evrim">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 03b</span>
+      <h2>Agent evolution</h2>
+      <p>Three agents, four steps, one closed loop.</p>
+    </header>
+    <div class="evrim">
+      <div class="cells three">
+      <article class="cell">
+        <span class="idx">constructive voice</span>
+        <h3>Enki</h3>
+        <p>Sees the context and the brief and produces options. Every proposal comes with a measurable gate: a number, a threshold, a file. It does not rule and does not write execution orders.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">colourless ground</span>
+        <h3>Enlil</h3>
+        <p>The blind judge. It does not see the context: it sees the candidate bare and stamps it. No proximity, no recency bias, no anchoring. It is never in the same room as Enki; they do not hear each other.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">mechanical worker</span>
+        <h3>Enkidu</h3>
+        <p>Counts, fetches, sorts, measures, with local and cheap models. Its output is a measurement, not a ruling.</p>
+      </article>
+      </div>
+      <div class="tech">
+        <div>
+          <ol class="evsteps" aria-label="Agent evolution steps">
+          <li><span><b>Decayed rules</b> <i>Enkidu</i> — lists the rules that dropped out of the hypothesis ledger and produces PLACEBO (fake) candidates beside them for a blind comparison.</span></li>
+          <li><span><b>Candidate</b> <i>Enki</i> — writes at most 3 candidate changes per day from the decayed rules; candidates, not rulings.</span></li>
+          <li><span><b>Blind stamp</b> <i>Enlil</i> — sees candidates and placebos mixed together, without context, and stamps them; leakage and reward hacking are caught here.</span></li>
+          <li><span><b>Shadow test</b> <i>Enkidu</i> — runs the candidate in shadow on the same inputs as the current rule. Nothing goes live before the statistical gate passes (Wilson interval, minimum detectable difference; 240 episodes per arm).</span></li>
+          </ol>
+          <p class="pull">What evolves is not the agent but the rule set.</p>
+          <p class="prose">Two things sit outside the loop: the supervising mind (writes orders, asks for evidence) and the human (final say; weekly manual channel, falsification test).</p>
+        </div>
+        <figure class="sheet schema">
+<svg viewBox="0 0 420 490" role="img" aria-labelledby="f3t f3d">
+  <title id="f3t">Enki, Enlil and Enkidu agent-evolution loop</title>
+  <desc id="f3d">A closed loop of four steps: 1 decayed rules (Enkidu), 2 candidate (Enki), 3 blind stamp (Enlil), 4 shadow test (Enkidu). There is no direct link between Enki and Enlil; both connect only through the loop. Outside the loop the supervising mind writes orders, and outermost the human has the final say.</desc>
+  <path class="gate" d="M210,10l16,16l-16,16l-16,-16z"/>
+  <text class="k ac" x="234" y="23">HUMAN</text>
+  <text class="m" x="234" y="37">final say</text>
+  <path class="wire" d="M210,42 V56"/><path class="ah" d="M206,56h8l-4,8z"/>
+  <rect class="bx core" x="130" y="64" width="160" height="52"/>
+  <text class="k inv" x="142" y="84">SUPERVISING MIND</text>
+  <text class="m inv" x="142" y="103">orders · asks evidence</text>
+  <path class="wire" d="M210,116 V176"/><path class="ah" d="M206,176h8l-4,8z"/>
+  <circle class="wire" cx="210" cy="280" r="84"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,220.6) rotate(45)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,339.4) rotate(135)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,339.4) rotate(225)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,220.6) rotate(315)"/>
+  <text class="k" x="210" y="276" text-anchor="middle">EVOLVES</text>
+  <text class="m" x="210" y="294" text-anchor="middle">rule set</text>
+  <rect class="bx" x="4" y="252" width="76" height="56"/>
+  <text class="n" x="12" y="273">Enkidu</text>
+  <text class="m" x="12" y="289">mechanical</text>
+  <text class="m" x="12" y="302">worker</text>
+  <rect class="bx" x="338" y="252" width="78" height="56"/>
+  <text class="n" x="346" y="273">Enki</text>
+  <text class="m" x="346" y="289">constructive</text>
+  <rect class="bx" x="150" y="424" width="120" height="56"/>
+  <text class="n" x="158" y="445">Enlil</text>
+  <text class="m" x="158" y="461">blind judge</text>
+  <path class="wire br" d="M80,280 H114 M42,252 V196 H198 M306,280 H338 M210,376 V424"/>
+  <circle class="gd" cx="210" cy="196" r="12"/>
+  <text class="k ac" x="210" y="199.5" text-anchor="middle">1</text>
+  <circle class="gd" cx="294" cy="280" r="12"/>
+  <text class="k ac" x="294" y="283.5" text-anchor="middle">2</text>
+  <circle class="gd" cx="210" cy="364" r="12"/>
+  <text class="k ac" x="210" y="367.5" text-anchor="middle">3</text>
+  <circle class="gd" cx="126" cy="280" r="12"/>
+  <text class="k ac" x="126" y="283.5" text-anchor="middle">4</text>
+  <text class="k ac" x="228" y="192">DECAYED</text>
+  <text class="k ac" x="306" y="268">CANDIDATE</text>
+  <text class="k ac" x="228" y="368">BLIND STAMP</text>
+  <text class="k ac" x="118" y="300" text-anchor="end">SHADOW</text>
+  <text class="k wn" x="296" y="432">NO DIRECT</text>
+  <text class="k wn" x="296" y="446">LINK</text>
+</svg>
+          <figcaption class="cap"><span>Figure 3 — the Enki · Enlil · Enkidu loop</span><span>No direct link between Enki and Enlil</span></figcaption>
+        </figure>
+      </div>
+      <ol class="evtime" aria-label="Agent evolution timeline">
+      <li><b>14 Sep</b><span>Enlil founded (blind auditor).</span></li>
+      <li><b>15–21 Sep</b><span>Enki became the single voice (constructive; two earlier voices merged).</span></li>
+      <li><b>22 Sep</b><span>Enkidu founded (mechanical work taken from Enki and Enlil).</span></li>
+      <li><b>7 Oct</b><span>EVOLUTION-2: the three tied into one loop.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="scale">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 04</span>
+      <h2 data-icerik="olcek.0.baslik">Scale today</h2>
+    </header>
+    <ul class="stats">
+      <li class="stat"><strong>441</strong><span>tooth library forms</span></li>
+      <li class="stat"><strong>19</strong><span>form guides</span></li>
+      <li class="stat"><strong>180</strong><span>self-testing tools</span></li>
+      <li class="stat"><strong>~650k</strong><span>lines of Python</span></li>
+      <li class="stat"><strong>33</strong><span>spark-round syntheses</span></li>
+      <li class="stat"><strong>150+</strong><span>strategic reports</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="engine">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 05</span>
+      <h2 data-icerik="form_motoru.0.baslik">Form Engine</h2>
+      <p data-icerik="form_motoru.0.giris">Atlas's form engine uses dental library geometry and measurements to list the most suitable forms for the patient.</p>
+    </header>
+    <div class="cells three">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3 data-icerik="form_motoru.1.baslik">Recommendation Structure</h3>
+        <p data-icerik="form_motoru.1.metin">The system presents 5 hits and 3 exploration slots based on measurement and library data. Diversity is ensured by showing only 1 form per family.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3 data-icerik="form_motoru.2.baslik">Profile Only</h3>
+        <p data-icerik="form_motoru.2.metin">When tooth proportions cannot be measured or a preference is not stated, the system operates with a profile-only marker and asks the dentist for their preference.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">03</span>
+        <h3 data-icerik="form_motoru.3.baslik">Root-Excluded Crown Ratio</h3>
+        <p data-icerik="form_motoru.3.metin">Measurements are mapped to gallery distributions as percentiles. Form selection is accurately guided by the root-excluded crown ratio.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mockup">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 06</span>
+      <h2 data-icerik="kilavuz_mockup.0.baslik">Guideline Mockup</h2>
+      <p data-icerik="kilavuz_mockup.0.giris">The rules sent to the visual model are framed by aesthetic fidelity and constraints.</p>
+    </header>
+    <div>
+    <div class="cells two">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3 data-icerik="kilavuz_mockup.1.baslik">Linear Guidance</h3>
+        <p data-icerik="kilavuz_mockup.1.metin">The selected form's green outline and orange ridge lines are placed on the patient's photo.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3 data-icerik="kilavuz_mockup.2.baslik">Fidelity</h3>
+        <p data-icerik="kilavuz_mockup.2.metin">The visual model performs the generation by strictly adhering to this guideline, taking composite and thickness constraints into account.</p>
+      </article>
+    </div>
+    <div class="exbox">
+    <figure class="sheet ba" id="ornek">
+      <div class="ba-stage" data-ba>
+        <div class="ba-pane"><img class="ba-b" src="ornek/ekartor-once.jpg" width="1600" height="900" alt="Retracted frame before the design: upper and lower teeth, lips held apart" loading="lazy"><span class="ba-lab">BEFORE</span></div>
+        <div class="ba-pane"><img class="ba-a" src="ornek/ekartor-sonra.jpg" width="1600" height="900" alt="Retracted frame with the accepted design: same teeth, new form" loading="lazy"><span class="ba-lab">AFTER</span></div>
+      </div>
+      <figcaption class="cap"><span data-icerik="ornek.1.altyazi">Clinical case, accepted design; the retracted frame is for measurement, the smile frame is the picture. No patient identity.</span></figcaption>
+    </figure>
+    <ul class="strip" aria-label="Example">
+      <li><img src="ornek/gulus-once.jpg" width="1600" height="900" alt="Smile frame, before (faceless mouth crop)" loading="lazy"><span>BEFORE</span></li>
+      <li><img src="ornek/gulus-kilavuz.jpg" width="900" height="506" alt="Smile frame with the green outline of the chosen form placed as a guide" loading="lazy"><span>GUIDE</span></li>
+      <li><img src="ornek/gulus-sonra.jpg" width="1600" height="900" alt="Smile frame after the accepted design" loading="lazy"><span>AFTER</span></li>
+    </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="guide">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 07</span>
+      <h2 data-icerik="form_rehberi.0.baslik">Form Guide</h2>
+    </header>
+    <div>
+      <p class="prose" data-icerik="form_rehberi.0.giris">Atlas features a 19-form guide layer. Serving as a reference for dentists and technicians, this guide includes form ID cards and arrangement notes.</p>
+      <a class="guide" href="/rehber/index.html" style="margin-top:24px">
+        <span class="ticks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <strong>Atlas Form Guide (in Turkish) <span aria-hidden="true">→</span></strong>
+        <small>19 forms · ID card · visual analysis · arrangement notes</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="method">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 08</span>
+      <h2 data-icerik="yontem.0.baslik">Method</h2>
+      <p data-icerik="yontem.0.giris">Atlas relies on a measurable and testable system where decisions are made with autonomous agents.</p>
+    </header>
+    <div class="cells four">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3 data-icerik="yontem.1.baslik">Order and Gate</h3>
+        <p data-icerik="yontem.1.metin">Every task is given as an order in machine language, with defined scope and a single-token verification gate. Work that fails the gate does not go live.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3 data-icerik="yontem.2.baslik">Measurement First</h3>
+        <p data-icerik="yontem.2.metin">Every change and claim is written as a measurable hypothesis. The system measures first, and the claim only stands through this measurement.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">03</span>
+        <h3 data-icerik="yontem.3.baslik">Spark Rounds</h3>
+        <p data-icerik="yontem.3.metin">For difficult decisions, thesis, theory, counter-thesis, and falsification tests are requested from independent models. Sources are verified and prior expectations are tested during synthesis.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">04</span>
+        <h3 data-icerik="yontem.4.baslik">Agent Evolution</h3>
+        <p data-icerik="yontem.4.metin">Agent rules undergo placebo comparisons with a blind judge system, and approved changes are processed in weekly packages.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 09</span>
+      <h2 data-icerik="sss.0.baslik">Frequently Asked Questions</h2>
+    </header>
+    <div class="cells two">
+      <article class="cell">
+        <span class="idx">Q01</span>
+        <h3 data-icerik="sss.1.soru">Where is the patient data stored?</h3>
+        <p data-icerik="sss.1.cevap">Patient data remains entirely on the device; only an anonymized mouth crop is sent out.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">Q02</span>
+        <h3 data-icerik="sss.2.soru">Which models does Atlas use?</h3>
+        <p data-icerik="sss.2.cevap">The decision and order layer is orchestrated by Claude, while measurement and code tasks are distributed across model tiers. Different models operate in a multi-agent system for research and visual generation.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">Q03</span>
+        <h3 data-icerik="sss.3.soru">Is ExoCAD required?</h3>
+        <p data-icerik="sss.3.cevap">Atlas converts the design workflow into ExoCAD work packages; however, library geometry and guideline mockups are fed independently from the form engine.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">Q04</span>
+        <h3 data-icerik="sss.4.soru">What does the dentist do?</h3>
+        <p data-icerik="sss.4.cevap">The dentist simply takes the smile and retracted photos, selects one of Atlas's form recommendations or states a line preference, and reviews the guided mockup.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">Q05</span>
+        <h3 data-icerik="sss.5.soru">What does the technician do?</h3>
+        <p data-icerik="sss.5.cevap">The technician receives a work package containing the form approved by the dentist and constraints such as thickness limits, and performs the arrangement step of the design.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">Q06</span>
+        <h3 data-icerik="sss.6.soru">Is this a product?</h3>
+        <p data-icerik="sss.6.cevap">No, Atlas is an AI-orchestrated multi-agent operating layer that functions as the nervous system of a single company.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contact">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 10</span>
+      <h2 data-icerik="iletisim.0.baslik">Contact</h2>
+    </header>
+    <div>
+      <a class="mail" href="mailto:yusuf@atlasmaster.app" data-icerik="iletisim.1.eposta">yusuf@atlasmaster.app</a>
+      <p class="more">More: <a href="program.html">Program and needs</a> · <a href="index.html" lang="tr" hreflang="tr">Türkçe</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy" data-icerik="footer.0.gizlilik">Patient data stays on the device; only an anonymized mouth crop leaves it.</p>
+    <p class="disclaimer" data-icerik="footer.0.feragat">Dental library and form names are registered trademarks of their respective manufacturers; Atlas is independent and is not affiliated with any manufacturer.</p>
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><a href="/rehber/index.html">Form guide (TR)</a><a href="program.html">Program</a><a href="index.html" lang="tr" hreflang="tr">Türkçe</a><a href="#content">Back to top ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>
