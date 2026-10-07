@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas — otonomi: ajanlar nasıl ölçülür</title>
+<meta name="description" content="Atlas'ın arkasındaki çok ajanlı sistem nasıl ölçülür: beyan şartı, karne, emeklilik, ablasyon, kör yargıç ve evrim halkası. Her sayı gerçek bir ölçümden gelir, yanında damgası durur.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Atlas — otonomi: ajanlar nasıl ölçülür">
+<meta property="og:description" content="Karne, emeklilik, ablasyon, kör yargıç, evrim halkası; gerçek ölçümlerle.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="autonomy.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="otonomi.css">
+<script src="script.js"></script>
+<script src="otonomi.js"></script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" aria-label="Bölümler">
+      <a href="index.html">Ana sayfa</a>
+      <a href="#sayac">Sayaçlar</a>
+      <a href="#yontem">Yöntemler</a>
+      <a href="#emekli">Emeklilik</a>
+      <a href="#ablasyon">Ablasyon</a>
+      <a href="#halka">Evrim halkası</a>
+      <a href="#zaman">Zaman çizgisi</a>
+    </nav>
+    <a class="lang" href="autonomy.html" lang="en" hreflang="en" aria-label="English">EN</a>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<script type="application/json" id="olcum">
+{
+  "emir": {"damga": "8 Eki 2026 02:17", "kosan": 87, "pencere_sa": 24, "dis_tur": 2},
+  "dusmus": {"damga": "8 Eki 2026 02:07", "kayit": 4, "insan_reddi": 3, "veriyle": 1},
+  "karne": {"damga": "8 Eki 2026 02:07", "canli": 61, "elle": 107, "emekli_adayi": 26, "kutuksuz": 4, "sinanmamis": 13, "anilan": 85, "anilmayan": 133, "besleyen": 5, "degistirmeyen": 343, "olculemeyen": 37, "kanarya_pct": 1},
+  "emekli": {"damga": "8 Eki 2026 03:0x", "kayit": 338, "canli": 101, "kapali": 98, "kapali_kayitli": 31, "kapali_kayitsiz": 67, "zamanlayicisiz": 116, "sessiz": 18, "yuklu_degil": 4, "zamanlayici": 184, "kosan": 34, "arsiv_adayi": 85, "permutasyon": "14 Eyl 2026"},
+  "ablasyon": {"damga": "20 Eyl 2026", "ad": "A163 r2", "kol": {"A": {"dk": 11, "yuk_k": 109}, "B": {"dk": 8, "yuk_k": 72}, "C": {"dk": 5, "yuk_k": 65}}},
+  "golge": {"damga": "8 Eki 2026 02:07", "n": 128, "uyusma_pct": 72, "determinizm_pct": 99, "kopya_taban_pct": 96.8, "fark_ad": "K5′", "fark": -7.8},
+  "selftest": {"damga": "8 Eki 2026 02:07", "alet": 216, "gecti": 168, "dustu": 2, "selftestsiz": 46, "sinama": 3098, "sure_sn": 63},
+  "evrim": {"damga": "8 Eki 2026", "ad": "EVRİM-2", "epizot": 23, "epizot_hedef": 240, "aday": 6, "plasebo": 2, "aday_tavan": 3, "k_ad": "K1", "k": 0, "k_gun": 28, "gun": 0, "gun_hedef": 28},
+  "enkidu": {"damga": "8 Eki 2026 02:07", "gorev": 16, "pencere_sa": 24, "ok": 105, "olculemedi": 3, "kutuk": 1814, "okuyansiz": 16},
+  "beyan": {"damga": "15 Eyl 2026"},
+  "duser": {"damga": "13 Eyl 2026"},
+  "zaman": {"enlil": "14 Eyl", "beyan": "15 Eyl", "enki": "15–21 Eyl", "ablasyon": "20 Eyl", "enkidu": "22 Eyl", "evrim": "7 Eki", "site": "8 Eki"}
+}
+</script>
+
+<main id="icerik">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Otonomi · ölçümle</p>
+      <h1>Ajanlar nasıl <em>ölçülür</em></h1>
+      <p class="lead">Tek kişilik bir stüdyo. Orkestra bir <strong>üst akıl</strong> (Claude); icra ajanlarda: emirle koşan Opus, Sonnet ve Haiku koşucuları, araştırma, ağır okuma ve görsel için Gemini, sosyal nabız ve kırmızı takım için Grok Bot, ölçüm ve kör yargıç için yerel modeller (Gemma, Qwen). Son söz insanda.</p>
+      <p class="lead">Üst akıl kod yazmaz: <strong>ölçer, emir yazar, kanıt ister.</strong> Bu sayfadaki her sayı bir ölçümden gelir ve yanında ölçüm damgası durur; hareket eden her şey bir sayıyı ya da bir akışı gösterir.</p>
+      <ul class="tags" aria-label="Etiketler">
+        <li class="tag">çok ajanlı orkestrasyon</li><li class="tag">karne</li><li class="tag">emeklilik</li><li class="tag">ablasyon</li><li class="tag">kör yargıç</li>
+      </ul>
+      <noscript><p class="nojs">Sayılar sayfaya gömülü ölçüm verisinden okunur; betik kapalıyken görünmez.</p></noscript>
+    </div>
+    <div>
+      <figure class="sheet fig obs" data-anim="ag">
+        <svg id="ag" viewBox="0 0 420 420" role="img" aria-labelledby="fat fad" data-cx="210" data-cy="210">
+          <title id="fat">Ajan ağı: emir gidişi ve kanıt dönüşü</title>
+          <desc id="fad">Ortada üst akıl (Claude); çevresinde Opus, Sonnet, Haiku, Gemini, Grok Bot ve yerel modeller. Emir üst akıldan ajana gider; kanıt bir kapıdan geçerek geri döner. Kapıdan geçen yeşil, düşen kırmızı, öz-sınaması olmayan kapıda kalır.</desc>
+          <path class="wire" d="M210,210L210,52M210,210L346.8,131M210,210L346.8,289M210,210L210,368M210,210L73.2,289M210,210L73.2,131"/>
+          <path class="gate" d="M210,122l9,9l-9,9l-9,-9zM278.4,161.5l9,9l-9,9l-9,-9zM278.4,240.5l9,9l-9,9l-9,-9zM210,280l9,9l-9,9l-9,-9zM141.6,240.5l9,9l-9,9l-9,-9zM141.6,161.5l9,9l-9,9l-9,-9z"/>
+          <text class="k ac" x="224" y="126">KAPI</text>
+          <g class="pts"></g>
+          <rect class="bx core" x="150" y="182" width="120" height="56"/>
+          <text class="k inv" x="162" y="203">ÜST AKIL</text>
+          <text class="n inv" x="162" y="224">Claude</text>
+          <g data-node data-x="210" data-y="52"><rect class="bx" x="160" y="32" width="100" height="40"/><text class="n" x="170" y="50">Opus</text><text class="m" x="170" y="64">yargı</text></g>
+          <g data-node data-x="346.8" data-y="131"><rect class="bx" x="296.8" y="111" width="100" height="40"/><text class="n" x="306.8" y="129">Sonnet</text><text class="m" x="306.8" y="143">uygulama</text></g>
+          <g data-node data-x="346.8" data-y="289"><rect class="bx" x="296.8" y="269" width="100" height="40"/><text class="n" x="306.8" y="287">Haiku</text><text class="m" x="306.8" y="301">ölçüm, özet</text></g>
+          <g data-node data-x="210" data-y="368"><rect class="bx dash" x="160" y="348" width="100" height="40"/><text class="n" x="170" y="366">Yerel</text><text class="m" x="170" y="380">Gemma · Qwen</text></g>
+          <g data-node data-x="73.2" data-y="289"><rect class="bx dash" x="23.2" y="269" width="100" height="40"/><text class="n" x="33.2" y="287">Grok Bot</text><text class="m" x="33.2" y="301">sosyal nabız</text></g>
+          <g data-node data-x="73.2" data-y="131"><rect class="bx dash" x="23.2" y="111" width="100" height="40"/><text class="n" x="33.2" y="129">Gemini</text><text class="m" x="33.2" y="143">araştırma, görsel</text></g>
+        </svg>
+        <p class="tally"><span class="tg"><b data-t="g"></b> geçti</span><span class="tr"><b data-t="r"></b> düştü</span><span class="tn"><b data-t="n"></b> öz-sınamasız</span><span class="tt">/ <b data-n="selftest.alet"></b> alet</span></p>
+        <figcaption class="cap"><span>Şekil — ajan ağı</span><span>emir gider · kanıt döner</span></figcaption>
+      </figure>
+      <p class="what"><b>Ne gösteriyor</b>Emir üst akıldan ajana gider, kanıt kapıdan geçerek döner. Bir tur <span data-n="selftest.alet"></span> noktacık: <span data-n="selftest.gecti"></span> yeşil geçer, <span data-n="selftest.dustu"></span> kırmızı düşer, <span data-n="selftest.selftestsiz"></span> öz-sınamasız kapıda kalır; oran öz-sınama sayımının aynısıdır. Noktacıkların düğümlere dağılımı temsilîdir. <span class="stamp" data-n="selftest.damga"></span></p>
+    </div>
+  </div>
+</section>
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="sec" id="sayac">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Canlı sayaçlar</h2>
+      <p>Karne, öz-sınama, envanter, işçi. Her sayaç gerçek değerine sayar.</p>
+    </header>
+    <div class="stack">
+      <div class="meters">
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Karne ① koştu mu</span><span class="stamp" data-n="karne.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="karne.canli"></i><i class="c-acc" data-g="karne.elle"></i><i class="c-warn" data-g="karne.emekli_adayi"></i><i data-g="karne.kutuksuz"></i><i class="c-dim" data-g="karne.sinanmamis"></i></div>
+          <ul class="vals">
+            <li class="k-ok"><b data-n="karne.canli" data-c></b><span>canlı</span></li>
+            <li class="k-acc"><b data-n="karne.elle" data-c></b><span>elle</span></li>
+            <li class="k-warn"><b data-n="karne.emekli_adayi" data-c></b><span>emekli adayı</span></li>
+            <li><b data-n="karne.kutuksuz" data-c></b><span>kütüksüz</span></li>
+            <li class="k-dim"><b data-n="karne.sinanmamis" data-c></b><span>sınanmamış</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Karne ② okundu mu</span><span class="stamp" data-n="karne.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="karne.anilan"></i><i class="c-dim" data-g="karne.anilmayan"></i></div>
+          <ul class="vals">
+            <li class="k-ok"><b data-n="karne.anilan" data-c></b><span>anılan</span></li>
+            <li class="k-dim"><b data-n="karne.anilmayan" data-c></b><span>anılmayan</span></li>
+          </ul>
+        </article>
+        <article class="meter wide obs">
+          <div class="mhead"><span class="idx">Karne ③ karar değiştirdi mi</span><span class="stamp" data-n="karne.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="karne.besleyen"></i><i class="c-dim" data-g="karne.degistirmeyen"></i><i data-g="karne.olculemeyen"></i></div>
+          <ul class="vals">
+            <li class="k-ok"><b data-n="karne.besleyen" data-c></b><span>kararı besleyen</span></li>
+            <li class="k-dim"><b data-n="karne.degistirmeyen" data-c></b><span>değiştirmeyen</span></li>
+            <li><b data-n="karne.olculemeyen" data-c></b><span>ölçülemeyen</span></li>
+          </ul>
+          <p class="note">Kanarya <span data-n="karne.kanarya_pct" data-f="pct"></span> → sayı tesadüften ayrışmıyor. Ölçü henüz ayırt etmiyor.</p>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Öz-sınama</span><span class="stamp" data-n="selftest.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="selftest.gecti"></i><i class="c-warn" data-g="selftest.dustu"></i><i class="c-dim" data-g="selftest.selftestsiz"></i></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="selftest.alet" data-c></b><span>alet</span></li>
+            <li class="k-ok"><b data-n="selftest.gecti" data-c></b><span>geçti</span></li>
+            <li class="k-warn"><b data-n="selftest.dustu" data-c></b><span>düştü</span></li>
+            <li class="k-dim"><b data-n="selftest.selftestsiz" data-c></b><span>öz-sınamasız</span></li>
+          </ul>
+          <ul class="vals">
+            <li><b data-n="selftest.sinama" data-c></b><span>sınama</span></li>
+            <li><b data-n="selftest.sure_sn" data-c></b><span>saniye</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Envanter ve servis teftişi</span><span class="stamp" data-n="emekli.damga"></span></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="emekli.kayit" data-c></b><span>envanter kaydı</span></li>
+            <li><b data-n="emekli.zamanlayici" data-c></b><span>zamanlayıcı</span></li>
+            <li class="k-ok"><b data-n="emekli.kosan" data-c></b><span>koşan</span></li>
+            <li class="k-warn"><b data-n="emekli.arsiv_adayi" data-c></b><span>arşiv adayı</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Mekanik işçi · Enkidu</span><span class="stamp" data-n="enkidu.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="enkidu.ok"></i><i data-g="enkidu.olculemedi"></i></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="enkidu.gorev" data-c></b><span>görev</span></li>
+            <li class="k-ok"><b data-n="enkidu.ok" data-c></b><span>OK · son <span data-n="enkidu.pencere_sa"></span> sa</span></li>
+            <li><b data-n="enkidu.olculemedi" data-c></b><span>ölçülemedi</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Kütük okuyucu</span><span class="stamp" data-n="enkidu.damga"></span></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="enkidu.kutuk" data-c></b><span>kütük</span></li>
+            <li class="k-warn"><b data-n="enkidu.okuyansiz" data-c></b><span>okuyanı olmayan</span></li>
+          </ul>
+          <div class="bar" aria-hidden="true"><i class="c-warn" data-w="enkidu.okuyansiz/enkidu.kutuk"></i></div>
+          <p class="barlab"><span>yazılan ama okunmayan kütük = ölü kütük adayı</span></p>
+        </article>
+      </div>
+      <p class="what"><b>Ne gösteriyor</b>Şeritlerin payı sayıların kendisidir; her sayaç yanında yazan damganın ölçümüne sayar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="yontem">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Bulduğumuz yöntemler</h2>
+      <p>Her biri işleyen bir kuraldır; sayı varsa yanında damgası durur.</p>
+    </header>
+    <div class="cells m3 cards">
+      <article class="cell">
+        <span class="idx">kural</span>
+        <h3>BEYAN şartı</h3>
+        <p>Her ajan çıktısının ilk satırı: <b>kim · ne</b> (ölçüm, görüş ya da hüküm) <b>· kesinlik · dayanak · düşer testi</b>. Beyansız söz beyan sayılmaz; beyan kapısı bunu mekanik denetler.</p>
+        <span class="stamp">yürürlükte: <span data-n="beyan.damga"></span></span>
+      </article>
+      <article class="cell">
+        <span class="idx">kapı</span>
+        <h3>Emir + DOGRULA kapısı</h3>
+        <p>Her iş tek dosyalık bir emirdir; sonunda tek komut, tek beklenen değer durur. Kapıdan geçmeyen iş “bitti” sayılmaz. Son <span data-n="emir.pencere_sa"></span> saatte <b><span data-n="emir.kosan"></span> emir</b> koştu; dış tur <span data-n="emir.dis_tur"></span>.</p>
+        <span class="stamp" data-n="emir.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">bellek</span>
+        <h3>İddia → çürütme</h3>
+        <p>Teşhis bir iddia olarak yazılır, kanıtla düşer; varsayılan arşivdir, silme değil. Düşmüş fikir belleği: <b><span data-n="dusmus.kayit"></span> kayıt</b> (insan reddi <span data-n="dusmus.insan_reddi"></span> kalıcı, veriyle düşen <span data-n="dusmus.veriyle"></span>).</p>
+        <span class="stamp" data-n="dusmus.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">ölçü</span>
+        <h3>Karne (üç soru)</h3>
+        <p>Her alet için: <b>① koştu mu · ② okundu mu · ③ karar değiştirdi mi.</b> Üçüncü soruda kanarya <span data-n="karne.kanarya_pct" data-f="pct"></span>: sayı tesadüften ayrışmıyor. Dürüstçe yazılır: ölçü henüz ayırt etmiyor.</p>
+        <span class="stamp" data-n="karne.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">yaşam döngüsü</span>
+        <h3>Emeklilik</h3>
+        <p>Geçer not almayan alet ya da ajan emekli edilir, silinmez. Envanter <b><span data-n="emekli.kayit"></span> kayıt</b>; servis teftişinde <span data-n="emekli.zamanlayici"></span> zamanlayıcı, koşan <span data-n="emekli.kosan"></span>, arşiv adayı <span data-n="emekli.arsiv_adayi"></span>. Sonuç vermeyen yöntem de emekli olur.</p>
+        <span class="stamp" data-n="emekli.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">deney</span>
+        <h3>Permütasyon ve ablasyon</h3>
+        <p>Aynı görev, tek değişiklikle ayrılan üç kolda koşar: <b>model değişti (A) · kapı atlandı (B) · bağlam paketi atlandı (C).</b> Üç kol da aynı kapıdan aynı sonuçla geçti; fark maliyette kaldı. Bu bir ölçümdür; genelleme değil.</p>
+        <span class="stamp"><span data-n="ablasyon.ad"></span> · <span data-n="ablasyon.damga"></span></span>
+      </article>
+      <article class="cell">
+        <span class="idx">yargı</span>
+        <h3>Kör yargıç ve gölge koşu</h3>
+        <p>Enlil adayı ve plaseboyu karışık, bağlamsız damgalar; konum yanlılığı ölçüldü. Yeni kural canlıya girmeden aynı girdilerde gölgede koşar: n=<span data-n="golge.n"></span>, uyuşma <span data-n="golge.uyusma_pct" data-f="pct"></span>, determinizm <span data-n="golge.determinizm_pct" data-f="pct"></span>. <b>Gölge kol henüz kazanmadı:</b> kopya-taban <span data-n="golge.kopya_taban_pct" data-f="pct"></span>, gölge kol kopyadan iyi değil (<span data-n="golge.fark_ad"></span> <span data-n="golge.fark"></span>).</p>
+        <span class="stamp" data-n="golge.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">sınama</span>
+        <h3>Öz-sınama</h3>
+        <p>Her alet kendini sınar: <b><span data-n="selftest.alet"></span> alet</b> · geçti <span data-n="selftest.gecti"></span> · düştü <span data-n="selftest.dustu"></span> · öz-sınamasız <span data-n="selftest.selftestsiz"></span> · <span data-n="selftest.sinama"></span> sınama · <span data-n="selftest.sure_sn"></span> sn. Öz-sınaması olmayan alet otomatik koşuya bağlanmaz.</p>
+        <span class="stamp" data-n="selftest.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">halka</span>
+        <h3>Evrim halkası (<span data-n="evrim.ad"></span>)</h3>
+        <p>Enkidu çürüyen kuralları listeler ve plasebo üretir → Enki en çok <span data-n="evrim.aday_tavan"></span> aday yazar → Enlil kör damgalar → Enkidu gölgede istatistik tutar (Wilson aralığı, asgari saptanabilir fark, kol başına <span data-n="evrim.epizot_hedef"></span> epizot). <b>Yeni ajan yok: evrilen şey kural kümesi.</b></p>
+        <span class="stamp" data-n="evrim.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">işçi</span>
+        <h3>Mekanik işçi (Enkidu)</h3>
+        <p><b><span data-n="enkidu.gorev"></span> görev</b>; son <span data-n="enkidu.pencere_sa"></span> saatte <span data-n="enkidu.ok"></span> OK, <span data-n="enkidu.olculemedi"></span> ölçülemedi. Kütük okuyucu: <span data-n="enkidu.kutuk"></span> kütük, okuyanı olmayan <span data-n="enkidu.okuyansiz"></span>. Yazılan ama okunmayan kütük, ölü kütük adayıdır.</p>
+        <span class="stamp" data-n="enkidu.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">hüküm</span>
+        <h3>Düşer testi</h3>
+        <p>Her hüküm “ne olursa düşer” ile yazılır; sonraki tur, önceki hükmün düşer testini girdi alır. Sistem kendi hükmünü böyle yeniden sınar.</p>
+        <span class="stamp">yürürlükte: <span data-n="duser.damga"></span></span>
+      </article>
+      <article class="cell">
+        <span class="idx">aileler</span>
+        <h3>Üç aile</h3>
+        <p>Sentez Claude’da, ağır kod ve okuma Gemini’de, sosyal nabız ve kırmızı takım Grok Bot’ta. Pano tek yazımlı, kilitli bir kütüktür; her satırı beyanlıdır.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="emekli">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Emeklilik hunisi</h2>
+      <p>Geçer not almayan emekli edilir; silinmez.</p>
+    </header>
+    <div class="stack">
+      <div>
+        <figure class="sheet fig obs">
+          <svg id="hn" viewBox="0 0 420 452" role="img" aria-labelledby="fct fcd">
+            <title id="fct">Emeklilik hunisi</title>
+            <desc id="fcd">Envanter kayıtları durumlarına göre beş şeride ayrılır: canlı, kapalı, zamanlayıcısız, sessiz, yüklü değil. Şerit kalınlığı kayıt sayısıyla orantılıdır. Permütasyon etiketi huniden emekli rafına düşer.</desc>
+            <text class="k" x="22" y="19">ENVANTER · <tspan data-n="emekli.kayit"></tspan> KAYIT</text>
+            <rect class="src"/>
+            <g data-bin="canli" class="b-ok"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Canlı</tspan> <tspan class="num" data-n="emekli.canli"></tspan></text></g>
+            <g data-bin="kapali" class="b-warn"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Kapalı</tspan> <tspan class="num" data-n="emekli.kapali"></tspan></text><text class="sub m">kayıtlı <tspan data-n="emekli.kapali_kayitli"></tspan> · kayıtsız <tspan data-n="emekli.kapali_kayitsiz"></tspan></text></g>
+            <g data-bin="zamanlayicisiz"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Zamanlayıcısız</tspan> <tspan class="num" data-n="emekli.zamanlayicisiz"></tspan></text></g>
+            <g data-bin="sessiz"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Sessiz</tspan> <tspan class="num" data-n="emekli.sessiz"></tspan></text></g>
+            <g data-bin="yuklu_degil"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Yüklü değil</tspan> <tspan class="num" data-n="emekli.yuklu_degil"></tspan></text></g>
+            <rect class="bx dash" x="22" y="404" width="376" height="36"/>
+            <text class="k wn" x="388" y="426" text-anchor="end">EMEKLİ · SİLİNMEZ</text>
+            <g class="etk"><rect x="30" y="411" width="166" height="22"/><text class="m" x="39" y="426">permütasyon · <tspan data-n="emekli.permutasyon"></tspan></text></g>
+          </svg>
+          <figcaption class="cap"><span>Şekil — emeklilik hunisi</span><span>şerit kalınlığı = kayıt sayısı</span></figcaption>
+        </figure>
+        <p class="what"><b>Ne gösteriyor</b>Envanterdeki <span data-n="emekli.kayit"></span> kayıt durumuna göre ayrışır: canlı <span data-n="emekli.canli"></span>, kapalı <span data-n="emekli.kapali"></span>, zamanlayıcısız <span data-n="emekli.zamanlayicisiz"></span>, sessiz <span data-n="emekli.sessiz"></span>, yüklü değil <span data-n="emekli.yuklu_degil"></span>. Düşen etiket bir alet değil, emekli edilen bir yöntemdir. <span class="stamp" data-n="emekli.damga"></span></p>
+      </div>
+      <article class="retired">
+        <span class="badge">Emekli</span>
+        <h3>Permütasyon emekli edildi</h3>
+        <p>Ajanların özgürleştirilip karıştırıldığı “permütasyon” denemesi hiçbir ajanın karnesini belirgin değiştirmedi. <span data-n="emekli.permutasyon"></span> tarihinde insan kararıyla emekli edildi. Yöntem bu: sonuç vermeyen yöntem de emekli olur.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ablasyon">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Ablasyon üçlüsü</h2>
+      <p>Aynı görev, üç kol, tek kapı.</p>
+    </header>
+    <div>
+      <figure class="sheet fig obs" data-anim="ab">
+        <svg id="ab" viewBox="0 0 420 240" role="img" aria-labelledby="fdt fdd">
+          <title id="fdt">Ablasyon üçlüsü</title>
+          <desc id="fdd">Üç kol aynı kapıya varır: A kolunda model değişti, B kolunda kapı atlandı, C kolunda bağlam paketi atlandı. Kalın çubuk süreyi, ince çubuk bağlam yükünü gösterir.</desc>
+          <text class="k ac" x="356" y="20" text-anchor="middle">AYNI KAPI</text>
+          <path class="wire br" d="M356,28V214"/>
+          <g data-kol="A" data-x0="50" data-x1="347">
+            <rect class="bx" x="10" y="44" width="28" height="28"/><text class="n" x="24" y="63" text-anchor="middle">A</text>
+            <text class="m" x="50" y="49">model değişti</text>
+            <path class="wire br" d="M50,58H347"/><path class="gate" d="M356,49l9,9l-9,9l-9,-9z"/>
+            <circle class="dot" r="4.5" cx="50" cy="58"/>
+            <rect class="dbar" x="50" y="68" height="7" width="0"/><rect class="ybar" x="50" y="79" height="3" width="0"/>
+            <text class="k dl" x="58" y="78"><tspan data-n="ablasyon.kol.A.dk"></tspan> dk · <tspan data-n="ablasyon.kol.A.yuk_k" data-f="k"></tspan></text>
+            <path class="chk" d="M373,58l5,5l9,-11"/>
+          </g>
+          <g data-kol="B" data-x0="50" data-x1="347">
+            <rect class="bx" x="10" y="114" width="28" height="28"/><text class="n" x="24" y="133" text-anchor="middle">B</text>
+            <text class="m" x="50" y="119">kapı atlandı</text>
+            <path class="wire br" d="M50,128H347"/><path class="gate" d="M356,119l9,9l-9,9l-9,-9z"/>
+            <circle class="dot" r="4.5" cx="50" cy="128"/>
+            <rect class="dbar" x="50" y="138" height="7" width="0"/><rect class="ybar" x="50" y="149" height="3" width="0"/>
+            <text class="k dl" x="58" y="148"><tspan data-n="ablasyon.kol.B.dk"></tspan> dk · <tspan data-n="ablasyon.kol.B.yuk_k" data-f="k"></tspan></text>
+            <path class="chk" d="M373,128l5,5l9,-11"/>
+          </g>
+          <g data-kol="C" data-x0="50" data-x1="347">
+            <rect class="bx" x="10" y="184" width="28" height="28"/><text class="n" x="24" y="203" text-anchor="middle">C</text>
+            <text class="m" x="50" y="189">bağlam paketi atlandı</text>
+            <path class="wire br" d="M50,198H347"/><path class="gate" d="M356,189l9,9l-9,9l-9,-9z"/>
+            <circle class="dot" r="4.5" cx="50" cy="198"/>
+            <rect class="dbar" x="50" y="208" height="7" width="0"/><rect class="ybar" x="50" y="219" height="3" width="0"/>
+            <text class="k dl" x="58" y="218"><tspan data-n="ablasyon.kol.C.dk"></tspan> dk · <tspan data-n="ablasyon.kol.C.yuk_k" data-f="k"></tspan></text>
+            <path class="chk" d="M373,198l5,5l9,-11"/>
+          </g>
+          <text class="m" x="356" y="233" text-anchor="middle">aynı sonuç</text>
+        </svg>
+        <figcaption class="cap"><span>Şekil — ablasyon üçlüsü</span><span>kalın çubuk süre · ince çubuk bağlam yükü</span></figcaption>
+      </figure>
+      <p class="what"><b>Ne gösteriyor</b>Üç kol aynı kapıdan aynı sonuçla geçer; fark maliyettedir. Süre <span data-n="ablasyon.kol.A.dk"></span> / <span data-n="ablasyon.kol.B.dk"></span> / <span data-n="ablasyon.kol.C.dk"></span> dk, bağlam yükü <span data-n="ablasyon.kol.A.yuk_k" data-f="k"></span> / <span data-n="ablasyon.kol.B.yuk_k" data-f="k"></span> / <span data-n="ablasyon.kol.C.yuk_k" data-f="k"></span>. Noktacığın yolu kolun süresiyle orantılıdır. <span class="stamp"><span data-n="ablasyon.ad"></span> · <span data-n="ablasyon.damga"></span></span></p>
+      <p class="note">Kapı ve bağlam paketi bu görevde kararı değiştirmedi, maliyeti değiştirdi. Bu bir ölçümdür; genelleme değil.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="halka">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Evrim halkası</h2>
+      <p>Dört adım, kapalı halka. Evrilen şey kural kümesi.</p>
+    </header>
+    <div>
+      <figure class="sheet fig obs">
+        <svg viewBox="0 0 420 384" role="img" aria-labelledby="fet fed">
+          <title id="fet">Evrim halkası</title>
+          <desc id="fed">Dört adımlı kapalı halka: çürüyen kurallar (Enkidu), aday (Enki), kör damga (Enlil), gölge sınama (Enkidu). Enki ile Enlil arasında doğrudan hat yoktur.</desc>
+          <circle class="wire" cx="210" cy="170" r="84"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,110.6) rotate(45)"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,229.4) rotate(135)"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,229.4) rotate(225)"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,110.6) rotate(315)"/>
+          <text class="k" x="210" y="166" text-anchor="middle">EVRİLEN</text>
+          <text class="m" x="210" y="184" text-anchor="middle">kural kümesi</text>
+          <rect class="bx" x="4" y="142" width="76" height="56"/>
+          <text class="n" x="12" y="163">Enkidu</text><text class="m" x="12" y="179">mekanik</text><text class="m" x="12" y="192">işçi</text>
+          <rect class="bx" x="338" y="142" width="78" height="56"/>
+          <text class="n" x="346" y="163">Enki</text><text class="m" x="346" y="179">yapıcı ses</text>
+          <rect class="bx" x="150" y="314" width="120" height="56"/>
+          <text class="n" x="158" y="335">Enlil</text><text class="m" x="158" y="351">kör yargıç</text>
+          <path class="wire br" d="M80,170H114M42,142V86H198M306,170H338M210,266V314"/>
+          <circle class="gd st" cx="210" cy="86" r="12"/>
+          <circle class="gd st s2" cx="294" cy="170" r="12"/>
+          <circle class="gd st s3" cx="210" cy="254" r="12"/>
+          <circle class="gd st s4" cx="126" cy="170" r="12"/>
+          <text class="k ac" x="228" y="82">ÇÜRÜYEN</text>
+          <text class="k ac" x="306" y="134">ADAY</text>
+          <text class="k ac" x="228" y="258">KÖR DAMGA</text>
+          <text class="k ac" x="114" y="214" text-anchor="end">GÖLGE</text>
+          <text class="k wn" x="296" y="322">BİRBİRİNİ</text>
+          <text class="k wn" x="296" y="336">DUYMAZ</text>
+          <g class="orb"><circle class="od" cx="210" cy="86" r="5"/></g>
+        </svg>
+        <figcaption class="cap"><span>Şekil — evrim halkası</span><span>Enki ile Enlil arasında doğrudan hat yok</span></figcaption>
+      </figure>
+      <div class="obs">
+        <div class="bar" role="img" aria-label="Epizot dolumu"><i data-w="evrim.epizot/evrim.epizot_hedef"></i></div>
+        <p class="barlab"><span>epizot <b><span data-n="evrim.epizot"></span> / <span data-n="evrim.epizot_hedef"></span></b></span><span>erken (gün <span data-n="evrim.gun"></span>/<span data-n="evrim.gun_hedef"></span>)</span></p>
+        <ul class="vals" style="margin-top:18px">
+          <li class="k-acc"><b data-n="evrim.aday" data-c></b><span>aday</span></li>
+          <li class="k-dim"><b data-n="evrim.plasebo" data-c></b><span>plasebo</span></li>
+          <li><b data-n="evrim.k"></b><span><span data-n="evrim.k_ad"></span> (<span data-n="evrim.k_gun"></span> g)</span></li>
+        </ul>
+      </div>
+      <p class="what"><b>Ne gösteriyor</b>Dönen işaret halkadaki sırayı izler: çürüyen kurallar → aday → kör damga → gölge sınama. Çubuk gerçek epizot sayısı kadar doludur; istatistik kapısı dolmadan hiçbir aday canlıya girmez. <span class="stamp" data-n="evrim.damga"></span></p>
+      <p class="note">Erken: gün <span data-n="evrim.gun"></span>/<span data-n="evrim.gun_hedef"></span>. Halka kuruldu, hüküm vermek için sayı henüz yetmiyor.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="zaman">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Zaman çizgisi</h2>
+      <p>Gerçek tarihler.</p>
+    </header>
+    <ol class="tl" aria-label="Zaman çizgisi">
+      <li><b data-n="zaman.enlil"></b><span>Enlil (kör yargıç)</span></li>
+      <li><b data-n="zaman.beyan"></b><span>BEYAN şartı</span></li>
+      <li><b data-n="zaman.enki"></b><span>Enki tek ses</span></li>
+      <li><b data-n="zaman.ablasyon"></b><span>Ablasyon (<span data-n="ablasyon.ad"></span>)</span></li>
+      <li><b data-n="zaman.enkidu"></b><span>Enkidu</span></li>
+      <li><b data-n="zaman.evrim"></b><span><span data-n="evrim.ad"></span> halkası</span></li>
+      <li><b data-n="zaman.site"></b><span>Site</span></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">Sayının yanında damgası durur.</p>
+    <p class="disclaimer">Bu sayfadaki sayılar yazıldıkları anın ölçümüdür; damga, ölçümün tarihini ve saatini gösterir.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="index.html">Ana sayfa</a><a href="program.html">Program</a><a href="autonomy.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

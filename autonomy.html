@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas — autonomy: how the agents are measured</title>
+<meta name="description" content="How the multi-agent system behind Atlas is measured: the declaration rule, report cards, retirement, ablation, a blind judge and an evolution loop. Every number comes from a real measurement and carries its stamp.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Atlas — autonomy: how the agents are measured">
+<meta property="og:description" content="Report cards, retirement, ablation, a blind judge, an evolution loop; with real measurements.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="tr" href="otonomi.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="otonomi.css">
+<script src="script.js"></script>
+<script src="otonomi.js"></script>
+</head>
+<body>
+<a class="skip" href="#icerik">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="en.html" aria-label="Atlas home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="en.html">Home</a>
+      <a href="#sayac">Counters</a>
+      <a href="#yontem">Methods</a>
+      <a href="#emekli">Retirement</a>
+      <a href="#ablasyon">Ablation</a>
+      <a href="#halka">Evolution loop</a>
+      <a href="#zaman">Timeline</a>
+    </nav>
+    <a class="lang" href="otonomi.html" lang="tr" hreflang="tr" aria-label="Türkçe">TR</a>
+    <button class="theme" type="button" hidden aria-label="Dark / light theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<script type="application/json" id="olcum">
+{
+  "emir": {"damga": "8 Oct 2026 02:17", "kosan": 87, "pencere_sa": 24, "dis_tur": 2},
+  "dusmus": {"damga": "8 Oct 2026 02:07", "kayit": 4, "insan_reddi": 3, "veriyle": 1},
+  "karne": {"damga": "8 Oct 2026 02:07", "canli": 61, "elle": 107, "emekli_adayi": 26, "kutuksuz": 4, "sinanmamis": 13, "anilan": 85, "anilmayan": 133, "besleyen": 5, "degistirmeyen": 343, "olculemeyen": 37, "kanarya_pct": 1},
+  "emekli": {"damga": "8 Oct 2026 03:0x", "kayit": 338, "canli": 101, "kapali": 98, "kapali_kayitli": 31, "kapali_kayitsiz": 67, "zamanlayicisiz": 116, "sessiz": 18, "yuklu_degil": 4, "zamanlayici": 184, "kosan": 34, "arsiv_adayi": 85, "permutasyon": "14 Sep 2026"},
+  "ablasyon": {"damga": "20 Sep 2026", "ad": "A163 r2", "kol": {"A": {"dk": 11, "yuk_k": 109}, "B": {"dk": 8, "yuk_k": 72}, "C": {"dk": 5, "yuk_k": 65}}},
+  "golge": {"damga": "8 Oct 2026 02:07", "n": 128, "uyusma_pct": 72, "determinizm_pct": 99, "kopya_taban_pct": 96.8, "fark_ad": "K5′", "fark": -7.8},
+  "selftest": {"damga": "8 Oct 2026 02:07", "alet": 216, "gecti": 168, "dustu": 2, "selftestsiz": 46, "sinama": 3098, "sure_sn": 63},
+  "evrim": {"damga": "8 Oct 2026", "ad": "EVOLUTION-2", "epizot": 23, "epizot_hedef": 240, "aday": 6, "plasebo": 2, "aday_tavan": 3, "k_ad": "K1", "k": 0, "k_gun": 28, "gun": 0, "gun_hedef": 28},
+  "enkidu": {"damga": "8 Oct 2026 02:07", "gorev": 16, "pencere_sa": 24, "ok": 105, "olculemedi": 3, "kutuk": 1814, "okuyansiz": 16},
+  "beyan": {"damga": "15 Sep 2026"},
+  "duser": {"damga": "13 Sep 2026"},
+  "zaman": {"enlil": "14 Sep", "beyan": "15 Sep", "enki": "15–21 Sep", "ablasyon": "20 Sep", "enkidu": "22 Sep", "evrim": "7 Oct", "site": "8 Oct"}
+}
+</script>
+
+<main id="icerik">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Autonomy · by measurement</p>
+      <h1>How the agents are <em>measured</em></h1>
+      <p class="lead">A one-person studio. The orchestrator is an <strong>overseer</strong> (Claude); execution belongs to the agents: Opus, Sonnet and Haiku runners that work from written orders, Gemini for research, heavy reading and images, Grok Bot for social pulse and red-teaming, and local models (Gemma, Qwen) for measurement and blind judging. The human has the last word.</p>
+      <p class="lead">The overseer writes no code: <strong>it measures, writes orders and asks for evidence.</strong> Every number on this page comes from a measurement and carries its stamp; everything that moves shows a number or a flow.</p>
+      <ul class="tags" aria-label="Tags">
+        <li class="tag">multi-agent orchestration</li><li class="tag">report card</li><li class="tag">retirement</li><li class="tag">ablation</li><li class="tag">blind judge</li>
+      </ul>
+      <noscript><p class="nojs">The numbers are read from measurement data embedded in the page; they do not show with scripts turned off.</p></noscript>
+    </div>
+    <div>
+      <figure class="sheet fig obs" data-anim="ag">
+        <svg id="ag" viewBox="0 0 420 420" role="img" aria-labelledby="fat fad" data-cx="210" data-cy="210">
+          <title id="fat">Agent network: orders out, evidence back</title>
+          <desc id="fad">The overseer (Claude) in the centre; around it Opus, Sonnet, Haiku, Gemini, Grok Bot and local models. An order goes from the overseer to an agent; evidence returns through a gate. What passes is green, what fails is red, what has no self-test stays at the gate.</desc>
+          <path class="wire" d="M210,210L210,52M210,210L346.8,131M210,210L346.8,289M210,210L210,368M210,210L73.2,289M210,210L73.2,131"/>
+          <path class="gate" d="M210,122l9,9l-9,9l-9,-9zM278.4,161.5l9,9l-9,9l-9,-9zM278.4,240.5l9,9l-9,9l-9,-9zM210,280l9,9l-9,9l-9,-9zM141.6,240.5l9,9l-9,9l-9,-9zM141.6,161.5l9,9l-9,9l-9,-9z"/>
+          <text class="k ac" x="224" y="126">GATE</text>
+          <g class="pts"></g>
+          <rect class="bx core" x="150" y="182" width="120" height="56"/>
+          <text class="k inv" x="162" y="203">OVERSEER</text>
+          <text class="n inv" x="162" y="224">Claude</text>
+          <g data-node data-x="210" data-y="52"><rect class="bx" x="160" y="32" width="100" height="40"/><text class="n" x="170" y="50">Opus</text><text class="m" x="170" y="64">judgement</text></g>
+          <g data-node data-x="346.8" data-y="131"><rect class="bx" x="296.8" y="111" width="100" height="40"/><text class="n" x="306.8" y="129">Sonnet</text><text class="m" x="306.8" y="143">implementation</text></g>
+          <g data-node data-x="346.8" data-y="289"><rect class="bx" x="296.8" y="269" width="100" height="40"/><text class="n" x="306.8" y="287">Haiku</text><text class="m" x="306.8" y="301">measure, digest</text></g>
+          <g data-node data-x="210" data-y="368"><rect class="bx dash" x="160" y="348" width="100" height="40"/><text class="n" x="170" y="366">Local</text><text class="m" x="170" y="380">Gemma · Qwen</text></g>
+          <g data-node data-x="73.2" data-y="289"><rect class="bx dash" x="23.2" y="269" width="100" height="40"/><text class="n" x="33.2" y="287">Grok Bot</text><text class="m" x="33.2" y="301">social pulse</text></g>
+          <g data-node data-x="73.2" data-y="131"><rect class="bx dash" x="23.2" y="111" width="100" height="40"/><text class="n" x="33.2" y="129">Gemini</text><text class="m" x="33.2" y="143">research, images</text></g>
+        </svg>
+        <p class="tally"><span class="tg"><b data-t="g"></b> passed</span><span class="tr"><b data-t="r"></b> failed</span><span class="tn"><b data-t="n"></b> no self-test</span><span class="tt">/ <b data-n="selftest.alet"></b> tools</span></p>
+        <figcaption class="cap"><span>Figure — agent network</span><span>orders out · evidence back</span></figcaption>
+      </figure>
+      <p class="what"><b>What it shows</b>An order goes from the overseer to an agent; evidence returns through the gate. One round is <span data-n="selftest.alet"></span> dots: <span data-n="selftest.gecti"></span> pass in green, <span data-n="selftest.dustu"></span> fail in red, <span data-n="selftest.selftestsiz"></span> without a self-test stay at the gate; the ratio is exactly the self-test count. How the dots are spread across the nodes is illustrative. <span class="stamp" data-n="selftest.damga"></span></p>
+    </div>
+  </div>
+</section>
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="sec" id="sayac">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Live counters</h2>
+      <p>Report card, self-test, inventory, worker. Each counter counts up to its real value.</p>
+    </header>
+    <div class="stack">
+      <div class="meters">
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Report card ① did it run</span><span class="stamp" data-n="karne.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="karne.canli"></i><i class="c-acc" data-g="karne.elle"></i><i class="c-warn" data-g="karne.emekli_adayi"></i><i data-g="karne.kutuksuz"></i><i class="c-dim" data-g="karne.sinanmamis"></i></div>
+          <ul class="vals">
+            <li class="k-ok"><b data-n="karne.canli" data-c></b><span>live</span></li>
+            <li class="k-acc"><b data-n="karne.elle" data-c></b><span>manual</span></li>
+            <li class="k-warn"><b data-n="karne.emekli_adayi" data-c></b><span>retirement candidate</span></li>
+            <li><b data-n="karne.kutuksuz" data-c></b><span>no log</span></li>
+            <li class="k-dim"><b data-n="karne.sinanmamis" data-c></b><span>untested</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Report card ② was it read</span><span class="stamp" data-n="karne.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="karne.anilan"></i><i class="c-dim" data-g="karne.anilmayan"></i></div>
+          <ul class="vals">
+            <li class="k-ok"><b data-n="karne.anilan" data-c></b><span>referenced</span></li>
+            <li class="k-dim"><b data-n="karne.anilmayan" data-c></b><span>never referenced</span></li>
+          </ul>
+        </article>
+        <article class="meter wide obs">
+          <div class="mhead"><span class="idx">Report card ③ did it change a decision</span><span class="stamp" data-n="karne.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="karne.besleyen"></i><i class="c-dim" data-g="karne.degistirmeyen"></i><i data-g="karne.olculemeyen"></i></div>
+          <ul class="vals">
+            <li class="k-ok"><b data-n="karne.besleyen" data-c></b><span>fed a decision</span></li>
+            <li class="k-dim"><b data-n="karne.degistirmeyen" data-c></b><span>changed nothing</span></li>
+            <li><b data-n="karne.olculemeyen" data-c></b><span>not measurable</span></li>
+          </ul>
+          <p class="note">Canary <span data-n="karne.kanarya_pct" data-f="pct"></span> → the count cannot be told apart from chance. The measure does not discriminate yet.</p>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Self-test</span><span class="stamp" data-n="selftest.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="selftest.gecti"></i><i class="c-warn" data-g="selftest.dustu"></i><i class="c-dim" data-g="selftest.selftestsiz"></i></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="selftest.alet" data-c></b><span>tools</span></li>
+            <li class="k-ok"><b data-n="selftest.gecti" data-c></b><span>passed</span></li>
+            <li class="k-warn"><b data-n="selftest.dustu" data-c></b><span>failed</span></li>
+            <li class="k-dim"><b data-n="selftest.selftestsiz" data-c></b><span>no self-test</span></li>
+          </ul>
+          <ul class="vals">
+            <li><b data-n="selftest.sinama" data-c></b><span>checks</span></li>
+            <li><b data-n="selftest.sure_sn" data-c></b><span>seconds</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Inventory and service audit</span><span class="stamp" data-n="emekli.damga"></span></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="emekli.kayit" data-c></b><span>inventory records</span></li>
+            <li><b data-n="emekli.zamanlayici" data-c></b><span>schedulers</span></li>
+            <li class="k-ok"><b data-n="emekli.kosan" data-c></b><span>running</span></li>
+            <li class="k-warn"><b data-n="emekli.arsiv_adayi" data-c></b><span>archive candidates</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Mechanical worker · Enkidu</span><span class="stamp" data-n="enkidu.damga"></span></div>
+          <div class="seg" aria-hidden="true"><i class="c-ok" data-g="enkidu.ok"></i><i data-g="enkidu.olculemedi"></i></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="enkidu.gorev" data-c></b><span>tasks</span></li>
+            <li class="k-ok"><b data-n="enkidu.ok" data-c></b><span>OK · last <span data-n="enkidu.pencere_sa"></span> h</span></li>
+            <li><b data-n="enkidu.olculemedi" data-c></b><span>not measured</span></li>
+          </ul>
+        </article>
+        <article class="meter obs">
+          <div class="mhead"><span class="idx">Log reader</span><span class="stamp" data-n="enkidu.damga"></span></div>
+          <ul class="vals">
+            <li class="k-fg"><b data-n="enkidu.kutuk" data-c></b><span>logs</span></li>
+            <li class="k-warn"><b data-n="enkidu.okuyansiz" data-c></b><span>with no reader</span></li>
+          </ul>
+          <div class="bar" aria-hidden="true"><i class="c-warn" data-w="enkidu.okuyansiz/enkidu.kutuk"></i></div>
+          <p class="barlab"><span>a log that is written but never read = dead-log candidate</span></p>
+        </article>
+      </div>
+      <p class="what"><b>What it shows</b>The share of each strip is the number itself; each counter counts up to the measurement named by its stamp.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="yontem">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Methods we found</h2>
+      <p>Each one is a working rule; where there is a number, its stamp stands next to it.</p>
+    </header>
+    <div class="cells m3 cards">
+      <article class="cell">
+        <span class="idx">rule</span>
+        <h3>The declaration rule (BEYAN)</h3>
+        <p>The first line of every agent output: <b>who · what</b> (measurement, opinion or verdict) <b>· confidence · basis · falsifier</b>. A statement without a declaration does not count; the declaration gate checks this mechanically.</p>
+        <span class="stamp">in force since <span data-n="beyan.damga"></span></span>
+      </article>
+      <article class="cell">
+        <span class="idx">gate</span>
+        <h3>Order + VERIFY gate</h3>
+        <p>Every job is a single-file order; it ends with one command and one expected value. A job that does not pass the gate is not “done”. In the last <span data-n="emir.pencere_sa"></span> hours <b><span data-n="emir.kosan"></span> orders</b> ran; external rounds: <span data-n="emir.dis_tur"></span>.</p>
+        <span class="stamp" data-n="emir.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">memory</span>
+        <h3>Claim → refutation</h3>
+        <p>A diagnosis is written as a claim and falls by evidence; the default is to archive, not delete. Memory of fallen ideas: <b><span data-n="dusmus.kayit"></span> records</b> (rejected by the human, permanent: <span data-n="dusmus.insan_reddi"></span>; fell by data: <span data-n="dusmus.veriyle"></span>).</p>
+        <span class="stamp" data-n="dusmus.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">measure</span>
+        <h3>Report card (three questions)</h3>
+        <p>For every tool: <b>① did it run · ② was it read · ③ did it change a decision.</b> On the third question the canary is at <span data-n="karne.kanarya_pct" data-f="pct"></span>: the count cannot be told apart from chance. Stated honestly: the measure does not discriminate yet.</p>
+        <span class="stamp" data-n="karne.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">life cycle</span>
+        <h3>Retirement</h3>
+        <p>A tool or agent that does not get a passing grade is retired, not deleted. Inventory: <b><span data-n="emekli.kayit"></span> records</b>; the service audit found <span data-n="emekli.zamanlayici"></span> schedulers, <span data-n="emekli.kosan"></span> running, <span data-n="emekli.arsiv_adayi"></span> archive candidates. A method that yields nothing is retired too.</p>
+        <span class="stamp" data-n="emekli.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">experiment</span>
+        <h3>Permutation and ablation</h3>
+        <p>The same task runs in three arms that differ by one change: <b>model swapped (A) · gate skipped (B) · context pack skipped (C).</b> All three arms passed the same gate with the same result; the difference stayed in cost. This is one measurement, not a generalisation.</p>
+        <span class="stamp"><span data-n="ablasyon.ad"></span> · <span data-n="ablasyon.damga"></span></span>
+      </article>
+      <article class="cell">
+        <span class="idx">judging</span>
+        <h3>Blind judge and shadow run</h3>
+        <p>Enlil stamps candidates and placebos shuffled and without context; position bias was measured. Before a new rule goes live it runs in shadow on the same inputs: n=<span data-n="golge.n"></span>, agreement <span data-n="golge.uyusma_pct" data-f="pct"></span>, determinism <span data-n="golge.determinizm_pct" data-f="pct"></span>. <b>The shadow arm has not won yet:</b> the copy baseline is <span data-n="golge.kopya_taban_pct" data-f="pct"></span>, and the shadow arm is no better than copying (<span data-n="golge.fark_ad"></span> <span data-n="golge.fark"></span>).</p>
+        <span class="stamp" data-n="golge.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">testing</span>
+        <h3>Self-test</h3>
+        <p>Every tool tests itself: <b><span data-n="selftest.alet"></span> tools</b> · passed <span data-n="selftest.gecti"></span> · failed <span data-n="selftest.dustu"></span> · no self-test <span data-n="selftest.selftestsiz"></span> · <span data-n="selftest.sinama"></span> checks · <span data-n="selftest.sure_sn"></span> s. A tool without a self-test is not wired into automatic runs.</p>
+        <span class="stamp" data-n="selftest.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">loop</span>
+        <h3>Evolution loop (<span data-n="evrim.ad"></span>)</h3>
+        <p>Enkidu lists decaying rules and produces placebos → Enki writes at most <span data-n="evrim.aday_tavan"></span> candidates → Enlil stamps them blind → Enkidu keeps shadow statistics (Wilson interval, minimum detectable effect, <span data-n="evrim.epizot_hedef"></span> episodes per arm). <b>No new agent: what evolves is the rule set.</b></p>
+        <span class="stamp" data-n="evrim.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">worker</span>
+        <h3>Mechanical worker (Enkidu)</h3>
+        <p><b><span data-n="enkidu.gorev"></span> tasks</b>; in the last <span data-n="enkidu.pencere_sa"></span> hours <span data-n="enkidu.ok"></span> OK, <span data-n="enkidu.olculemedi"></span> not measured. Log reader: <span data-n="enkidu.kutuk"></span> logs, <span data-n="enkidu.okuyansiz"></span> with no reader. A log that is written but never read is a dead-log candidate.</p>
+        <span class="stamp" data-n="enkidu.damga"></span>
+      </article>
+      <article class="cell">
+        <span class="idx">verdict</span>
+        <h3>Falsifier</h3>
+        <p>Every verdict is written with “what would make this fall”; the next round takes the previous verdict’s falsifier as input. This is how the system re-tests its own verdicts.</p>
+        <span class="stamp">in force since <span data-n="duser.damga"></span></span>
+      </article>
+      <article class="cell">
+        <span class="idx">families</span>
+        <h3>Three families</h3>
+        <p>Synthesis sits with Claude, heavy code and reading with Gemini, social pulse and red-teaming with Grok Bot. The board is a single-writer, locked log; every line carries a declaration.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="emekli">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Retirement funnel</h2>
+      <p>What does not get a passing grade is retired, not deleted.</p>
+    </header>
+    <div class="stack">
+      <div>
+        <figure class="sheet fig obs">
+          <svg id="hn" viewBox="0 0 420 452" role="img" aria-labelledby="fct fcd">
+            <title id="fct">Retirement funnel</title>
+            <desc id="fcd">Inventory records split into five bands by status: live, closed, no scheduler, silent, not loaded. Band thickness is proportional to the record count. The permutation label drops through the funnel onto the retired shelf.</desc>
+            <text class="k" x="22" y="19">INVENTORY · <tspan data-n="emekli.kayit"></tspan> RECORDS</text>
+            <rect class="src"/>
+            <g data-bin="canli" class="b-ok"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Live</tspan> <tspan class="num" data-n="emekli.canli"></tspan></text></g>
+            <g data-bin="kapali" class="b-warn"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Closed</tspan> <tspan class="num" data-n="emekli.kapali"></tspan></text><text class="sub m">recorded <tspan data-n="emekli.kapali_kayitli"></tspan> · unrecorded <tspan data-n="emekli.kapali_kayitsiz"></tspan></text></g>
+            <g data-bin="zamanlayicisiz"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">No scheduler</tspan> <tspan class="num" data-n="emekli.zamanlayicisiz"></tspan></text></g>
+            <g data-bin="sessiz"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Silent</tspan> <tspan class="num" data-n="emekli.sessiz"></tspan></text></g>
+            <g data-bin="yuklu_degil"><path class="rib"/><path class="flow"/><rect class="bin"/><text class="lab"><tspan class="n">Not loaded</tspan> <tspan class="num" data-n="emekli.yuklu_degil"></tspan></text></g>
+            <rect class="bx dash" x="22" y="404" width="376" height="36"/>
+            <text class="k wn" x="388" y="426" text-anchor="end">RETIRED · NOT DELETED</text>
+            <g class="etk"><rect x="30" y="411" width="166" height="22"/><text class="m" x="39" y="426">permutation · <tspan data-n="emekli.permutasyon"></tspan></text></g>
+          </svg>
+          <figcaption class="cap"><span>Figure — retirement funnel</span><span>band thickness = record count</span></figcaption>
+        </figure>
+        <p class="what"><b>What it shows</b>The <span data-n="emekli.kayit"></span> inventory records split by status: live <span data-n="emekli.canli"></span>, closed <span data-n="emekli.kapali"></span>, no scheduler <span data-n="emekli.zamanlayicisiz"></span>, silent <span data-n="emekli.sessiz"></span>, not loaded <span data-n="emekli.yuklu_degil"></span>. The falling label is not a tool but a method that was retired. <span class="stamp" data-n="emekli.damga"></span></p>
+      </div>
+      <article class="retired">
+        <span class="badge">Retired</span>
+        <h3>Permutation was retired</h3>
+        <p>The “permutation” trial, in which agents were freed and shuffled, did not noticeably change any agent’s report card. It was retired on <span data-n="emekli.permutasyon"></span> by human decision. That is the method: a method that yields nothing is retired too.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ablasyon">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Ablation triple</h2>
+      <p>Same task, three arms, one gate.</p>
+    </header>
+    <div>
+      <figure class="sheet fig obs" data-anim="ab">
+        <svg id="ab" viewBox="0 0 420 240" role="img" aria-labelledby="fdt fdd">
+          <title id="fdt">Ablation triple</title>
+          <desc id="fdd">Three arms reach the same gate: in arm A the model was swapped, in arm B the gate was skipped, in arm C the context pack was skipped. The thick bar shows duration, the thin bar context load.</desc>
+          <text class="k ac" x="356" y="20" text-anchor="middle">SAME GATE</text>
+          <path class="wire br" d="M356,28V214"/>
+          <g data-kol="A" data-x0="50" data-x1="347">
+            <rect class="bx" x="10" y="44" width="28" height="28"/><text class="n" x="24" y="63" text-anchor="middle">A</text>
+            <text class="m" x="50" y="49">model swapped</text>
+            <path class="wire br" d="M50,58H347"/><path class="gate" d="M356,49l9,9l-9,9l-9,-9z"/>
+            <circle class="dot" r="4.5" cx="50" cy="58"/>
+            <rect class="dbar" x="50" y="68" height="7" width="0"/><rect class="ybar" x="50" y="79" height="3" width="0"/>
+            <text class="k dl" x="58" y="78"><tspan data-n="ablasyon.kol.A.dk"></tspan> min · <tspan data-n="ablasyon.kol.A.yuk_k" data-f="k"></tspan></text>
+            <path class="chk" d="M373,58l5,5l9,-11"/>
+          </g>
+          <g data-kol="B" data-x0="50" data-x1="347">
+            <rect class="bx" x="10" y="114" width="28" height="28"/><text class="n" x="24" y="133" text-anchor="middle">B</text>
+            <text class="m" x="50" y="119">gate skipped</text>
+            <path class="wire br" d="M50,128H347"/><path class="gate" d="M356,119l9,9l-9,9l-9,-9z"/>
+            <circle class="dot" r="4.5" cx="50" cy="128"/>
+            <rect class="dbar" x="50" y="138" height="7" width="0"/><rect class="ybar" x="50" y="149" height="3" width="0"/>
+            <text class="k dl" x="58" y="148"><tspan data-n="ablasyon.kol.B.dk"></tspan> min · <tspan data-n="ablasyon.kol.B.yuk_k" data-f="k"></tspan></text>
+            <path class="chk" d="M373,128l5,5l9,-11"/>
+          </g>
+          <g data-kol="C" data-x0="50" data-x1="347">
+            <rect class="bx" x="10" y="184" width="28" height="28"/><text class="n" x="24" y="203" text-anchor="middle">C</text>
+            <text class="m" x="50" y="189">context pack skipped</text>
+            <path class="wire br" d="M50,198H347"/><path class="gate" d="M356,189l9,9l-9,9l-9,-9z"/>
+            <circle class="dot" r="4.5" cx="50" cy="198"/>
+            <rect class="dbar" x="50" y="208" height="7" width="0"/><rect class="ybar" x="50" y="219" height="3" width="0"/>
+            <text class="k dl" x="58" y="218"><tspan data-n="ablasyon.kol.C.dk"></tspan> min · <tspan data-n="ablasyon.kol.C.yuk_k" data-f="k"></tspan></text>
+            <path class="chk" d="M373,198l5,5l9,-11"/>
+          </g>
+          <text class="m" x="356" y="233" text-anchor="middle">same result</text>
+        </svg>
+        <figcaption class="cap"><span>Figure — ablation triple</span><span>thick bar duration · thin bar context load</span></figcaption>
+      </figure>
+      <p class="what"><b>What it shows</b>All three arms pass the same gate with the same result; the difference is in cost. Duration <span data-n="ablasyon.kol.A.dk"></span> / <span data-n="ablasyon.kol.B.dk"></span> / <span data-n="ablasyon.kol.C.dk"></span> min, context load <span data-n="ablasyon.kol.A.yuk_k" data-f="k"></span> / <span data-n="ablasyon.kol.B.yuk_k" data-f="k"></span> / <span data-n="ablasyon.kol.C.yuk_k" data-f="k"></span>. Each dot’s travel time is proportional to its arm’s duration. <span class="stamp"><span data-n="ablasyon.ad"></span> · <span data-n="ablasyon.damga"></span></span></p>
+      <p class="note">In this task the gate and the context pack did not change the decision; they changed the cost. This is one measurement, not a generalisation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="halka">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Evolution loop</h2>
+      <p>Four steps, a closed loop. What evolves is the rule set.</p>
+    </header>
+    <div>
+      <figure class="sheet fig obs">
+        <svg viewBox="0 0 420 384" role="img" aria-labelledby="fet fed">
+          <title id="fet">Evolution loop</title>
+          <desc id="fed">A closed loop of four steps: decaying rules (Enkidu), candidate (Enki), blind stamp (Enlil), shadow test (Enkidu). There is no direct line between Enki and Enlil.</desc>
+          <circle class="wire" cx="210" cy="170" r="84"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,110.6) rotate(45)"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,229.4) rotate(135)"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,229.4) rotate(225)"/>
+          <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,110.6) rotate(315)"/>
+          <text class="k" x="210" y="166" text-anchor="middle">EVOLVING</text>
+          <text class="m" x="210" y="184" text-anchor="middle">rule set</text>
+          <rect class="bx" x="4" y="142" width="76" height="56"/>
+          <text class="n" x="12" y="163">Enkidu</text><text class="m" x="12" y="179">mechanical</text><text class="m" x="12" y="192">worker</text>
+          <rect class="bx" x="338" y="142" width="78" height="56"/>
+          <text class="n" x="346" y="163">Enki</text><text class="m" x="346" y="179">constructive</text>
+          <rect class="bx" x="150" y="314" width="120" height="56"/>
+          <text class="n" x="158" y="335">Enlil</text><text class="m" x="158" y="351">blind judge</text>
+          <path class="wire br" d="M80,170H114M42,142V86H198M306,170H338M210,266V314"/>
+          <circle class="gd st" cx="210" cy="86" r="12"/>
+          <circle class="gd st s2" cx="294" cy="170" r="12"/>
+          <circle class="gd st s3" cx="210" cy="254" r="12"/>
+          <circle class="gd st s4" cx="126" cy="170" r="12"/>
+          <text class="k ac" x="228" y="82">DECAYING</text>
+          <text class="k ac" x="306" y="134">CANDIDATE</text>
+          <text class="k ac" x="228" y="258">BLIND STAMP</text>
+          <text class="k ac" x="114" y="214" text-anchor="end">SHADOW</text>
+          <text class="k wn" x="296" y="322">NEVER HEAR</text>
+          <text class="k wn" x="296" y="336">EACH OTHER</text>
+          <g class="orb"><circle class="od" cx="210" cy="86" r="5"/></g>
+        </svg>
+        <figcaption class="cap"><span>Figure — evolution loop</span><span>no direct line between Enki and Enlil</span></figcaption>
+      </figure>
+      <div class="obs">
+        <div class="bar" role="img" aria-label="Episode fill"><i data-w="evrim.epizot/evrim.epizot_hedef"></i></div>
+        <p class="barlab"><span>episodes <b><span data-n="evrim.epizot"></span> / <span data-n="evrim.epizot_hedef"></span></b></span><span>early (day <span data-n="evrim.gun"></span>/<span data-n="evrim.gun_hedef"></span>)</span></p>
+        <ul class="vals" style="margin-top:18px">
+          <li class="k-acc"><b data-n="evrim.aday" data-c></b><span>candidates</span></li>
+          <li class="k-dim"><b data-n="evrim.plasebo" data-c></b><span>placebos</span></li>
+          <li><b data-n="evrim.k"></b><span><span data-n="evrim.k_ad"></span> (<span data-n="evrim.k_gun"></span> d)</span></li>
+        </ul>
+      </div>
+      <p class="what"><b>What it shows</b>The moving marker follows the order of the loop: decaying rules → candidate → blind stamp → shadow test. The bar is filled to the real episode count; no candidate goes live before the statistics gate is met. <span class="stamp" data-n="evrim.damga"></span></p>
+      <p class="note">Early: day <span data-n="evrim.gun"></span>/<span data-n="evrim.gun_hedef"></span>. The loop is built; the count is not yet enough for a verdict.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="zaman">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Timeline</h2>
+      <p>Real dates.</p>
+    </header>
+    <ol class="tl" aria-label="Timeline">
+      <li><b data-n="zaman.enlil"></b><span>Enlil (blind judge)</span></li>
+      <li><b data-n="zaman.beyan"></b><span>Declaration rule (BEYAN)</span></li>
+      <li><b data-n="zaman.enki"></b><span>Enki becomes the single voice</span></li>
+      <li><b data-n="zaman.ablasyon"></b><span>Ablation (<span data-n="ablasyon.ad"></span>)</span></li>
+      <li><b data-n="zaman.enkidu"></b><span>Enkidu</span></li>
+      <li><b data-n="zaman.evrim"></b><span><span data-n="evrim.ad"></span> loop</span></li>
+      <li><b data-n="zaman.site"></b><span>Site</span></li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">Every number carries its stamp.</p>
+    <p class="disclaimer">The numbers on this page are measurements of the moment they were taken; the stamp gives the date and time of the measurement.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="en.html">Home</a><a href="program.html">Program</a><a href="otonomi.html" lang="tr" hreflang="tr">Türkçe</a><a href="#icerik">Back to top ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>
