@@ -30,6 +30,7 @@
     <nav class="nav" aria-label="Sections">
       <a href="#pillars">Six pillars</a>
       <a href="#pipeline">Pipeline</a>
+      <a href="#evrim">Agent evolution</a>
       <a href="#scale">Scale</a>
       <a href="#program">Program</a>
       <a href="#contact">Contact</a>
@@ -184,6 +185,100 @@
         <p>Accepted designs become ExoCAD work packages.</p>
       </li>
     </ol>
+  </div>
+</section>
+
+<section class="sec" id="evrim">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 02b</span>
+      <h2>Agent evolution</h2>
+      <p>Three agents, four steps, one closed loop.</p>
+    </header>
+    <div class="evrim">
+      <div class="cells three">
+      <article class="cell">
+        <span class="idx">constructive voice</span>
+        <h3>Enki</h3>
+        <p>Sees the context and the brief and produces options. Every proposal comes with a measurable gate: a number, a threshold, a file. It does not rule and does not write execution orders.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">colourless ground</span>
+        <h3>Enlil</h3>
+        <p>The blind judge. It does not see the context: it sees the candidate bare and stamps it. No proximity, no recency bias, no anchoring. It is never in the same room as Enki; they do not hear each other.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">mechanical worker</span>
+        <h3>Enkidu</h3>
+        <p>Counts, fetches, sorts, measures, with local and cheap models. Its output is a measurement, not a ruling.</p>
+      </article>
+      </div>
+      <div class="tech">
+        <div>
+          <ol class="evsteps" aria-label="Agent evolution steps">
+          <li><span><b>Decayed rules</b> <i>Enkidu</i> — lists the rules that dropped out of the hypothesis ledger and produces PLACEBO (fake) candidates beside them for a blind comparison.</span></li>
+          <li><span><b>Candidate</b> <i>Enki</i> — writes at most 3 candidate changes per day from the decayed rules; candidates, not rulings.</span></li>
+          <li><span><b>Blind stamp</b> <i>Enlil</i> — sees candidates and placebos mixed together, without context, and stamps them; leakage and reward hacking are caught here.</span></li>
+          <li><span><b>Shadow test</b> <i>Enkidu</i> — runs the candidate in shadow on the same inputs as the current rule. Nothing goes live before the statistical gate passes (Wilson interval, minimum detectable difference; 240 episodes per arm).</span></li>
+          </ol>
+          <p class="pull">What evolves is not the agent but the rule set.</p>
+          <p class="prose">Two things sit outside the loop: the supervising mind (writes orders, asks for evidence) and the human (final say; weekly manual channel, falsification test).</p>
+        </div>
+        <figure class="sheet schema">
+<svg viewBox="0 0 420 490" role="img" aria-labelledby="f3t f3d">
+  <title id="f3t">Enki, Enlil and Enkidu agent-evolution loop</title>
+  <desc id="f3d">A closed loop of four steps: 1 decayed rules (Enkidu), 2 candidate (Enki), 3 blind stamp (Enlil), 4 shadow test (Enkidu). There is no direct link between Enki and Enlil; both connect only through the loop. Outside the loop the supervising mind writes orders, and outermost the human has the final say.</desc>
+  <path class="gate" d="M210,10l16,16l-16,16l-16,-16z"/>
+  <text class="k ac" x="234" y="23">HUMAN</text>
+  <text class="m" x="234" y="37">final say</text>
+  <path class="wire" d="M210,42 V56"/><path class="ah" d="M206,56h8l-4,8z"/>
+  <rect class="bx core" x="130" y="64" width="160" height="52"/>
+  <text class="k inv" x="142" y="84">SUPERVISING MIND</text>
+  <text class="m inv" x="142" y="103">orders · asks evidence</text>
+  <path class="wire" d="M210,116 V176"/><path class="ah" d="M206,176h8l-4,8z"/>
+  <circle class="wire" cx="210" cy="280" r="84"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,220.6) rotate(45)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,339.4) rotate(135)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,339.4) rotate(225)"/>
+  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,220.6) rotate(315)"/>
+  <text class="k" x="210" y="276" text-anchor="middle">EVOLVES</text>
+  <text class="m" x="210" y="294" text-anchor="middle">rule set</text>
+  <rect class="bx" x="4" y="252" width="76" height="56"/>
+  <text class="n" x="12" y="273">Enkidu</text>
+  <text class="m" x="12" y="289">mechanical</text>
+  <text class="m" x="12" y="302">worker</text>
+  <rect class="bx" x="338" y="252" width="78" height="56"/>
+  <text class="n" x="346" y="273">Enki</text>
+  <text class="m" x="346" y="289">constructive</text>
+  <rect class="bx" x="150" y="424" width="120" height="56"/>
+  <text class="n" x="158" y="445">Enlil</text>
+  <text class="m" x="158" y="461">blind judge</text>
+  <path class="wire br" d="M80,280 H114 M42,252 V196 H198 M306,280 H338 M210,376 V424"/>
+  <circle class="gd" cx="210" cy="196" r="12"/>
+  <text class="k ac" x="210" y="199.5" text-anchor="middle">1</text>
+  <circle class="gd" cx="294" cy="280" r="12"/>
+  <text class="k ac" x="294" y="283.5" text-anchor="middle">2</text>
+  <circle class="gd" cx="210" cy="364" r="12"/>
+  <text class="k ac" x="210" y="367.5" text-anchor="middle">3</text>
+  <circle class="gd" cx="126" cy="280" r="12"/>
+  <text class="k ac" x="126" y="283.5" text-anchor="middle">4</text>
+  <text class="k ac" x="228" y="192">DECAYED</text>
+  <text class="k ac" x="306" y="268">CANDIDATE</text>
+  <text class="k ac" x="228" y="368">BLIND STAMP</text>
+  <text class="k ac" x="118" y="300" text-anchor="end">SHADOW</text>
+  <text class="k wn" x="296" y="432">NO DIRECT</text>
+  <text class="k wn" x="296" y="446">LINK</text>
+</svg>
+          <figcaption class="cap"><span>Figure 3 — the Enki · Enlil · Enkidu loop</span><span>No direct link between Enki and Enlil</span></figcaption>
+        </figure>
+      </div>
+      <ol class="evtime" aria-label="Agent evolution timeline">
+      <li><b>14 Sep</b><span>Enlil founded (blind auditor).</span></li>
+      <li><b>15–21 Sep</b><span>Enki became the single voice (constructive; two earlier voices merged).</span></li>
+      <li><b>22 Sep</b><span>Enkidu founded (mechanical work taken from Enki and Enlil).</span></li>
+      <li><b>7 Oct</b><span>EVOLUTION-2: the three tied into one loop.</span></li>
+      </ol>
+    </div>
   </div>
 </section>
 

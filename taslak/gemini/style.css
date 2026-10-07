@@ -189,3 +189,9 @@ footer {
     justify-content: space-between;
   }
 }
+
+/* ajan evrimi */
+#evrim .grid{grid-template-columns:1fr}
+@media (min-width: 640px) {
+  #evrim .grid { grid-template-columns: repeat(3, 1fr); }
+}

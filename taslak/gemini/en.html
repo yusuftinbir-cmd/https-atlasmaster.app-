@@ -15,6 +15,7 @@
       <div class="nav-links">
         <a href="index.html">Türkçe (Ana Sayfa)</a>
         <a href="/rehber/index.html">Form Guide</a>
+        <a href="#evrim">Agent evolution</a>
         <a href="atlas-overview.pdf">PDF Version</a>
       </div>
     </header>
@@ -75,6 +76,81 @@
 
       <h2>6. Theory, thesis and hypothesis rounds ("spark" rounds)</h2>
       <p>For hard design questions we run multi-voice rounds across models that cannot hear each other (Claude, Gemini, Grok, a local Gemma, and a data-seat agent that answers only with repository measurements). Each voice must produce thesis → mechanism → verifiable source → counter-thesis → falsifier. The orchestrator verifies every citation on the web, writes a synthesis that separates agreement from disagreement, records its own prior expectation beforehand and scores afterwards whether the round changed the decision (33 syntheses so far). Several rounds ended with the data seat refuting the clever proposals of the other voices, which is exactly the point.</p>
+
+      <section id="evrim">
+        <h2>Agent evolution</h2>
+        <p>Three agents, four steps, one closed loop.</p>
+        <div class="grid">
+          <div class="card">
+            <strong>Enki — constructive voice</strong>
+            Sees the context and the brief and produces options. Every proposal comes with a measurable gate: a number, a threshold, a file. It does not rule and does not write execution orders.
+          </div>
+          <div class="card">
+            <strong>Enlil — colourless ground</strong>
+            The blind judge. It does not see the context: it sees the candidate bare and stamps it. No proximity, no recency bias, no anchoring. It is never in the same room as Enki; they do not hear each other.
+          </div>
+          <div class="card">
+            <strong>Enkidu — mechanical worker</strong>
+            Counts, fetches, sorts, measures, with local and cheap models. Its output is a measurement, not a ruling.
+          </div>
+        </div>
+        <div class="svg-container">
+      <svg viewBox="0 0 480 500" xmlns="http://www.w3.org/2000/svg" width="100%" role="img" aria-labelledby="gevt gevd" style="max-width:480px">
+        <title id="gevt">Enki, Enlil and Enkidu agent-evolution loop</title>
+        <desc id="gevd">A closed loop of four steps: 1 decayed rules (Enkidu), 2 candidate (Enki), 3 blind stamp (Enlil), 4 shadow test (Enkidu). There is no direct link between Enki and Enlil; both connect only through the loop. Outside the loop the supervising mind writes orders, and outermost the human has the final say.</desc>
+        <defs><marker id="arrow-ev" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text-muted)"/></marker></defs>
+        <style>.ev-box{fill:var(--bg);stroke:var(--border);stroke-width:2}.ev-core{fill:var(--text);stroke:var(--text)}.ev-t{fill:var(--text);font:600 14px ui-sans-serif,system-ui,sans-serif}.ev-s{fill:var(--text-muted);font:400 12px ui-sans-serif,system-ui,sans-serif}.ev-i{fill:var(--bg)}.ev-n{fill:var(--accent);font:600 13px ui-sans-serif,system-ui,sans-serif;text-anchor:middle}.ev-l{stroke:var(--text-muted);stroke-width:2;fill:none}.ev-d{stroke:var(--text-muted);stroke-width:2;fill:none;stroke-dasharray:4 4}.ev-c{fill:var(--bg);stroke:var(--accent);stroke-width:2}.ev-g{fill:var(--bg);stroke:var(--accent);stroke-width:2}</style>
+        <path class="ev-g" d="M240,12l16,16l-16,16l-16,-16z"/>
+        <text class="ev-t" x="266" y="26" style="fill:var(--accent)">HUMAN</text>
+        <text class="ev-s" x="266" y="42">final say</text>
+        <line class="ev-l" x1="240" y1="44" x2="240" y2="60" marker-end="url(#arrow-ev)"/>
+        <rect class="ev-box ev-core" x="140" y="62" width="200" height="56" rx="6"/>
+        <text class="ev-t ev-i" x="156" y="86">SUPERVISING MIND</text>
+        <text class="ev-s ev-i" x="156" y="104" style="opacity:.8">orders · asks evidence</text>
+        <line class="ev-l" x1="240" y1="118" x2="240" y2="186" marker-end="url(#arrow-ev)"/>
+        <path class="ev-l" d="M266.3,203.9 A90,90 0 0 1 326.1,263.7" marker-end="url(#arrow-ev)"/>
+        <path class="ev-l" d="M326.1,316.3 A90,90 0 0 1 266.3,376.1" marker-end="url(#arrow-ev)"/>
+        <path class="ev-l" d="M213.7,376.1 A90,90 0 0 1 153.9,316.3" marker-end="url(#arrow-ev)"/>
+        <path class="ev-l" d="M153.9,263.7 A90,90 0 0 1 213.7,203.9" marker-end="url(#arrow-ev)"/>
+        <text class="ev-s" x="240" y="286" text-anchor="middle">EVOLVES</text>
+        <text class="ev-s" x="240" y="304" text-anchor="middle">rule set</text>
+        <rect class="ev-box" x="6" y="262" width="96" height="56" rx="6"/>
+        <text class="ev-t" x="16" y="284">Enkidu</text>
+        <text class="ev-s" x="16" y="300">mechanical</text>
+        <text class="ev-s" x="16" y="314">worker</text>
+        <rect class="ev-box" x="378" y="262" width="96" height="56" rx="6"/>
+        <text class="ev-t" x="388" y="284">Enki</text>
+        <text class="ev-s" x="388" y="300">constructive</text>
+        <rect class="ev-box" x="180" y="432" width="120" height="56" rx="6"/>
+        <text class="ev-t" x="190" y="454">Enlil</text>
+        <text class="ev-s" x="190" y="470">blind judge</text>
+        <path class="ev-d" d="M102,290 H137 M54,262 V200 H227 M343,290 H378 M240,393 V432"/>
+        <circle class="ev-c" cx="240" cy="200" r="13"/>
+        <text class="ev-n" x="240" y="204.5">1</text>
+        <circle class="ev-c" cx="330" cy="290" r="13"/>
+        <text class="ev-n" x="330" y="294.5">2</text>
+        <circle class="ev-c" cx="240" cy="380" r="13"/>
+        <text class="ev-n" x="240" y="384.5">3</text>
+        <circle class="ev-c" cx="150" cy="290" r="13"/>
+        <text class="ev-n" x="150" y="294.5">4</text>
+        <text class="ev-s" x="324" y="436" style="fill:var(--accent)">NO DIRECT</text>
+        <text class="ev-s" x="324" y="452" style="fill:var(--accent)">LINK</text>
+      </svg>
+        </div>
+        <ol aria-label="Agent evolution steps">
+          <li><strong>Decayed rules (Enkidu).</strong> Lists the rules that dropped out of the hypothesis ledger and produces PLACEBO (fake) candidates beside them for a blind comparison.</li>
+          <li><strong>Candidate (Enki).</strong> Writes at most 3 candidate changes per day from the decayed rules; candidates, not rulings.</li>
+          <li><strong>Blind stamp (Enlil).</strong> Sees candidates and placebos mixed together, without context, and stamps them; leakage and reward hacking are caught here.</li>
+          <li><strong>Shadow test (Enkidu).</strong> Runs the candidate in shadow on the same inputs as the current rule. Nothing goes live before the statistical gate passes (Wilson interval, minimum detectable difference; 240 episodes per arm).</li>
+        </ol>
+        <p>Two things sit outside the loop: the supervising mind (writes orders, asks for evidence) and the human (final say; weekly manual channel, falsification test). What evolves is not the agent but the rule set.</p>
+        <ul aria-label="Agent evolution timeline">
+          <li><strong>14 Sep</strong> — Enlil founded (blind auditor).</li>
+          <li><strong>15–21 Sep</strong> — Enki became the single voice (constructive; two earlier voices merged).</li>
+          <li><strong>22 Sep</strong> — Enkidu founded (mechanical work taken from Enki and Enlil).</li>
+          <li><strong>7 Oct</strong> — EVOLUTION-2: the three tied into one loop.</li>
+        </ul>
+      </section>
 
       <h2>Scale today</h2>
       <p>Four repositories, roughly 650,000 lines of Python, 180 self-testing tools, scheduled runners on three machines, 33 spark-round syntheses, 150+ strategic reports, and a working dental pipeline that produced accepted patient mockups this week.</p>
