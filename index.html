@@ -1,380 +1,57 @@
-<script>
-    // Eğer kullanıcı şifre ekranından gelmemişse geri gönder
-    if (document.referrer === "" || !document.referrer.includes(window.location.hostname)) {
-        window.location.href = "index.html";
-    }
-</script>
 <!DOCTYPE html>
 <html lang="tr">
-<head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas — yapay zekâ ile gülüş tasarımı</title>
+<meta name="description" content="Atlas: diş hekimi ve diş teknisyeni için fotoğraftan form önerisi, kılavuz çizgili mockup ve ExoCAD'e giden tasarım akışı. Claude ile orkestre edilen çok ajanlı sistem.">
 <style>
-    /* Mobil İçin Ekstra Düzenlemeler */
-    @media screen and (max-width: 768px) {
-        body { padding: 15px !important; }
-        .container { grid-template-columns: 1fr !important; } /* Tek kolon yap */
-        .card { margin-bottom: 20px; }
-        h1 { font-size: 2rem !important; }
-        .main-img { max-height: 250px !important; }
-        .search-box input { width: 90% !important; }
-        .thumbs { justify-content: flex-start !important; } /* Kaydırılabilir yap */
-        header { flex-direction: column; text-align: center; gap: 15px; }
-    }
+  :root{--bg:#0f1216;--fg:#eaeef2;--mut:#9aa4ad;--acc:#2fbf8f;--card:#161b22}
+  @media (prefers-color-scheme: light){:root{--bg:#fafafa;--fg:#111;--mut:#555;--card:#fff}}
+  *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:40px 16px 64px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 8px}h2{font-size:20px;margin:36px 0 10px}
+  .sub{color:var(--mut);font-size:18px;margin:0 0 24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid rgba(128,128,128,.25);border-radius:12px;padding:16px}
+  .card b{display:block;margin-bottom:6px}
+  ol li{margin:6px 0}
+  .pill{display:inline-block;border:1px solid var(--acc);color:var(--acc);border-radius:999px;padding:2px 10px;font-size:13px;margin:0 6px 6px 0}
+  footer{margin-top:48px;color:var(--mut);font-size:14px}
+  a{color:var(--acc)}
 </style>
-
-    <meta charset="UTF-8">
-    <title>ATLAS HUB v2.0 | YUSUF'S ARMORY</title>
-    <style>
-        body { background:#0f0f0f; color:#e0e0e0; font-family:'Segoe UI', sans-serif; padding:40px; }
-        .header { text-align:center; margin-bottom:40px; border-bottom:1px solid #333; padding-bottom:20px; }
-        h1 { margin:0; font-size:3rem; letter-spacing:4px; color:#fff; text-transform:uppercase; }
-        .subtitle { color:#666; letter-spacing:2px; font-size:1rem; margin-top:10px; }
-        
-        .search-box { text-align:center; margin-bottom:40px; position:sticky; top:20px; z-index:100; }
-        #search { 
-            padding:15px; width:60%; background:#1a1a1a; border:1px solid #444; color:#fff; 
-            font-size:1.2rem; border-radius:30px; outline:none; text-align:center; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition:0.3s;
-        }
-        #search:focus { border-color:#00E5FF; box-shadow:0 0 20px rgba(0,229,255,0.3); transform:scale(1.02); }
-        
-        .grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:25px; max-width:1600px; margin:0 auto; }
-        
-        .card { background:#161616; padding:25px; border-radius:12px; border-top:5px solid #555; cursor:pointer; transition:0.2s; position:relative; }
-        .card:hover { transform:translateY(-5px); background:#1f1f1f; box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-        .card h2 { margin:10px 0; font-size:1.4rem; }
-        
-        .tier-badge { font-size:0.75rem; font-weight:bold; padding:4px 10px; border-radius:4px; border:1px solid transparent; letter-spacing:1px; }
-        
-        .tags-container { font-size:0.85rem; color:#888; margin:15px 0; min-height:40px; line-height:1.4; }
-        .tag-label { color:#555; font-weight:bold; font-size:0.75rem; text-transform:uppercase; }
-        
-        button { padding:10px; width:100%; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.2s; }
-        button:hover { filter: brightness(1.2); }
-        
-        /* Arama yapıldığında bulunan kelimeyi vurgulamak için (İleri seviye CSS gerekmez, JS yeterli) */
-    </style>
 </head>
 <body>
+<main>
+  <h1>Atlas</h1>
+  <p class="sub">Diş hekimi ve diş teknisyeni için yapay zekâ destekli gülüş tasarımı: fotoğraftan form önerisi, kılavuz çizgili mockup, ExoCAD'e giden akış.</p>
 
-    <div class="header">
-        <h1>ATLAS PROJECT</h1>
-        <div class="subtitle">DENTAL INTELLIGENCE SYSTEM v3.0</div>
-    </div>
+  <span class="pill">dental tasarım</span><span class="pill">form önerisi</span><span class="pill">mockup</span><span class="pill">ExoCAD</span><span class="pill">çok ajanlı orkestrasyon</span>
 
-    <div class="search-box">
-        <input type="text" id="search" placeholder="🔍 Ne arıyorsun? (Örn: Kare, Genç, Aida, Maskülen...)" onkeyup="filterCards()">
-    </div>
+  <h2>Ne yapar</h2>
+  <div class="grid">
+    <div class="card"><b>Fotoğraftan analiz</b>Gülüş ve ekartör karelerinden diş oranı, orta hat, kesici görünürlük ve diş eti ölçümleri; hasta verisi cihazda kalır.</div>
+    <div class="card"><b>Form önerisi</b>441 formluk diş kütüphanesi; ölçüm, profil ve kütüphane geometrisinden (kök hariç kron oranı, aile/varyant) sıralanan 5 isabet + 3 keşif listesi; her kartta gerekçe.</div>
+    <div class="card"><b>Kılavuz çizgili mockup</b>Seçilen formun dış hattı ve sırt çizgileri hastanın fotoğrafına oturtulur; görsel model yalnız bu kılavuza göre üretir. Önce/sonra kaydırıcı tek dosya olarak hekime gider.</div>
+    <div class="card"><b>ExoCAD akışı</b>Kabul edilen form ve kısıtlar (kompozit, moulding, kalınlık sınırları) teknisyenin dizim adımına iş paketi olarak aktarılır.</div>
+  </div>
 
-    <div class="grid" id="grid">
-        
-    <div class="card" onclick="window.open('AIDA_Master_Guide_Full.html', '_blank')" style="border-top-color: #FFD700;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#FFD700; background:rgba(255, 215, 0, 0.1); border-color:#FFD700">LEGENDARY</span>
-        </div>
-        <h2 style="color:#FFD700">AIDA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Feminen, Zarif, Soft, Oval, Prenses, Altın
-        </div>
-        <button style="background:rgba(255, 215, 0, 0.1); color:#FFD700; border:1px solid #FFD700;">İNCELE</button>
-        
-        <span style="display:none;">AIDA Feminen, Zarif, Soft, Oval, Prenses, Altın LEGENDARY</span>
-    </div>
-    
-    <div class="card" onclick="window.open('ANITA_Master_Guide_Full.html', '_blank')" style="border-top-color: #00C853;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#00C853; background:#00C8531A; border-color:#00C853">UNCOMMON</span>
-        </div>
-        <h2 style="color:#00C853">ANITA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Güçlü, Hacimli, Maskülen, Kare, Ovoid, Geniş
-        </div>
-        <button style="background:#00C8531A; color:#00C853; border:1px solid #00C853;">İNCELE</button>
-        
-        <span style="display:none;">ANITA Güçlü, Hacimli, Maskülen, Kare, Ovoid, Geniş UNCOMMON</span>
-    </div>
-    
-    <div class="card" onclick="window.open('EDWIN_Master_Guide_Full.html', '_blank')" style="border-top-color: #455A64;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#455A64; background:#455A641A; border-color:#455A64">RARE</span>
-        </div>
-        <h2 style="color:#455A64">EDWIN</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Mimari, Kare, Yapısal, Güçlü, Modern, Erkek
-        </div>
-        <button style="background:#455A641A; color:#455A64; border:1px solid #455A64;">İNCELE</button>
-        
-        <span style="display:none;">EDWIN Mimari, Kare, Yapısal, Güçlü, Modern, Erkek RARE</span>
-    </div>
-    
-    <div class="card" onclick="window.open('FEDERICA_Master_Guide_Full.html', '_blank')" style="border-top-color: #D500F9;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#D500F9; background:rgba(213, 0, 249, 0.1); border-color:#D500F9">EPIC</span>
-        </div>
-        <h2 style="color:#D500F9">FEDERICA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Universal, Supermodel, Texture, Cutback, Sanatsal
-        </div>
-        <button style="background:rgba(213, 0, 249, 0.1); color:#D500F9; border:1px solid #D500F9;">İNCELE</button>
-        
-        <span style="display:none;">FEDERICA Universal, Supermodel, Texture, Cutback, Sanatsal EPIC</span>
-    </div>
-    
-    <div class="card" onclick="window.open('FOBOS_Amalthea_Guide_Full.html', '_blank')" style="border-top-color: #D50000;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#D50000; background:rgba(213, 0, 0, 0.1); border-color:#D50000">MYTHIC</span>
-        </div>
-        <h2 style="color:#D50000">FOBOS AMALTHEA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Mühendislik, Hibrit, Thimble, Retention, Cutback, Vahşi
-        </div>
-        <button style="background:rgba(213, 0, 0, 0.1); color:#D50000; border:1px solid #D50000;">İNCELE</button>
-        
-        <span style="display:none;">FOBOS AMALTHEA Mühendislik, Hibrit, Thimble, Retention, Cutback, Vahşi MYTHIC</span>
-    </div>
-    
-    <div class="card" onclick="window.open('FOBOS_Pallada_Guide_Full.html', '_blank')" style="border-top-color: #D50000;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#D50000; background:rgba(213, 0, 0, 0.1); border-color:#D50000">MYTHIC</span>
-        </div>
-        <h2 style="color:#D50000">FOBOS PALLADA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Şehirli, Tapered, Üçgen, Modern, Zarif, Dar
-        </div>
-        <button style="background:rgba(213, 0, 0, 0.1); color:#D50000; border:1px solid #D50000;">İNCELE</button>
-        
-        <span style="display:none;">FOBOS PALLADA Şehirli, Tapered, Üçgen, Modern, Zarif, Dar MYTHIC</span>
-    </div>
-    
-    <div class="card" onclick="window.open('GELLER_Master_Guide_Full.html', '_blank')" style="border-top-color: #FF6D00;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#FF6D00; background:#FF6D001A; border-color:#FF6D00">LEGENDARY</span>
-        </div>
-        <h2 style="color:#FF6D00">GELLER</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Klasik, Texture, Doğal, Maskülen, Kare, Amber
-        </div>
-        <button style="background:#FF6D001A; color:#FF6D00; border:1px solid #FF6D00;">İNCELE</button>
-        
-        <span style="display:none;">GELLER Klasik, Texture, Doğal, Maskülen, Kare, Amber LEGENDARY</span>
-    </div>
-    
-    <div class="card" onclick="window.open('GLT1_Master_Guide_Full.html', '_blank')" style="border-top-color: #2979FF;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#2979FF; background:#2979FF1A; border-color:#2979FF">RARE</span>
-        </div>
-        <h2 style="color:#2979FF">GLT1</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Organik, Asimetrik, Canlı, Realism, Doğal, Mavi
-        </div>
-        <button style="background:#2979FF1A; color:#2979FF; border:1px solid #2979FF;">İNCELE</button>
-        
-        <span style="display:none;">GLT1 Organik, Asimetrik, Canlı, Realism, Doğal, Mavi RARE</span>
-    </div>
-    
-    <div class="card" onclick="window.open('GRIN_DESIGN_3_Master_Guide_Full.html', '_blank')" style="border-top-color: #00B8D4;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#00B8D4; background:#00B8D41A; border-color:#00B8D4">RARE</span>
-        </div>
-        <h2 style="color:#00B8D4">GRIN DESIGN 3</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Modern, Dijital, Temiz, Simetrik, Instagram, Fotojenik
-        </div>
-        <button style="background:#00B8D41A; color:#00B8D4; border:1px solid #00B8D4;">İNCELE</button>
-        
-        <span style="display:none;">GRIN DESIGN 3 Modern, Dijital, Temiz, Simetrik, Instagram, Fotojenik RARE</span>
-    </div>
-    
-    <div class="card" onclick="window.open('HERMES_Master_Guide_Full.html', '_blank')" style="border-top-color: #00E5FF;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#00E5FF; background:rgba(0, 229, 255, 0.1); border-color:#00E5FF">RARE</span>
-        </div>
-        <h2 style="color:#00E5FF">HERMES</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Genç, Sportif, Tavşan Dişi, Mavi, Parlak, Enerjik
-        </div>
-        <button style="background:rgba(0, 229, 255, 0.1); color:#00E5FF; border:1px solid #00E5FF;">İNCELE</button>
-        
-        <span style="display:none;">HERMES Genç, Sportif, Tavşan Dişi, Mavi, Parlak, Enerjik RARE</span>
-    </div>
-    
-    <div class="card" onclick="window.open('JAN_HAJTO_F6_Guide_Full.html', '_blank')" style="border-top-color: #C2185B;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#C2185B; background:#C2185B1A; border-color:#C2185B">LEGENDARY</span>
-        </div>
-        <h2 style="color:#C2185B">JAN HAJTO F6</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Feminen, Oval, Zarif, Kadın, Yumuşak, Jan Hajto
-        </div>
-        <button style="background:#C2185B1A; color:#C2185B; border:1px solid #C2185B;">İNCELE</button>
-        
-        <span style="display:none;">JAN HAJTO F6 Feminen, Oval, Zarif, Kadın, Yumuşak, Jan Hajto LEGENDARY</span>
-    </div>
-    
-    <div class="card" onclick="window.open('JAN_HAJTO_M5_Guide_Full.html', '_blank')" style="border-top-color: #1A237E;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#1A237E; background:#1A237E1A; border-color:#1A237E">LEGENDARY</span>
-        </div>
-        <h2 style="color:#1A237E">JAN HAJTO M5</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Maskülen, Kare, Erkek, Referans, Heybetli, Jan Hajto
-        </div>
-        <button style="background:#1A237E1A; color:#1A237E; border:1px solid #1A237E;">İNCELE</button>
-        
-        <span style="display:none;">JAN HAJTO M5 Maskülen, Kare, Erkek, Referans, Heybetli, Jan Hajto LEGENDARY</span>
-    </div>
-    
-    <div class="card" onclick="window.open('KATIJA_Master_Guide_Full.html', '_blank')" style="border-top-color: #D50000;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#D50000; background:rgba(213, 0, 0, 0.1); border-color:#D50000">MYTHIC</span>
-        </div>
-        <h2 style="color:#D50000">KATIJA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Hardcore, Vahşi, Asimetrik, Texture, Zorlu, Ustalık
-        </div>
-        <button style="background:rgba(213, 0, 0, 0.1); color:#D50000; border:1px solid #D50000;">İNCELE</button>
-        
-        <span style="display:none;">KATIJA Hardcore, Vahşi, Asimetrik, Texture, Zorlu, Ustalık MYTHIC</span>
-    </div>
-    
-    <div class="card" onclick="window.open('PETRA_Master_Guide_Full.html', '_blank')" style="border-top-color: #FF3D00;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#FF3D00; background:#FF3D001A; border-color:#FF3D00">LEGENDARY</span>
-        </div>
-        <h2 style="color:#FF3D00">PETRA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Üçgen, Tapered, Genç, Dinamik, Papil, Black Triangle
-        </div>
-        <button style="background:#FF3D001A; color:#FF3D00; border:1px solid #FF3D00;">İNCELE</button>
-        
-        <span style="display:none;">PETRA Üçgen, Tapered, Genç, Dinamik, Papil, Black Triangle LEGENDARY</span>
-    </div>
-    
-    <div class="card" onclick="window.open('RAINBOW_Master_Guide_Full.html', '_blank')" style="border-top-color: #7E57C2;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#7E57C2; background:#7E57C21A; border-color:#7E57C2">RARE</span>
-        </div>
-        <h2 style="color:#7E57C2">RAINBOW</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Pozitif, Mutlu, Gülüş Kavisi, Enerjik, Genç, İndigo
-        </div>
-        <button style="background:#7E57C21A; color:#7E57C2; border:1px solid #7E57C2;">İNCELE</button>
-        
-        <span style="display:none;">RAINBOW Pozitif, Mutlu, Gülüş Kavisi, Enerjik, Genç, İndigo RARE</span>
-    </div>
-    
-    <div class="card" onclick="window.open('RHEINE_Master_Guide_Full.html', '_blank')" style="border-top-color: #009688;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#009688; background:#0096881A; border-color:#009688">LEGENDARY</span>
-        </div>
-        <h2 style="color:#009688">RHEINE</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Dengeli, Olgun, Kare-Yuvarlak, Güvenli, Klasik, Saten
-        </div>
-        <button style="background:#0096881A; color:#009688; border:1px solid #009688;">İNCELE</button>
-        
-        <span style="display:none;">RHEINE Dengeli, Olgun, Kare-Yuvarlak, Güvenli, Klasik, Saten LEGENDARY</span>
-    </div>
-    
-    <div class="card" onclick="window.open('SERAPHIM_Master_Guide_Full.html', '_blank')" style="border-top-color: #E5E4E2;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#E5E4E2; background:rgba(229, 228, 226, 0.1); border-color:#E5E4E2">PLATINUM</span>
-        </div>
-        <h2 style="color:#E5E4E2">SERAPHIM</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> İlahi, Origin, Altın Oran, Kusursuz, Melek, Platin
-        </div>
-        <button style="background:rgba(229, 228, 226, 0.1); color:#E5E4E2; border:1px solid #E5E4E2;">İNCELE</button>
-        
-        <span style="display:none;">SERAPHIM İlahi, Origin, Altın Oran, Kusursuz, Melek, Platin PLATINUM</span>
-    </div>
-    
-    <div class="card" onclick="window.open('THALIA_Master_Guide_Full.html', '_blank')" style="border-top-color: #BA68C8;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#BA68C8; background:#BA68C81A; border-color:#BA68C8">RARE</span>
-        </div>
-        <h2 style="color:#BA68C8">THALIA</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Romantik, Masum, Yuvarlak, Ovoid, Bebek Yüzlü, Genç
-        </div>
-        <button style="background:#BA68C81A; color:#BA68C8; border:1px solid #BA68C8;">İNCELE</button>
-        
-        <span style="display:none;">THALIA Romantik, Masum, Yuvarlak, Ovoid, Bebek Yüzlü, Genç RARE</span>
-    </div>
-    
-    <div class="card" onclick="window.open('WORN_Master_Guide_Full.html', '_blank')" style="border-top-color: #5D4037;">
-        <div class="card-header">
-            <span class="tier-badge" style="color:#5D4037; background:rgba(93, 64, 55, 0.1); border-color:#5D4037">UNCOMMON</span>
-        </div>
-        <h2 style="color:#5D4037">WORN</h2>
-        <div class="tags-container">
-            <span class="tag-label">Etiketler:</span> Vintage, Yaşlı, Aşınmış, Düz, Fonksiyonel, Geriatrik
-        </div>
-        <button style="background:rgba(93, 64, 55, 0.1); color:#5D4037; border:1px solid #5D4037;">İNCELE</button>
-        
-        <span style="display:none;">WORN Vintage, Yaşlı, Aşınmış, Düz, Fonksiyonel, Geriatrik UNCOMMON</span>
-    </div>
-    
-    </div>
+  <h2>Nasıl çalışır</h2>
+  <ol>
+    <li>Hekim iki fotoğraf çeker: gülüş ve ekartör.</li>
+    <li>Yerel ölçüm zinciri koşar; profil ve diş oranı kayda girer.</li>
+    <li>Form motoru listeyi üretir, hekim bir form seçer ya da hat tercihini söyler.</li>
+    <li>Kılavuz çizgili mockup üretilir; hekim hastayla birlikte kaydırıcıda bakar.</li>
+    <li>Kabul edilen tasarım ExoCAD iş paketine dönüşür.</li>
+  </ol>
 
-    <script>
-        function filterCards() {
-            var input, filter, grid, cards, i, txtValue;
-            input = document.getElementById("search");
-            // Türkçe karakter sorunu olmaması için 'toLocaleUpperCase' kullanıyoruz
-            filter = input.value.toLocaleUpperCase('tr-TR'); 
-            grid = document.getElementById("grid");
-            cards = grid.getElementsByClassName("card");
+  <h2>Teknoloji</h2>
+  <p>Atlas, Claude ile orkestre edilen çok ajanlı bir sistemdir: karar ve emir katmanı Claude, ölçüm ve kod işleri model kademesine göre dağıtılır (Opus, Sonnet, Haiku), görsel üretim ve araştırma için diğer modeller köprüyle bağlanır. Her alet kendi öz sınamasını taşır; her değişiklik ölçülebilir bir kapıdan geçer. Kütüphane geometrisi doğrudan ExoCAD dosyalarından okunur.</p>
 
-            for (i = 0; i < cards.length; i++) {
-                // Kartın içindeki TÜM metni al (Gizli span dahil)
-                txtValue = cards[i].innerText;
-                
-                if (txtValue.toLocaleUpperCase('tr-TR').indexOf(filter) > -1) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-        
-        // Sayfa açılınca arama kutusuna odaklan
-        window.onload = function() {
-            document.getElementById("search").focus();
-        };
-    </script>
+  <h2>İletişim</h2>
+  <p><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a></p>
 
-<div class='card' id='order-panel' style='border-top: 8px solid #25D366; background: rgba(37, 211, 102, 0.05); margin-top: 50px; padding: 30px; border-radius: 12px;'>
-    <h2 style='color: #25D366; text-transform: uppercase; letter-spacing: 2px;'>🚀 Tasarımı Başlat</h2>
-    <p style='color: #ccc; font-size: 0.9rem;'>Hekim ve hasta bilgilerini girerek doğrudan WhatsApp üzerinden vaka bildirebilirsiniz.</p>
-    <div style='display: flex; flex-direction: column; gap: 15px; margin-top: 20px;'>
-        <input type='text' id='doc_name' placeholder='Hekim Adı ve Soyadı' style='padding:15px; border-radius:8px; border:1px solid #444; background:#000; color:#fff; font-size:1rem;'>
-        <input type='text' id='pat_name' placeholder='Hasta Adı / Protokol No' style='padding:15px; border-radius:8px; border:1px solid #444; background:#000; color:#fff; font-size:1rem;'>
-        <textarea id='notes' placeholder='Vaka Notları (Örn: Diş boyları, yüzey dokusu, özel istekler...)' rows='4' style='padding:15px; border-radius:8px; border:1px solid #444; background:#000; color:#fff; font-size:1rem;'></textarea>
-        
-        <button onclick='sendAtlasOrder()' style='background:#25D366; color:#fff; padding:18px; border:none; border-radius:8px; font-weight:bold; cursor:pointer; font-size:1.1rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);'>
-            BİLGİLERİ VE FOTOĞRAFLARI GÖNDER
-        </button>
-    </div>
-</div>
-
-<script>
-function sendAtlasOrder() {
-    const doc = document.getElementById('doc_name').value;
-    const pat = document.getElementById('pat_name').value;
-    const nts = document.getElementById('notes').value;
-    const formTitle = document.querySelector('h1').innerText;
-    
-    if(!doc || !pat) { alert('Lütfen Hekim ve Hasta adını giriniz.'); return; }
-    
-    const msg = `🦷 *ATLAS VAKA BİLDİRİMİ* 🦷%0A%0A` +
-                `👤 *Hekim:* ${doc}%0A` +
-                `🆔 *Hasta:* ${pat}%0A` +
-                `💎 *Seçilen Form:* ${formTitle}%0A` +
-                `📝 *Notlar:* ${nts}%0A%0A` +
-                `📸 _Mesajı gönderdikten sonra lütfen vaka fotoğraflarını ekleyiniz._`;
-    
-    window.open(`https://wa.me/905XXXXXXXXX?text=${msg}`, '_blank');
-}
-</script>
+  <footer>Atlas · 2026 · Hasta verisi cihazda kalır; dışarıya yalnız kimliksiz ağız kırpımı gider.</footer>
+</main>
 </body>
 </html>
