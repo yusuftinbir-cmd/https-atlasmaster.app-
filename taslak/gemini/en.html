@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas — What we are building</title>
+  <meta name="description" content="Atlas: A single-company, multi-purpose agentic operating layer orchestrated by Claude.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Atlas — What we are building</h1>
+      <p class="subtitle">A single-company, multi-purpose agentic operating layer orchestrated by Claude.</p>
+      <div class="nav-links">
+        <a href="index.html">Türkçe (Ana Sayfa)</a>
+        <a href="/rehber/index.html">Form Guide</a>
+        <a href="atlas-overview.pdf">PDF Version</a>
+      </div>
+    </header>
+
+    <main>
+      <p>We are building a single-company, multi-purpose agentic operating layer: one orchestration mind ("upper mind", run on Claude) that plans, delegates, measures and verifies the work of specialised agents across four internal systems of a dental practice-and-lab business. It is not a chatbot and not a single app; it is the company's working nervous system.</p>
+
+      <h2>1. Orchestration project (the core)</h2>
+      <p>Claude acts as the orchestrator: it writes machine-readable orders with explicit scope, forbidden actions, turn budgets and a single-token verification gate; headless Claude sessions execute them in the right repository with the right model tier (Opus for judgment-heavy changes, Sonnet for implementation, Haiku for high-volume measurement and summaries); results come back as one-line reports that the orchestrator reads before deciding the next step. Scheduled runners (hourly ticks, pre-market and end-of-day digests, nightly audits) run outside any chat session, so the system keeps working when nobody is watching. Every tool carries a self-test (180 tools today), every change passes a measurable gate (dry run over recorded cases, before/after metrics), and every claim is written as a falsifiable hypothesis with a stated "falls if" test.</p>
+
+      <div class="svg-container">
+        <!-- Orchestration Diagram -->
+        <svg viewBox="0 0 800 160" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="min-width: 600px;">
+          <defs>
+            <marker id="arrow-down" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 0 L 5 10 z" fill="var(--text-muted)" />
+            </marker>
+          </defs>
+          <style>
+            .box { fill: var(--bg); stroke: var(--border); stroke-width: 2; rx: 6; }
+            .accent-box { fill: var(--focus); stroke: var(--accent); stroke-width: 2; rx: 6; }
+            .text-svg { fill: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
+            .line { stroke: var(--text-muted); stroke-width: 2; }
+          </style>
+          
+          <rect class="accent-box" x="300" y="10" width="200" height="44" />
+          <text class="text-svg" x="400" y="32">Üst Akıl (Orchestrator)</text>
+          
+          <rect class="box" x="150" y="94" width="130" height="44" />
+          <text class="text-svg" x="215" y="116">Ajan: Ölçüm</text>
+
+          <rect class="box" x="335" y="94" width="130" height="44" />
+          <text class="text-svg" x="400" y="116">Ajan: Tasarım</text>
+
+          <rect class="box" x="520" y="94" width="130" height="44" />
+          <text class="text-svg" x="585" y="116">Ajan: Rapor</text>
+
+          <line class="line" x1="330" y1="54" x2="240" y2="84" marker-end="url(#arrow-down)" />
+          <line class="line" x1="400" y1="54" x2="400" y2="84" marker-end="url(#arrow-down)" />
+          <line class="line" x1="470" y1="54" x2="560" y2="84" marker-end="url(#arrow-down)" />
+
+          <rect class="box" x="215" y="145" width="370" height="1" stroke-dasharray="4" style="fill:none;stroke:var(--accent);stroke-width:1;" />
+          <text class="text-svg" x="400" y="154" style="font-size:12px;fill:var(--text-muted)">Doğrulama Kapıları (Verification Gates)</text>
+        </svg>
+      </div>
+
+      <h2>2. Autonomous screen hand-over</h2>
+      <p>Agents on three machines (a Mac, a lab PC with ExoCAD and Blender, a home PC) hand work to each other through shared inboxes and a task bus: the orchestrator writes a case brief into the lab PC's inbox, the lab agent prepares scans and photos, the Mac agent runs measurements and image generation, results and acceptance records flow back. A clinician never sees the plumbing; they see a photo, a short list of options and a before/after slider on their phone.</p>
+
+      <h2>3. Dental smile-design pipeline</h2>
+      <p>From two photos (smile, retracted) a local measurement chain extracts tooth proportions, midline, incisal display and gingival margins; patient data never leaves the device. A form-recommendation engine ranks a 441-tooth ExoCAD library using crown geometry read directly from the library meshes (we recovered the cervical line and contact points from the vendor's binary mesh labels), patient profile and clinician preferences; it returns 5 best-fit + 3 exploration slots with written reasons and family-diversity constraints. The chosen form is placed on the photo as a guide (outline and ridge lines) and an image model produces the mockup; accepted designs become ExoCAD work packages.</p>
+
+      <h2>4. Company management and live-data strategy</h2>
+      <p>Tens of thousands of lines of code read the practice's management system and bank statements, reconcile them, detect anomalies (revenue leaks, scheduling gaps, data-integrity failures) and produce strategic reports for the owner: 150+ reports to date, each scored and with its own "what would change the recommendation" section. Reports are reviewed by a multi-model panel before delivery.</p>
+
+      <h2>5. Agent-improvement algorithms</h2>
+      <p>The agent family itself is under an explicit evolution loop: hypotheses are logged, tested at the next tick, marked standing or refuted; candidate rule changes are generated from refuted hypotheses, judged by a blind evaluator that cannot see the proposer, measured against placebo changes with Wilson intervals and minimum-detectable-effect budgets, and only consolidated into live rules after a human-approved weekly package. Permutation tests, parrot-detection (copy rate of consecutive judgments) and correlated-agent checks guard against self-reinforcing loops.</p>
+
+      <h2>6. Theory, thesis and hypothesis rounds ("spark" rounds)</h2>
+      <p>For hard design questions we run multi-voice rounds across models that cannot hear each other (Claude, Gemini, Grok, a local Gemma, and a data-seat agent that answers only with repository measurements). Each voice must produce thesis → mechanism → verifiable source → counter-thesis → falsifier. The orchestrator verifies every citation on the web, writes a synthesis that separates agreement from disagreement, records its own prior expectation beforehand and scores afterwards whether the round changed the decision (33 syntheses so far). Several rounds ended with the data seat refuting the clever proposals of the other voices, which is exactly the point.</p>
+
+      <h2>Scale today</h2>
+      <p>Four repositories, roughly 650,000 lines of Python, 180 self-testing tools, scheduled runners on three machines, 33 spark-round syntheses, 150+ strategic reports, and a working dental pipeline that produced accepted patient mockups this week.</p>
+
+      <h2>What we need from the program</h2>
+      <p>API credits to move the headless orchestration (nightly measurement runs, multi-agent rounds, mesh analysis over the whole library, Haiku-tier bulk summarisation) from a consumer plan to the API with prompt caching; and engineering guidance on long-running agent workflows, verification gates for autonomous code changes, and cost-aware routing across Opus/Sonnet/Haiku.</p>
+    </main>
+
+    <footer>
+      <div>
+        <span>Atlas &copy; 2026</span> &middot; 
+        <a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a>
+      </div>
+      <div>Patient data stays on the device.</div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

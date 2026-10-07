@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas — Yapay Zekâ ile Gülüş Tasarımı</title>
+  <meta name="description" content="Atlas: Diş hekimi ve diş teknisyeni için fotoğraftan form önerisi, kılavuz çizgili mockup ve ExoCAD'e giden tasarım akışı.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Atlas</h1>
+      <p class="subtitle">Diş hekimi ve diş teknisyeni için yapay zekâ destekli gülüş tasarımı: fotoğraftan form önerisi, kılavuz çizgili mockup, ExoCAD'e giden akış.</p>
+      <div class="nav-links">
+        <a href="en.html">English (What we are building)</a>
+        <a href="/rehber/index.html">Form Rehberi</a>
+      </div>
+      <div class="tags">
+        <span class="tag">dental tasarım</span>
+        <span class="tag">form önerisi</span>
+        <span class="tag">mockup</span>
+        <span class="tag">ExoCAD</span>
+        <span class="tag">çok ajanlı orkestrasyon</span>
+      </div>
+    </header>
+
+    <main>
+      <h2>Ne Yapar?</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>Fotoğraftan Analiz</strong>
+          Gülüş ve ekartör karelerinden diş oranı, orta hat, kesici görünürlük ve diş eti ölçümleri; hasta verisi cihazda kalır.
+        </div>
+        <div class="card">
+          <strong>Form Önerisi</strong>
+          441 formluk diş kütüphanesi; ölçüm, profil ve kütüphane geometrisinden (kök hariç kron oranı, aile/varyant) sıralanan 5 isabet + 3 keşif listesi; her kartta gerekçe.
+        </div>
+        <div class="card">
+          <strong>Kılavuz Çizgili Mockup</strong>
+          Seçilen formun dış hattı ve sırt çizgileri hastanın fotoğrafına oturtulur; görsel model yalnız bu kılavuza göre üretir. Önce/sonra kaydırıcı tek dosya olarak hekime gider.
+        </div>
+        <div class="card">
+          <strong>ExoCAD Akışı</strong>
+          Kabul edilen form ve kısıtlar (kompozit, moulding, kalınlık sınırları) teknisyenin dizim adımına iş paketi olarak aktarılır.
+        </div>
+      </div>
+
+      <h2>Nasıl Çalışır?</h2>
+      <ol>
+        <li>Hekim iki fotoğraf çeker: gülüş ve ekartör.</li>
+        <li>Yerel ölçüm zinciri koşar; profil ve diş oranı kayda girer.</li>
+        <li>Form motoru listeyi üretir, hekim bir form seçer ya da hat tercihini söyler.</li>
+        <li>Kılavuz çizgili mockup üretilir; hekim hastayla birlikte kaydırıcıda bakar.</li>
+        <li>Kabul edilen tasarım ExoCAD iş paketine dönüşür.</li>
+      </ol>
+
+      <div class="svg-container">
+        <!-- Boru Hattı Diyagramı -->
+        <svg viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="min-width: 600px;">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text-muted)" />
+            </marker>
+          </defs>
+          <style>
+            .box { fill: var(--bg); stroke: var(--border); stroke-width: 2; rx: 6; }
+            .text-svg { fill: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 500; text-anchor: middle; dominant-baseline: middle; }
+            .line { stroke: var(--text-muted); stroke-width: 2; }
+          </style>
+          <rect class="box" x="10" y="35" width="120" height="50" />
+          <text class="text-svg" x="70" y="61">Fotoğraf</text>
+
+          <rect class="box" x="170" y="35" width="120" height="50" />
+          <text class="text-svg" x="230" y="61">Ölçüm</text>
+
+          <rect class="box" x="330" y="35" width="130" height="50" />
+          <text class="text-svg" x="395" y="61">Form Önerisi</text>
+
+          <rect class="box" x="500" y="35" width="140" height="50" />
+          <text class="text-svg" x="570" y="61">Çizgili Mockup</text>
+
+          <rect class="box" x="680" y="35" width="110" height="50" />
+          <text class="text-svg" x="735" y="61">ExoCAD</text>
+
+          <line class="line" x1="130" y1="60" x2="160" y2="60" marker-end="url(#arrow)" />
+          <line class="line" x1="290" y1="60" x2="320" y2="60" marker-end="url(#arrow)" />
+          <line class="line" x1="460" y1="60" x2="490" y2="60" marker-end="url(#arrow)" />
+          <line class="line" x1="640" y1="60" x2="670" y2="60" marker-end="url(#arrow)" />
+        </svg>
+      </div>
+
+      <h2>Teknoloji</h2>
+      <p>Atlas, Claude ile orkestre edilen çok ajanlı bir sistemdir: karar ve emir katmanı Claude, ölçüm ve kod işleri model kademesine göre dağıtılır (Opus, Sonnet, Haiku), görsel üretim ve araştırma için diğer modeller köprüyle bağlanır. Her alet kendi öz sınamasını taşır; her değişiklik ölçülebilir bir kapıdan geçer. Kütüphane geometrisi doğrudan ExoCAD dosyalarından okunur.</p>
+
+      <h2>Diş Form Rehberi</h2>
+      <p>19 diş kütüphanesi formu için kimlik kartı, görsel analiz ve dizilim notları: <a href="/rehber/index.html">Atlas Form Rehberi</a>. Teknisyen ve hekim için başvuru kaynağı; Atlas form motorunun rehber katmanı da buradan beslenir.</p>
+
+      <h2>Yöntem</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>Emir ve Kapı</strong>
+          Her iş makine dilinde bir emirle verilir: kapsam, yasaklar, tur bütçesi ve tek jetonlu doğrulama kapısı. Kapıdan geçmeyen değişiklik canlıya girmez.
+        </div>
+        <div class="card">
+          <strong>Ölçüm Önce</strong>
+          "Bulgu yok" bir sonuç sayılmaz, çoğu zaman ölçüm arızasıdır. İddialar çürütülebilir hipotez olarak yazılır, bir sonraki ölçümde ayakta ya da düşmüş diye damgalanır.
+        </div>
+        <div class="card">
+          <strong>Kıvılcım Turları</strong>
+          Zor sorularda birbirini duymayan modellerden tez, kuram, kaynak, karşı tez ve düşer testi istenir; kaynaklar doğrulanır, ön beklenti önceden yazılır, tur sonunda karar değişti mi puanlanır.
+        </div>
+        <div class="card">
+          <strong>Ajan Evrimi</strong>
+          Ajanların kuralları hipotez kütüğünden türeyen adaylarla, kör yargıç ve plasebo kıyasıyla sınanır; gerçek işe yalnız insan onaylı haftalık paketle girer.
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div>
+        <span>Atlas &copy; 2026</span> &middot; 
+        <a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a>
+      </div>
+      <div>Hasta verisi cihazda kalır; dışarıya yalnız kimliksiz ağız kırpımı gider.</div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
