@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /arsiv/
 
 Sitemap: https://atlasmaster.app/sitemap.xml
