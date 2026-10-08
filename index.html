@@ -10,11 +10,17 @@
 <meta property="og:title" content="Atlas — gülüşü yapay zekâyla tasarlayın">
 <meta property="og:description" content="Fotoğraftan form önerisi, kılavuz çizgili mockup, ExoCAD&#x27;e giden akış.">
 <meta property="og:type" content="website">
-<link rel="alternate" hreflang="en" href="en.html">
+<meta property="og:url" content="https://atlasmaster.app/">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Atlas: ölçüm ve kılavuz çizgileri, şematik çizim">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://atlasmaster.app/">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/en.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 <link rel="stylesheet" href="style.css">
 <script src="script.js"></script>
 </head>
@@ -27,19 +33,22 @@
       <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
       Atlas
     </a>
-    <nav class="nav" aria-label="Bölümler">
+    <nav class="nav" id="nav" aria-label="Bölümler">
       <a href="#ne-yapar">Ne yapar</a>
       <a href="#nasil">Nasıl çalışır</a>
-      <a href="#evrim">Ajan evrimi</a>
+      <a href="#ne-yapmaz">Ne yapmaz</a>
       <a href="otonomi.html">Otonomi</a>
       <a href="#ornek">Örnek</a>
       <a href="#yontem">Yöntem</a>
       <a href="#sss">SSS</a>
-      <a href="#iletisim">İletişim</a>
+      <a href="#iletisim">Vaka gönder</a>
     </nav>
     <a class="lang" href="en.html" lang="en" hreflang="en" aria-label="English">EN</a>
     <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
       <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menü" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
     </button>
   </div>
 </header>
@@ -57,6 +66,7 @@
       </ul>
       <div class="cta">
         <a class="btn pri" href="#nasil">Nasıl çalışır <span aria-hidden="true">↓</span></a>
+        <a class="btn" href="#ornek">Örnek vaka <span aria-hidden="true">→</span></a>
       </div>
     </div>
 
@@ -67,8 +77,8 @@
         <!-- dişler: şematik dış hat -->
         <path class="t" d="M127,158 C127,104.5 132.2,66 153,66 C173.8,66 179,104.5 179,158 L179,160 Q179,166 173,169 L153,177 L133,169 Q127,166 127,160 Z"/>
         <path class="t" d="M181,168 C181,110.4 186.8,74 210,74 C233.2,74 239,110.4 239,168 Q239,178 229,178 L191,178 Q181,178 181,168 Z"/>
-        <path class="t" d="M241,180 C241,105.5 248.8,60 280,60 C311.2,60 319,105.5 319,180 Q319,190 309,190 L251,190 Q241,190 241,180 Z"/>
-        <path class="t" d="M321,180 C321,105.5 328.8,60 360,60 C391.2,60 399,105.5 399,180 Q399,190 389,190 L331,190 Q321,190 321,180 Z"/>
+        <path class="t" d="M241,179.9 C241,105.5 248.8,60 280,60 C311.2,60 319,105.5 319,179.9 Q319,190 309,190 L251,190 Q241,190 241,179.9 Z"/>
+        <path class="t" d="M321,179.9 C321,105.5 328.8,60 360,60 C391.2,60 399,105.5 399,179.9 Q399,190 389,190 L331,190 Q321,190 321,179.9 Z"/>
         <path class="t" d="M401,168 C401,110.4 406.8,74 430,74 C453.2,74 459,110.4 459,168 Q459,178 449,178 L411,178 Q401,178 401,168 Z"/>
         <path class="t" d="M461,158 C461,104.5 466.2,66 487,66 C507.8,66 513,104.5 513,158 L513,160 Q513,166 507,169 L487,177 L467,169 Q461,166 461,160 Z"/>
         <!-- sırt çizgileri -->
@@ -106,7 +116,7 @@
       <article class="cell">
         <span class="idx">A — analiz</span>
         <h3 data-icerik="ne_yapar.1.baslik">Fotoğraftan Analiz</h3>
-        <p data-icerik="ne_yapar.1.metin">Gülüş ve ekartör karelerine bakar; diş oranını, orta hattı, kesici görünürlüğünü ve diş etini ölçer. Hasta verisi cihazda kalır.</p>
+        <p data-icerik="ne_yapar.1.metin">Gülüş ve ekartör karelerine bakar; diş oranını, orta hattı, kesici görünürlüğünü ve diş etini ölçer. Kimlik ve tam yüz fotoğrafı cihazda kalır; görsel modele yalnız kimliksiz ağız kırpımı gider.</p>
       </article>
       <article class="cell">
         <span class="idx">B — form</span>
@@ -127,10 +137,47 @@
   </div>
 </section>
 
-<section class="sec" id="nasil">
+<section class="sec" id="ne-yapmaz">
   <div class="wrap sec-grid">
     <header class="sec-head">
       <span class="idx">§ 02</span>
+      <h2>Atlas Ne Yapmaz</h2>
+      <p>Sınırı bilmek de işin parçası.</p>
+    </header>
+    <div class="cells">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3>Teşhis koymaz</h3>
+        <p>Ölçer ve önerir; teşhis hekimindir.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3>Kararı vermez</h3>
+        <p>Karar hekimde. Atlas seçenek getirir, seçimi siz yaparsınız.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">03</span>
+        <h3>Sonuç taahhüt etmez</h3>
+        <p>Mockup bir tasarım önizlemesidir; klinik sonuç taahhüdü değildir.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">04</span>
+        <h3>Hasta verisini dışarı çıkarmaz</h3>
+        <p>Kimlik ve tam yüz fotoğrafı cihazda kalır; görsel modele yalnız kimliksiz ağız kırpımı gider.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">05</span>
+        <h3>ExoCAD dizimini yapmaz</h3>
+        <p>Dizim insan elinde kalır: hekim yapar. Atlas yalnız iş paketini hazırlar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="nasil">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx">§ 03</span>
       <h2 data-icerik="nasil_calisir.0.baslik">Nasıl Çalışır</h2>
       <p data-icerik="nasil_calisir.0.altbaslik">İki fotoğraftan ExoCAD iş paketine beş adım.</p>
     </header>
@@ -167,7 +214,7 @@
 <section class="sec" id="teknoloji">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 03</span>
+      <span class="idx">§ 04</span>
       <h2 data-icerik="teknoloji.0.baslik">Teknoloji</h2>
       <p data-icerik="teknoloji.0.altbaslik">Üst akıl → ajanlar → kapılar.</p>
     </header>
@@ -192,7 +239,7 @@
           <text class="m" x="238" y="65">görsel, araştırma</text>
 
           <path class="wire" d="M110,76 V96 M74,105 V96 H294 V105 M184,96 V105"/>
-          <path class="ah" d="M70,105h8l-4,7z M180,105h8l-4,7z M290,105h8l-4,7z"/>
+          <path class="ah" d="M70,105h8l-4,7z M179.9,105h8l-4,7z M290,105h8l-4,7z"/>
           <text class="k" x="120" y="91">EMİR</text>
 
           <rect class="bx" x="24" y="112" width="100" height="64"/>
@@ -212,7 +259,7 @@
           <text class="k ac" x="96" y="220">KAPI</text>
           <text class="k ac" x="206" y="220">KAPI</text>
           <text class="k ac" x="316" y="220">KAPI</text>
-          <path class="ah" d="M180,277h8l-4,7z"/>
+          <path class="ah" d="M179.9,277h8l-4,7z"/>
 
           <rect class="bx" x="84" y="284" width="200" height="52"/>
           <text class="k" x="96" y="305">CANLI</text>
@@ -224,109 +271,10 @@
         </svg>
         <figcaption class="cap"><span>Şekil 2 — üst akıl → ajanlar → kapılar</span><span>öz sınama · ölçülebilir kapı</span></figcaption>
       </figure>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="evrim">
-  <div class="wrap sec-grid">
-    <header class="sec-head">
-      <span class="idx">§ 03b</span>
-      <h2>Ajan evrimi</h2>
-      <p>Üç ajan, dört adım, kapalı halka.</p>
-    </header>
-    <div class="evrim">
-      <div class="cells three">
-      <article class="cell">
-        <span class="idx">yapıcı ses</span>
-        <h3>Enki</h3>
-        <p data-icerik="evrim.1.metin">Yapıcı ses. Bağlamı ve brifi görür, seçenek üretir; her önerisi ölçülebilir bir kapıyla gelir: bir sayı, bir eşik, bir dosya. Ama hüküm vermez, icra emri de yazmaz.</p>
-      </article>
-      <article class="cell">
-        <span class="idx">renksiz zemin</span>
-        <h3>Enlil</h3>
-        <p data-icerik="evrim.2.metin">Renksiz zemin, kör yargıç. Bağlamı görmez; adayı çıplak hâliyle görür ve damgalar. Yakınlık yok, güncellik yanlılığı yok, demirleme yok. Enki ile aynı odada bulunmaz; birbirlerini duymazlar bile.</p>
-      </article>
-      <article class="cell">
-        <span class="idx">mekanik işçi</span>
-        <h3>Enkidu</h3>
-        <p data-icerik="evrim.3.metin">Mekanik işçi. Sayar, çeker, tasnif eder, ölçer; bunu yerel ve ucuz modellerle yapar. Verdiği şey hüküm değil, ölçümdür.</p>
-      </article>
-      </div>
-      <div class="tech">
-        <div>
-          <ol class="evsteps" aria-label="Ajan evrimi adımları">
-          <li data-icerik="evrim.1.adim"><span><b>Çürüyen kurallar</b> <i>Enkidu</i> — hipotez kütüğünden düşen kuralları listeler ve yanlarına kör karşılaştırma için plasebo (sahte) adaylar üretir.</span></li>
-          <li data-icerik="evrim.2.adim"><span><b>Aday</b> <i>Enki</i> — çürüyen kurallardan günde en çok 3 aday değişiklik yazar. Aday, hüküm değil; sadece bir teklif.</span></li>
-          <li data-icerik="evrim.3.adim"><span><b>Kör damga</b> <i>Enlil</i> — adayları ve plaseboları karışık, bağlamsız görür ve damgalar. Sızıntı ve ödül hilesi tam burada yakalanır.</span></li>
-          <li data-icerik="evrim.4.adim"><span><b>Gölge sınama</b> <i>Enkidu</i> — adayı, mevcut kuralla aynı girdilerde gölgede koşturur. İstatistik kapısı (Wilson aralığı, asgari saptanabilir fark, kol başına 240 epizot) geçilmeden hiçbir şey canlıya girmez.</span></li>
-          </ol>
-          <p class="pull">Evrilen şey ajan değil, kural kümesidir.</p>
-          <p class="prose">Halkanın dışında iki şey var: üst akıl (emir yazar, kanıt ister) ve insan (son söz; haftalık elle kanal, düşer testi).</p>
-        </div>
-        <figure class="sheet schema">
-<svg viewBox="0 0 420 490" role="img" aria-labelledby="f3t f3d">
-  <title id="f3t">Enki, Enlil ve Enkidu ajan evrimi halkası</title>
-  <desc id="f3d">Dört adımlı kapalı halka: 1 çürüyen kurallar (Enkidu), 2 aday (Enki), 3 kör damga (Enlil), 4 gölge sınama (Enkidu). Enki ile Enlil arasında doğrudan hat yoktur; ikisi de yalnız halka üzerinden bağlanır. Halkanın dışında üst akıl emir yazar, en dışta insan son sözü söyler.</desc>
-  <path class="gate" d="M210,10l16,16l-16,16l-16,-16z"/>
-  <text class="k ac" x="234" y="23">İNSAN</text>
-  <text class="m" x="234" y="37">son söz</text>
-  <path class="wire" d="M210,42 V56"/><path class="ah" d="M206,56h8l-4,8z"/>
-  <rect class="bx core" x="130" y="64" width="160" height="52"/>
-  <text class="k inv" x="142" y="84">ÜST AKIL</text>
-  <text class="m inv" x="142" y="103">emir yazar · kanıt ister</text>
-  <path class="wire" d="M210,116 V176"/><path class="ah" d="M206,176h8l-4,8z"/>
-  <circle class="wire" cx="210" cy="280" r="84"/>
-  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,220.6) rotate(45)"/>
-  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(269.4,339.4) rotate(135)"/>
-  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,339.4) rotate(225)"/>
-  <path class="ah" d="M-4,-4L6,0L-4,4z" transform="translate(150.6,220.6) rotate(315)"/>
-  <text class="k" x="210" y="276" text-anchor="middle">EVRİLEN</text>
-  <text class="m" x="210" y="294" text-anchor="middle">kural kümesi</text>
-  <rect class="bx" x="4" y="252" width="76" height="56"/>
-  <text class="n" x="12" y="273">Enkidu</text>
-  <text class="m" x="12" y="289">mekanik</text>
-  <text class="m" x="12" y="302">işçi</text>
-  <rect class="bx" x="338" y="252" width="78" height="56"/>
-  <text class="n" x="346" y="273">Enki</text>
-  <text class="m" x="346" y="289">yapıcı ses</text>
-  <rect class="bx" x="150" y="424" width="120" height="56"/>
-  <text class="n" x="158" y="445">Enlil</text>
-  <text class="m" x="158" y="461">kör yargıç</text>
-  <path class="wire br" d="M80,280 H114 M42,252 V196 H198 M306,280 H338 M210,376 V424"/>
-  <circle class="gd" cx="210" cy="196" r="12"/>
-  <text class="k ac" x="210" y="199.5" text-anchor="middle">1</text>
-  <circle class="gd" cx="294" cy="280" r="12"/>
-  <text class="k ac" x="294" y="283.5" text-anchor="middle">2</text>
-  <circle class="gd" cx="210" cy="364" r="12"/>
-  <text class="k ac" x="210" y="367.5" text-anchor="middle">3</text>
-  <circle class="gd" cx="126" cy="280" r="12"/>
-  <text class="k ac" x="126" y="283.5" text-anchor="middle">4</text>
-  <text class="k ac" x="228" y="192">ÇÜRÜYEN</text>
-  <text class="k ac" x="306" y="268">ADAY</text>
-  <text class="k ac" x="228" y="368">KÖR DAMGA</text>
-  <text class="k ac" x="118" y="300" text-anchor="end">GÖLGE</text>
-  <text class="k wn" x="296" y="432">BİRBİRİNİ</text>
-  <text class="k wn" x="296" y="446">DUYMAZ</text>
-</svg>
-          <figcaption class="cap"><span>Şekil 3 — Enki · Enlil · Enkidu halkası</span><span>Enki ile Enlil arasında doğrudan hat yok</span></figcaption>
-        </figure>
-      </div>
-      <ol class="evtime" aria-label="Ajan evrimi zaman çizgisi">
-      <li><b>14 Eyl</b><span>Enlil kuruldu (kör denetçi).</span></li>
-      <li><b>15–21 Eyl</b><span>Enki tek ses oldu (yapıcı; önceki iki ses birleşti).</span></li>
-      <li><b>22 Eyl</b><span>Enkidu kuruldu (mekanik işler Enki ve Enlil’den alındı).</span></li>
-      <li><b>7 Eki</b><span>EVRİM-2: üçü bir döngüye bağlandı.</span></li>
-      </ol>
-      <div>
-        <h3>Otonomi</h3>
-        <p class="prose">Bu ajanlar nasıl ölçülüyor: karne, emeklilik, ablasyon ve evrim halkası, gerçek ölçümlerle ve canlı şekillerle. Geçer not almayan emekli edilir; sonuç vermeyen yöntem de.</p>
-        <p class="more"><a href="otonomi.html">Otonomi sayfası →</a></p>
-      </div>
-      <div>
-        <h3>Kıvılcım</h3>
-        <p class="prose">Stüdyo tezi nasıl üretir: birbirini duymayan sesler, kaynak doğrulama, sentez ve tur sonunda karne. Yedi basamak ve iki gerçek örnek makale.</p>
-        <p class="more"><a href="kivilcim.html">Kıvılcım sayfası →</a></p>
+      <div id="evrim">
+        <h3>Ajanlar nasıl ölçülüyor</h3>
+        <p class="prose">Arka planda üç ajan çalışır: biri öneri üretir, biri bağlamı görmeden yargılar, biri de sayıp ölçer. Geçer not almayan kural emekli edilir; ayrıntısı ve ölçümleri Otonomi sayfasında.</p>
+        <p class="more"><a href="otonomi.html">Otonomi →</a></p>
       </div>
     </div>
   </div>
@@ -335,23 +283,20 @@
 <section class="sec" id="olcek">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 04</span>
+      <span class="idx">§ 05</span>
       <h2 data-icerik="olcek.0.baslik">Bugünkü ölçek</h2>
     </header>
-    <ul class="stats">
-      <li class="stat"><strong>441</strong><span>formluk diş kütüphanesi</span></li>
-      <li class="stat"><strong>180</strong><span>öz sınamalı alet</span></li>
-      <li class="stat"><strong>~650k</strong><span>satır Python</span></li>
-      <li class="stat"><strong>33</strong><span>Kıvılcım sentezi</span></li>
-      <li class="stat"><strong>150+</strong><span>stratejik rapor</span></li>
-    </ul>
+    <div>
+      <div class="cells"><div class="stat"><strong>441</strong><span>formluk diş kütüphanesi</span></div></div>
+      <p class="more">Alet, sınama ve rapor sayıları ölçüm damgalarıyla <a href="otonomi.html">Otonomi</a> ve <a href="program.html">Program</a> sayfalarında durur.</p>
+    </div>
   </div>
 </section>
 
 <section class="sec" id="form-motoru">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 05</span>
+      <span class="idx">§ 06</span>
       <h2 data-icerik="form_motoru.0.baslik">Form Motoru</h2>
       <p data-icerik="form_motoru.0.giris">Form motoru, kütüphanenin geometrisini ve sizin ölçümlerinizi yan yana koyar; o hastaya en çok yakışan formları sıraya dizer.</p>
     </header>
@@ -378,7 +323,7 @@
 <section class="sec" id="mockup">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 06</span>
+      <span class="idx">§ 07</span>
       <h2 data-icerik="kilavuz_mockup.0.baslik">Kılavuz Mockup</h2>
       <p data-icerik="kilavuz_mockup.0.giris">Görsel modele "istediğini çiz" denmez. Ona estetik sadakat ve kısıtlarla çizilmiş net bir çerçeve verilir.</p>
     </header>
@@ -386,7 +331,7 @@
     <div class="cells two">
       <article class="cell">
         <span class="idx">01</span>
-        <h3 data-icerik="kilavuz_mockup.1.baslik">Çizgisel Rehberlik</h3>
+        <h3 data-icerik="kilavuz_mockup.1.baslik">Çizgisel Kılavuz</h3>
         <p data-icerik="kilavuz_mockup.1.metin">Seçilen formun yeşil dış hattı ve turuncu sırt çizgileri hastanın fotoğrafının üstüne oturtulur.</p>
       </article>
       <article class="cell">
@@ -433,7 +378,7 @@
       <article class="cell">
         <span class="idx">03</span>
         <h3 data-icerik="yontem.3.baslik">Kıvılcım Turları</h3>
-        <p data-icerik="yontem.3.metin">Zor kararlarda bağımsız modellerden tez, kuram, karşı tez ve düşer testi istenir. Sentezde kaynaklar doğrulanır, ön beklentiler de sınavdan geçer.</p>
+        <p data-icerik="yontem.3.metin">Zor kararlarda bağımsız modellerden tez, kuram, karşı tez ve düşer testi istenir. Sentezde kaynaklar doğrulanır, ön beklentiler de sınavdan geçer. <a href="kivilcim.html">Kıvılcım sayfası →</a></p>
       </article>
       <article class="cell">
         <span class="idx">04</span>
@@ -454,7 +399,7 @@
       <article class="cell">
         <span class="idx">S01</span>
         <h3 data-icerik="sss.1.soru">Hasta verisi nerede saklanıyor?</h3>
-        <p data-icerik="sss.1.cevap">Tamamen cihazda. Dışarıya yalnız kimliksiz bir ağız kırpımı gider; o kadar.</p>
+        <p data-icerik="sss.1.cevap">Kimlik ve tam yüz fotoğrafı cihazda kalır; görsel modele yalnız kimliksiz ağız kırpımı gider.</p>
       </article>
       <article class="cell">
         <span class="idx">S02</span>
@@ -464,7 +409,7 @@
       <article class="cell">
         <span class="idx">S03</span>
         <h3 data-icerik="sss.3.soru">ExoCAD şart mı?</h3>
-        <p data-icerik="sss.3.cevap">Atlas, tasarım akışını ExoCAD iş paketlerine çevirir. Ama kütüphane geometrisi ve kılavuz çizgili mockup, form motorundan bağımsız olarak da beslenir.</p>
+        <p data-icerik="sss.3.cevap">Hayır. Form önerisi ve mockup ExoCAD olmadan da çalışır; dizim adımına gelindiğinde ExoCAD iş paketi hazırlanır.</p>
       </article>
       <article class="cell">
         <span class="idx">S04</span>
@@ -479,7 +424,7 @@
       <article class="cell">
         <span class="idx">S06</span>
         <h3 data-icerik="sss.6.soru">Bu bir ürün mü?</h3>
-        <p data-icerik="sss.6.cevap">Hayır. Atlas, tek bir şirketin sinir sistemi gibi çalışan, yapay zekâyla orkestre edilen çok ajanlı bir operasyon katmanı.</p>
+        <p data-icerik="sss.6.cevap">Satılan bir yazılım değil; stüdyonun kendi kullandığı tasarım akışı. Vaka için yazın.</p>
       </article>
     </div>
   </div>
@@ -489,10 +434,24 @@
   <div class="wrap sec-grid">
     <header class="sec-head">
       <span class="idx">§ 10</span>
-      <h2 data-icerik="iletisim.0.baslik">İletişim</h2>
+      <h2 data-icerik="iletisim.0.baslik">Vaka Gönder</h2>
+      <p>İki fotoğraf yeter; gerisi bizde.</p>
     </header>
     <div>
-      <a class="mail" href="mailto:yusuf@atlasmaster.app" data-icerik="iletisim.1.eposta">yusuf@atlasmaster.app</a>
+      <div class="cells two">
+        <article class="cell">
+          <span class="idx">01 — siz gönderirsiniz</span>
+          <h3>Ne gönderilir</h3>
+          <p>İki kare: biri gülüş, biri ekartörlü. Tam yüz, gün ışığı ya da düz ışık. Telefon kamerası yeter.</p>
+        </article>
+        <article class="cell">
+          <span class="idx">02 — size gelir</span>
+          <h3>Ne gelir</h3>
+          <p>Form önerisi ve kılavuz çizgili önce/sonra kaydırıcısı. Süre: ölçülünce yazılacak.</p>
+        </article>
+      </div>
+      <div class="cta"><a class="btn pri" href="mailto:yusuf@atlasmaster.app?subject=Vaka">Vaka gönder <span aria-hidden="true">→</span></a></div>
+      <p class="more"><a class="mail" href="mailto:yusuf@atlasmaster.app" data-icerik="iletisim.1.eposta">yusuf@atlasmaster.app</a></p>
       <p class="more">Daha fazlası: <a href="program.html">Program ve ihtiyaçlar</a> · <a href="en.html" lang="en" hreflang="en">English</a></p>
     </div>
   </div>
@@ -502,9 +461,9 @@
 
 <footer>
   <div class="wrap">
-    <p class="privacy" data-icerik="footer.0.gizlilik">Hasta verisi cihazda kalır.</p>
+    <p class="privacy" data-icerik="footer.0.gizlilik">Kimlik ve tam yüz fotoğrafı cihazda kalır; görsel modele yalnız kimliksiz ağız kırpımı gider.</p>
     <p class="disclaimer" data-icerik="footer.0.feragat">Diş kütüphanesi ve form adları ilgili üreticilerin tescilli markalarıdır; Atlas bağımsızdır ve hiçbir üreticiyle bağlantılı değildir.</p>
-    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><a href="kivilcim.html">Kıvılcım</a><a href="program.html">Program</a><a href="en.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><a href="otonomi.html">Otonomi</a><a href="kivilcim.html">Kıvılcım</a><a href="program.html">Program</a><a href="en.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
   </div>
 </footer>
 </body>

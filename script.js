@@ -36,3 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function set() { st.style.setProperty('--p', r.value + '%'); }
   r.addEventListener('input', set); set();
 });
+
+// Mobil menü: dar ekranda bölüm bağlantılarını açar/kapatır (JS yoksa düğme gizli kalır)
+document.addEventListener('DOMContentLoaded', function () {
+  var btn = document.querySelector('.menu'), nav = document.querySelector('.nav');
+  if (!btn || !nav) return;
+  btn.hidden = false;
+  function set(v) { nav.classList.toggle('open', v); btn.setAttribute('aria-expanded', v); }
+  btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+});
