@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /otonomi.html
+Disallow: /autonomy.html
+Disallow: /kivilcim.html
+Disallow: /spark.html
 
 Sitemap: https://atlasmaster.app/sitemap.xml

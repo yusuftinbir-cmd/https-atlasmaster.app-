@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atlas — gülüşü yapay zekâyla tasarlayın</title>
-<meta name="description" content="Atlas, diş hekimi ve diş teknisyeni için: fotoğraftan form önerisi, kılavuz çizgili mockup ve doğrudan ExoCAD&#x27;e uzanan bir tasarım akışı. Arkasında Claude&#x27;un yönettiği çok ajanlı bir sistem var.">
+<meta name="description" content="Atlas, diş hekimi ve diş teknisyeni için: fotoğraftan form önerisi, kılavuz çizgili mockup ve doğrudan ExoCAD&#x27;e uzanan bir tasarım akışı.">
 <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Atlas — gülüşü yapay zekâyla tasarlayın">
@@ -39,9 +39,7 @@
       <a href="#ne-yapar">Ne yapar</a>
       <a href="#nasil">Nasıl çalışır</a>
       <a href="#ne-yapmaz">Ne yapmaz</a>
-      <a href="otonomi.html">Otonomi</a>
       <a href="#ornek">Örnek</a>
-      <a href="#yontem">Yöntem</a>
       <a href="#sss">SSS</a>
       <a href="#iletisim">İletişim</a>
     </nav>
@@ -213,84 +211,28 @@
   </div>
 </section>
 
-<section class="sec" id="teknoloji">
+<section class="sec" id="guven">
   <div class="wrap sec-grid">
     <header class="sec-head">
       <span class="idx">§ 04</span>
-      <h2 data-icerik="teknoloji.0.baslik">Teknoloji</h2>
-      <p data-icerik="teknoloji.0.altbaslik">Üst akıl → ajanlar → kapılar.</p>
+      <h2>Neden güvenilir?</h2>
     </header>
-    <div class="tech">
-      <div>
-        <p class="prose" data-icerik="teknoloji.1.metin">Atlas, Claude ile orkestre edilen çok ajanlı bir sistemdir: karar ve emir katmanı Claude, ölçüm ve kod işleri model kademesine göre dağıtılır (Opus, Sonnet, Haiku), görsel üretim ve araştırma için diğer modeller köprüyle bağlanır.</p>
-        <p class="prose" data-icerik="teknoloji.2.metin">Her alet kendi öz sınamasını taşır; her değişiklik ölçülebilir bir kapıdan geçer. Kütüphane geometrisi doğrudan ExoCAD dosyalarından okunur.</p>
-        <p class="pull" data-icerik="teknoloji.3.alinti">Kapıdan geçmeyen değişiklik canlıya girmez.</p>
-      </div>
-      <figure class="sheet schema">
-        <svg viewBox="0 0 368 348" role="img" aria-labelledby="f2t f2d">
-          <title id="f2t">Üst akıl, ajanlar ve kapılar şeması</title>
-          <desc id="f2d">Üst akıl (Claude) emir yazar; Opus, Sonnet ve Haiku ajanları işi yürütür; her iş bir kapıdan geçerek canlıya girer; sonuç tek satır rapor olarak üst akla döner. Diğer modeller köprüyle bağlanır.</desc>
-          <rect class="bx core" x="24" y="12" width="172" height="64"/>
-          <text class="k inv" x="36" y="32">ÜST AKIL</text>
-          <text class="n inv" x="36" y="52">Claude</text>
-          <text class="m inv" x="36" y="67">karar ve emir katmanı</text>
-          <path class="wire br" d="M196,44 H226"/>
-          <rect class="bx dash" x="226" y="12" width="118" height="64"/>
-          <text class="k" x="238" y="32">KÖPRÜ</text>
-          <text class="m" x="238" y="50">diğer modeller:</text>
-          <text class="m" x="238" y="65">görsel, araştırma</text>
-
-          <path class="wire" d="M110,76 V96 M74,105 V96 H294 V105 M184,96 V105"/>
-          <path class="ah" d="M70,105h8l-4,7z M179.9,105h8l-4,7z M290,105h8l-4,7z"/>
-          <text class="k" x="120" y="91">EMİR</text>
-
-          <rect class="bx" x="24" y="112" width="100" height="64"/>
-          <text class="n" x="34" y="133">Opus</text>
-          <text class="m" x="34" y="151">yargı ağırlıklı</text>
-          <text class="m" x="34" y="165">değişiklik</text>
-          <rect class="bx" x="134" y="112" width="100" height="64"/>
-          <text class="n" x="144" y="133">Sonnet</text>
-          <text class="m" x="144" y="151">uygulama</text>
-          <rect class="bx" x="244" y="112" width="100" height="64"/>
-          <text class="n" x="254" y="133">Haiku</text>
-          <text class="m" x="254" y="151">yüksek hacimli</text>
-          <text class="m" x="254" y="165">ölçüm ve özet</text>
-
-          <path class="wire" d="M74,176 V200 M184,176 V200 M294,176 V200 M74,232 V256 H294 V232 M184,232 V277"/>
-          <path class="gate" d="M74,200l16,16l-16,16l-16,-16z M184,200l16,16l-16,16l-16,-16z M294,200l16,16l-16,16l-16,-16z"/>
-          <text class="k ac" x="96" y="220">KAPI</text>
-          <text class="k ac" x="206" y="220">KAPI</text>
-          <text class="k ac" x="316" y="220">KAPI</text>
-          <path class="ah" d="M179.9,277h8l-4,7z"/>
-
-          <rect class="bx" x="84" y="284" width="200" height="52"/>
-          <text class="k" x="96" y="305">CANLI</text>
-          <text class="m" x="96" y="323">kapıdan geçen değişiklik</text>
-
-          <path class="wire back" d="M84,310 H8 V44 H17"/>
-          <path class="ah back" d="M17,40v8l7,-4z"/>
-          <text class="k wn" transform="translate(21,286) rotate(-90)">TEK SATIR RAPOR</text>
-        </svg>
-        <figcaption class="cap"><span>Şekil 2 — üst akıl → ajanlar → kapılar</span><span>öz sınama · ölçülebilir kapı</span></figcaption>
-      </figure>
-      <div id="evrim">
-        <h3>Ajanlar nasıl ölçülüyor</h3>
-        <p class="prose">Arka planda üç ajan çalışır: biri öneri üretir, biri bağlamı görmeden yargılar, biri de sayıp ölçer. Geçer not almayan kural emekli edilir; ayrıntısı ve ölçümleri Otonomi sayfasında.</p>
-        <p class="more"><a href="otonomi.html">Otonomi →</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="olcek">
-  <div class="wrap sec-grid">
-    <header class="sec-head">
-      <span class="idx">§ 05</span>
-      <h2 data-icerik="olcek.0.baslik">Bugünkü ölçek</h2>
-    </header>
-    <div>
-      <div class="cells"><div class="stat"><strong>441</strong><span>formluk diş kütüphanesi</span></div></div>
-      <p class="more">Alet, sınama ve rapor sayıları ölçüm damgalarıyla <a href="otonomi.html">Otonomi</a> sayfasında durur.</p>
+    <div class="cells">
+      <article class="cell">
+        <span class="idx">01</span>
+        <h3>Anatomik sadakat</h3>
+        <p>Form seçimi kök hariç kron oranına, yüz oranlarına ve kütüphane geometrisine dayanır; göz kararı değil.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">02</span>
+        <h3>Klinik sınır</h3>
+        <p>Teşhis ve onay hekimde, dizim teknisyende. Atlas öneri verir, karar vermez; sonuç klinik taahhüt değildir.</p>
+      </article>
+      <article class="cell">
+        <span class="idx">03</span>
+        <h3>Sıfır hasta ifşası</h3>
+        <p>Yalnız kimliksiz ağız kırpımı işlenir; fotoğraflar stüdyonun kendi cihazlarında kalır, istendiğinde silinir.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -298,7 +240,7 @@
 <section class="sec" id="form-motoru">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 06</span>
+      <span class="idx">§ 05</span>
       <h2 data-icerik="form_motoru.0.baslik">Form Motoru</h2>
       <p data-icerik="form_motoru.0.giris">Form motoru, kütüphanenin geometrisini ve sizin ölçümlerinizi yan yana koyar; o hastaya en çok yakışan formları sıraya dizer.</p>
     </header>
@@ -325,7 +267,7 @@
 <section class="sec" id="mockup">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 07</span>
+      <span class="idx">§ 06</span>
       <h2 data-icerik="kilavuz_mockup.0.baslik">Kılavuz Mockup</h2>
       <p data-icerik="kilavuz_mockup.0.giris">Görsel modele "istediğini çiz" denmez. Ona estetik sadakat ve kısıtlarla çizilmiş net bir çerçeve verilir.</p>
     </header>
@@ -359,42 +301,10 @@
   </div>
 </section>
 
-<section class="sec" id="yontem">
-  <div class="wrap sec-grid">
-    <header class="sec-head">
-      <span class="idx">§ 08</span>
-      <h2 data-icerik="yontem.0.baslik">Yöntem</h2>
-      <p data-icerik="yontem.0.giris">Atlas'ta kararları otonom ajanlar verir; ama her karar ölçülebilir ve sınanabilir olmak zorunda. "Bana güven" burada geçer akçe değil.</p>
-    </header>
-    <div class="cells four">
-      <article class="cell">
-        <span class="idx">01</span>
-        <h3 data-icerik="yontem.1.baslik">Emir ve Kapı</h3>
-        <p data-icerik="yontem.1.metin">Her iş, kapsamı ve tek jetonlu doğrulama kapısı belli bir emirle, makine dilinde verilir. Kapıdan geçemeyen iş canlıya giremez; torpil yok.</p>
-      </article>
-      <article class="cell">
-        <span class="idx">02</span>
-        <h3 data-icerik="yontem.2.baslik">Ölçüm Önce</h3>
-        <p data-icerik="yontem.2.metin">Her değişiklik ve her iddia, ölçülebilir bir hipotez olarak yazılır. Önce ölçülür; iddia ancak o ölçüm sayesinde ayakta kalır.</p>
-      </article>
-      <article class="cell">
-        <span class="idx">03</span>
-        <h3 data-icerik="yontem.3.baslik">Kıvılcım Turları</h3>
-        <p data-icerik="yontem.3.metin">Zor kararlarda bağımsız modellerden tez, kuram, karşı tez ve düşer testi istenir. Sentezde kaynaklar doğrulanır, ön beklentiler de sınavdan geçer. <a href="kivilcim.html">Kıvılcım sayfası →</a></p>
-      </article>
-      <article class="cell">
-        <span class="idx">04</span>
-        <h3 data-icerik="yontem.4.baslik">Ajan Evrimi</h3>
-        <p data-icerik="yontem.4.metin">Ajan kuralları kör yargıç sisteminde plaseboyla yarıştırılır; onay alan değişiklikler haftalık paketler hâlinde işleme girer.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="sss">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 09</span>
+      <span class="idx">§ 07</span>
       <h2 data-icerik="sss.0.baslik">Sık Sorulan Sorular</h2>
     </header>
     <div class="cells two">
@@ -406,7 +316,7 @@
       <article class="cell">
         <span class="idx">S02</span>
         <h3 data-icerik="sss.2.soru">Atlas hangi modelleri kullanıyor?</h3>
-        <p data-icerik="sss.2.cevap">Karar ve emir katmanını Claude yönetir; ölçüm ve kod işleri model kademesine göre paylaştırılır. Araştırma ve görsel üretim için farklı modeller çok ajanlı bir sistemde birlikte çalışır.</p>
+        <p data-icerik="sss.2.cevap">Tasarım akışını stüdyonun kendi yapay zekâ sistemi yürütür; hekim yalnız sonucu görür.</p>
       </article>
       <article class="cell">
         <span class="idx">S03</span>
@@ -440,7 +350,7 @@
 <section class="sec" id="iletisim">
   <div class="wrap sec-grid">
     <header class="sec-head">
-      <span class="idx">§ 10</span>
+      <span class="idx">§ 08</span>
       <h2 data-icerik="iletisim.0.baslik">Vaka Gönder</h2>
       <p>İki fotoğraf yeter; gerisi bizde.</p>
     </header>
@@ -469,7 +379,7 @@
   <div class="wrap">
     <p class="privacy" data-icerik="footer.0.gizlilik">Gönderilen fotoğraflar stüdyonun kendi cihazlarında işlenir ve saklanır, üçüncü kişiye verilmez; bulut görsel modele yalnız kimliksiz ağız kırpımı gider. Sayfa görüntüleme sayımı çerezsiz ve kimliksizdir (Cloudflare Web Analytics).</p>
     <p class="disclaimer" data-icerik="footer.0.feragat">Diş kütüphanesi ve form adları ilgili üreticilerin tescilli markalarıdır; Atlas bağımsızdır ve hiçbir üreticiyle bağlantılı değildir.</p>
-    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><a href="gizlilik.html">Gizlilik</a><a href="otonomi.html">Otonomi</a><a href="kivilcim.html">Kıvılcım</a><a href="en.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><a href="gizlilik.html">Gizlilik</a><a href="en.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
   </div>
 </footer>
 </body>
