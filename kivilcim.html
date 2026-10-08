@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas — Kıvılcım: stüdyo tezi nasıl üretir</title>
+<meta name="description" content="Kıvılcım: birbirini duymayan seslerden tez ve kuram üretme yordamı. Yedi basamak, turların karnesi ve iki gerçek örnek: HEC-P sentezi ile ajan evrimi.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Atlas — Kıvılcım: stüdyo tezi nasıl üretir">
+<meta property="og:description" content="Yedi basamak, turların karnesi ve iki gerçek örnek.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="en" href="spark.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="kivilcim.css">
+<script src="script.js"></script>
+<script src="kivilcim.js"></script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" aria-label="Bölümler">
+      <a href="index.html">Ana sayfa</a>
+      <a href="#algoritma">Algoritma</a>
+      <a href="#karne">Karne</a>
+      <a href="#makaleler">Makaleler</a>
+      <a href="#m1">HEC-P</a>
+      <a href="#m2">EVRİM-2</a>
+      <a href="otonomi.html">Otonomi</a>
+    </nav>
+    <a class="lang" href="spark.html" lang="en" hreflang="en" aria-label="English">EN</a>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="icerik">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Kıvılcım · tez üretimi</p>
+      <h1>Stüdyo tezi nasıl <em>üretir</em></h1>
+      <p class="pull">Kıvılcım bir sohbet değildir; tur bitince karne yazılır.</p>
+      <p class="lead">Kıvılcım, birbirini duymayan seslerden <strong>tez ve kuram</strong> üretmektir. Hazır bir hükmü sınatmak ayrı iştir; ona hakem turu denir ve ikisi karıştırılmaz.</p>
+      <p class="lead">Bu sayfada üç parça var: yedi basamaklı yordam, bugüne kadarki turların karnesi ve yordamın iki gerçek örneği. Yordam 21 Eyl 2026 tarihlidir.</p>
+      <ul class="tags" aria-label="Etiketler">
+        <li class="tag">tez</li><li class="tag">kuram</li><li class="tag">karşı tez</li><li class="tag">düşer testi</li><li class="tag">karne</li>
+      </ul>
+    </div>
+    <div>
+      <figure class="sheet fig obs" data-anim="tur">
+        <svg id="tur" viewBox="0 0 420 580" role="img" aria-labelledby="fat fad" data-cx="210" data-y="208 262 306 349 426 470 498">
+          <title id="fat">Bir Kıvılcım turu: yedi basamak</title>
+          <desc id="fad">Yukarıdan aşağı: ön beklenti, ölç, brif. Brif dört sese ayrı ayrı gider: Gemini, Grok Bot, Gemma ve iç sesler Enki ile Enlil; sesler arasında hat yoktur. Seslerin atıfları doğrulama süzgecine düşer; bulunan geçer, bulunamayan DOĞRULANAMADI damgasıyla süzgeçte kalır. Altta sentez ve karne; karne ön beklentiyle aynı satıra yazılır.</desc>
+          <path class="wire back" d="M110,520H8V42H110"/>
+          <path class="ah back" d="M110,42l-7,-4v8z"/>
+          <path class="wire" d="M210,64V92M210,136V164M210,470V498"/>
+          <path class="wire br" d="M210,208L66,262M210,208L162,262M210,208L258,262M210,208L354,262"/>
+          <path class="fun" d="M20,362L176,426M400,362L244,426"/>
+          <g class="stp" data-s="1"><rect class="bx" x="110" y="20" width="200" height="44"/><text class="k" x="122" y="38">01 · TURDAN ÖNCE</text><text class="n" x="122" y="55">Ön beklenti</text></g>
+          <g class="stp" data-s="2"><rect class="bx" x="110" y="92" width="200" height="44"/><text class="k" x="122" y="110">02 · DURUM</text><text class="n" x="122" y="127">Ölç</text></g>
+          <g class="stp" data-s="3"><rect class="bx" x="110" y="164" width="200" height="44"/><text class="k" x="122" y="182">03 · KİMLİKSİZ</text><text class="n" x="122" y="199">Brif</text></g>
+          <g class="stp" data-s="4"><text class="k" x="20" y="228">04 · SESLER</text><text class="k" x="400" y="228" text-anchor="end">BİRBİRİNİ DUYMAZ</text></g>
+          <g class="stp" data-s="4" data-ses data-x="66"><rect class="bx dash" x="24" y="262" width="84" height="44"/><text class="n sm" x="31" y="281">Gemini</text><text class="m" x="31" y="296">bağlamsız</text></g>
+          <g class="stp" data-s="4" data-ses data-x="162"><rect class="bx dash" x="120" y="262" width="84" height="44"/><text class="n sm" x="127" y="281">Grok Bot</text><text class="m" x="127" y="296">dış ses</text></g>
+          <g class="stp" data-s="4" data-ses data-x="258"><rect class="bx dash" x="216" y="262" width="84" height="44"/><text class="n sm" x="223" y="281">Gemma</text><text class="m" x="223" y="296">yerel</text></g>
+          <g class="stp" data-s="4" data-ses data-x="354"><rect class="bx dash" x="312" y="262" width="84" height="44"/><text class="n sm" x="319" y="281">Enki · Enlil</text><text class="m" x="319" y="296">iç sesler</text></g>
+          <g class="stp" data-s="5"><path class="sieve" d="M20,356H400"/><text class="k" x="210" y="388" text-anchor="middle">05 · DOĞRULAMA SÜZGECİ</text></g>
+          <g class="still"><circle class="p gec" cx="189" cy="408" r="4"/><circle class="p gec" cx="210" cy="412" r="4"/><circle class="p gec" cx="231" cy="408" r="4"/><circle class="p kal" cx="258" cy="349" r="4"/></g>
+          <g class="pts"></g>
+          <g class="tagx" transform="translate(258 0)"><rect x="-52" y="320" width="104" height="18"/><text class="k wn" x="0" y="332.5" text-anchor="middle">DOĞRULANAMADI</text></g>
+          <g class="stp" data-s="6"><rect class="bx" x="110" y="426" width="200" height="44"/><text class="k" x="122" y="444">06 · UYUŞAN · AYRIŞAN</text><text class="n" x="122" y="461">Sentez</text></g>
+          <g class="stp" data-s="7"><rect class="bx" x="110" y="498" width="200" height="44"/><text class="k" x="122" y="516">07 · TUR BİTİNCE</text><text class="n" x="122" y="533">Karne</text><text class="k" x="210" y="564" text-anchor="middle">EVET | KESKİNLEŞTİ | HAYIR</text></g>
+          <text class="k wn" x="16" y="490">AYNI SATIR</text>
+        </svg>
+        <figcaption class="cap"><span>Şekil — bir Kıvılcım turu</span><span>sesler birbirini duymaz</span></figcaption>
+      </figure>
+      <p class="what"><b>Ne gösteriyor</b>Bir tur yukarıdan aşağı akar. Brif dört sese ayrı ayrı gider; sesler arasında hat yoktur. Seslerin verdiği atıflar süzgece düşer: bulunan geçer, bulunamayan DOĞRULANAMADI damgasıyla süzgeçte kalır ve senteze girmez. Kesikli çizgi, karnenin ön beklentiyle aynı satıra yazıldığını gösterir. Damganın hangi sese düştüğü temsilîdir.</p>
+    </div>
+  </div>
+</section>
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="sec" id="algoritma">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Yedi basamak</h2>
+      <p>Sırayla koşulur. Tur, brif gönderilmeden önce başlar ve cevaplar gelince bitmez.</p>
+    </header>
+    <ol class="steps">
+      <li>
+        <h3>Ön beklenti</h3>
+        <p>Tur başlamadan önce orkestra, beklediği cevabı tek satır yazar ve karne dosyasına kaydeder. Yazmadan brif gönderilmez.</p>
+        <p>Amaç, turun bir şey değiştirip değiştirmediğini sonradan dürüstçe ölçmektir.</p>
+      </li>
+      <li>
+        <h3>Ölç</h3>
+        <p>Brifin DURUM bölümü ölçülmüş maddelerden kurulur. Ölçülemeyen “BİLİNMEYEN” diye yazılır.</p>
+      </li>
+      <li>
+        <h3>Brif (kimliksiz)</h3>
+        <p>Üretim kipinde hüküm istenmez. Her sesten aynı biçim istenir:</p>
+        <ul class="chain" aria-label="Brif biçimi">
+          <li>Tez <small>(tek cümle)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Kuram <small>(mekanizma)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Kaynak <small>(yazar · yıl · yer ya da adres; yoksa “KAYNAK YOK”)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Karşı tez</li><li class="ar" aria-hidden="true">→</li>
+          <li>Düşer <small>(tezi öldürecek ölçüm)</small></li>
+        </ul>
+        <p>Satır tavanı konmaz; cevap kontrol listesine indirgenmez.</p>
+      </li>
+      <li>
+        <h3>Sesler</h3>
+        <p>Birbirini duymayan kanallar: Gemini (yeni sohbet, bağlamsız), Grok Bot, yerel model (Gemma) ve iç sesler: Enki (yapıcı) ile Enlil (kör zemin). Hiçbiri ötekinin cevabını görmez.</p>
+      </li>
+      <li>
+        <h3>Kimlik ve kaynak doğrulama</h3>
+        <p>Kimliği teyit edilmemiş modelden sayı alınmaz. Seslerin verdiği her kaynak senteze girmeden önce aranır; bulunamayan atıf “DOĞRULANAMADI” damgasıyla kalır, dayanak yapılmaz.</p>
+        <p><q>“En parlak referans en çok uydurulan referanstır.”</q></p>
+      </li>
+      <li>
+        <h3>Sentez</h3>
+        <p>Uyuşan · ayrışan (karar oradadır) · tezler ve kuramlar (kimin, hangi kaynakla) · öneri · düşer testi. Ham cevaplar saklanır.</p>
+        <p>Derin konuda ikinci tur açılır: aradaki ölçüm koşulur, sonra ikinci brif gider.</p>
+      </li>
+      <li>
+        <h3>Karne</h3>
+        <p>Tur bitince ön beklentiyle aynı satıra “karar değişti mi” yazılır: EVET | KESKİNLEŞTİ | HAYIR ve tek satır not.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="karne">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Karne: 49 tur</h2>
+      <p>Gerçek sayım. Soru her turda aynıdır: karar değişti mi.</p>
+    </header>
+    <div class="stack">
+      <div>
+        <div class="dhead"><span class="idx">Karar değişti mi</span><span class="stamp">8 Eki 2026 02:5x · 49 tur</span></div>
+        <ul class="dist obs" style="--tot:49" aria-label="49 turun dağılımı">
+          <li class="c-acc" style="--v:33"><span>Keskinleşti</span><i class="db" aria-hidden="true"><i></i></i><b>33</b></li>
+          <li class="c-ok" style="--v:5"><span>Evet</span><i class="db" aria-hidden="true"><i></i></i><b>5</b></li>
+          <li class="c-warn" style="--v:3"><span>Hayır</span><i class="db" aria-hidden="true"><i></i></i><b>3</b></li>
+          <li style="--v:2"><span>Değersiz / geri çekildi</span><i class="db" aria-hidden="true"><i></i></i><b>2</b></li>
+          <li style="--v:1"><span>Koşmadı</span><i class="db" aria-hidden="true"><i></i></i><b>1</b></li>
+          <li style="--v:1"><span>Bilinmiyor</span><i class="db" aria-hidden="true"><i></i></i><b>1</b></li>
+          <li class="c-dim" style="--v:4"><span>Boş</span><i class="db" aria-hidden="true"><i></i></i><b>4</b></li>
+        </ul>
+        <p class="what"><b>Ne gösteriyor</b>Her çubuk, 49 turun kaçının o sonuçla kapandığını gösterir; uzunluk paya orantılıdır. Boş, değersiz ve bilinmeyen satırlar da sayılır; gizlenmez.</p>
+      </div>
+      <p class="note">Kapı: ayda bir üç şey sayılır: karar-değişti oranı, ön beklenti ile sentez arasındaki fark, doğrulanamayan kaynak oranı. Oran tesadüften ayrışmıyorsa tur pahalı bir sohbettir.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="makaleler">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>İki örnek</h2>
+      <p>Aynı yapı, iki gerçek tur. Alt başlıklar ikisinde de aynıdır.</p>
+    </header>
+    <div class="cells two">
+      <article class="cell">
+        <span class="idx">Makale · 9 Ağu 2026 · HEC-P × anayasa</span>
+        <h3><a href="#m1">Anlamak için sorma, icra geri dönülemezse sor</a></h3>
+        <p>Bir dış ses “asla sorma” dedi, anayasa “eksikse sor” diyordu. Kıvılcım adını almadan önceki ilk örnek; yapı aynı.</p>
+        <p class="more"><a href="#m1">Makaleyi oku →</a></p>
+      </article>
+      <article class="cell">
+        <span class="idx">Makale · 7 Eki 2026 · EVRİM-2</span>
+        <h3><a href="#m2">Ajan evrimi: yeni ajan yok, kural kümesi evrilir</a></h3>
+        <p>Dört ses, üç ajanlık ailenin ikinci evrimini ayrı ayrı yazdı. Karar, ayrıştıkları yerde verildi.</p>
+        <p class="more"><a href="#m2">Makaleyi oku →</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="m1">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Anlamak için sorma, icra geri dönülemezse sor</h2>
+      <p>HEC-P × anayasa · 9 Ağu 2026. Kıvılcım adını almadan önceki ilk örnek; yapı aynı.</p>
+    </header>
+    <article class="stack">
+      <div class="part">
+        <h3>Kıvılcım kaynağı</h3>
+        <p class="prose">Dış ses Gemini’ydi. Yazdığı protokol metninin adı “insan enerjisi ve mihenk taşı protokolü”, kısaca HEC-P. Tezi şuydu: orkestra “ne demek istediniz”, “biraz daha açar mısınız” gibi açıklama isteyen soruları asla sormaz.</p>
+        <p class="prose">Gerekçesi: sahip telefondan, yorgun, sesle dikte edilmiş kırpık girdi verir; her soru onun enerjisini yer ve o enerji sistemin en kıt kaynağıdır.</p>
+      </div>
+      <div class="part">
+        <h3>Karşı tez</h3>
+        <p class="prose">Anayasada tersi yazıyordu: “Detay eksikse SOR, yapma”. Onun da sebebi vardı: orkestra eksik bilgiyle iş başlatmış, yanlış iş geri dönmemişti. 5 Ağu’da üç yanlış alarm, yanlış yazılmış bir panel ve bozulan bir sağlık kaydı çıkmıştı.</p>
+        <p class="prose">Aynı konuda iki zıt talimat, iç kurala göre hatadır (“iki talimat = T-301 hatası”). Ya biri silinecek ya da farklı şeyden bahsettikleri gösterilecekti.</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Dış ses · HEC-P</span><p>Açıklama isteyen soru <b>asla sorulmaz</b>. Her soru, sistemin en kıt kaynağını yer.</p></div>
+          <div class="vr"><span class="idx">Anayasa</span><p><b>“Detay eksikse SOR, yapma”.</b> Eksik bilgiyle başlayan yanlış iş geri dönmemişti.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>“Anlamak için SORMA. İcra etmek için, geri dönülemezse SOR.”</p></div>
+        </div>
+      </div>
+      <div class="part">
+        <h3>Sentez</h3>
+        <p class="prose">Teşhis: ikisi aynı şeyden bahsetmiyor. HEC-P’nin derdi anlama, anayasanın derdi icra. İkisi tek kurala indi:</p>
+        <p class="pull">“Anlamak için SORMA. İcra etmek için, geri dönülemezse SOR.”</p>
+        <ul class="pl">
+          <li><span><b>Anlama.</b> Kırpık, sesli, imlasız girdi eksiksiz talimattır. Belirsizlik varsa en güvenli okuma seçilir, altına tek satır <code>[VARSAYIM: …]</code> düşülür.</span></li>
+          <li><span><b>İcra.</b> Geri dönülebilir iş (ölçüm, okuma, taslak, rapor) yapılır, varsayım yazılır. Geri dönülemez iş (silme, servis açma ya da kapatma, kota yakan koşu, dış dünyaya çıkan şey) sorulur.</span></li>
+          <li><span><b>Soru.</b> Soru sorulacaksa iş durmaz; sorudan bağımsız her şey bitirilir, soru doğru anda sorulur.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Düşer testi</h3>
+        <p class="prose">Kural aynı gün, 9 Ağu’da üç olayla ölçüldü:</p>
+        <ul class="pl">
+          <li><span>Belirsiz bir sesli girdi sorulmadan ölçüldü ve teşhise çevrildi. Anlama kuralı işledi.</span></li>
+          <li><span>Kota yakan, geri dönmeyen bir koşu için soruldu; sahip “tam onay” dedi. İcra kuralı işledi.</span></li>
+          <li><span>Orkestra aynı oturumda üç kez kendi iddiasını kendi ölçümüyle düşürdü; hiçbiri sahibe sorulmadı. Yine anlama kuralı.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Alınmayanlar</h3>
+        <p class="prose">Dış sesten her şey alınmadı. Üç kalem gerekçesiyle dışarıda kaldı:</p>
+        <ul class="pl">
+          <li><span><b>Sabit şiddet katsayıları.</b> Ölçümü öldürür; taban meşru, sabit değer değil.</span></li>
+          <li><span><b>Doğrulanamayan “14–30 gün” iddiası.</b> Bulunan tek akademik veri ters yönlüydü.</span></li>
+          <li><span><b>Yerel modelin “önemsiz der” teşhisi.</b> A/B ölçümüyle çürütüldü; gerçek arıza beslemedeydi ve onarıldı.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Emir</h3>
+        <p class="prose">Anayasa dosyası 150/150 satır doluydu; tavan mekaniktir. İki seçenek yazıldı: (a) tek satır eklenir, yer için kapanmış teşhis satırları budanır; (b) ayrı dosya. Karar sahibe bırakıldı.</p>
+        <p class="prose">9 Eyl’de sahip şunu söyledi: “durum belirtirsem sistem bilmeli, devamlılık olmalı”. Kural veriye döndü: <code>insan_hali</code> aleti. Hal kaydını HEC-P ile çarpar: ne sorulur, ne zaman sorulur; hal beyanı vadelidir.</p>
+      </div>
+      <div class="part">
+        <h3>Karne</h3>
+        <p class="prose">22 Eyl ölçümü dürüst sonucu verdi: alet 9 Eyl’den beri hiç beslenmemişti, içinde tek kayıt vardı. Kural metinde vardı, veri olarak ölüydü. Alet açılışa ve her prompta otomatik bağlandı.</p>
+        <p class="note">Ders: kural, makinenin okuduğu dosyaya girmediyse yok sayılır.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="m2">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Ajan evrimi: yeni ajan yok, kural kümesi evrilir</h2>
+      <p>EVRİM-2 Kıvılcımı · 7 Eki 2026.</p>
+    </header>
+    <article class="stack">
+      <div class="part">
+        <h3>Kıvılcım kaynağı</h3>
+        <p class="prose">Brif üretim kipinde ve kimliksiz gitti. Soru: üç ajanlık ailenin (Enki · Enlil · Enkidu) ikinci evrimi nasıl olmalı? Durum ölçülmüş olarak yazıldı:</p>
+        <ul class="pl">
+          <li><span><b>Enki</b> çoğu turda “hüküm yok” diyor.</span></li>
+          <li><span><b>Enlil</b> kör denetçi: 24.990 kayıt, 1.521 şüpheli, çıkan iş 0. Kendi yazdığı tek alet onay bekliyor.</span></li>
+          <li><span><b>Enkidu</b> 9 mekanik görev yürütüyor.</span></li>
+          <li><span><b>Dinamizm hattı:</b> hüküm → düşer testi → sonraki tik ölçer. Sınamalar güç yetersiz (n küçük).</span></li>
+        </ul>
+        <p class="prose">Dört ses yazdı: Gemini (bağlamsız, iki koltuk), Gemma (yerel) ve Grok Bot. Birbirini duymadılar.</p>
+        <p class="prose">Ön beklenti tur öncesi yazıldı: yeni ajan yok; Enlil’e “sürtünme” bağlama önerisi gelecek ve reddedilecek; kör mutasyon motoru Enkidu olacak.</p>
+      </div>
+      <div class="part">
+        <h3>Karşı tez</h3>
+        <p class="prose">Sesler dört yerde ayrıştı; karar oradaydı. En sert karşı tez elle alternatifti: haftada bir sahip 15 dakika çürüyen listesine baksa aynı sonuç çıkabilir.</p>
+        <p class="vt">Ayrışan · mutasyonu kim üretir</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>“Günde 100 yerel varyasyon”.</b> Maliyet sıfır varsayımı aynı gün GPU açlığında çöktü.</p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>“Günde bir, ≤3 aday + plasebo 4:1”.</b></p></div>
+          <div class="dec"><span class="idx">Karar</span><p>Plasebo seçildi.</p></div>
+        </div>
+        <p class="vt">Ayrışan · ölçek</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>30 güne üç adım.</b> Üç sesin 30 gün planı buydu.</p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>Hesap:</b> %76 taban oranında 10 puan farkı %80 güçle görmek için kol başına ≈240 epizot gerekir. 30 güne üç adım sığmaz.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>30 gün = tek adım. Üç sesin planı iyimserdi.</p></div>
+        </div>
+        <p class="vt">Ayrışan · elle alternatif</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>Otomatik döngü:</b> mutasyon → seçilim → konsolidasyon.</p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>Elle bakış:</b> haftada bir sahip 15 dakika çürüyen listesine baksa aynı sonuç çıkabilir.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>Düşer testi olarak kabul edildi: iki hafta paralel, eşitse otomasyon durur.</p></div>
+        </div>
+        <p class="vt">Ayrışan · zıtlık gömme analizi</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>“Zıtlık gömme analizi”.</b></p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>Aynı gün deney:</b> gömme modeli zıt hükümleri 0,90 benzer gördü.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>Çıkarıldı.</p></div>
+        </div>
+      </div>
+      <div class="part">
+        <h3>Sentez</h3>
+        <p class="prose">Dört sesin dördü de şunlarda uyuştu (4/4):</p>
+        <ul class="pl">
+          <li><span>Yeni ajan yazılmaz. Evrilen şey kural kümesi ve harness’tir (genotip = kural, fenotip = harness).</span></li>
+          <li><span>Döngü: mutasyon → seçilim (düşer testi + Wilson aralığı/MDE) → konsolidasyon. Gölgeye otomatik, gerçek sisteme yalnız sahip onayıyla.</span></li>
+          <li><span>Enlil kör kalır; seçilimde kör yargıç kapısı olur.</span></li>
+          <li><span>Ana ölçü kapalı döngü sayısıdır: dört haftada artmazsa evrim yok.</span></li>
+        </ul>
+        <p class="prose">Kaynak doğrulama: iki akademik atıf web’de doğrulandı; birinin yılı yanlış verilmişti (2024 yerine 2026). Bir atıf doğrulanamadı ve dayanak yapılmadı.</p>
+      </div>
+      <div class="part">
+        <h3>Düşer testi</h3>
+        <p class="prose">Tezi iki ölçüm düşürür. Birincisi elle alternatif: iki hafta paralel koşulur, eşitse otomasyon durur. İkincisi ana ölçü: kapalı döngü sayısı dört haftada artmazsa evrim yok.</p>
+      </div>
+      <div class="part">
+        <h3>Alınmayanlar</h3>
+        <ul class="pl">
+          <li><span><b>“Günde 100 yerel varyasyon”.</b> Maliyet sıfır varsayımı aynı gün GPU açlığında çöktü.</span></li>
+          <li><span><b>Üç adımlı 30 gün planı.</b> Kol başına ≈240 epizot hesabına sığmadı.</span></li>
+          <li><span><b>“Zıtlık gömme analizi”.</b> Aynı gün deneyle çürüdü; çıkarıldı.</span></li>
+          <li><span><b>Doğrulanamayan atıf.</b> Dayanak yapılmadı.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Emir</h3>
+        <p class="prose">Sentez emre döndü: EVRİM-2 Adım 1, gölgede.</p>
+        <ul class="chain" aria-label="EVRİM-2 Adım 1 sırası">
+          <li>Enkidu <small>çürüyen listesi + plasebo</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enki <small>≤3 aday</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enlil <small>kör damga</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enkidu <small>gölge istatistik kapısı (240 epizot/kol)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Konsolidasyon</li>
+        </ul>
+        <p class="prose">Aynı gün kuruldu: 7 alet, 153 sınama. Kuran model 9 itiraz bıraktı; itirazlar kayda girdi. Biri şuydu: “geriye kol 24 saat vadede 240 epizota ~218 gün → bu kolda yapısal sıfır”.</p>
+      </div>
+      <div class="part obs">
+        <h3>Karne</h3>
+        <p class="prose"><b>KESKİNLEŞTİ.</b> Beklenti tuttu; keskinleştiren yeni parçalar: plasebo, 240 epizot hesabı ve elle alternatif düşer testi.</p>
+        <div>
+          <div class="bar" style="--v:23;--tot:240" aria-hidden="true"><i></i></div>
+          <p class="barlab"><span>epizot <b>23</b>/240 · “erken”</span><span class="stamp">8 Eki</span></p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">Tur bitince karne yazılır.</p>
+    <p class="disclaimer">Bu sayfadaki sayılar ve tarihler stüdyonun kendi kayıtlarından alınmıştır; damga, sayımın tarihini gösterir.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="index.html">Ana sayfa</a><a href="otonomi.html">Otonomi</a><a href="program.html">Program</a><a href="spark.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

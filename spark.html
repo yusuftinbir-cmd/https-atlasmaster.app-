@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spark — how the studio produces theses</title>
+<meta name="description" content="Spark (Kıvılcım): a procedure for producing theses and theories from voices that cannot hear each other. Seven steps, the scorecard of the rounds, and two real examples: the HEC-P synthesis and agent evolution.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Spark — how the studio produces theses">
+<meta property="og:description" content="Seven steps, the scorecard of the rounds, and two real examples.">
+<meta property="og:type" content="website">
+<link rel="alternate" hreflang="tr" href="kivilcim.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="kivilcim.css">
+<script src="script.js"></script>
+<script src="kivilcim.js"></script>
+</head>
+<body>
+<a class="skip" href="#icerik">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="en.html" aria-label="Atlas home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="en.html">Home</a>
+      <a href="#algoritma">Algorithm</a>
+      <a href="#karne">Scorecard</a>
+      <a href="#makaleler">Articles</a>
+      <a href="#m1">HEC-P</a>
+      <a href="#m2">EVOLUTION-2</a>
+      <a href="autonomy.html">Autonomy</a>
+    </nav>
+    <a class="lang" href="kivilcim.html" lang="tr" hreflang="tr" aria-label="Türkçe">TR</a>
+    <button class="theme" type="button" hidden aria-label="Dark / light theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="icerik">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Spark · producing theses</p>
+      <h1>How the studio produces <em>theses</em></h1>
+      <p class="pull">Spark is not a chat; when the round ends, a scorecard is written.</p>
+      <p class="lead">Spark (Kıvılcım in Turkish) means producing <strong>theses and theories</strong> from voices that cannot hear each other. Testing a ready-made verdict is a separate job; that is called a referee round, and the two are not mixed.</p>
+      <p class="lead">This page has three parts: the seven-step procedure, the scorecard of the rounds so far, and two real examples of the procedure. The procedure is dated 21 Sep 2026.</p>
+      <ul class="tags" aria-label="Tags">
+        <li class="tag">thesis</li><li class="tag">theory</li><li class="tag">counter-thesis</li><li class="tag">kill test</li><li class="tag">scorecard</li>
+      </ul>
+    </div>
+    <div>
+      <figure class="sheet fig obs" data-anim="tur">
+        <svg id="tur" viewBox="0 0 420 580" role="img" aria-labelledby="fat fad" data-cx="210" data-y="208 262 306 349 426 470 498">
+          <title id="fat">One Spark round: seven steps</title>
+          <desc id="fad">Top to bottom: pre-expectation, measure, brief. The brief goes to four voices separately: Gemini, Grok Bot, Gemma, and the inner voices Enki and Enlil; there is no line between the voices. The voices’ citations fall onto a verification sieve; the ones that are found pass, the ones that are not stay on the sieve stamped UNVERIFIED. Below are synthesis and scorecard; the scorecard is written on the same line as the pre-expectation.</desc>
+          <path class="wire back" d="M110,520H8V42H110"/>
+          <path class="ah back" d="M110,42l-7,-4v8z"/>
+          <path class="wire" d="M210,64V92M210,136V164M210,470V498"/>
+          <path class="wire br" d="M210,208L66,262M210,208L162,262M210,208L258,262M210,208L354,262"/>
+          <path class="fun" d="M20,362L176,426M400,362L244,426"/>
+          <g class="stp" data-s="1"><rect class="bx" x="110" y="20" width="200" height="44"/><text class="k" x="122" y="38">01 · BEFORE THE ROUND</text><text class="n" x="122" y="55">Pre-expectation</text></g>
+          <g class="stp" data-s="2"><rect class="bx" x="110" y="92" width="200" height="44"/><text class="k" x="122" y="110">02 · STATE</text><text class="n" x="122" y="127">Measure</text></g>
+          <g class="stp" data-s="3"><rect class="bx" x="110" y="164" width="200" height="44"/><text class="k" x="122" y="182">03 · ANONYMOUS</text><text class="n" x="122" y="199">Brief</text></g>
+          <g class="stp" data-s="4"><text class="k" x="20" y="228">04 · VOICES</text><text class="k" x="400" y="228" text-anchor="end">DEAF TO EACH OTHER</text></g>
+          <g class="stp" data-s="4" data-ses data-x="66"><rect class="bx dash" x="24" y="262" width="84" height="44"/><text class="n sm" x="31" y="281">Gemini</text><text class="m" x="31" y="296">no context</text></g>
+          <g class="stp" data-s="4" data-ses data-x="162"><rect class="bx dash" x="120" y="262" width="84" height="44"/><text class="n sm" x="127" y="281">Grok Bot</text><text class="m" x="127" y="296">outside voice</text></g>
+          <g class="stp" data-s="4" data-ses data-x="258"><rect class="bx dash" x="216" y="262" width="84" height="44"/><text class="n sm" x="223" y="281">Gemma</text><text class="m" x="223" y="296">local</text></g>
+          <g class="stp" data-s="4" data-ses data-x="354"><rect class="bx dash" x="312" y="262" width="84" height="44"/><text class="n sm" x="319" y="281">Enki · Enlil</text><text class="m" x="319" y="296">inner voices</text></g>
+          <g class="stp" data-s="5"><path class="sieve" d="M20,356H400"/><text class="k" x="210" y="388" text-anchor="middle">05 · VERIFICATION SIEVE</text></g>
+          <g class="still"><circle class="p gec" cx="189" cy="408" r="4"/><circle class="p gec" cx="210" cy="412" r="4"/><circle class="p gec" cx="231" cy="408" r="4"/><circle class="p kal" cx="258" cy="349" r="4"/></g>
+          <g class="pts"></g>
+          <g class="tagx" transform="translate(258 0)"><rect x="-52" y="320" width="104" height="18"/><text class="k wn" x="0" y="332.5" text-anchor="middle">UNVERIFIED</text></g>
+          <g class="stp" data-s="6"><rect class="bx" x="110" y="426" width="200" height="44"/><text class="k" x="122" y="444">06 · AGREED · SPLIT</text><text class="n" x="122" y="461">Synthesis</text></g>
+          <g class="stp" data-s="7"><rect class="bx" x="110" y="498" width="200" height="44"/><text class="k" x="122" y="516">07 · ROUND ENDS</text><text class="n" x="122" y="533">Scorecard</text><text class="k" x="210" y="564" text-anchor="middle">YES | SHARPENED | NO</text></g>
+          <text class="k wn" x="16" y="490">SAME LINE</text>
+        </svg>
+        <figcaption class="cap"><span>Figure — one Spark round</span><span>the voices cannot hear each other</span></figcaption>
+      </figure>
+      <p class="what"><b>What it shows</b>A round flows from top to bottom. The brief goes to four voices separately; there is no line between the voices. The citations the voices give fall onto the sieve: the ones that are found pass, the ones that are not stay on the sieve stamped UNVERIFIED and do not enter the synthesis. The dashed line shows that the scorecard is written on the same line as the pre-expectation. Which voice the stamp lands on is illustrative.</p>
+    </div>
+  </div>
+</section>
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="sec" id="algoritma">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Seven steps</h2>
+      <p>Run in order. The round starts before the brief is sent and does not end when the answers arrive.</p>
+    </header>
+    <ol class="steps">
+      <li>
+        <h3>Pre-expectation</h3>
+        <p>Before the round starts, the orchestrator writes the answer it expects in a single line and saves it to the scorecard file. No brief is sent until it is written.</p>
+        <p>The aim is to measure honestly, afterwards, whether the round changed anything.</p>
+      </li>
+      <li>
+        <h3>Measure</h3>
+        <p>The STATE section of the brief is built from measured items. What cannot be measured is written as “UNKNOWN”.</p>
+      </li>
+      <li>
+        <h3>Brief (anonymous)</h3>
+        <p>In production mode no verdict is asked for. Every voice is asked for the same form:</p>
+        <ul class="chain" aria-label="Brief form">
+          <li>Thesis <small>(one sentence)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Theory <small>(mechanism)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Source <small>(author · year · venue or address; if none, “NO SOURCE”)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Counter-thesis</li><li class="ar" aria-hidden="true">→</li>
+          <li>Falls <small>(the measurement that would kill the thesis)</small></li>
+        </ul>
+        <p>No line cap is set; the answer is not reduced to a checklist.</p>
+      </li>
+      <li>
+        <h3>Voices</h3>
+        <p>Channels that cannot hear each other: Gemini (new chat, no context), Grok Bot, a local model (Gemma), and the inner voices: Enki (the builder) and Enlil (the blind ground). None of them sees another’s answer.</p>
+      </li>
+      <li>
+        <h3>Identity and source verification</h3>
+        <p>No number is taken from a model whose identity has not been confirmed. Every source the voices give is searched for before it enters the synthesis; a citation that cannot be found stays stamped “UNVERIFIED” and is not used as support.</p>
+        <p><q>“The brightest reference is the one most often made up.”</q></p>
+      </li>
+      <li>
+        <h3>Synthesis</h3>
+        <p>Agreed · split (the decision is there) · theses and theories (whose, with which source) · recommendation · kill test. The raw answers are kept.</p>
+        <p>On a deep topic a second round opens: the measurement in between is run, then a second brief goes out.</p>
+      </li>
+      <li>
+        <h3>Scorecard</h3>
+        <p>When the round ends, “did the decision change” is written on the same line as the pre-expectation: YES | SHARPENED | NO, plus a one-line note.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="karne">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Scorecard: 49 rounds</h2>
+      <p>A real count. The question is the same in every round: did the decision change.</p>
+    </header>
+    <div class="stack">
+      <div>
+        <div class="dhead"><span class="idx">Did the decision change</span><span class="stamp">8 Oct 2026 02:5x · 49 rounds</span></div>
+        <ul class="dist obs" style="--tot:49" aria-label="Distribution of the 49 rounds">
+          <li class="c-acc" style="--v:33"><span>Sharpened</span><i class="db" aria-hidden="true"><i></i></i><b>33</b></li>
+          <li class="c-ok" style="--v:5"><span>Yes</span><i class="db" aria-hidden="true"><i></i></i><b>5</b></li>
+          <li class="c-warn" style="--v:3"><span>No</span><i class="db" aria-hidden="true"><i></i></i><b>3</b></li>
+          <li style="--v:2"><span>Worthless / withdrawn</span><i class="db" aria-hidden="true"><i></i></i><b>2</b></li>
+          <li style="--v:1"><span>Did not run</span><i class="db" aria-hidden="true"><i></i></i><b>1</b></li>
+          <li style="--v:1"><span>Unknown</span><i class="db" aria-hidden="true"><i></i></i><b>1</b></li>
+          <li class="c-dim" style="--v:4"><span>Blank</span><i class="db" aria-hidden="true"><i></i></i><b>4</b></li>
+        </ul>
+        <p class="what"><b>What it shows</b>Each bar shows how many of the 49 rounds closed with that result; length is in proportion to the share. The blank, worthless and unknown rows are counted too; they are not hidden.</p>
+      </div>
+      <p class="note">Gate: once a month three things are counted: the decision-changed rate, the gap between pre-expectation and synthesis, and the rate of unverifiable sources. If the rate cannot be told apart from chance, the round is an expensive chat.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="makaleler">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Two examples</h2>
+      <p>The same structure, two real rounds. The subheadings are the same in both.</p>
+    </header>
+    <div class="cells two">
+      <article class="cell">
+        <span class="idx">Article · 9 Aug 2026 · HEC-P × constitution</span>
+        <h3><a href="#m1">Do not ask in order to understand; ask if the action cannot be undone</a></h3>
+        <p>An outside voice said “never ask”; the constitution said “if something is missing, ask”. The first example, from before Spark had its name; the structure is the same.</p>
+        <p class="more"><a href="#m1">Read the article →</a></p>
+      </article>
+      <article class="cell">
+        <span class="idx">Article · 7 Oct 2026 · EVOLUTION-2</span>
+        <h3><a href="#m2">Agent evolution: no new agent, the rule set evolves</a></h3>
+        <p>Four voices each wrote, separately, the second evolution of a family of three agents. The decision was made where they split.</p>
+        <p class="more"><a href="#m2">Read the article →</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="m1">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Do not ask in order to understand; ask if the action cannot be undone</h2>
+      <p>HEC-P × constitution · 9 Aug 2026. The first example, from before Spark had its name; the structure is the same.</p>
+    </header>
+    <article class="stack">
+      <div class="part">
+        <h3>Spark source</h3>
+        <p class="prose">The outside voice was Gemini. The protocol text it wrote was called the “human energy and touchstone protocol”, HEC-P for short. Its thesis: the orchestrator never asks clarifying questions such as “what did you mean” or “could you say a bit more”.</p>
+        <p class="prose">Its reasoning: the owner gives clipped input, from a phone, tired, dictated by voice; every question eats their energy, and that energy is the scarcest resource in the system.</p>
+      </div>
+      <div class="part">
+        <h3>Counter-thesis</h3>
+        <p class="prose">The constitution said the reverse: “If a detail is missing, ASK, do not act”. It had its reason too: the orchestrator had started work on incomplete information, and the wrong work could not be undone. On 5 Aug that meant three false alarms, a wrongly written panel and a corrupted health record.</p>
+        <p class="prose">Two contrary instructions on the same subject are an error under the internal rule (“two instructions = a T-301 error”). Either one had to be deleted, or it had to be shown that they were talking about different things.</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Outside voice · HEC-P</span><p>A clarifying question is <b>never asked</b>. Every question eats the scarcest resource in the system.</p></div>
+          <div class="vr"><span class="idx">Constitution</span><p><b>“If a detail is missing, ASK, do not act”.</b> Wrong work started on incomplete information could not be undone.</p></div>
+          <div class="dec"><span class="idx">Decision</span><p>“Do NOT ASK in order to understand. To act, ASK if it cannot be undone.”</p></div>
+        </div>
+      </div>
+      <div class="part">
+        <h3>Synthesis</h3>
+        <p class="prose">Diagnosis: the two are not talking about the same thing. HEC-P is concerned with understanding; the constitution is concerned with action. The two came down to one rule:</p>
+        <p class="pull">“Do NOT ASK in order to understand. To act, ASK if it cannot be undone.”</p>
+        <ul class="pl">
+          <li><span><b>Understanding.</b> Clipped, spoken, unpunctuated input is a complete instruction. If there is ambiguity the safest reading is chosen, and a single line <code>[ASSUMPTION: …]</code> is noted beneath it.</span></li>
+          <li><span><b>Action.</b> Reversible work (measuring, reading, drafting, reporting) is done, and the assumption is written down. Irreversible work (deleting, starting or stopping a service, a run that burns quota, anything that goes out to the outside world) is asked about.</span></li>
+          <li><span><b>The question.</b> If a question is going to be asked, the work does not stop; everything that does not depend on the question is finished, and the question is asked at the right moment.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Kill test</h3>
+        <p class="prose">The rule was measured the same day, 9 Aug, on three events:</p>
+        <ul class="pl">
+          <li><span>An ambiguous voice input was measured without asking and turned into a diagnosis. The understanding rule worked.</span></li>
+          <li><span>A run that burns quota and cannot be undone was asked about; the owner said “full approval”. The action rule worked.</span></li>
+          <li><span>In the same session the orchestrator knocked down its own claim with its own measurement three times; none of them was put to the owner. The understanding rule again.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Not adopted</h3>
+        <p class="prose">Not everything was taken from the outside voice. Three items stayed out, each with its reason:</p>
+        <ul class="pl">
+          <li><span><b>Fixed severity coefficients.</b> They kill measurement; a baseline is legitimate, a fixed value is not.</span></li>
+          <li><span><b>The unverifiable “14–30 days” claim.</b> The only academic data found pointed the other way.</span></li>
+          <li><span><b>The “it will say unimportant” diagnosis of the local model.</b> Refuted by an A/B measurement; the real fault was in the feed, and it was repaired.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Order</h3>
+        <p class="prose">The constitution file was full, 150/150 lines; the ceiling is mechanical. Two options were written: (a) add a single line, and prune closed diagnosis lines to make room; (b) a separate file. The decision was left to the owner.</p>
+        <p class="prose">On 9 Sep the owner said: “if I state my condition the system should know it; there should be continuity”. The rule turned into data: the <code>insan_hali</code> tool. It crosses the state record with HEC-P: what is asked, and when it is asked; a state declaration carries an expiry.</p>
+      </div>
+      <div class="part">
+        <h3>Scorecard</h3>
+        <p class="prose">The 22 Sep measurement gave the honest result: the tool had not been fed at all since 9 Sep, and held a single record. The rule existed in text and was dead as data. The tool was wired into startup and into every prompt automatically.</p>
+        <p class="note">Lesson: if a rule has not entered the file the machine reads, it counts as absent.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="m2">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Agent evolution: no new agent, the rule set evolves</h2>
+      <p>The EVOLUTION-2 Spark · 7 Oct 2026.</p>
+    </header>
+    <article class="stack">
+      <div class="part">
+        <h3>Spark source</h3>
+        <p class="prose">The brief went out in production mode, anonymous. The question: what should the second evolution of the family of three agents (Enki · Enlil · Enkidu) be? The state was written as measured:</p>
+        <ul class="pl">
+          <li><span><b>Enki</b> says “no verdict” in most rounds.</span></li>
+          <li><span><b>Enlil</b> is the blind auditor: 24,990 records, 1,521 suspect, work produced 0. The one tool it wrote itself is awaiting approval.</span></li>
+          <li><span><b>Enkidu</b> runs 9 mechanical tasks.</span></li>
+          <li><span><b>The dynamism line:</b> verdict → kill test → the next tick measures. The tests are underpowered (n is small).</span></li>
+        </ul>
+        <p class="prose">Four voices wrote: Gemini (no context, two seats), Gemma (local) and Grok Bot. They did not hear each other.</p>
+        <p class="prose">The pre-expectation was written before the round: no new agent; a proposal to attach “friction” to Enlil will come and will be rejected; the blind mutation engine will be Enkidu.</p>
+      </div>
+      <div class="part">
+        <h3>Counter-thesis</h3>
+        <p class="prose">The voices split in four places; the decision was there. The hardest counter-thesis was the manual alternative: if the owner looked at the list of decaying rules for 15 minutes once a week, the same result might come out.</p>
+        <p class="vt">Split · who produces the mutation</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Proposal</span><p><b>“100 local variations a day”.</b> The zero-cost assumption collapsed the same day, under GPU starvation.</p></div>
+          <div class="vr"><span class="idx">Counter</span><p><b>“One a day, ≤3 candidates + placebo 4:1”.</b></p></div>
+          <div class="dec"><span class="idx">Decision</span><p>Placebo was chosen.</p></div>
+        </div>
+        <p class="vt">Split · scale</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Proposal</span><p><b>Three steps in 30 days.</b> That was the 30-day plan of three voices.</p></div>
+          <div class="vr"><span class="idx">Counter</span><p><b>The arithmetic:</b> at a 76% base rate, seeing a 10-point difference with 80% power takes ≈240 episodes per arm. Three steps do not fit into 30 days.</p></div>
+          <div class="dec"><span class="idx">Decision</span><p>30 days = one step. The plan of the three voices was optimistic.</p></div>
+        </div>
+        <p class="vt">Split · the manual alternative</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Proposal</span><p><b>The automatic loop:</b> mutation → selection → consolidation.</p></div>
+          <div class="vr"><span class="idx">Counter</span><p><b>A look by hand:</b> if the owner looked at the list of decaying rules for 15 minutes once a week, the same result might come out.</p></div>
+          <div class="dec"><span class="idx">Decision</span><p>Accepted as the kill test: two weeks in parallel; if they are equal, the automation stops.</p></div>
+        </div>
+        <p class="vt">Split · contrast embedding analysis</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Proposal</span><p><b>“Contrast embedding analysis”.</b></p></div>
+          <div class="vr"><span class="idx">Counter</span><p><b>An experiment the same day:</b> the embedding model saw contrary verdicts as 0.90 similar.</p></div>
+          <div class="dec"><span class="idx">Decision</span><p>Removed.</p></div>
+        </div>
+      </div>
+      <div class="part">
+        <h3>Synthesis</h3>
+        <p class="prose">All four of the four voices agreed on these (4/4):</p>
+        <ul class="pl">
+          <li><span>No new agent is written. What evolves is the rule set and the harness (genotype = rule, phenotype = harness).</span></li>
+          <li><span>The loop: mutation → selection (kill test + Wilson interval/MDE) → consolidation. Automatic into shadow; into the real system only with the owner’s approval.</span></li>
+          <li><span>Enlil stays blind; selection gets a blind-judge gate.</span></li>
+          <li><span>The main measure is the number of closed loops: if it does not rise in four weeks, there is no evolution.</span></li>
+        </ul>
+        <p class="prose">Source verification: two academic citations were verified on the web; one had been given with the wrong year (2024 instead of 2026). One citation could not be verified and was not used as support.</p>
+      </div>
+      <div class="part">
+        <h3>Kill test</h3>
+        <p class="prose">Two measurements kill the thesis. The first is the manual alternative: it runs in parallel for two weeks, and if the two are equal the automation stops. The second is the main measure: if the number of closed loops does not rise in four weeks, there is no evolution.</p>
+      </div>
+      <div class="part">
+        <h3>Not adopted</h3>
+        <ul class="pl">
+          <li><span><b>“100 local variations a day”.</b> The zero-cost assumption collapsed the same day, under GPU starvation.</span></li>
+          <li><span><b>The three-step 30-day plan.</b> It did not fit the arithmetic of ≈240 episodes per arm.</span></li>
+          <li><span><b>“Contrast embedding analysis”.</b> Refuted by experiment the same day; removed.</span></li>
+          <li><span><b>The unverifiable citation.</b> Not used as support.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Order</h3>
+        <p class="prose">The synthesis turned into an order: EVOLUTION-2 Step 1, in shadow.</p>
+        <ul class="chain" aria-label="EVOLUTION-2 Step 1 sequence">
+          <li>Enkidu <small>decaying list + placebo</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enki <small>≤3 candidates</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enlil <small>blind stamp</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enkidu <small>shadow statistics gate (240 episodes/arm)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Consolidation</li>
+        </ul>
+        <p class="prose">It was built the same day: 7 tools, 153 tests. The model that built it left 9 objections; the objections went on record. One of them: “the backward arm, at a 24-hour horizon, takes ~218 days to reach 240 episodes → a structural zero in this arm”.</p>
+      </div>
+      <div class="part obs">
+        <h3>Scorecard</h3>
+        <p class="prose"><b>SHARPENED.</b> The expectation held; the new parts that sharpened it: the placebo, the 240-episode arithmetic and the manual alternative as kill test.</p>
+        <div>
+          <div class="bar" style="--v:23;--tot:240" aria-hidden="true"><i></i></div>
+          <p class="barlab"><span>episodes <b>23</b>/240 · “early”</span><span class="stamp">8 Oct</span></p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">When the round ends, a scorecard is written.</p>
+    <p class="disclaimer">The numbers and dates on this page come from the studio’s own records; the stamp shows the date of the count.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="en.html">Home</a><a href="autonomy.html">Autonomy</a><a href="program.html">Program</a><a href="kivilcim.html" lang="tr" hreflang="tr">Türkçe</a><a href="#icerik">Back to top ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

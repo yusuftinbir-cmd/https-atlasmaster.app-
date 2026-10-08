@@ -1,0 +1,124 @@
+/* Atlas — Kıvılcım sayfası · kök style.css değişkenleriyle; burada yalnız bu sayfanın parçaları */
+:root{--ok:#1c7a4c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#6fd49c}}
+:root[data-theme="dark"]{--ok:#6fd49c}
+
+main{counter-reset:sec}
+.sec .idx.auto::before{counter-increment:sec;content:"§ " counter(sec,decimal-leading-zero)}
+.hero .lead+.lead{margin-top:12px}
+.hero .pull{margin:22px 0 4px}
+.stack{display:grid;gap:28px;min-width:0}
+.stack>*{min-width:0}
+
+/* damga: sayımın tarihi */
+.stamp{font:500 .6875rem/1.5 var(--mono);letter-spacing:.04em;color:var(--mut);white-space:nowrap}
+.stamp::before{content:"";display:inline-block;width:6px;height:6px;border:1px solid var(--warn);margin-right:6px;vertical-align:.04em}
+
+/* şekil altı: ne gösteriyor */
+.what{color:var(--mut);font-size:.9375rem;line-height:1.6;margin-top:12px;max-width:44em}
+.what b{font:500 .6875rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg);margin-right:8px}
+.what .stamp{display:block;margin-top:6px}
+.note{border-left:2px solid var(--warn);padding-left:12px;font-size:.9688rem;line-height:1.55;max-width:40em}
+.fig{max-width:560px}
+.fig svg{padding:14px 10px}
+
+/* tur şekli */
+.n.sm{font-size:12px}
+.stp .bx,.stp .k,.sieve{transition:stroke .3s,fill .3s}
+.stp.on .bx{stroke:var(--acc);stroke-width:2}
+.stp.on .k{fill:var(--acc)}
+.sieve{fill:none;stroke:var(--fg);stroke-width:3;stroke-dasharray:9 5}
+.stp.on .sieve{stroke:var(--acc)}
+.fun{fill:none;stroke:var(--mut);stroke-width:1;stroke-dasharray:3 3}
+.p{fill:var(--mut)}
+.p.gec{fill:var(--ok)}
+.p.kal{fill:var(--warn)}
+.tagx rect{fill:var(--bg);stroke:var(--warn);stroke-width:1.2}
+.live .still{display:none}
+
+/* yedi basamak */
+.steps{counter-reset:st;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.steps>li{background:var(--bg);display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;padding:20px 16px 22px;min-width:0}
+.steps>li::before{counter-increment:st;content:counter(st,decimal-leading-zero);grid-column:1;grid-row:1/span 5;font:400 1.9rem/1 var(--serif);color:var(--warn)}
+.steps>li>*{grid-column:2;min-width:0}
+.steps p{color:var(--mut);font-size:.9688rem;max-width:40em}
+.steps p+p{margin-top:8px}
+.steps q{color:var(--fg);font:400 1.25rem/1.3 var(--serif);quotes:none}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:12px 0}
+.chain li{font:500 .6875rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--fg);border:1px solid var(--line2);padding:4px 9px;background:var(--surface);min-width:0}
+.chain li small{font-size:inherit;text-transform:none;letter-spacing:.02em;color:var(--mut)}
+.chain .ar{border:0;padding:0;background:none;color:var(--warn)}
+
+/* karne dağılımı */
+.dist{border-bottom:1px solid var(--line)}
+.dist li{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr) 2.2em;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.dist span{font:500 .6875rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);overflow-wrap:anywhere}
+.dist b{font:400 1.7rem/1 var(--serif);text-align:right}
+.db{display:block;height:12px;background:var(--line)}
+.db i,.bar i{display:block;height:100%;width:calc(var(--v)/var(--tot)*100%);min-width:2px;background:var(--mut)}
+.dist .c-acc .db i{background:var(--acc)}
+.dist .c-ok .db i{background:var(--ok)}
+.dist .c-warn .db i{background:var(--warn)}
+.dist .c-dim .db i{background:var(--line2)}
+.dhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-bottom:12px}
+.dhead .idx{margin:0;color:var(--fg)}
+.bar{height:8px;background:var(--line);margin:14px 0 6px;max-width:40em}
+.bar i{background:var(--acc)}
+.barlab{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:40em;font:500 .6875rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.barlab b{color:var(--fg);font-weight:500}
+
+/* makale */
+.cell h3 a{color:var(--fg);text-decoration:none}
+.cell h3 a:hover{color:var(--acc)}
+.part>h3{display:flex;align-items:center;gap:10px;font:500 .75rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--warn);margin-bottom:12px}
+.part>h3::before{content:"";width:18px;height:1px;background:var(--warn)}
+.part>*+*{margin-top:14px}
+.part .pull{margin-top:18px}
+.pl{display:grid;gap:10px;max-width:40em;font-size:1.0625rem;line-height:1.6}
+.pl li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px}
+.pl li::before{content:"–";color:var(--warn)}
+.pl b{font-weight:500}
+
+/* ayrışan: sol öneri · sağ karşı · ortada karar */
+.vt{font:500 .6875rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:8px}
+.vs{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);overflow:hidden}
+.vs>div{background:var(--bg);padding:16px 16px 18px;min-width:0}
+.vs .idx{color:var(--mut);margin-bottom:8px}
+.vs p{font-size:.9688rem;line-height:1.55;color:var(--mut)}
+.vs p b{color:var(--fg);font-weight:500}
+.vs .dec{background:var(--surface);border-top:2px solid var(--acc)}
+.vs .dec .idx{color:var(--acc)}
+.vs .dec p{color:var(--fg);font-weight:500}
+.part .vs+.vt{margin-top:22px}
+.part .vt+.vs{margin-top:0}
+
+@media (min-width:760px){
+  .steps>li{grid-template-columns:56px minmax(0,1fr);padding:26px 26px 28px}
+  .steps>li::before{font-size:2.4rem}
+  .dist li{grid-template-columns:minmax(0,14em) minmax(0,1fr) 2.6em;gap:16px}
+  .vs{grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,1fr)}
+  .vs .vl{grid-column:1;grid-row:1}
+  .vs .vr{grid-column:3;grid-row:1}
+  .vs .dec{grid-column:2;grid-row:1;border-top:0;border-inline:2px solid var(--acc);display:grid;align-content:center}
+}
+
+/* hareket: yalnız izin varsa; her hareket bir sayıya ya da akışa bağlı */
+@media (prefers-reduced-motion:no-preference){
+  .js .db i,.js .bar i{transform:scaleX(0);transform-origin:left}
+  .js .in .db i,.js .in .bar i{transform:none;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .js .in li:nth-child(2) .db i{transition-delay:.08s}
+  .js .in li:nth-child(3) .db i{transition-delay:.16s}
+  .js .in li:nth-child(4) .db i{transition-delay:.24s}
+  .js .in li:nth-child(5) .db i{transition-delay:.32s}
+  .js .in li:nth-child(6) .db i{transition-delay:.4s}
+  .js .in li:nth-child(7) .db i{transition-delay:.48s}
+  .js .vs .vl,.js .vs .vr,.js .vs .dec{opacity:0}
+  .js .vs .vl{transform:translateX(-14px)}
+  .js .vs .vr{transform:translateX(14px)}
+  .js .vs.in .vl,.js .vs.in .vr{opacity:1;transform:none;transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .js .vs.in .dec{opacity:1;transition:opacity .5s .55s}
+  .tagx{transition:opacity .25s}
+}
+@media (prefers-reduced-motion:reduce){
+  .db i,.bar i,.vs>div,.stp .bx,.stp .k,.sieve,.tagx,.p{animation:none!important;transition:none!important}
+}
