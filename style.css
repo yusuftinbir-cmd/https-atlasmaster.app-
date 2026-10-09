@@ -268,3 +268,7 @@ footer{border-top:1px solid var(--line2);padding:26px 0 40px}
 .strip li{border:1px solid var(--line2);background:var(--surface)}
 .strip img{display:block;width:100%;height:auto}
 .strip span{display:block;font:500 .625rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);padding:6px 8px;border-top:1px solid var(--line)}
+details.acilir{margin-top:20px;border:1px solid var(--line2);border-radius:6px;background:var(--surface);padding:14px 18px}
+details.acilir summary{cursor:pointer;font-weight:600}
+details.acilir[open] summary{margin-bottom:12px}
+details.acilir p{margin:0 0 8px;color:var(--mut)}
