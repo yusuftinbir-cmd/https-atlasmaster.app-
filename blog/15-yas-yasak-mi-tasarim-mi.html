@@ -12,17 +12,19 @@
 <meta property="og:description" content="Dünyada üç yaklaşım, Türkiye'nin modeli ve ilk yıl için ölçüsüyle beş öneri.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://atlasmaster.app/blog/15-yas-yasak-mi-tasarim-mi.html">
-<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image" content="https://atlasmaster.app/blog/og-15-yas.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Atlas: ölçüm ve kılavuz çizgileri, şematik çizim">
+<meta property="og:image:alt" content="Proje günlüğü. Yasak mı, tasarım mı? Hangisinin işe yaradığını gösterecek ölçüm henüz yok; 1 Kasım'dan önce kurulmazsa hiç olmayacak. Atlas Stüdyo, 10 Ekim 2026.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://atlasmaster.app/blog/og-15-yas.png">
 <link rel="canonical" href="https://atlasmaster.app/blog/15-yas-yasak-mi-tasarim-mi.html">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
 <link rel="icon" href="../favicon.ico" sizes="32x32">
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../blog.css">
 <script src="../script.js"></script>
+<script src="blog.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "45cebae6af65484e8fed23b68faa175f"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
@@ -55,16 +57,14 @@
 <article>
 <header class="post-head">
   <div class="wrap">
-    <p class="eyebrow"><a href="../blog.html" style="color:inherit;text-decoration:none">Proje günlüğü</a> · Kıvılcım turu</p>
+    <p class="eyebrow"><a href="../blog.html" style="color:inherit;text-decoration:none">Proje günlüğü</a></p>
     <h1>Yasak mı, <em>tasarım</em> mı?</h1>
     <p class="dek">15 yaş kuralını işe yarar kılacak beş şey</p>
     <div class="meta">
       <time datetime="2026-10-10">10 Ekim 2026</time>
       <span class="by">Atlas Stüdyo</span>
-      <span>11 dk okuma</span>
-      <ul class="tags" aria-label="Etiketler"><li class="tag acc">Kıvılcım turu</li></ul>
+      <span>19 dk okuma</span>
     </div>
-    <p class="kunye">Yapay zekâ modelleriyle hazırlandı; son kontrol ve yayın kararı insan editörde. <a href="#yontem">Bu yazı nasıl hazırlandı ↓</a></p>
   </div>
 </header>
 <div class="ruler" aria-hidden="true"></div>
@@ -72,12 +72,13 @@
 <div class="wrap post-grid">
   <nav class="toc" aria-label="İçindekiler">
     <span class="idx">İçindekiler</span>
-    <ol>
+    <ol id="toc-liste">
       <li><a href="#ne-getirildi">Ne getirildi</a></li>
       <li><a href="#dunyada">Dünyada üç yaklaşım</a></li>
       <li><a href="#tezler">Tezler</a></li>
       <li><a href="#iyi-yapilan">Türkiye'nin modeli neyi iyi yapıyor</a></li>
       <li><a href="#nerede-kirilir">Nerede kırılır</a></li>
+      <li><a href="#karsi-ses">Karşı ses</a></li>
       <li><a href="#oneriler">Biz ne öneririz</a></li>
       <li><a href="#fikir-degisir">Fikrimizi ne değiştirir?</a></li>
       <li><a href="#kaynakca">Kaynakça</a></li>
@@ -86,7 +87,7 @@
   </nav>
 
   <div class="post">
-    <p>Sosyal medyada yaş sınırı getiren yönetmelik 10 Ekim 2026'da Resmî Gazete'de yayımlandı ve 1 Kasım'da yürürlüğe giriyor.<sup><a href="#k1">[1]</a></sup> Tartışma büyük ölçüde tek bir soruya sıkıştı: 15 yaş altına yasak doğru mu, yanlış mı? Bu yazı soruyu biraz kaydırıyor. Yasağın kendisinden çok, yasağın yanında yazılan kurallara ve bunların nasıl ölçüleceğine bakıyor.</p>
+    <p>Sosyal medyada yaş sınırı getiren yönetmelik 10 Ekim 2026'da Resmî Gazete'de yayımlandı ve 1 Kasım'da yürürlüğe giriyor.<sup><a href="#k1">[1]</a></sup> Tartışma büyük ölçüde tek bir soruya sıkıştı: 15 yaş altına yasak doğru mu, yanlış mı? Bu yazı soruyu biraz kaydırıyor. Yasağın kendisinden çok, yasağın yanında yazılan kurallara ve bunların nasıl ölçüleceğine bakıyor. Modellerin büyük ölçüde uyuştuğu görüşe karşı en güçlü itirazı da ayrı bir karşıt sese yazdırdık; o itiraz da bu yazıda.</p>
 
     <h2 id="ne-getirildi">Ne getirildi</h2>
     <p>Düzenlemenin iki katmanı var. Birincisi yaş sınırı: 15 yaşın altındaki çocuklar sosyal medya hesabı açamayacak. İkincisi bu sınırı aşanlar için kurallar: 15–18 yaş arasındaki hesaplar, yönetmeliğin 8. maddesinde sayılan varsayılan ayarlarla çalışacak.</p>
@@ -106,7 +107,7 @@
         <span class="idx">Model 2</span>
         <h3>Tasarım kuralları modeli</h3>
         <p>Yaşa göre ürünün nasıl davranacağını yazan kurallar.</p>
-        <p>Birleşik Krallık (Çevrimiçi Güvenlik Yasası ve Yaşa Uygun Tasarım Kuralları)<sup><a href="#k9">[9]</a></sup>, AB (Dijital Hizmetler Yasası, yaş doğrulama uygulaması pilotu)<sup><a href="#k10">[10]</a><a href="#k11">[11]</a></sup>.</p>
+        <p>Birleşik Krallık (Çevrimiçi Güvenlik Yasası ve Yaşa Uygun Tasarım Kuralları; Haziran 2026'da 16 yaş yasağını açıkladı)<sup><a href="#k9">[9]</a><a href="#k18">[18]</a></sup>, AB (Dijital Hizmetler Yasası, yaş doğrulama uygulaması pilotu)<sup><a href="#k10">[10]</a><a href="#k11">[11]</a></sup>.</p>
       </div>
       <div class="cell">
         <span class="idx">Model 3</span>
@@ -115,6 +116,9 @@
         <p>Güney Kore (2011–2021, kaldırıldı)<sup><a href="#k12">[12]</a><a href="#k13">[13]</a></sup>, Çin (2021 oyun süresi kısıtı, küçük modu)<sup><a href="#k14">[14]</a><a href="#k15">[15]</a></sup>.</p>
       </div>
     </div>
+
+    <h3>Çizgi siliniyor: tasarımdan yasağa</h3>
+    <p>Son bir yılda iki model birbirine yaklaştı. Avrupa Parlamentosu Kasım 2025'te, yasama niteliği taşımayan bir kararla, AB genelinde 16 yaş sınırını (13–16 yaş arası veli onayıyla) ve en zararlı bağımlılık yaratan tasarım uygulamalarının yasaklanmasını birlikte istedi.<sup><a href="#k19">[19]</a></sup> Tasarım kurallarını en uzun deneyen ülke Birleşik Krallık. Ofcom'un Mart 2026'da açıkladığı araştırmaya göre orada 8–12 yaşındaki çocukların %72'si, 13 yaş sınırı olan site ve uygulamalara erişiyordu.<sup><a href="#k20">[20]</a></sup> Hükümet Haziran 2026'da 16 yaş altına hizmetin yasaklanacağını açıkladı; kuralların 2027 ilkbaharında yürürlüğe girmesi bekleniyor.<sup><a href="#k18">[18]</a></sup> Türkiye'nin iki modeli birlikte kurması bu yönelimle uyumlu.</p>
 
     <h3>Yasak ne kadar tutuyor: Avustralya'nın ilk üç ayı</h3>
     <p>Yasak modelinin ölçülmüş en yeni örneği Avustralya. Ülkenin çevrimiçi güvenlik kurumu eSafety, yasağın ilk üç ayına ilişkin bulgularını Temmuz 2026'da yayımladı.<sup><a href="#k2">[2]</a><a href="#k3">[3]</a></sup> Tablo şöyle: yasak hesap sayısını azaltıyor, kullanımı ise az.</p>
@@ -133,82 +137,123 @@
       </div>
       <figcaption class="cap"><span>Avustralya · 16 yaş altı</span><span>eSafety, Temmuz 2026</span></figcaption>
     </figure>
-    <p>Hesap sahipliği belirgin biçimde düştü; kullanımdaki gerileme ise yaklaşık 4–5 puanda kaldı.<sup><a href="#k2">[2]</a><a href="#k4">[4]</a></sup> Sebep çocukların kurnazlığından çok platformların uygulaması: hâlâ hesabı olan çocukların %50,2'si platformun yaşını hiç sormadığını, %18'i ise yaşının yanlış tahmin edildiğini söylüyor.<sup><a href="#k3">[3]</a><a href="#k4">[4]</a></sup></p>
+    <p>Hesap sahipliği belirgin biçimde düştü; kullanımdaki gerileme ise yaklaşık 4–5 puanda kaldı.<sup><a href="#k2">[2]</a><a href="#k4">[4]</a></sup> Sebep çocukların kurnazlığından çok platformların uygulaması: hâlâ hesabı olan çocukların %50,2'si platformun yaşını hiç sormadığını, %18'i ise yaşının yanlış tahmin edildiğini söylüyor.<sup><a href="#k3">[3]</a><a href="#k4">[4]</a></sup> Üç ay ise yasağın asıl etkisini göstermeye yetmeyebilir: yaş sınırları en çok, henüz hesabı olmayan kuşakta iz bırakır. Bu itiraz <a href="#tez-2">Tez 2</a>'de.</p>
 
-    <h3>Süre yasakları: en zayıf sınıf</h3>
-    <p>Güney Kore 2011'de gece oyun yasağı getirdi. Yasak etkisiz bulundu<sup><a href="#k12">[12]</a></sup> ve 2021'de kaldırıldı.<sup><a href="#k13">[13]</a></sup> Turdaki yapay zekâ modellerinin ortak görüşü, saat ve süre yasaklarının üç model içinde en zayıfı olduğu yönünde; gerekçe ve karşı görüş <a href="#tez-5">Tez 5</a>'te.</p>
+    <h3>Süre yasakları: Kore'nin dersi</h3>
+    <p>Güney Kore 2011'de gece oyun yasağı getirdi. Yasak etkisiz bulundu<sup><a href="#k12">[12]</a></sup> ve 2021'de kaldırıldı.<sup><a href="#k13">[13]</a></sup> Turdaki modellerin ortak görüşü, saat ve süre yasaklarının üç model içinde en zayıfı olduğu yönünde. Karşıt ses buna Norveç'in okul telefon yasağıyla itiraz etti; iki görüş de <a href="#tez-5">Tez 5</a>'te.</p>
 
-    <p class="pull">Yaş sınırı tek başına sonuç üretmez; asıl işi tasarım kuralları görür.</p>
+    <p class="pull">Yaş sınırı kimin gireceğini, tasarım kuralları içeride ne olacağını belirler. İkisi de ölçülmezse hangisinin işe yaradığını bilemeyiz.</p>
 
     <h2 id="tezler">Tezler</h2>
-    <p>Kıvılcım turunun asıl çıktısı aşağıdaki altı tez. Her kartta tezin kendisi, gerekçesi, en güçlü karşı görüş, fikrimizi değiştirecek ölçü, tezi savunan modeller ve kaynağı yer alıyor.</p>
-    <p class="tz-not">Modeller (ölçülmüş adlar): Claude Opus 5.5 · Gemini 3.1 Pro (Antigravity, yüksek düzey) · Gemini 3.8 Flash (Antigravity, yüksek düzey) · Gemini uygulaması (3.1 Pro, uzatılmış düşünme) · Grok (Grok Bot uygulaması; sürüm ölçülmedi) · stüdyonun üç ajanı (ikisi Claude Opus 5.5 bineğiyle, biri iş bilgisayarındaki Claude; sürümü ölçülmedi). Toplam 8 bağımsız cevap.</p>
+    <p>Turun asıl çıktısı altı tez. Her kartta tezin gerekçesi, en güçlü karşı görüş ve fikrimizi değiştirecek ölçü var. Kartın altında her modelin o tezdeki tutumu yazılı: savunan, kısmen katılan, karşı çıkan ve değinmeyen. Tutumlar her modelin kendi cevabından alıntıyla ölçüldü.</p>
     <div class="tezler">
       <article class="tez" id="tez-1" aria-labelledby="tez-1-b">
         <span class="idx">Tez 1</span>
         <h3 id="tez-1-b">Yaş sınırı tek başına sonuç üretmez; koruyan, 15–18 yaş için yazılan tasarım kuralları.</h3>
-        <div class="tz-p"><h4>Neden</h4><p>Zararın somut yolları (yabancıdan gelen mesaj, önerilerde çocuğun görünmesi, kesintisiz akış, rehberden eşleştirme) yaşla değil varsayılan ayarla kapanır. Varsayılan ayar platform için ucuz, çocuk için aşması zor ve herkese aynı anda uygulanır. Yönetmeliğin 8. maddesi bunları tek tek yazıyor: gizli hesap, yalnız takip edilenden mesaj, sonsuz akış ve kişiselleştirme yasağı.</p></div>
-        <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Tasarım kuralı, kullanıcının yaşı bilinmeden uygulanamaz; yani 8. madde, yaş sınırı ve yaş doğrulaması olmadan çalışmaz. Platformların yaptığı değişikliklerin sayısı, çocukların daha az zarar gördüğünü kendiliğinden göstermez.</p></div>
-        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>Yürürlükten 6 ay sonra bağımsız test hesapları, büyük platformların 8. maddeyi büyük ölçüde uyguladığını gösterir ama yabancıdan istenmeyen temas şikâyetleri düşmezse, "tasarım korur" tezi zayıflar.</p></div>
-        <div class="tz-alt">
-          <div><h4>Savunan modeller</h4><ul class="tz-mod"><li>Claude Opus 5.5</li><li>Grok</li><li>Gemini 3.1 Pro</li><li>stüdyonun üç ajanı (iki Claude Opus 5.5, bir Claude)</li></ul></div>
-          <div><h4>Kaynak</h4><p class="tz-src">Resmî Gazete, 10.10.2026, sayı 33396 (md. 8)<sup><a href="#k1">[1]</a></sup> · LSE Digital Futures for Children ve 5Rights, "Impact of regulation on children's digital lives" (2024): düzenlemeler sonrası platformlarda 128 değişiklik.<sup><a href="#k16">[16]</a></sup></p></div>
+        <div class="tz-iki">
+          <div class="tz-p"><h4>Neden</h4><p>Zararın somut yolları (yabancıdan gelen mesaj, önerilerde çocuğun görünmesi, kesintisiz akış, rehberden eşleştirme) yaşla değil varsayılan ayarla kapanır. Varsayılan ayar platform için ucuz, çocuk için aşması zor ve herkese aynı anda uygulanır. Yönetmeliğin 8. maddesi bunları tek tek yazıyor: gizli hesap, yalnız takip edilenden mesaj, sonsuz akış ve kişiselleştirme yasağı.</p></div>
+          <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Tasarım kuralı, kullanıcının yaşı bilinmeden uygulanamaz; yani 8. madde yaş sınırı ve yaş doğrulaması olmadan çalışmaz. Platformlarda yapılan değişikliklerin sayısı da çocukların daha az zarar gördüğünü kendiliğinden göstermez. Bağımsız cevapların hiçbiri teze açıkça karşı çıkmadı, üçü kısmen katıldı. Gemini 3.1 Pro 8. maddeyi "platform mimarisine atılmış doğrudan bir neşter" diye övüyor; ama Birleşik Krallık ile AB'nin risk temelli yolunun "çalışmadığını" da yazıyor. Gemini uygulamasına göre belirleyici olan tasarım kuralı değil, devlet destekli doğrulama. Stüdyo ajanı 2 ise zayıf halkayı yasakta değil, doğrulama yönteminde görüyor.</p>
+            <div class="tz-ses"><h5>Karşıt ses</h5><p>Tasarım kurallarını en uzun deneyenler onları yetersiz bulup yaş sınırına yöneldi. Birleşik Krallık'ta tasarım kuralları yürürlükteyken 8–12 yaşındakilerin %72'si 13 yaş sınırı olan site ve uygulamalara erişiyordu<sup><a href="#k20">[20]</a></sup> ve hükümet 2026'da 16 yaş yasağını açıkladı.<sup><a href="#k18">[18]</a></sup> Meta'nın genç hesapları için listelediği güvenlik araçlarından 47'si sınandı: %64'ü ya artık yoktu ya da etkisizdi, yalnız %17'si tarif edildiği gibi çalıştı. Rapor çocuk güvenliği savunucusu kuruluşların.<sup><a href="#k21">[21]</a></sup></p></div>
+          </div>
         </div>
+        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>Yürürlükten 6 ay sonra bağımsız test hesapları, büyük platformların 8. maddeyi büyük ölçüde uyguladığını gösterir ama yabancıdan istenmeyen temas şikâyetleri düşmezse, "tasarım korur" tezi zayıflar.</p></div>
+        <dl class="tz-alt">
+          <div><dt>Savunan</dt><dd>Claude Opus 5.5 · Gemini 3.8 Flash · Grok · Stüdyo ajanı 1 · Stüdyo ajanı 3</dd></div>
+          <div><dt>Kısmen katılan</dt><dd>Gemini 3.1 Pro · Gemini uygulaması · Stüdyo ajanı 2</dd></div>
+          <div><dt>Karşı çıkan</dt><dd>yok</dd></div>
+          <div><dt>Değinmeyen</dt><dd>yok</dd></div>
+          <div class="tz-kay"><dt>Kaynak</dt><dd class="tz-src">Resmî Gazete, 10.10.2026, sayı 33396 (md. 8)<sup><a href="#k1">[1]</a></sup> · LSE Digital Futures for Children ve 5Rights, "Impact of regulation on children's digital lives" (2024): düzenlemeler sonrası platformlarda 128 değişiklik.<sup><a href="#k16">[16]</a></sup> · karşıt sesin kaynakları <sup><a href="#k20">[20]</a></sup> <sup><a href="#k18">[18]</a></sup> <sup><a href="#k21">[21]</a></sup></dd></div>
+        </dl>
       </article>
       <article class="tez" id="tez-2" aria-labelledby="tez-2-b">
         <span class="idx">Tez 2</span>
         <h3 id="tez-2-b">Hesap yasağı hesabı azaltır, kullanımı daha az azaltır.</h3>
-        <div class="tz-p"><h4>Neden</h4><p>Yasağın hukuki konusu hesap, çocuğun dikkatini tüketen ise akış. Akış çoğu yerde hesapsız da izlenebiliyor; mesajlaşma ve oyun kapsam dışında kalıyor. Bu yüzden en kolay ölçülen şey (hesap sayısı) düşer, asıl hedef (ne kadar ve neye maruz kalındığı) daha az kıpırdar.</p></div>
-        <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Üç ay çok erken. Avustralya'da hesap sahipliğindeki 10 puanlık düşüş küçük değil. Avustralya'da devlet belirteci yok; Türkiye'nin modeli tam da Avustralya'nın zayıf kaldığı doğrulama halkasını kapatmaya çalışıyor.</p></div>
-        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>31 Mart 2027'den sonra bağımsız bir ankette 13–14 yaşta kullanım oranı yürürlük öncesine göre 20 puandan fazla düşmüşse, bu tez Türkiye için düşer.</p></div>
-        <div class="tz-alt">
-          <div><h4>Savunan modeller</h4><ul class="tz-mod"><li>Claude Opus 5.5</li><li>Grok</li><li>Gemini 3.8 Flash</li><li>stüdyo ajanı (Claude Opus 5.5)</li></ul></div>
-          <div><h4>Kaynak</h4><p class="tz-src">eSafety Komiserliği, üç aylık izleme raporu (Temmuz 2026): en az bir kısıtlı platformu kullanma %85,9 → %81,5; hesap sahipliği %52,4 → %42,1.<sup><a href="#k2">[2]</a><a href="#k4">[4]</a></sup></p></div>
+        <div class="tz-iki">
+          <div class="tz-p"><h4>Neden</h4><p>Yasağın hukuki konusu hesap, çocuğun dikkatini tüketen ise akış. Akış çoğu yerde hesapsız da izlenebiliyor; mesajlaşma ve oyun kapsam dışında kalıyor. Bu yüzden en kolay ölçülen şey (hesap sayısı) düşer, asıl hedef (ne kadar ve neye maruz kalındığı) daha az kıpırdar.</p></div>
+          <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Üç ay çok erken; hesap sahipliğindeki 10 puanlık düşüş küçük değil. Avustralya'da devlet belirteci yoktu; Türkiye'nin modeli tam da Avustralya'nın zayıf kaldığı doğrulama halkasını kapatmaya çalışıyor. Bağımsız cevapların sekizi de bu teze katıldı; karşı çıkan çıkmadı.</p>
+            <div class="tz-ses"><h5>Karşıt ses</h5><p>Ölçü yanlış seçildi. Yaş sınırları zaten başlamış olanı az, henüz başlamamış olanı çok etkiler; doğru ölçü üç ay sonraki hesap sayısı değil, ilk hesabın açıldığı yaş. Herkesin deldiğini bildiği 21 yaş alkol sınırı bile ABD'de tüketimi ve başlıca zararları açıkça azalttı.<sup><a href="#k22">[22]</a></sup> Avustralya'da da ilk değişen davranıştan çok algı oldu; sayılar <a href="#karsi-ses">Karşı ses</a> bölümünde.<sup><a href="#k23">[23]</a></sup></p></div>
+          </div>
         </div>
+        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>31 Mart 2027'den sonra bağımsız bir ankette 13–14 yaşta kullanım oranı yürürlük öncesine göre 20 puandan fazla düşmüşse, bu tez Türkiye için düşer.</p></div>
+        <dl class="tz-alt">
+          <div><dt>Savunan</dt><dd>sekiz sesin hepsi (Claude Opus 5.5 · Gemini 3.1 Pro · Gemini 3.8 Flash · Gemini uygulaması · Grok · Stüdyo ajanı 1 · Stüdyo ajanı 2 · Stüdyo ajanı 3)</dd></div>
+          <div><dt>Kısmen katılan</dt><dd>yok</dd></div>
+          <div><dt>Karşı çıkan</dt><dd>yok</dd></div>
+          <div><dt>Değinmeyen</dt><dd>yok</dd></div>
+          <div class="tz-kay"><dt>Kaynak</dt><dd class="tz-src">eSafety Komiserliği, üç aylık izleme raporu (Temmuz 2026): en az bir kısıtlı platformu kullanma %85,9 → %81,5; hesap sahipliği %52,4 → %42,1.<sup><a href="#k2">[2]</a><a href="#k4">[4]</a></sup> · karşıt sesin kaynakları <sup><a href="#k22">[22]</a></sup> <sup><a href="#k23">[23]</a></sup></dd></div>
+        </dl>
       </article>
       <article class="tez" id="tez-3" aria-labelledby="tez-3-b">
         <span class="idx">Tez 3</span>
         <h3 id="tez-3-b">Mahremiyeti belirtecin içeriği değil, nasıl üretilip doğrulandığı belirler.</h3>
-        <div class="tz-p"><h4>Neden</h4><p>Belirtecin yalnız "15'i doldurdu mu, 18'i doldurdu mu" bilgisini taşıması doğru bir başlangıç. Ama üç soru açık: belirteç tek kullanımlık mı, iki platformdaki belirteç aynı kişiye bağlanabiliyor mu, platform doğrulama için her seferinde devlete mi soruyor? Cevaba göre sistem ya iyi bir örnek ya da kimin hangi platforma girdiğini gösteren merkezi bir kayıt olur. Kimlik fotoğrafını platforma yükletmek ise daha kötü: Discord'un yaş itirazlarını inceleyen taşerondan yaklaşık 70.000 kullanıcının kimlik fotoğrafı sızdı.</p></div>
-        <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Amaç kusursuz bir sistem değil, 13 yaşındakinin zahmetsizce hesap açmasını engellemek. Devlet zaten başka kayıtlarla bundan fazlasını biliyor; belirteç çok az şey ekler.</p></div>
-        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>Başkanlığın teknik rehberi belirteci tek kullanımlık, platformlar arasında bağlanamaz ve devlete sorgu atmadan doğrulanabilir tanımlarsa, bu kaygı düşer.</p></div>
-        <div class="tz-alt">
-          <div><h4>Savunan modeller</h4><ul class="tz-mod"><li>Claude Opus 5.5</li><li>Gemini 3.1 Pro</li><li>Gemini 3.8 Flash</li><li>Gemini uygulaması (3.1 Pro, uzatılmış düşünme)</li><li>stüdyonun iki ajanı (Claude Opus 5.5, Claude)</li></ul></div>
-          <div><h4>Kaynak</h4><p class="tz-src">Resmî Gazete, 33396 (md. 5, 7, 12)<sup><a href="#k1">[1]</a></sup> · The Record, Discord kimlik sızıntısı haberi (9 Ekim 2025).<sup><a href="#k17">[17]</a></sup></p></div>
+        <div class="tz-iki">
+          <div class="tz-p"><h4>Neden</h4><p>Belirtecin yalnız "15'i doldurdu mu, 18'i doldurdu mu" bilgisini taşıması doğru bir başlangıç. Ama üç soru açık: belirteç tek kullanımlık mı, iki platformdaki belirteç aynı kişiye bağlanabiliyor mu, platform doğrulama için her seferinde devlete mi soruyor? Cevaba göre sistem ya iyi bir örnek ya da kimin hangi platforma girdiğini gösteren merkezi bir kayıt olur. Kimlik fotoğrafını platforma yükletmek ise daha kötü: Discord'un yaş itirazlarını inceleyen taşerondan yaklaşık 70.000 kullanıcının kimlik fotoğrafı sızdı.</p></div>
+          <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Amaç kusursuz bir sistem değil, 13 yaşındakinin zahmetsizce hesap açmasını engellemek. Devlet zaten başka kayıtlarla bundan fazlasını biliyor; belirteç çok az şey ekler. Bağımsız cevaplardan yalnız Gemini 3.1 Pro kısmen ayrıştı: önerisinde her platform ve her oturum için eşsiz belirteç istiyor, ama devlet garantisini, platformların "elinden veriyi silah olarak kullanma yetkisini alan" şey olarak da sunuyor.</p>
+            <div class="tz-ses"><h5>Karşıt ses</h5><p>Kıyas yanlış tabana yapılıyor. Bugün çocuğun yaşını, ilgisini ve arkadaş çevresini zaten bilen taraf platform; ABD Federal Ticaret Komisyonu 2024'te, büyük platformların kullanıcılarını "geniş çaplı gözetim" altında tuttuğunu ve çocuklarla gençleri yeterince korumadığını açıkladı.<sup><a href="#k24">[24]</a></sup> Belirteç bu tabana göre veriyi azaltır: platform kimliği değil, yalnız eşiği görür. Kusursuz belirteci beklemek, Fransa'da olduğu gibi hiçbir şey uygulayamamak demek olabilir.<sup><a href="#k6">[6]</a></sup></p></div>
+          </div>
         </div>
+        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>Başkanlığın teknik rehberi belirteci tek kullanımlık, platformlar arasında bağlanamaz ve devlete sorgu atmadan doğrulanabilir tanımlarsa, bu kaygı düşer.</p></div>
+        <dl class="tz-alt">
+          <div><dt>Savunan</dt><dd>Claude Opus 5.5 · Gemini 3.8 Flash · Gemini uygulaması · Grok · Stüdyo ajanı 1 · Stüdyo ajanı 2 · Stüdyo ajanı 3</dd></div>
+          <div><dt>Kısmen katılan</dt><dd>Gemini 3.1 Pro</dd></div>
+          <div><dt>Karşı çıkan</dt><dd>yok</dd></div>
+          <div><dt>Değinmeyen</dt><dd>yok</dd></div>
+          <div class="tz-kay"><dt>Kaynak</dt><dd class="tz-src">Resmî Gazete, 33396 (md. 5, 7, 12)<sup><a href="#k1">[1]</a></sup> · The Record, Discord kimlik sızıntısı haberi (9 Ekim 2025).<sup><a href="#k17">[17]</a></sup> · karşıt sesin kaynakları <sup><a href="#k24">[24]</a></sup> <sup><a href="#k6">[6]</a></sup></dd></div>
+        </dl>
       </article>
       <article class="tez" id="tez-4" aria-labelledby="tez-4-b">
         <span class="idx">Tez 4</span>
         <h3 id="tez-4-b">Asıl kaçak VPN değil; ev içinde belirtecin paylaşılması ve kapsam dışı uygulamalara geçiş.</h3>
-        <div class="tz-p"><h4>Neden</h4><p>Kimlik taşımayan bir belirteç doğası gereği elden ele geçebilir; ablası ya da annesi belirteç üreten çocuk için yasak fiilen yoktur. Yasaklı platformdan çıkan çocuk da mesajlaşma ve oyun içi sohbete geçebilir. Ölçü "yasaklı platformda hesap" olursa başarı görünür ama zarar yer değiştirir.</p></div>
-        <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Mahremiyet ile paylaşılamazlık aynı anda tam sağlanamaz; yönetmelik mahremiyeti seçmiş ve bu doğru bir seçim. Algoritmik akıştan tanıdıklarla yazışmaya geçmek de istenen bir sonuç olabilir.</p></div>
-        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>İlk yıl anketinde "kimin belirteciyle girdin" ve "hangi uygulamaya geçtin" sorularının cevabı küçük oranlarda kalırsa, bu tez zayıflar.</p></div>
-        <div class="tz-alt">
-          <div><h4>Savunan modeller</h4><ul class="tz-mod"><li>stüdyonun iki ajanı (Claude Opus 5.5, Claude)</li><li>Gemini 3.8 Flash</li><li>Gemini uygulaması</li></ul></div>
-          <div><h4>Kaynak</h4><p class="tz-src">Sentez (birden çok modelin ortak çıkarımı; bu tez için dış veri henüz yok, ölçülmesi önerimizin parçası).</p></div>
+        <div class="tz-iki">
+          <div class="tz-p"><h4>Neden</h4><p>Kimlik taşımayan bir belirteç doğası gereği elden ele geçebilir; ablası ya da annesi belirteç üreten çocuk için yasak fiilen yoktur. Yasaklı platformdan çıkan çocuk da mesajlaşma ve oyun içi sohbete geçebilir. Ölçü "yasaklı platformda hesap" olursa başarı görünür ama zarar yer değiştirir.</p></div>
+          <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Mahremiyet ile paylaşılamazlık aynı anda tam sağlanamaz; yönetmelik mahremiyeti seçmiş ve bu doğru bir seçim. Bağımsız cevaplarda karşı çıkan yok; üçü kısmen katıldı. Claude Opus 5.5, Gemini 3.8 Flash ve Grok belirteç devrini ve kapsam dışına kaymayı kırılma sayıyor, ama VPN'i de aynı ağırlıkta bir kaçak yolu olarak anıyor; "asıl kaçak" sıralaması yapmıyor.</p>
+            <div class="tz-ses"><h5>Karşıt ses</h5><p>Kaçak, yasağın başarısının ölçüsü değil: kaçak zahmetlidir ve ağın değerini düşürür. Göç tarafında veri bu kartın tersini söylüyor olabilir: Avustralya'da günlük mesajlaşma kullanımı %40,5'ten %52,3'e çıktı.<sup><a href="#k4">[4]</a></sup> Algoritmik, yabancıya açık akıştan tanıdıklarla yazışmaya geçiş, zararın yer değiştirmesi değil, <a href="#tez-1">Tez 1</a>'de sayılan zarar yollarından çıkış olabilir. VPN'in önemsiz olduğu da ölçülmedi: Birleşik Krallık'ta yaş doğrulaması başladıktan sonra bir VPN şirketi, ülkeden yeni kayıtlarda %1.400'ü aşan artış bildirdi. Bu, yetişkin sitelerine erişim bağlamında şirketin kendi beyanı.<sup><a href="#k9">[9]</a></sup></p></div>
+          </div>
         </div>
+        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>İlk yıl anketinde "kimin belirteciyle girdin" ve "hangi uygulamaya geçtin" sorularının cevabı küçük oranlarda kalırsa, bu tez zayıflar.</p></div>
+        <dl class="tz-alt">
+          <div><dt>Savunan</dt><dd>Gemini 3.1 Pro · Gemini uygulaması · Stüdyo ajanı 1 · Stüdyo ajanı 2 · Stüdyo ajanı 3</dd></div>
+          <div><dt>Kısmen katılan</dt><dd>Claude Opus 5.5 · Gemini 3.8 Flash · Grok</dd></div>
+          <div><dt>Karşı çıkan</dt><dd>yok</dd></div>
+          <div><dt>Değinmeyen</dt><dd>yok</dd></div>
+          <div class="tz-kay"><dt>Kaynak</dt><dd class="tz-src">Sentez (modellerin ortak çıkarımı) · dış veri: <sup><a href="#k4">[4]</a></sup> (mesajlaşma), <sup><a href="#k9">[9]</a></sup> (VPN)</dd></div>
+        </dl>
       </article>
       <article class="tez" id="tez-5" aria-labelledby="tez-5-b">
         <span class="idx">Tez 5</span>
         <h3 id="tez-5-b">Saat ve süre yasakları en zayıf yol.</h3>
-        <div class="tz-p"><h4>Neden</h4><p>Süre yasağı tek bir etkinliği tek bir kanalda keser; çocuk aynı saati başka uygulamaya, cihaza ya da bir yetişkinin kimliğine taşır.</p></div>
-        <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Güney Kore'nin yasağı yalnız bilgisayardaki çevrimiçi oyunu kapsıyordu, mobil dışarıdaydı; kötü tasarlanmış bir yasağın başarısızlığı iyi tasarlanmışı hakkında az şey söyler. Türkiye yönetmeliği de süre yasağı koymuyor, yalnız veliye süre aracı veriyor.</p></div>
-        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>Bağımsız ve hakemli bir çalışma, bir süre kısıtının toplam ekran süresinde günde 30 dakika ve üzeri kalıcı düşüş sağladığını gösterirse bu tez düşer. Böyle bir çalışma bulamadık.</p></div>
-        <div class="tz-alt">
-          <div><h4>Savunan modeller</h4><ul class="tz-mod"><li>Claude Opus 5.5</li><li>Grok</li><li>Gemini 3.8 Flash</li></ul></div>
-          <div><h4>Kaynak</h4><p class="tz-src">Choi ve diğerleri (2018), Journal of Adolescent Health 62(5): 548–555 (Kore kapatma politikasının etkisi).<sup><a href="#k12">[12]</a></sup></p></div>
+        <div class="tz-iki">
+          <div class="tz-p"><h4>Neden</h4><p>Süre yasağı tek bir etkinliği tek bir kanalda keser; çocuk aynı saati başka uygulamaya, cihaza ya da bir yetişkinin kimliğine taşır.</p></div>
+          <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>Güney Kore'nin yasağı yalnız bilgisayardaki çevrimiçi oyunu kapsıyordu, mobil dışarıdaydı; kötü tasarlanmış bir yasağın başarısızlığı iyi tasarlanmışı hakkında az şey söyler. Türkiye yönetmeliği de süre yasağı koymuyor, yalnız veliye süre aracı veriyor. Bağımsız cevaplarda karşı çıkan yok; üç ses konuya değinmedi.</p>
+            <div class="tz-ses"><h5>Karşıt ses</h5><p>Tek örnekten bütün bir sınıf hakkında hüküm çıkmaz. Zaman ve mekân kısıtının işe yarayabildiği bir örnek okul telefon yasağı. Norveç ortaokullarındaki yasakların eğitim ve ruh sağlığına ortalama bir etkisi bulunmadı; ama zorbalık iki cinste de azaldı, kızlarda ruh sağlığı nedeniyle sağlık hizmetine başvuru düştü ve kızların notları yükseldi.<sup><a href="#k25">[25]</a></sup> Ortak nokta, kısıtın herkese aynı anda uygulanması ve o saatte kaçılacak başka kanal olmaması. Birleşik Krallık'ın planı da 16–17 yaş için gece yarısından sabah 6'ya kadar varsayılan bir erişim kısıtı içeriyor; genç bu ayarı değiştirebilecek.<sup><a href="#k18">[18]</a></sup></p></div>
+          </div>
         </div>
+        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>Bağımsız ve hakemli bir çalışma, bir süre kısıtının toplam ekran süresinde günde 30 dakika ve üzeri kalıcı düşüş sağladığını gösterirse bu tez düşer. Böyle bir çalışma bulamadık.</p></div>
+        <dl class="tz-alt">
+          <div><dt>Savunan</dt><dd>Claude Opus 5.5 · Gemini 3.8 Flash · Gemini uygulaması · Grok · Stüdyo ajanı 3</dd></div>
+          <div><dt>Kısmen katılan</dt><dd>yok</dd></div>
+          <div><dt>Karşı çıkan</dt><dd>yok</dd></div>
+          <div><dt>Değinmeyen</dt><dd>Gemini 3.1 Pro · Stüdyo ajanı 1 · Stüdyo ajanı 2</dd></div>
+          <div class="tz-kay"><dt>Kaynak</dt><dd class="tz-src">Choi ve diğerleri (2018), Journal of Adolescent Health 62(5): 548–555 (Kore kapatma politikasının etkisi).<sup><a href="#k12">[12]</a></sup> · karşıt sesin kaynakları <sup><a href="#k25">[25]</a></sup> <sup><a href="#k18">[18]</a></sup></dd></div>
+        </dl>
       </article>
       <article class="tez" id="tez-6" aria-labelledby="tez-6-b">
         <span class="idx">Tez 6</span>
         <h3 id="tez-6-b">Belirteç alamayan 15–17 yaşındaki genç, yasağın hedefi değilken yasaklanır.</h3>
-        <div class="tz-p"><h4>Neden</h4><p>Sistem "15'ini doldurmadı" ile "doldurduğunu kanıtlayamadı"yı aynı sonuca bağlıyor: hesap yok. Kanıtlayamayanlar rastgele değil: e-Devlet erişimi olmayan, şifresi velisinde olan ya da Türkiye'de yaşayan yabancı gençler.</p></div>
-        <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>e-Devlet şifresi kimlik kartı ve mobil bankacılıkla da alınabiliyor; 15 yaş üstünde erişim yüksek olabilir.</p></div>
-        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>İlk yıllık raporda 15–17 yaşta belirteç üretebilenlerin oranı %95 ve üzeri çıkarsa ve kalanlar için e-Devlet dışı bir yol tanımlanırsa bu tez düşer.</p></div>
-        <div class="tz-alt">
-          <div><h4>Savunan modeller</h4><ul class="tz-mod"><li>Claude Opus 5.5</li><li>stüdyo ajanı (Claude)</li><li>Gemini 3.8 Flash</li></ul></div>
-          <div><h4>Kaynak</h4><p class="tz-src">Resmî Gazete, 33396 (md. 7, md. 10).<sup><a href="#k1">[1]</a></sup></p></div>
+        <div class="tz-iki">
+          <div class="tz-p"><h4>Neden</h4><p>Sistem "15'ini doldurmadı" ile "doldurduğunu kanıtlayamadı"yı aynı sonuca bağlıyor: hesap yok. Kanıtlayamayanlar rastgele değil: e-Devlet erişimi olmayan, şifresi velisinde olan ya da Türkiye'de yaşayan yabancı gençler.</p></div>
+          <div class="tz-p tz-karsi"><h4>Karşı görüş</h4><p>e-Devlet şifresi kimlik kartı ve mobil bankacılıkla da alınabiliyor; 15 yaş üstünde erişim yüksek olabilir. Bağımsız cevaplarda karşı çıkan yok; beş ses bu konuda tutum almadı.</p>
+            <div class="tz-ses"><h5>Karşıt ses</h5><p>Kanıtlayamayanların oranı bilinmiyor; tez bilinmeyen bir sayının üzerine kurulmuş. Hassasiyet de 15'te bitmiyor: daha fazla sosyal medya kullanımının bir yıl sonra daha düşük yaşam doyumunu öngördüğü yaşlar kızlarda 11–13, erkeklerde 14–15; ikisinde de ayrıca 19. Çalışma gözlemsel, neden-sonuç göstermiyor.<sup><a href="#k26">[26]</a></sup> Çözüm sınırı gevşetmek değil, ikinci bir yol açmak; bu, dördüncü önerimizle aynı yer.</p></div>
+          </div>
         </div>
+        <div class="tz-olcu"><h4>Ne olursa fikrimizi değiştiririz</h4><p>İlk yıllık raporda 15–17 yaşta belirteç üretebilenlerin oranı %95 ve üzeri çıkarsa ve kalanlar için e-Devlet dışı bir yol tanımlanırsa bu tez düşer.</p></div>
+        <dl class="tz-alt">
+          <div><dt>Savunan</dt><dd>Claude Opus 5.5 · Grok · Stüdyo ajanı 3</dd></div>
+          <div><dt>Kısmen katılan</dt><dd>yok</dd></div>
+          <div><dt>Karşı çıkan</dt><dd>yok</dd></div>
+          <div><dt>Değinmeyen</dt><dd>Gemini 3.1 Pro · Gemini 3.8 Flash · Gemini uygulaması · Stüdyo ajanı 1 · Stüdyo ajanı 2</dd></div>
+          <div class="tz-kay"><dt>Kaynak</dt><dd class="tz-src">Resmî Gazete, 33396 (md. 7, md. 10).<sup><a href="#k1">[1]</a></sup> · karşıt sesin kaynağı <sup><a href="#k26">[26]</a></sup></dd></div>
+        </dl>
       </article>
     </div>
 
@@ -225,23 +270,42 @@
     <p>Altyapı da hazır. Bu yüzden Türkiye, Fransa'nın üç yılda yapamadığını üç haftada yapabilir. Aynı sebeple risk de büyük.</p>
 
     <h2 id="nerede-kirilir">Nerede kırılır</h2>
-    <p>Yapay zekâ modelleri birçok noktada uyuştu, ama kararı belirleyen yerler ayrıştıkları yerlerdi. Kırılma noktalarının gerekçesi ve ölçüsü <a href="#tezler">tez kartlarında</a>; burada yalnızca modellerin ayrıştığı yerler ve vardığımız sonuç var.</p>
+    <p>Modeller tezlerin hiçbirine açıkça karşı çıkmadı. Ayrıştıkları yerler kısmi, ama kararı belirleyen yerler onlar. Kırılma noktalarının gerekçesi ve ölçüsü <a href="#tezler">tez kartlarında</a>; burada yalnız modellerin ayrıştığı yerler ve vardığımız sonuç var.</p>
 
     <h3>Belirteç: mahremiyeti içerik değil, işleyiş belirler</h3>
-    <p>Açık sorular ve ölçü <a href="#tez-3">Tez 3</a>'te. Modeller burada ikiye ayrıldı. Bir kısmı, tek bir kurumun ürettiği altyapının zamanla yaş dışındaki eşiklere genişlemeye en yatkın yapı olduğunu söyledi. Bir model ise devlet garantisini, platformlara daha az veri gitmesi bakımından olumlu buldu.</p>
+    <p>Açık sorular ve ölçü <a href="#tez-3">Tez 3</a>'te. Burada ayrışma küçük ama öğretici. Stüdyo ajanı 3, tek bir kurumun ürettiği altyapının zamanla yaş dışındaki eşiklere genişlemeye en yatkın yapı olduğunu söyledi. Gemini 3.8 Flash da devlet tarafında, kimin hangi platforma girdiğini gösteren bir erişim haritası oluşma riskini yazdı. Gemini 3.1 Pro ise devlet garantisini, platformlara daha az veri gitmesi bakımından olumlu buldu.</p>
     <p class="verdict"><b>Vardığımız yer</b>Belirtecin biçimi iki bitle sabitlensin (15+, 18+) ve şartname açık yayımlansın.</p>
 
     <h3>Devir ve göç: belirteç el değiştirir, zarar yer değiştirir</h3>
-    <p>Bazı modeller kaçağın VPN üzerinden olacağını öne koydu; stüdyonun ajanlarından ikisi asıl kaçağı ev içinde ve kapsam dışı uygulamalarda gördü (<a href="#tez-4">Tez 4</a>).</p>
-    <p>Çözüm konusunda da ayrışma var. Bir model daha fazla kimlik istedi: NFC ile kimlik okutma, canlı yüz doğrulaması. Bir başka model tersini savundu: kimliksiz bir belirteç doğası gereği elden ele geçer. Yönetmelik mahremiyeti seçmiş ve doğru seçmiş, ama bunun bedelini ölçmek zorunda.</p>
+    <p>Beş ses (stüdyonun üç ajanı, Gemini 3.1 Pro ve Gemini uygulaması) asıl kaçağı ev içinde ve kapsam dışı uygulamalarda gördü. Üç ses (Claude Opus 5.5, Gemini 3.8 Flash ve Grok) VPN'i de aynı ağırlıkta saydı (<a href="#tez-4">Tez 4</a>).</p>
+    <p>Asıl ayrışma çarede. Gemini 3.1 Pro daha fazla kimlik istedi: NFC ile kimlik okutma, canlı yüz doğrulaması. Stüdyo ajanı 3 tersini savundu: kimliksiz bir belirteç doğası gereği elden ele geçer. Yönetmelik mahremiyeti seçmiş ve doğru seçmiş, ama bunun bedelini ölçmek zorunda.</p>
     <p class="verdict"><b>Vardığımız yer</b>İkinci görüş. Devir yasakla değil, ölçümle yönetilir.</p>
 
     <h3>Dışlanan çocuk</h3>
-    <p>Belirteç alamayan 15–17 yaşındaki gençler <a href="#tez-6">Tez 6</a>'nın konusu; karttaki gruplara velisi ilgilenmeyen çocuklar da eklenmeli. Turdaki modellerin çoğu bu grubu hiç anmadı.</p>
+    <p>Belirteç alamayan 15–17 yaşındaki gençler <a href="#tez-6">Tez 6</a>'nın konusu; karttaki gruplara velisi ilgilenmeyen çocuklar da eklenmeli. Bu grubu Claude Opus 5.5, Grok ve stüdyo ajanı 3 öne çıkardı; diğer sesler bu konuda tutum almadı.</p>
 
     <h3>Peki yasağın kendisi?</h3>
-    <p>Burada da tek görüş yok. Bir model, toptan yasağın çocuğu korumadığını, onu yetişkin kimliklerinin arkasına iterek daha savunmasız bıraktığını savundu. İki model düzenlemeyi, devletin güven altyapısıyla kamusal alanın yeniden kurulması olarak olumlu çerçeveledi. Bir başkası ikisini birleştirdi: bu bir altyapı kararı; hem güç hem risk.</p>
-    <p class="verdict"><b>Vardığımız yer</b>Yasak savunulabilir. Ama başarının ölçüsü yasağın kendisi değil.</p>
+    <p>Burada da tek görüş yok. Gemini 3.8 Flash, toptan yasağın çocuğu korumadığını, onu yetişkin kimliklerinin arkasına iterek daha savunmasız bıraktığını savundu. Gemini 3.1 Pro ve Gemini uygulaması düzenlemeyi, devletin güven altyapısıyla kamusal alanın yeniden kurulması olarak olumlu çerçeveledi. Claude Opus 5.5 ikisini birleştirdi: bu bir altyapı kararı; hem güç hem risk.</p>
+    <p class="verdict"><b>Vardığımız yer</b>Yasak savunulabilir. Ama başarının ölçüsü yasağın kendisi değil. Yasağın en güçlü savunusu bir sonraki bölümde.</p>
+
+    <h2 id="karsi-ses">Karşı ses: yasağın en güçlü savunusu</h2>
+    <p>Modellerin çoğu “koruyan yasak değil, tasarım” çizgisinde buluştu. Bu uyuşmanın ne kadarının gerçek, ne kadarının sorumuzun biçiminden geldiğini görmek için ayrı bir modele (Claude Opus 5.5) tek bir görev verdik: yasağın en güçlü savunusunu kaynaklarıyla yaz. Savunu dört adımda kuruluyor.</p>
+    <ol class="adim">
+      <li><strong>Sorun tek tek çocuklar değil, herkesin orada olması.</strong> Bir çocuğun platformda olmamasının bedeli, arkadaşlarının orada olmasıyla büyür. Üniversite öğrencileriyle TikTok ve Instagram üzerine yapılan deneyler, bir platformu aktif kullananların bile onun hiç var olmamasını tercih edebildiğini gösterdi; yazarlar buna “ürün piyasası tuzağı” diyor.<sup><a href="#k27">[27]</a></sup> Yasak savunucuları aynı duruma “kolektif eylem tuzağı” diyor: veli onayıyla daha küçük yaşa izin veren her istisna, herkesi yeniden tuzağa düşürür.<sup><a href="#k28">[28]</a></sup> Bu bir eşgüdüm sorunu ve eşgüdüm sorununu herkese aynı anda uygulanan bir kural çözer. Tasarım kuralı ise çocuğu ağın içinde bırakır.</li>
+      <li><strong>Yasa normu değiştirir, norm davranıştan önce kıpırdar.</strong> “15'ten önce olmaz” cümlesi veliye pazarlık edilmeyecek bir dayanak verir. Herkesin deldiğini bildiği 21 yaş alkol sınırı bile ABD'de tüketimi ve başlıca zararları açıkça azalttı.<sup><a href="#k22">[22]</a></sup> Tütünde 21 yaş sınırı da sigarayı denemiş 18–20 yaşındaki gençlerde düzenli içme olasılığını belirgin biçimde düşürdü; etki, 16 yaşında en yakın arkadaşları sigara içenlerde daha büyüktü.<sup><a href="#k29">[29]</a></sup> Avustralya'da yasağın üçüncü ayında 10–15 yaşındaki çocuklar arasında “yaşıtlarımın çoğu sosyal medya kullanıyor” diyenler %85,1'den %74'e, “hesabı olmayan bir şey kaçırıyor” diyenler %43,3'ten %36,3'e indi. Velilerde “çocuğumun akranlarında hesap olması olağan” diyenler %73,4'ten %60'a düştü. Rapor bir uyarı da ekliyor: algı davranıştan hızlı değişebilir ve üçüncü ayda buna eşlik eden davranış değişikliği henüz sınırlı.<sup><a href="#k23">[23]</a></sup> Yaş sınırının etkisinin en çok, henüz başlamamış 10–12 yaş kuşağında görülmesi beklenir.</li>
+      <li><strong>Tek soruluk kural en ucuz denetlenen kuraldır.</strong> Tasarım kuralını uygulayacak olan, geliri çocuğun dikkatinden gelen taraf. Kural sayısı arttıkça her madde ayrı ayrı sulandırılabilir. “Bu hesap 15'in altında mı” sorusu ise tek ve nettir.</li>
+      <li><strong>Bağımlılık yönü ters.</strong> 8. madde ancak kullanıcının yaşı bilinirse uygulanır. Yani tasarım katmanı yaş altyapısına dayanıyor: yasak tasarım kuralları olmadan da çalışır, tasarım kuralları yaş bilgisi olmadan çalışmaz.</li>
+    </ol>
+    <p>Karşıt ses kendi zayıf yerlerini de yazdı. Kolektif tuzak kanıtı yetişkin öğrencilerden geliyor, çocuklardan değil. Alkol benzetmesi de topal: alkolün satış noktası fiziksel ve denetlenebilir, bir hesabın değil. En önemlisi, Avustralya'da son dört haftada sosyal medya kullandığını söyleyen çocukların velilerinden, bunu bilmeyenlerin oranı %23,3'ten %33,3'e çıktı.<sup><a href="#k4">[4]</a></sup> Yasak, görünür kullanımı görünmez kullanıma çeviriyor olabilir.</p>
+
+    <h3>Bu itiraz bize ne öğretti</h3>
+    <ul class="dash">
+      <li><strong>Soruyu biz ikiye böldük.</strong> “Yasak mı, tasarım mı?” sorusu ikisini rakip gibi koydu. Oysa biri ötekinin koşulu: tasarım kuralları yaş bilinmeden çalışmaz. Doğru soru “hangisi” değil, “hangisi hangisini taşıyor” olmalıydı.</li>
+      <li><strong>Kanıta eşit bakmadık.</strong> Yasağa sonucuyla baktık: üç ayda kullanım oranı. Tasarım kurallarına ise girdisiyle: platformlarda yapılan 128 değişiklik. Aynı ölçü ikisine de uygulansa tasarım kuralları da zorlanır.<sup><a href="#k20">[20]</a><a href="#k21">[21]</a></sup></li>
+      <li><strong>Hiçbir model açıkça karşı çıkmadı.</strong> Her modelin her tezdeki tutumunu cevabından alıntıyla tek tek ölçtük. 48 eşleşmede 33 katılma, 7 kısmi katılma ve 8 değinmeme var; açık karşı çıkma yok. İlk taslağımızda bazı modelleri karşı çıkan diye yazmıştık. Oysa bu, sorumuzun her cevaptan istediği “karşı tez” bölümüydü: modeller kendi tezlerine itirazı yazmış, teze karşı çıkmamıştı. Bu yüzden asıl itirazı ayrı bir karşıt sese yazdırdık.</li>
+      <li><strong>Bağımsızlık sandığımız kadar değil.</strong> Sekiz cevabın dördü aynı model ailesinden (Claude), üçü bir başka aileden (Gemini) geldi. Benzer modellere aynı soruyu sormak, ses sayısı kadar bağımsız görüş üretmez. Sorumuza doğrulanmamış bir cümle de girmişti; yazıdan çıkardık ama cevapları etkilemiş olabilir.</li>
+      <li><strong>Bir önerimizi değiştirdik.</strong> Taban ölçümüne iki algı sorusu ve henüz hesabı olmayan kuşak eklendi (ikinci öneri). İki görüş de en çok orada sınanacak.</li>
+    </ul>
 
     <h2 id="oneriler">Biz ne öneririz</h2>
     <p>Beş öneri, her biri ilk yıl için ölçüsüyle. Ortak nokta şu: kuralların çoğu yazılmış durumda; eksik olan, işleyip işlemediklerini gösterecek veri.</p>
@@ -253,8 +317,8 @@
       </li>
       <li>
         <h3>Taban ölçümü yürürlükten önce alınsın; ölçü hesap değil, maruziyet olsun</h3>
-        <p>Bağımsız bir panel (bir üniversite ya da TÜİK) 1 Kasım'dan önce ölçsün, 6. ve 12. ayda yinelesin: 10–14 ve 15–17 yaşta kullanım, gece kullanımı, kapsam dışı uygulama kullanımı, “ailem bilmiyor” oranı ve uyku. Taban yoksa hiçbir başarı ya da başarısızlık iddiası ölçülemez.</p>
-        <p class="olcu"><b>İlk yıl ölçüsü</b>Taban yayımlandı mı? 12–14 yaşta kullanım ne kadar düştü? (Kıyas: Avustralya'da yaklaşık 4–5 puan.)</p>
+        <p>Bağımsız bir panel (bir üniversite ya da TÜİK) 1 Kasım'dan önce ölçsün, 6. ve 12. ayda yinelesin: 10–14 ve 15–17 yaşta kullanım, gece kullanımı, kapsam dışı uygulama kullanımı, “ailem bilmiyor” oranı ve uyku. Buna iki algı sorusu eklensin: “Yaşıtlarının çoğu sosyal medya kullanıyor mu?” ve “Hesabı olmayan bir şey kaçırır mı?” Henüz hesabı olmayan 10–12 yaş kuşağı ayrıca izlensin; yaş sınırının etkisi önce orada görülür. Taban yoksa hiçbir başarı ya da başarısızlık iddiası ölçülemez.</p>
+        <p class="olcu"><b>İlk yıl ölçüsü</b>Taban yayımlandı mı? 12–14 yaşta kullanım ne kadar düştü? (Kıyas: Avustralya'da yaklaşık 4–5 puan.) İlk hesap açma yaşı değişti mi?</p>
       </li>
       <li>
         <h3>8. madde dışarıdan test edilebilir olsun</h3>
@@ -275,8 +339,10 @@
 
     <section class="box fall" aria-labelledby="fikir-degisir">
       <h2 id="fikir-degisir">Fikrimizi ne değiştirir?</h2>
-      <p>Bir tezin değeri, onu neyin çürüteceğini baştan söylemesindedir. Altı tezin her biri için bu ölçü kendi kartında yazılı: <a href="#tezler">tez kartlarındaki</a> vurgulu kutular. Kartların dışında kalan iki görüşümüz için de aynısı geçerli; aşağıdaki veriler gelirse onları geri çekeriz ya da yumuşatırız.</p>
+      <p>Bir tezin değeri, onu neyin çürüteceğini baştan söylemesindedir. Altı tezin her biri için bu ölçü kendi kartında yazılı: <a href="#tezler">tez kartlarındaki</a> vurgulu kutular. Kartların dışında kalan görüşlerimiz için de aynısı geçerli; aşağıdaki veriler gelirse onları geri çekeriz ya da yumuşatırız.</p>
       <ul>
+        <li><b>Eğer</b><span>Avustralya'nın 12. ay verisinde “yaşıtlarımın çoğu kullanıyor” algısı belirgin biçimde düşmüş ve yeni başlayan 10–12 yaş kuşağında hesap açma azalmışsa,</span><b>O zaman</b><span>yaş sınırının etkisini küçümsemişiz demektir.</span></li>
+        <li><b>Eğer</b><span>Türkiye'de 8. maddeye uyum yüksekken 15 yaş altı hesap oranı değişmeden zarar göstergeleri (yabancıdan istenmeyen temas, gece kullanımı) düşerse,</span><b>O zaman</b><span>koruyanın tasarım olduğu görülür ve karşıt sesin savunusu zayıflar.</span></li>
         <li><b>Eğer</b><span>ilk yıl içinde yaptırım kararları gerekçesiyle ve etkilenen çocuk sayısıyla birlikte yayımlanırsa,</span><b>O zaman</b><span>“denetlenemez altyapı” kaygısı hafifler.</span></li>
         <li><b>Eğer</b><span>taban ölçümü kamuya açık biçimde zaten alınmışsa,</span><b>O zaman</b><span>ikinci önerimize gerek kalmaz.</span></li>
       </ul>
@@ -293,26 +359,39 @@
       <li id="k6"><div>Fransa Ulusal Meclisi, 2023-566 sayılı “dijital reşitlik” yasasına ilişkin yazılı soru.<span class="part">kısmen</span><a href="https://questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE5149.pdf" rel="noopener">questions.assemblee-nationale.fr/dyn/17/questions/QANR5L17QE5149.pdf</a></div></li>
       <li id="k7"><div>ABD 11. Daire İstinaf Mahkemesi, CCIA &amp; NetChoice v. Uthmeier (Florida HB 3), 25 Kasım 2025 tarihli karar.<a href="https://thecapitolist.com/wp-content/uploads/2025/12/11th-Circuit_CCIA-NetChoice-v.-Uthmeier_HB-3_Ruling_Nov-25-2025.pdf" rel="noopener">thecapitolist.com/wp-content/uploads/2025/12/11th-Circuit_CCIA-NetChoice-v.-Uthmeier_HB-3_Ruling_Nov-25-2025.pdf</a></div></li>
       <li id="k8"><div>Spectrum News, Ohio'nun sosyal medya yasasının mahkemece kalıcı olarak durdurulması, 17 Nisan 2025.<a href="https://spectrumnews1.com/oh/columbus/news/2025/04/17/ohio-social-media-law-permanently-struck-down-by-judge" rel="noopener">spectrumnews1.com/oh/columbus/news/2025/04/17/ohio-social-media-law-permanently-struck-down-by-judge</a></div></li>
-      <li id="k9"><div>The Register, Birleşik Krallık Çevrimiçi Güvenlik Yasası kapsamında yaş kontrolünün başlaması, 28 Temmuz 2025.<a href="https://theregister.com/2025/07/28/uk_vpn_demand_soars/" rel="noopener">theregister.com/2025/07/28/uk_vpn_demand_soars/</a></div></li>
+      <li id="k9"><div>The Register, Birleşik Krallık Çevrimiçi Güvenlik Yasası kapsamında yaş kontrolünün başlaması, 28 Temmuz 2025.<span class="part">kısmen</span><a href="https://theregister.com/2025/07/28/uk_vpn_demand_soars/" rel="noopener">theregister.com/2025/07/28/uk_vpn_demand_soars/</a></div></li>
       <li id="k10"><div>Avrupa Komisyonu, Dijital Hizmetler Yasası kapsamında küçüklerin korunması kılavuzu, 14 Temmuz 2025.<span class="part">kısmen</span><a href="https://digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-protection-minors" rel="noopener">digital-strategy.ec.europa.eu/en/library/commission-publishes-guidelines-protection-minors</a></div></li>
       <li id="k11"><div>Avrupa Komisyonu, yaş doğrulama çözümü şablonu, 14 Temmuz 2025.<span class="part">kısmen</span><a href="https://digital-strategy.ec.europa.eu/en/factpages/blueprint-age-verification-solution-help-protect-minors-online" rel="noopener">digital-strategy.ec.europa.eu/en/factpages/blueprint-age-verification-solution-help-protect-minors-online</a></div></li>
       <li id="k12"><div>Choi, Cho, Lee, Kim ve Park (2018), Güney Kore'nin kapatma politikası üzerine, <i>Journal of Adolescent Health</i> 62(5): 548–555.<a href="https://ir.ymlib.yonsei.ac.kr/handle/22282913/162341" rel="noopener">ir.ymlib.yonsei.ac.kr/handle/22282913/162341</a></div></li>
-      <li id="k13"><div>Wikipedia, “Shutdown law” (Güney Kore, 2011–2021).<span class="part">kısmen</span><a href="https://en.wikipedia.org/wiki/Shutdown_law" rel="noopener">en.wikipedia.org/wiki/Shutdown_law</a></div></li>
+      <li id="k13"><div>The Korea Herald, “Shutdown law shuttered”, başyazı, 16 Kasım 2021. Ulusal Meclis, Gençliği Koruma Yasası değişikliğini kabul ederek gece oyun yasağını kaldırdı.<a href="https://www.koreaherald.com/article/2725997" rel="noopener">koreaherald.com/article/2725997</a></div></li>
       <li id="k14"><div>Sixth Tone, Çin'in reşit olmayanlara getirdiği oyun süresi kısıtı, 30 Ağustos 2021.<a href="https://sixthtone.com/news/1008398/china-limits-minors-to-gaming-at-most-3-hours-a-week" rel="noopener">sixthtone.com/news/1008398/china-limits-minors-to-gaming-at-most-3-hours-a-week</a></div></li>
       <li id="k15"><div>The Register, Çin'in “küçük modu” kılavuzu, 20 Kasım 2024.<span class="part">kısmen</span><a href="https://theregister.com/2024/11/20/china_minor_mode/" rel="noopener">theregister.com/2024/11/20/china_minor_mode/</a></div></li>
       <li id="k16"><div>LSE Digital Futures for Children ve 5Rights, “Impact of regulation on children's digital lives”, 2024. LSE'nin rapor duyurusu.<a href="https://lse.ac.uk/news/latest-news-from-lse/e-may-2024/social-media-companies-make-significant-child-privacy-and-safety-changes-as-a-result-of-legislation-new-report" rel="noopener">lse.ac.uk/news/latest-news-from-lse/e-may-2024/social-media-companies-make-significant-child-privacy-and-safety-changes-as-a-result-of-legislation-new-report</a></div></li>
       <li id="k17"><div>The Record, Discord'un yaş itirazlarını inceleyen taşerondaki kimlik fotoğrafı sızıntısı, 9 Ekim 2025.<a href="https://therecord.media/discord-government-docs-exposed-breach" rel="noopener">therecord.media/discord-government-docs-exposed-breach</a></div></li>
+      <li id="k18"><div>Birleşik Krallık hükümeti, “Growing up in the online world” ulusal danışmasına hükümet cevabı, Temmuz 2026. 16 yaş altına hizmet yasağı kararı; yürürlüğün 2027 ilkbaharında olması bekleniyor.<a href="https://www.gov.uk/government/consultations/growing-up-in-the-online-world-a-national-consultation/outcome/growing-up-in-the-online-world-government-response-july-2026" rel="noopener">gov.uk/government/consultations/growing-up-in-the-online-world-a-national-consultation/outcome/growing-up-in-the-online-world-government-response-july-2026</a></div></li>
+      <li id="k19"><div>Avrupa Parlamentosu, “Children should be at least 16 to access social media, say MEPs”, basın bülteni, 26 Kasım 2025. Yasama niteliği taşımayan rapor; 483 evet, 92 hayır, 86 çekimser.<a href="https://www.europarl.europa.eu/news/en/press-room/20251120IPR31496/children-should-be-at-least-16-to-access-social-media-say-meps" rel="noopener">europarl.europa.eu/news/en/press-room/20251120IPR31496/children-should-be-at-least-16-to-access-social-media-say-meps</a></div></li>
+      <li id="k20"><div>Ofcom, “Keep underage children off your platforms, Ofcom tells tech firms”, 12 Mart 2026.<a href="https://www.ofcom.org.uk/online-safety/protecting-children/keep-underage-children-off-your-platforms-ofcom-tells-tech-firms" rel="noopener">ofcom.org.uk/online-safety/protecting-children/keep-underage-children-off-your-platforms-ofcom-tells-tech-firms</a></div></li>
+      <li id="k21"><div>Béjar ve Cybersecurity for Democracy, Fairplay, Molly Rose Foundation, ParentsSOS, “Teen Accounts, Broken Promises: How Instagram is failing to protect minors”, Eylül 2025. Çocuk güvenliği savunucusu kuruluşların raporu.<a href="https://fairplayforkids.org/wp-content/uploads/2025/09/Teen-Accounts-Broken-Promises-How-Instagram-is-failing-to-protect-minors.pdf" rel="noopener">fairplayforkids.org/wp-content/uploads/2025/09/Teen-Accounts-Broken-Promises-How-Instagram-is-failing-to-protect-minors.pdf</a></div></li>
+      <li id="k22"><div>Carpenter, C. ve Dobkin, C. (2011), “The Minimum Legal Drinking Age and Public Health”, <i>Journal of Economic Perspectives</i> 25(2): 133–156.<a href="https://www.aeaweb.org/articles?id=10.1257/jep.25.2.133" rel="noopener">aeaweb.org/articles?id=10.1257/jep.25.2.133</a></div></li>
+      <li id="k23"><div>eSafety Commissioner (Avustralya), “Early days, early insights”, tam değerlendirme raporu, Ağustos 2026, Şekil 8 ve 9.<a href="https://www.esafety.gov.au/sites/default/files/2026-08/Early-days-Early-Insights-SMMA-Evaluation-Understanding-experiences-of-social-media-age-restrictions-August2026.pdf" rel="noopener">esafety.gov.au/sites/default/files/2026-08/Early-days-Early-Insights-SMMA-Evaluation-Understanding-experiences-of-social-media-age-restrictions-August2026.pdf</a></div></li>
+      <li id="k24"><div>ABD Federal Ticaret Komisyonu (FTC), büyük sosyal medya ve video platformlarının veri uygulamaları üzerine personel raporu, basın bülteni, 19 Eylül 2024.<a href="https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-staff-report-finds-large-social-media-video-streaming-companies-have-engaged-vast-surveillance" rel="noopener">ftc.gov/news-events/news/press-releases/2024/09/ftc-staff-report-finds-large-social-media-video-streaming-companies-have-engaged-vast-surveillance</a></div></li>
+      <li id="k25"><div>Abrahamsson, S. (2026), “Smartphone Bans, Student Outcomes and Mental Health”, <i>Journal of Human Resources</i>.<span class="part">kısmen</span><a href="https://doi.org/10.3368/jhr.0224-13403R2" rel="noopener">doi.org/10.3368/jhr.0224-13403R2</a></div></li>
+      <li id="k26"><div>Orben, A., Przybylski, A. K., Blakemore, S.-J. ve Kievit, R. A. (2022), “Windows of developmental sensitivity to social media”, <i>Nature Communications</i> 13: 1649.<a href="https://www.nature.com/articles/s41467-022-29296-3" rel="noopener">nature.com/articles/s41467-022-29296-3</a></div></li>
+      <li id="k27"><div>Bursztyn, L., Handel, B. R., Jiménez-Durán, R. ve Roth, C. (2025), “When Product Markets Become Collective Traps: The Case of Social Media”, <i>American Economic Review</i> 115(12): 4105–4136.<a href="https://www.aeaweb.org/articles?id=10.1257/aer.20231468" rel="noopener">aeaweb.org/articles?id=10.1257/aer.20231468</a></div></li>
+      <li id="k28"><div>Haidt, J. ve Iyer, R., “Why Every Country Should Set 16 (or Higher) as the Minimum Age for Social Media Accounts”, After Babel, 13 Ocak 2026. Savunu yazısı.<a href="https://www.afterbabel.com/p/why-every-country-should-set-16" rel="noopener">afterbabel.com/p/why-every-country-should-set-16</a></div></li>
+      <li id="k29"><div>Friedman, A. S., Buckell, J. ve Sindelar, J. L. (2019), “Tobacco-21 laws and young adult smoking: quasi-experimental evidence”, <i>Addiction</i>.<a href="https://pubmed.ncbi.nlm.nih.gov/31342591/" rel="noopener">pubmed.ncbi.nlm.nih.gov/31342591/</a></div></li>
     </ol>
 
     <section class="box sheet colophon" aria-labelledby="yontem">
       <h2 id="yontem">Bu yazı nasıl hazırlandı</h2>
-      <p>Konu bir <a href="../kivilcim.html">Kıvılcım turuyla</a> işlendi: aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu; toplam 8 bağımsız cevap geldi (Claude Opus 5.5 · Gemini 3.1 Pro · Gemini 3.8 Flash · Gemini uygulaması · Grok · stüdyonun üç ajanı). Cevaplardaki kaynaklar tek tek kontrol edildi, ardından uyuşan ve ayrışan yerler bu yazıda birleştirildi.</p>
+      <p>Konu bir <a href="../kivilcim.html">Kıvılcım turuyla</a> işlendi: aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu ve 8 bağımsız cevap geldi. Ardından ayrı bir modele, cevapların uyuştuğu görüşe karşı en güçlü itirazı yazma görevi verildi. Bütün cevaplardaki kaynaklar tek tek kontrol edildi. Her modelin her tezdeki tutumu da cevabından alıntıyla ölçüldü; uyuşan ve ayrışan yerler bu yazıda birleştirildi.</p>
       <dl class="kv">
         <div><dt>Tarih</dt><dd><time datetime="2026-10-10">10 Ekim 2026</time></dd></div>
         <div><dt>İmza</dt><dd>Atlas Stüdyo</dd></div>
         <div><dt>Hazırlayan modeller</dt><dd>
           <ul>
             <li>Claude Opus 5.5 <i>sentez ve yazı; ayrıca bir cevap</i></li>
+            <li>Claude Opus 5.5 <i>karşıt ses</i></li>
             <li>Gemini 3.1 Pro</li>
             <li>Gemini 3.8 Flash</li>
             <li>Gemini uygulaması <i>3.1 Pro, uzatılmış düşünme</i></li>
@@ -324,13 +403,16 @@
       </dl>
       <dl class="stats">
         <div class="stat"><strong>8</strong><span>bağımsız cevap</span></div>
-        <div class="stat"><strong>47</strong><span>atıf kontrol edildi</span></div>
-        <div class="stat"><strong>43</strong><span>atıf bulundu</span></div>
-        <div class="stat"><strong>30</strong><span>iddiayı tam taşıyor</span></div>
-        <div class="stat"><strong>13</strong><span>kısmen taşıyor</span></div>
-        <div class="stat"><strong>4</strong><span>doğrulanamadı</span></div>
+        <div class="stat"><strong>1</strong><span>karşıt ses</span></div>
+        <div class="stat"><strong>48</strong><span>model-tez eşleşmesi ölçüldü</span></div>
+        <div class="stat"><strong>0</strong><span>açık karşı çıkma</span></div>
+        <div class="stat"><strong>86</strong><span>atıf kontrol edildi</span></div>
+        <div class="stat"><strong>78</strong><span>atıf bulundu</span></div>
+        <div class="stat"><strong>53</strong><span>iddiayı tam taşıyor</span></div>
+        <div class="stat"><strong>24</strong><span>kısmen taşıyor</span></div>
+        <div class="stat"><strong>9</strong><span>atıf kullanılmadı (8 bulunamadı, 1 iddiayı taşımadı)</span></div>
       </dl>
-      <p>Uydurma kaynak çıkmadı. Doğrulanamayan dört atıf bu yazıya girmedi. İki cevapta kaynaklar adres verilmeden yazılmıştı; o atıflar ayrıca doğrulanıyor ve burada dayanak yapılmadı.</p>
+      <p>Uydurma kaynak çıkmadı; birkaç künye hatası düzeltildi. Bulunamayan ya da iddiayı taşımayan atıflar bu yazıya girmedi.</p>
     </section>
 
     <aside class="legal sorumluluk" aria-labelledby="sorumluluk">
