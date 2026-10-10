@@ -46,4 +46,5 @@ document.addEventListener('DOMContentLoaded', function () {
   btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
   nav.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+  document.addEventListener('click', function (e) { if (!nav.contains(e.target) && !btn.contains(e.target)) set(false); });
 });

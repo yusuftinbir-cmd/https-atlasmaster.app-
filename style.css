@@ -67,11 +67,13 @@ a:hover{text-decoration-thickness:2px}
 .menu{appearance:none;background:none;border:1px solid var(--line2);color:var(--fg);width:34px;height:34px;padding:0;display:grid;place-items:center;cursor:pointer}
 .menu svg{width:16px;height:16px}
 .menu[hidden]{display:none}
-@media (max-width:759.98px){
-  .nav.open{display:flex;flex-direction:column;gap:0;position:absolute;left:0;right:0;top:56px;background:var(--bg);border-bottom:1px solid var(--line2);padding:4px var(--pad) 10px}
-  .nav.open a{padding:13px 0;border-top:1px solid var(--line)}
-  .nav.open a:first-child{border-top:0}
+.nav.open{display:flex;flex-direction:column;gap:0;position:absolute;left:0;right:0;top:56px;background:var(--bg);border-bottom:1px solid var(--line2);padding:4px var(--pad) 10px}
+.nav.open a{padding:13px 0;border-top:1px solid var(--line)}
+.nav.open a:first-child{border-top:0}
+@media (min-width:760px){
+  .nav.open{left:auto;right:var(--pad);width:min(320px,100vw - 32px);border:1px solid var(--line2);padding:4px 16px 10px}
 }
+
 
 /* cetvel */
 .ruler{height:9px;background:
@@ -199,8 +201,6 @@ footer{border-top:1px solid var(--line2);padding:26px 0 40px}
 }
 @media (min-width:760px){
   :root{--pad:32px}
-  .nav{display:flex}
-  .menu{display:none}
   .hero{padding:72px 0 64px}
   .sec{padding:84px 0}
   .cell{padding:28px 26px 30px}
