@@ -180,3 +180,7 @@
 .tz-mod li{font:500 .6875rem/1.5 var(--mono);border:1px solid var(--line2);background:var(--bg);padding:3px 8px}
 .tez .tz-src{font-size:.8125rem;line-height:1.6;color:var(--mut)}
 .tez .tz-src sup a{font-size:.625rem;top:-.4em}
+
+/* sorumluluk notu */
+.sorumluluk h2{font:500 .6875rem/1.9 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 6px;border:0;padding:0}
+.sorumluluk p{margin:0;overflow-wrap:anywhere}
