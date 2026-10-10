@@ -150,9 +150,33 @@
   .box{padding:24px 24px 26px}
   .cmp-in{padding:24px 24px 20px}
   .recs>li{padding:24px 24px 26px;grid-template-columns:3.2rem 1fr}
+  .tez{padding:26px 28px 24px}
+  .tezler{gap:24px}
+  .tz-olcu{padding:14px 18px 16px}
 }
 @media (min-width:980px){
   .post-grid{grid-template-columns:220px minmax(0,68ch);gap:64px;padding-top:48px}
   .toc{position:sticky;top:88px;align-self:start;border:0;border-top:1px solid var(--line2);padding:14px 0 0}
 }
 @media print{.draft,.toc,.menu{display:none}}
+
+/* tez kartları: tez · neden · karşı görüş · ölçü · modeller · kaynak */
+.tz-not{color:var(--mut);font:400 .75rem/1.7 var(--mono);border-left:1px solid var(--line2);padding-left:12px}
+.tezler{display:grid;gap:20px;margin-top:1.6em}
+.tez{border:1px solid var(--line2);background:var(--surface);padding:20px 16px 18px;scroll-margin-top:72px}
+.tez:target{border-color:var(--acc)}
+.tez>.idx{color:var(--acc);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.post .tez h3{font:400 clamp(1.5rem,5.6vw,1.95rem)/1.14 var(--serif);letter-spacing:-.006em;margin:0;text-wrap:balance}
+.tez h4{font:500 .6875rem/1.9 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 4px}
+.tez p{font-size:1rem;line-height:1.65}
+.tz-p{margin-top:18px}
+.tez h3+.tz-p{margin-top:22px}
+.tz-karsi{border-left:1px dashed var(--line2);padding-left:14px}
+.tz-olcu{margin-top:20px;border-left:2px solid var(--acc);background:color-mix(in srgb,var(--acc) 8%,transparent);padding:12px 14px 14px}
+.tz-olcu h4{color:var(--acc)}
+.tz-alt{display:grid;gap:14px;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+.tz-alt>div{min-width:0}
+.tz-mod{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tz-mod li{font:500 .6875rem/1.5 var(--mono);border:1px solid var(--line2);background:var(--bg);padding:3px 8px}
+.tez .tz-src{font-size:.8125rem;line-height:1.6;color:var(--mut)}
+.tez .tz-src sup a{font-size:.625rem;top:-.4em}
