@@ -37,14 +37,54 @@ document.addEventListener('DOMContentLoaded', function () {
   r.addEventListener('input', set); set();
 });
 
-// Mobil menü: dar ekranda bölüm bağlantılarını açar/kapatır (JS yoksa düğme gizli kalır)
+// Menü paneli: bölüm bağlantılarını açar/kapatır (JS yoksa düğme gizli kalır)
+// Açılınca odak ilk bağlantıya, Escape/düğmeyle kapanınca düğmeye döner.
 document.addEventListener('DOMContentLoaded', function () {
   var btn = document.querySelector('.menu'), nav = document.querySelector('.nav');
   if (!btn || !nav) return;
   btn.hidden = false;
-  function set(v) { nav.classList.toggle('open', v); btn.setAttribute('aria-expanded', v); }
-  btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+  function set(v, focus) {
+    if (nav.classList.contains('open') === v) return;
+    nav.classList.toggle('open', v); btn.setAttribute('aria-expanded', v);
+    if (!focus) return;
+    var to = v ? nav.querySelector('a[aria-current]') || nav.querySelector('a') : btn;
+    if (to) to.focus({ preventScroll: true });
+  }
+  btn.addEventListener('click', function () { set(!nav.classList.contains('open'), true); });
   nav.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+  nav.addEventListener('focusout', function (e) {
+    if (e.relatedTarget && !nav.contains(e.relatedTarget) && !btn.contains(e.relatedTarget)) set(false);
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false, true); });
   document.addEventListener('click', function (e) { if (!nav.contains(e.target) && !btn.contains(e.target)) set(false); });
+});
+
+// Menüde yön: bulunulan sayfanın bağlantısı aria-current="page" (alt sayfada üst bağlantı "true"),
+// sayfa içi bölümlerde o an okunan bölümün bağlantısı aria-current="location" alır.
+document.addEventListener('DOMContentLoaded', function () {
+  function yol(u) { return u.pathname.replace(/index\.html$/, ''); }
+  var here = yol(location), spy = [];
+  [].forEach.call(document.querySelectorAll('.top a, .toc a'), function (a) {
+    var u; try { u = new URL(a.href); } catch (e) { return; }
+    if (u.origin !== location.origin || a.classList.contains('lang')) return;
+    var p = yol(u);
+    if (p === here && u.hash) {
+      var t = document.getElementById(decodeURIComponent(u.hash.slice(1)));
+      if (t) spy.push({ a: a, t: t });
+    } else if (p === here) a.setAttribute('aria-current', 'page');
+    else if (/\.html$/.test(p) && here.indexOf(p.replace(/\.html$/, '/')) === 0) a.setAttribute('aria-current', 'true');
+  });
+  if (!spy.length || !('IntersectionObserver' in window)) return;
+  // Okuma çizgisi: görünür alanın üstten %30'u; çizgiyi en son geçen bölüm "o anki" bölümdür.
+  function mark() {
+    var line = innerHeight * 0.3, end = innerHeight + scrollY >= document.documentElement.scrollHeight - 2, cur = null;
+    spy.forEach(function (s) { if (end || s.t.getBoundingClientRect().top <= line) cur = s.t; });
+    spy.forEach(function (s) {
+      if (s.t === cur) s.a.setAttribute('aria-current', 'location'); else s.a.removeAttribute('aria-current');
+    });
+  }
+  var io = new IntersectionObserver(mark, { rootMargin: '0px 0px -70% 0px' });
+  spy.forEach(function (s) { io.observe(s.t); });
+  addEventListener('scrollend', mark);
+  mark();
 });

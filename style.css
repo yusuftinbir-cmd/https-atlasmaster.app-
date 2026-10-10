@@ -36,7 +36,8 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:56px}
+:where([id]){scroll-margin-top:16px}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 h1,h2,h3,p,ol,ul,figure{margin:0}
 ol,ul{padding:0;list-style:none}
@@ -56,9 +57,10 @@ a:hover{text-decoration-thickness:2px}
 .top .wrap{display:flex;align-items:center;gap:20px;height:56px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font:400 1.6rem/1 var(--serif);margin-right:auto}
 .brand svg{width:22px;height:22px}
-.nav{display:none;gap:22px}
 .nav a,.lang{color:var(--mut);text-decoration:none}
 .nav a:hover,.lang:hover{color:var(--fg)}
+.nav a,.lang,.theme,.menu{transition:color .15s,background .15s,border-color .15s}
+.lang:hover,.theme:hover,.menu:hover{border-color:var(--fg)}
 .lang{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;border:1px solid var(--line2);padding:6px 10px;color:var(--fg)}
 .theme{appearance:none;background:none;border:1px solid var(--line2);color:var(--fg);width:34px;height:34px;padding:0;display:grid;place-items:center;cursor:pointer}
 .theme svg{width:16px;height:16px}
@@ -67,12 +69,26 @@ a:hover{text-decoration-thickness:2px}
 .menu{appearance:none;background:none;border:1px solid var(--line2);color:var(--fg);width:34px;height:34px;padding:0;display:grid;place-items:center;cursor:pointer}
 .menu svg{width:16px;height:16px}
 .menu[hidden]{display:none}
-.nav.open{display:flex;flex-direction:column;gap:0;position:absolute;left:0;right:0;top:56px;background:var(--bg);border-bottom:1px solid var(--line2);padding:4px var(--pad) 10px}
-.nav.open a{padding:13px 0;border-top:1px solid var(--line)}
-.nav.open a:first-child{border-top:0}
+.menu[aria-expanded="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+/* panel: kapalıyken display:none; açılış/kapanış opaklık + hafif kayma (desteklemeyen tarayıcıda anında) */
+.nav{display:none;flex-direction:column;position:absolute;left:0;right:0;top:56px;background:var(--bg);border-bottom:1px solid var(--line2);padding:4px var(--pad) 10px;opacity:0;transform:translateY(-6px)}
+.nav{transition:opacity .16s ease,transform .16s ease,display .16s allow-discrete}
+.nav.open{display:flex;opacity:1;transform:none}
+@starting-style{.nav.open{opacity:0;transform:translateY(-6px)}}
+.nav a{padding:13px 0;border-top:1px solid var(--line)}
+.nav a:first-child{border-top:0}
+/* menüde yön: bulunulan sayfa / o anki bölüm */
+.nav a::before{content:"";display:inline-block;width:6px;height:6px;margin-right:10px;vertical-align:.08em;background:var(--acc);opacity:0;transform:scale(.4);transition:opacity .15s,transform .15s}
+.nav a[aria-current]{color:var(--fg)}
+.nav a[aria-current]::before{opacity:1;transform:none}
 @media (min-width:760px){
-  .nav.open{left:auto;right:var(--pad);width:min(320px,100vw - 32px);border:1px solid var(--line2);padding:4px 16px 10px}
+  .nav{left:auto;right:var(--pad);width:min(320px,100vw - 32px);border:1px solid var(--line2);padding:4px 16px 10px}
 }
+
+/* sayfalar arası geçiş: kısa çapraz solma; üst şerit yerinde kalır */
+@view-transition{navigation:auto}
+.top{view-transition-name:ust}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease}
 
 
 /* cetvel */
@@ -219,7 +235,12 @@ footer{border-top:1px solid var(--line2);padding:26px 0 40px}
   .tech{grid-template-columns:1fr 1fr;align-items:start;gap:40px}
   .cells.four{grid-template-columns:1fr 1fr}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+  @view-transition{navigation:none}
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+}
 @media print{.top,.theme,.cta{display:none}body{background:#fff;color:#000}}
 
 /* ajan evrimi */
