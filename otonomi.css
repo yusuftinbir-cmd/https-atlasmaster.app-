@@ -46,6 +46,10 @@ main{counter-reset:sec}
 .vals span span{display:inline;margin:0}
 .vals>li>span{display:block;font:500 .6875rem/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-top:6px}
 .vals+.vals{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.vals.sm{gap:12px 18px;margin-bottom:6px}
+.vals.sm b{font-size:clamp(1.3rem,5.5vw,1.7rem)}
+.vals.sm b.yok{font-size:1rem;line-height:1.5;color:var(--mut)}
+.note a{color:var(--fg);text-underline-offset:3px;white-space:nowrap}
 .bar{height:8px;background:var(--line);margin:14px 0 6px}
 .bar i{display:block;height:100%;width:0;min-width:1px;background:var(--acc)}
 .barlab{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:500 .6875rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}

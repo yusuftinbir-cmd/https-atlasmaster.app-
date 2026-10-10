@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function get(p) { return p.split('.').reduce(function (o, k) { return o == null ? o : o[k]; }, D); }
   function num(p) { return isNaN(p) ? get(p) : +p; }
   function fmt(v, f) {
+    if (v === 'kaynak yok' && en) return 'no source';
     if (typeof v !== 'number') return String(v);
     var s = String(Math.abs(v)).split('.');
     s[0] = s[0].replace(/\B(?=(\d{3})+$)/g, en ? ',' : '.');
@@ -26,8 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
   all('[data-n]').forEach(function (el) {
     var v = get(el.getAttribute('data-n'));
     el.textContent = v == null ? '?' : fmt(v, el.getAttribute('data-f'));
+    if (v === 'kaynak yok') el.classList.add('yok');
   });
-  all('[data-g]').forEach(function (el) { el.style.flexGrow = get(el.getAttribute('data-g')); });
+  all('[data-g]').forEach(function (el) { var g = get(el.getAttribute('data-g')); el.style.flexGrow = typeof g === 'number' ? g : 0; if (typeof g !== 'number') el.style.minWidth = '0'; });
   all('[data-w]').forEach(function (el) {
     var q = el.getAttribute('data-w').split('/');
     el.style.width = (num(q[0]) / num(q[1]) * 100) + '%';

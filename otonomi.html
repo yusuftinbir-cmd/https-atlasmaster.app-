@@ -70,6 +70,7 @@
   "selftest": {"damga": "8 Eki 2026 02:07", "alet": 216, "gecti": 168, "dustu": 2, "selftestsiz": 46, "sinama": 3098, "sure_sn": 63},
   "evrim": {"damga": "8 Eki 2026", "ad": "EVRİM-2", "epizot": 23, "epizot_hedef": 240, "aday": 6, "plasebo": 2, "aday_tavan": 3, "k_ad": "K1", "k": 0, "k_gun": 28, "gun": 0, "gun_hedef": 28},
   "enkidu": {"damga": "10 Eki 2026 15:14", "gorev": 19, "pencere_sa": 24, "ok": 185, "olculemedi": 0, "kutuk": 1870, "okuyansiz": 16},
+  "blog": {"yazi_yasayan": 1, "kaynak_erisilir": 27, "kaynak_toplam": 29, "tetik_tarih": "kaynak yok", "tetik_olcu": "kaynak yok", "aday": 0, "son_kontrol": "kaynak yok", "asama": {"aday": 0, "secildi": "kaynak yok", "kivilcim": "kaynak yok", "sentez": "kaynak yok", "taslak": "kaynak yok", "yayin": "kaynak yok", "yasayan": 1}},
   "beyan": {"damga": "15 Eyl 2026"},
   "duser": {"damga": "13 Eyl 2026"},
   "zaman": {"enlil": "14 Eyl", "beyan": "15 Eyl", "enki": "15–21 Eyl", "ablasyon": "20 Eyl", "enkidu": "22 Eyl", "evrim": "7 Eki", "site": "8 Eki"}
@@ -197,6 +198,22 @@
           </ul>
           <div class="bar" aria-hidden="true"><i class="c-warn" data-w="enkidu.okuyansiz/enkidu.kutuk"></i></div>
           <p class="barlab"><span>yazılan ama okunmayan kütük = ölü kütük adayı</span></p>
+        </article>
+        <article class="meter wide obs">
+          <div class="mhead"><span class="idx">Yaşayan yazı — blog ajanları</span><span class="stamp" data-n="blog.son_kontrol">kaynak yok</span></div>
+          <div class="seg" aria-hidden="true"><i class="c-dim" data-g="blog.asama.aday"></i><i class="c-acc" data-g="blog.asama.secildi"></i><i class="c-acc" data-g="blog.asama.kivilcim"></i><i class="c-acc" data-g="blog.asama.sentez"></i><i class="c-acc" data-g="blog.asama.taslak"></i><i class="c-acc" data-g="blog.asama.yayin"></i><i class="c-ok" data-g="blog.asama.yasayan"></i></div>
+          <ul class="vals sm">
+            <li class="k-dim"><b data-n="blog.asama.aday" data-c>0</b><span>aday</span></li>
+            <li class="k-acc"><b data-n="blog.asama.secildi" data-c>kaynak yok</b><span>seçildi</span></li>
+            <li class="k-acc"><b data-n="blog.asama.kivilcim" data-c>kaynak yok</b><span>kıvılcım</span></li>
+            <li class="k-acc"><b data-n="blog.asama.sentez" data-c>kaynak yok</b><span>sentez</span></li>
+            <li class="k-acc"><b data-n="blog.asama.taslak" data-c>kaynak yok</b><span>taslak</span></li>
+            <li class="k-acc"><b data-n="blog.asama.yayin" data-c>kaynak yok</b><span>yayın</span></li>
+            <li class="k-ok"><b data-n="blog.asama.yasayan" data-c>1</b><span>yaşayan</span></li>
+          </ul>
+          <div class="bar" aria-hidden="true"><i class="c-ok" data-w="blog.kaynak_erisilir/blog.kaynak_toplam"></i></div>
+          <p class="barlab"><span>kaynak erişimi <b><span data-n="blog.kaynak_erisilir">27</span> / <span data-n="blog.kaynak_toplam">29</span></b></span><span>tetik · tarih <b data-n="blog.tetik_tarih">kaynak yok</b> · ölçü <b data-n="blog.tetik_olcu">kaynak yok</b></span><span>aday <b data-n="blog.aday">0</b></span><span>yaşayan yazı <b data-n="blog.yazi_yasayan">1</b></span></p>
+          <p class="note">Ajan her gün yaşayan yazının kaynaklarına erişimi izler, ölçüleri haftalık Gemini ile yoklar, gündem adayını haftada iki kez Grok’tan alır; konu ve yayın kararı insandadır. <a href="blog/15-yas-yasak-mi-tasarim-mi.html">Yazıyı oku →</a></p>
         </article>
       </div>
       <p class="what"><b>Ne gösteriyor</b>Şeritlerin payı sayıların kendisidir; her sayaç yanında yazan damganın ölçümüne sayar.</p>
