@@ -308,3 +308,32 @@ details.acilir p{margin:0 0 8px;color:var(--mut)}
 /* Mobil Hız ve Okunurluk */
 article a, .tz-ses, .tz-karsi { overflow-wrap: break-word; word-break: break-word; }
 article table { overflow-x: auto; display: block; }
+
+/* İyileştirme 2: Kripto rozeti ve ikincil buton bağlantısı */
+.pay-badge {
+  display: block;
+  width: fit-content;
+  flex-basis: 100%;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--line2);
+  color: var(--mut);
+  background: var(--surface);
+  margin-top: 6px;
+}
+.cta-link {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--mut);
+  text-underline-offset: 4px;
+  align-self: center;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.cta-link:hover {
+  text-decoration-color: var(--fg);
+}

@@ -246,3 +246,37 @@
   .ozet{padding:18px 24px 20px}
   .ozet p+p{font-size:1.0625rem}
 }
+
+/* İyileştirme 2: Uyarı kutusu detay oku gizleme */
+details.uyari summary {
+  list-style: none;
+}
+details.uyari summary::-webkit-details-marker {
+  display: none;
+}
+
+/* İyileştirme 4: Kutuların arka plan kontrastı ve yazı gövdesi bağlantıları */
+.post p a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-decoration-color: var(--acc);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.post p a:visited {
+  color: var(--mut);
+  text-decoration-color: color-mix(in srgb, var(--acc) 60%, var(--mut));
+}
+.post p a:hover {
+  color: var(--acc);
+}
+
+.toc a {
+  text-decoration: underline;
+  text-decoration-color: var(--line2);
+  text-underline-offset: 3px;
+}
+
+.tez, .tz-karsi, .tz-ses, .box {
+  background: color-mix(in srgb, var(--surface) 92%, var(--fg));
+}
