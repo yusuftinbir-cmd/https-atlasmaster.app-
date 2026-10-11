@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atlas Stüdyo · Proje Günlüğü</title>
+    <link>https://atlasmaster.app/blog/</link>
+    <atom:link href="https://atlasmaster.app/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Atlas Stüdyo analizi: Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle ...</description>
+    <language>tr-TR</language>
+    <lastBuildDate>Sun, 11 Oct 2026 15:08:10 +0300</lastBuildDate>
+    <item>
+      <title>Kapıyı kriz açar, hitabet içeri alır</title>
+      <link>https://atlasmaster.app/blog/soylem-eylem-makasi.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/soylem-eylem-makasi.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Söylem–eylem makası neden satılır, neden alınır? Beş yapay zekâ sesi ve bir kırmızı takım bir cümleyi sınadı: hangi kısmı ayakta k...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Zorunlu bahis</title>
+      <link>https://atlasmaster.app/blog/deprem-istatistik-vurdumduymazlik.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/deprem-istatistik-vurdumduymazlik.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: İstatistik yalan söylemez; takvim vermez. İnsanlar ve yönetimler neden duymuyor gibi görünür? Masadakilerin çoğu ev sahibi; masayı...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Kuralın sahibi değişti</title>
+      <link>https://atlasmaster.app/blog/dd2-dark-arisen.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/dd2-dark-arisen.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Dragon&amp;#x27;s Dogma 2: Dark Arisen eskiyi geri getirmiyor; eskinin iyilerini topluyor — ve kararı sana bırakıyor</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Yasak mı, tasarım mı? 15 yaş kuralını işe yarar kılacak beş şey</title>
+      <link>https://atlasmaster.app/blog/15-yas-yasak-mi-tasarim-mi.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/15-yas-yasak-mi-tasarim-mi.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Türkiye'nin 15 yaş düzenlemesi: dünyada üç yaklaşımın sonucu, yönetmelik neyi iyi yapıyor, nerede kırılabilir ve ilk yıl için ölçü...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+  </channel>
+</rss>

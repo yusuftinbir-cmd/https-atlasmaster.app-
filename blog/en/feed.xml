@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atlas Studio · Project Log</title>
+    <link>https://atlasmaster.app/blog/en/</link>
+    <atom:link href="https://atlasmaster.app/blog/en/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Atlas Studio analysis: The studio's working log: we discuss topics chosen from the news with different AI models, and write what we recommend and what da...</description>
+    <language>en-US</language>
+    <lastBuildDate>Sun, 11 Oct 2026 15:08:10 +0300</lastBuildDate>
+    <item>
+      <title>The crisis opens the door, oratory lets it in</title>
+      <link>https://atlasmaster.app/blog/en/discourse-action-gap.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/discourse-action-gap.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Why is the rhetoric–action gap sold, and why is it bought? Five AI voices and a red team tested one sentence: which part stood, wh...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>The forced bet</title>
+      <link>https://atlasmaster.app/blog/en/earthquake-statistics-indifference.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/earthquake-statistics-indifference.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Statistics don't lie but give no calendar. Why do people and governments seem deaf? Most at the table own homes; whoever set it up...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>The rule has a new owner</title>
+      <link>https://atlasmaster.app/blog/en/dd2-dark-arisen.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/dd2-dark-arisen.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Dragon&amp;#x27;s Dogma 2: Dark Arisen doesn&amp;#x27;t bring back the old; it gathers the old&amp;#x27;s best parts — and leaves the decision...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>Ban or design? Five things that would make the age-15 rule work</title>
+      <link>https://atlasmaster.app/blog/en/age-15-ban-or-design.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/age-15-ban-or-design.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Türkiye's age-15 social media rule: what three global approaches produced, what the regulation does well, where it can break, and ...</description>
+      <category>Spark round</category>
+    </item>
+  </channel>
+</rss>
