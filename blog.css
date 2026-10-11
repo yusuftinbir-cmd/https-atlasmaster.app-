@@ -280,3 +280,6 @@ details.uyari summary::-webkit-details-marker {
 .tez, .tz-karsi, .tz-ses, .box {
   background: color-mix(in srgb, var(--surface) 92%, var(--fg));
 }
+
+.kopru{margin:2.2em 0 1.2em;padding:14px 16px;border:1px dashed var(--line2);border-left:2px solid var(--acc);font-size:.9375rem}
+.kopru a{text-decoration:underline;text-underline-offset:3px}
