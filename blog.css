@@ -236,3 +236,13 @@
 .matris td.sv{color:var(--acc);font-weight:500}
 .matris td.kr{color:var(--warn);font-weight:500}
 .matris td.ks,.matris td.yk{color:var(--mut)}
+
+/* özet kutusu + okuma süresi: yazı başlığının hemen altında */
+.ozet{max-width:68ch;margin-top:22px;border:1px solid var(--line2);border-left:2px solid var(--acc);background:var(--surface);padding:14px 16px 16px}
+.ozet .idx{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 14px;margin-bottom:8px;color:var(--mut)}
+.ozet .okuma{color:var(--fg)}
+.ozet p+p{font-size:1rem;line-height:1.65}
+@media (min-width:760px){
+  .ozet{padding:18px 24px 20px}
+  .ozet p+p{font-size:1.0625rem}
+}
