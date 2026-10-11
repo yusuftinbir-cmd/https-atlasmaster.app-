@@ -29,6 +29,17 @@ document.addEventListener('DOMContentLoaded', function () {
     el.textContent = v == null ? '?' : fmt(v, el.getAttribute('data-f'));
     if (v === 'kaynak yok') el.classList.add('yok');
   });
+  // damga yaşı: yeniden ölçülemeyen bölümün damgası yürümez; eskiyen damga 'son ölçüm' diye okunur, değer değişmez
+  var AYLAR = en ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                 : ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'];
+  var ESKI_GUN = 2;
+  all('.stamp[data-n]').forEach(function (el) {
+    var m = /^(\d{1,2}) (\S+) (\d{4})/.exec(el.textContent), ay = m ? AYLAR.indexOf(m[2]) : -1;
+    if (ay < 0) return;
+    if (Date.now() - new Date(+m[3], ay, +m[1]).getTime() < ESKI_GUN * 864e5) return;
+    el.textContent = (en ? 'last measured · ' : 'son ölçüm · ') + el.textContent;
+    el.classList.add('eski');
+  });
   all('[data-g]').forEach(function (el) { var g = get(el.getAttribute('data-g')); el.style.flexGrow = typeof g === 'number' ? g : 0; if (typeof g !== 'number') el.style.minWidth = '0'; });
   all('[data-w]').forEach(function (el) {
     var q = el.getAttribute('data-w').split('/');
