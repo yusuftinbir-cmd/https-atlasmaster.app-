@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', list.id);
     return b;
   }
-  var ac = dugme('toc-ac', 'İçindekiler'), fab = dugme('toc-fab', 'Bölümler');
+  var en = document.documentElement.lang === 'en';
+  var ac = dugme('toc-ac', en ? 'Contents' : 'İçindekiler'), fab = dugme('toc-fab', en ? 'Sections' : 'Bölümler');
   toc.insertBefore(ac, list); toc.appendChild(fab); toc.classList.add('js');
 
   // Kapanınca odak, istenirse, açan düğmeye döner.
