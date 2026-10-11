@@ -41,6 +41,7 @@
     <nav class="nav" id="nav" aria-label="Bölümler">
       <a href="index.html">Ana sayfa</a>
       <a href="#sayac">Sayaçlar</a>
+      <a href="#ajanlar">Ajanlar</a>
       <a href="#yontem">Yöntemler</a>
       <a href="#emekli">Emeklilik</a>
       <a href="#ablasyon">Ablasyon</a>
@@ -71,6 +72,7 @@
   "evrim": {"damga": "8 Eki 2026", "ad": "EVRİM-2", "epizot": 23, "epizot_hedef": 240, "aday": 6, "plasebo": 2, "aday_tavan": 3, "k_ad": "K1", "k": 0, "k_gun": 28, "gun": 0, "gun_hedef": 28},
   "enkidu": {"damga": "11 Eki 2026 02:14", "gorev": 21, "pencere_sa": 24, "ok": 182, "olculemedi": 10, "kutuk": 1870, "okuyansiz": 16},
   "blog": {"yazi_yasayan": 1, "kaynak_erisilir": 27, "kaynak_toplam": 29, "tetik_tarih": 2, "tetik_olcu": 4, "aday": 0, "son_kontrol": "2026-10-11", "asama": {"aday": 0, "secildi": 0, "kivilcim": 0, "sentez": 0, "taslak": 0, "yayin": 0, "yasayan": 1}},
+  "ajanlar": {"damga": "11 Eki 2026 12:57", "enkidu": {"olculdu": 1, "son_dk": 43, "k7": 747, "ok7": 712, "g": "70,69,100,102,106,204,96", "o": "66,67,96,100,106,197,80", "bugun": 96, "x1": 21, "x2": 18, "x3": 35}, "blog": {"olculdu": 1, "son_dk": 637, "k7": 3, "ok7": 3, "g": "0,0,0,0,0,1,2", "o": "0,0,0,0,0,1,2", "bugun": 2, "x1": 4, "x2": 27, "x3": 29}, "site": {"olculdu": 1, "son_dk": 53, "k7": 17, "ok7": 16, "g": "0,0,0,0,0,9,8", "o": "0,0,0,0,0,8,8", "bugun": 8, "x1": 11, "x2": 11, "x3": 0}, "grok": {"olculdu": 1, "son_dk": 1, "k7": 160, "ok7": 156, "g": "0,0,0,0,0,64,96", "o": "0,0,0,0,0,63,93", "bugun": 96, "x1": 35, "x2": 29, "x3": -1}, "nobet": {"olculdu": 1, "son_dk": 54, "k7": 80, "ok7": 78, "g": "12,12,12,13,12,12,7", "o": "12,12,12,11,12,12,7", "bugun": 7, "x1": -1, "x2": -1, "x3": -1}, "piyasa": {"olculdu": 1, "son_dk": 2700, "k7": 5, "ok7": 4, "g": "1,1,1,1,1,0,0", "o": "1,1,1,0,1,0,0", "bugun": 0, "x1": -1, "x2": -1, "x3": -1}, "defter": {"olculdu": 1, "son_dk": 806, "k7": 6, "ok7": 6, "g": "1,1,1,1,1,1,0", "o": "1,1,1,1,1,1,0", "bugun": 0, "x1": -1, "x2": -1, "x3": -1}, "sesler": {"olculdu": 1, "son_dk": 43, "k7": 19, "ok7": -1, "g": "2,2,2,2,2,3,6", "o": "", "bugun": 6, "x1": 7, "x2": 5, "x3": 7}, "kalfa": {"olculdu": 1, "son_dk": 1111, "k7": 10, "ok7": -1, "g": "0,0,0,0,0,10,0", "o": "", "bugun": 0, "x1": 4, "x2": -1, "x3": -1}, "kivilcim": {"olculdu": 1, "son_dk": 103, "k7": 20, "ok7": 15, "g": "2,4,4,2,1,1,6", "o": "1,4,2,2,1,1,4", "bugun": 6, "x1": 3, "x2": 12, "x3": 0}},
   "beyan": {"damga": "15 Eyl 2026"},
   "duser": {"damga": "13 Eyl 2026"},
   "zaman": {"enlil": "14 Eyl", "beyan": "15 Eyl", "enki": "15–21 Eyl", "ablasyon": "20 Eyl", "enkidu": "22 Eyl", "evrim": "7 Eki", "site": "8 Eki"}
@@ -217,6 +219,72 @@
         </article>
       </div>
       <p class="what"><b>Ne gösteriyor</b>Şeritlerin payı sayıların kendisidir; her sayaç yanında yazan damganın ölçümüne sayar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ajanlar">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Ajan karneleri</h2>
+      <p>Her ajan kendi kütüğünden sayılır: yedi günde kaç kez koştu, kaçı başarılı.</p>
+    </header>
+    <div class="stack">
+      <div class="agents">
+        <article class="agent obs" data-ajan="enkidu">
+          <div class="mhead"><h3>Enkidu</h3><span class="idx">saatlik</span></div>
+          <p class="arole">İşçi. Zamanlanmış ölçüm görevlerini koşar, her sonucu kütüğe yazar.</p>
+          <div class="abody" data-ok="başarılı" data-s="Bugün {x2} ayrı görevi {bugun} kez koştu. Tanımlı görev {x1}; yedi günde {x3} koşu ölçülemedi."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="blog">
+          <div class="mhead"><h3>Blog bekçisi</h3><span class="idx">günlük</span></div>
+          <p class="arole">Yayındaki yazıların kaynaklarına hâlâ erişilebildiğini ve güncelleme tetiklerini izler.</p>
+          <div class="abody" data-ok="sağlam" data-s="{x1} yazı izleniyor. Son koşuda yoklanan {x3} kaynaktan {x2} tanesi erişilir. Bugün {bugun} koşu."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="site">
+          <div class="mhead"><h3>Site bakım</h3><span class="idx">saatlik</span></div>
+          <p class="arole">Sayfaları, bağlantıları, site haritasını ve bu sayfadaki sayaçları yoklar.</p>
+          <div class="abody" data-ok="sorunsuz" data-s="Son koşuda {x2} sayfadan {x1} tanesi açıldı; kırık bağlantı ve site haritası eksiği toplam {x3}. Bugün {bugun} koşu."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="grok">
+          <div class="mhead"><h3>Grok köprü bekçisi</h3><span class="idx">sık aralıklı</span></div>
+          <p class="arole">Grok Bot bağlantısını yoklar; koptuğunu görürse yeniden başlatır.</p>
+          <div class="abody" data-ok="hüküm verdi" data-s="Bugün {bugun} yoklama. Yedi günde {x1} kopukluk gördü, {x2} kez yeniden başlattı."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="nobet">
+          <div class="mhead"><h3>Nöbet</h3><span class="idx">iki saatte bir</span></div>
+          <p class="arole">Projelerin ve işçilerin nabzını yoklar; doğrulama gerekirse küçük bir modeli uyandırır.</p>
+          <div class="abody" data-ok="eksiksiz" data-s="Bugün {bugun} tur attı."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="piyasa">
+          <div class="mhead"><h3>Piyasa öncesi</h3><span class="idx">hafta içi</span></div>
+          <p class="arole">Açılıştan önce takvimi ve yazılı planı okur, kısa bir not bırakır.</p>
+          <div class="abody" data-ok="not bıraktı" data-s="Bugün {bugun} koşu."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="defter">
+          <div class="mhead"><h3>Defter</h3><span class="idx">her gece</span></div>
+          <p class="arole">Gün sonunda açık işleri sayar, kapananı arşive taşır.</p>
+          <div class="abody" data-ok="doğrulandı" data-s="Bugün {bugun} koşu."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="sesler">
+          <div class="mhead"><h3>Ea · Enki · Enlil</h3><span class="idx">günlük</span></div>
+          <p class="arole">Üç iç ses. Her biri turunu yazılı bir görüşle kapatır.</p>
+          <div class="abody" data-ok="" data-s="Yedi günde Ea {x1}, Enki {x2}, Enlil {x3} yazı bıraktı. Bugün {bugun}."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="kalfa">
+          <div class="mhead"><h3>Kalfa</h3><span class="idx">iş günü</span></div>
+          <p class="arole">İş bilgisayarındaki ajan. Ortak panoya yazar, emirlerini oradan alır.</p>
+          <div class="abody" data-ok="" data-s="Yedi günde panoya {k7} satır yazdı; ona {x1} satır gitti. Bugün {bugun}."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+        <article class="agent obs" data-ajan="kivilcim">
+          <div class="mhead"><h3>Kıvılcım</h3><span class="idx">tetikle</span></div>
+          <p class="arole">Çok modelli tartışma turu. Bir tezi savunan ve ona karşı çıkan sesleri bir araya getirir.</p>
+          <div class="abody" data-ok="kararı oynattı" data-s="Yedi günde {k7} tur: {x1} tanesi kararı değiştirdi, {x2} tanesi keskinleştirdi, {x3} tanesi değiştirmedi. Bugün {bugun}."><p class="ayok">Sayılar için JavaScript gerekir.</p></div>
+        </article>
+      </div>
+      <p class="what"><b>Ne gösteriyor</b>Her kart bir ajanın kendi kütüğünden sayılır. Koyu çizgi son yedi takvim günündeki koşu sayısı, yeşil çizgi başarılı olanlardır. “Son koşu” ölçüm anındaki yaştır. Kütüğü okunamayan ajanın kartı “ölçülemedi” der; sayı uydurulmaz.
+        <span class="stamp" data-n="ajanlar.damga">11 Eki 2026 12:57</span></p>
     </div>
   </div>
 </section>

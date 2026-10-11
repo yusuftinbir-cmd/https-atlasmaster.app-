@@ -178,6 +178,71 @@ document.addEventListener('DOMContentLoaded', function () {
     return { set: function (v) { if (v && !kos) { kos = true; requestAnimationFrame(kare); } else if (!v) kos = false; } };
   }
 
+  // ajan karneleri: kart iskeleti sayfada, sayılar #olcum.ajanlar'dan; kütüğü okunamayan ajanın kartı bunu söyler
+  var L = en
+    ? { yok: 'not measured', son: 'last run', kosu: 'runs · 7 days', oran: 'success', olcusuz: 'not scored', hic: 'no record',
+        dk: ' min ago', sa: ' h ago', gun: ' days ago', eski: '6 days ago', bugun: 'today', ciz: 'Runs per day over the last seven days: ' }
+    : { yok: 'ölçülemedi', son: 'son koşu', kosu: 'koşu · 7 gün', oran: 'başarı', olcusuz: 'puanlanmıyor', hic: 'kayıt yok',
+        dk: ' dk önce', sa: ' sa önce', gun: ' gün önce', eski: '6 gün önce', bugun: 'bugün', ciz: 'Son yedi günde günlük koşu: ' };
+  function el(ad, sinif, metin) {
+    var e = document.createElement(ad);
+    if (sinif) e.className = sinif;
+    if (metin != null) e.textContent = metin;
+    return e;
+  }
+  function sv(ad, oz) {
+    var e = document.createElementNS(NS, ad);
+    for (var k in oz) e.setAttribute(k, oz[k]);
+    return e;
+  }
+  function once(dk) {
+    if (dk < 0) return L.hic;
+    if (dk < 60) return fmt(dk) + L.dk;
+    if (dk < 2880) return fmt(Math.round(dk / 60)) + L.sa;
+    return fmt(Math.round(dk / 1440)) + L.gun;
+  }
+  function dizi(s) { return s ? s.split(',').map(Number) : []; }
+  function spark(g, o) {
+    var W = 148, H = 44, x0 = 5, y0 = 38, dx = (W - 2 * x0) / (g.length - 1), tepe = Math.max.apply(null, g.concat(1));
+    function yol(d) {
+      return d.map(function (v, i) { return (i ? 'L' : 'M') + (x0 + i * dx).toFixed(1) + ',' + (y0 - v / tepe * 30).toFixed(1); }).join('');
+    }
+    var svg = sv('svg', { 'class': 'spark', viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': L.ciz + g.map(function (v) { return fmt(v); }).join(' · ') });
+    svg.appendChild(sv('path', { 'class': 'sb', d: 'M' + x0 + ',' + y0 + 'H' + (W - x0) }));
+    svg.appendChild(sv('path', { 'class': 'sa', d: yol(g) + 'V' + y0 + 'H' + x0 + 'Z' }));
+    svg.appendChild(sv('path', { 'class': 'sg', d: yol(g), pathLength: 1 }));
+    if (o.length === g.length) svg.appendChild(sv('path', { 'class': 'so', d: yol(o), pathLength: 1 }));
+    svg.appendChild(sv('circle', { 'class': 'sn', r: 3, cx: (W - x0).toFixed(1), cy: (y0 - g[g.length - 1] / tepe * 30).toFixed(1) }));
+    return svg;
+  }
+  function karne(kart) {
+    var a = (D.ajanlar || {})[kart.getAttribute('data-ajan')], govde = kart.querySelector('.abody');
+    if (!govde) return;
+    govde.textContent = '';
+    if (!a || a.olculdu !== 1) { kart.classList.add('yok'); govde.appendChild(el('p', 'ayok', L.yok)); return; }
+    var puanli = a.ok7 >= 0, ul = el('ul', 'astat');
+    [[once(a.son_dk), L.son],
+     [fmt(a.k7), L.kosu],
+     [puanli && a.k7 > 0 ? fmt(Math.round(a.ok7 / a.k7 * 100), 'pct') : '—',
+      puanli ? (govde.getAttribute('data-ok') || L.oran) + ' · ' + fmt(a.ok7) : L.olcusuz]
+    ].forEach(function (c) {
+      var li = el('li');
+      li.appendChild(el('b', null, c[0])); li.appendChild(el('span', null, c[1]));
+      ul.appendChild(li);
+    });
+    govde.appendChild(ul);
+    var g = dizi(a.g);
+    if (g.length > 1) {
+      govde.appendChild(spark(g, puanli ? dizi(a.o) : []));
+      var alt = el('p', 'acap');
+      alt.appendChild(el('span', null, L.eski)); alt.appendChild(el('span', null, L.bugun + ' · ' + fmt(a.bugun)));
+      govde.appendChild(alt);
+    }
+    var s = govde.getAttribute('data-s');
+    if (s) govde.appendChild(el('p', 'aday', s.replace(/\{(\w+)\}/g, function (m, k) { return typeof a[k] === 'number' && a[k] >= 0 ? fmt(a[k]) : '?'; })));
+  }
+  all('[data-ajan]').forEach(karne);
+
   var surucu = {};
   var s1 = document.getElementById('ag'), s2 = document.getElementById('hn'), s3 = document.getElementById('ab');
   if (s1) surucu.ag = ag(s1);
