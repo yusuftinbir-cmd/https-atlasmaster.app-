@@ -224,3 +224,15 @@
 .sorumluluk h2{font:500 .6875rem/1.9 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 6px;border:0;padding:0}
 .sorumluluk p{margin:0;overflow-wrap:anywhere}
 .toc a[aria-current]{color:var(--acc)}
+
+/* tutum matrisi: dar ekranda kendi içinde yatay kayar */
+.tablo-kay{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0 1em;border:1px solid var(--line);background:var(--surface)}
+.tablo-kay:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.matris{border-collapse:collapse;min-width:46em;width:100%;font-size:.875rem;line-height:1.4}
+.matris th,.matris td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.matris thead th{font:500 .6875rem/1.5 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--mut);background:var(--surface)}
+.matris tbody th{font-weight:500;position:sticky;left:0;background:var(--surface);border-right:1px solid var(--line);white-space:normal;min-width:11em}
+.matris tr:last-child>*{border-bottom:0}
+.matris td.sv{color:var(--acc);font-weight:500}
+.matris td.kr{color:var(--warn);font-weight:500}
+.matris td.ks,.matris td.yk{color:var(--mut)}
