@@ -287,3 +287,13 @@ details.uyari summary::-webkit-details-marker {
 
 .kopru{margin:2.2em 0 1.2em;padding:14px 16px;border:1px dashed var(--line2);border-left:2px solid var(--acc);font-size:.9375rem}
 .kopru a{text-decoration:underline;text-underline-offset:3px}
+
+/* yazı altı paylaşım bloğu */
+.paylas{margin-top:2.4em;padding-top:14px;border-top:1px solid var(--line);max-width:68ch}
+.paylas h2{font:500 .75rem/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:0 0 10px}
+.paylas h2::before{content:none}
+.paylas ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.paylas li{margin:0;padding:0}
+.paylas .tag{display:inline-flex;align-items:center;min-height:36px;background:transparent;font:500 .75rem/1.2 var(--mono);letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.paylas .tag:hover,.paylas .tag:focus-visible{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.paylas .tag.ok{border-color:var(--acc);color:var(--acc)}

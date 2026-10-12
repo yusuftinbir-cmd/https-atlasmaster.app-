@@ -50,3 +50,37 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!gor && by === fab) kapat();
   }).observe(ac);
 });
+
+// Yazı altı paylaşım bloğu: bağlantıyı kopyala (2 sn "Kopyalandı"); tarayıcı destekliyorsa en başa "Paylaş…"
+document.addEventListener('DOMContentLoaded', function () {
+  var nav = document.querySelector('nav.paylas'), liste = nav && nav.querySelector('ul');
+  if (!liste) return;
+  var en = document.documentElement.lang === 'en';
+  var link = (document.querySelector('link[rel="canonical"]') || {}).href || location.href;
+
+  function dugme(text) {
+    var li = document.createElement('li'), b = document.createElement('button');
+    b.type = 'button'; b.className = 'tag'; b.textContent = text;
+    li.appendChild(b);
+    return { li: li, b: b };
+  }
+  if (navigator.share) {
+    var s = dugme(en ? 'Share…' : 'Paylaş…');
+    s.b.addEventListener('click', function () {
+      navigator.share({ title: document.title, url: link }).catch(function () {});
+    });
+    liste.insertBefore(s.li, liste.firstChild);
+  }
+  var k = liste.querySelector('[data-kopya]');
+  if (!k) return;
+  var ilk = k.textContent, zaman = null;
+  k.addEventListener('click', function () {
+    var yaz = navigator.clipboard && navigator.clipboard.writeText(link);
+    if (!yaz) return;
+    yaz.then(function () {
+      k.textContent = en ? 'Copied' : 'Kopyalandı'; k.classList.add('ok');
+      clearTimeout(zaman);
+      zaman = setTimeout(function () { k.textContent = ilk; k.classList.remove('ok'); }, 2000);
+    }).catch(function () {});
+  });
+});
