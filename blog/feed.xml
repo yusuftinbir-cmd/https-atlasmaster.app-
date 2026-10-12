@@ -6,7 +6,15 @@
     <atom:link href="https://atlasmaster.app/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Atlas Stüdyo analizi: Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle ...</description>
     <language>tr-TR</language>
-    <lastBuildDate>Sun, 11 Oct 2026 15:08:10 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 16:30:00 +0300</lastBuildDate>
+    <item>
+      <title>Türkiye'nin dünya markası bir viskisi neden yok? Olmalı mı?</title>
+      <link>https://atlasmaster.app/blog/turkiye-viski-dunya-markasi.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/turkiye-viski-dunya-markasi.html</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Türkiye'nin viskisi vardı, 1963'te rafa çıktı. Engel kanundaki asimetri, vergi tabanı ve gelirsiz bekleme; en gerçekçi yol izinl...</description>
+      <category>Kıvılcım turu</category>
+    </item>
     <item>
       <title>Kapıyı kriz açar, hitabet içeri alır</title>
       <link>https://atlasmaster.app/blog/soylem-eylem-makasi.html</link>

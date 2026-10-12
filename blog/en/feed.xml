@@ -6,7 +6,15 @@
     <atom:link href="https://atlasmaster.app/blog/en/feed.xml" rel="self" type="application/rss+xml" />
     <description>Atlas Studio analysis: The studio's working log: we discuss topics chosen from the news with different AI models, and write what we recommend and what da...</description>
     <language>en-US</language>
-    <lastBuildDate>Sun, 11 Oct 2026 15:08:10 +0300</lastBuildDate>
+    <lastBuildDate>Mon, 12 Oct 2026 16:30:00 +0300</lastBuildDate>
+    <item>
+      <title>Why doesn't Turkey have a global whisky brand? Should it?</title>
+      <link>https://atlasmaster.app/blog/en/turkey-whisky-world-brand.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/turkey-whisky-world-brand.html</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Turkey made whisky from 1963. Today's barriers: a legal asymmetry, the tax base, years without revenue; the likeliest path is a...</description>
+      <category>Spark round</category>
+    </item>
     <item>
       <title>The crisis opens the door, oratory lets it in</title>
       <link>https://atlasmaster.app/blog/en/discourse-action-gap.html</link>
