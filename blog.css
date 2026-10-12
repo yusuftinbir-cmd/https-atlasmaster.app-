@@ -8,6 +8,10 @@
 /* etiketler */
 .tag.acc{border-color:var(--acc);color:var(--acc)}
 .tag.dr{border-style:dashed;color:var(--mut)}
+.tag.kat-kivilcim{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent)}
+.tag.kat-sentez{border-color:var(--fg);color:var(--fg)}
+.tag.kat-makale{border-color:var(--mut);color:var(--fg)}
+.tag.kat-inceleme{border-color:var(--mut);border-style:dashed;color:var(--fg)}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font:500 .75rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 .meta .tags{margin:0}
 .meta .by{color:var(--fg)}
