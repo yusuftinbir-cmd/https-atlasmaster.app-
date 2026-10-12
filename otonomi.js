@@ -212,6 +212,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (dk < 2880) return fmt(Math.round(dk / 60)) + L.sa;
     return fmt(Math.round(dk / 1440)) + L.gun;
   }
+  // son_ts (ISO +03:00) varsa yaş GÖRÜNTÜLEME anında hesaplanır; yoksa ölçüm anındaki son_dk (eski davranış)
+  function mutlak(t) {
+    var d = new Date(t + 3 * 36e5), z = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getUTCDate() + ' ' + AYLAR[d.getUTCMonth()] + ' ' + z(d.getUTCHours()) + ':' + z(d.getUTCMinutes());
+  }
+  function sonKosu(a) {
+    var t = typeof a.son_ts === 'string' && a.son_ts ? Date.parse(a.son_ts) : NaN;
+    if (isNaN(t)) return [once(a.son_dk), L.son];
+    return [once(Math.max(0, Math.floor((Date.now() - t) / 6e4))), L.son + ' · ' + mutlak(t)];
+  }
   function dizi(s) { return s ? s.split(',').map(Number) : []; }
   function spark(g, o) {
     var W = 148, H = 44, x0 = 5, y0 = 38, dx = (W - 2 * x0) / (g.length - 1), tepe = Math.max.apply(null, g.concat(1));
@@ -232,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
     govde.textContent = '';
     if (!a || a.olculdu !== 1) { kart.classList.add('yok'); govde.appendChild(el('p', 'ayok', L.yok)); return; }
     var puanli = a.ok7 >= 0, ul = el('ul', 'astat');
-    [[once(a.son_dk), L.son],
+    [sonKosu(a),
      [fmt(a.k7), L.kosu],
      [puanli && a.k7 > 0 ? fmt(Math.round(a.ok7 / a.k7 * 100), 'pct') : '—',
       puanli ? (govde.getAttribute('data-ok') || L.oran) + ' · ' + fmt(a.ok7) : L.olcusuz]
@@ -253,6 +263,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (s) govde.appendChild(el('p', 'aday', s.replace(/\{(\w+)\}/g, function (m, k) { return typeof a[k] === 'number' && a[k] >= 0 ? fmt(a[k]) : '?'; })));
   }
   all('[data-ajan]').forEach(karne);
+  // kök ts (ajan_karne_olc üretim anı): kartların altına 'ölçüm: <tarih saat>'
+  var oz = D.ajanlar && typeof D.ajanlar.ts === 'string' ? Date.parse(D.ajanlar.ts) : NaN, kartlar = all('[data-ajan]');
+  if (!isNaN(oz) && kartlar.length) {
+    var sat = el('p', 'acap olcum-ts', (en ? 'measured: ' : 'ölçüm: ') + mutlak(oz) + (en ? ' (Turkey time)' : ' (TSİ)'));
+    var sonKart = kartlar[kartlar.length - 1];
+    sonKart.parentNode.parentNode.insertBefore(sat, sonKart.parentNode.nextSibling);
+  }
 
   var surucu = {};
   var s1 = document.getElementById('ag'), s2 = document.getElementById('hn'), s3 = document.getElementById('ab');
