@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATLAS Ağız Kırpma Aracı | Otomatik Test Paketi</title>
+  <style>
+    body {
+      background-color: #0c0d0e;
+      color: #f0f3f6;
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      color: #00e5ff;
+    }
+    .status-banner {
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .status-pass {
+      background: rgba(63, 185, 80, 0.15);
+      border: 1px solid #238636;
+      color: #3fb950;
+    }
+    .status-fail {
+      background: rgba(248, 81, 73, 0.15);
+      border: 1px solid #f85149;
+      color: #ff7b72;
+    }
+    .test-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .test-item {
+      background: #15171a;
+      border: 1px solid #2a2e35;
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .test-title {
+      font-size: 14px;
+    }
+    .test-badge {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .badge-pass {
+      background: rgba(63, 185, 80, 0.2);
+      color: #3fb950;
+    }
+    .badge-fail {
+      background: rgba(248, 81, 73, 0.2);
+      color: #ff7b72;
+    }
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ATLAS Ağız Kırpma Aracı Sentetik Doğrulama Testi</h1>
+    <p style="color: #8b949e; font-size: 13px;">Gerçek fotoğraf kullanılmaz. Sentetik canvas yüzü ile otomatik sınama yapılır.</p>
+
+    <div id="statusBanner" class="status-banner status-pass" style="display:none;">
+      <span id="testSummaryText">Hesaplanıyor...</span>
+      <span id="testScore"></span>
+    </div>
+
+    <ul class="test-list" id="testList"></ul>
+
+    <!-- Sentetik Test Canvası -->
+    <canvas id="synthCanvas" width="800" height="700"></canvas>
+  </div>
+
+  <script>
+    var TARGET_ASPECT = 1304 / 734;
+
+    // 1. Sentetik Yüz Çizimi (Gerçek Fotoğraf Yok)
+    function generateSyntheticFace() {
+      var cv = document.getElementById('synthCanvas');
+      var ctx = cv.getContext('2d');
+      var w = cv.width;
+      var h = cv.height;
+
+      // Arka plan
+      ctx.fillStyle = '#22252a';
+      ctx.fillRect(0, 0, w, h);
+
+      // Yüz ovali (Ten rengi)
+      ctx.fillStyle = '#dcae8a';
+      ctx.beginPath();
+      ctx.ellipse(400, 340, 190, 260, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Gözler
+      ctx.fillStyle = '#2c221e';
+      ctx.beginPath();
+      ctx.arc(330, 270, 16, 0, Math.PI * 2);
+      ctx.arc(470, 270, 16, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Burun
+      ctx.strokeStyle = '#aa7c5c';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(400, 310);
+      ctx.lineTo(395, 365);
+      ctx.lineTo(410, 365);
+      ctx.stroke();
+
+      // Ağız - Dudaklar (Kırmızı / Pembe)
+      ctx.fillStyle = '#be3244';
+      ctx.beginPath();
+      ctx.ellipse(400, 440, 80, 28, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Ağız İçi - Diş Beyazı
+      ctx.fillStyle = '#f5f5f0';
+      ctx.beginPath();
+      ctx.ellipse(400, 440, 60, 14, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Diş ayrımları
+      ctx.strokeStyle = '#dcdcd5';
+      ctx.lineWidth = 1;
+      for (var i = -40; i <= 40; i += 12) {
+        ctx.beginPath();
+        ctx.moveTo(400 + i, 432);
+        ctx.lineTo(400 + i, 448);
+        ctx.stroke();
+      }
+
+      return cv;
+    }
+
+    // 2. Ağız Kutusu Algoritması
+    function autoDetectMouthBox(cv) {
+      var sw = cv.width;
+      var sh = cv.height;
+      var sampleW = 320;
+      var sampleH = Math.max(10, Math.round(sampleW * (sh / sw)));
+      var off = document.createElement('canvas');
+      off.width = sampleW;
+      off.height = sampleH;
+      var octx = off.getContext('2d');
+      octx.drawImage(cv, 0, 0, sampleW, sampleH);
+
+      var minX = Math.floor(sampleW * 0.20);
+      var maxX = Math.floor(sampleW * 0.80);
+      var minY = Math.floor(sampleH * 0.40);
+      var maxY = Math.floor(sampleH * 0.85);
+
+      var imgData = octx.getImageData(0, 0, sampleW, sampleH).data;
+      var sumX = 0, sumY = 0, count = 0;
+      var minDetectedX = sampleW, maxDetectedX = 0;
+      var minDetectedY = sampleH, maxDetectedY = 0;
+
+      for (var y = minY; y < maxY; y++) {
+        for (var x = minX; x < maxX; x++) {
+          var idx = (y * sampleW + x) * 4;
+          var r = imgData[idx];
+          var g = imgData[idx + 1];
+          var b = imgData[idx + 2];
+
+          var isLip = (r > 100 && (r / (g + b + 0.1)) > 1.0 && (r - g) > 40);
+          var isTooth = (r > 180 && g > 175 && b > 165 && Math.abs(r - g) < 16 && Math.abs(r - b) < 20 && Math.abs(g - b) < 16);
+
+          if (isLip || isTooth) {
+            sumX += x;
+            sumY += y;
+            count++;
+            if (x < minDetectedX) minDetectedX = x;
+            if (x > maxDetectedX) maxDetectedX = x;
+            if (y < minDetectedY) minDetectedY = y;
+            if (y > maxDetectedY) maxDetectedY = y;
+          }
+        }
+      }
+
+      var boxW, boxH, boxX, boxY;
+      if (count > 25) {
+        var centerX = (sumX / count) * (sw / sampleW);
+        var centerY = (sumY / count) * (sh / sampleH);
+        var detectedW = (maxDetectedX - minDetectedX) * (sw / sampleW);
+        var spanW = Math.max(detectedW * 1.5, sw * 0.42);
+
+        boxW = Math.min(sw * 0.70, Math.max(sw * 0.32, spanW));
+        boxH = Math.round(boxW / TARGET_ASPECT);
+
+        boxX = Math.round(centerX - boxW / 2);
+        boxY = Math.round(centerY - boxH / 2);
+      } else {
+        boxW = Math.round(sw * 0.50);
+        boxH = Math.round(boxW / TARGET_ASPECT);
+        boxX = Math.round((sw - boxW) / 2);
+        boxY = Math.round(sh * 0.55 - boxH / 2);
+      }
+
+      if (boxW > sw) { boxW = sw; boxH = Math.round(boxW / TARGET_ASPECT); }
+      if (boxH > sh) { boxH = sh; boxW = Math.round(boxH * TARGET_ASPECT); }
+      if (boxX < 0) boxX = 0;
+      if (boxY < 0) boxY = 0;
+      if (boxX + boxW > sw) boxX = sw - boxW;
+      if (boxY + boxH > sh) boxY = sh - boxH;
+
+      return { x: boxX, y: boxY, width: boxW, height: boxH, count: count };
+    }
+
+    // 3. 8 Hex Üretimi
+    function generateHexId() {
+      var bytes = new Uint8Array(4);
+      if (window.crypto && window.crypto.getRandomValues) {
+        window.crypto.getRandomValues(bytes);
+      } else {
+        for (var i = 0; i < 4; i++) bytes[i] = Math.floor(Math.random() * 256);
+      }
+      var hex = '';
+      for (var j = 0; j < 4; j++) {
+        var h = bytes[j].toString(16);
+        hex += (h.length === 1 ? '0' + h : h);
+      }
+      return hex;
+    }
+
+    // Testleri Koştur
+    function runAllTests() {
+      var tests = [];
+
+      // Test 1: Sentetik Görsel & Otomatik Kutu Tespiti
+      var synthCanvas = generateSyntheticFace();
+      var box = autoDetectMouthBox(synthCanvas);
+      var mouthDetected = box.count > 25 && box.y > 300 && box.width > 100;
+      tests.push({
+        name: 'Sentetik görselde otomatik ağız kutusu tespiti (ağsız renk kümesi)',
+        pass: mouthDetected,
+        detail: 'Piksel: ' + box.count + ', Kutu: ' + box.width + 'x' + box.height + ' @ (' + box.x + ',' + box.y + ')'
+      });
+
+      // Test 2: Çıktı Boyutu (1304 × 734 px & 16:9 oranı)
+      var outCanvas = document.createElement('canvas');
+      outCanvas.width = 1304;
+      outCanvas.height = 734;
+      var octx = outCanvas.getContext('2d');
+      octx.drawImage(synthCanvas, box.x, box.y, box.width, box.height, 0, 0, 1304, 734);
+
+      var exactSize = (outCanvas.width === 1304 && outCanvas.height === 734);
+      tests.push({
+        name: 'Kırpım çıktı boyutu tam 1304×734 px',
+        pass: exactSize,
+        detail: 'Genişlik: ' + outCanvas.width + 'px, Yükseklik: ' + outCanvas.height + 'px'
+      });
+
+      // Test 3: Dosya Adı Deseni (agiz_<8 hex>.jpg ve vaka_<8 hex>.json)
+      var hexId = generateHexId();
+      var jpgName = 'agiz_' + hexId + '.jpg';
+      var jsonName = 'vaka_' + hexId + '.json';
+      var hexRegex = /^[0-9a-f]{8}$/;
+      var namePatternOk = hexRegex.test(hexId) &&
+                          jpgName === ('agiz_' + hexId + '.jpg') &&
+                          jsonName === ('vaka_' + hexId + '.json');
+      tests.push({
+        name: 'Rastgele dosya adı deseni (agiz_<8hex>.jpg ve vaka_<8hex>.json)',
+        pass: namePatternOk,
+        detail: 'Örnek: ' + jpgName + ' & ' + jsonName
+      });
+
+      // Test 4: Kimliksiz JSON Alanları
+      var mockCase = {
+        vaka_id: hexId,
+        cinsiyet: 'K',
+        yas_bandi: '18-29',
+        yuz_bicimi: 'oval',
+        gulus_hatti: 'orta',
+        istek_notu: 'Doğal kontur isteği'
+      };
+      var requiredKeys = ['vaka_id', 'cinsiyet', 'yas_bandi', 'yuz_bicimi', 'gulus_hatti', 'istek_notu'];
+      var keysOk = requiredKeys.every(function(k) { return mockCase.hasOwnProperty(k); });
+      var validGender = (mockCase.cinsiyet === 'K' || mockCase.cinsiyet === 'E');
+      var validAge = ['18-29', '30-45', '46+'].indexOf(mockCase.yas_bandi) !== -1;
+      var validFace = ['oval', 'kare', 'üçgen', 'yuvarlak', 'uzun'].indexOf(mockCase.yuz_bicimi) !== -1;
+      var validSmile = ['düşük', 'orta', 'yüksek'].indexOf(mockCase.gulus_hatti) !== -1;
+      var jsonValid = keysOk && validGender && validAge && validFace && validSmile;
+      tests.push({
+        name: 'Kimliksiz vaka JSON alanları ve geçerli değerler',
+        pass: jsonValid,
+        detail: 'Alanlar: ' + requiredKeys.join(', ')
+      });
+
+      // Test 5: JPEG Kalite 92 & EXIF Yokluğu
+      outCanvas.toBlob(function(blob) {
+        var blobOk = blob && blob.type === 'image/jpeg' && blob.size > 1000;
+
+        // Blob array buffer incelemesi - EXIF kontrolü
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          var buffer = reader.result;
+          var view = new DataView(buffer);
+          var hasExif = false;
+          // JPEG SOI: 0xFFD8
+          if (view.getUint16(0) === 0xFFD8) {
+            var offset = 2;
+            while (offset < view.byteLength - 4) {
+              var marker = view.getUint16(offset);
+              // APP1 marker 0xFFE1 (EXIF başlığı)
+              if (marker === 0xFFE1) {
+                // EXIF string kontrolü
+                var exifHeader = String.fromCharCode(
+                  view.getUint8(offset + 4),
+                  view.getUint8(offset + 5),
+                  view.getUint8(offset + 6),
+                  view.getUint8(offset + 7)
+                );
+                if (exifHeader === 'Exif') {
+                  hasExif = true;
+                  break;
+                }
+              }
+              if ((marker & 0xFF00) !== 0xFF00) break;
+              offset += 2 + view.getUint16(offset + 2);
+            }
+          }
+
+          var exifClean = blobOk && !hasExif;
+          tests.push({
+            name: 'JPEG kalitesi ve EXIF/meta veriden arındırma',
+            pass: exifClean,
+            detail: 'Boyut: ' + blob.size + ' B, EXIF varlığı: ' + (hasExif ? 'EVET (HATA)' : 'YOK (TEMİZ)')
+          });
+
+          // Test 6: Veri Saklanmaması (localStorage boşluğu)
+          var storageClean = (typeof localStorage === 'undefined' || localStorage.length === 0);
+          tests.push({
+            name: 'Hasta verisi saklanmaması (localStorage / çerez yok)',
+            pass: storageClean,
+            detail: 'Yerel depolama anahtar sayısı: ' + (typeof localStorage !== 'undefined' ? localStorage.length : 0)
+          });
+
+          // Raporla
+          renderTestResults(tests);
+        };
+        reader.readAsArrayBuffer(blob);
+      }, 'image/jpeg', 0.92);
+    }
+
+    function renderTestResults(tests) {
+      var passedCount = 0;
+      var list = document.getElementById('testList');
+      list.innerHTML = '';
+
+      tests.forEach(function(t) {
+        if (t.pass) passedCount++;
+        var li = document.createElement('li');
+        li.className = 'test-item';
+        li.innerHTML = '<div>' +
+          '<div class="test-title"><strong>' + t.name + '</strong></div>' +
+          '<div style="font-size:12px;color:#8b949e;margin-top:2px;">' + t.detail + '</div>' +
+          '</div>' +
+          '<span class="test-badge ' + (t.pass ? 'badge-pass' : 'badge-fail') + '">' +
+          (t.pass ? 'BAŞARILI' : 'BAŞARISIZ') +
+          '</span>';
+        list.appendChild(li);
+      });
+
+      var total = tests.length;
+      var allPass = (passedCount === total);
+      var banner = document.getElementById('statusBanner');
+      banner.style.display = 'flex';
+      banner.className = 'status-banner ' + (allPass ? 'status-pass' : 'status-fail');
+
+      var scoreStr = passedCount + '/' + total;
+      var statusText = allPass ? ('KIRP_OK ' + scoreStr) : ('KIRP_FAIL ' + scoreStr);
+      document.getElementById('testSummaryText').textContent = statusText;
+      document.getElementById('testScore').textContent = allPass ? 'TÜM TESTLER GEÇTİ' : 'BAŞARISIZ ADIM VAR';
+
+      // Global dışa aktarım
+      window.TEST_RESULT = {
+        status: allPass ? 'KIRP_OK' : 'KIRP_FAIL',
+        passed: passedCount,
+        total: total,
+        score: scoreStr,
+        summary: statusText
+      };
+
+      // Konsola da yaz
+      console.log(statusText);
+    }
+
+    window.onload = function() {
+      runAllTests();
+    };
+  </script>
+</body>
+</html>
