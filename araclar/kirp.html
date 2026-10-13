@@ -470,6 +470,19 @@
         justify-content: center;
       }
     }
+
+    .res-warning {
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
   </style>
 </head>
 <body>
@@ -543,9 +556,12 @@
         </div>
         <div class="control-group">
           <button type="button" class="btn-ctrl" onclick="resetToAuto()" id="btnAutoSuggest">Otomatik Öneri</button>
-          <span class="badge-ratio">1304 × 734 px</span>
+          <span class="badge-ratio" id="badgeResolution">16:9 Yerli</span>
         </div>
       </div>
+
+      <!-- Çözünürlük ve Yakınlık Uyarısı -->
+      <div id="resWarning" class="res-warning" style="display:none;"></div>
     </section>
 
     <!-- Adım 3: Kimliksiz Vaka Formu -->
@@ -641,6 +657,7 @@
         ctrlSize: 'Kutu Boyutu:',
         ctrlMove: 'Taşı:',
         autoSuggest: 'Otomatik Öneri',
+        warnLowRes: 'fotoğraf yakın/çözünürlük düşük',
         step3: 'Kimliksiz Vaka Bilgileri',
         lblGender: 'Cinsiyet',
         lblAge: 'Yaş Bandı',
@@ -650,7 +667,7 @@
         noteWarn: 'Lütfen hasta adı, soyadı, protokol no veya kimlik bilgisi YAZMAYINIZ.',
         notePlaceholder: 'Örn: Diş boyları uzatılsın, santral baskın olsun...',
         btnDownload: 'Kırpılmış Görseli ve Vaka JSON\'unu İndir',
-        downloadMeta: 'Çıktı: agiz_xxxxxxxx.jpg (1304×734 px, JPEG 92, EXIF\'siz) + vaka_xxxxxxxx.json',
+        downloadMeta: 'Çıktı: agiz_xxxxxxxx.jpg (16:9 yerli, JPEG 94, ≤3 MB) + vaka_xxxxxxxx.json',
         toastOk: 'İki dosya cihazınıza başarıyla indirildi.',
         faceNames: { oval: 'Oval', kare: 'Kare', 'üçgen': 'Üçgen', yuvarlak: 'Yuvarlak', uzun: 'Uzun' },
         smileNames: { 'düşük': 'Düşük', orta: 'Orta', 'yüksek': 'Yüksek' }
@@ -666,6 +683,7 @@
         ctrlSize: 'Box Size:',
         ctrlMove: 'Move:',
         autoSuggest: 'Auto Suggest',
+        warnLowRes: 'photo is close / low resolution',
         step3: 'De-identified Case Information',
         lblGender: 'Gender',
         lblAge: 'Age Bracket',
@@ -675,7 +693,7 @@
         noteWarn: 'DO NOT write patient name, surname, chart number, or identifying details.',
         notePlaceholder: 'e.g. Lengthen anterior teeth, dominant centrals desired...',
         btnDownload: 'Download Cropped Image & Case JSON',
-        downloadMeta: 'Output: agiz_xxxxxxxx.jpg (1304×734 px, JPEG 92, stripped EXIF) + vaka_xxxxxxxx.json',
+        downloadMeta: 'Output: agiz_xxxxxxxx.jpg (16:9 native, JPEG 94, ≤3 MB) + vaka_xxxxxxxx.json',
         toastOk: 'Both files successfully downloaded to your device.',
         faceNames: { oval: 'Oval', kare: 'Square', 'üçgen': 'Triangular', yuvarlak: 'Round', uzun: 'Long' },
         smileNames: { 'düşük': 'Low', orta: 'Medium', 'yüksek': 'High' }
@@ -707,7 +725,6 @@
       document.getElementById('txtNoteWarn').textContent = t.noteWarn;
       document.getElementById('noteInput').placeholder = t.notePlaceholder;
       document.getElementById('txtBtnDownload').textContent = t.btnDownload;
-      document.getElementById('txtDownloadMeta').textContent = t.downloadMeta;
 
       // Yüz ve gülüş buton metinleri
       var faceButtons = document.querySelectorAll('#grpFace .sel-btn');
@@ -721,18 +738,172 @@
         var v = b.getAttribute('data-val');
         if (t.smileNames[v]) b.textContent = t.smileNames[v];
       });
+
+      updateCropInfo();
     }
 
     // Durum Değişkenleri
     var sourceImage = null;
+    var detectedExifOrientation = 1;
     var cropBox = { x: 0, y: 0, width: 0, height: 0 };
-    var TARGET_ASPECT = 1304 / 734; // 1.776566...
+    var TARGET_ASPECT = 16 / 9; // 1.77777777778 (16:9 sabit oran)
     var formValues = {
       gender: 'K',
       age: '18-29',
       face: 'oval',
       smile: 'orta'
     };
+
+    // EXIF Yön Bilgisi Çıkarma (0x0112 tag)
+    function getExifOrientation(arrayBuffer) {
+      try {
+        var view = new DataView(arrayBuffer);
+        if (view.getUint16(0, false) !== 0xFFD8) return 1;
+        var length = view.byteLength, offset = 2;
+        while (offset < length - 2) {
+          var marker = view.getUint16(offset, false);
+          offset += 2;
+          if (marker === 0xFFE1) {
+            var app1Length = view.getUint16(offset, false);
+            offset += 2;
+            if (offset + 4 <= length && view.getUint32(offset, false) === 0x45786966) {
+              var tiffOffset = offset + 6;
+              var littleEndian = false;
+              var endianMarker = view.getUint16(tiffOffset, false);
+              if (endianMarker === 0x4949) littleEndian = true;
+              else if (endianMarker === 0x4D4D) littleEndian = false;
+              else return 1;
+              var firstIFDOffset = view.getUint32(tiffOffset + 4, littleEndian);
+              if (firstIFDOffset < 8) return 1;
+              var ifdStart = tiffOffset + firstIFDOffset;
+              if (ifdStart + 2 > length) return 1;
+              var entries = view.getUint16(ifdStart, littleEndian);
+              for (var i = 0; i < entries; i++) {
+                var entryOffset = ifdStart + 2 + i * 12;
+                if (entryOffset + 12 > length) break;
+                var tag = view.getUint16(entryOffset, littleEndian);
+                if (tag === 0x0112) {
+                  var val = view.getUint16(entryOffset + 8, littleEndian);
+                  if (val >= 1 && val <= 8) return val;
+                }
+              }
+            }
+            offset += app1Length - 2;
+          } else if ((marker & 0xFF00) === 0xFF00) {
+            if (marker === 0xFFDA || marker === 0xFFD9) break;
+            offset += view.getUint16(offset, false);
+          } else {
+            break;
+          }
+        }
+      } catch (e) {}
+      return 1;
+    }
+
+    // Saf JavaScript SHA-256 (FIPS 180-4, Çevrimdışı & Bağımsız)
+    function sha256Sync(bytes) {
+      function rightRotate(w, n) { return (w >>> n) | (w << (32 - n)); }
+      var K = [
+        0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+        0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+        0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+        0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+        0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+        0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+        0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+        0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+      ];
+      var H = [
+        0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
+        0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19
+      ];
+      var l = bytes.length;
+      var bitLen = l * 8;
+      var newLen = ((l + 8) >> 6) + 1 << 6;
+      var padded = new Uint8Array(newLen);
+      padded.set(bytes);
+      padded[l] = 0x80;
+      var view = new DataView(padded.buffer);
+      view.setUint32(newLen - 4, bitLen, false);
+      var W = new Int32Array(64);
+      for (var i = 0; i < newLen; i += 64) {
+        for (var t = 0; t < 16; t++) {
+          W[t] = view.getInt32(i + t * 4, false);
+        }
+        for (var t = 16; t < 64; t++) {
+          var s0 = rightRotate(W[t - 15], 7) ^ rightRotate(W[t - 15], 18) ^ (W[t - 15] >>> 3);
+          var s1 = rightRotate(W[t - 2], 17) ^ rightRotate(W[t - 2], 19) ^ (W[t - 2] >>> 10);
+          W[t] = (W[t - 16] + s0 + W[t - 7] + s1) | 0;
+        }
+        var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
+        for (var t = 0; t < 64; t++) {
+          var S1 = rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25);
+          var ch = (e & f) ^ ((~e) & g);
+          var temp1 = (h + S1 + ch + K[t] + W[t]) | 0;
+          var S0 = rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22);
+          var maj = (a & b) ^ (a & c) ^ (b & c);
+          var temp2 = (S0 + maj) | 0;
+          h = g; g = f; f = e; e = (d + temp1) | 0;
+          d = c; c = b; b = a; a = (temp1 + temp2) | 0;
+        }
+        H[0] = (H[0] + a) | 0;
+        H[1] = (H[1] + b) | 0;
+        H[2] = (H[2] + c) | 0;
+        H[3] = (H[3] + d) | 0;
+        H[4] = (H[4] + e) | 0;
+        H[5] = (H[5] + f) | 0;
+        H[6] = (H[6] + g) | 0;
+        H[7] = (H[7] + h) | 0;
+      }
+      var hex = "";
+      for (var j = 0; j < 8; j++) {
+        var v = (H[j] >>> 0).toString(16);
+        while (v.length < 8) v = "0" + v;
+        hex += v;
+      }
+      return hex;
+    }
+
+    // Çözünürlük ve Kutu Bilgilerini Güncelle
+    function updateCropInfo() {
+      if (!cropBox.width) return;
+      var bw = Math.round(cropBox.width);
+      var bh = Math.round(cropBox.height);
+      var outW = bw;
+      var outH = Math.round(bw * 9 / 16);
+      var olcek = 1.0;
+      if (bw > 2048) {
+        outW = 2048;
+        outH = 1152;
+        olcek = Number((outW / bw).toFixed(4));
+      }
+
+      var badge = document.getElementById('badgeResolution');
+      if (badge) {
+        badge.textContent = outW + ' × ' + outH + ' px' + (olcek < 1.0 ? ' (Ölçek: ' + olcek + ')' : ' (Yerli)');
+      }
+
+      var warnElem = document.getElementById('resWarning');
+      if (warnElem) {
+        if (bw < 1000) {
+          warnElem.style.display = 'flex';
+          warnElem.innerHTML = '<span>⚠️</span> <span>' +
+            (currentLang === 'tr'
+              ? 'Fotoğraf yakın/çözünürlük düşük (Kutu: ' + bw + ' px < 1000 px)'
+              : 'Photo is close / low resolution (Box: ' + bw + ' px < 1000 px)') +
+            '</span>';
+        } else {
+          warnElem.style.display = 'none';
+        }
+      }
+
+      var metaElem = document.getElementById('txtDownloadMeta');
+      if (metaElem) {
+        metaElem.textContent = (currentLang === 'tr'
+          ? 'Çıktı: agiz_xxxxxxxx.jpg (' + outW + '×' + outH + ' px, 16:9 yerli, JPEG 94, ≤3 MB, EXIF\'siz) + vaka_xxxxxxxx.json'
+          : 'Output: agiz_xxxxxxxx.jpg (' + outW + '×' + outH + ' px, 16:9 native, JPEG 94, ≤3 MB, stripped EXIF) + vaka_xxxxxxxx.json');
+      }
+    }
 
     function setFormValue(key, val) {
       formValues[key] = val;
@@ -793,6 +964,12 @@
         alert(currentLang === 'tr' ? 'Lütfen geçerli bir görsel dosyası seçin.' : 'Please select a valid image file.');
         return;
       }
+      var bufReader = new FileReader();
+      bufReader.onload = function(ev) {
+        detectedExifOrientation = getExifOrientation(ev.target.result);
+      };
+      bufReader.readAsArrayBuffer(file);
+
       var reader = new FileReader();
       reader.onload = function(e) {
         var img = new Image();
@@ -1015,6 +1192,9 @@
       drawHandle(cropBox.x + cropBox.width, cropBox.y, handleR);
       drawHandle(cropBox.x + cropBox.width, cropBox.y + cropBox.height, handleR);
       drawHandle(cropBox.x, cropBox.y + cropBox.height, handleR);
+
+      // Çözünürlük ve uyarı rozetlerini tazele
+      updateCropInfo();
     }
 
     function drawHandle(cx, cy, r) {
@@ -1198,7 +1378,7 @@
       }, 1200);
     }
 
-    // Kırpma & İndirme İşlemi (1304×734 px, JPEG 92, EXIF'siz)
+    // Kırpma & İndirme İşlemi (Yerli Çözünürlük, 16:9, JPEG 94, ≤3 MB, EXIF'siz)
     function exportFiles() {
       if (!sourceImage) return;
 
@@ -1206,51 +1386,104 @@
       var jpgName = 'agiz_' + hexId + '.jpg';
       var jsonName = 'vaka_' + hexId + '.json';
 
-      // 1304 × 734 px Çıktı Canvası
+      var bx = Math.round(cropBox.x);
+      var by = Math.round(cropBox.y);
+      var bw = Math.round(cropBox.width);
+      var bh = Math.round(cropBox.height);
+
+      // Yerli çözünürlük (2048 px tavan)
+      var outW = bw;
+      var outH = Math.round(bw * 9 / 16);
+      var olcek = 1.0;
+      if (bw > 2048) {
+        outW = 2048;
+        outH = 1152;
+        olcek = Number((outW / bw).toFixed(4));
+      }
+
+      // Çıktı Canvası
       var outCanvas = document.createElement('canvas');
-      outCanvas.width = 1304;
-      outCanvas.height = 734;
+      outCanvas.width = outW;
+      outCanvas.height = outH;
       var octx = outCanvas.getContext('2d');
 
       octx.imageSmoothingEnabled = true;
       octx.imageSmoothingQuality = 'high';
 
-      // Kırpılan bölgeyi tam 1304x734 boyutuna çiz
+      // Kırpılan bölgeyi yerli/ölçekli çözünürlüğe çiz
       octx.drawImage(
         sourceImage,
-        cropBox.x, cropBox.y, cropBox.width, cropBox.height,
-        0, 0, 1304, 734
+        bx, by, bw, bh,
+        0, 0, outW, outH
       );
 
-      // JSON Çıktısı (Tamamen Kimliksiz)
+      // JSON Çıktısı (Tamamen Kimliksiz + Kutu & Ölçek Meta Verileri)
       var noteVal = (document.getElementById('noteInput').value || '').trim();
-      var caseData = {
-        vaka_id: hexId,
-        cinsiyet: formValues.gender,
-        yas_bandi: formValues.age,
-        yuz_bicimi: formValues.face,
-        gulus_hatti: formValues.smile,
-        istek_notu: noteVal
-      };
+      var origW = sourceImage.naturalWidth || sourceImage.width;
+      var origH = sourceImage.naturalHeight || sourceImage.height;
 
-      // JPEG Kalite 92 (0.92) & EXIF'siz
-      outCanvas.toBlob(function(jpegBlob) {
+      // JPEG Kalite 94 (0.94) & ≤3 MB Güvencesi
+      function compressBlob(quality, callback) {
+        outCanvas.toBlob(function(blob) {
+          if (!blob) {
+            callback(null);
+            return;
+          }
+          if (blob.size <= 3 * 1024 * 1024 || quality <= 0.70) {
+            callback(blob);
+          } else {
+            compressBlob(quality - 0.05, callback);
+          }
+        }, 'image/jpeg', quality);
+      }
+
+      compressBlob(0.94, function(jpegBlob) {
         if (!jpegBlob) {
           alert('Görsel oluşturulamadı.');
           return;
         }
 
-        // 1. Görseli İndir
-        downloadBlob(jpegBlob, jpgName);
+        // Görsel SHA-256 Özeti
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var arr = new Uint8Array(e.target.result);
+          var shaHex = sha256Sync(arr);
 
-        // 2. JSON Dosyasını İndir
-        var jsonBlob = new Blob([JSON.stringify(caseData, null, 2)], { type: 'application/json' });
-        setTimeout(function() {
-          downloadBlob(jsonBlob, jsonName);
-          showToast(dict[currentLang].toastOk + ' (' + jpgName + ', ' + jsonName + ')');
-        }, 350);
+          var caseData = {
+            vaka_id: hexId,
+            cinsiyet: formValues.gender,
+            yas_bandi: formValues.age,
+            yuz_bicimi: formValues.face,
+            gulus_hatti: formValues.smile,
+            istek_notu: noteVal,
+            kutu: {
+              x: bx,
+              y: by,
+              w: bw,
+              h: bh
+            },
+            ozgun_boyut: {
+              w: origW,
+              h: origH
+            },
+            exif_yon: detectedExifOrientation || 1,
+            olcek: olcek,
+            kirpim_sha256: shaHex,
+            arac_surum: '2.0'
+          };
 
-      }, 'image/jpeg', 0.92);
+          // 1. Görseli İndir
+          downloadBlob(jpegBlob, jpgName);
+
+          // 2. JSON Dosyasını İndir
+          var jsonBlob = new Blob([JSON.stringify(caseData, null, 2)], { type: 'application/json' });
+          setTimeout(function() {
+            downloadBlob(jsonBlob, jsonName);
+            showToast(dict[currentLang].toastOk + ' (' + jpgName + ', ' + jsonName + ')');
+          }, 350);
+        };
+        reader.readAsArrayBuffer(jpegBlob);
+      });
     }
 
     function showToast(msg) {
