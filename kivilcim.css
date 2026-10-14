@@ -1,7 +1,7 @@
 /* Atlas — Kıvılcım sayfası · kök style.css değişkenleriyle; burada yalnız bu sayfanın parçaları */
-:root{--ok:#1c7a4c}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#6fd49c}}
-:root[data-theme="dark"]{--ok:#6fd49c}
+:root{--ok:#0d9488}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#34d399}}
+:root[data-theme="dark"]{--ok:#34d399}
 
 main{counter-reset:sec}
 .sec .idx.auto::before{counter-increment:sec;content:"§ " counter(sec,decimal-leading-zero)}

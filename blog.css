@@ -8,24 +8,24 @@
 /* etiketler */
 .tag.acc{border-color:var(--acc);color:var(--acc)}
 .tag.dr{border-style:dashed;color:var(--mut)}
-.tag.kat-kivilcim{border-color:var(--acc);color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent)}
-.tag.kat-sentez{border-color:var(--fg);color:var(--fg)}
-.tag.kat-makale{border-color:var(--mut);color:var(--fg)}
-.tag.kat-inceleme{border-color:var(--mut);border-style:dashed;color:var(--fg)}
+.tag.kat-kivilcim{border-color:var(--acc);color:var(--acc);background:var(--acc-soft)}
+.tag.kat-sentez{border-color:var(--ok);color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,transparent)}
+.tag.kat-makale{border-color:var(--warn);color:var(--warn);background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.tag.kat-inceleme{border-color:var(--gold);border-style:dashed;color:var(--gold)}
 .meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;font:500 .75rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 .meta .tags{margin:0}
 .meta .by{color:var(--fg)}
 
 /* liste sayfası */
-.blog-hero{padding:44px 0 36px}
+.blog-hero{padding:44px 0 36px;background:radial-gradient(ellipse 80% 60% at 75% 20%,var(--acc-soft),transparent 70%)}
 .blog-hero h1 em{font-style:italic;color:var(--acc)}
-.posts{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);max-width:860px}
-.pcard{position:relative;background:var(--bg);padding:24px 18px 26px;transition:background .15s}
-.pcard:hover{background:var(--surface)}
+.posts{display:grid;gap:14px;max-width:860px}
+.pcard{position:relative;border:1px solid var(--line2);border-left:3px solid var(--acc);background:var(--surface);padding:24px 18px 26px;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s}
+.pcard:hover{background:color-mix(in srgb,var(--surface) 90%,var(--acc));border-color:var(--acc);transform:translateY(-2px);box-shadow:0 8px 24px var(--acc-soft)}
 .pcard h2{font-size:clamp(1.7rem,6vw,2.4rem);margin-top:16px}
 .pcard h2 a{color:var(--fg);text-decoration:none}
 .pcard h2 a::after{content:"";position:absolute;inset:0}
-.pcard h2 a:hover{text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:1px}
+.pcard h2 a:hover{color:var(--acc)}
 .pcard .sum{color:var(--mut);font-size:1.0625rem;line-height:1.6;max-width:38em;margin-top:12px}
 .pcard .meta{margin-top:18px}
 .pcard .go{color:var(--acc);margin-left:auto}

@@ -1,7 +1,7 @@
 /* Atlas — otonomi sayfası · kök style.css değişkenleriyle; burada yalnız bu sayfanın parçaları */
-:root{--ok:#1c7a4c}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#6fd49c}}
-:root[data-theme="dark"]{--ok:#6fd49c}
+:root{--ok:#0d9488}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok:#34d399}}
+:root[data-theme="dark"]{--ok:#34d399}
 
 main{counter-reset:sec}
 .sec .idx.auto::before{counter-increment:sec;content:"§ " counter(sec,decimal-leading-zero)}
@@ -24,8 +24,9 @@ main{counter-reset:sec}
 .fig svg{padding:14px 10px}
 
 /* sayaçlar */
-.meters{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
-.meter{background:var(--bg);padding:20px 16px 22px;min-width:0}
+.meters{display:grid;gap:1px;background:var(--line);border:1px solid var(--line2)}
+.meter{background:var(--surface);padding:20px 16px 22px;min-width:0;transition:background .15s}
+.meter:hover{background:color-mix(in srgb,var(--surface) 92%,var(--acc))}
 .mhead{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 14px;margin-bottom:14px}
 .mhead .idx{margin:0;color:var(--fg)}
 .seg{display:flex;gap:2px;height:14px;margin-bottom:16px}
@@ -57,7 +58,8 @@ main{counter-reset:sec}
 
 /* ajan karneleri: iskelet sayfada, sayılar ve çizgi otonomi.js ile #olcum.ajanlar'dan */
 .agents{display:grid;gap:12px;min-width:0}
-.agent{border:1px solid var(--line);background:var(--bg);padding:18px 16px 20px;min-width:0}
+.agent{border:1px solid var(--line2);border-top:2px solid var(--acc);background:var(--surface);padding:18px 16px 20px;min-width:0;transition:border-color .15s,background .15s}
+.agent:hover{background:color-mix(in srgb,var(--surface) 92%,var(--acc))}
 .agent .mhead{margin-bottom:8px;flex-wrap:nowrap}
 .agent h3{font:400 1.5rem/1.1 var(--serif);letter-spacing:-.01em;margin:0;min-width:0;overflow-wrap:anywhere}
 .agent .mhead .idx{color:var(--mut);white-space:nowrap}
