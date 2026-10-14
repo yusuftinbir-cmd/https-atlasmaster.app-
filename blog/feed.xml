@@ -6,7 +6,15 @@
     <atom:link href="https://atlasmaster.app/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Atlas Stüdyo analizi: Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle ...</description>
     <language>tr-TR</language>
-    <lastBuildDate>Mon, 12 Oct 2026 16:30:00 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 21:20:00 +0300</lastBuildDate>
+    <item>
+      <title>Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır</title>
+      <link>https://atlasmaster.app/blog/kim-kimi-egitiyor.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/kim-kimi-egitiyor.html</guid>
+      <pubDate>Wed, 14 Oct 2026 21:20:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Aynadaki İkiz (SHA-256), %98,6 Bürokrasi Kapanı ve 76 Saniyelik MLX QLoRA Hasadı (N=96): Atlas'ın yasalarıyla eğitilen 3B model (%93,8), kuralsız 31B modeli (%75,0) nasıl geçti?</description>
+      <category>Kıvılcım turu</category>
+    </item>
     <item>
       <title>Türkiye'nin dünya markası bir viskisi neden yok? Olmalı mı?</title>
       <link>https://atlasmaster.app/blog/turkiye-viski-dunya-markasi.html</link>
