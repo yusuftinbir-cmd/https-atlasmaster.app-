@@ -6,10 +6,10 @@
   'use strict';
   var S = {
     tr: {
-      h3d: '3B Sefalometrik Tel-Kafes · 478 nokta', s3d: 'Sentetik portreden çıkarılan 3B (x, y, z) koordinatlar ve 2.556 kenar. Turkuaz: ZY-ZY (elmacık genişliği) · Yeşil: Go-Go (alt çene köşeleri). Fare ya da parmakla döndürün.',
+      h3d: '3B Sefalometrik Tel-Kafes · 478 nokta', s3d: 'Sentetik portreden çıkarılan 3B (x, y, z) landmark koordinatları ve 2.556 kenar. Turkuaz: ZY-ZY (elmacık genişliği) · Yeşil: Go-Go (alt çene köşeleri). Fare ya da parmakla döndürün.',
       spin: 'Döndür', vec: 'Vektörler', on: 'Ön', sol: 'Sol', sag: 'Sağ', yuk: '3B ağ yükleniyor…', hata: '3B ağ yüklenemedi; statik panel için sayfayı yenileyin.',
       olcu: '<i>ZY-ZY = 629,7 px</i> · <b>Go-Go = 526,9 px</b> · Go-Go / ZY-ZY = <b>0,837</b> (≥ 0,82 → geniş / kare çene)',
-      hab: 'Foto-gerçekçi sentetik morfoloji kaydırıcısı', sim: 'Simülasyon', kay: 'Karşılaştırma kaydırıcısı',
+      hab: 'Sentetik morfoloji kaydırıcısı', sim: 'Simülasyon', kay: 'Karşılaştırma kaydırıcısı',
       h3dI: '3B Sefalometrik Yüz Ölçümü · 478 nokta', habI: 'Morfolojik önizleme simülasyonu',
       kutu: [
         { k: 'Elmacık genişliği (ZY-ZY)', v: '629,7 px' },
@@ -18,11 +18,11 @@
         { k: 'SAM 2B ön diş oranı (W/H)', v: '0,77', e: '→ Kuboidal hat' }
       ],
       isleyis: [
-        { id: 'makro_io', t: '🔍 2x Makro: Tasarım Öncesi (Nötr) ↔ Tasarım Sonrası (Kuboidal Simülasyon)', l: 'Tasarım öncesi · nötr doğal diş', r: 'Tasarım sonrası · kuboidal simülasyon', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
+        { id: 'makro_io', t: '🔍 2x Makro: Sentetik Taban (Nötr) ↔ Algoritma Önerisi (Kuboidal Simülasyon)', l: 'Sentetik taban · nötr doğal diş', r: 'Algoritma önerisi · kuboidal simülasyon', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
           n: '<b>İşleyiş:</b> 3B yüz ölçümü (Go-Go / ZY-ZY = 0,837 → geniş / kare) ve SAM 2B diş oranı (W/H = 0,77) dört katmanlı kuraldan geçer; sistem bu yüz için kuboidal (dik köşeli, düz kesici kenarlı) hattı önerir ve aynı karede simüle eder. Dudak, diş eti ve alt dişler değişmez.' },
-        { id: 'agiz_io', t: '👄 1x Yakın Ağız: Tasarım Öncesi ↔ Tasarım Sonrası', l: 'Tasarım öncesi · 1x yakın ağız', r: 'Tasarım sonrası · 1x yakın ağız', a: 'agiz-ozgun.jpg', b: 'agiz-lora.jpg', dik: 0, sim: 1,
+        { id: 'agiz_io', t: '👄 1x Yakın Ağız: Sentetik Taban ↔ Algoritma Önerisi (Simülasyon)', l: 'Sentetik taban · 1x yakın ağız', r: 'Algoritma önerisi · 1x yakın ağız', a: 'agiz-ozgun.jpg', b: 'agiz-lora.jpg', dik: 0, sim: 1,
           n: 'Aynı karenin 1x kırpımı: dudak, diş eti ve alt dişler iki tarafta aynı; yalnız üst ön altı dişin formu önerilen hatta göre değişti.' },
-        { id: 'tam_io', t: '🧑 Tam Yüz: 3B Sefalometrik Ölçüm ↔ Tasarım Sonrası', l: '3B sefalometrik ölçüm katmanı', r: 'Tasarım sonrası · tam yüz', a: 'sentetik-sefalometri-portre.jpg', b: 'tamkare-lora.jpg', dik: 1, sim: 1,
+        { id: 'tam_io', t: '🧑 Tam Yüz: 3B Sefalometrik Ölçüm ↔ Algoritma Önerisi (Simülasyon)', l: '3B sefalometrik ölçüm katmanı', r: 'Algoritma önerisi · tam yüz simülasyonu', a: 'sentetik-sefalometri-portre.jpg', b: 'tamkare-lora.jpg', dik: 1, sim: 1,
           n: 'Solda 478 noktalı ölçüm katmanı (turkuaz ZY-ZY, yeşil Go-Go); sağda önerilen hattın tam yüzdeki simülasyonu. Form kararı yüz ölçüsünden gelir, dudak çerçevesi sabittir.' }
       ],
       tabs: [
@@ -32,15 +32,15 @@
           n: 'Aynı karenin 1x kırpımı: dudak, diş eti ve alt dişler iki tarafta pikseli pikseline aynı; yalnız üst ön altı dişin hattı değişti.' },
         { id: 'tam_vl', t: 'Tam Portre: 3B Sefalometri (Go-Go/ZY-ZY = 0,837)', l: '{van} · tam portre', r: 'ATLAS QLoRA · tam portre', a: 'tamkare-vanilya.jpg', b: 'tamkare-lora.jpg', dik: 1,
           n: 'Brakisefal (geniş / kare) sentetik yüz: Go-Go / ZY-ZY = 0,837. Eğitimsiz model bu yüzü “oval” sınıflayıp yuvarlak hat seçti; QLoRA modeli “kare / geniş” okuyup kuboidal hat seçti.' },
-        { id: 'makro_ol', t: '2x Makro Simülasyon: Özgün ↔ Tasarım Sonrası', l: 'Özgün sentetik diş · Simülasyon', r: 'ATLAS QLoRA · Simülasyon', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
+        { id: 'makro_ol', t: '2x Makro Simülasyon: Özgün Sentetik Diş ↔ ATLAS QLoRA Önerisi', l: 'Özgün sentetik diş · Simülasyon', r: 'ATLAS QLoRA önerisi · Simülasyon', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
           n: '<b>Simülasyon:</b> tedavi öncesi / sonrası değildir. Sentetik modelin özgün dişi ile algoritmik form önerisinin aynı karede karşılaştırmasıdır.' }
       ]
     },
     en: {
-      h3d: '3D Cephalometric Wireframe · 478 landmarks', s3d: '3D (x, y, z) coordinates and 2,556 edges extracted from the synthetic portrait. Cyan: ZY-ZY (bizygomatic width) · Green: Go-Go (gonial angles). Drag with mouse or finger to rotate.',
+      h3d: '3D Cephalometric Wireframe · 478 landmarks', s3d: '3D (x, y, z) landmark coordinates and 2,556 edges extracted from the synthetic portrait. Cyan: ZY-ZY (bizygomatic width) · Green: Go-Go (gonial angles). Drag with mouse or finger to rotate.',
       spin: 'Spin', vec: 'Vectors', on: 'Front', sol: 'Left', sag: 'Right', yuk: 'Loading 3D mesh…', hata: 'The 3D mesh could not be loaded; reload the page for the static panel.',
       olcu: '<i>ZY-ZY = 629.7 px</i> · <b>Go-Go = 526.9 px</b> · Go-Go / ZY-ZY = <b>0.837</b> (≥ 0.82 → wide / square jaw)',
-      hab: 'Photo-realistic synthetic morphology slider', sim: 'Simulation', kay: 'Comparison slider',
+      hab: 'Synthetic morphology slider', sim: 'Simulation', kay: 'Comparison slider',
       h3dI: '3D Cephalometric Face Measurement · 478 landmarks', habI: 'Morphological preview simulation',
       kutu: [
         { k: 'Bizygomatic width (ZY-ZY)', v: '629.7 px' },
@@ -49,11 +49,11 @@
         { k: 'SAM 2B anterior tooth ratio (W/H)', v: '0.77', e: '→ Cuboidal line' }
       ],
       isleyis: [
-        { id: 'makro_io', t: '🔍 2x Macro: Before Design (Neutral) ↔ After Design (Cuboidal Simulation)', l: 'Before design · neutral natural teeth', r: 'After design · cuboidal simulation', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
+        { id: 'makro_io', t: '🔍 2x Macro: Synthetic Baseline (Neutral) ↔ Algorithm Proposal (Cuboidal Simulation)', l: 'Synthetic baseline · neutral natural teeth', r: 'Algorithm proposal · cuboidal simulation', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
           n: '<b>How it works:</b> the 3D face measurement (Go-Go / ZY-ZY = 0.837 → wide / square) and the SAM 2B tooth ratio (W/H = 0.77) pass through a four-layer rule; the system proposes a cuboidal (sharp-cornered, flat-edged) line for this face and simulates it in the same frame. Lips, gingiva and lower teeth do not change.' },
-        { id: 'agiz_io', t: '👄 1x Close-up Mouth: Before Design ↔ After Design', l: 'Before design · 1x close-up', r: 'After design · 1x close-up', a: 'agiz-ozgun.jpg', b: 'agiz-lora.jpg', dik: 0, sim: 1,
+        { id: 'agiz_io', t: '👄 1x Close-up Mouth: Synthetic Baseline ↔ Algorithm Proposal (Simulation)', l: 'Synthetic baseline · 1x close-up', r: 'Algorithm proposal · 1x close-up', a: 'agiz-ozgun.jpg', b: 'agiz-lora.jpg', dik: 0, sim: 1,
           n: '1x crop of the same frame: lips, gingiva and lower teeth are the same on both sides; only the form of the upper six anterior teeth changed to the proposed line.' },
-        { id: 'tam_io', t: '🧑 Full Face: 3D Cephalometric Measurement ↔ After Design', l: '3D cephalometric measurement layer', r: 'After design · full face', a: 'sentetik-sefalometri-portre.jpg', b: 'tamkare-lora.jpg', dik: 1, sim: 1,
+        { id: 'tam_io', t: '🧑 Full Face: 3D Cephalometric Measurement ↔ Algorithm Proposal (Simulation)', l: '3D cephalometric measurement layer', r: 'Algorithm proposal · full-face simulation', a: 'sentetik-sefalometri-portre.jpg', b: 'tamkare-lora.jpg', dik: 1, sim: 1,
           n: 'Left: the 478-landmark measurement layer (cyan ZY-ZY, green Go-Go); right: the proposed line simulated on the full face. The form decision comes from the face measurement; the lip frame is fixed.' }
       ],
       tabs: [
@@ -63,7 +63,7 @@
           n: '1x crop of the same frame: lips, gingiva and lower teeth are pixel-identical on both sides; only the line of the upper six anterior teeth changed.' },
         { id: 'tam_vl', t: 'Full Portrait: 3D Cephalometry (Go-Go/ZY-ZY = 0.837)', l: '{van} · full portrait', r: 'ATLAS QLoRA · full portrait', a: 'tamkare-vanilya.jpg', b: 'tamkare-lora.jpg', dik: 1,
           n: 'Brachyfacial (wide / square) synthetic face: Go-Go / ZY-ZY = 0.837. The untrained model classified it as “oval” and chose a rounded line; the QLoRA model read “square / wide” and chose a cuboidal line.' },
-        { id: 'makro_ol', t: '2x Macro Simulation: Original ↔ After Design', l: 'Original synthetic tooth · Simulation', r: 'ATLAS QLoRA · Simulation', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
+        { id: 'makro_ol', t: '2x Macro Simulation: Original Synthetic Tooth ↔ ATLAS QLoRA Proposal', l: 'Original synthetic tooth · Simulation', r: 'ATLAS QLoRA proposal · Simulation', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
           n: '<b>Simulation:</b> not a before / after treatment. The synthetic model’s original tooth compared with the algorithmic form proposal in the same frame.' }
       ]
     }
@@ -134,7 +134,7 @@
       b.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var k = (i + (e.key === 'ArrowRight' ? 1 : -1) + TABS.length) % TABS.length; sec(k); tabBtns[k].focus(); e.preventDefault(); } });
       tabBtns.push(b); tabs.appendChild(b);
     });
-    sec(0); // VARSAYILAN — deney: 2x Makro Vanilya/Eğitimsiz (Ovoid) ↔ ATLAS QLoRA (Kuboidal) · isleyis: 2x Makro Tasarım Öncesi (Nötr) ↔ Tasarım Sonrası (Simülasyon)
+    sec(0); // VARSAYILAN — deney: 2x Makro Vanilya/Eğitimsiz (Ovoid) ↔ ATLAS QLoRA (Kuboidal) · isleyis: 2x Makro Sentetik Taban (Nötr) ↔ Algoritma Önerisi (Simülasyon)
     TABS.forEach(function (t) { var p = new Image(); p.src = base + t.a; var q = new Image(); q.src = base + t.b; });
 
     /* ---- 3B çizim ---- */

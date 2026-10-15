@@ -45,5 +45,6 @@
   "sentetik_kare_markasiz_panel.jpg": "sentetik-kare-panel.jpg",
   "landmarks_3d.json": "landmarks-3d.json"
  },
- "web_not": "Web kopyaları yayın için yeniden boyutlandırılıp JPEG q82 ile sıkıştırılmıştır; SHA-256 özetleri yazarın deney dizinindeki özgün dosyalara aittir. Ablasyon kütüğü: ablasyon-4kol.json · n=32 kilitli test kütüğü: n32-kilitli-test.json"
+ "web_not": "Web kopyaları yayın için yeniden boyutlandırılıp JPEG q82 ile sıkıştırılmıştır; SHA-256 özetleri yazarın deney dizinindeki özgün dosyalara aittir. Ablasyon kütüğü: ablasyon-4kol.json · n=32 kilitli test kütüğü: n32-kilitli-test.json",
+ "lookalike_tarama": "lookalike-tarama.json"
 }

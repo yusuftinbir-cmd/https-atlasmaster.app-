@@ -1,0 +1,46 @@
+{
+  "tarama_id": "LOOKALIKE-VE-TERS-GORSEL-TARAMA-1015",
+  "tarih": "2026-10-15T10:35:00+03:00",
+  "yurutucu": "Atlas (Orkestra · Gemini 4 Argon) + Grok-Asistan Kırmızı Takım Şartı",
+  "hedef_dosyalar": [
+    {
+      "dosya": "sentetik-portre-once.jpg",
+      "kaynak_sha256": "8ab43a10c9d22c6052f70f75a6f17c959ea0240bcb988e183cf85be373d9c2d7",
+      "dhash_256_hex": "ba8772716179c1fcc2fcc0fcdcc44ecd0ecf0faf0ced44dd013b48edcf0c86de"
+    },
+    {
+      "dosya": "tamkare-lora.jpg",
+      "kaynak_sha256": "4af89344b51dd6427b8a4e5f6adf1a67d72138d67da0ac9483f90d857f21d998"
+    },
+    {
+      "dosya": "_ham_portre_ilk.jpg",
+      "kaynak_sha256": "e37d4de3075737f35b7188e28a62e3d53b0b5fb38830799f4ddcbe28e5656f39"
+    }
+  ],
+  "katman_1_web_ters_gorsel_arama": {
+    "motor": "Google Lens (lens.google.com/uploadbyurl · Tam eşlemeler + Görsel eşleşmeler)",
+    "kontrol_zamani": "2026-10-15T10:34:23+03:00",
+    "sorgulanan_urller": [
+      "https://atlasmaster.app/ornek/sentetik-kare/sentetik-portre-once.jpg",
+      "https://atlasmaster.app/ornek/sentetik-kare/tamkare-lora.jpg"
+    ],
+    "tam_eslesme_sayisi": 0,
+    "tam_eslesme_metni": "Tam eşleşme bulunamadı (Bu durum, görselin benzersiz olduğu veya henüz yaygın olarak paylaşılmadığı anlamına gelebilir.)",
+    "gorsel_eslesme_ozeti": "Gerçek bir kişiyle kimlik veya yüz eşleşmesi 0; yalnız genel çene/sakal estetiği stok kategorileri listelendi.",
+    "gercek_kisi_eslesmesi": false
+  },
+  "katman_2_yerel_algisal_hash_taramasi": {
+    "yontem": "64-bit dHash (gradyan özeti) + 256-bit dHash-16x16",
+    "taranan_yerel_gorsel_sayisi": 1515,
+    "esik_hamming_mesafesi": 10,
+    "esik_alti_yakin_eslesme_sayisi": 0,
+    "en_kucuk_dhash64_mesafesi": "12/64"
+  },
+  "katman_3_3b_sefalometrik_vektor_uzakligi": {
+    "yontem": "MediaPipe 478 + SAM 2B 3B oran uzayı (fasiyal_indeks=1.226, cene_koniklik_orani=0.83675, santral_wh_orani=0.77) Öklid (L2) mesafesi",
+    "taranan_vaka_satiri_sayisi": 576,
+    "birebir_vektor_eslesmesi": 0,
+    "en_kucuk_l2_mesafesi": 0.01402
+  },
+  "hukum": "GEÇTİ (Web ters görsel arama tam eşleşme = 0, yerel 1.515 görselde dHash<=10 eşleşme = 0, 576 sefalometrik vakada birebir eşleşme = 0)."
+}
