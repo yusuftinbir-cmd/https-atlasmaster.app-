@@ -42,5 +42,15 @@
     "birebir_vektor_eslesmesi": 0,
     "en_kucuk_l2_mesafesi": 0.01402
   },
-  "hukum": "GEÇTİ (Web ters görsel arama tam eşleşme = 0, yerel 1.515 görselde dHash<=10 eşleşme = 0, 576 sefalometrik vakada birebir eşleşme = 0)."
+  "hukum": "GEÇTİ (Web ters görsel arama tam eşleşme = 0, yerel 1.515 görselde dHash<=10 eşleşme = 0, 576 sefalometrik vakada birebir eşleşme = 0).",
+  "tineye_yan_yana_dogrulama_1015": {
+    "kaynak": "Grok-Bot TinEye taraması (10:49 TSİ) + Atlas Chrome JXA küçük resim indirme ve yan yana doğrulama (10:50 TSİ)",
+    "tineye_aday": "uconn-bob-diaco-12122013.jpg (107x160 küçük resim, 2013 UConn futbol koçu Bob Diaco)",
+    "yuz_karsilastirma_sonucu": "FARKLI KİŞİ / YANLIŞ POZİTİF (gri fon + ortalanmış vesikalık silüet eşleşmesi)",
+    "gorsel_farklar": [
+      "TinEye adayı: siyah geriye taranmış saç, mavi göz, beyaz gömlek + kravat + kahverengi ekose ceket, benekli gri fon",
+      "Sentetik portre: açık kahverengi kısa saç, ela/yeşil-kahve göz, çilli cilt, siyah bisiklet yaka tişört, düz gri fon"
+    ],
+    "hukum": "Grok-Bot'un 'düşer: eşleşen küçük resim insan gözüyle farklı yüz çıkarsa' koşulu gerçekleşti; gerçek kişi benzerliği 0."
+  }
 }
