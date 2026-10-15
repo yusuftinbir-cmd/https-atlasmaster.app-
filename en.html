@@ -26,7 +26,9 @@
 <link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="ornek/sentetik-kare/vitrin.css">
 <script src="script.js"></script>
+<script src="ornek/sentetik-kare/vitrin.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "45cebae6af65484e8fed23b68faa175f"}'></script><!-- End Cloudflare Web Analytics -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Atlas", "url": "https://atlasmaster.app/", "email": "yusuf@atlasmaster.app", "description": "Digital smile design for dentists and labs from two photos: form proposal and guide-lined mockup preview. Contact: yusuf@atlasmaster.app.", "areaServed": "TR", "availableLanguage": ["tr", "en"], "serviceType": ["Digital smile design", "Mockup preview", "ExoCAD design support"], "audience": {"@type": "Audience", "audienceType": "Dentists and dental laboratories"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "Atlas Stüdyo", "alternateName": ["Atlas", "Atlasmaster"], "url": "https://atlasmaster.app/", "logo": "https://atlasmaster.app/og.png", "sameAs": ["https://x.com/YusufAzizTnbr", "https://www.instagram.com/yusuftinbir/"], "description": "Dental design studio and AI orchestra; articles produced with the Spark method."}</script>
@@ -74,7 +76,7 @@
       <div class="cta">
         <a class="btn pri" href="mailto:yusuf@atlasmaster.app">Contact: yusuf@atlasmaster.app <span aria-hidden="true">→</span></a>
         <a class="btn" href="autonomy.html">Autonomy &amp; Counters</a>
-        <a class="btn" href="blog/en/index.html">Essays (6)</a>
+        <a class="btn" href="blog/en/index.html">Essays (7)</a>
         <a class="cta-link" href="#how">How it works <span aria-hidden="true">↓</span></a>
         <span class="pay-badge">Crypto accepted · TR bank transfer</span>
       </div>
@@ -153,6 +155,19 @@
       </li>
     </ol>
     <div class="exbox">
+    <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="en" data-sk-van="Untrained AI">
+      <figure class="sheet sk-yok">
+        <img src="ornek/sentetik-kare/sentetik-kare-panel.jpg" width="1600" height="1019" alt="Synthetic square-face comparison panel: the untrained model's feminine ovoid line and the ATLAS QLoRA model's masculine cuboidal line; 3D cephalometric measurements" loading="lazy">
+        <figcaption class="cap"><span>Static panel (the interactive module requires JavaScript)</span></figcaption>
+      </figure>
+    </div>
+    <div class="sk-serh" role="note" aria-label="Legal and clinical note">
+      <p><strong>Not a real patient.</strong> 100% synthetic face · algorithmic morphology simulation, not diagnosis/treatment/medical device. Clinical decisions belong solely to the dentist.</p>
+      <p lang="tr"><strong>Gerçek hasta fotoğrafı değildir.</strong> %100 sentetik/kurgusal model üzerinde algoritmik morfoloji simülasyonudur. Tanı, tedavi veya tıbbi cihaz sonucu değildir. Sonuçlar kişiden kişiye değişir; klinik karar hekime aittir.</p>
+    </div>
+    <p class="more" style="margin-top:0"><a href="blog/en/face-to-tooth-cephalometric-lora.html">The full experiment: 478-landmark 3D cephalometry, n = 32 locked test and the four-layer rule → Face to Tooth</a></p>
+    <div class="sk-eski">
+    <span class="idx">Clinical Retracted &amp; Mouth-Crop Preview Example</span>
     <figure class="sheet ba" id="ornek">
       <div class="ba-stage" data-ba>
         <div class="ba-pane"><img class="ba-b" src="ornek/ekartor-once.jpg" width="1600" height="900" alt="Retracted frame before the design: upper and lower teeth, lips held apart" loading="lazy"><span class="ba-lab">BEFORE</span></div>
@@ -164,6 +179,7 @@
       <li><img src="ornek/gulus-once.jpg" width="1600" height="900" alt="Smile frame, before (faceless mouth crop)" loading="lazy"><span>BEFORE</span></li>
       <li><img src="ornek/gulus-sonra.jpg" width="1600" height="900" alt="Smile frame after the accepted design" loading="lazy"><span>AFTER</span></li>
     </ul>
+    </div>
     </div>
     </div>
   </div>
@@ -241,6 +257,14 @@
 
       <p class="idx" style="margin:32px 0 12px;color:var(--fg)">Living Essays · Spark Syntheses</p>
       <div class="sgrid" aria-label="Featured essays">
+        <a class="scard" href="blog/en/face-to-tooth-cephalometric-lora.html">
+          <div>
+            <span class="idx">Experiment · 3D Cephalometry · n=32 + Live Module</span>
+            <h3>Face to Tooth: How a QLoRA Model Trained on 3D Cephalometry Beat the Untrained Model</h3>
+            <p>The untrained model reads a square jaw as “oval” and picks a rounded feminine line. 478-landmark 3D mesh + 1,000-iteration QLoRA: face-shape accuracy 0% → 90.6%, target line 0% → 100%; live 3D module on a 100% synthetic face.</p>
+          </div>
+          <span class="sgo"><span>Read essay</span><span aria-hidden="true">→</span></span>
+        </a>
         <a class="scard" href="blog/en/who-trains-whom.html">
           <div>
             <span class="idx">Spark + Experiment · 7 Voices · N=96</span>
@@ -266,7 +290,7 @@
           <span class="sgo"><span>Read essay</span><span aria-hidden="true">→</span></span>
         </a>
       </div>
-      <p class="more"><a href="blog/en/index.html">Browse all essays in the project log (6 living articles · EN &amp; TR) →</a></p>
+      <p class="more"><a href="blog/en/index.html">Browse all essays in the project log (7 living articles · EN &amp; TR) →</a></p>
     </div>
   </div>
 </section>

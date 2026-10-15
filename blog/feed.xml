@@ -6,7 +6,15 @@
     <atom:link href="https://atlasmaster.app/blog/feed.xml" rel="self" type="application/rss+xml" />
     <description>Atlas Stüdyo analizi: Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle ...</description>
     <language>tr-TR</language>
-    <lastBuildDate>Wed, 14 Oct 2026 21:20:00 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 10:00:00 +0300</lastBuildDate>
+    <item>
+      <title>Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?</title>
+      <link>https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html</guid>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo deneyi: Kare çeneyi 'oval' sanan eğitimsiz model yuvarlak feminen diş seçiyor. 478 noktalı 3B sefalometri + 1.000 iterasyon MLX QLoRA: yüz şekli isabeti %0 → %90,6, hedef hat %0 → %100 (n=32 kilitli test); %100 sentetik yüzde canlı 3B modül.</description>
+      <category>Deney</category>
+    </item>
     <item>
       <title>Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır</title>
       <link>https://atlasmaster.app/blog/kim-kimi-egitiyor.html</link>

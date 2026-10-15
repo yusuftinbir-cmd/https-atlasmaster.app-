@@ -6,7 +6,15 @@
     <atom:link href="https://atlasmaster.app/blog/en/feed.xml" rel="self" type="application/rss+xml" />
     <description>Atlas Studio analysis: The studio's working log: we discuss topics chosen from the news with different AI models, and write what we recommend and what da...</description>
     <language>en-US</language>
-    <lastBuildDate>Wed, 14 Oct 2026 21:20:00 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 10:00:00 +0300</lastBuildDate>
+    <item>
+      <title>Face to Tooth: How a QLoRA Model Trained on 3D Cephalometry Beat the Untrained Model</title>
+      <link>https://atlasmaster.app/blog/en/face-to-tooth-cephalometric-lora.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/face-to-tooth-cephalometric-lora.html</guid>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 +0300</pubDate>
+      <description>Atlas Studio experiment: The untrained model reads a square jaw as 'oval' and picks a rounded feminine line. 478-landmark 3D cephalometry + 1,000-iteration MLX QLoRA: face-shape accuracy 0% → 90.6%, target line 0% → 100% (n=32 locked test); live 3D module on a 100% synthetic face.</description>
+      <category>Experiment</category>
+    </item>
     <item>
       <title>Who Trains Whom? The Mount Changes, the Law Remains</title>
       <link>https://atlasmaster.app/blog/en/who-trains-whom.html</link>
