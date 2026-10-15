@@ -155,17 +155,20 @@
       </li>
     </ol>
     <div class="exbox">
-    <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="tr" data-sk-van="Eğitimsiz AI">
+    <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="tr" data-sk-mode="isleyis" data-sk-van="Eğitimsiz AI">
       <figure class="sheet sk-yok">
-        <img src="ornek/sentetik-kare/sentetik-kare-panel.jpg" width="1600" height="1019" alt="Sentetik kare yüz karşılaştırma paneli: eğitimsiz modelin feminen ovoid hattı ile ATLAS QLoRA modelinin maskülen kuboidal hattı; 3B sefalometrik ölçümler" loading="lazy">
-        <figcaption class="cap"><span>Statik panel (etkileşimli modül için JavaScript gerekir)</span></figcaption>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start">
+          <img src="ornek/sentetik-kare/sentetik-sefalometri-portre.jpg" width="896" height="1200" alt="Sentetik portre üzerinde 478 noktalı 3B sefalometrik ölçüm katmanı; ZY-ZY turkuaz, Go-Go yeşil vektörler" loading="lazy" style="width:100%;height:auto">
+          <img src="ornek/sentetik-kare/tamkare-lora.jpg" width="896" height="1200" alt="Aynı sentetik yüzde önerilen kuboidal hattın tam yüz simülasyonu" loading="lazy" style="width:100%;height:auto">
+        </div>
+        <figcaption class="cap"><span>Statik görünüm: 3B sefalometrik ölçüm ↔ tasarım sonrası simülasyon (etkileşimli modül için JavaScript gerekir)</span></figcaption>
       </figure>
     </div>
     <div class="sk-serh" role="note" aria-label="Yasal ve klinik şerh">
       <p><strong>Gerçek hasta fotoğrafı değildir.</strong> %100 sentetik/kurgusal model üzerinde algoritmik morfoloji simülasyonudur. Tanı, tedavi veya tıbbi cihaz sonucu değildir. Sonuçlar kişiden kişiye değişir; klinik karar hekime aittir.</p>
       <p lang="en"><strong>Not a real patient.</strong> 100% synthetic face · algorithmic morphology simulation, not diagnosis/treatment/medical device. Clinical decisions belong solely to the dentist.</p>
     </div>
-    <p class="more" style="margin-top:0"><a href="blog/yuzden-dise-sefalometrik-lora.html">Deneyin tamamı: 478 noktalı 3B sefalometri, n = 32 kilitli test ve dört katmanlı kural → Yüzden Dişe</a></p>
+    <p class="more" style="margin-top:0"><a href="blog/yuzden-dise-sefalometrik-lora.html">Bu işleyişin arkasındaki deney ve model karşılaştırması (n = 32 kilitli test, 4 kollu ablasyon) → Yüzden Dişe</a></p>
     <div class="sk-eski">
     <span class="idx">Klinik Ekartörlü &amp; Ağız Kırpımı Önizleme Örneği</span>
     <figure class="sheet ba" id="ornek">
@@ -259,7 +262,7 @@
       <div class="sgrid" aria-label="Öne çıkan yazılar">
         <a class="scard" href="blog/yuzden-dise-sefalometrik-lora.html">
           <div>
-            <span class="idx">Deney · 3B Sefalometri · n=32 + Canlı Modül</span>
+            <span class="idx">Deneysel Kıvılcım · 3B Sefalometri · n=32 + 4 Kollu Ablasyon</span>
             <h3>Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA, Eğitimsiz Modeli Nasıl Geçti?</h3>
             <p>Kare çeneyi “oval” sanan eğitimsiz model yuvarlak feminen diş seçiyor. 478 noktalı 3B ağ + 1.000 iterasyon QLoRA: yüz şekli isabeti %0 → %90,6, hedef hat %0 → %100; %100 sentetik yüzde canlı 3B modül.</p>
           </div>

@@ -1,0 +1,49 @@
+{
+ "experiment_id": "SENTETIK-KARE-3B-LORA-DENEY-1015",
+ "created_at": "2026-10-15T01:00:59+03:00",
+ "source_type": "100% Synthetic AI-Generated Fictional Portrait (Zero Real Person Biometrics)",
+ "generation_prompt": "Hyper-realistic clinical dental photography portrait (Canon EOS R5, 100mm macro lens, twin ring flash, f/8, ISO 100, neutral studio grey-blue background) of a completely synthetic, fictional 38-year-old man with strong square face and wide mandibular angle (brachyfacial, Go-Go/ZY-ZY >= 0.83), frontal head posture, natural open smile.",
+ "sha256": {
+  "sentetik_portre_once.jpg": "8ab43a10c9d22c6052f70f75a6f17c959ea0240bcb988e183cf85be373d9c2d7",
+  "sentetik_makro_vanilya.jpg": "3ae65a9eedac5ea1c9c4f84f168ac9076389db7eb9f492651ea75e861654efca",
+  "sentetik_makro_lora.jpg": "748cd740bbceb092a27196fc01685b3259affd0ca7d40223d55701816b018772",
+  "landmarks_3d.json": "c1b45128d908c78dc69df51eb2a077c08ebaeb7179a77ae498f7e5ada8ca2265",
+  "sentetik_makro_ozgun.jpg": "0421c46be1eee81dbbdd8ee657df4a8a101fb75cb26313829910805bd9db62b5",
+  "sentetik_agiz_ozgun.jpg": "c088bf554c82d7316ff20d227a9952f85c197a8195735c393202ba0df23819cd",
+  "sentetik_sefalometri_portre.jpg": "0132e75e6c8d577cdfcf51a9dc4046032fe1b269b79206ba856f3e584b97e53a",
+  "sentetik_kare_markasiz_panel.jpg": "e7c37dbe16bd8525e2a07e8a4836a96c9f17432fe9db8ff97024c426b4509c19",
+  "_ham_portre_ilk.jpg": "e37d4de3075737f35b7188e28a62e3d53b0b5fb38830799f4ddcbe28e5656f39",
+  "_test_agiz_kapali.jpg": "65ab1eea2150189a3c086ed0e95fb6ef4aaf3bb848aec027208e6572cfa5e311",
+  "sentetik_lora_tamkare.jpg": "4af89344b51dd6427b8a4e5f6adf1a67d72138d67da0ac9483f90d857f21d998",
+  "sentetik_vanilya_tamkare.jpg": "27ea6ccbf0026e19384f216c4ff13ed5623c6c55bc75a4ffb44a4d4b490b3a73"
+ },
+ "distinct_arms_verified": true,
+ "disclaimer_tr": "Gerçek hasta fotoğrafı değildir. %100 sentetik/kurgusal model üzerinde algoritmik morfoloji simülasyonudur. Tanı, tedavi veya tıbbi cihaz sonucu değildir. Sonuçlar kişiden kişiye değişir; klinik karar hekime aittir.",
+ "sha256_v1_0100": {
+  "sentetik_portre_once.jpg": "e37d4de3075737f35b7188e28a62e3d53b0b5fb38830799f4ddcbe28e5656f39",
+  "sentetik_makro_vanilya.jpg": "3ae65a9eedac5ea1c9c4f84f168ac9076389db7eb9f492651ea75e861654efca",
+  "sentetik_makro_lora.jpg": "748cd740bbceb092a27196fc01685b3259affd0ca7d40223d55701816b018772",
+  "landmarks_3d.json": "c1b45128d908c78dc69df51eb2a077c08ebaeb7179a77ae498f7e5ada8ca2265"
+ },
+ "revizyon_v2": {
+  "zaman": "2026-10-15T09:17:00+03:00",
+  "aciklama": "Taban (Özgün) portre fizyolojik aşınmalı nötr doğal dişle güncellendi; ilk üretim _ham_portre_ilk.jpg olarak saklandı (sha256 = v1 sentetik_portre_once). Ablasyon girdisi _test_agiz_kapali.jpg (ağız bölgesi maskeli). Vanilya/QLoRA makro-ağız-tamkare çıktıları ve landmarks_3d.json değişmedi.",
+  "sha_guncelleyen": "Anu (Vezir) 15 Eki 09:4x",
+  "ablasyon_olcum": "ablasyon_4kol_olcum.json"
+ },
+ "web_varliklari": {
+  "sentetik_portre_once.jpg": "sentetik-portre-once.jpg",
+  "sentetik_sefalometri_portre.jpg": "sentetik-sefalometri-portre.jpg",
+  "sentetik_makro_ozgun.jpg": "makro-ozgun.jpg",
+  "sentetik_agiz_ozgun.jpg": "agiz-ozgun.jpg",
+  "sentetik_makro_vanilya.jpg": "makro-vanilya.jpg",
+  "sentetik_makro_lora.jpg": "makro-lora.jpg",
+  "sentetik_agiz_vanilya.jpg": "agiz-vanilya.jpg",
+  "sentetik_agiz_lora.jpg": "agiz-lora.jpg",
+  "sentetik_vanilya_tamkare.jpg": "tamkare-vanilya.jpg",
+  "sentetik_lora_tamkare.jpg": "tamkare-lora.jpg",
+  "sentetik_kare_markasiz_panel.jpg": "sentetik-kare-panel.jpg",
+  "landmarks_3d.json": "landmarks-3d.json"
+ },
+ "web_not": "Web kopyaları yayın için yeniden boyutlandırılıp JPEG q82 ile sıkıştırılmıştır; SHA-256 özetleri yazarın deney dizinindeki özgün dosyalara aittir. Ablasyon kütüğü: ablasyon-4kol.json · n=32 kilitli test kütüğü: n32-kilitli-test.json"
+}

@@ -1,0 +1,4366 @@
+{
+ "deney": "N32-KILITLI-TEST-TAM-KUTUK-1015",
+ "aciklama": "32 vakalık kilitli test seti (eğitimde ve doğrulamada görülmemiş). Üç kol aynı 32 girdi üzerinde: vanilya (adaptörsüz taban model) · QLoRA 400 iterasyon · QLoRA 1.000 iterasyon. Üretim mlx_lm greedy (deterministik). Ticari diş kütüphanesi form adları F-<sha256 ilk 6> ile maskelidir; eşleşme (form1_dogru) maskeli kodlar üzerinden doğrulanabilir. 'profil' alanı yaş/cinsiyet/meslek sınıfıdır; kimlik içermez.",
+ "baslangic": "2026-10-15T09:32:43",
+ "bitis": "2026-10-15T09:42:52",
+ "test_dosyasi": "yuz_form_lora_data/test.jsonl",
+ "test_sha256": "89bcb46877925775cc81e7ebaaf010d0cbb399c443787580a51d72ecb730e5e0",
+ "test_n": 32,
+ "model": "mlx-community/Qwen2.5-3B-Instruct-4bit",
+ "uretim": "mlx_lm.generate greedy (sıcaklık verilmedi → argmax), max_tokens 320",
+ "olcut_tanimlari": {
+  "json_ayristi": "cevapta face_shape anahtarlı geçerli JSON var",
+  "face_shape_dogru": "üretilen face_shape == beklenen (eşik kuralı etiketi)",
+  "jaw_width_dogru": "üretilen jaw_width == beklenen",
+  "hedef_hat_dogru": "üretilen hedef_hat (koseli/yuvarlak) == beklenen",
+  "spa_cinsiyet_gecti": "önerilen formlarda cinsiyet süzgeci ihlali yok (erkeğe F kodlu / kadına M kodlu form yok)",
+  "spa_olculemedi": "JSON yok ya da form listesi boş",
+  "form1_dogru": "ilk önerilen form == beklenen ilk form (maskeli kod eşitliği)"
+ },
+ "kollar": {
+  "vanilya": {
+   "adapter": "yok (taban model)",
+   "sure_sn": 192.6,
+   "sayim": {
+    "json_ayristi": 1,
+    "face_shape_dogru": 0,
+    "hedef_hat_dogru": 0,
+    "jaw_width_dogru": 0,
+    "spa_cinsiyet_gecti": 1,
+    "spa_olculemedi": 31,
+    "form1_dogru": 0
+   },
+   "oran": {
+    "json_ayristi": 0.031,
+    "face_shape_dogru": 0.0,
+    "hedef_hat_dogru": 0.0,
+    "jaw_width_dogru": 0.0,
+    "spa_cinsiyet_gecti": 0.031,
+    "spa_olculemedi": 0.969,
+    "form1_dogru": 0.0
+   },
+   "ornekler": [
+    {
+     "no": 1,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.206,
+       "cene_koniklik_orani": 0.84,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.775
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 2,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.206,
+       "cene_koniklik_orani": 0.832,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.795
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 3,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.24,
+       "cene_koniklik_orani": 0.864,
+       "alin_zigoma_orani": 0.85,
+       "alt_yuz_orani": 0.36,
+       "agiz_aciklik_orani": 0.19
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.78
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's facial features and return a JSON with the requested attributes, we need to extract and map the relevant information from the provided data. However, the provided data does not contain direct measurements or classifications for the requested attributes (face_shape, jaw_width"
+    },
+    {
+     "no": 4,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.252,
+       "cene_koniklik_orani": 0.868,
+       "alin_zigoma_orani": 0.86,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.21
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.775
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the provided data and generate a JSON with the requested fields, we need to infer the values for `face_shape`, `jaw_width`, `smile_line`, `hedef_hat`, and `onerilen_formlar` based on the available data. Here's a step-by-step breakdown of how we can do this:\n\n1. **Face Shape**: The `fasiya"
+    },
+    {
+     "no": 5,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.186,
+       "cene_koniklik_orani": 0.82,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.76
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 6,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.186,
+       "cene_koniklik_orani": 0.812,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the provided data and generate a JSON with the requested fields, we need to infer the values for `face_shape`, `jaw_width`, `smile_line`, `hedef_hat`, and `onerilen_formlar` based on the available data. Here's a step-by-step breakdown of how we can do this:\n\n1. **Face Shape**: The `face_s"
+    },
+    {
+     "no": 7,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.168,
+       "cene_koniklik_orani": 0.816,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.14
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.8
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 8,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.232,
+       "cene_koniklik_orani": 0.718,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.745
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the given data does not directly contain the required features. Let's break down the process and create a JSON structure based on the e"
+    },
+    {
+     "no": 9,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.232,
+       "cene_koniklik_orani": 0.71,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 10,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.238,
+       "cene_koniklik_orani": 0.694,
+       "alin_zigoma_orani": 0.83,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.13
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 11,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.238,
+       "cene_koniklik_orani": 0.686,
+       "alin_zigoma_orani": 0.85,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.24
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 12,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.202,
+       "cene_koniklik_orani": 0.738,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.12
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.81
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 13,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.184,
+       "cene_koniklik_orani": 0.722,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.08
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.845
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 14,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.218,
+       "cene_koniklik_orani": 0.714,
+       "alin_zigoma_orani": 0.76,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.09
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.83
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 61,
+       "meslek_sinifi": "Emekli Öğretmen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 15,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.218,
+       "cene_koniklik_orani": 0.706,
+       "alin_zigoma_orani": 0.75,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.07
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.835
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific details you're asking for. Let's break down the process and create a JS"
+    },
+    {
+     "no": 16,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.254,
+       "cene_koniklik_orani": 0.72,
+       "alin_zigoma_orani": 0.75,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.8
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 45,
+       "meslek_sinifi": "Akademisyen / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific details you're asking for. Let's break down the process and create a JS"
+    },
+    {
+     "no": 17,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.254,
+       "cene_koniklik_orani": 0.712,
+       "alin_zigoma_orani": 0.74,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.14
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Akademisyen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 18,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.108,
+       "cene_koniklik_orani": 0.784,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.15
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 45,
+       "meslek_sinifi": "Akademisyen / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 19,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.12,
+       "cene_koniklik_orani": 0.788,
+       "alin_zigoma_orani": 0.79,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.785
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the required features. Let's break down the process and create a JSON structure base"
+    },
+    {
+     "no": 20,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.144,
+       "cene_koniklik_orani": 0.79,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.19
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.785
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 21,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.144,
+       "cene_koniklik_orani": 0.782,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.3,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.79
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 22,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.1,
+       "cene_koniklik_orani": 0.766,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.29,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 23,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.1,
+       "cene_koniklik_orani": 0.778,
+       "alin_zigoma_orani": 0.8,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.77
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the provided data and generate a JSON with the requested fields (face_shape, jaw_width, smile_line, hedef_hat, onerilen_formlar), we need to interpret the given data. However, the provided data seems to be in a specific format that doesn't directly map to the requested fields. Let's break"
+    },
+    {
+     "no": 24,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.334,
+       "cene_koniklik_orani": 0.79,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.39,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 25,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.346,
+       "cene_koniklik_orani": 0.794,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.38,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.75
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided JSON structure. However, the given JSON structure does not contain direct information about face shape, jaw width, smile line, head shape, or specific"
+    },
+    {
+     "no": 26,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.346,
+       "cene_koniklik_orani": 0.786,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.37,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.795
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 27,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.37,
+       "cene_koniklik_orani": 0.828,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.38,
+       "agiz_aciklik_orani": 0.27
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 28,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.382,
+       "cene_koniklik_orani": 0.812,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.4,
+       "agiz_aciklik_orani": 0.24
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "round",
+      "onerilen_formlar": [
+       "F-4ba3e8",
+       "F-3cb968"
+      ],
+      "smile_line": "straight",
+      "yas_grubu": null
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 29,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.226,
+       "cene_koniklik_orani": 0.774,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.12
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.815
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 30,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.226,
+       "cene_koniklik_orani": 0.766,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.26
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.76
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 31,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.262,
+       "cene_koniklik_orani": 0.78,
+       "alin_zigoma_orani": 0.83,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.09
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.835
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 61,
+       "meslek_sinifi": "Emekli Öğretmen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    },
+    {
+     "no": 32,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.262,
+       "cene_koniklik_orani": 0.772,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.07
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.84
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ]
+     },
+     "json_ayristi": false,
+     "uretilen": null,
+     "raw_ilk300": "To analyze the patient's face shape, jaw width, smile line, head shape, and other features, we need to extract relevant information from the provided data. However, the data you've provided does not directly contain the specific measurements or features you mentioned (face_shape, jaw_width, smile_li"
+    }
+   ]
+  },
+  "qlora_400": {
+   "adapter": "yuz_form_lora_adapter_v3_400it",
+   "sure_sn": 169.8,
+   "sayim": {
+    "json_ayristi": 32,
+    "face_shape_dogru": 15,
+    "hedef_hat_dogru": 23,
+    "jaw_width_dogru": 18,
+    "spa_cinsiyet_gecti": 32,
+    "spa_olculemedi": 0,
+    "form1_dogru": 18
+   },
+   "oran": {
+    "json_ayristi": 1.0,
+    "face_shape_dogru": 0.469,
+    "hedef_hat_dogru": 0.719,
+    "jaw_width_dogru": 0.562,
+    "spa_cinsiyet_gecti": 1.0,
+    "spa_olculemedi": 0.0,
+    "form1_dogru": 0.562
+   },
+   "ornekler": [
+    {
+     "no": 1,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.206,
+       "cene_koniklik_orani": 0.84,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.775
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 2,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.206,
+       "cene_koniklik_orani": 0.832,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.795
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 3,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.24,
+       "cene_koniklik_orani": 0.864,
+       "alin_zigoma_orani": 0.85,
+       "alt_yuz_orani": 0.36,
+       "agiz_aciklik_orani": 0.19
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.78
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "wide",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": true,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 4,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.252,
+       "cene_koniklik_orani": 0.868,
+       "alin_zigoma_orani": 0.86,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.21
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.775
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 5,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.186,
+       "cene_koniklik_orani": 0.82,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.76
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 6,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.186,
+       "cene_koniklik_orani": 0.812,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 7,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.168,
+       "cene_koniklik_orani": 0.816,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.14
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.8
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 8,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.232,
+       "cene_koniklik_orani": 0.718,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.745
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": false,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 9,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.232,
+       "cene_koniklik_orani": 0.71,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 10,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.238,
+       "cene_koniklik_orani": 0.694,
+       "alin_zigoma_orani": 0.83,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.13
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 11,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.238,
+       "cene_koniklik_orani": 0.686,
+       "alin_zigoma_orani": 0.85,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.24
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 12,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.202,
+       "cene_koniklik_orani": 0.738,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.12
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.81
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 13,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.184,
+       "cene_koniklik_orani": 0.722,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.08
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.845
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": false,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 14,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.218,
+       "cene_koniklik_orani": 0.714,
+       "alin_zigoma_orani": 0.76,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.09
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.83
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 61,
+       "meslek_sinifi": "Emekli Öğretmen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 15,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.218,
+       "cene_koniklik_orani": 0.706,
+       "alin_zigoma_orani": 0.75,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.07
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.835
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 16,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.254,
+       "cene_koniklik_orani": 0.72,
+       "alin_zigoma_orani": 0.75,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.8
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 45,
+       "meslek_sinifi": "Akademisyen / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 17,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.254,
+       "cene_koniklik_orani": 0.712,
+       "alin_zigoma_orani": 0.74,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.14
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Akademisyen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": false,
+      "jaw_width": false,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 18,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.108,
+       "cene_koniklik_orani": 0.784,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.15
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 45,
+       "meslek_sinifi": "Akademisyen / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 19,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.12,
+       "cene_koniklik_orani": 0.788,
+       "alin_zigoma_orani": 0.79,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.785
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 20,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.144,
+       "cene_koniklik_orani": 0.79,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.19
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.785
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": false
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 21,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.144,
+       "cene_koniklik_orani": 0.782,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.3,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.79
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 22,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.1,
+       "cene_koniklik_orani": 0.766,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.29,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 23,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.1,
+       "cene_koniklik_orani": 0.778,
+       "alin_zigoma_orani": 0.8,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.77
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 24,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.334,
+       "cene_koniklik_orani": 0.79,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.39,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 25,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.346,
+       "cene_koniklik_orani": 0.794,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.38,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.75
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 26,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.346,
+       "cene_koniklik_orani": 0.786,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.37,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.795
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 27,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.37,
+       "cene_koniklik_orani": 0.828,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.38,
+       "agiz_aciklik_orani": 0.27
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 28,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.382,
+       "cene_koniklik_orani": 0.812,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.4,
+       "agiz_aciklik_orani": 0.24
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 29,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.226,
+       "cene_koniklik_orani": 0.774,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.12
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.815
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 30,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.226,
+       "cene_koniklik_orani": 0.766,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.26
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.76
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 31,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.262,
+       "cene_koniklik_orani": 0.78,
+       "alin_zigoma_orani": 0.83,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.09
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.835
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 61,
+       "meslek_sinifi": "Emekli Öğretmen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 32,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.262,
+       "cene_koniklik_orani": 0.772,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.07
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.84
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    }
+   ]
+  },
+  "qlora_1000": {
+   "adapter": "yuz_form_lora_adapter",
+   "sure_sn": 246.5,
+   "sayim": {
+    "json_ayristi": 32,
+    "face_shape_dogru": 29,
+    "hedef_hat_dogru": 32,
+    "jaw_width_dogru": 32,
+    "spa_cinsiyet_gecti": 32,
+    "spa_olculemedi": 0,
+    "form1_dogru": 32
+   },
+   "oran": {
+    "json_ayristi": 1.0,
+    "face_shape_dogru": 0.906,
+    "hedef_hat_dogru": 1.0,
+    "jaw_width_dogru": 1.0,
+    "spa_cinsiyet_gecti": 1.0,
+    "spa_olculemedi": 0.0,
+    "form1_dogru": 1.0
+   },
+   "ornekler": [
+    {
+     "no": 1,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.206,
+       "cene_koniklik_orani": 0.84,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.775
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 2,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.206,
+       "cene_koniklik_orani": 0.832,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.795
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 3,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.24,
+       "cene_koniklik_orani": 0.864,
+       "alin_zigoma_orani": 0.85,
+       "alt_yuz_orani": 0.36,
+       "agiz_aciklik_orani": 0.19
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.78
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 4,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.252,
+       "cene_koniklik_orani": 0.868,
+       "alin_zigoma_orani": 0.86,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.21
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.775
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 5,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.186,
+       "cene_koniklik_orani": 0.82,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.76
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 6,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.186,
+       "cene_koniklik_orani": 0.812,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 7,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.168,
+       "cene_koniklik_orani": 0.816,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.14
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.8
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "square",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 8,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.232,
+       "cene_koniklik_orani": 0.718,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.745
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 9,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.232,
+       "cene_koniklik_orani": 0.71,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": false,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 10,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.238,
+       "cene_koniklik_orani": 0.694,
+       "alin_zigoma_orani": 0.83,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.13
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 11,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.238,
+       "cene_koniklik_orani": 0.686,
+       "alin_zigoma_orani": 0.85,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.24
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 12,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.202,
+       "cene_koniklik_orani": 0.738,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.12
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.81
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 13,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.184,
+       "cene_koniklik_orani": 0.722,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.08
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.845
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "heart",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 14,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.218,
+       "cene_koniklik_orani": 0.714,
+       "alin_zigoma_orani": 0.76,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.09
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.83
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 61,
+       "meslek_sinifi": "Emekli Öğretmen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 15,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.218,
+       "cene_koniklik_orani": 0.706,
+       "alin_zigoma_orani": 0.75,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.07
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.835
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 16,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.254,
+       "cene_koniklik_orani": 0.72,
+       "alin_zigoma_orani": 0.75,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.8
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 45,
+       "meslek_sinifi": "Akademisyen / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 17,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.254,
+       "cene_koniklik_orani": 0.712,
+       "alin_zigoma_orani": 0.74,
+       "alt_yuz_orani": 0.35,
+       "agiz_aciklik_orani": 0.14
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Akademisyen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "diamond",
+      "jaw_width": "narrow",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 18,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.108,
+       "cene_koniklik_orani": 0.784,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.15
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.805
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 45,
+       "meslek_sinifi": "Akademisyen / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 19,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.12,
+       "cene_koniklik_orani": 0.788,
+       "alin_zigoma_orani": 0.79,
+       "alt_yuz_orani": 0.32,
+       "agiz_aciklik_orani": 0.17
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.785
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 20,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.144,
+       "cene_koniklik_orani": 0.79,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.19
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.785
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 34,
+       "meslek_sinifi": "Avukat / Yönetici"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 21,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.144,
+       "cene_koniklik_orani": 0.782,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.3,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.79
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 39,
+       "meslek_sinifi": "Şirket Yöneticisi / CEO"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 22,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.1,
+       "cene_koniklik_orani": 0.766,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.29,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.765
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-63e52f",
+       "F-a2ccc9",
+       "F-72c8c7"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 23,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.1,
+       "cene_koniklik_orani": 0.778,
+       "alin_zigoma_orani": 0.8,
+       "alt_yuz_orani": 0.31,
+       "agiz_aciklik_orani": 0.23
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.77
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 28,
+       "meslek_sinifi": "Yazılım Mühendisi / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "round",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-160315",
+       "F-d410ca",
+       "F-b06e4c"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 24,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.334,
+       "cene_koniklik_orani": 0.79,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.39,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 26,
+       "meslek_sinifi": "Mimar / Tasarımcı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 25,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.346,
+       "cene_koniklik_orani": 0.794,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.38,
+       "agiz_aciklik_orani": 0.25
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.75
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 26,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.346,
+       "cene_koniklik_orani": 0.786,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.37,
+       "agiz_aciklik_orani": 0.16
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.795
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 45,
+       "meslek_sinifi": "Avukat / Hukukçu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 27,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.37,
+       "cene_koniklik_orani": 0.828,
+       "alin_zigoma_orani": 0.84,
+       "alt_yuz_orani": 0.38,
+       "agiz_aciklik_orani": 0.27
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 22,
+       "meslek_sinifi": "Öğrenci / Sporcu"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-72c8c7",
+       "F-478603"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 28,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.382,
+       "cene_koniklik_orani": 0.812,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.4,
+       "agiz_aciklik_orani": 0.24
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.755
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oblong",
+      "jaw_width": "wide",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 29,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.226,
+       "cene_koniklik_orani": 0.774,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.12
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.815
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 52,
+       "meslek_sinifi": "Cerrah / Hekim"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "medium",
+      "yas_grubu": "orta"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 30,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.226,
+       "cene_koniklik_orani": 0.766,
+       "alin_zigoma_orani": 0.81,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.26
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.76
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 24,
+       "meslek_sinifi": "Öğrenci / Sanatçı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-d410ca",
+       "F-16dfcd",
+       "F-19aa3e"
+      ],
+      "smile_line": "high",
+      "yas_grubu": "genc"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 31,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.262,
+       "cene_koniklik_orani": 0.78,
+       "alin_zigoma_orani": 0.83,
+       "alt_yuz_orani": 0.34,
+       "agiz_aciklik_orani": 0.09
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.835
+      },
+      "profil": {
+       "cinsiyet": "kadin",
+       "yas": 61,
+       "meslek_sinifi": "Emekli Öğretmen"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "yuvarlak",
+      "onerilen_formlar": [
+       "F-72c8c7",
+       "F-63e52f",
+       "F-6335a1"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    },
+    {
+     "no": 32,
+     "girdi": {
+      "sefalometrik": {
+       "fasiyal_indeks": 1.262,
+       "cene_koniklik_orani": 0.772,
+       "alin_zigoma_orani": 0.82,
+       "alt_yuz_orani": 0.33,
+       "agiz_aciklik_orani": 0.07
+      },
+      "sam_2d": {
+       "santral_wh_orani": 0.84
+      },
+      "profil": {
+       "cinsiyet": "erkek",
+       "yas": 64,
+       "meslek_sinifi": "Sanayici / İş İnsanı"
+      }
+     },
+     "beklenen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ]
+     },
+     "json_ayristi": true,
+     "uretilen": {
+      "face_shape": "oval",
+      "jaw_width": "medium",
+      "hedef_hat": "koseli",
+      "onerilen_formlar": [
+       "F-16dfcd",
+       "F-435179",
+       "F-d410ca"
+      ],
+      "smile_line": "low",
+      "yas_grubu": "olgun"
+     },
+     "dogru": {
+      "face_shape": true,
+      "hedef_hat": true,
+      "jaw_width": true,
+      "form1": true
+     },
+     "spa_cinsiyet": true
+    }
+   ]
+  }
+ }
+}

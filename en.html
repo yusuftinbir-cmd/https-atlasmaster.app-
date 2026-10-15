@@ -155,17 +155,20 @@
       </li>
     </ol>
     <div class="exbox">
-    <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="en" data-sk-van="Untrained AI">
+    <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="en" data-sk-mode="isleyis" data-sk-van="Untrained AI">
       <figure class="sheet sk-yok">
-        <img src="ornek/sentetik-kare/sentetik-kare-panel.jpg" width="1600" height="1019" alt="Synthetic square-face comparison panel: the untrained model's feminine ovoid line and the ATLAS QLoRA model's masculine cuboidal line; 3D cephalometric measurements" loading="lazy">
-        <figcaption class="cap"><span>Static panel (the interactive module requires JavaScript)</span></figcaption>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start">
+          <img src="ornek/sentetik-kare/sentetik-sefalometri-portre.jpg" width="896" height="1200" alt="478-landmark 3D cephalometric measurement layer on a synthetic portrait; ZY-ZY cyan, Go-Go green vectors" loading="lazy" style="width:100%;height:auto">
+          <img src="ornek/sentetik-kare/tamkare-lora.jpg" width="896" height="1200" alt="Full-face simulation of the proposed cuboidal line on the same synthetic face" loading="lazy" style="width:100%;height:auto">
+        </div>
+        <figcaption class="cap"><span>Static view: 3D cephalometric measurement ↔ after-design simulation (JavaScript is required for the interactive module)</span></figcaption>
       </figure>
     </div>
     <div class="sk-serh" role="note" aria-label="Legal and clinical note">
       <p><strong>Not a real patient.</strong> 100% synthetic face · algorithmic morphology simulation, not diagnosis/treatment/medical device. Clinical decisions belong solely to the dentist.</p>
       <p lang="tr"><strong>Gerçek hasta fotoğrafı değildir.</strong> %100 sentetik/kurgusal model üzerinde algoritmik morfoloji simülasyonudur. Tanı, tedavi veya tıbbi cihaz sonucu değildir. Sonuçlar kişiden kişiye değişir; klinik karar hekime aittir.</p>
     </div>
-    <p class="more" style="margin-top:0"><a href="blog/en/face-to-tooth-cephalometric-lora.html">The full experiment: 478-landmark 3D cephalometry, n = 32 locked test and the four-layer rule → Face to Tooth</a></p>
+    <p class="more" style="margin-top:0"><a href="blog/en/face-to-tooth-cephalometric-lora.html">The experiment and model comparison behind this workflow (n = 32 locked test, 4-arm ablation) → Face to Tooth</a></p>
     <div class="sk-eski">
     <span class="idx">Clinical Retracted &amp; Mouth-Crop Preview Example</span>
     <figure class="sheet ba" id="ornek">
@@ -259,7 +262,7 @@
       <div class="sgrid" aria-label="Featured essays">
         <a class="scard" href="blog/en/face-to-tooth-cephalometric-lora.html">
           <div>
-            <span class="idx">Experiment · 3D Cephalometry · n=32 + Live Module</span>
+            <span class="idx">Experimental Spark · 3D Cephalometry · n=32 + 4-Arm Ablation</span>
             <h3>Face to Tooth: How a QLoRA Model Trained on 3D Cephalometry Beat the Untrained Model</h3>
             <p>The untrained model reads a square jaw as “oval” and picks a rounded feminine line. 478-landmark 3D mesh + 1,000-iteration QLoRA: face-shape accuracy 0% → 90.6%, target line 0% → 100%; live 3D module on a 100% synthetic face.</p>
           </div>

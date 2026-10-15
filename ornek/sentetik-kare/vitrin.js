@@ -1,5 +1,6 @@
 // Atlas · Sentetik kare vitrini — 3B sefalometrik tel-kafes (478 nokta, 2.556 kenar) + A/B morfoloji kaydırıcısı.
-// Kullanım: <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="tr" data-sk-van="Eğitimsiz AI">[JS'siz panel]</div>
+// Kullanım: <div class="sk" data-sk-base="ornek/sentetik-kare/" data-sk-lang="tr" data-sk-mode="isleyis|deney" data-sk-van="Eğitimsiz AI">[JS'siz panel]</div>
+// data-sk-mode="isleyis" (anasayfa): yalnız işleyiş — 4 ölçüm kutusu + 3 simülasyon sekmesi, model karşılaştırması YOK. "deney" (blog, varsayılan): Vanilya ↔ QLoRA 4 sekme + ölçü satırı.
 // Bağımlılık yok. Renkler style.css değişkenlerinden okunur (açık/koyu tema). Görseller %100 sentetik; gerçek hasta değildir.
 (function () {
   'use strict';
@@ -9,6 +10,21 @@
       spin: 'Döndür', vec: 'Vektörler', on: 'Ön', sol: 'Sol', sag: 'Sağ', yuk: '3B ağ yükleniyor…', hata: '3B ağ yüklenemedi; statik panel için sayfayı yenileyin.',
       olcu: '<i>ZY-ZY = 629,7 px</i> · <b>Go-Go = 526,9 px</b> · Go-Go / ZY-ZY = <b>0,837</b> (≥ 0,82 → geniş / kare çene)',
       hab: 'Foto-gerçekçi sentetik morfoloji kaydırıcısı', sim: 'Simülasyon', kay: 'Karşılaştırma kaydırıcısı',
+      h3dI: '3B Sefalometrik Yüz Ölçümü · 478 nokta', habI: 'Morfolojik önizleme simülasyonu',
+      kutu: [
+        { k: 'Elmacık genişliği (ZY-ZY)', v: '629,7 px' },
+        { k: 'Alt çene açısı (Go-Go / ZY)', v: '0,837', e: 'Geniş / Kare' },
+        { k: 'Fasiyal indeks (N-Gn / ZY)', v: '1,226', e: 'Dengeli' },
+        { k: 'SAM 2B ön diş oranı (W/H)', v: '0,77', e: '→ Kuboidal hat' }
+      ],
+      isleyis: [
+        { id: 'makro_io', t: '🔍 2x Makro: Tasarım Öncesi (Nötr) ↔ Tasarım Sonrası (Kuboidal Simülasyon)', l: 'Tasarım öncesi · nötr doğal diş', r: 'Tasarım sonrası · kuboidal simülasyon', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
+          n: '<b>İşleyiş:</b> 3B yüz ölçümü (Go-Go / ZY-ZY = 0,837 → geniş / kare) ve SAM 2B diş oranı (W/H = 0,77) dört katmanlı kuraldan geçer; sistem bu yüz için kuboidal (dik köşeli, düz kesici kenarlı) hattı önerir ve aynı karede simüle eder. Dudak, diş eti ve alt dişler değişmez.' },
+        { id: 'agiz_io', t: '👄 1x Yakın Ağız: Tasarım Öncesi ↔ Tasarım Sonrası', l: 'Tasarım öncesi · 1x yakın ağız', r: 'Tasarım sonrası · 1x yakın ağız', a: 'agiz-ozgun.jpg', b: 'agiz-lora.jpg', dik: 0, sim: 1,
+          n: 'Aynı karenin 1x kırpımı: dudak, diş eti ve alt dişler iki tarafta aynı; yalnız üst ön altı dişin formu önerilen hatta göre değişti.' },
+        { id: 'tam_io', t: '🧑 Tam Yüz: 3B Sefalometrik Ölçüm ↔ Tasarım Sonrası', l: '3B sefalometrik ölçüm katmanı', r: 'Tasarım sonrası · tam yüz', a: 'sentetik-sefalometri-portre.jpg', b: 'tamkare-lora.jpg', dik: 1, sim: 1,
+          n: 'Solda 478 noktalı ölçüm katmanı (turkuaz ZY-ZY, yeşil Go-Go); sağda önerilen hattın tam yüzdeki simülasyonu. Form kararı yüz ölçüsünden gelir, dudak çerçevesi sabittir.' }
+      ],
       tabs: [
         { id: 'makro_vl', t: '2x Makro: {van} (Ovoid) ↔ ATLAS QLoRA (Kuboidal)', l: '{van} · Feminen Ovoid Hat', r: 'ATLAS QLoRA · Maskülen Kuboidal Hat', a: 'makro-vanilya.jpg', b: 'makro-lora.jpg', dik: 0,
           n: '<b>Aynı sentetik yüz, aynı dudak kilidi (4.686 piksel değişmedi); yalnız form seçimi farklı.</b> Sol: yuvarlak köşe, açık V kama aralığı, kısa yan kesici. Sağ: 90° dik köşe, düz yatay kesici kenar, kapalı kama aralığı.' },
@@ -25,6 +41,21 @@
       spin: 'Spin', vec: 'Vectors', on: 'Front', sol: 'Left', sag: 'Right', yuk: 'Loading 3D mesh…', hata: 'The 3D mesh could not be loaded; reload the page for the static panel.',
       olcu: '<i>ZY-ZY = 629.7 px</i> · <b>Go-Go = 526.9 px</b> · Go-Go / ZY-ZY = <b>0.837</b> (≥ 0.82 → wide / square jaw)',
       hab: 'Photo-realistic synthetic morphology slider', sim: 'Simulation', kay: 'Comparison slider',
+      h3dI: '3D Cephalometric Face Measurement · 478 landmarks', habI: 'Morphological preview simulation',
+      kutu: [
+        { k: 'Bizygomatic width (ZY-ZY)', v: '629.7 px' },
+        { k: 'Mandibular angle width (Go-Go / ZY)', v: '0.837', e: 'Wide / Square' },
+        { k: 'Facial index (N-Gn / ZY)', v: '1.226', e: 'Balanced' },
+        { k: 'SAM 2B anterior tooth ratio (W/H)', v: '0.77', e: '→ Cuboidal line' }
+      ],
+      isleyis: [
+        { id: 'makro_io', t: '🔍 2x Macro: Before Design (Neutral) ↔ After Design (Cuboidal Simulation)', l: 'Before design · neutral natural teeth', r: 'After design · cuboidal simulation', a: 'makro-ozgun.jpg', b: 'makro-lora.jpg', dik: 0, sim: 1,
+          n: '<b>How it works:</b> the 3D face measurement (Go-Go / ZY-ZY = 0.837 → wide / square) and the SAM 2B tooth ratio (W/H = 0.77) pass through a four-layer rule; the system proposes a cuboidal (sharp-cornered, flat-edged) line for this face and simulates it in the same frame. Lips, gingiva and lower teeth do not change.' },
+        { id: 'agiz_io', t: '👄 1x Close-up Mouth: Before Design ↔ After Design', l: 'Before design · 1x close-up', r: 'After design · 1x close-up', a: 'agiz-ozgun.jpg', b: 'agiz-lora.jpg', dik: 0, sim: 1,
+          n: '1x crop of the same frame: lips, gingiva and lower teeth are the same on both sides; only the form of the upper six anterior teeth changed to the proposed line.' },
+        { id: 'tam_io', t: '🧑 Full Face: 3D Cephalometric Measurement ↔ After Design', l: '3D cephalometric measurement layer', r: 'After design · full face', a: 'sentetik-sefalometri-portre.jpg', b: 'tamkare-lora.jpg', dik: 1, sim: 1,
+          n: 'Left: the 478-landmark measurement layer (cyan ZY-ZY, green Go-Go); right: the proposed line simulated on the full face. The form decision comes from the face measurement; the lip frame is fixed.' }
+      ],
       tabs: [
         { id: 'makro_vl', t: '2x Macro: {van} (Ovoid) ↔ ATLAS QLoRA (Cuboidal)', l: '{van} · Feminine Ovoid Line', r: 'ATLAS QLoRA · Masculine Cuboidal Line', a: 'makro-vanilya.jpg', b: 'makro-lora.jpg', dik: 0,
           n: '<b>Same synthetic face, same lip lock (4,686 pixels unchanged); only the form choice differs.</b> Left: rounded corners, open V embrasures, short laterals. Right: 90° corners, flat horizontal incisal edge, closed embrasures.' },
@@ -44,12 +75,15 @@
     var base = root.getAttribute('data-sk-base') || '', lang = (root.getAttribute('data-sk-lang') || 'tr').toLowerCase();
     var T = S[lang] || S.tr, van = root.getAttribute('data-sk-van') || (lang === 'en' ? 'Untrained AI' : 'Eğitimsiz AI');
     var vt = function (s) { return s.replace(/\{van\}/g, van); };
-    root.classList.add('js');
+    // data-sk-mode: "deney" (varsayılan; Vanilya ↔ QLoRA karşılaştırması, blog) · "isleyis" (anasayfa; yalnız sistemin işleyişi, model karşılaştırması yok)
+    var mode = (root.getAttribute('data-sk-mode') || 'deney').toLowerCase(), isl = mode === 'isleyis';
+    var TABS = isl ? T.isleyis : T.tabs;
+    root.classList.add('js'); root.classList.add('sk-' + mode);
     var grid = el('div', 'sk-grid');
 
     /* ---- 3B tel-kafes ---- */
     var f3 = el('figure', 'sheet sk-3d');
-    f3.appendChild(el('p', 'idx', '<span>' + T.h3d + '</span><span>MediaPipe FaceMesh</span>'));
+    f3.appendChild(el('p', 'idx', '<span>' + (isl ? T.h3dI : T.h3d) + '</span><span>MediaPipe FaceMesh</span>'));
     f3.appendChild(el('p', 'sk-sub', T.s3d));
     var cw = el('div', 'sk-canvas-wrap'); var cv = document.createElement('canvas'); cv.setAttribute('aria-label', T.h3d); cv.setAttribute('role', 'img');
     var yk = el('div', 'sk-yukleniyor', T.yuk); cw.appendChild(cv); cw.appendChild(yk); f3.appendChild(cw);
@@ -57,12 +91,16 @@
     function btn(txt, pressed) { var b = el('button', 'sk-btn', txt); b.type = 'button'; if (pressed != null) b.setAttribute('aria-pressed', String(pressed)); return b; }
     var bSpin = btn(T.spin, true), bVec = btn(T.vec, true), bOn = btn(T.on), bSol = btn(T.sol), bSag = btn(T.sag);
     [bSpin, bVec, bOn, bSol, bSag].forEach(function (b) { btns.appendChild(b); }); f3.appendChild(btns);
-    f3.appendChild(el('p', 'sk-olcu', T.olcu));
+    if (isl) {
+      var kg = el('div', 'sk-kutular');
+      T.kutu.forEach(function (q) { kg.appendChild(el('div', 'sk-kutu', '<span class="sk-kk">' + q.k + '</span><b class="sk-kv">' + q.v + '</b>' + (q.e ? '<span class="sk-ke">' + q.e + '</span>' : ''))); });
+      f3.appendChild(kg);
+    } else f3.appendChild(el('p', 'sk-olcu', T.olcu));
     grid.appendChild(f3);
 
     /* ---- A/B kaydırıcı ---- */
     var fa = el('figure', 'sheet sk-ab');
-    var hd = el('p', 'idx', '<span>' + T.hab + '</span><span class="sk-sim" hidden>' + T.sim + '</span>'); fa.appendChild(hd);
+    var hd = el('p', 'idx', '<span>' + (isl ? T.habI : T.hab) + '</span><span class="sk-sim" hidden>' + T.sim + '</span>'); fa.appendChild(hd);
     var tabs = el('div', 'sk-tabs'); tabs.setAttribute('role', 'tablist');
     var stage = el('div', 'sk-stage');
     var pa = el('div', 'sk-pane'), pb = el('div', 'sk-pane');
@@ -82,7 +120,7 @@
     // Yalnız kaydırıcıda fare basılıyken görsel kayar; sayfa kaydırması (dikey dokunma) serbest.
     var tabBtns = [];
     function sec(i) {
-      var t = T.tabs[i];
+      var t = TABS[i];
       tabBtns.forEach(function (b, j) { b.setAttribute('aria-selected', String(i === j)); b.tabIndex = i === j ? 0 : -1; });
       ia.src = base + t.a; ib.src = base + t.b; ia.alt = vt(t.l); ib.alt = vt(t.r);
       la.textContent = vt(t.l); lb.textContent = vt(t.r);
@@ -90,14 +128,14 @@
       hd.lastChild.hidden = !t.sim;
       not.innerHTML = t.n; rg.value = 50; setP();
     }
-    T.tabs.forEach(function (t, i) {
+    TABS.forEach(function (t, i) {
       var b = el('button', 'sk-tab', vt(t.t)); b.type = 'button'; b.setAttribute('role', 'tab'); b.id = 'sk-tab-' + t.id;
       b.addEventListener('click', function () { sec(i); });
-      b.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var k = (i + (e.key === 'ArrowRight' ? 1 : -1) + T.tabs.length) % T.tabs.length; sec(k); tabBtns[k].focus(); e.preventDefault(); } });
+      b.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var k = (i + (e.key === 'ArrowRight' ? 1 : -1) + TABS.length) % TABS.length; sec(k); tabBtns[k].focus(); e.preventDefault(); } });
       tabBtns.push(b); tabs.appendChild(b);
     });
-    sec(0); // VARSAYILAN: 2x Makro Vanilya/Eğitimsiz (Ovoid) ↔ ATLAS QLoRA (Kuboidal) — Özgün sekmesi hiçbir zaman varsayılan değildir.
-    T.tabs.forEach(function (t) { var p = new Image(); p.src = base + t.a; var q = new Image(); q.src = base + t.b; });
+    sec(0); // VARSAYILAN — deney: 2x Makro Vanilya/Eğitimsiz (Ovoid) ↔ ATLAS QLoRA (Kuboidal) · isleyis: 2x Makro Tasarım Öncesi (Nötr) ↔ Tasarım Sonrası (Simülasyon)
+    TABS.forEach(function (t) { var p = new Image(); p.src = base + t.a; var q = new Image(); q.src = base + t.b; });
 
     /* ---- 3B çizim ---- */
     var ctx = cv.getContext('2d'), LM = null, norm = null, dpr = Math.min(window.devicePixelRatio || 1, 2);

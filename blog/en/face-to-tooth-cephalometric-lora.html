@@ -66,9 +66,9 @@
   <div class="wrap">
     <h1>Face to <em>Tooth</em></h1>
     <p class="dek">How a 3B QLoRA Model Trained on 113 Papers and 3D Cephalometry Beat the Untrained Model</p>
-    <div class="meta">Project log &middot; Experiment &middot; <time datetime="2026-10-15">October 15, 2026</time> &middot; Atlas Studio</div>
+    <div class="meta">Experimental Spark &middot; 4 Layers &middot; N=32 Locked Test + 4-Arm Ablation &middot; <time datetime="2026-10-15">October 15, 2026</time> &middot; Atlas Studio</div>
     <aside class="ozet" aria-label="Summary">
-      <p class="idx"><span>Summary</span><span class="okuma">14 min read</span></p>
+      <p class="idx"><span>Summary</span><span class="okuma">16 min read</span></p>
       <p>Why does an untrained vision-language model read a wide, square-jawed (brachyfacial) face as “oval” and pick a rounded, feminine tooth line? We tested the answer at two scales. <strong>First (n = 32):</strong> on a previously locked test set of 32 faces never seen in training, we compared the untrained local 3B model (<code>Qwen2.5-3B-Instruct-4bit</code>) with the same model after 400 and 1,000 iterations of MLX QLoRA on rule examples distilled from 113 academic papers and 478-landmark 3D cephalometric measurements. Face-shape threshold accuracy went <strong>0.0% → 46.9% → 90.6%</strong>; jaw width, target line (cuboidal/rounded) and the SPA sex filter went <strong>0.0% → 100.0%</strong>; valid decision JSON went <strong>3.1% → 100%</strong>. The jump between 400 and 1,000 iterations looks less like memorisation than a <em>phase transition</em> (grokking). <strong>Second (n = 1, synthetic):</strong> we ran both models end to end on a fully fictional, 100% AI-generated brachyfacial male portrait belonging to no real person: the 478-landmark 3D mesh measured <code>Go-Go / ZY-ZY = 0.837</code> (≥ 0.82 → wide/square); the untrained model read the face as “oval / medium jaw” and chose a <strong>feminine ovoid line</strong>; the QLoRA model read “square / wide / cuboidal” and chose a <strong>masculine cuboidal line</strong>. Both outputs sit side by side, with lip, beard and gingiva pixels 100% locked, in the live 3D module and slider at the heart of this essay. Verdict: on the road from photograph to tooth form, what is missing is not model size but the conversion of a century of face-tooth morphology rules (Williams 1914, Frush &amp; Fisher 1958, Lombardi 1973, Paolucci 2012) into measurable thresholds etched into the model.</p>
     </aside>
     <div class="sk-serh" role="note" aria-label="Legal and clinical note">
@@ -89,6 +89,7 @@
       <li><a href="#part-3">3. The four-layer architecture and its academic basis</a></li>
       <li><a href="#part-4">4. Results table (n = 32): vanilla → 400 → 1,000 iterations</a></li>
       <li><a href="#part-5">5. The synthetic square face (n = 1): raw decisions of both models</a></li>
+      <li><a href="#part-5b">5b. The author’s check: did the teeth in the mouth mislead the model? (4-arm ablation)</a></li>
       <li><a href="#part-6">6. Phase transition or memorisation?</a></li>
       <li><a href="#part-7">7. Red team: the n = 1 anecdote, lookalike risk and regulation</a></li>
       <li><a href="#part-8">8. Verdict: five points</a></li>
@@ -112,7 +113,7 @@
 
     <h3 id="live-module">2. Live module: 3D cephalometry and the morphology slider</h3>
     <p>Left: the 478-landmark 3D wireframe extracted from the synthetic portrait (drag to rotate; cyan <code>ZY-ZY = 629.7 px</code>, green <code>Go-Go = 526.9 px</code>, ratio <code>0.837</code>). Right: the tooth line each model chose on the same face; the default tab is the 2x macro comparison of the untrained model and the QLoRA model. The “Original ↔ After Design” tab is a simulation, not a before/after treatment.</p>
-    <div class="sk" data-sk-base="../../ornek/sentetik-kare/" data-sk-lang="en" data-sk-van="Vanilla">
+    <div class="sk" data-sk-base="../../ornek/sentetik-kare/" data-sk-lang="en" data-sk-mode="deney" data-sk-van="Vanilla">
       <figure class="sheet sk-yok">
         <img src="../../ornek/sentetik-kare/sentetik-kare-panel.jpg" width="1600" height="1019" alt="Synthetic square-face comparison panel: the untrained model's feminine ovoid line and the ATLAS QLoRA model's masculine cuboidal line; 3D cephalometric measurements" loading="lazy">
         <figcaption class="cap"><span>Static panel (the interactive module requires JavaScript)</span></figcaption>
@@ -152,15 +153,15 @@
         <tbody>
           <tr><td><strong>Valid decision JSON</strong></td><td>3.1% (1/32)</td><td>100% (32/32)</td><td><strong>100% (32/32)</strong></td></tr>
           <tr><td><strong><code>face_shape</code> · face-shape threshold class</strong></td><td>0.0% (0/32)</td><td>46.9% (15/32)</td><td><strong>90.6% (29/32)</strong></td></tr>
-          <tr><td><strong><code>jaw_width</code> · mandibular width</strong></td><td>0.0% (0/32)</td><td>—</td><td><strong>100.0% (32/32)</strong></td></tr>
-          <tr><td><strong><code>hedef_hat</code> · cuboidal / rounded target line</strong></td><td>0.0% (0/32)</td><td>—</td><td><strong>100.0% (32/32)</strong></td></tr>
-          <tr><td><strong>SPA sex filter</strong></td><td>3.1% (1/32)</td><td>—</td><td><strong>100.0% (32/32)</strong></td></tr>
-          <tr><td><strong>1st recommended form category</strong></td><td>0.0% (0/32)</td><td>—</td><td><strong>100.0% (32/32)</strong></td></tr>
+          <tr><td><strong><code>jaw_width</code> · mandibular width</strong></td><td>0.0% (0/32)</td><td>56.2% (18/32)</td><td><strong>100.0% (32/32)</strong></td></tr>
+          <tr><td><strong><code>hedef_hat</code> · cuboidal / rounded target line</strong></td><td>0.0% (0/32)</td><td>71.9% (23/32)</td><td><strong>100.0% (32/32)</strong></td></tr>
+          <tr><td><strong>SPA sex filter</strong></td><td>3.1% (1/32)</td><td>100.0% (32/32)</td><td><strong>100.0% (32/32)</strong></td></tr>
+          <tr><td><strong>1st recommended form category</strong></td><td>0.0% (0/32)</td><td>56.2% (18/32)</td><td><strong>100.0% (32/32)</strong></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="cap" style="margin-top:10px">Source: Atlas experiment log, October 15, 2026 (locked test set; in the 400-iteration arm only JSON validity and face shape were measured; “—” means not measured). The figures are reported here from Atlas’s experiment report; the raw run log is not published with the essay.</p>
-    <p>Three things stand out. <strong>First,</strong> the vanilla model’s real problem is not misclassifying but mostly failing to classify at all: it produced no valid decision on 31 of 32 faces. <strong>Second,</strong> at 400 iterations the format was learned (JSON 100%) but the content was half done (face shape 46.9%). <strong>Third,</strong> at 1,000 iterations face shape jumped to 90.6% while the four derived decisions that depend on it (jaw width, target line, SPA, form category) reached 100%; even where the model stayed undecided on the face-shape label for 3 faces, it bound the line decision correctly through the threshold hierarchy.</p>
+    <p class="cap" style="margin-top:10px">Source: Atlas experiment log, October 15, 2026 (locked test set; all three arms measured on all six criteria; a deterministic pre-publication re-run matched the original log in 18 of 18 counts). The raw run log is published with the essay: <a href="../../ornek/sentetik-kare/n32-kilitli-test.json">n32-kilitli-test.json</a> (input, expected and generated classes of all 32 cases in three arms; deterministic pre-publication re-run) · generation prompt and SHA-256 digests: <a href="../../ornek/sentetik-kare/provenance.json">provenance.json</a>. Commercial library form names are masked in the log.</p>
+    <p>Three things stand out. <strong>First,</strong> the vanilla model’s real problem is not misclassifying but mostly failing to classify at all: it produced no valid decision on 31 of 32 faces. <strong>Second,</strong> at 400 iterations the format was learned (JSON 100%, SPA filter 100%) but the content was half done (face shape 46.9%, target line 71.9%, jaw width and form category 56.2%). <strong>Third,</strong> at 1,000 iterations face shape jumped to 90.6% while the four derived decisions that depend on it (jaw width, target line, SPA, form category) reached 100%; even where the model stayed undecided on the face-shape label for 3 faces, it bound the line decision correctly through the threshold hierarchy.</p>
 
     <h3 id="part-5">5. The synthetic square face (n = 1): raw decisions of both models</h3>
     <div class="tablo-kay" tabindex="0" role="region" aria-label="Raw decisions of both models on the synthetic portrait">
@@ -178,6 +179,23 @@
       </table>
     </div>
     <p>What matters here is that it is a single face. n = 1 is not evidence; it is a <em>demonstration</em>: it makes visible, through a dentist’s eye, what the statistic in the 32-face table means. The difference between the ovoid and cuboidal lines is not the colour or gloss of the tooth but the angle of the disto-incisal corner, the slope of the incisal edge and the openness of the embrasure; look at exactly those three places in the slider.</p>
+
+    <h3 id="part-5b">5b. The author’s check: did the teeth in the mouth mislead the model? (4-arm ablation)</h3>
+    <p>The obvious confounder for the error in Part 5: <em>“The natural teeth in the first synthetic generation were rounded/oval; maybe the untrained vision-language model (<code>gemma4:31b</code>) read the teeth, not the face, and said ‘oval’.”</em> The question came from the author, and the base portrait was changed because of it: in the current <strong>Original</strong> frame the teeth are neutral, physiologically worn natural teeth; the first generation is kept as a separate file (<code>PROVENANCE.json</code>, <code>revizyon_v2</code>).</p>
+    <p>Setup: the same brachyfacial face (<code>Go-Go / ZY-ZY = 0.837</code>), the mouth/tooth region in four states, the same call (<code>face_analyzer.analyze_face_for_pipeline</code>, <code>use_lora = False</code>, temperature 0.1), the same model. Two columns: Atlas’s report and an independent re-run made before publication (each arm twice, 8 calls in total, 494 s). In the first pass four calls hit the 120 s timeout (cold model load and a concurrent MLX run); they were re-run with the same prompt, model and options directly against the Ollama API with a 300 s limit and are flagged separately in the log.</p>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="Four-arm ablation: the untrained model’s face-shape and jaw-width decision by mouth state">
+      <table class="matris">
+        <thead><tr><th>Arm</th><th>Input</th><th>Atlas report<br><small>face_shape · jaw_width</small></th><th>Independent re-run (Anu, gemma4:31b)<br><small>face_shape · jaw_width</small></th></tr></thead>
+        <tbody>
+          <tr><td>Arm 1 — mouth/tooth region masked (no teeth visible, <code>smile_line = unknown</code>)</td><td><code>_test_agiz_kapali.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+          <tr><td>Arm 2 — square / cuboidal teeth in the mouth (QLoRA full frame)</td><td><code>sentetik_lora_tamkare.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+          <tr><td>Arm 3 — neutral, physiologically worn natural teeth (current base)</td><td><code>sentetik_portre_once.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+          <tr><td>Arm 4 — the first generation’s oval / rounded natural teeth</td><td><code>_ham_portre_ilk.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Reading.</strong> In all four arms the untrained model read the face as <code>oval</code> and the jaw as <code>medium</code>; the decision did not move when the teeth were masked, nor when square, sharp-cornered teeth were in the mouth. The independent re-run matched Atlas’s report in 8/8 calls. The error is not a visual anchor on the teeth; it is the <em>prior mode collapse</em> a general-purpose vision-language model carries for the face-shape label: the large majority of normal-weight adult faces get <code>oval / medium</code> by default. That is why the first layer in Part 3 (the cephalometric ratio threshold) is bound to the measured number, not to the model’s “eye”.</p>
+    <aside class="box fall" aria-label="Limit"><span class="idx">Limit</span><p>Four arms × two repeats is eight calls; at temperature 0.1 the decision is stable, but this is not proof that the model “never says square”. The ablation shows that <em>on this face</em> the error is independent of the tooth region; the 0% face-shape hit rate on the n = 32 set (Part 4) points the same way. The raw call log is published with the essay: <a href="../../ornek/sentetik-kare/ablasyon-4kol.json">ablasyon-4kol.json</a> (model, file SHA-16, repeat, head of raw answer, duration; including calls that timed out and their 300 s re-runs).</p></aside>
 
     <h3 id="part-6">6. Phase transition or memorisation?</h3>
     <p>46.9% at 400 iterations, 90.6% at 1,000: a smooth fall in training loss followed by a jump in test accuracy after a threshold resembles the pattern Power and colleagues (2022) named “grokking” on small, rule-governed datasets. Three observations support that reading, one limits it:</p>
@@ -226,7 +244,7 @@
       <p class="kopru"><a href="../../en.html#contact">If you would like to work on a case or an architecture: get in touch →</a></p>
       <h3 id="colophon" style="margin-top:0">Colophon</h3>
       <p><strong>Experiment code:</strong> <code>SENTETIK-KARE-3B-LORA-DENEY-1015</code> (October 15, 2026) · <strong>Orchestration, measurement pipeline and QLoRA training:</strong> Atlas (Gemini 4 Argon mount; MediaPipe FaceMesh 478 landmarks, SAM 2B, MLX QLoRA 400 / 1,000 iterations, <code>Qwen2.5-3B-Instruct-4bit</code>, Apple M3 Ultra 96 GB) · <strong>Red team and publication conditions:</strong> Atlas Grok Bot (conditional approval; synthetic media, advertising regulation, default tab) · <strong>Essay, live module and counter-voices:</strong> Anu (Claude Fable 5.1, Headless Vizier) · <strong>Local auditors:</strong> Enki (<code>gemma4:31b</code>), Enlil (<code>qwen3.8:27b</code>) · <strong>Decision and responsibility:</strong> Yusuf Aziz, Atlas Studio.</p>
-      <p><strong>Source files:</strong> synthetic portrait, 3D mesh (<code>landmarks-3d.json</code>: 478 landmarks, 2,556 edges), 2x macro and full-frame outputs; generation prompt and SHA-256 digests in <code>PROVENANCE.json</code>. <strong>Not measured:</strong> reverse image search (lookalike), intermediate checkpoints every 100 iterations, publication of the raw n = 32 run log. <strong>Not legal advice;</strong> the pre-publication red-team note recommends a lawyer’s confirmation.</p>
+      <p><strong>Source files:</strong> synthetic portrait, 3D mesh (<code>landmarks-3d.json</code>: 478 landmarks, 2,556 edges), 2x macro and full-frame outputs; generation prompt and SHA-256 digests in <code>PROVENANCE.json</code>. <strong>Evidence files (open):</strong> <a href="../../ornek/sentetik-kare/n32-kilitli-test.json">n32-kilitli-test.json</a> (n = 32, three arms) · <a href="../../ornek/sentetik-kare/ablasyon-4kol.json">ablasyon-4kol.json</a> (4 arms × 2 repeats) · <a href="../../ornek/sentetik-kare/provenance.json">provenance.json</a>. <strong>Not measured:</strong> reverse image search (lookalike), intermediate checkpoints every 100 iterations. <strong>Not legal advice;</strong> the pre-publication red-team note recommends a lawyer’s confirmation.</p>
     </section>
 
     <h3 id="references">References</h3>
@@ -247,7 +265,7 @@
       <li><div>Power, A., Burda, Y., Edwards, H., Babuschkin, I. &amp; Misra, V. (2022), “Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets”<a href="https://arxiv.org/abs/2201.02177" rel="noopener">arxiv.org/abs/2201.02177</a></div></li>
       <li><div>Hannun, A., Digani, J., Katharopoulos, A. &amp; Collobert, R. (2023), <em>MLX: Efficient and flexible machine learning on Apple silicon</em><a href="https://github.com/ml-explore/mlx" rel="noopener">github.com/ml-explore/mlx</a></div></li>
       <li><div>Regulation on Promotion and Information Activities in Health Services (Türkiye), <em>Official Gazette</em> July 29, 2023, no. 32263 (red-team reading; not legal advice)<a href="https://www.resmigazete.gov.tr/eskiler/2023/07/20230729.htm" rel="noopener">resmigazete.gov.tr (29.07.2023)</a></div></li>
-      <li><div>Atlas Studio primary experiment logs (October 2026): <code>SENTETIK-KARE-3B-LORA-DENEY-1015</code> (<code>PROVENANCE.json</code>, SHA-256), n = 32 locked test-set report, Grok Bot red-team note<a href="https://atlasmaster.app/spark.html" rel="noopener">atlasmaster.app/spark.html</a></div></li>
+      <li><div>Atlas Studio primary experiment logs (October 2026): <code>SENTETIK-KARE-3B-LORA-DENEY-1015</code> (<a href="../../ornek/sentetik-kare/provenance.json">provenance.json</a>, SHA-256), n = 32 locked test log (<a href="../../ornek/sentetik-kare/n32-kilitli-test.json">n32-kilitli-test.json</a>), 4-arm ablation log (<a href="../../ornek/sentetik-kare/ablasyon-4kol.json">ablasyon-4kol.json</a>), Grok Bot red-team note<a href="https://atlasmaster.app/spark.html" rel="noopener">atlasmaster.app/spark.html</a></div></li>
     </ol>
 
     <nav class="paylas" aria-label="Share">
