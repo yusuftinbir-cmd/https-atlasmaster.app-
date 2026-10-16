@@ -549,9 +549,70 @@
     ]
   };
 
-  // Ziyaretçi bir blog makalesi sayfasındaysa o makalenin alt başlıklarından otomatik "Bu Yazıyı Gez" rotası üret
+  var CURATED_BLOG_TOURS = {
+    "blog/yuzden-dise-sefalometrik-lora.html": [
+      { sel: "#giris", audio: "blog_yuzden_0_tr.mp3", tag: "Bölüm 1 / 4 · Giriş", h: "Oval Sanılan Kare Çene Yanılgısı", p: "Yüzün dış konturuna bakarak oval sanılan kare çenelerin 478 noktalı 3B ağ ile nasıl doğru ölçüldüğünü inceliyoruz." },
+      { sel: "#canli-modul", audio: "blog_yuzden_1_tr.mp3", tag: "Bölüm 2 / 4 · Canlı Modül", h: "Canlı 3B Sefalometri ve Morfoloji Kaydırıcısı", p: "Bu canlı modülde 3B sefalometrik ağı, eğitimsiz modeli ve QLoRA modelimizin diş morfolojisi kararlarını karşılaştırabilirsiniz." },
+      { sel: "#bolum-4", audio: "blog_yuzden_2_tr.mp3", tag: "Bölüm 3 / 4 · Ölçüm (n=32)", h: "Ölçüm Tablosu: %0'dan %100 Hedef İsabetine", p: "32 vakalık kilitli test setinde eğitimsiz model %0'da kalırken, QLoRA modelimiz 400 adımda %100 hedef hat isabetine ulaştı." },
+      { sel: "#bolum-8", audio: "blog_yuzden_3_tr.mp3", tag: "Bölüm 4 / 4 · Hüküm", h: "Beş Klinik Madde ve Okura Üç Araç", p: "Beş maddelik klinik hükmümüzü ve tek vakada kendi modelinizi sınayabileceğiniz üç aracı bu bölümde bulabilirsiniz." }
+    ],
+    "blog/kim-kimi-egitiyor.html": [
+      { sel: "#giris", audio: "blog_kim_0_tr.mp3", tag: "Bölüm 1 / 4 · Yöntem", h: "İki Turlu Kıvılcım Yöntemi", p: "Yedi bağımsız model ailesinin iki turlu Kıvılcım yöntemiyle insan ve yapay zeka etkileşimini nasıl sınadığını anlatıyoruz." },
+      { sel: "#bolum-3", audio: "blog_kim_1_tr.mp3", tag: "Bölüm 2 / 4 · Bürokrasi Kapanı", h: "%98,6 Bürokrasi Kapanı ve Eylemsizlik Matrisi", p: "Mekanik doğrulama kapısı olmadığında kuralların %98,6 oranında kağıt üzerinde kaldığını gösteren ölçümümüz." },
+      { sel: "#bolum-7", audio: "blog_kim_2_tr.mp3", tag: "Bölüm 3 / 4 · 96 Deney", h: "Kıvılcım Deneyi (N = 96): Modelleri Yasa Eğitti", p: "96 deneylik Kıvılcım serisinde modelleri ham ağırlıkların değil, BEYAN ve düşer testi yasalarının eğittiğini kanıtladık." },
+      { sel: "#bolum-10", audio: "blog_kim_3_tr.mp3", tag: "Bölüm 4 / 4 · Hüküm", h: "İnsanı Yükselten Ortak Akıl İçin 6 Yasa", p: "İnsanı yükselten ortak akıl için çıkardığımız 6 mimari yasayı ve yarın sabah uygulayabileceğiniz 5 aracı burada okuyabilirsiniz." }
+    ],
+    "blog/turkiye-viski-dunya-markasi.html": [
+      { sel: "#giris", audio: "blog_viski_0_tr.mp3", tag: "Bölüm 1 / 4 · Birikim", h: "Arpa, Meşe ve 1963 Ankara Viskisi", p: "Türkiye'nin arpa, meşe ve distilasyon birikimiyle neden bir dünya viski markası çıkaramadığını 8 bağımsız sesle inceliyoruz." },
+      { sel: "#bolum-3", audio: "blog_viski_1_tr.mp3", tag: "Bölüm 2 / 4 · Darboğaz", h: "Duvar Nerede Duruyor? Vergi ve Sermaye", p: "Asıl duvar iklim veya tahıl değil; ÖTV asimetrisi ve 3 yıllık olgunlaşma süresindeki işletme sermayesi maliyeti." },
+      { sel: "#bolum-7", audio: "blog_viski_2_tr.mp3", tag: "Bölüm 3 / 4 · Deney", h: "Ön-Kayıtlı Kör Üçgen Tadım Deneyi", p: "Anadolu meşesi ve şarap fıçılarının kimlik farkını ölçmek için tasarladığımız 12 aylık kör üçgen tadım deneyi." },
+      { sel: "#bolum-10", audio: "blog_viski_3_tr.mp3", tag: "Bölüm 4 / 4 · Hüküm", h: "Hüküm: Mikro-Distileri ve 5 Yıl Başabaş", p: "Kitle pazarı yerine mikro-distileri ve gümrüksüz ihracat kanalıyla 5 yılda başabaş noktasına ulaşma hükmümüz." }
+    ],
+    "blog/soylem-eylem-makasi.html": [
+      { sel: "#bolum-1", audio: "blog_makas_0_tr.mp3", tag: "Bölüm 1 / 4 · Makas", h: "Üç Vaat, Üç Ters Sonuç", p: "Üç tarihsel vaadin neden tam tersi ekonomik sonuçlar ürettiğini karşılaştırmalı verilerle açıyoruz." },
+      { sel: "#bolum-3", audio: "blog_makas_1_tr.mp3", tag: "Bölüm 2 / 4 · Mekanizma", h: "Kapıyı Kriz Açar, Hitabet İçeri Alır", p: "Kapıyı yapısal krizlerin açtığını, hitabetin ise seçmeni kimlik kalkanı üzerinden içeride tuttuğunu gösteren analizimiz." },
+      { sel: "#bolum-6", audio: "blog_makas_2_tr.mp3", tag: "Bölüm 3 / 4 · Fatura", h: "15 Yılda Kişi Başı Gelirde ≈%10 Kayıp", p: "Funke, Schularick ve Trebesch verilerine göre popülist dönemlerin 15 yılda kişi başı geliri yaklaşık %10 düşürdüğü ölçüm." },
+      { sel: "#bolum-8", audio: "blog_makas_3_tr.mp3", tag: "Bölüm 4 / 4 · Araçlar", h: "Okur Ne Yapabilir? Beş Denetim Aracı", p: "Söylem ile eylem arasındaki makası ölçmek için okura sunduğumuz 5 somut denetim aracı." }
+    ],
+    "blog/deprem-istatistik-vurdumduymazlik.html": [
+      { sel: "#elenenler", audio: "blog_deprem_0_tr.mp3", tag: "Bölüm 1 / 4 · Çerçeve", h: "Zorunlu Bahis: Riski Kim Taşıyor?", p: "Marmara depreminde riskin gönüllü alınmadığını, gelir ve konut piyasası üzerinden kiracılara atandığını gösteriyoruz." },
+      { sel: "#birinci-yari", audio: "blog_deprem_1_tr.mp3", tag: "Bölüm 2 / 4 · İstatistik", h: "Ters Piyango ve Olasılık Analizi", p: "İlk yarıda olasılık ve istatistiğin ne söylediğini, ters piyango kuramının neden bina sahibinin aleyhine çalıştığını inceliyoruz." },
+      { sel: "#ikinci-yari", audio: "blog_deprem_2_tr.mp3", tag: "Bölüm 3 / 4 · Hukuk & Yönetim", h: "Öngörerek Göze Alma ve Dönüşüm Darboğazı", p: "İkinci yarıda masadaki aktörleri, öngörerek göze alma hukukunu ve dönüşüm hızındaki darboğazları ele alıyoruz." },
+      { sel: "#oneriler", audio: "blog_deprem_3_tr.mp3", tag: "Bölüm 4 / 4 · Öneriler", h: "Doğrulama ve Önceliklendirme Önerileri", p: "Riski taşıyan kiracı ve bina sakinleri için doğrulama ve önceliklendirme önerilerimiz." }
+    ],
+    "blog/dd2-dark-arisen.html": [
+      { sel: "#ne-getirildi", audio: "blog_dd2_0_tr.mp3", tag: "Bölüm 1 / 4 · İnceleme", h: "Kuralın Sahibi Değişti: Dark Arisen", p: "Dragon's Dogma 2 Dark Arisen modunun oyun kurallarını ve ekonomi dengesini nasıl baştan yazdığını inceliyoruz." },
+      { sel: "#iyileri-topluyor", audio: "blog_dd2_1_tr.mp3", tag: "Bölüm 2 / 4 · Sentez", h: "Dağılmış İyileri Tek Çatıda Toplamak", p: "Mod yalnızca eskiyi geri getirmiyor; farklı sistemlerde dağılmış en iyi mekanikleri tek çatıda topluyor." },
+      { sel: "#pawn", audio: "blog_dd2_2_tr.mp3", tag: "Bölüm 3 / 4 · Pawn Mimarisi", h: "Pawn: Destanı Zekâ Değil, Dolaşım Yazdı", p: "Pawn yoldaş sisteminde destanı yapay zeka karmaşıklığının değil, oyuncular arası dolaşımın yazdığını gösteren bölüm." },
+      { sel: "#dersler", audio: "blog_dd2_3_tr.mp3", tag: "Bölüm 4 / 4 · 5 Ders", h: "Tasarımcıya Beş Mimari Ders", p: "Oyun ve sistem tasarımcıları için çıkardığımız beş temel mimari ders." }
+    ],
+    "blog/15-yas-yasak-mi-tasarim-mi.html": [
+      { sel: "#ne-getirildi", audio: "blog_yas15_0_tr.mp3", tag: "Bölüm 1 / 4 · Düzenleme", h: "15 Yaş Altı Düzenlemesi: Ne Getirildi?", p: "15 yaş altı sosyal medya düzenlemesinin getirdiği yaş doğrulama ve arayüz kısıtlarını özetliyoruz." },
+      { sel: "#iyi-yapilan", audio: "blog_yas15_1_tr.mp3", tag: "Bölüm 2 / 4 · Tasarım Kuralları", h: "Türkiye Modeli Neyi İyi Yapıyor? (8. Madde)", p: "Türkiye modelinin 15–18 yaş için sonsuz akışı, otomatik oynatmayı ve profillemeyi yasaklayan güçlü tasarım kuralları." },
+      { sel: "#nerede-kirilir", audio: "blog_yas15_2_tr.mp3", tag: "Bölüm 3 / 4 · Kırılma Noktası", h: "Merkezi Yaş Doğrulama Nerede Kırılır?", p: "Merkezi kimlik doğrulamanın VPN ve ikincil cihazlarla nerede kırılabileceğini gösteren teknik analiz." },
+      { sel: "#oneriler", audio: "blog_yas15_3_tr.mp3", tag: "Bölüm 4 / 4 · Önerimiz", h: "Bağımsız Algoritma Denetimi ve Yaş Kanıtı", p: "Yalnız yaş sınırına güvenmek yerine bağımsız algoritma denetimi ve sıfır-bilgi yaş kanıtı önerimiz." }
+    ]
+  };
+
   function buildCurrentArticleRoute() {
     var cur = currentPageRel();
+    if (CURATED_BLOG_TOURS[cur]) {
+      var curated = CURATED_BLOG_TOURS[cur].map(function (st) {
+        return {
+          page: cur,
+          sel: st.sel,
+          audio: st.audio,
+          tag: st.tag,
+          h: st.h,
+          p: st.p
+        };
+      });
+      return {
+        id: "article_local",
+        label: "📄 Bu Yazıyı Gez (4 Bölüm)",
+        stops: curated
+      };
+    }
     if (cur.indexOf("blog/") !== 0) return null;
     var heads = document.querySelectorAll("main h2[id], main h3[id], article h2[id], article h3[id]");
     if (!heads || heads.length < 2) return null;
@@ -576,7 +637,7 @@
       stops.push({
         page: cur,
         sel: "#" + id,
-        audio: cur.indexOf("yuzden-dise") >= 0 ? "topic_6_tr.mp3" : (cur.indexOf("kim-kimi") >= 0 ? "topic_7_tr.mp3" : "topic_8_tr.mp3"),
+        audio: "topic_6_tr.mp3",
         tag: "Bölüm " + (stops.length + 1) + " · Makale Turu",
         h: titleText.slice(0, 68),
         p: firstSent
