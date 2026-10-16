@@ -388,6 +388,82 @@
   opacity: 0.85;
 }
 
+.maya-qa-switcher {
+  margin: 16px 0;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.maya-qa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.maya-qa-tab {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: inherit;
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.maya-qa-tab:hover {
+  border-color: #00b8d4;
+}
+
+.maya-qa-tab.active {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: #10b981;
+  color: #059669;
+}
+
+@media (prefers-color-scheme: dark) {
+  .maya-qa-tab.active {
+    color: #34d399;
+  }
+}
+
+.maya-qa-panel[hidden] {
+  display: none !important;
+}
+
+.maya-qa-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.maya-qa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: inherit;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.maya-qa-btn:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+}
+
 @media (max-width: 680px) {
   .maya-evo-hero {
     grid-template-columns: 1fr;

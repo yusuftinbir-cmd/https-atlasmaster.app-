@@ -277,7 +277,7 @@
             audio: "spark_0_tr.mp3",
             tag: "Kıvılcım 1 / 4 · Yordam",
             h: "7 Basamaklı Kıvılcım Yordamı",
-            p: "Birbirini duymayan model ailelerinden tez, karşı tez ve düşer testi üretme yöntemi."
+            p: "Orkestra Atlas (Argon) ve Claude (Anu · Opus · Sonnet) yönetiminde kör seslerden tez üretip Astra ve Grok ile karşı tez ve Red Team eleğinden geçirme yöntemimiz."
           },
           {
             page: "kivilcim.html",
@@ -495,7 +495,7 @@
             audio: "spark_0_en.mp3",
             tag: "Spark 1 / 4 · Procedure",
             h: "7-Step Spark Procedure",
-            p: "Generating theses, counter-theses, and falsification tests across independent models."
+            p: "Led by Orchestra Atlas (Argon) and Claude (Anu · Opus · Sonnet), generating blind theses and testing them against Astra and Grok Red Team counter-theses."
           },
           {
             page: "spark.html",
@@ -532,7 +532,7 @@
       { label: "📐 3B Sefalometri", page: "index.html", sel: ".sk", audio: "topic_0_tr.mp3", h: "3B Sefalometrik Morfoloji", p: "478 noktalı 3B yüz ağıyla ZY-ZY ve Go-Go oranlarını ölçer; n=32 testte %100 hedef hat isabeti sağlar." },
       { label: "🦷 441 Diş Formu", page: "index.html", sel: "#otomasyon", audio: "topic_1_tr.mp3", h: "441 Doğal Form Kütüphanesi", p: "Yüz oranlarına göre 441 formluk kütüphaneden 5 öncelikli ve 3 alternatif diş formu gerekçesiyle sıralanır." },
       { label: "🔒 KVKK & Gizlilik", page: "index.html", sel: "#sss", audio: "topic_2_tr.mp3", h: "Kimliksiz Ağız Kırpımı", p: "Tam yüz fotoğrafları cihazdan çıkmaz; dış görsel modele yalnızca kimliksiz ağız kırpımı ve maske gönderilir." },
-      { label: "⚡ Kıvılcım (49 Tur)", page: "kivilcim.html", sel: "#algoritma", audio: "topic_3_tr.mp3", h: "7 Basamaklı Kıvılcım Yordamı", p: "Farklı model aileleri birbirini duymadan tez ve düşer testi üretir; uydurma kaynaklar otomatik elenir." },
+      { label: "⚡ Kıvılcım (49 Tur)", page: "kivilcim.html", sel: "#algoritma", audio: "topic_3_tr.mp3", h: "7 Basamaklı Kıvılcım Yordamı", p: "Atlas (Argon) ve Claude (Anu · Opus · Sonnet) yönetiminde kör tezler üretilir; Astra ve Grok karşı tez ve Red Team yıkım testini yürütür." },
       { label: "🧬 Evrim Halkası", page: "otonomi.html", sel: "#halka", audio: "topic_4_tr.mp3", h: "4 Adımlı Kapalı Evrim", p: "Enkidu, Enki ve kör yargıç Enlil ile kuralları gölge sınamadan geçirerek evrimleştiren döngü." },
       { label: "🤖 Maya Eğitimi", page: "otonomi.html", sel: "#maya", audio: "topic_5_tr.mp3", h: "Maya: Eğitim Öncesi vs. Sonrası", p: "Atlas tarafından eğitilen asistanınızım; eğitim öncesi ve sonrası yanıt farklarımı bu bölümde görebilirsiniz." },
       { label: "📄 Yüzden Dişe Yazısı", page: "blog/yuzden-dise-sefalometrik-lora.html", sel: "#canli-modul", audio: "topic_6_tr.mp3", h: "Yüzden Dişe: 3B Sefalometrik QLoRA", p: "Eğitimsiz modelin kare çene yanılgısını 478 noktalı 3B ağ ve QLoRA eğitimiyle nasıl çözdüğümüzün makalesi." },
@@ -543,7 +543,7 @@
       { label: "📐 3D Cephalometry", page: "en.html", sel: ".sk", audio: "topic_0_en.mp3", h: "3D Cephalometric Morphology", p: "Measures facial ratios on a 478-point 3D mesh, reaching 100% target line accuracy on 32 test faces." },
       { label: "🦷 441 Tooth Forms", page: "en.html", sel: "#automation", audio: "topic_1_en.mp3", h: "441 Natural Form Library", p: "Ranks 5 primary and 3 alternative tooth forms with clinical rationale based on facial proportions." },
       { label: "🔒 Privacy & Security", page: "en.html", sel: "#faq", audio: "topic_2_en.mp3", h: "Anonymous Mouth-Crop Architecture", p: "Full faces never leave studio devices; only de-identified mouth crops and masks are processed." },
-      { label: "⚡ Spark (49 Rounds)", page: "spark.html", sel: "#algoritma", audio: "topic_3_en.mp3", h: "7-Step Spark Procedure", p: "Independent model families generate theses and falsification tests blindly without hearing each other." },
+      { label: "⚡ Spark (49 Rounds)", page: "spark.html", sel: "#algoritma", audio: "topic_3_en.mp3", h: "7-Step Spark Procedure", p: "Led by Atlas (Argon) and Claude (Anu · Opus · Sonnet), blind voices produce theses while Astra and Grok run counter-thesis Red Team tests." },
       { label: "🧬 Evolution Loop", page: "autonomy.html", sel: "#halka", audio: "topic_4_en.mp3", h: "4-Step Closed Evolution", p: "Closed loop where Enkidu, Enki, and blind judge Enlil evolve rules through shadow testing." },
       { label: "🤖 Maya Training", page: "autonomy.html", sel: "#maya", audio: "topic_5_en.mp3", h: "Maya: Trained Assistant", p: "Trained by Atlas to guide visitors concisely across the site and leave detailed reading to you." }
     ]
@@ -1665,6 +1665,33 @@
   window.AtlasMaya = {
     startTour: function (routeId) {
       startOrOpenTour(routeId || "full");
+    },
+    playBenchmarkAudio: function (audioFile, titleText, summaryText) {
+      if (!audioFile) return;
+      state.voiceEnabled = true;
+      btnVoice.classList.add("active");
+      btnVoice.textContent = "🔊";
+      if (state.open && titleText && summaryText) {
+        tagEl.textContent = isEn ? "Maya v4 · Live Voice Proof" : "Maya v4 · Canlı Sesli Kanıt";
+        hEl.textContent = titleText;
+        pEl.textContent = summaryText;
+      }
+      currentAudioFile = audioFile;
+      stopVoice();
+      try {
+        ensureAudioGraph();
+        if (audioCtx && audioCtx.state === "suspended") {
+          audioCtx.resume().catch(function () {});
+        }
+        audioEl.src = assetPrefix + "ornek/maya/audio/" + audioFile;
+        var pr = audioEl.play();
+        if (pr && typeof pr.then === "function") {
+          pr.then(function () {
+            isSpeaking = true;
+            orbEl.classList.add("is-speaking");
+          }).catch(function () {});
+        }
+      } catch (e) {}
     },
     minimize: minimizeTour
   };
