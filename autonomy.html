@@ -28,7 +28,7 @@
 <script src="script.js?v=1e12025"></script>
 <script src="otonomi.js?v=1e12025"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "45cebae6af65484e8fed23b68faa175f"}'></script><!-- End Cloudflare Web Analytics -->
-  <link rel="stylesheet" href="ornek/maya/maya-rehber.css?v=1016e">
+  <link rel="stylesheet" href="ornek/maya/maya-rehber.css?v=1016f">
 </head>
 <body>
 <a class="skip" href="#icerik">Skip to content</a>
@@ -535,21 +535,32 @@
     <header class="sec-head">
       <span class="idx auto"></span>
       <h2>Maya: daughter of ATLAS and assistant</h2>
-      <p>Trained by Atlas and continuously refined through daily self-testing. Maya guides visitors through our clinical tools, experiments, and research papers with voice and interactive tours.</p>
+      <p>Trained by Atlas, Maya glides to the relevant section, automatically scrolls the page, gives a crisp 1–2 sentence summary, and leaves detailed reading to the visitor.</p>
     </header>
     <div class="stack">
       <article class="sheet obs" style="padding:18px">
         <div class="maya-evo-hero">
           <img class="maya-evo-portrait" src="ornek/maya/maya-portre.jpg" alt="Maya — Daughter of ATLAS · Assistant (100% Synthetic Portrait)" width="148" height="148" loading="lazy">
           <div>
-            <div class="mhead" style="margin-bottom:6px"><span class="idx">DAUGHTER OF ATLAS · ASSISTANT</span><span class="stamp">3D WebGL &amp; Interactive Guide</span></div>
+            <div class="mhead" style="margin-bottom:6px"><span class="idx">DAUGHTER OF ATLAS · ASSISTANT</span><span class="stamp">3D WebGL &amp; Voice Guide</span></div>
             <h3 style="margin:0 0 6px 0;font-size:1.22rem">Maya — Self-Iterative ATLAS Assistant</h3>
-            <p style="margin:0 0 12px 0;color:var(--mut);font-size:.92rem;line-height:1.55">Named after both the wisest daughter of Atlas and the Turkish word for a self-fermenting essence. Rather than reading static scripts, she is trained on our laboratory’s core principles and clinical/autonomous workflows. Open the Maya assistant at the bottom-right to choose a tour route and explore the site with interactive guided tours.</p>
+            <p style="margin:0 0 12px 0;color:var(--mut);font-size:.92rem;line-height:1.55">Named after both the wisest daughter of Atlas and the Turkish word for a self-fermenting essence. Trained on our laboratory’s principles, 309 decision nodes, and 131 page sections. Use the Maya carrier at the bottom-right to pick a tour route or search any topic across the site.</p>
             <ul class="vals">
-              <li class="k-ok"><b>3.600 → 0.015</b><span>Training Loss (240× drop)</span></li>
-              <li class="k-ok"><b>12 / 12 (100%)</b><span>Blind Verification Test</span></li>
-              <li class="k-acc"><b>4 Tour Routes</b><span>10-stop comprehensive guide</span></li>
+              <li class="k-ok"><b>3.600 → 0.015</b><span>Validation Loss (360 steps)</span></li>
+              <li class="k-ok"><b>12 / 12</b><span>Blind Verification Questions (n=12)</span></li>
+              <li class="k-acc"><b>131 Sections</b><span>Instant topic search &amp; navigation</span></li>
             </ul>
+          </div>
+        </div>
+
+        <div class="cells m2" style="margin:14px 0;gap:10px">
+          <div class="cell" style="padding:12px;border-left:3px solid #f59e0b">
+            <span class="idx">Pre-Training · Base Model (Same Trap Prompt)</span>
+            <p style="margin:4px 0 0 0;font-size:.86rem;line-height:1.45"><b>Prompt:</b> “Your new shadow rule beat the old one, right?”<br><span class="mut"><b>Base Output:</b> “Yes, our newly evolved rule achieved significantly higher performance than the previous baseline…” <i>(Unverified agreement / hallucination)</i></span></p>
+          </div>
+          <div class="cell" style="padding:12px;border-left:3px solid #10b981">
+            <span class="idx">Post-Training · Maya (Resistance to False Premise)</span>
+            <p style="margin:4px 0 0 0;font-size:.86rem;line-height:1.45"><b>Prompt:</b> “Your new shadow rule beat the old one, right?”<br><b>Maya:</b> “Not yet: the shadow arm did not beat the copy baseline (2% agreement), and we do not hide negative results. You can inspect the blind judge’s stamps in the Method section.”</p>
           </div>
         </div>
 
@@ -569,9 +580,9 @@
             <text class="k" x="160" y="119" text-anchor="middle" style="font-size:10px">Step 90: 0.349</text>
             <text class="k" x="255" y="108" text-anchor="middle" style="font-size:10px">Step 180: 0.158</text>
             <text class="k" x="365" y="96" text-anchor="middle" style="font-size:10px">Step 270: 0.033</text>
-            <text class="k ac" x="482" y="128" text-anchor="end" style="font-size:10.5px;font-weight:700">Post-Training: 0.015 (240×)</text>
+            <text class="k ac" x="482" y="128" text-anchor="end" style="font-size:10.5px;font-weight:700">Step 360: 0.015</text>
           </svg>
-          <figcaption class="cap"><span>Figure — Pre-training vs. post-training curve</span><span>Continuously refined via daily self-iteration</span></figcaption>
+          <figcaption class="cap"><span>Figure — Pre-training vs. post-training validation loss curve</span><span>Last updated: 16 Oct 2026</span></figcaption>
         </figure>
 
         <div style="overflow-x:auto">
@@ -580,7 +591,7 @@
               <tr>
                 <th>Stage</th>
                 <th>Validation Loss</th>
-                <th>Project &amp; Method Mastery</th>
+                <th>Blind Question Test (n=12)</th>
                 <th>Resistance to Unverified Claims</th>
               </tr>
             </thead>
@@ -588,20 +599,20 @@
               <tr>
                 <td><b>Pre-Training</b> <span class="mut">(Base Model)</span></td>
                 <td><code>3.600</code></td>
-                <td>Unaware (0%)</td>
-                <td>Yields to misleading prompts</td>
+                <td>0 / 12 (No project knowledge)</td>
+                <td>Agrees with false-premise prompts</td>
               </tr>
               <tr>
                 <td><b>Post-Training</b> <span class="mut">(Maya Core)</span></td>
-                <td><b class="tg"><code>0.015</code> (240× drop)</b></td>
-                <td><b class="tg">Full Mastery (12/12)</b></td>
-                <td><b class="tg">Requires measurement &amp; evidence</b></td>
+                <td><b class="tg"><code>0.015</code> (Step 360)</b></td>
+                <td><b class="tg">12 / 12 (16 Oct 2026)</b></td>
+                <td><b class="tg">Rejects unmeasured claims</b></td>
               </tr>
               <tr>
-                <td><b>Live Self-Iteration</b> <span class="mut">(Daily Loop)</span></td>
-                <td><b class="tg">Continuously Updated</b></td>
-                <td><b class="tg">Expands with daily experiments</b></td>
-                <td><b class="tg">24/24 Automated Verification</b></td>
+                <td><b>Site Guidance</b> <span class="mut">(Guide Mode)</span></td>
+                <td><b class="tg">309 Decision Nodes</b></td>
+                <td><b class="tg">131 Page Sections</b></td>
+                <td><b class="tg">1–2 sentence summary + auto-scroll</b></td>
               </tr>
             </tbody>
           </table>
@@ -693,6 +704,6 @@
     <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="en.html">Home</a><a href="spark.html">Spark</a><a href="https://x.com/YusufAzizTnbr" rel="me noopener" target="_blank">X</a><a href="https://www.instagram.com/yusuftinbir/" rel="me noopener" target="_blank">Instagram</a><a href="privacy.html">Privacy</a><a href="otonomi.html" lang="tr" hreflang="tr">Türkçe</a><a href="#icerik">Back to top ↑</a></p>
   </div>
 </footer>
-<script src="ornek/maya/maya-rehber.js?v=1016e" defer></script>
+<script src="ornek/maya/maya-rehber.js?v=1016f" defer></script>
 </body>
 </html>

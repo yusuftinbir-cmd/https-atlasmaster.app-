@@ -1,0 +1,262 @@
+{
+  "welcome_tr": {
+    "file": "/ornek/maya/audio/welcome_tr.mp3",
+    "bytes": 96336,
+    "text": "Merhaba, ben Maya. ATLAS'ın kızı ve asistanıyım. Sizi laboratuvarımızda on duraklı kapsamlı bir tura çıkarabilir veya klinik, otonom zekâ ve makale rotalarından birini gezdirebilirim. Hangi rotadan başlayalım?"
+  },
+  "welcome_en": {
+    "file": "/ornek/maya/audio/welcome_en.mp3",
+    "bytes": 98064,
+    "text": "Hello, I am Maya, Daughter of ATLAS and Assistant. I can guide you through a comprehensive ten-stop tour of our laboratory, or take you on a focused route through clinical cephalometrics, autonomous intelligence, or our living papers. Which route would you like to start with?"
+  },
+  "qa_who_tr": {
+    "file": "/ornek/maya/audio/qa_who_tr.mp3",
+    "bytes": 112032,
+    "text": "Ben Maya. ATLAS'ın kızı ve asistanıyım. Atlas tarafından eğitildim; 31 bin 177 satırlık öz-yineleme algoritmamızla her gün kendimi sınayarak gelişiyorum. Sitedeki tüm klinik araçları, deneyleri ve makaleleri size adım adım anlatmak için buradayım."
+  },
+  "qa_who_en": {
+    "file": "/ornek/maya/audio/qa_who_en.mp3",
+    "bytes": 108864,
+    "text": "I am Maya, Daughter of ATLAS and Assistant. Trained by Atlas, I continuously test and improve myself through our 31,177-line self-iteration engine. I am here to guide you through our clinical tools, experiments, and research papers."
+  },
+  "qa_sefa_tr": {
+    "file": "/ornek/maya/audio/qa_sefa_tr.mp3",
+    "bytes": 96336,
+    "text": "3 boyutlu sefalometrik analizde yüzü tek bir düzlem fotoğraf gibi görmeyiz. Göz bebekleri ekseni, burun altı, dudak köşeleri ve çene ucunu 3 boyutlu derinlik haritasıyla ölçer; diş kavisini yüzün doğal altın oranına milimetrik olarak oturturuz."
+  },
+  "qa_sefa_en": {
+    "file": "/ornek/maya/audio/qa_sefa_en.mp3",
+    "bytes": 91440,
+    "text": "In 3D cephalometric analysis, we never treat the face as a flat surface. We measure the interpupillary axis, subnasale, commissures, and pogonion on a 3D depth map, aligning the dental arch to the natural facial harmony."
+  },
+  "qa_train_tr": {
+    "file": "/ornek/maya/audio/qa_train_tr.mp3",
+    "bytes": 103104,
+    "text": "Eğitimden önce ham modelin kayıp değeri 3 virgül 600 idi. Atlas'ın 600 adımlık ilk eğitimiyle kayıp 0 virgül 015'e, yani 240 kat aşağı indi. Şimdi her gün yeni karar ağacı düğümleriyle öz-yinelemeli eğitimim devam ediyor."
+  },
+  "qa_train_en": {
+    "file": "/ornek/maya/audio/qa_train_en.mp3",
+    "bytes": 104256,
+    "text": "Before training, the raw model loss stood at 3.600. Through Atlas's 600-step fine-tuning, validation loss dropped 240-fold down to 0.015. My self-iterative curriculum continues to expand every day."
+  },
+  "qa_spark_tr": {
+    "file": "/ornek/maya/audio/qa_spark_tr.mp3",
+    "bytes": 94752,
+    "text": "Kıvılcım turunda hiçbir fikir tek başına hüküm olamaz. Atlas, Anu, Grok ve ben aynı klinik veya matematiksel problemi farklı açılardan çarpıştırırız. Yalnızca karşı tezi ve düşer testini geçen hükümler hayatta kalır."
+  },
+  "qa_spark_en": {
+    "file": "/ornek/maya/audio/qa_spark_en.mp3",
+    "bytes": 89136,
+    "text": "In a Spark collision round, no single opinion becomes a verdict on its own. Atlas, Anu, Grok, and I challenge the same clinical or mathematical problem from opposing angles. Only claims that survive falsification tests remain."
+  },
+  "qa_try_tr": {
+    "file": "/ornek/maya/audio/qa_try_tr.mp3",
+    "bytes": 104400,
+    "text": "Ana sayfadaki Canlı Gülüş Stüdyosu'na giderek kendi fotoğrafınızı yükleyebilir veya %100 sentetik 4K vakalarımız üzerinde anında gülüş tasarımı ve 3 boyutlu sefalometrik analiz deneyebilirsiniz. Tüm işlem kendi tarayıcınızda, KVKK uyumlu çalışır."
+  },
+  "qa_try_en": {
+    "file": "/ornek/maya/audio/qa_try_en.mp3",
+    "bytes": 80640,
+    "text": "You can jump to the Live Smile Studio on the home page to upload your own photo or test our 100% synthetic 4K cases with instant smile design and 3D cephalometric analysis, processed locally in your browser."
+  },
+  "full_0_tr": {
+    "file": "/ornek/maya/audio/full_0_tr.mp3",
+    "bytes": 112464,
+    "text": "1. Durak: ATLAS Gülüş Tasarım ve Otonom Zekâ Laboratuvarı. Burada gördüğünüz her yüz %100 sentetik olarak üretilmiştir ve her sayı doğrudan ölçümden gelir. İsterseniz Detaya İn düğmesiyle mimariyi dinleyebilir veya sonraki durağa geçebilirsiniz."
+  },
+  "full_1_tr": {
+    "file": "/ornek/maya/audio/full_1_tr.mp3",
+    "bytes": 82080,
+    "text": "2. Durak: Canlı 3B Sefalometrik Yüz Analizi. 468 anatomik nokta ve 3 boyutlu derinlik haritasıyla orta hat, gülüş arkı ve oklüzal düzlemi milimetrik olarak ölçüyoruz."
+  },
+  "full_2_tr": {
+    "file": "/ornek/maya/audio/full_2_tr.mp3",
+    "bytes": 77904,
+    "text": "3. Durak: Öncesi ve Sonrası Canlı Gülüş Tasarımı. Diş eti zenit noktalarını ve dudak örtümünü bozmadan, yalnızca gülüş bölgesini doğal mine dokusuyla yeniden inşa ediyoruz."
+  },
+  "full_3_tr": {
+    "file": "/ornek/maya/audio/full_3_tr.mp3",
+    "bytes": 67824,
+    "text": "4. Durak: 5 Farklı Doğal Diş Morfolojisi. Oval, kare, üçgen, yumuşak ve doğal fenotiplerin aynı yüzde nasıl durduğunu tek tıkla karşılaştırabilirsiniz."
+  },
+  "full_4_tr": {
+    "file": "/ornek/maya/audio/full_4_tr.mp3",
+    "bytes": 75024,
+    "text": "5. Durak: Altın Oran ve Kişiye Özel Diş Kavisi. Her yüz aynı kalıba sığmaz; yüz genişliği ve dudak dinamiklerine göre kesici diş oranlarını otomatik kalibre ediyoruz."
+  },
+  "full_5_tr": {
+    "file": "/ornek/maya/audio/full_5_tr.mp3",
+    "bytes": 66096,
+    "text": "6. Durak: Hekim Kokpiti ve Klinik Karar Destek. Tedavi planlaması, sefalometrik açı ölçümleri ve hasta iletişimi tek bir klinik ekranda birleşir."
+  },
+  "full_6_tr": {
+    "file": "/ornek/maya/audio/full_6_tr.mp3",
+    "bytes": 65808,
+    "text": "7. Durak: Kıvılcım Çarpışma Turları. Çoklu ajan meclisimizde tez, karşı tez ve düşer testiyle nasıl karar üretildiğini burada canlı görebilirsiniz."
+  },
+  "full_7_tr": {
+    "file": "/ornek/maya/audio/full_7_tr.mp3",
+    "bytes": 73584,
+    "text": "8. Durak: 7 Yaşayan Bilimsel Makale. Model karşılaştırmaları, LoRA deneyleri ve otonom ajan mimarimiz üzerine her gün güncellenen araştırma makalelerimiz."
+  },
+  "full_8_tr": {
+    "file": "/ornek/maya/audio/full_8_tr.mp3",
+    "bytes": 76752,
+    "text": "9. Durak: Öz-Yineleme ve 31 Bin Satırlık M0-M10 Çekirdeği. Sistemin kendi hatasını yakalayıp yama ürettiği ve testten geçirerek kendini yenilediği otonom döngü."
+  },
+  "full_9_tr": {
+    "file": "/ornek/maya/audio/full_9_tr.mp3",
+    "bytes": 84528,
+    "text": "10. Durak: Maya, yani benim eğitim ve gelişim günlüğüm. Eğitim öncesi 3 virgül 600 olan kaybımın 0 virgül 015'e nasıl indiğini ve canlı sınav tablosunu burada inceleyebilirsiniz."
+  },
+  "full_0_deep_tr": {
+    "file": "/ornek/maya/audio/full_0_deep_tr.mp3",
+    "bytes": 93600,
+    "text": "Detay: ATLAS mimarisi iki ana sütun üzerine kuruludur. Birincisi, hasta mahremiyetini sıfır veri sızıntısıyla koruyan yerel ve sentetik klinik görüntü işleme; ikincisi ise her hükmü düşer testiyle sınayan çoklu ajan orkestrasıdır."
+  },
+  "full_1_deep_tr": {
+    "file": "/ornek/maya/audio/full_1_deep_tr.mp3",
+    "bytes": 99792,
+    "text": "Detay: Klasik 2 boyutlu fotoğraflarda başın 5 derecelik eğimi bile orta hattı yanıltır. Biz MediaPipe 478 nokta ve 3B derinlik kestirimiyle baş rotasyonunu matematiksel olarak sıfırlayıp gerçek anatomik orta hattı buluyoruz."
+  },
+  "full_2_deep_tr": {
+    "file": "/ornek/maya/audio/full_2_deep_tr.mp3",
+    "bytes": 89856,
+    "text": "Detay: Sıradan yapay zekâ araçları tüm yüzü değiştirip hastayı başkasının yüzüne dönüştürür. ATLAS Canvas kısıt motoru ise burun, göz ve dudak dış sınırını kilitler; yalnızca ağız içi koridorda cerrahi hassasiyetle çalışır."
+  },
+  "full_3_deep_tr": {
+    "file": "/ornek/maya/audio/full_3_deep_tr.mp3",
+    "bytes": 77760,
+    "text": "Detay: Hastanın yüz tipi köşeli mi yoksa oval mi? Beş morfoloji seçeneği, hastaya koltukta otururken kendi yüz karakterine en çok yakışan diş formunu saniyeler içinde seçme imkânı verir."
+  },
+  "full_4_deep_tr": {
+    "file": "/ornek/maya/audio/full_4_deep_tr.mp3",
+    "bytes": 85248,
+    "text": "Detay: Santral, lateral ve kanin dişlerin görünür genişlik oranları gülüş koridorunun derinliğini belirler. Algoritmamız bukkal koridor genişliğini ölçerek dar veya aşırı geniş ark görünümünü engeller."
+  },
+  "full_5_deep_tr": {
+    "file": "/ornek/maya/audio/full_5_deep_tr.mp3",
+    "bytes": 73008,
+    "text": "Detay: Hekim kokpiti, ölçüm sonuçlarını doğrudan klinik iş akışına bağlar. Fotoğraf çekiminden tasarım onayına kadar geçen süreyi dakikalardan saniyelere indirir."
+  },
+  "full_6_deep_tr": {
+    "file": "/ornek/maya/audio/full_6_deep_tr.mp3",
+    "bytes": 75888,
+    "text": "Detay: Kıvılcım protokolünde bir ajan hipotez kurduğunda, diğer ajan o hipotezi çürütmekle görevlidir. Hakem, tezi üreten ajanın kimliğini bilmeden kör değerlendirme yapar."
+  },
+  "full_7_deep_tr": {
+    "file": "/ornek/maya/audio/full_7_deep_tr.mp3",
+    "bytes": 78768,
+    "text": "Detay: Makalelerimiz statik PDF dosyaları değildir. Arka plandaki bekçi servislerimiz yeni deney sonuçları üretildikçe makalelerdeki tabloları ve grafikleri canlı olarak günceller."
+  },
+  "full_8_deep_tr": {
+    "file": "/ornek/maya/audio/full_8_deep_tr.mp3",
+    "bytes": 71424,
+    "text": "Detay: M0'dan M10'a uzanan 11 modüllü çekirdeğimiz; niyet çıkarımı, bütçe kapısı, anayasa denetimi ve otomatik yama sınamasıyla dış müdahale olmadan kendi kodunu iyileştirir."
+  },
+  "full_9_deep_tr": {
+    "file": "/ornek/maya/audio/full_9_deep_tr.mp3",
+    "bytes": 76752,
+    "text": "Detay: Benim eğitimimde sadece soru-cevap ezberletilmedi. 309 düğümlü karar ağacı ve düşer testi çiftleriyle, bilmediğim bir konuda tahmin yürütmek yerine ölçüm istemeyi öğrendim."
+  },
+  "full_0_en": {
+    "file": "/ornek/maya/audio/full_0_en.mp3",
+    "bytes": 98208,
+    "text": "Stop 1: ATLAS Smile Design and Autonomous Intelligence Laboratory. Every face you see here is 100% synthetic, and every metric comes directly from verified measurements. Use Deep Dive for technical details or proceed to the next stop."
+  },
+  "full_1_en": {
+    "file": "/ornek/maya/audio/full_1_en.mp3",
+    "bytes": 89280,
+    "text": "Stop 2: Live 3D Cephalometric Facial Analysis. Using 468 anatomical landmarks and 3D depth mapping, we measure the facial midline, smile arc, and occlusal plane with sub-millimeter precision."
+  },
+  "full_2_en": {
+    "file": "/ornek/maya/audio/full_2_en.mp3",
+    "bytes": 78048,
+    "text": "Stop 3: Before and After Live Smile Design. Without altering gingival zeniths or natural lip dynamics, we reconstruct only the intraoral smile corridor with photorealistic enamel texture."
+  },
+  "full_3_en": {
+    "file": "/ornek/maya/audio/full_3_en.mp3",
+    "bytes": 64800,
+    "text": "Stop 4: Five Natural Tooth Morphologies. Compare Oval, Square, Triangular, Soft, and Natural phenotypes on the exact same face with a single click."
+  },
+  "full_4_en": {
+    "file": "/ornek/maya/audio/full_4_en.mp3",
+    "bytes": 67248,
+    "text": "Stop 5: Golden Proportion and Custom Dental Arch. We automatically calibrate central, lateral, and canine proportions according to facial width and lip dynamics."
+  },
+  "full_5_en": {
+    "file": "/ornek/maya/audio/full_5_en.mp3",
+    "bytes": 63936,
+    "text": "Stop 6: Clinician Cockpit and Decision Support. Treatment planning, cephalometric angle measurements, and patient communication unified in one clinical interface."
+  },
+  "full_6_en": {
+    "file": "/ornek/maya/audio/full_6_en.mp3",
+    "bytes": 62352,
+    "text": "Stop 7: Spark Multi-Agent Collision Rounds. Watch how our council of agents generates decisions through thesis, counter-thesis, and falsification testing."
+  },
+  "full_7_en": {
+    "file": "/ornek/maya/audio/full_7_en.mp3",
+    "bytes": 67248,
+    "text": "Stop 8: Seven Living Research Papers. Continuously updated scientific papers covering model benchmarks, LoRA experiments, and autonomous agent architecture."
+  },
+  "full_8_en": {
+    "file": "/ornek/maya/audio/full_8_en.mp3",
+    "bytes": 85392,
+    "text": "Stop 9: Self-Iteration and the 31,000-Line M0 to M10 Core. The autonomous loop where our system detects its own weaknesses, synthesizes patches, and verifies them against regression suites."
+  },
+  "full_9_en": {
+    "file": "/ornek/maya/audio/full_9_en.mp3",
+    "bytes": 82800,
+    "text": "Stop 10: Maya's Training Log. Explore how my validation loss dropped 240-fold from 3.600 down to 0.015, alongside live before-and-after benchmark comparisons."
+  },
+  "full_0_deep_en": {
+    "file": "/ornek/maya/audio/full_0_deep_en.mp3",
+    "bytes": 84384,
+    "text": "Deep Dive: ATLAS rests on two pillars: privacy-first clinical vision using 100% synthetic and local browser processing, and a multi-agent research orchestra where every claim must survive falsification."
+  },
+  "full_1_deep_en": {
+    "file": "/ornek/maya/audio/full_1_deep_en.mp3",
+    "bytes": 84384,
+    "text": "Deep Dive: Even a 5-degree head tilt distorts 2D midline measurements. By combining 478 MediaPipe landmarks with 3D depth estimation, we mathematically normalize head pose before measuring."
+  },
+  "full_2_deep_en": {
+    "file": "/ornek/maya/audio/full_2_deep_en.mp3",
+    "bytes": 75744,
+    "text": "Deep Dive: Generic AI tools alter the patient's identity. The ATLAS Canvas constraint engine locks the eyes, nose, and outer lip boundary, operating strictly inside the oral corridor."
+  },
+  "full_3_deep_en": {
+    "file": "/ornek/maya/audio/full_3_deep_en.mp3",
+    "bytes": 66816,
+    "text": "Deep Dive: Selecting between five tooth morphologies allows clinicians and patients to visualize how subtle incisal embrasure changes harmonize with facial geometry in real time."
+  },
+  "full_4_deep_en": {
+    "file": "/ornek/maya/audio/full_4_deep_en.mp3",
+    "bytes": 59040,
+    "text": "Deep Dive: Our algorithm measures buccal corridor ratios to prevent overly narrow or artificial dentures, keeping the smile arc parallel to the lower lip curvature."
+  },
+  "full_5_deep_en": {
+    "file": "/ornek/maya/audio/full_5_deep_en.mp3",
+    "bytes": 54000,
+    "text": "Deep Dive: The clinician cockpit bridges quantitative measurements directly into chairside workflow, reducing consultation time from minutes to seconds."
+  },
+  "full_6_deep_en": {
+    "file": "/ornek/maya/audio/full_6_deep_en.mp3",
+    "bytes": 71856,
+    "text": "Deep Dive: In the Spark protocol, whenever one agent proposes a hypothesis, an opposing agent is tasked with breaking it, judged blindly without knowing which model authored the claim."
+  },
+  "full_7_deep_en": {
+    "file": "/ornek/maya/audio/full_7_deep_en.mp3",
+    "bytes": 55728,
+    "text": "Deep Dive: Our papers are living documents. Automated watchdog daemons update tables and charts directly from new experimental runs."
+  },
+  "full_8_deep_en": {
+    "file": "/ornek/maya/audio/full_8_deep_en.mp3",
+    "bytes": 65232,
+    "text": "Deep Dive: Spanning 11 modules from M0 to M10, the core engine handles intent parsing, constitutional safety gates, and automated patch verification."
+  },
+  "full_9_deep_en": {
+    "file": "/ornek/maya/audio/full_9_deep_en.mp3",
+    "bytes": 63504,
+    "text": "Deep Dive: My curriculum combines a 309-node decision tree with strict falsification pairs, teaching me to demand measurements rather than guess when evidence is missing."
+  }
+}
