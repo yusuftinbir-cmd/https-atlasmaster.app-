@@ -1442,7 +1442,7 @@
   spriteImg.onload = function () {
     spriteLoaded = true;
   };
-  spriteImg.src = assetPrefix + "ornek/maya/maya-sprite.jpg";
+  spriteImg.src = assetPrefix + "ornek/maya/maya-sprite.jpg?v=1016h";
 
   var threeReady = false;
   var threeMesh = null;
@@ -1492,7 +1492,7 @@
         canvasTex.flipY = false;
 
         var loader = new GLTFLoader();
-        loader.load(assetPrefix + "ornek/maya/maya-3d.glb?v=1016f", function (gltf) {
+        loader.load(assetPrefix + "ornek/maya/maya-3d.glb?v=1016h", function (gltf) {
           var root = gltf.scene;
           scene.add(root);
           root.traverse(function (node) {
