@@ -1,440 +1,408 @@
-/* MAYA (ATLAS-ASİSTAN) · DİJİTAL EV SAHİBESİ, SİTE REHBERİ VE EVRİM VİTRİNİ */
+/* Maya — ATLAS'ın Kızı · Asistan (Serbest Gezen 3B Avatar & Otomatik Kaydırmalı Rehber) */
 :root {
-  --maya-bg: rgba(11, 17, 30, 0.94);
-  --maya-surface: rgba(19, 28, 46, 0.92);
-  --maya-border: rgba(0, 229, 255, 0.28);
+  --maya-bg: rgba(11, 17, 30, 0.90);
+  --maya-border: rgba(0, 229, 255, 0.35);
   --maya-cyan: #00e5ff;
-  --maya-gold: #f59e0b;
-  --maya-ok: #10b981;
+  --maya-emerald: #10b981;
   --maya-text: #f1f5f9;
   --maya-muted: #94a3b8;
+  --maya-shadow: 0 14px 36px rgba(0, 0, 0, 0.48), 0 0 22px rgba(0, 229, 255, 0.14);
 }
 
-/* Sayfa içi vurgulanan tur durağı */
-.maya-tour-active-target {
-  outline: 2px solid var(--maya-cyan) !important;
-  outline-offset: 8px !important;
-  border-radius: 8px;
-  box-shadow: 0 0 0 6px rgba(0, 229, 255, 0.14), 0 12px 36px rgba(0, 229, 255, 0.18) !important;
-  transition: outline 0.35s ease, box-shadow 0.35s ease !important;
-}
-
-/* Sağ alt yüzen Maya tetikleyici */
-.maya-fab {
+/* Serbest Gezen Taşıyıcı (Sayfayı ASLA kaplamaz) */
+.maya-carrier {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  left: 0;
+  top: 0;
   z-index: 9998;
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px 8px 8px;
-  background: var(--maya-bg);
-  color: var(--maya-text);
-  border: 1px solid var(--maya-border);
-  border-radius: 999px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 20px rgba(0, 229, 255, 0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  text-align: left;
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+  transition: transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.maya-fab:hover {
-  transform: translateY(-2px);
-  border-color: var(--maya-cyan);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.65), 0 0 26px rgba(0, 229, 255, 0.28);
+.maya-carrier.is-dragging {
+  transition: none !important;
 }
 
-.maya-fab-avatar-wrap {
+.maya-carrier.bubble-left {
+  flex-direction: row-reverse;
+}
+
+/* 3B Avatar Küresi (Blender 5.1.0 GLB + Three.js WebGL + 60fps Kanvas) */
+.maya-orb-wrap {
   position: relative;
-  width: 46px;
-  height: 46px;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #162238, #090e1a);
+  border: 2px solid var(--maya-cyan);
+  box-shadow: var(--maya-shadow);
+  cursor: grab;
+  pointer-events: auto;
   flex-shrink: 0;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, width 0.25s ease, height 0.25s ease;
 }
 
-.maya-fab-avatar {
-  width: 46px;
-  height: 46px;
+.maya-orb-wrap:active {
+  cursor: grabbing;
+}
+
+.maya-orb-wrap:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.58), 0 0 28px rgba(0, 229, 255, 0.32);
+}
+
+.maya-orb-clip {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.maya-orb-clip canvas,
+.maya-orb-clip img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 2px solid var(--maya-cyan);
   display: block;
 }
 
-.maya-fab-dot {
+.maya-orb-badge {
   position: absolute;
-  right: 1px;
-  bottom: 1px;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(11, 17, 30, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.45);
+  color: var(--maya-cyan);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+.maya-orb-status {
+  position: absolute;
+  top: 3px;
+  right: 3px;
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: var(--maya-ok);
+  background: var(--maya-emerald);
   border: 2px solid #0b111e;
-  box-shadow: 0 0 8px var(--maya-ok);
 }
 
-.maya-fab-meta {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.25;
-}
-
-.maya-fab-title {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.maya-fab-badge {
-  font-size: 0.66rem;
-  font-weight: 600;
-  padding: 1px 6px;
-  border-radius: 99px;
-  background: rgba(0, 229, 255, 0.15);
-  color: var(--maya-cyan);
-  border: 1px solid rgba(0, 229, 255, 0.3);
-}
-
-.maya-fab-sub {
-  font-size: 0.74rem;
-  color: var(--maya-muted);
-  margin-top: 2px;
-}
-
-/* Açılır Maya Rehber ve Sohbet Paneli */
-.maya-panel {
-  position: fixed;
-  right: 20px;
-  bottom: 84px;
-  width: 400px;
-  max-width: calc(100vw - 28px);
-  max-height: min(650px, calc(100vh - 110px));
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
+/* Kompakt Konuşma Balonu (Sayfayı kapatmayan zarif kart) */
+.maya-bubble {
+  pointer-events: auto;
+  width: 300px;
+  max-width: calc(100vw - 110px);
   background: var(--maya-bg);
-  color: var(--maya-text);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--maya-border);
-  border-radius: 18px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.72), 0 0 32px rgba(0, 229, 255, 0.16);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-radius: 16px;
+  padding: 11px 13px;
+  color: var(--maya-text);
+  box-shadow: var(--maya-shadow);
   transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
-.maya-panel[hidden] {
+.maya-bubble[hidden] {
   display: none !important;
 }
 
-.maya-header {
-  display: flex;
+/* Küçültülmüş (Bekleme) Hapı */
+.maya-mini-pill {
+  pointer-events: auto;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  background: linear-gradient(135deg, rgba(19, 28, 46, 0.98), rgba(11, 17, 30, 0.98));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+  background: var(--maya-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--maya-border);
+  border-radius: 999px;
+  padding: 7px 13px;
+  color: var(--maya-text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--maya-shadow);
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.maya-header-portrait {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--maya-cyan);
-  flex-shrink: 0;
-  box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+.maya-mini-pill:hover {
+  border-color: var(--maya-cyan);
+  transform: translateY(-1px);
 }
 
-.maya-header-info {
-  flex: 1;
-  min-width: 0;
+.maya-mini-pill[hidden] {
+  display: none !important;
 }
 
-.maya-header-name {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.maya-header-role {
-  font-size: 0.74rem;
+.maya-mini-pill .maya-pill-sub {
   color: var(--maya-cyan);
-  margin: 2px 0 4px 0;
   font-weight: 500;
+  font-size: 11px;
 }
 
-.maya-header-metrics {
-  font-size: 0.68rem;
-  color: var(--maya-muted);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.maya-header-metrics span {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1px 6px;
-  border-radius: 4px;
-}
-
-.maya-header-actions {
+/* Balon Üst Satırı */
+.maya-b-head {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 6px;
+  margin-bottom: 6px;
+}
+
+.maya-b-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--maya-cyan);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.maya-b-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .maya-icon-btn {
   background: rgba(255, 255, 255, 0.06);
-  color: var(--maya-text);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  width: 32px;
-  height: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  color: #cbd5e1;
+  border-radius: 7px;
+  padding: 2px 6px;
+  font-size: 10.5px;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  line-height: 1.3;
+  transition: all 0.15s ease;
 }
 
 .maya-icon-btn:hover,
-.maya-icon-btn[aria-pressed="true"] {
-  background: rgba(0, 229, 255, 0.16);
+.maya-icon-btn.active {
   border-color: var(--maya-cyan);
-  color: var(--maya-cyan);
+  color: #fff;
+  background: rgba(0, 229, 255, 0.15);
 }
 
-/* Tur kontrol çubuğu */
-.maya-tour-bar {
+/* Tur Rotası Seçici Çubuğu */
+.maya-routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maya-routes[hidden] {
+  display: none !important;
+}
+
+.maya-route-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 4px 7px;
+  font-size: 10.5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex: 1 1 calc(50% - 4px);
+  text-align: left;
+}
+
+.maya-route-chip:hover,
+.maya-route-chip.active {
+  background: rgba(0, 229, 255, 0.14);
+  border-color: var(--maya-cyan);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Durak Başlığı ve Açıklama */
+.maya-step-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--maya-emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.maya-step-h {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.maya-step-p {
+  font-size: 12px;
+  line-height: 1.48;
+  color: #dbeafe;
+  margin: 0 0 8px 0;
+}
+
+.maya-step-deep {
+  font-size: 11.3px;
+  line-height: 1.45;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.09);
+  border-left: 2px solid var(--maya-emerald);
+  padding: 6px 8px;
+  border-radius: 0 8px 8px 0;
+  margin: 0 0 8px 0;
+}
+
+.maya-step-deep[hidden] {
+  display: none !important;
+}
+
+/* İlerleme Noktaları */
+.maya-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.maya-dot {
+  height: 5px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.maya-dot.done {
+  background: rgba(0, 229, 255, 0.45);
+}
+
+.maya-dot.active {
+  background: var(--maya-cyan);
+}
+
+/* Alt Eylem Düğmeleri */
+.maya-b-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 9px 14px;
-  background: rgba(0, 229, 255, 0.08);
-  border-bottom: 1px solid rgba(0, 229, 255, 0.18);
+  gap: 5px;
 }
 
-.maya-tour-btn {
-  background: var(--maya-cyan);
-  color: #06101e;
-  border: none;
+.maya-btn-sm {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
   border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 0.18s, transform 0.18s;
-}
-
-.maya-tour-btn:hover {
-  opacity: 0.92;
-  transform: translateY(-1px);
-}
-
-.maya-tour-btn.secondary {
-  background: rgba(255, 255, 255, 0.09);
-  color: var(--maya-text);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 5px 8px;
+  font-size: 11px;
   font-weight: 600;
-}
-
-.maya-tour-step-label {
-  font-size: 0.74rem;
-  color: var(--maya-cyan);
-  font-weight: 600;
-}
-
-/* Mesaj gövdesi */
-.maya-body {
-  padding: 14px 16px;
-  overflow-y: auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.maya-msg {
-  padding: 11px 13px;
-  border-radius: 12px;
-  font-size: 0.83rem;
-  line-height: 1.52;
-}
-
-.maya-msg-assistant {
-  background: var(--maya-surface);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--maya-text);
-}
-
-.maya-msg-user {
-  align-self: flex-end;
-  background: rgba(0, 229, 255, 0.14);
-  border: 1px solid rgba(0, 229, 255, 0.32);
-  color: #ffffff;
-  max-width: 86%;
-}
-
-.maya-beyan-line {
-  display: block;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.67rem;
-  color: var(--maya-cyan);
-  background: rgba(0, 229, 255, 0.07);
-  border-left: 2px solid var(--maya-cyan);
-  padding: 4px 7px;
-  margin-bottom: 7px;
-  border-radius: 4px;
-  word-break: break-word;
-}
-
-.maya-duser-line {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--maya-muted);
-  margin-top: 7px;
-  padding-top: 5px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.1);
-}
-
-/* Hızlı soru hapları */
-.maya-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 0 16px 10px 16px;
-}
-
-.maya-chip {
-  background: rgba(255, 255, 255, 0.05);
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 5px 10px;
-  font-size: 0.72rem;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
-.maya-chip:hover {
-  background: rgba(0, 229, 255, 0.14);
-  color: #fff;
+.maya-btn-sm:hover {
   border-color: var(--maya-cyan);
-}
-
-/* Alt soru sorma alanı */
-.maya-footer {
-  display: flex;
-  gap: 8px;
-  padding: 10px 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(7, 11, 18, 0.95);
-}
-
-.maya-input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.06);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.maya-btn-sm.pri {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(16, 185, 129, 0.22));
+  border-color: rgba(0, 229, 255, 0.55);
+  color: #fff;
+}
+
+.maya-btn-sm.pri:hover {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.34), rgba(16, 185, 129, 0.32));
+}
+
+/* Vurgulanan Sayfa Bölümü Spotlight (Sayfayı kapatmadan zarif çerçeve) */
+.maya-spot-target {
+  position: relative;
+  outline: 2px solid rgba(0, 229, 255, 0.55) !important;
+  outline-offset: 6px !important;
   border-radius: 10px;
-  padding: 8px 11px;
-  font-size: 0.8rem;
-  outline: none;
+  box-shadow: 0 0 28px rgba(0, 229, 255, 0.16) !important;
+  transition: outline-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-.maya-input:focus {
-  border-color: var(--maya-cyan);
-}
-
-.maya-send {
-  background: var(--maya-cyan);
-  color: #06101e;
-  border: none;
-  border-radius: 10px;
-  padding: 0 13px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.maya-legal-note {
-  font-size: 0.64rem;
-  color: #64748b;
-  text-align: center;
-  padding: 4px 12px 8px 12px;
-  background: rgba(7, 11, 18, 0.95);
-}
-
-/* Otonomi sayfası Maya Evrim Kütüğü kartları */
+/* Otonomi #maya Kartı Stilleri */
 .maya-evo-hero {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 20px;
+  grid-template-columns: 148px 1fr;
+  gap: 18px;
   align-items: center;
-  padding: 18px;
-  border: 1px solid var(--line, #334155);
-  border-radius: 12px;
-  background: var(--sheet, rgba(15, 23, 42, 0.5));
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .maya-evo-portrait {
-  width: 160px;
-  height: 160px;
-  border-radius: 12px;
+  width: 148px;
+  height: 148px;
+  border-radius: 16px;
   object-fit: cover;
-  border: 2px solid var(--maya-cyan);
+  border: 1.5px solid rgba(0, 229, 255, 0.45);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
 }
 
 .maya-evo-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.84rem;
-  margin: 14px 0;
+  font-size: 0.85rem;
+  margin-top: 8px;
 }
 
 .maya-evo-table th,
 .maya-evo-table td {
-  padding: 9px 10px;
-  border-bottom: 1px solid var(--line, rgba(148, 163, 184, 0.2));
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
   text-align: left;
-  vertical-align: top;
 }
 
 .maya-evo-table th {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--mut, #94a3b8);
+  font-weight: 600;
+  opacity: 0.85;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   .maya-evo-hero {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
   }
   .maya-evo-portrait {
-    margin: 0 auto;
-    width: 128px;
-    height: 128px;
+    width: 112px;
+    height: 112px;
   }
-  .maya-panel {
-    right: 10px;
-    bottom: 76px;
-    width: calc(100vw - 20px);
+  .maya-orb-wrap {
+    width: 64px;
+    height: 64px;
+  }
+  .maya-bubble {
+    width: 265px;
+    padding: 9px 11px;
   }
 }
