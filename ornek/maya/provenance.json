@@ -1,0 +1,13 @@
+{
+  "identity": "Maya (Maia) — ATLAS Öz-Yineleme Asistanı ve Rehberi",
+  "created_at": "2026-10-16T19:10:03+03:00",
+  "source_type": "100% Synthetic AI-Generated Fictional Portrait (Zero Real Person Biometrics, KVKK=0)",
+  "base_model": "mlx-community/gemma-4-E4B-it-qat-4bit + DoRA (adapters_atlas_asistan_gemma4_v3) + asistan/ M0-M10 (31,177 lines)",
+  "sha256": {
+    "original_1024": "53b27391c380aa1573241c340822d8c95d90d4085865ce0c7cbe8213a4e3faf3",
+    "maya-portre.jpg": "36f11e8df79f2b65416b17ac8a53548719dbda64c98e691be986ffd87ccd9696",
+    "maya-avatar.jpg": "f071f6325d989b0d553ab045ec3e84c638f05c720e7d9119a3462a62a998d32b"
+  },
+  "disclaimer_tr": "Gerçek kişi fotoğrafı değildir. %100 yapay zekâ üretimi kurgusal portredir (KVKK m.6 = 0).",
+  "disclaimer_en": "Not a photograph of a real person. 100% synthetic AI-generated fictional portrait."
+}

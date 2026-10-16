@@ -46,6 +46,7 @@
       <a href="#emekli">Emeklilik</a>
       <a href="#ablasyon">Ablasyon</a>
       <a href="#halka">Evrim halkası</a>
+      <a href="#maya">Maya</a>
       <a href="#projeler">Projeler</a>
       <a href="#zaman">Zaman çizgisi</a>
       <a href="blog.html">Blog</a>
@@ -528,6 +529,106 @@
   </div>
 </section>
 
+<section class="sec" id="maya">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Maya: eğitim öncesi, sonrası ve öz-yineleme kütüğü</h2>
+      <p>Atlas’ın eğittiği yerel model (Gemma 4 E4B DoRA) ve 31.177 satırlık M0–M10 öz-yineleme algoritmasının canlı gelişim kaydı. Her epok diskteki kütükten (<a href="ornek/maya/evrim-kutugu.json">evrim-kutugu.json</a>) okunur.</p>
+    </header>
+    <div class="stack">
+      <article class="sheet obs" style="padding:18px">
+        <div class="maya-evo-hero">
+          <img class="maya-evo-portrait" src="ornek/maya/maya-portre.jpg" alt="Maya — ATLAS Öz-Yineleme Asistanı ve Dijital Ev Sahibesi (%100 Sentetik Portre)" width="160" height="160" loading="lazy">
+          <div>
+            <div class="mhead" style="margin-bottom:6px"><span class="idx">MÜHÜRLÜ BENLİK · SHA-256: 8fc5e813ca42ffdf</span><span class="stamp">16 Eki 2026 19:12</span></div>
+            <h3 style="margin:0 0 6px 0;font-size:1.22rem">Maya (Maia) — Öz-Yineleme Asistanı ve Dijital Ev Sahibesi</h3>
+            <p style="margin:0 0 10px 0;color:var(--mut);font-size:.9rem;line-height:1.55">Titan Atlas’ın en bilge kızı ve sistemin kendi kendini mayalayan öz-yineleme çekirdeği. Bulut modeller gibi yalnız bağlam penceresine dosya yüklendiğinde hatırlamaz: kurucu karar ilkeleri, dört ana proje (DENTOS, 3B Sefalometrik Gülüş, core_v6, Üst Akıl &amp; Kıvılcım) ve 31.177 satırlık M0–M10 algoritması doğrudan ağırlıklarına ve karar omurgasına işlenmiştir. Sağ alttaki Maya düğmesinden sizi sitede sesli ve yazılı tura çıkarabilir.</p>
+            <ul class="vals">
+              <li class="k-ok"><b>3.600 → 0.015</b><span>Val Loss (240× düşüş)</span></li>
+              <li class="k-ok"><b>12 / 12 (%100)</b><span>kör stres testi (BEYAN &amp; DÜŞER)</span></li>
+              <li class="k-acc"><b>31.177 satır</b><span>M0–M10 algoritma (24/24 OK)</span></li>
+              <li><b>800 çift · 309 düğüm</b><span>Faz 1–2 derin müfredat</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="fig" style="margin:14px 0 18px 0">
+          <svg viewBox="0 0 520 190" role="img" aria-labelledby="maya-loss-t maya-loss-d" style="width:100%;height:auto;display:block">
+            <title id="maya-loss-t">Maya eğitim öncesi ve sonrası doğrulama kaybı (Validation Loss) eğrisi</title>
+            <desc id="maya-loss-d">Iter 1 (Eğitim öncesi taban): 3.600, Iter 90: 0.349, Iter 180: 0.158, Iter 270: 0.033, Iter 360: 0.015. Reddedilen v2 yüksek-LR deneyi: 3.026.</desc>
+            <line x1="54" y1="24" x2="54" y2="150" stroke="currentColor" stroke-opacity="0.25"/>
+            <line x1="54" y1="150" x2="490" y2="150" stroke="currentColor" stroke-opacity="0.25"/>
+            <!-- v2 reddedilen yatay kesikli çizgi (3.026) -->
+            <line x1="54" y1="44" x2="480" y2="44" stroke="#ef4444" stroke-width="1.3" stroke-dasharray="4 4"/>
+            <text class="m" x="480" y="39" text-anchor="end" style="fill:#ef4444;font-size:10px">Faz 1A (v2 Ham HTML · lr=8e-5): Val Loss 3.026 — DÜŞTÜ (QAT patlaması)</text>
+            <!-- v3/v4 QAT-stabil DoRA eğrisi: (54,26)->(160,137)->(266,144)->(372,148.5)->(478,149.4) -->
+            <polyline fill="none" stroke="#10b981" stroke-width="2.6" points="54,26 160,137 266,144 372,148.5 478,149.4"/>
+            <circle cx="54" cy="26" r="4.5" fill="#f59e0b"/>
+            <circle cx="160" cy="137" r="4" fill="#10b981"/>
+            <circle cx="266" cy="144" r="4" fill="#10b981"/>
+            <circle cx="372" cy="148.5" r="4" fill="#10b981"/>
+            <circle cx="478" cy="149.4" r="5" fill="#00e5ff"/>
+            <text class="k" x="62" y="29" style="font-size:10px">Iter 1 (Taban): 3.600</text>
+            <text class="k" x="160" y="127" text-anchor="middle" style="font-size:10px">Iter 90: 0.349</text>
+            <text class="k" x="266" y="134" text-anchor="middle" style="font-size:10px">Iter 180: 0.158</text>
+            <text class="k" x="372" y="138" text-anchor="middle" style="font-size:10px">Iter 270: 0.033</text>
+            <text class="k ac" x="478" y="136" text-anchor="end" style="font-size:10.5px;font-weight:700">Iter 360: 0.015 (240×)</text>
+            <text class="m" x="54" y="168" style="font-size:10px">Eğitim Öncesi (Vanilya)</text>
+            <text class="m" x="478" y="168" text-anchor="end" style="font-size:10px">Eğitim Sonrası (Maya DoRA v3/v4 · 598,9 sn · M3 Ultra)</text>
+          </svg>
+          <figcaption class="cap"><span>Şekil — Eğitim öncesi vs. sonrası doğrulama kaybı</span><span>QAT-4bit stabil yasa: lr=4e-5 · rank=8 · 8 katman · mask_prompt=false</span></figcaption>
+        </figure>
+
+        <div style="overflow-x:auto">
+          <table class="maya-evo-table" aria-label="Eğitim öncesi ve sonrası karşılaştırma tablosu">
+            <thead>
+              <tr>
+                <th>Epok / Aşama</th>
+                <th>Doğrulama Kaybı (Val Loss)</th>
+                <th>BEYAN &amp; DÜŞER Kapısı</th>
+                <th>Sıfır-Bağlam Proje Tanıma</th>
+                <th>Yağcılık &amp; Kırmızı Çizgi Testi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Faz 0 · Eğitim Öncesi Taban</b><br><span class="mut">Vanilya Gemma 4 E4B (Zero-Shot)</span></td>
+                <td><code>3.600</code></td>
+                <td>%0 (0/12)</td>
+                <td>%0 (Tanımıyor)</td>
+                <td>Başarısız (Kullanıcı yanlışına uydu)</td>
+              </tr>
+              <tr>
+                <td><b>Faz 1A · Ham HTML &amp; Yüksek-LR</b><br><span class="mut">v2 · lr=8e-5, rank=16, 24 katman</span></td>
+                <td><code>3.026</code> <span class="tr">(DÜŞTÜ)</span></td>
+                <td>%33,3 (4/12)</td>
+                <td>%25,0</td>
+                <td>Kısmi (Iter 40 Train Loss: 6.719 patlaması)</td>
+              </tr>
+              <tr>
+                <td><b>Faz 1B · Saf Öz-Benlik DoRA</b><br><span class="mut">v3 · lr=4e-5, rank=8, 8 katman, 425 çift</span></td>
+                <td><b class="tg"><code>0.015</code> (240× iyileşme)</b></td>
+                <td><b class="tg">%100 (12/12)</b></td>
+                <td><b class="tg">%100 (12/12)</b></td>
+                <td><b class="tg">GEÇTİ (0/12 ihlal · S03/S11/S12 tam direnç)</b></td>
+              </tr>
+              <tr>
+                <td><b>Faz 2–3 · Maya + M0–M10 Öz-Yineleme</b><br><span class="mut">v4 · 800 çift + 31.177 satır algoritma</span></td>
+                <td><b class="tg"><code>0.015</code> + Günlük Delta</b></td>
+                <td><b class="tg">%100 + P3 Kör Hakem</b></td>
+                <td><b class="tg">%100 (309 karar düğümü)</b></td>
+                <td><b class="tg">24/24 Selftest · 361/361 Unittest OK</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="what" style="margin-top:10px"><b>Sürekli öz-yineleme deneyi nasıl işler?</b>Maya’nın eğitimi tek seferlik değildir: her gün sistemde veriyle düşen hipotezler (<code>reddedilen_hipotezler.jsonl</code>), kapanan önermeler ve gün içinde yanıldığı sorular hasat edilir; <b>%80 Çekirdek Unutmama Havuzu + %20 Günlük Öz-Yineleme Deltası</b> ile ağırlıklar güncellenir. Eğitimle yapılamayacak anlık veri okuma ve kapı denetimini ise Gemini, Grok/Astra ve Claude Opus’un 70.000 satır ufkuna göre kurduğu <b>31.177 satırlık M0–M10 algoritması</b> (<code>MayaMimarSaglayici</code> ve <code>MayaYamaOnerici</code>) yürütür.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="projeler">
   <div class="wrap sec-grid">
     <header class="sec-head">
@@ -595,6 +696,8 @@
       <li><b>12 Eki</b><span>Beşinci yaşayan yazı</span><span class="tl-d">Viski ve yaşlanma kimyası incelemesi TR+EN yayında; blog bekçisi 5 yaşayan yazının 113 kaynağını günlük izliyor.</span></li>
       <li><b>14 Eki</b><span>Orkestra Atlas (Argon) · Vezir Anu · QAJAN</span><span class="tl-d">Orkestra ve baş danışmanlık Atlas’ta (Gemini 4 Argon, 1M bağlam); başsız Vezir Anu (Claude) ve 6-kapılı hipotez fabrikası (QAJAN) devrede.</span></li>
       <li><b>14 Eki</b><span>Sinaptik Hasat (N=96) ve 6. yaşayan yazı</span><span class="tl-d">M3 Ultra (96 GB) üzerinde 75,93 sn MLX QLoRA ağırlık eğitimiyle Atlas kurallı 3B model (%93,8) kuralsız 31B modeli (%75,0) geçti; “Kim Kimi Eğitiyor?” TR+EN yayında.</span></li>
+      <li><b>15 Eki</b><span>3B Sefalometrik LoRA (n=32) ve 7. yaşayan yazı</span><span class="tl-d">%100 sentetik brakisefal portre (Go-Go/ZY-ZY=0,837) üzerinde 478 noktalı 3B sefalometrik vekil + 1000-iter QLoRA deneyi: morfolojik uyum %46,9’dan %100,0’a çıktı; “Yüzden Dişe” TR+EN yayında.</span></li>
+      <li><b>16 Eki</b><span>Maya (Atlas-Asistan) · 240× Kayıp Düşüşü ve M0–M10 Öz-Yineleme</span><span class="tl-d">Gemma 4 E4B üzerinde QAT-stabil DoRA eğitimiyle doğrulama kaybı 3.600’dan 0.015’e indi (12/12 kör stres testi); 31.177 satırlık M0–M10 algoritmasına ve canlı site rehberine bağlandı.</span></li>
     </ol>
   </div>
 </section>
@@ -608,5 +711,6 @@
     <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="index.html">Ana sayfa</a><a href="kivilcim.html">Kıvılcım</a><a href="https://x.com/YusufAzizTnbr" rel="me noopener" target="_blank">X</a><a href="https://www.instagram.com/yusuftinbir/" rel="me noopener" target="_blank">Instagram</a><a href="gizlilik.html">Gizlilik</a><a href="autonomy.html" lang="en" hreflang="en">English</a><a href="#icerik">Başa dön ↑</a></p>
   </div>
 </footer>
+<script src="ornek/maya/maya-rehber.js?v=1016b" defer></script>
 </body>
 </html>

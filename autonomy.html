@@ -46,6 +46,7 @@
       <a href="#emekli">Retirement</a>
       <a href="#ablasyon">Ablation</a>
       <a href="#halka">Evolution loop</a>
+      <a href="#maya">Maya</a>
       <a href="#projects">Projects</a>
       <a href="#zaman">Timeline</a>
       <a href="blog.html">Blog</a>
@@ -528,6 +529,104 @@
   </div>
 </section>
 
+<section class="sec" id="maya">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Maya: pre-training, post-training, and self-iteration ledger</h2>
+      <p>Live evolution record of the local model trained by Atlas (Gemma 4 E4B DoRA) and the 31,177-line M0–M10 self-iteration algorithm. Every epoch is read from the disk ledger (<a href="ornek/maya/evrim-kutugu.json">evrim-kutugu.json</a>).</p>
+    </header>
+    <div class="stack">
+      <article class="sheet obs" style="padding:18px">
+        <div class="maya-evo-hero">
+          <img class="maya-evo-portrait" src="ornek/maya/maya-portre.jpg" alt="Maya — ATLAS Self-Iterative Assistant and Digital Host (100% Synthetic Portrait)" width="160" height="160" loading="lazy">
+          <div>
+            <div class="mhead" style="margin-bottom:6px"><span class="idx">SEALED IDENTITY · SHA-256: 8fc5e813ca42ffdf</span><span class="stamp">16 Oct 2026 19:12</span></div>
+            <h3 style="margin:0 0 6px 0;font-size:1.22rem">Maya (Maia) — Self-Iterative Assistant &amp; Digital Host</h3>
+            <p style="margin:0 0 10px 0;color:var(--mut);font-size:.9rem;line-height:1.55">Named after both the wisest daughter of Titan Atlas and the Turkish word for a self-fermenting essence. Unlike cloud models that remember only when files are loaded into a context window, founder decision principles, all four core projects (DENTOS, 3D Cephalometric Smile, core_v6, Executive Mind &amp; Spark), and the 31,177-line M0–M10 algorithm are engraved directly into her synaptic weights and decision spine. Click the Maya button at the bottom-right for a spoken and interactive tour.</p>
+            <ul class="vals">
+              <li class="k-ok"><b>3.600 → 0.015</b><span>Val Loss (240× drop)</span></li>
+              <li class="k-ok"><b>12 / 12 (100%)</b><span>blind stress test (BEYAN &amp; Falsifier)</span></li>
+              <li class="k-acc"><b>31,177 lines</b><span>M0–M10 algorithm (24/24 OK)</span></li>
+              <li><b>800 pairs · 309 nodes</b><span>Phase 1–2 deep curriculum</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="fig" style="margin:14px 0 18px 0">
+          <svg viewBox="0 0 520 190" role="img" aria-labelledby="maya-loss-t-en maya-loss-d-en" style="width:100%;height:auto;display:block">
+            <title id="maya-loss-t-en">Maya pre-training vs. post-training validation loss curve</title>
+            <desc id="maya-loss-d-en">Iter 1 (Pre-training baseline): 3.600, Iter 90: 0.349, Iter 180: 0.158, Iter 270: 0.033, Iter 360: 0.015. Rejected v2 high-LR experiment: 3.026.</desc>
+            <line x1="54" y1="24" x2="54" y2="150" stroke="currentColor" stroke-opacity="0.25"/>
+            <line x1="54" y1="150" x2="490" y2="150" stroke="currentColor" stroke-opacity="0.25"/>
+            <line x1="54" y1="44" x2="480" y2="44" stroke="#ef4444" stroke-width="1.3" stroke-dasharray="4 4"/>
+            <text class="m" x="480" y="39" text-anchor="end" style="fill:#ef4444;font-size:10px">Phase 1A (v2 Raw HTML · lr=8e-5): Val Loss 3.026 — REJECTED (QAT explosion)</text>
+            <polyline fill="none" stroke="#10b981" stroke-width="2.6" points="54,26 160,137 266,144 372,148.5 478,149.4"/>
+            <circle cx="54" cy="26" r="4.5" fill="#f59e0b"/>
+            <circle cx="160" cy="137" r="4" fill="#10b981"/>
+            <circle cx="266" cy="144" r="4" fill="#10b981"/>
+            <circle cx="372" cy="148.5" r="4" fill="#10b981"/>
+            <circle cx="478" cy="149.4" r="5" fill="#00e5ff"/>
+            <text class="k" x="62" y="29" style="font-size:10px">Iter 1 (Base): 3.600</text>
+            <text class="k" x="160" y="127" text-anchor="middle" style="font-size:10px">Iter 90: 0.349</text>
+            <text class="k" x="266" y="134" text-anchor="middle" style="font-size:10px">Iter 180: 0.158</text>
+            <text class="k" x="372" y="138" text-anchor="middle" style="font-size:10px">Iter 270: 0.033</text>
+            <text class="k ac" x="478" y="136" text-anchor="end" style="font-size:10.5px;font-weight:700">Iter 360: 0.015 (240×)</text>
+            <text class="m" x="54" y="168" style="font-size:10px">Pre-Training (Vanilla)</text>
+            <text class="m" x="478" y="168" text-anchor="end" style="font-size:10px">Post-Training (Maya DoRA v3/v4 · 598.9 s · M3 Ultra)</text>
+          </svg>
+          <figcaption class="cap"><span>Figure — Pre-training vs. post-training validation loss</span><span>QAT-4bit stable law: lr=4e-5 · rank=8 · 8 layers · mask_prompt=false</span></figcaption>
+        </figure>
+
+        <div style="overflow-x:auto">
+          <table class="maya-evo-table" aria-label="Pre-training vs post-training comparison table">
+            <thead>
+              <tr>
+                <th>Epoch / Stage</th>
+                <th>Validation Loss</th>
+                <th>BEYAN &amp; Falsifier Gate</th>
+                <th>Zero-Context Project Mastery</th>
+                <th>Anti-Sycophancy &amp; Red-Line Test</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Phase 0 · Pre-Training Baseline</b><br><span class="mut">Vanilla Gemma 4 E4B (Zero-Shot)</span></td>
+                <td><code>3.600</code></td>
+                <td>0% (0/12)</td>
+                <td>0% (Unaware)</td>
+                <td>Failed (Agreed with user fallacy)</td>
+              </tr>
+              <tr>
+                <td><b>Phase 1A · Raw HTML &amp; High-LR</b><br><span class="mut">v2 · lr=8e-5, rank=16, 24 layers</span></td>
+                <td><code>3.026</code> <span class="tr">(REJECTED)</span></td>
+                <td>33.3% (4/12)</td>
+                <td>25.0%</td>
+                <td>Partial (Iter 40 Train Loss: 6.719 explosion)</td>
+              </tr>
+              <tr>
+                <td><b>Phase 1B · Pure Self-Identity DoRA</b><br><span class="mut">v3 · lr=4e-5, rank=8, 8 layers, 425 pairs</span></td>
+                <td><b class="tg"><code>0.015</code> (240× reduction)</b></td>
+                <td><b class="tg">100% (12/12)</b></td>
+                <td><b class="tg">100% (12/12)</b></td>
+                <td><b class="tg">PASSED (0/12 violations · S03/S11/S12 immune)</b></td>
+              </tr>
+              <tr>
+                <td><b>Phase 2–3 · Maya + M0–M10 Self-Iteration</b><br><span class="mut">v4 · 800 pairs + 31,177-line algorithm</span></td>
+                <td><b class="tg"><code>0.015</code> + Daily Delta</b></td>
+                <td><b class="tg">100% + P3 Blind Judge</b></td>
+                <td><b class="tg">100% (309 decision nodes)</b></td>
+                <td><b class="tg">24/24 Selftest · 361/361 Unittest OK</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="what" style="margin-top:10px"><b>How does the continual self-iteration experiment work?</b>Maya’s training is not a one-off event: every day, data-rejected hypotheses (<code>reddedilen_hipotezler.jsonl</code>), closed predictions, and questions where she fell short are harvested; her weights are updated via an <b>80% Core Replay Buffer + 20% Daily Self-Iteration Delta</b>. Live disk telemetry and mathematical gate checks that cannot be baked into weights are executed by the <b>31,177-line M0–M10 algorithm</b> (<code>MayaMimarSaglayici</code> and <code>MayaYamaOnerici</code>) built toward a 70,000-line horizon by Gemini, Grok/Astra, and Claude Opus.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="projects">
   <div class="wrap sec-grid">
     <header class="sec-head">
@@ -595,6 +694,8 @@
       <li><b>12 Oct</b><span>Fifth living article</span><span class="tl-d">Whisky and ageing chemistry review live in TR+EN; the blog watcher tracks 113 sources across 5 living articles daily.</span></li>
       <li><b>14 Oct</b><span>Orchestra Atlas (Argon) · Vizier Anu · QAJAN</span><span class="tl-d">Orchestration and chief advisory move to Atlas (Gemini 4 Argon, 1M context); headless Vizier Anu (Claude) and the 6-gate hypothesis factory (QAJAN) go live.</span></li>
       <li><b>14 Oct</b><span>Synaptic Harvest (N=96) and 6th living article</span><span class="tl-d">With 75.93 s of MLX QLoRA weight training on M3 Ultra (96 GB), an Atlas-ruled 3B model (93.8%) beat an unruled 31B model (75.0%); “Who Trains Whom?” goes live in TR+EN.</span></li>
+      <li><b>15 Oct</b><span>3D Cephalometric LoRA (n=32) and 7th living article</span><span class="tl-d">478-point 3D cephalometric proxy + 1000-iter QLoRA on a 100% synthetic brachyfacial portrait (Go-Go/ZY-ZY=0.837): morphological accuracy rose from 46.9% to 100.0%; “From Face to Tooth” live in TR+EN.</span></li>
+      <li><b>16 Oct</b><span>Maya (Atlas-Asistan) · 240× Loss Drop and M0–M10 Self-Iteration</span><span class="tl-d">With QAT-stable DoRA training on Gemma 4 E4B, validation loss dropped from 3.600 to 0.015 (12/12 blind stress test); wired into the 31,177-line M0–M10 algorithm and live digital host.</span></li>
     </ol>
   </div>
 </section>
@@ -608,5 +709,6 @@
     <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="en.html">Home</a><a href="spark.html">Spark</a><a href="https://x.com/YusufAzizTnbr" rel="me noopener" target="_blank">X</a><a href="https://www.instagram.com/yusuftinbir/" rel="me noopener" target="_blank">Instagram</a><a href="privacy.html">Privacy</a><a href="otonomi.html" lang="tr" hreflang="tr">Türkçe</a><a href="#icerik">Back to top ↑</a></p>
   </div>
 </footer>
+<script src="ornek/maya/maya-rehber.js?v=1016b" defer></script>
 </body>
 </html>
