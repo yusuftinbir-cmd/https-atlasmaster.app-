@@ -1,18 +1,61 @@
 /**
  * Maya — ATLAS'ın Kızı · Asistan
  * Serbest Gezen 3B Avatar (Blender 5.1.0 GLB + Three.js WebGL + 60fps Kanvas)
- * ve Sayfayı Otomatik Kaydıran Çok Rotalı Etkileşimli Site Rehberi.
- * Not: Robotik ses olmaması için sesli okuma tamamen kapatılmıştır; görsel ve 3B mimiklerle sessiz rehberlik yapar.
+ * ve Sayfayı Otomatik Kaydıran, Eğitim Bilgisinden Kısa Özet Veren Site Rehberi.
  */
 (function () {
   "use strict";
 
+  if (document.getElementById("maya-carrier")) return;
+
+  // 1. Kritik CSS'i doğrudan <head> içine göm (Stil dosyası gecikse veya önbellekte kalsa bile ASLA sayfa altında veya tam ekran açılmaz)
+  var inlineStyle = document.createElement("style");
+  inlineStyle.id = "maya-inline-css";
+  inlineStyle.textContent = [
+    ":root{--maya-bg:rgba(11,17,30,0.92);--maya-border:rgba(0,229,255,0.38);--maya-cyan:#00e5ff;--maya-emerald:#10b981;--maya-text:#f1f5f9;--maya-shadow:0 14px 36px rgba(0,0,0,0.52),0 0 22px rgba(0,229,255,0.16);}",
+    ".maya-carrier{position:fixed!important;left:0;top:0;z-index:9998!important;display:flex!important;align-items:flex-end;gap:10px;pointer-events:none;transition:transform 0.72s cubic-bezier(0.22,1,0.36,1);will-change:transform;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;max-width:96vw;}",
+    ".maya-carrier.is-dragging{transition:none!important;}",
+    ".maya-carrier.bubble-left{flex-direction:row-reverse;}",
+    ".maya-orb-wrap{position:relative;width:74px!important;height:74px!important;min-width:74px;min-height:74px;max-width:74px;max-height:74px;border-radius:50%;background:radial-gradient(circle at 50% 35%,#162238,#090e1a);border:2px solid var(--maya-cyan);box-shadow:var(--maya-shadow);cursor:grab;pointer-events:auto;flex-shrink:0;user-select:none;touch-action:none;transition:transform 0.22s ease,box-shadow 0.22s ease;}",
+    ".maya-orb-wrap:hover{transform:scale(1.05);}",
+    ".maya-orb-clip{width:100%!important;height:100%!important;border-radius:50%;overflow:hidden;position:relative;}",
+    ".maya-orb-clip canvas,.maya-orb-clip img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover;display:block;}",
+    ".maya-orb-badge{position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);background:rgba(11,17,30,0.96);border:1px solid rgba(0,229,255,0.48);color:var(--maya-cyan);font-size:9.5px;font-weight:700;letter-spacing:0.03em;padding:1px 6px;border-radius:999px;white-space:nowrap;pointer-events:none;}",
+    ".maya-orb-status{position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:50%;background:var(--maya-emerald);border:2px solid #0b111e;}",
+    ".maya-mini-pill{pointer-events:auto;display:inline-flex;align-items:center;gap:7px;background:var(--maya-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--maya-border);border-radius:999px;padding:7px 12px;color:var(--maya-text);font-size:11.5px;font-weight:600;cursor:pointer;box-shadow:var(--maya-shadow);}",
+    ".maya-mini-pill[hidden],.maya-bubble[hidden],.maya-routes[hidden],.maya-topics[hidden]{display:none!important;}",
+    ".maya-mini-pill .maya-pill-sub{color:var(--maya-cyan);font-weight:600;font-size:11px;}",
+    ".maya-bubble{pointer-events:auto;width:290px!important;max-width:calc(100vw - 104px)!important;background:var(--maya-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--maya-border);border-radius:15px;padding:10px 12px;color:var(--maya-text);box-shadow:var(--maya-shadow);}",
+    ".maya-b-head{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:5px;}",
+    ".maya-b-title{font-size:10.5px;font-weight:700;color:var(--maya-cyan);letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
+    ".maya-b-controls{display:flex;align-items:center;gap:3px;flex-shrink:0;}",
+    ".maya-icon-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#cbd5e1;border-radius:6px;padding:2px 5px;font-size:10px;cursor:pointer;line-height:1.25;}",
+    ".maya-icon-btn:hover,.maya-icon-btn.active{border-color:var(--maya-cyan);color:#fff;background:rgba(0,229,255,0.16);}",
+    ".maya-routes,.maya-topics{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.09);max-height:125px;overflow-y:auto;}",
+    ".maya-route-chip{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#cbd5e1;border-radius:7px;padding:3px 6px;font-size:10px;cursor:pointer;flex:1 1 calc(50% - 4px);text-align:left;}",
+    ".maya-route-chip:hover,.maya-route-chip.active{background:rgba(0,229,255,0.15);border-color:var(--maya-cyan);color:#fff;font-weight:600;}",
+    ".maya-dots{display:flex;align-items:center;gap:3px;margin-bottom:6px;}",
+    ".maya-dot{height:4px;flex:1;border-radius:999px;background:rgba(255,255,255,0.15);cursor:pointer;}",
+    ".maya-dot.done{background:rgba(0,229,255,0.45);}",
+    ".maya-dot.active{background:var(--maya-cyan);}",
+    ".maya-step-tag{display:block;font-size:9.5px;font-weight:700;color:var(--maya-emerald);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;}",
+    ".maya-step-h{font-size:12.5px;font-weight:700;color:#fff;margin:0 0 3px 0;line-height:1.28;}",
+    ".maya-step-p{font-size:11.5px;line-height:1.45;color:#dbeafe;margin:0 0 8px 0;}",
+    ".maya-b-foot{display:flex;align-items:center;justify-content:space-between;gap:4px;}",
+    ".maya-btn-sm{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#e2e8f0;border-radius:7px;padding:4px 8px;font-size:10.5px;font-weight:600;cursor:pointer;white-space:nowrap;}",
+    ".maya-btn-sm:hover{border-color:var(--maya-cyan);color:#fff;}",
+    ".maya-btn-sm.pri{background:linear-gradient(135deg,rgba(0,229,255,0.22),rgba(16,185,129,0.22));border-color:rgba(0,229,255,0.55);color:#fff;}",
+    ".maya-spot-target{outline:2px solid rgba(0,229,255,0.55)!important;outline-offset:6px!important;border-radius:10px;box-shadow:0 0 26px rgba(0,229,255,0.15)!important;transition:outline-color 0.3s ease,box-shadow 0.3s ease;}",
+    "@media(max-width:680px){.maya-orb-wrap{width:60px!important;height:60px!important;min-width:60px;min-height:60px;max-width:60px;max-height:60px;}.maya-bubble{width:250px!important;padding:8px 10px;}}"
+  ].join("\n");
+  document.head.appendChild(inlineStyle);
+
   var isEn = (document.documentElement.lang || "").toLowerCase().indexOf("en") === 0 ||
     /\/(en|autonomy|spark|privacy)\.html/i.test(location.pathname);
 
-  var STORAGE_KEY = "atlas_maya_tour_v3";
+  var STORAGE_KEY = "atlas_maya_tour_v4";
 
-  // 4 Seçilebilir Tur Rotası (TR ve EN)
+  // Eğitimde verilen bilgilerin sayfa/bölüm hedefleri ve 1-2 cümlelik sıkıcı olmayan özeti
   var ROUTES = {
     tr: [
       {
@@ -24,80 +67,70 @@
             sel: ".hero",
             tag: "Durak 1 / 10 · Giriş",
             h: "Atlas Dijital Gülüş Tasarımı",
-            p: "İki fotoğraftan 441 formluk kütüphaneden gerekçeli form önerisi, kılavuz çizgili önizleme ve ExoCAD iş paketi üretiyoruz.",
-            deep: "Sağdaki şematik çizimde orta hat, diş eti zenit noktaları, kesici kenar eğrisi ve diş oranı ölçüm kılavuzlarını görebilirsiniz."
+            p: "İki fotoğraftan 441 formluk kütüphaneden gerekçeli diş formu önerisi, kılavuzlu önizleme ve ExoCAD iş paketi hazırlıyoruz."
           },
           {
             page: "index.html",
             sel: "#nasil .pipe",
-            tag: "Durak 2 / 10 · İşleyiş",
-            h: "5 Adımlı Klinik İş Akışı",
-            p: "Fotoğraf → Ölçüm → Form Önerisi → Kılavuzlu Önizleme → ExoCAD. Telefon kamerasıyla çekilen iki kare yeterlidir.",
-            deep: "Her adımda hekim kontrolü esastır; sistem tanı koymaz, hekimin seçtiği formu milimetrik kılavuzlarla hazırlar."
+            tag: "Durak 2 / 10 · 5 Adım",
+            h: "Fotoğraftan ExoCAD'e İş Akışı",
+            p: "Tam yüz ve ekartörlü iki telefon fotoğrafıyla başlayan süreç 5 adımda ölçüm, form seçimi ve önizlemeyle tamamlanır."
           },
           {
             page: "index.html",
             sel: ".sk",
             tag: "Durak 3 / 10 · 3B Sefalometri",
             h: "478 Noktalı 3B Yüz Analizi & QLoRA",
-            p: "%100 sentetik yüz üzerinde ZY-ZY elmacık ve Go-Go çene vektörleriyle yüz tipini ölçüp uygun diş morfolojisini seçiyoruz.",
-            deep: "Eğitimsiz model kare çeneyi 'oval' sanıp yuvarlak diş seçerken, 3B sefalometriyle eğitilen QLoRA modelimiz n=32 testte %100 hedef hat isabetine ulaştı."
+            p: "Yüz genişliği ve alt çene açılarını 3B ağ ile ölçüp yüz tipine en uygun diş morfolojisini seçen modülümüzü buradan deneyebilirsiniz."
           },
           {
             page: "index.html",
             sel: "#ornek",
             tag: "Durak 4 / 10 · Önce / Sonra",
-            h: "Ekartörlü & Ağız Kırpımı Önizlemesi",
-            p: "Kaydırıcıyı sağa-sola çekerek tasarım öncesi ve kabul edilen tasarım sonrası görünümü aynı dişler üzerinde karşılaştırın.",
-            deep: "Bulut görsel modele yalnızca kimliksiz ağız kırpımı gider; hastanın tam yüzü ve kimliği cihazdan dışarı çıkmaz."
+            h: "Kılavuzlu Önizleme Kaydırıcısı",
+            p: "Kaydırıcıyı hareket ettirerek mevcut dişler ile seçilen formun uygulanmış halini aynı kare üzerinde karşılaştırabilirsiniz."
           },
           {
             page: "index.html",
             sel: "#otomasyon",
-            tag: "Durak 5 / 10 · 441 Form",
-            h: "Otomasyon ve Kapı Denetimi",
-            p: "441 formluk kütüphaneden 5 öncelikli ve 3 alternatif form gerekçesiyle sıralanır; diş sayısı ve kontur kapıdan geçmeden sunulmaz.",
-            deep: "Otomasyon yalnızca ölçüm ve sıralamayı hızlandırır; son onay ve klinik karar her zaman diş hekiminindir."
+            tag: "Durak 5 / 10 · Otomasyon",
+            h: "441 Form ve Kapı Denetimi",
+            p: "Ölçüm ve form sıralamasını otomasyon hızlandırır; kontur denetiminden geçmeyen hiçbir önizleme hekime sunulmaz."
           },
           {
             page: "index.html",
             sel: "#studyo",
-            tag: "Durak 6 / 10 · Stüdyo & Yazılar",
-            h: "Yaşayan Araştırma Yazıları",
-            p: "Yüzden Dişe 3B Sefalometri, Kim Kimi Eğitiyor ve Türkiye'nin Viski Analizi dahil 7 yaşayan araştırma yazımız burada yer alır.",
-            deep: "Yazılarımız statik değildir; yeni deney ve ölçüm sonuçları çıktıkça tablolar ve bulgular güncellenir."
+            tag: "Durak 6 / 10 · Araştırma",
+            h: "Stüdyo Mimarisi ve 7 Yaşayan Yazı",
+            p: "Yüzden Dişe 3B Sefalometri, Kim Kimi Eğitiyor ve Türkiye Viski Analizi dahil tüm araştırma yazılarımıza buradan ulaşabilirsiniz."
           },
           {
             page: "otonomi.html",
             sel: "#sayac",
             tag: "Durak 7 / 10 · Otonomi",
             h: "Saatlik Doğrulanan Canlı Sayaçlar",
-            p: "Çok ajanlı sistemimizin görev, hipotez ve doğrulama sayaçları her saat gerçek kütüklerden okunarak güncellenir.",
-            deep: "Doğrulanmamış hiçbir sayı sayfaya girmez; her sayaç doğrudan diskteki görev ve deney kayıtlarına bağlıdır."
+            p: "Ajanların ürettiği hipotezler, çalışan bekçiler ve doğrulama istatistikleri doğrudan canlı kütüklerden okunur."
           },
           {
             page: "otonomi.html",
             sel: "#ablasyon",
             tag: "Durak 8 / 10 · Ablasyon",
-            h: "3 Kollu Bağlam ve Maliyet Ablasyonu",
-            p: "Aynı doğrulama kapısından geçen üç farklı bağlam kolunun süre (11 / 8 / 5 dk) ve yük farkını canlı şemada izleyin.",
-            deep: "Bu deneyde bağlam paketini atlamak kararı değiştirmedi ama süreyi yarıdan fazla indirdi."
+            h: "3 Kollu Bağlam ve Maliyet Deneyi",
+            p: "Üç farklı bağlam kolunun aynı doğrulama kapısından hangi süre ve maliyetle geçtiğini gösteren ölçüm şemamız."
           },
           {
             page: "otonomi.html",
             sel: "#halka",
-            tag: "Durak 9 / 10 · Evrim Halkası",
+            tag: "Durak 9 / 10 · Evrim",
             h: "4 Adımlı Kapalı Evrim Halkası",
-            p: "Çürüyen kurallar → Aday üretimi (Enki) → Kör yargıç damgası (Enlil) → Gölge sınama (Enkidu).",
-            deep: "Yapıcı ses Enki ile kör yargıç Enlil birbirini doğrudan duymaz; iltimas ve grup düşüncesi mimari olarak engellenir."
+            p: "Yapıcı ses Enki ile kör yargıç Enlil birbirini duymadan kuralları sınar; istatistik kapısını geçen kurallar yaşar."
           },
           {
             page: "otonomi.html",
             sel: "#maya",
             tag: "Durak 10 / 10 · Maya",
             h: "Maya: ATLAS'ın Kızı ve Asistanı",
-            p: "Eğitim öncesi 3.600 olan doğrulama kaybımın 240 kat düşerek 0.015'e inişini ve gelişim tablosunu burada inceleyebilirsiniz.",
-            deep: "Her gün yeni sınamalarla kendimi güncelliyorum; istediğiniz zaman beni sürükleyebilir veya başka bir tur rotası seçebilirsiniz."
+            p: "Eğitim öncesi 3.600 olan doğrulama kaybımın 0.015'e inişini ve gelişim tablosunu bu bölümde inceleyebilirsiniz."
           }
         ]
       },
@@ -108,42 +141,37 @@
           {
             page: "index.html",
             sel: ".hero figure",
-            tag: "Klinik 1 / 5 · Kılavuz",
-            h: "Orta Hat, Zenit ve Kesici Kenar",
-            p: "Altı ön diş üzerinde orta hat, diş eti zenit noktaları, kesici kenar eğrisi ve diş oranı ölçüm şeması.",
-            deep: "Kılavuz çizgileri, tasarımın hastanın doğal yüz simetrisiyle ve alt dudak eğrisiyle uyumunu denetler."
+            tag: "Klinik 1 / 5 · Şema",
+            h: "Orta Hat ve Diş Oranı Kılavuzu",
+            p: "Altı ön diş üzerinde orta hat, diş eti zenit noktaları ve kesici kenar eğrisinin şematik yerleşimi."
           },
           {
             page: "index.html",
             sel: "#nasil .pipe",
-            tag: "Klinik 2 / 5 · 5 Adım",
-            h: "Fotoğraftan ExoCAD İş Paketine",
-            p: "Tam yüz gülüş ve ekartörlü iki kareyle başlayan süreç, onayınızdan sonra doğrudan ExoCAD iş paketine dönüşür.",
-            deep: "ExoCAD kullanmayan klinikler de form önerisi ve kılavuzlu önce/sonra önizlemesini tek başına kullanabilir."
+            tag: "Klinik 2 / 5 · Süreç",
+            h: "5 Adımda Klinik Teslim",
+            p: "İki fotoğrafla başlayan akış, hekim onayından sonra doğrudan ExoCAD iş paketine dönüşür."
           },
           {
             page: "index.html",
             sel: ".sk",
-            tag: "Klinik 3 / 5 · 3B Sefalometri",
-            h: "Canlı 3B Sefalometrik Simülasyon",
-            p: "478 anatomik nokta üzerinden yüz genişliği (ZY-ZY) ve alt çene (Go-Go) oranlarını ölçen etkileşimli modül.",
-            deep: "Modül üzerindeki düğmelerle 3B sefalometrik ağı, eğitimsiz modeli ve QLoRA modelimizin önerisini canlı karşılaştırabilirsiniz."
+            tag: "Klinik 3 / 5 · 3B Modül",
+            h: "Canlı 3B Sefalometri Simülasyonu",
+            p: "Modül üzerindeki düğmelerle 3B sefalometrik ağı, eğitimsiz modeli ve QLoRA modelimizi karşılaştırabilirsiniz."
           },
           {
             page: "index.html",
             sel: "#ornek",
-            tag: "Klinik 4 / 5 · Önce / Sonra",
-            h: "Ekartörlü ve Ağız Kırpımı Karşılaştırması",
-            p: "Canlı kaydırıcıyla mevcut diş formu ve önerilen yeni form arasındaki farkı milimetrik olarak inceleyin.",
-            deep: "Diş eti sınırları ve dudak dokusu korunur; yalnızca diş morfolojisi kılavuz çizgilerine göre yenilenir."
+            tag: "Klinik 4 / 5 · Karşılaştır",
+            h: "Önce / Sonra Görsel Simülasyon",
+            p: "Ekartörlü ve ağız kırpımı karelerinde tasarım öncesi ve sonrası farkı kaydırıcıyla inceleyin."
           },
           {
             page: "index.html",
             sel: "#sss",
-            tag: "Klinik 5 / 5 · Mahremiyet",
-            h: "Veri Güvenliği ve Klinik Sorular",
-            p: "Hangi fotoğraflar gerekir, elinize ne geçer ve hasta verisi nasıl korunur sorularının net yanıtları.",
-            deep: "Tam yüz fotoğrafları stüdyo cihazlarından dışarı çıkmaz; dış görsel modele yalnız kimliksiz ağız kırpımı gönderilir."
+            tag: "Klinik 5 / 5 · SSS & Veri",
+            h: "Sık Sorulan Sorular ve Gizlilik",
+            p: "Fotoğraf standartları, teslim paketi ve hasta mahremiyeti hakkındaki tüm soruların kısa yanıtları."
           }
         ]
       },
@@ -156,40 +184,35 @@
             sel: "#sayac",
             tag: "Otonomi 1 / 5 · Sayaçlar",
             h: "Canlı Sistem Sayaçları",
-            p: "Ajanların ürettiği hipotezler, çalışan bekçiler ve doğrulama istatistikleri saatlik olarak güncellenir.",
-            deep: "Her rakam doğrudan çalışan süreçlerin ürettiği JSON kütüklerinden okunur."
+            p: "Saatlik doğrulanan görev, hipotez ve bekçi sayaçları."
           },
           {
             page: "otonomi.html",
             sel: "#ajanlar",
             tag: "Otonomi 2 / 5 · Karneler",
-            h: "Ajan Karneleri (Enkidu, Enki, Enlil)",
-            p: "Mekanik işçi Enkidu, yapıcı ses Enki, kör yargıç Enlil ve Kalfa'nın görev tanımları ve başarı karneleri.",
-            deep: "Her ajanın yetkisi ve sınırı ayrılmıştır; hiçbir ajan kendi ürettiği çıktının hakemi olamaz."
+            h: "Ajan Karneleri",
+            p: "Enkidu, Enki, Enlil, Kalfa ve Kıvılcım ajanlarının görev ve başarı karneleri."
           },
           {
             page: "otonomi.html",
             sel: "#ablasyon",
             tag: "Otonomi 3 / 5 · Ablasyon",
             h: "Maliyet ve Bağlam Ablasyonu",
-            p: "Üç farklı bağlam paketinin aynı doğrulama kapısından geçiş süresi ve bağlam yükü karşılaştırması.",
-            deep: "Gereksiz bağlam yükünü azaltmak doğruluktan ödün vermeden hızı iki katına çıkarır."
+            p: "Aynı sonucu yarı sürede üreten bağlam ablasyonu deneyimiz."
           },
           {
             page: "otonomi.html",
             sel: "#halka",
             tag: "Otonomi 4 / 5 · Evrim",
             h: "Kapalı Evrim Halkası",
-            p: "Yeni ajan eklemek yerine mevcut kural kümesini sınayarak evrimleştiren dört adımlı kapalı döngü.",
-            deep: "İstatistik kapısı (240 epizot / 28 gün) dolmadan hiçbir aday kural canlı sisteme alınmaz."
+            p: "Çürüyen kuralları kör yargıç ve gölge sınamayla yenileyen 4 adımlı döngü."
           },
           {
             page: "otonomi.html",
             sel: "#maya",
             tag: "Otonomi 5 / 5 · Maya",
-            h: "Maya Gelişim Eğrisi (3.600 → 0.015)",
-            p: "Atlas tarafından eğitilen asistanınız Maya'nın eğitim öncesi ve sonrası doğrulama kaybı ve kazanımları.",
-            deep: "240 katlık kayıp düşüşüyle kanıtsız iddialara direnç ve tam proje hâkimiyeti kazanıldı."
+            h: "Maya Gelişim Eğrisi",
+            p: "Eğitim öncesi ve sonrası doğrulama kaybı (3.600 → 0.015) ve karşılaştırma tablosu."
           }
         ]
       },
@@ -202,32 +225,28 @@
             sel: "#algoritma",
             tag: "Kıvılcım 1 / 4 · Yordam",
             h: "7 Basamaklı Kıvılcım Yordamı",
-            p: "Ön beklenti, ölçüm, kimliksiz brif, bağımsız sesler, kaynak doğrulama, sentez ve karne adımları.",
-            deep: "Farklı model aileleri birbirini duymadan aynı soruya yanıt üretir; uydurma kaynaklar otomatik elenir."
+            p: "Birbirini duymayan model ailelerinden tez, karşı tez ve düşer testi üretme yöntemi."
           },
           {
             page: "kivilcim.html",
             sel: "#karne",
-            tag: "Kıvılcım 2 / 4 · 49 Tur",
-            h: "49 Kıvılcım Turunun Gerçek Karnesi",
-            p: "Hangi sesin kaç turda en güçlü tezi veya karşı tezi ürettiğinin ölçülmüş dağılımı.",
-            deep: "Her hüküm kendi düşer testini (hangi veri gelirse bu hükmün geçersiz sayılacağını) taşımak zorundadır."
+            tag: "Kıvılcım 2 / 4 · Karne",
+            h: "49 Turun Gerçek Karnesi",
+            p: "Hangi model ailesinin kaç turda en güçlü tezi ürettiğinin ölçülmüş tablosu."
           },
           {
             page: "kivilcim.html",
             sel: "#makaleler",
             tag: "Kıvılcım 3 / 4 · Deneyler",
-            h: "Sefalometrik QLoRA ve Ajan Evrimi",
-            p: "Kıvılcım turlarından doğan deneysel makalelerimiz ve 4 kollu ablasyon sonuçları.",
-            deep: "Teorik tartışmalar doğrudan yerel GPU deneylerine dönüştürülerek doğrulanır."
+            h: "Deneysel Kıvılcım Yazıları",
+            p: "Sefalometrik QLoRA ve Ajan Evrimi deneylerinin özet bulguları."
           },
           {
             page: "blog.html",
             sel: "main",
-            tag: "Kıvılcım 4 / 4 · Arşiv",
-            h: "Atlas Stüdyo · Tüm Yazılar (7 Makale)",
-            p: "Diş hekimliği, yapay zekâ eğitimi ve strateji üzerine yayınlanan tüm kapsamlı incelemelerimiz.",
-            deep: "İstediğiniz yazıya tıklayarak tam metni, deney tablolarını ve birincil kaynakçayı okuyabilirsiniz."
+            tag: "Kıvılcım 4 / 4 · Yazılar",
+            h: "Tüm Araştırma Yazıları (7 Makale)",
+            p: "Stüdyonun yayınladığı 7 yaşayan makalenin tamamına buradan geçebilirsiniz."
           }
         ]
       }
@@ -240,82 +259,72 @@
           {
             page: "en.html",
             sel: ".hero",
-            tag: "Stop 1 / 10 · Overview",
+            tag: "Stop 1 / 10 · Intro",
             h: "Atlas Digital Smile Design",
-            p: "From two photographs, we prepare reasoned tooth form proposals from a 441-form library, guided mockups, and ExoCAD packages.",
-            deep: "The schematic on the right illustrates midline, gingival zeniths, incisal curve, and tooth proportion guides."
+            p: "From two photos, we prepare reasoned form proposals from a 441-form library, guided mockups, and ExoCAD packages."
           },
           {
             page: "en.html",
             sel: "#how .pipe",
-            tag: "Stop 2 / 10 · Workflow",
+            tag: "Stop 2 / 10 · 5 Steps",
             h: "5-Step Clinical Workflow",
-            p: "Photos → Measurement → Form Proposal → Guided Preview → ExoCAD. Two smartphone photos are sufficient.",
-            deep: "The dentist remains in full control at every step; Atlas provides quantitative measurements and guided previews."
+            p: "Photos → Measurement → Form Proposal → Guided Preview → ExoCAD, starting from two smartphone photographs."
           },
           {
             page: "en.html",
             sel: ".sk",
             tag: "Stop 3 / 10 · 3D Cephalometry",
             h: "478-Point 3D Facial Analysis & QLoRA",
-            p: "On a 100% synthetic face, we measure ZY-ZY bizygomatic and Go-Go mandibular vectors to match tooth morphology.",
-            deep: "While an untrained model confuses square jaws for oval, our 3D-cephalometry QLoRA model achieved 100% target line accuracy across n=32 test faces."
+            p: "Test our interactive module measuring bizygomatic and mandibular vectors to match tooth morphology."
           },
           {
             page: "en.html",
             sel: "#ornek",
             tag: "Stop 4 / 10 · Before / After",
-            h: "Retracted & Mouth-Crop Preview",
-            p: "Drag the interactive slider to compare the pre-design teeth and the accepted smile design on the exact same case.",
-            deep: "Only anonymous mouth crops are sent to cloud visual models; full patient faces never leave studio devices."
+            h: "Guided Preview Slider",
+            p: "Slide left and right to compare pre-design teeth with the accepted morphology on the same case."
           },
           {
             page: "en.html",
             sel: "#automation",
-            tag: "Stop 5 / 10 · 441 Forms",
-            h: "Automation and Gate Verification",
-            p: "5 primary and 3 alternative forms are ranked from our 441-form library; tooth count and contours pass automated gates before delivery.",
-            deep: "Automation accelerates measurement and ranking while clinical judgment stays strictly with the dentist."
+            tag: "Stop 5 / 10 · Automation",
+            h: "441 Forms & Gate Verification",
+            p: "Automation ranks 5 primary and 3 alternative forms; every preview passes contour gates before delivery."
           },
           {
             page: "en.html",
             sel: "#studio",
-            tag: "Stop 6 / 10 · Studio & Essays",
-            h: "Living Research Essays",
-            p: "Explore our 7 living research papers including Face-to-Tooth 3D Cephalometry, Who Trains Whom, and market analyses.",
-            deep: "Our essays update dynamically as new experimental runs and measurements are completed."
+            tag: "Stop 6 / 10 · Research",
+            h: "Studio Architecture & 7 Living Essays",
+            p: "Access our living research papers including Face-to-Tooth 3D Cephalometry and Who Trains Whom."
           },
           {
             page: "autonomy.html",
             sel: "#sayac",
             tag: "Stop 7 / 10 · Autonomy",
             h: "Hourly Verified Live Counters",
-            p: "Task, hypothesis, and verification counters across our multi-agent system, read directly from live logs every hour.",
-            deep: "No unmeasured figure enters the site; every counter is bound to verifiable disk logs."
+            p: "Live task, hypothesis, and watchdog counters read directly from production logs."
           },
           {
             page: "autonomy.html",
             sel: "#ablasyon",
             tag: "Stop 8 / 10 · Ablation",
-            h: "3-Arm Context and Cost Ablation",
-            p: "Compare duration (11 / 8 / 5 min) and context load across three arms passing through the exact same verification gate.",
-            deep: "Skipping the extra context pack preserved the exact same decision while cutting duration by more than half."
+            h: "3-Arm Context & Cost Ablation",
+            p: "Compare duration and context load across three arms passing through the same verification gate."
           },
           {
             page: "autonomy.html",
             sel: "#halka",
-            tag: "Stop 9 / 10 · Evolution Loop",
+            tag: "Stop 9 / 10 · Evolution",
             h: "4-Step Closed Evolution Loop",
-            p: "Decaying rules → Candidate (Enki) → Blind stamp (Enlil) → Shadow test (Enkidu).",
-            deep: "Constructive voice Enki and blind judge Enlil have no direct channel, preventing bias and sycophancy."
+            p: "Constructive voice Enki and blind judge Enlil test rule candidates without direct communication."
           },
           {
             page: "autonomy.html",
             sel: "#maya",
             tag: "Stop 10 / 10 · Maya",
             h: "Maya: Daughter of ATLAS & Assistant",
-            p: "See how my validation loss dropped 240-fold from 3.600 down to 0.015 and review the pre/post-training table.",
-            deep: "You can drag me anywhere on the screen or pick any tour route to explore the site."
+            p: "Review how my validation loss dropped 240-fold from 3.600 down to 0.015."
           }
         ]
       },
@@ -327,41 +336,36 @@
             page: "en.html",
             sel: ".hero figure",
             tag: "Clinical 1 / 5 · Guides",
-            h: "Midline, Zenith & Incisal Curve",
-            p: "Schematic guide lines across the six anterior teeth showing midline, gingival zeniths, and tooth proportions.",
-            deep: "Guide lines ensure the proposed morphology harmonizes with natural facial symmetry."
+            h: "Midline & Proportion Guides",
+            p: "Schematic guide lines across the six anterior teeth showing midline, zeniths, and tooth proportions."
           },
           {
             page: "en.html",
             sel: "#how .pipe",
-            tag: "Clinical 2 / 5 · 5 Steps",
-            h: "From Smartphone Photos to ExoCAD",
-            p: "Starting from two photographs, the workflow produces guided previews and an ExoCAD work package upon approval.",
-            deep: "Clinics without ExoCAD can still use our form proposals and guided before/after mockups."
+            tag: "Clinical 2 / 5 · Workflow",
+            h: "From Photos to ExoCAD",
+            p: "Two photographs turn into guided previews and an ExoCAD work package upon dentist approval."
           },
           {
             page: "en.html",
             sel: ".sk",
-            tag: "Clinical 3 / 5 · 3D Cephalometry",
+            tag: "Clinical 3 / 5 · 3D Module",
             h: "Live 3D Cephalometric Simulation",
-            p: "Interactive 478-point 3D mesh measuring bizygomatic and mandibular proportions on a 100% synthetic portrait.",
-            deep: "Use the module buttons to compare the 3D cephalometric mesh, untrained AI, and our QLoRA model."
+            p: "Compare the 3D cephalometric mesh, untrained AI, and our QLoRA model."
           },
           {
             page: "en.html",
             sel: "#ornek",
-            tag: "Clinical 4 / 5 · Before / After",
-            h: "Retracted & Mouth-Crop Slider",
-            p: "Slide left and right to inspect the before and after morphology on the same dentition.",
-            deep: "Gingival margins and lips remain untouched while tooth morphology is reconstructed."
+            tag: "Clinical 4 / 5 · Compare",
+            h: "Before / After Slider",
+            p: "Inspect the before and after morphology on retracted and mouth-crop views."
           },
           {
             page: "en.html",
             sel: "#faq",
-            tag: "Clinical 5 / 5 · Privacy & FAQ",
-            h: "Patient Privacy & Clinical FAQ",
-            p: "Clear answers on required photographs, deliverables, and strict local privacy protection.",
-            deep: "Full faces never leave studio hardware; only de-identified mouth crops are processed."
+            tag: "Clinical 5 / 5 · FAQ & Privacy",
+            h: "Clinical FAQ & Privacy",
+            p: "Answers on required photos, deliverables, and local privacy protection."
           }
         ]
       },
@@ -374,40 +378,35 @@
             sel: "#sayac",
             tag: "Autonomy 1 / 5 · Counters",
             h: "Live System Counters",
-            p: "Hourly updated counters tracking hypotheses, watchdogs, and verification gates.",
-            deep: "Every metric is read directly from production JSON logs."
+            p: "Hourly updated counters tracking hypotheses and verification gates."
           },
           {
             page: "autonomy.html",
             sel: "#ajanlar",
             tag: "Autonomy 2 / 5 · Scorecards",
             h: "Agent Scorecards",
-            p: "Performance scorecards for Enkidu, Enki, Enlil, Kalfa, and Spark.",
-            deep: "No agent is permitted to grade its own output."
+            p: "Performance scorecards for Enkidu, Enki, Enlil, Kalfa, and Spark."
           },
           {
             page: "autonomy.html",
             sel: "#ablasyon",
             tag: "Autonomy 3 / 5 · Ablation",
             h: "Context & Cost Ablation",
-            p: "Measuring duration and token load across three context configurations.",
-            deep: "Trimming redundant context halved execution time without altering the gate decision."
+            p: "Halving execution time while preserving the exact same gate decision."
           },
           {
             page: "autonomy.html",
             sel: "#halka",
             tag: "Autonomy 4 / 5 · Evolution",
             h: "Closed Evolution Loop",
-            p: "Four-step closed loop evolving the rule set rather than spawning unchecked agents.",
-            deep: "Candidates must pass the 240-episode / 28-day statistical gate before going live."
+            p: "Four-step closed loop evolving the rule set with blind verification."
           },
           {
             page: "autonomy.html",
             sel: "#maya",
             tag: "Autonomy 5 / 5 · Maya",
-            h: "Maya Training Curve (3.600 → 0.015)",
-            p: "Pre-training vs. post-training validation loss and daily self-iteration benchmarks.",
-            deep: "Trained by Atlas to require verifiable measurements and guide visitors across the lab."
+            h: "Maya Training Curve",
+            p: "Pre-training vs. post-training validation loss (3.600 → 0.015)."
           }
         ]
       },
@@ -419,59 +418,77 @@
             page: "spark.html",
             sel: "#algoritma",
             tag: "Spark 1 / 4 · Procedure",
-            h: "7-Step Spark Thesis Procedure",
-            p: "Pre-expectation, measurement, anonymous brief, independent voices, source check, synthesis, and scorecard.",
-            deep: "Independent model families answer without hearing one another; fabricated citations are eliminated."
+            h: "7-Step Spark Procedure",
+            p: "Generating theses, counter-theses, and falsification tests across independent models."
           },
           {
             page: "spark.html",
             sel: "#karne",
-            tag: "Spark 2 / 4 · 49 Rounds",
-            h: "Scorecard Across 49 Rounds",
-            p: "Measured distribution of thesis and counter-thesis performance across model families.",
-            deep: "Every claim must carry an explicit falsification condition."
+            tag: "Spark 2 / 4 · Scorecard",
+            h: "49-Round Scorecard",
+            p: "Measured performance across 49 multi-agent collision rounds."
           },
           {
             page: "spark.html",
             sel: "#makaleler",
             tag: "Spark 3 / 4 · Experiments",
-            h: "Cephalometric QLoRA & Evolution",
-            p: "Experimental papers born from Spark rounds and 4-arm ablation studies.",
-            deep: "Hypotheses are tested directly on local GPU benchmarks."
+            h: "Experimental Spark Papers",
+            p: "Cephalometric QLoRA and Agent Evolution ablation findings."
           },
           {
             page: "blog.html",
             sel: "main",
             tag: "Spark 4 / 4 · Archive",
-            h: "All Studio Essays (7 Papers)",
-            p: "Complete collection of our living research papers and strategic analyses.",
-            deep: "Click any essay to inspect full tables, methodology, and primary sources."
+            h: "All 7 Living Essays",
+            p: "Browse the complete collection of our living research papers."
           }
         ]
       }
     ]
   };
 
-  var routeList = isEn ? ROUTES.en : ROUTES.tr;
+  // Eğitimden gelen hızlı konu başlıkları (Tıklanınca doğrudan o bölüme/yazıya götürür ve kısaca özetler)
+  var QUICK_TOPICS = {
+    tr: [
+      { label: "📐 3B Sefalometri", page: "index.html", sel: ".sk", h: "3B Sefalometrik Morfoloji", p: "478 noktalı 3B yüz ağıyla ZY-ZY ve Go-Go oranlarını ölçer; n=32 testte %100 hedef hat isabeti sağlar." },
+      { label: "🦷 441 Diş Formu", page: "index.html", sel: "#otomasyon", h: "441 Doğal Form Kütüphanesi", p: "Yüz oranlarına göre 441 formluk kütüphaneden 5 öncelikli ve 3 alternatif diş formu gerekçesiyle sıralanır." },
+      { label: "🔒 KVKK & Gizlilik", page: "index.html", sel: "#sss", h: "Kimliksiz Ağız Kırpımı", p: "Tam yüz fotoğrafları cihazdan çıkmaz; dış görsel modele yalnızca kimliksiz ağız kırpımı ve maske gönderilir." },
+      { label: "⚡ Kıvılcım (49 Tur)", page: "kivilcim.html", sel: "#algoritma", h: "7 Basamaklı Kıvılcım Yordamı", p: "Farklı model aileleri birbirini duymadan tez ve düşer testi üretir; uydurma kaynaklar otomatik elenir." },
+      { label: "🧬 Evrim Halkası", page: "otonomi.html", sel: "#halka", h: "4 Adımlı Kapalı Evrim", p: "Enkidu, Enki ve kör yargıç Enlil ile kuralları gölge sınamadan geçirerek evrimleştiren döngü." },
+      { label: "🤖 Maya Eğitimi", page: "otonomi.html", sel: "#maya", h: "Maya: 3.600 → 0.015 Kayıp Düşüşü", p: "Atlas tarafından eğitilen asistanınız; 240 kat kayıp düşüşüyle proje ilkelerini ve ölçüm disiplinini taşır." },
+      { label: "📄 Yüzden Dişe Yazısı", page: "blog/yuzden-dise-sefalometrik-lora.html", sel: "main", h: "Yüzden Dişe: 3B Sefalometrik QLoRA", p: "Eğitimsiz modelin kare çene yanılgısını 478 noktalı 3B ağ ve QLoRA eğitimiyle nasıl çözdüğümüzün makalesi." },
+      { label: "🪞 Kim Kimi Eğitiyor", page: "blog/kim-kimi-egitiyor.html", sel: "main", h: "Kim Kimi Eğitiyor? (96 Deney)", p: "Mekanik kapılar olmadan yalnız promtla davranışın değişmediğini gösteren 96 deneylik araştırmamız." },
+      { label: "🥃 Viski Analizi", page: "blog/turkiye-viski-dunya-markasi.html", sel: "main", h: "Türkiye'nin Viski Markası Analizi", p: "1963 Ankara Viskisi'nden bugüne vergi asimetrisi, maliyet tabanı ve çıkış yolunu inceleyen 8 sesli Kıvılcım yazısı." }
+    ],
+    en: [
+      { label: "📐 3D Cephalometry", page: "en.html", sel: ".sk", h: "3D Cephalometric Morphology", p: "Measures ZY-ZY and Go-Go ratios on a 478-point 3D mesh, reaching 100% target line accuracy on n=32 test faces." },
+      { label: "🦷 441 Tooth Forms", page: "en.html", sel: "#automation", h: "441 Natural Form Library", p: "Ranks 5 primary and 3 alternative tooth forms with clinical rationale based on facial proportions." },
+      { label: "🔒 Privacy & Security", page: "en.html", sel: "#faq", h: "Anonymous Mouth-Crop Architecture", p: "Full faces never leave studio devices; only de-identified mouth crops and masks are processed." },
+      { label: "⚡ Spark (49 Rounds)", page: "spark.html", sel: "#algoritma", h: "7-Step Spark Procedure", p: "Independent model families generate theses and falsification tests blindly without hearing each other." },
+      { label: "🧬 Evolution Loop", page: "autonomy.html", sel: "#halka", h: "4-Step Closed Evolution", p: "Closed loop where Enkidu, Enki, and blind judge Enlil evolve rules through shadow testing." },
+      { label: "🤖 Maya Training", page: "autonomy.html", sel: "#maya", h: "Maya: 3.600 → 0.015 Loss Drop", p: "Trained by Atlas with a 240-fold validation loss reduction to guide visitors across the site." }
+    ]
+  };
 
-  // Durum değişkenleri
+  var routeList = isEn ? ROUTES.en : ROUTES.tr;
+  var topicList = isEn ? QUICK_TOPICS.en : QUICK_TOPICS.tr;
+
   var state = {
     open: false,
     routeId: "full",
     stepIdx: 0,
-    showDeep: false,
     showRoutes: false,
+    showTopics: false,
     autoPlay: false,
-    userDragged: false,
-    posX: window.innerWidth - 395,
-    posY: window.innerHeight - 105
+    posX: Math.max(16, window.innerWidth - 385),
+    posY: Math.max(70, window.innerHeight - 100)
   };
 
   var autoTimer = null;
   var currentSpotEl = null;
-  var lookTargetX = 0; // -1 (sola bak) .. +1 (sağa bak)
+  var lookTargetX = 0;
   var lookTargetY = 0;
-  var exprPulse = 0; // Yeni durağa gelince 3B gülümseme/kaş mimiği
+  var exprPulse = 0;
 
   function getRoute(id) {
     for (var i = 0; i < routeList.length; i++) {
@@ -480,21 +497,31 @@
     return routeList[0];
   }
 
-  function currentPageFile() {
-    var p = location.pathname.split("/").pop();
-    if (!p || p === "") return "index.html";
-    return p;
+  function currentPageRel() {
+    var path = location.pathname.replace(/^\/+/, "");
+    if (!path || path === "") return "index.html";
+    return path;
   }
 
-  function saveState() {
+  function resolveHref(targetPage) {
+    var inBlogSubdir = /\/blog\//i.test(location.pathname);
+    if (inBlogSubdir) {
+      if (targetPage.indexOf("blog/") === 0) return targetPage.slice(5);
+      return "../" + targetPage;
+    }
+    return targetPage;
+  }
+
+  function saveState(customOverride) {
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({
+      var payload = customOverride || {
         open: state.open,
         routeId: state.routeId,
         stepIdx: state.stepIdx,
         autoPlay: state.autoPlay,
         ts: Date.now()
-      }));
+      };
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
     } catch (e) {}
   }
 
@@ -510,9 +537,10 @@
     }
   }
 
-  // DOM Kurulumu
+  var assetPrefix = /\/blog\//i.test(location.pathname) ? "../" : "";
+
   var carrier = document.createElement("div");
-  carrier.className = "maya-carrier";
+  carrier.className = "maya-carrier bubble-left";
   carrier.id = "maya-carrier";
 
   carrier.innerHTML =
@@ -525,28 +553,27 @@
     '</div>' +
     '<button type="button" class="maya-mini-pill" id="maya-mini-pill">' +
       '<span>' + (isEn ? "Maya · ATLAS Assistant" : "Maya · ATLAS Asistanı") + '</span>' +
-      '<span class="maya-pill-sub">' + (isEn ? "▶ Start Tour" : "▶ Turu Başlat") + '</span>' +
+      '<span class="maya-pill-sub">' + (isEn ? "▶ Tour & Guide" : "▶ Tur & Rehber") + '</span>' +
     '</button>' +
     '<div class="maya-bubble" id="maya-bubble" hidden>' +
       '<div class="maya-b-head">' +
-        '<div class="maya-b-title">' +
-          '<span>' + (isEn ? "Maya — Daughter of ATLAS · Assistant" : "Maya — ATLAS\'ın Kızı · Asistan") + '</span>' +
-        '</div>' +
+        '<div class="maya-b-title">' + (isEn ? "Maya · ATLAS Assistant" : "Maya · ATLAS\'ın Kızı · Asistan") + '</div>' +
         '<div class="maya-b-controls">' +
-          '<button type="button" class="maya-icon-btn" id="maya-btn-routes" title="' + (isEn ? "Choose Tour Route" : "Tur Rotası Seç") + '">' + (isEn ? "Routes" : "Rotalar") + '</button>' +
-          '<button type="button" class="maya-icon-btn" id="maya-btn-auto" title="' + (isEn ? "Auto-scroll & advance" : "Otomatik kaydır ve ilerle") + '">' + (isEn ? "Auto ▶" : "Oto ▶") + '</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-topics" title="' + (isEn ? "Jump to Topic" : "Konuya Git") + '">' + (isEn ? "Topics" : "Konular") + '</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-routes" title="' + (isEn ? "Choose Route" : "Tur Rotası") + '">' + (isEn ? "Routes" : "Rotalar") + '</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-auto" title="' + (isEn ? "Auto-scroll tour" : "Otomatik gezdir") + '">' + (isEn ? "Auto ▶" : "Oto ▶") + '</button>' +
           '<button type="button" class="maya-icon-btn" id="maya-btn-close" title="' + (isEn ? "Minimize" : "Küçült") + '">✕</button>' +
         '</div>' +
       '</div>' +
       '<div class="maya-routes" id="maya-routes-bar" hidden></div>' +
+      '<div class="maya-topics" id="maya-topics-bar" hidden></div>' +
       '<div class="maya-dots" id="maya-dots"></div>' +
       '<div class="maya-step-tag" id="maya-step-tag"></div>' +
       '<h4 class="maya-step-h" id="maya-step-h"></h4>' +
       '<p class="maya-step-p" id="maya-step-p"></p>' +
-      '<div class="maya-step-deep" id="maya-step-deep" hidden></div>' +
       '<div class="maya-b-foot">' +
         '<button type="button" class="maya-btn-sm" id="maya-btn-prev">◀</button>' +
-        '<button type="button" class="maya-btn-sm" id="maya-btn-deep">' + (isEn ? "Details" : "Detay") + '</button>' +
+        '<button type="button" class="maya-btn-sm" id="maya-btn-ask">' + (isEn ? "Jump to Topic ▾" : "Konu Seç ▾") + '</button>' +
         '<button type="button" class="maya-btn-sm pri" id="maya-btn-next">' + (isEn ? "Next Stop ▶" : "Sonraki ▶") + '</button>' +
       '</div>' +
     '</div>';
@@ -558,28 +585,28 @@
   var miniPill = document.getElementById("maya-mini-pill");
   var bubbleEl = document.getElementById("maya-bubble");
   var routesBar = document.getElementById("maya-routes-bar");
+  var topicsBar = document.getElementById("maya-topics-bar");
   var dotsEl = document.getElementById("maya-dots");
   var tagEl = document.getElementById("maya-step-tag");
   var hEl = document.getElementById("maya-step-h");
   var pEl = document.getElementById("maya-step-p");
-  var deepEl = document.getElementById("maya-step-deep");
+  var btnTopics = document.getElementById("maya-btn-topics");
   var btnRoutes = document.getElementById("maya-btn-routes");
   var btnAuto = document.getElementById("maya-btn-auto");
   var btnClose = document.getElementById("maya-btn-close");
   var btnPrev = document.getElementById("maya-btn-prev");
-  var btnDeep = document.getElementById("maya-btn-deep");
+  var btnAsk = document.getElementById("maya-btn-ask");
   var btnNext = document.getElementById("maya-btn-next");
 
-  // Taşıyıcı konumlandırma (Ekran dışına taşmayı önler)
   function setCarrierPos(x, y, bubbleOnLeft) {
     var vw = window.innerWidth;
     var vh = window.innerHeight;
     var rect = carrier.getBoundingClientRect();
-    var w = rect.width || (state.open ? 388 : 260);
-    var h = rect.height || (state.open ? 210 : 80);
+    var w = rect.width || (state.open ? 375 : 250);
+    var h = rect.height || (state.open ? 185 : 78);
 
-    var clampedX = Math.max(12, Math.min(vw - w - 12, x));
-    var clampedY = Math.max(64, Math.min(vh - h - 12, y));
+    var clampedX = Math.max(10, Math.min(vw - w - 10, x));
+    var clampedY = Math.max(62, Math.min(vh - h - 12, y));
 
     state.posX = clampedX;
     state.posY = clampedY;
@@ -593,15 +620,14 @@
   }
 
   function parkBottomRight() {
-    carrier.classList.add("bubble-left");
     var vw = window.innerWidth;
     var vh = window.innerHeight;
-    var w = state.open ? Math.min(390, vw - 24) : 265;
-    var h = state.open ? 225 : 84;
-    setCarrierPos(vw - w - 18, vh - h - 18, true);
+    var w = state.open ? Math.min(378, vw - 20) : 255;
+    var h = state.open ? (bubbleEl.offsetHeight || 190) : 78;
+    setCarrierPos(vw - w - 16, vh - h - 16, true);
   }
 
-  // Sürükle & Bırak (Kullanıcı Maya'yı sitede istediği yere serbestçe taşıyabilir)
+  // Sürükle & Bırak
   var dragInfo = null;
   orbEl.addEventListener("pointerdown", function (ev) {
     dragInfo = {
@@ -621,10 +647,9 @@
     var dy = ev.clientY - dragInfo.startY;
     if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
       dragInfo.moved = true;
-      state.userDragged = true;
     }
     if (dragInfo.moved) {
-      var onLeft = (dragInfo.origX + dx) > window.innerWidth * 0.48;
+      var onLeft = (dragInfo.origX + dx) > window.innerWidth * 0.45;
       setCarrierPos(dragInfo.origX + dx, dragInfo.origY + dy, onLeft);
     }
   });
@@ -648,7 +673,6 @@
     startOrOpenTour();
   });
 
-  // Rota Seçici Çubuğu Oluşturma
   function renderRouteChips() {
     routesBar.innerHTML = "";
     routeList.forEach(function (r) {
@@ -659,7 +683,6 @@
       b.addEventListener("click", function () {
         state.routeId = r.id;
         state.stepIdx = 0;
-        state.showDeep = false;
         state.showRoutes = false;
         routesBar.hidden = true;
         btnRoutes.classList.remove("active");
@@ -669,6 +692,43 @@
     });
   }
 
+  function renderTopicChips() {
+    topicsBar.innerHTML = "";
+    topicList.forEach(function (tp) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "maya-route-chip";
+      b.textContent = tp.label;
+      b.addEventListener("click", function () {
+        state.showTopics = false;
+        topicsBar.hidden = true;
+        btnTopics.classList.remove("active");
+        jumpToQuickTopic(tp);
+      });
+      topicsBar.appendChild(b);
+    });
+  }
+
+  function jumpToQuickTopic(tp) {
+    var curPage = currentPageRel();
+    if (tp.page && tp.page !== curPage) {
+      saveState({
+        open: true,
+        routeId: state.routeId,
+        stepIdx: state.stepIdx,
+        quickTopic: tp,
+        ts: Date.now()
+      });
+      location.href = resolveHref(tp.page);
+      return;
+    }
+    tagEl.textContent = isEn ? "Selected Topic" : "Seçilen Konu — Detaylar Sayfada";
+    hEl.textContent = tp.h;
+    pEl.textContent = tp.p;
+    var targetEl = tp.sel ? document.querySelector(tp.sel) : null;
+    glideToElement(targetEl);
+  }
+
   function clearSpotlight() {
     if (currentSpotEl) {
       currentSpotEl.classList.remove("maya-spot-target");
@@ -676,7 +736,6 @@
     }
   }
 
-  // Maya'yı hedef bölümün yanına taşı ve sayfayı otomatik kaydır
   function glideToElement(el) {
     if (!el) {
       parkBottomRight();
@@ -688,45 +747,40 @@
 
     var rect = el.getBoundingClientRect();
     var absTop = window.pageYOffset + rect.top;
-    var targetScrollY = Math.max(0, absTop - Math.max(110, (window.innerHeight - Math.min(rect.height, 420)) * 0.38));
+    var targetScrollY = Math.max(0, absTop - Math.max(105, (window.innerHeight - Math.min(rect.height, 400)) * 0.36));
 
     window.scrollTo({
       top: targetScrollY,
       behavior: "smooth"
     });
 
-    // Kaydırma tamamlanırken Maya'yı hedef kutunun sağ veya sol kenarına uçur
     setTimeout(function () {
       if (!state.open) return;
       var r = el.getBoundingClientRect();
       var vw = window.innerWidth;
       var vh = window.innerHeight;
-      var carrierW = Math.min(390, vw - 24);
-      var carrierH = bubbleEl.offsetHeight || 210;
+      var carrierW = Math.min(378, vw - 20);
+      var carrierH = bubbleEl.offsetHeight || 190;
 
-      var targetY = Math.max(76, Math.min(vh - carrierH - 18, r.top + Math.min(40, r.height * 0.15)));
+      var targetY = Math.max(72, Math.min(vh - carrierH - 16, r.top + Math.min(36, r.height * 0.14)));
       var targetX;
       var bubbleOnLeft = true;
 
       if (vw < 760) {
-        // Mobil ekranda içeriği kapatmamak için sağ alt köşeye zarifçe yanaş
-        targetX = vw - carrierW - 12;
+        targetX = vw - carrierW - 10;
         targetY = vh - carrierH - 12;
         bubbleOnLeft = true;
         lookTargetX = 0;
-      } else if (r.right + carrierW + 24 < vw) {
-        // Hedefin sağında boşluk varsa sağına kon, sola (içeriğe) bak
-        targetX = r.right + 16;
+      } else if (r.right + carrierW + 20 < vw) {
+        targetX = r.right + 14;
         bubbleOnLeft = false;
         lookTargetX = -0.35;
-      } else if (r.left - carrierW - 24 > 0) {
-        // Hedefin solunda boşluk varsa soluna kon, sağa (içeriğe) bak
-        targetX = r.left - carrierW - 16;
+      } else if (r.left - carrierW - 20 > 0) {
+        targetX = r.left - carrierW - 14;
         bubbleOnLeft = true;
         lookTargetX = 0.35;
       } else {
-        // Geniş bölümse sağ kenara zarifçe kon, içeriğe doğru bak
-        targetX = vw - carrierW - 20;
+        targetX = vw - carrierW - 18;
         bubbleOnLeft = true;
         lookTargetX = -0.28;
       }
@@ -745,7 +799,6 @@
         d.title = (isEn ? "Stop " : "Durak ") + (idx + 1);
         d.addEventListener("click", function () {
           state.stepIdx = idx;
-          state.showDeep = false;
           goToCurrentStop(true);
         });
         dotsEl.appendChild(d);
@@ -753,31 +806,47 @@
     }
   }
 
-  function goToCurrentStop(scrollAndGlide) {
+  function goToCurrentStop(scrollAndGlide, allowPageNav) {
     var route = getRoute(state.routeId);
     if (!route || !route.stops.length) return;
     if (state.stepIdx < 0) state.stepIdx = 0;
     if (state.stepIdx >= route.stops.length) state.stepIdx = 0;
 
+    var curPage = currentPageRel();
     var stop = route.stops[state.stepIdx];
-    var curPage = currentPageFile();
 
-    // Durak başka sayfadaysa durumu kaydet ve o sayfaya geç (sayfa açılınca kaldığı yerden devam eder)
     if (stop.page && stop.page !== curPage) {
-      saveState();
-      location.href = stop.page + (stop.sel && stop.sel.charAt(0) === "#" ? stop.sel.split(" ")[0] : "");
-      return;
+      if (allowPageNav) {
+        saveState();
+        location.href = resolveHref(stop.page) + (stop.sel && stop.sel.charAt(0) === "#" ? stop.sel.split(" ")[0] : "");
+        return;
+      } else {
+        // Kullanıcı üst menüden başka bir sayfaya geçtiyse o sayfadaki ilk durağı bul
+        var foundIdx = -1;
+        for (var i = 0; i < route.stops.length; i++) {
+          if (route.stops[i].page === curPage) {
+            foundIdx = i;
+            break;
+          }
+        }
+        if (foundIdx >= 0) {
+          state.stepIdx = foundIdx;
+          stop = route.stops[state.stepIdx];
+        } else {
+          // Bu sayfada durak yoksa turu sessizce küçült ki sayfa gezintisini bölmesin
+          minimizeTour();
+          return;
+        }
+      }
     }
 
     renderRouteChips();
+    renderTopicChips();
     renderDots(route.stops.length, state.stepIdx);
 
     tagEl.textContent = stop.tag;
     hEl.textContent = stop.h;
     pEl.textContent = stop.p;
-    deepEl.textContent = stop.deep || "";
-    deepEl.hidden = !state.showDeep;
-    btnDeep.classList.toggle("active", state.showDeep);
 
     saveState();
 
@@ -795,7 +864,7 @@
     state.open = true;
     miniPill.hidden = true;
     bubbleEl.hidden = false;
-    goToCurrentStop(true);
+    goToCurrentStop(true, !!optionalRouteId);
   }
 
   function minimizeTour() {
@@ -827,49 +896,53 @@
         var route = getRoute(state.routeId);
         if (state.stepIdx + 1 < route.stops.length) {
           state.stepIdx++;
-          state.showDeep = false;
-          goToCurrentStop(true);
+          goToCurrentStop(true, true);
         } else {
           toggleAutoPlay();
         }
-      }, 6200);
+      }, 5800);
     }
     saveState();
   }
 
+  function toggleTopicsMenu() {
+    state.showTopics = !state.showTopics;
+    if (state.showTopics) {
+      state.showRoutes = false;
+      routesBar.hidden = true;
+      btnRoutes.classList.remove("active");
+    }
+    topicsBar.hidden = !state.showTopics;
+    btnTopics.classList.toggle("active", state.showTopics);
+  }
+
+  btnTopics.addEventListener("click", toggleTopicsMenu);
+  btnAsk.addEventListener("click", toggleTopicsMenu);
+
   btnRoutes.addEventListener("click", function () {
     state.showRoutes = !state.showRoutes;
+    if (state.showRoutes) {
+      state.showTopics = false;
+      topicsBar.hidden = true;
+      btnTopics.classList.remove("active");
+    }
     routesBar.hidden = !state.showRoutes;
     btnRoutes.classList.toggle("active", state.showRoutes);
   });
 
-  btnAuto.addEventListener("click", function () {
-    toggleAutoPlay();
-  });
-
-  btnClose.addEventListener("click", function () {
-    minimizeTour();
-  });
+  btnAuto.addEventListener("click", toggleAutoPlay);
+  btnClose.addEventListener("click", minimizeTour);
 
   btnPrev.addEventListener("click", function () {
     var route = getRoute(state.routeId);
     state.stepIdx = (state.stepIdx - 1 + route.stops.length) % route.stops.length;
-    state.showDeep = false;
-    goToCurrentStop(true);
-  });
-
-  btnDeep.addEventListener("click", function () {
-    state.showDeep = !state.showDeep;
-    deepEl.hidden = !state.showDeep;
-    btnDeep.classList.toggle("active", state.showDeep);
-    exprPulse = 0.85;
+    goToCurrentStop(true, true);
   });
 
   btnNext.addEventListener("click", function () {
     var route = getRoute(state.routeId);
     state.stepIdx = (state.stepIdx + 1) % route.stops.length;
-    state.showDeep = false;
-    goToCurrentStop(true);
+    goToCurrentStop(true, true);
   });
 
   window.addEventListener("resize", function () {
@@ -880,9 +953,7 @@
     }
   });
 
-  // =========================================================================
-  // 1) 60 FPS Kanvas Sprite Katmanı (Anında Açılış + Doğal Göz Kırpma & Mimik)
-  // =========================================================================
+  // 1) 60 FPS Kanvas Sprite Katmanı
   var spriteCanvas = document.getElementById("maya-sprite-canvas");
   var sCtx = spriteCanvas.getContext("2d");
   var spriteImg = new Image();
@@ -890,11 +961,9 @@
   spriteImg.onload = function () {
     spriteLoaded = true;
   };
-  spriteImg.src = "/ornek/maya/maya-sprite.jpg";
+  spriteImg.src = assetPrefix + "ornek/maya/maya-sprite.jpg";
 
-  // =========================================================================
   // 2) Blender 5.1.0 (maya-3d.glb) + Three.js WebGL 3B Canlı Avatar Motoru
-  // =========================================================================
   var threeReady = false;
   var threeMesh = null;
   var threeRenderer = null;
@@ -922,7 +991,7 @@
 
     window.__initMayaThree = function (THREE, GLTFLoader) {
       try {
-        var w = 156, h = 156;
+        var w = 148, h = 148;
         var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(w, h);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -930,11 +999,9 @@
 
         var scene = new THREE.Scene();
         var camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
-        camera.position.set(0, 0.02, 2.15);
+        camera.position.set(0, 0.02, 2.65);
 
-        var amb = new THREE.AmbientLight(0xffffff, 1.35);
-        scene.add(amb);
-
+        scene.add(new THREE.AmbientLight(0xffffff, 1.35));
         var keyLight = new THREE.DirectionalLight(0xfff7ed, 0.95);
         keyLight.position.set(1.2, 1.4, 2.2);
         scene.add(keyLight);
@@ -944,7 +1011,7 @@
         scene.add(rimLight);
 
         var loader = new GLTFLoader();
-        loader.load("/ornek/maya/maya-3d.glb", function (gltf) {
+        loader.load(assetPrefix + "ornek/maya/maya-3d.glb", function (gltf) {
           var root = gltf.scene;
           scene.add(root);
           root.traverse(function (node) {
@@ -966,7 +1033,6 @@
     document.head.appendChild(modScript);
   }
 
-  // Fare takibi (Maya imlece ve vurgulanan bölüme hafifçe başını çevirir)
   var mouseNormX = 0;
   var mouseNormY = 0;
   window.addEventListener("pointermove", function (ev) {
@@ -974,18 +1040,17 @@
     mouseNormY = ((ev.clientY / Math.max(1, window.innerHeight)) - 0.5) * 2;
   }, { passive: true });
 
-  var blinkNextAt = performance.now() + 2600;
+  var blinkNextAt = performance.now() + 2400;
   var blinkEndAt = 0;
 
   function animateAvatar(now) {
     requestAnimationFrame(animateAvatar);
     var t = now * 0.001;
 
-    // Doğal göz kırpma zamanlayıcısı
     var blinkVal = 0;
     if (now >= blinkNextAt) {
       blinkEndAt = now + 150;
-      blinkNextAt = now + 2800 + Math.random() * 2600;
+      blinkNextAt = now + 2600 + Math.random() * 2400;
     }
     if (now < blinkEndAt) {
       var p = 1 - (blinkEndAt - now) / 150;
@@ -998,7 +1063,6 @@
       exprPulse = 0;
     }
 
-    // 1) Three.js 3B Blender GLB Sahnesi Aktifse
     if (threeReady && threeMesh && threeRenderer) {
       var dict = threeMesh.morphTargetDictionary || {};
       var infl = threeMesh.morphTargetInfluences;
@@ -1008,8 +1072,8 @@
         if (dict.BrowRaise !== undefined) infl[dict.BrowRaise] = 0.35 * exprPulse + 0.06 * Math.sin(t * 1.1);
         if (dict.JawOpen !== undefined) infl[dict.JawOpen] = 0.08 * exprPulse;
       }
-      var targetYaw = (lookTargetX * 0.65) + (mouseNormX * 0.12) + Math.sin(t * 0.9) * 0.04;
-      var targetPitch = (lookTargetY * 0.3) + (mouseNormY * 0.08) + Math.cos(t * 0.7) * 0.03;
+      var targetYaw = (lookTargetX * 0.55) + (mouseNormX * 0.12) + Math.sin(t * 0.9) * 0.04;
+      var targetPitch = (lookTargetY * 0.25) + (mouseNormY * 0.08) + Math.cos(t * 0.7) * 0.03;
       threeMesh.rotation.y += (targetYaw - threeMesh.rotation.y) * 0.08;
       threeMesh.rotation.x += (targetPitch - threeMesh.rotation.x) * 0.08;
       threeMesh.position.y = Math.sin(t * 1.6) * 0.012;
@@ -1017,15 +1081,14 @@
       return;
     }
 
-    // 2) Yedek 60 FPS Kanvas Sprite Katmanı
     if (spriteLoaded) {
       var frameW = spriteImg.width / 6;
       var frameH = spriteImg.height;
-      var frameIdx = 0; // neutral
+      var frameIdx = 0;
       if (blinkVal > 0.45) {
-        frameIdx = 1; // blink
+        frameIdx = 1;
       } else if (exprPulse > 0.25) {
-        frameIdx = 4; // smile
+        frameIdx = 4;
       }
       sCtx.clearRect(0, 0, 220, 220);
       var breathe = Math.sin(t * 1.8) * 2.2;
@@ -1033,27 +1096,38 @@
     }
   }
 
-  // Başlangıç
   parkBottomRight();
   initThreeAvatar();
   requestAnimationFrame(animateAvatar);
 
-  // Eğer sayfalar arası tur devam ediyorsa otomatik aç ve ilgili durağa kaydır
   var saved = loadState();
   if (saved && saved.open) {
     state.routeId = saved.routeId || "full";
     state.stepIdx = saved.stepIdx || 0;
     state.autoPlay = !!saved.autoPlay;
     setTimeout(function () {
-      startOrOpenTour();
-      if (state.autoPlay) {
-        state.autoPlay = false;
-        toggleAutoPlay();
+      if (saved.quickTopic) {
+        var qt = saved.quickTopic;
+        saveState();
+        state.open = true;
+        miniPill.hidden = true;
+        bubbleEl.hidden = false;
+        renderRouteChips();
+        renderTopicChips();
+        jumpToQuickTopic(qt);
+      } else {
+        state.open = true;
+        miniPill.hidden = true;
+        bubbleEl.hidden = false;
+        goToCurrentStop(true, false);
+        if (state.autoPlay) {
+          state.autoPlay = false;
+          toggleAutoPlay();
+        }
       }
-    }, 350);
+    }, 320);
   }
 
-  // Dışarıdan erişim API'si
   window.AtlasMaya = {
     startTour: function (routeId) {
       startOrOpenTour(routeId || "full");
