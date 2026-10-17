@@ -1,0 +1,113 @@
+/* EvDiş AŞAMA 0 (17 Eki) — mobil açılır sekmeli mimari.
+   Yalnız ≤768px etkilidir; masaüstü düzenine dokunmaz. a0-mobil öğeleri masaüstünde gizlidir. */
+.a0-mobil, .a0-brans-cubugu, .a0-sema-ac { display: none !important; }
+
+@media (max-width: 768px) {
+  /* ---- ortak: yatay kaydırılabilir şerit ---- */
+  body .av-services-cat-nav, body .av-tech-rows, body .av-experts-cols, body .av-ig-life-grid,
+  body .a0-brans-cubugu, body .sekme-cubugu, body .konfor-izgara, body .teknoloji-atelier-bento,
+  body .hekim-izgara, body .tedavi-izgara.a0-tumu {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    grid-template-columns: none !important;
+  }
+  body .av-services-cat-nav::-webkit-scrollbar, body .av-tech-rows::-webkit-scrollbar,
+  body .av-experts-cols::-webkit-scrollbar, body .av-ig-life-grid::-webkit-scrollbar,
+  body .a0-brans-cubugu::-webkit-scrollbar, body .sekme-cubugu::-webkit-scrollbar,
+  body .konfor-izgara::-webkit-scrollbar, body .teknoloji-atelier-bento::-webkit-scrollbar,
+  body .hekim-izgara::-webkit-scrollbar, body .tedavi-izgara.a0-tumu::-webkit-scrollbar { display: none; }
+
+  /* ---- Obsidian & Gold sekme düğmesi ---- */
+  body .av-services-cat-btn, body .av-tech-row, body .a0-brans-sekme, body .sekme-dugme {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap !important;
+    padding: 9px 15px !important;
+    border-radius: 999px !important;
+    border: 1px solid rgba(179, 140, 97, 0.45) !important;
+    background: #14151D;
+    color: rgba(234, 232, 232, 0.78);
+    font-size: 0.8rem !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.01em;
+    transform: none !important;
+    cursor: pointer;
+  }
+  body .av-services-cat-btn.active, body .av-tech-row.active, body .a0-brans-sekme[aria-selected="true"],
+  body .sekme-dugme[aria-selected="true"] {
+    background: linear-gradient(135deg, #C9A16E, #B38C61 55%, #8E6B43) !important;
+    color: #0D0E14 !important;
+    border-color: transparent !important;
+    font-weight: 600;
+  }
+  body .a0-mobil { display: inline-flex !important; }
+
+  /* ================= Ana sayfa (index / tr / tasarim-onerileri) ================= */
+  /* Uzmanlık branşları: sekme çubuğu görselin ÜSTÜNE, yatay kaydırılır */
+  body .av-services-inner { grid-template-columns: minmax(0, 1fr) !important; }
+  body .av-services-left-3d, body .av-services-right, body .av-tech-grid > * { min-width: 0; max-width: 100%; }
+  body .av-services-left-3d { gap: 14px; }
+  body .av-services-cat-nav {
+    order: -1; gap: 8px; border-left: 0 !important; padding: 2px 0 8px !important; margin: 0 -2px;
+    -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
+            mask-image: linear-gradient(90deg, #000 86%, transparent);
+  }
+  body .av-services-cat-label { display: none !important; }
+  body .av-srv-3d-frame { max-height: 230px; overflow: hidden; }
+  body .av-srv-3d-frame img { max-height: 230px; object-fit: cover; object-position: center 68%; }
+  body .av-services-inner { gap: 22px !important; }
+
+  /* Teknoloji: satırlar sekmeye döner, yalnız seçili sekmenin "İncele" bağı görünür */
+  body .av-tech-grid { display: flex !important; flex-direction: column; gap: 16px !important; }
+  body .av-tech-counter-col { order: 0; }
+  body .av-tech-rows { order: 1; gap: 8px; border-top: 0 !important;
+    -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
+            mask-image: linear-gradient(90deg, #000 86%, transparent); }
+  body .av-tech-visual-col { order: 2; }
+  body .av-tech-row { align-items: center !important; gap: 8px !important; border-bottom: 1px solid rgba(179, 140, 97, 0.45) !important; }
+  body .av-tech-row-title { font-size: 0.8rem !important; color: inherit !important; overflow-wrap: normal !important; font-family: var(--font-sans) !important; }
+  body .av-tech-row:not(.active) .av-tech-row-action { display: none !important; }
+  body .av-tech-row.active .av-tech-row-action { color: #0D0E14 !important; font-size: 0.74rem; }
+  body .av-tech-visual-frame { max-height: 250px; overflow: hidden; }
+  body .av-tech-visual-frame img { max-height: 250px; width: 100%; object-fit: cover; }
+
+  /* Hekim kadrosu: 5 kart alt alta yerine yatay kaydırmalı vitrin */
+  body .av-experts-cols { gap: 14px; padding-bottom: 6px; perspective: none; }
+  body .av-expert-col { flex: 0 0 74%; scroll-snap-align: start; }
+  body .av-expert-photo { aspect-ratio: 4 / 3.4 !important; }
+
+  /* Klinik mekân şeridi: yatay */
+  body .av-ig-life-grid { gap: 12px; }
+  body .av-ig-card { flex: 0 0 46%; scroll-snap-align: start; }
+
+  /* Organizasyon şeması: ilk bakışta çatı + dört kol; branş/birim detayları "aç" düğmesiyle */
+  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-brans,
+  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-birimler,
+  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-ara-baslik,
+  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-alt-satir { display: none !important; }
+  body #organizasyon-semasi .a0-sema-ac {
+    display: flex !important; width: 100%; justify-content: center; align-items: center; gap: 8px;
+    margin: 18px 0 4px; padding: 12px 16px; border-radius: 999px; cursor: pointer;
+    background: #14151D; color: #EAE8E8; border: 1px solid rgba(179, 140, 97, 0.55);
+    font: 600 0.82rem var(--font-sans, sans-serif);
+  }
+
+  /* ================= EN / AR (klasik şablon) ================= */
+  body .a0-brans-cubugu { gap: 8px; margin: 0 0 14px; padding: 2px 0 6px; }
+  body .tedavi-izgara.a0-sekmeli:not(.a0-tumu) > .tedavi-kart:not(.a0-acik) { display: none !important; }
+  body .tedavi-izgara.a0-tumu { gap: 12px; }
+  body .tedavi-izgara.a0-tumu > .tedavi-kart { flex: 0 0 72%; scroll-snap-align: start; }
+  body .sekme-cubugu { gap: 8px; padding-bottom: 6px; }
+  body .konfor-izgara { gap: 14px; }
+  body .konfor-izgara > .konfor-kart { flex: 0 0 82%; scroll-snap-align: start; }
+  body .teknoloji-atelier-bento { gap: 14px; margin-bottom: 18px; }
+  body .teknoloji-atelier-bento > .atelier-kart { flex: 0 0 84%; scroll-snap-align: start; }
+  body .hekim-izgara { gap: 12px; }
+  body .hekim-izgara > .hekim-kart { flex: 0 0 56%; scroll-snap-align: start; }
+}
