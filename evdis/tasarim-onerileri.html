@@ -1,1887 +1,1383 @@
 <!DOCTYPE html>
-<html lang="tr" data-theme="aventura">
+<html lang="tr" data-theme="v1">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Özel Evdiş Ağız ve Diş Sağlığı Merkezi — Lüks Editoryal Klinik Mimari</title>
-  <meta name="description" content="Özel Evdiş Ağız ve Diş Sağlığı Merkezi — Aventura esinli yalın editoryal tasarım, estetik gülüş felsefesi ve TRtek tam kadro kurumsal organizasyon yapısı."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evdiş — Estetik Diş Hekimliği & İleri Cerrahi Sanatı | Sakarya (Serdivan · Adapazarı)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     /* ==========================================================================
-       ESTETİK ÇAĞRIŞIM PALETLERİ (Sarımtırak diş skalası yerine saf ışıltı & lüks dinginlik)
-       1) aventura (Varsayılan): Optik İnci Beyazı (#FBFBF9) + İpek Alabaster (#F3F1EC) + Aventura Bronz-Zeytin (#726A4C)
-       2) emerald: Porselen Beyazı (#FAFAF8) + İpek Kum (#F0F1EE) + Derin Zümrüt (#183A30) & Şampanya (#B69156)
-       3) cashmere: Kaşmir Alabaster (#FAF8F5) + Sıcak İpek (#F1ECE4) + Gece Safiri (#1D2C3F) & Bronz (#B48850)
+       AVENTURA DENTAL ARTS 1:1 BOXLESS EDITORIAL STAGE ARCHITECTURE (v32)
+       - Screen 1 (s00): Edge-to-edge 50vw Pearl (#EAE8E8) / 50vw Dark Video
+         with Giant Condensed Serif Title straddling the 50vw split line
+         (Charcoal #424346 on left half, Pure White #FFFFFF on right half)
+       - Screen 2 (s03): Full-bleed Pearl (#EAE8E8) "Hedefimiz" stage (border-radius: 0)
+       - Screen 3 (s04): Edge-to-edge 50vw/50vw Obsidian (#14151D) Services Stage
+         with straddling bottom Serif title & bespoke synthetic visuals
+       - Screen 4 (s09): Full-bleed Pearl (#EAE8E8) "01 / 04" Interactive Tech Index
+       - Screen 5 (s11-s13): Obsidian (#14151D) "Uzman Hekimlerimiz" + 6-Circle Dome
        ========================================================================== */
-    :root,
-    html[data-theme="aventura"] {
-      --bg-page: #FBFBF9;         /* Aventura Orijinal Optik İnci Beyazı */
-      --bg-surface: #F3F1EC;      /* Aventura İpek Alabaster */
-      --bg-elevated: #FFFFFF;     /* Saf Kristal Kart Yüzeyi */
-      --bg-pill: #ECE9E1;         /* Yumuşak Taş Hap Yüzeyi */
-      --primary: #726A4C;         /* Aventura İmza Bronz-Zeytin */
-      --primary-hover: #5C553B;
-      --primary-soft: rgba(114, 106, 76, 0.10);
-      --accent: #9A8458;          /* Sıcak Şampanya İpek */
-      --dark-stage: #1C1B18;      /* Editoryal Kömür Antrasit */
-      --ink: #1C1B18;
-      --ink-soft: #57544C;
-      --ink-muted: #858075;
-      --line: rgba(28, 27, 24, 0.09);
-      --line-strong: rgba(114, 106, 76, 0.24);
+    :root, [data-theme="v1"] {
+      --bg-light: #EAE8E8;
+      --bg-light-alt: #E2DFDF;
+      --bg-dark: #14151D;
+      --bg-dark-deep: #0E0F15;
+      --ink-dark: #424346;
+      --ink-dark-strong: #232427;
+      --ink-dark-muted: rgba(66, 67, 70, 0.56);
+      --ink-dark-faint: rgba(66, 67, 70, 0.24);
+      --ink-light: #EAE8E8;
+      --ink-light-muted: rgba(234, 232, 232, 0.64);
+      --ink-light-faint: rgba(234, 232, 232, 0.22);
+      --accent: #B38C61;
+      --line-light: rgba(66, 67, 70, 0.16);
+      --line-dark: rgba(234, 232, 232, 0.15);
+      --font-serif: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    html[data-theme="emerald"] {
-      --bg-page: #FAFAF8;         /* Saf Porselen Beyazı */
-      --bg-surface: #F0F2EF;      /* İpek Adaçayı Sisi */
-      --bg-elevated: #FFFFFF;
-      --bg-pill: #E6EAE4;
-      --primary: #183A30;         /* Derin Zümrüt İpek */
-      --primary-hover: #214F42;
-      --primary-soft: rgba(24, 58, 48, 0.08);
-      --accent: #B69156;          /* Şampanya Altın */
-      --dark-stage: #11221C;
-      --ink: #16211D;
-      --ink-soft: #4B5953;
-      --ink-muted: #76857E;
-      --line: rgba(22, 33, 29, 0.09);
-      --line-strong: rgba(24, 58, 48, 0.22);
+    [data-theme="v2"] {
+      --bg-light: #EFECE6;
+      --bg-light-alt: #E6E1D8;
+      --bg-dark: #121318;
+      --bg-dark-deep: #0B0C10;
+      --ink-dark: #3B3936;
+      --ink-dark-strong: #1F1E1C;
+      --accent: #C5A059;
     }
 
-    html[data-theme="cashmere"] {
-      --bg-page: #FAF8F5;         /* Kaşmir Beyazı */
-      --bg-surface: #F1ECE4;      /* Sıcak İpek Krem */
-      --bg-elevated: #FFFFFF;
-      --bg-pill: #E7E0D5;
-      --primary: #1E2D40;         /* Gece Safiri */
-      --primary-hover: #2B405A;
-      --primary-soft: rgba(30, 45, 64, 0.08);
-      --accent: #B48850;          /* Sıcak Bronz */
-      --dark-stage: #141C27;
-      --ink: #1A222C;
-      --ink-soft: #525B66;
-      --ink-muted: #7D8590;
-      --line: rgba(26, 34, 44, 0.09);
-      --line-strong: rgba(180, 136, 80, 0.25);
+    [data-theme="v3"] {
+      --bg-light: #ECEFF2;
+      --bg-light-alt: #E1E5EA;
+      --bg-dark: #10151C;
+      --bg-dark-deep: #0A0E13;
+      --ink-dark: #384049;
+      --ink-dark-strong: #1C2229;
+      --accent: #9CB3C9;
     }
 
-    :root {
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono: 'JetBrains Mono', monospace;
-      --radius-2xl: 28px;
-      --radius-xl: 22px;
-      --radius-lg: 16px;
-      --radius-pill: 999px;
-      --shadow-card: 0 16px 44px rgba(28, 27, 24, 0.05);
-      --shadow-video: 0 24px 60px rgba(28, 27, 24, 0.12);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg-page);
-      color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-light);
+      color: var(--ink-dark);
+      font-family: var(--font-sans);
       -webkit-font-smoothing: antialiased;
-      transition: background 0.35s ease, color 0.35s ease;
-    }
-    a { color: inherit; text-decoration: none; }
-    img, video { display: block; max-width: 100%; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-
-    /* Üstteki kalabalığı önlemek için enjekte edilen ekip barını bu sayfada zarif çekmeceye dönüştür */
-    #evdis-emrah-bar {
-      font-size: 12px !important;
-    }
-    #evdis-emrah-bar .evdis-emrah-inner {
-      padding: 6px 20px !important;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    .container {
-      max-width: 1420px;
-      margin: 0 auto;
-      padding: 0 28px;
+    body {
+      overflow-x: hidden;
+      background: var(--bg-light);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
     /* ==========================================================================
-       ZARİF ESTETİK PALET SEÇİCİ (Tek Satır İnce Editoryal Şerit)
-       ========================================================================== */
-    .studio-top-strip {
-      background: var(--bg-surface);
-      border-bottom: 1px solid var(--line);
-      padding: 8px 28px;
-      font-size: 12px;
-    }
-    .studio-top-inner {
-      max-width: 1420px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .studio-tones {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .studio-tones-label {
-      font-family: var(--mono);
-      font-size: 10.5px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-right: 4px;
-      font-weight: 600;
-    }
-    .tone-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-elevated);
-      border: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 11.5px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    .tone-chip:hover { border-color: var(--primary); color: var(--ink); }
-    .tone-chip.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-      font-weight: 600;
-    }
-    .tone-swatch {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.15);
-    }
-
-    /* ==========================================================================
-       1. AVENTURA BİREBİR MİNİMALİST HEADER
+       TOP MINIMALIST UNBOXED NAVIGATION (Exact Aventura s00 Top Bar)
        ========================================================================== */
     .av-header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 800;
-      background: color-mix(in srgb, var(--bg-page) 92%, transparent);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-      padding: 16px 0;
-    }
-    .av-header-row {
+      left: 0;
+      width: 100vw;
+      z-index: 90;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 16px;
+      padding: 26px 44px;
+      pointer-events: none;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, padding 0.35s ease;
     }
-    .av-nav-group {
+    .av-header.scrolled {
+      background: rgba(20, 21, 29, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 16px 44px;
+      border-bottom: 1px solid rgba(234, 232, 232, 0.08);
+    }
+    .av-header > * {
+      pointer-events: auto;
+    }
+    .av-nav-left {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 28px;
+      font-size: 0.80rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--ink-dark);
+      transition: color 0.3s ease;
     }
-    .av-nav-group.right { justify-content: flex-end; }
-    .pill-btn {
+    .av-header.scrolled .av-nav-left {
+      color: var(--ink-light);
+    }
+    .av-nav-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 17px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface);
-      color: var(--ink);
-      border: 1px solid var(--line);
-      font-size: 13px;
-      font-weight: 500;
-      transition: all 0.2s ease;
+      opacity: 0.88;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
     }
-    .pill-btn:hover {
-      background: var(--bg-pill);
-      border-color: var(--primary);
-    }
-    .pill-btn.primary {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-      font-weight: 600;
-      padding: 10px 22px;
-    }
-    .pill-btn.primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
+    .av-nav-link:hover {
+      opacity: 1;
     }
     .av-brand {
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 2px;
     }
-    .av-brand-title {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      color: var(--ink);
-      line-height: 0.95;
-    }
-    .av-brand-sub {
-      font-family: var(--mono);
-      font-size: 9px;
-      letter-spacing: 0.24em;
+    .av-brand-mark {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--primary);
-      margin-top: 4px;
-      font-weight: 600;
+      color: var(--ink-dark-strong);
+      background: linear-gradient(90deg, var(--ink-dark-strong) 0%, var(--ink-dark-strong) 50%, #FFFFFF 50%, #FFFFFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s ease;
     }
-
-    /* ==========================================================================
-       2. AVENTURA ASİMETRİK İKİ SÜTUNLU HERO (BOL NEGATİF ALAN + SİNEMATİK SAHNE)
-       ========================================================================== */
-    .av-hero {
-      padding: 20px 0 44px;
+    .av-header.scrolled .av-brand-mark {
+      background: none;
+      -webkit-text-fill-color: var(--ink-light);
+      color: var(--ink-light);
     }
-    .av-hero-stage {
-      display: grid;
-      grid-template-columns: 0.88fr 1.12fr;
-      gap: 24px;
-      min-height: 78vh;
-      align-items: stretch;
-    }
-    .av-hero-left {
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-2xl);
-      padding: 44px 46px;
+    .av-nav-right {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .av-loc-row {
-      display: flex;
+      justify-content: flex-end;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .av-loc-row span {
-      font-size: 13px;
-      color: var(--ink-soft);
-      margin-right: 4px;
-    }
-    .av-loc-chip {
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-elevated);
-      border: 1px solid var(--line);
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--ink);
-      transition: all 0.2s ease;
-    }
-    .av-loc-chip.active, .av-loc-chip:hover {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .av-hero-center {
-      margin: auto 0;
-      padding: 36px 0;
-    }
-    .av-hero-kicker {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 16px;
-      display: block;
-    }
-    .av-hero-h1 {
-      font-family: var(--serif);
-      font-size: clamp(54px, 6.2vw, 92px);
-      font-weight: 400;
-      line-height: 0.94;
-      letter-spacing: -0.02em;
-      color: var(--ink);
-    }
-    .av-hero-h1 em {
-      display: block;
-      font-style: italic;
-      color: var(--primary);
-      font-weight: 400;
-      margin-top: 6px;
-    }
-
-    .av-hero-foot {
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-    .av-hero-lead {
-      font-size: 16px;
-      color: var(--ink-soft);
-      max-width: 430px;
-      line-height: 1.55;
-    }
-    .av-hero-metrics {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .av-metric b {
-      display: block;
-      font-family: var(--serif);
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1;
-    }
-    .av-metric span {
-      font-size: 12px;
-      color: var(--ink-muted);
-    }
-
-    /* Sağ Sütun: Sinematik Video & Cam Kapılar */
-    .av-hero-right {
-      position: relative;
-      border-radius: var(--radius-2xl);
-      overflow: hidden;
-      min-height: 560px;
-      background: var(--dark-stage);
-      box-shadow: var(--shadow-video);
-    }
-    .av-hero-right video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-    }
-    .av-hero-veil {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(20, 20, 18, 0.14) 0%, rgba(20, 20, 18, 0.28) 52%, rgba(20, 20, 18, 0.82) 100%);
-      padding: 34px 36px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: #FBFBF9;
-    }
-    .av-veil-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .glass-pill {
-      padding: 7px 15px;
-      border-radius: var(--radius-pill);
-      background: rgba(251, 251, 249, 0.16);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(251, 251, 249, 0.28);
-      font-size: 12px;
-      font-weight: 500;
-      color: #FBFBF9;
-    }
-    .av-veil-bottom h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 3.5vw, 52px);
-      font-weight: 400;
-      line-height: 1.06;
-      max-width: 520px;
-      margin-bottom: 22px;
-    }
-    .av-veil-bottom h2 em {
-      font-style: italic;
-      color: #EAE3D2;
-    }
-    .av-veil-doors {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
     }
-    .av-veil-door {
-      background: rgba(251, 251, 249, 0.14);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(251, 251, 249, 0.25);
-      border-radius: var(--radius-lg);
-      padding: 15px 16px;
-      color: #FBFBF9;
-      transition: all 0.22s ease;
-    }
-    .av-veil-door:hover {
-      background: #FBFBF9;
-      color: #1C1B18;
-      transform: translateY(-2px);
-    }
-    .av-veil-door small {
-      display: block;
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.78;
-    }
-    .av-veil-door strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 19px;
-      font-weight: 600;
-      margin-top: 3px;
-    }
-
-    /* ==========================================================================
-       3. AVENTURA "HEDEFİMİZ" (OUR GOAL) — DİNGİN EDİTORYAL MANİFESTO
-       ========================================================================== */
-    .av-goal {
-      padding: 76px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .av-goal-layout {
-      display: grid;
-      grid-template-columns: 0.32fr 0.68fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .section-tag {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--primary);
-      font-weight: 600;
-      display: block;
-      margin-bottom: 14px;
-    }
-    .av-avatars {
-      display: flex;
+    .av-pill-btn {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 14px;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      background: #424346;
+      color: #EAE8E8;
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
     }
-    .av-avatars img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2.5px solid var(--bg-page);
-      margin-left: -12px;
+    .av-pill-btn:hover {
+      background: #EAE8E8;
+      color: #14151D;
+      transform: translateY(-1px);
     }
-    .av-avatars img:first-child { margin-left: 0; }
-    .av-avatars-badge {
-      margin-left: -10px;
-      padding: 9px 14px;
-      border-radius: var(--radius-pill);
-      background: var(--primary);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      border: 2.5px solid var(--bg-page);
+    .av-pill-btn.light {
+      background: #EAE8E8;
+      color: #14151D;
     }
-    .av-goal-text {
-      font-family: var(--serif);
-      font-size: clamp(28px, 3.1vw, 44px);
-      font-weight: 400;
-      line-height: 1.24;
-      color: var(--ink);
+    .av-pill-btn.light:hover {
+      background: var(--accent);
+      color: #14151D;
     }
-    .av-goal-text em {
-      color: var(--primary);
-      font-style: italic;
+    .av-pill-btn.dark {
+      background: #424346;
+      color: #EAE8E8;
+    }
+    .av-pill-btn.dark:hover {
+      background: #14151D;
+      color: #FFFFFF;
     }
 
     /* ==========================================================================
-       4. AVENTURA İMZA BÖLÜMÜ: 3 SÜTUNLU DERLİ TOPLU HİZMET SEÇİCİ
+       SCREEN 1 (s00): EDGE-TO-EDGE 100VW × 100VH 50/50 SPLIT HERO (ZERO BOXES)
        ========================================================================== */
-    .av-services {
-      padding: 84px 0;
-    }
-    .section-header-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-    .section-h2 {
-      font-family: var(--serif);
-      font-size: clamp(38px, 4.4vw, 64px);
-      font-weight: 400;
-      line-height: 1.02;
-      color: var(--ink);
-    }
-    .section-h2 em {
-      font-style: italic;
-      color: var(--primary);
-    }
-
-    .av-cat-pills {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .av-cat-pill {
-      padding: 11px 22px;
-      border-radius: var(--radius-pill);
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      color: var(--ink-soft);
-      font-size: 13.5px;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    .av-cat-pill:hover { color: var(--ink); border-color: var(--primary); }
-    .av-cat-pill.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-      font-weight: 600;
-    }
-
-    .av-services-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.1fr 0.85fr;
-      gap: 22px;
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-2xl);
-      padding: 24px;
-      align-items: stretch;
-    }
-    .av-srv-portrait {
+    .av-hero {
       position: relative;
-      border-radius: var(--radius-xl);
+      width: 100vw;
+      height: 100vh;
+      min-height: 700px;
+      display: grid;
+      grid-template-columns: 50vw 50vw;
       overflow: hidden;
-      min-height: 460px;
-      background: var(--dark-stage);
+      background: var(--bg-light);
     }
-    .av-srv-portrait img {
-      width: 100%;
+    .av-hero-left {
+      background: var(--bg-light);
       height: 100%;
-      object-fit: cover;
-      position: absolute;
-      inset: 0;
-      transition: transform 0.5s ease;
-    }
-    .av-srv-portrait:hover img { transform: scale(1.03); }
-    .av-srv-portrait-veil {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(20,20,18,0.08) 0%, rgba(20,20,18,0.82) 100%);
-      padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      color: #FBFBF9;
+      padding: 44px;
+      position: relative;
+      z-index: 2;
     }
-    .av-srv-portrait-veil h3 {
-      font-family: var(--serif);
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 1.06;
-      margin-top: 8px;
-    }
-    .av-srv-portrait-veil p {
-      font-size: 13.5px;
-      opacity: 0.88;
-      margin-top: 8px;
-    }
-
-    .av-srv-detail {
-      background: var(--bg-elevated);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow-card);
-    }
-    .av-srv-detail-img {
-      height: 210px;
-      border-radius: var(--radius-lg);
+    .av-hero-right {
+      position: relative;
+      height: 100%;
+      background: var(--bg-dark);
       overflow: hidden;
-      margin-bottom: 18px;
-      background: var(--bg-surface);
     }
-    .av-srv-detail-img img {
+    .av-hero-right video {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: brightness(0.62) contrast(1.08) saturate(0.85);
     }
-    .av-srv-detail h4 {
-      font-family: var(--serif);
-      font-size: 32px;
-      font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 10px;
+    .av-hero-right::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20,21,29,0.28) 0%, rgba(20,21,29,0.12) 50%, rgba(20,21,29,0.62) 100%);
+      pointer-events: none;
     }
-    .av-srv-detail p {
-      font-size: 14.5px;
-      color: var(--ink-soft);
-      line-height: 1.62;
-      margin-bottom: 16px;
-    }
-    .av-srv-specialist {
-      padding: 12px 15px;
-      border-radius: 12px;
-      background: var(--bg-surface);
-      font-size: 12.5px;
-      color: var(--ink-soft);
-      margin-bottom: 18px;
-    }
-    .av-srv-specialist strong { color: var(--ink); }
 
-    .av-srv-menu {
-      background: var(--bg-elevated);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 24px;
+    /* Giant Condensed Serif Title Straddling the 50vw Split Line (Exact s00) */
+    .av-hero-center-title-wrap {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      padding: 0 2vw;
+    }
+    .av-hero-straddle-title {
+      width: 100vw;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(4.2rem, 9.4vw, 10.2rem);
+      line-height: 0.89;
+      letter-spacing: -0.025em;
+      /* Exact 50vw split: Charcoal #424346 on left #EAE8E8 half, Pure White #FFFFFF on right dark video half */
+      background: linear-gradient(90deg, var(--ink-dark) 0%, var(--ink-dark) 50%, #FFFFFF 50%, #FFFFFF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+    }
+
+    /* Bottom-Left Unboxed Location Metadata (Exact s00 Based in:) */
+    .av-hero-based {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--ink-dark);
+    }
+    .av-hero-based-label {
+      color: var(--ink-dark-muted);
+      margin-bottom: 4px;
+      font-size: 0.72rem;
+    }
+
+    /* Bottom-Right Video Caption & Scroll Cue (Exact s00) */
+    .av-hero-right-bottom {
+      position: absolute;
+      bottom: 44px;
+      left: 44px;
+      right: 44px;
+      z-index: 5;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      color: #EAE8E8;
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+    .av-hero-right-tagline {
+      max-width: 290px;
+      color: rgba(234, 232, 232, 0.82);
+    }
+    .av-scroll-cue {
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      color: #EAE8E8;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .av-scroll-cue:hover {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       SCREEN 2 (s03): "OUR GOAL" / "HEDEFİMİZ" — FULL-BLEED #EAE8E8 STAGE
+       Zero rounded boxes; sharp portrait center-left, giant Serif statement right
+       ========================================================================== */
+    .av-goal-stage {
+      width: 100vw;
+      min-height: 92vh;
+      background: var(--bg-light);
+      color: var(--ink-dark);
+      padding: 130px 44px 120px;
+      display: grid;
+      grid-template-columns: 18% 26% 56%;
+      align-items: start;
+      border-top: 1px solid var(--line-light);
+    }
+    .av-goal-label {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--ink-dark);
+      padding-top: 8px;
+    }
+    .av-goal-portrait-wrap {
+      padding-right: 48px;
+    }
+    .av-goal-portrait {
+      width: 100%;
+      max-width: 290px;
+      aspect-ratio: 3 / 3.8;
+      object-fit: cover;
+      border-radius: 0; /* Strictly zero border-radius like s03 */
+      filter: grayscale(100%) contrast(1.12); object-position: center top;
+      display: block;
+    }
+    .av-goal-portrait-caption {
+      margin-top: 12px;
+      font-size: 0.72rem;
+      color: var(--ink-dark-muted);
+      letter-spacing: 0.02em;
+    }
+    .av-goal-content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 460px;
+      padding-left: 16px;
     }
-    .av-proc-items {
+    .av-goal-statement {
+      font-family: var(--font-serif);
+      font-size: clamp(2.35rem, 4.1vw, 4.35rem);
+      line-height: 1.03;
+      letter-spacing: -0.015em;
+      font-weight: 400;
+      color: var(--ink-dark);
+      max-width: 820px;
+    }
+    .av-goal-bottom-row {
+      margin-top: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .av-goal-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    /* Overlapping circular avatars + "+20" circle (Exact s03 bottom-right) */
+    .av-avatar-cluster {
+      display: inline-flex;
+      align-items: center;
+    }
+    .av-avatar-circle {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      border: 2px solid var(--bg-light);
+      margin-left: -16px;
+      overflow: hidden;
+      background: #2C2D30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #EAE8E8;
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      transition: transform 0.25s ease;
+    }
+    .av-avatar-circle:first-child {
+      margin-left: 0;
+    }
+    .av-avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+    }
+    .av-avatar-circle.count {
+      background: #424346;
+      color: #EAE8E8;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .av-avatar-cluster:hover .av-avatar-circle {
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       SCREEN 3 (s04-s06): EDGE-TO-EDGE 100VW × 100VH OBSIDIAN SERVICES STAGE
+       Left 50vw full-bleed dark visual + bottom-left category selector;
+       Bottom center straddling giant Serif title ("Estetik / Diş Hekimliği");
+       Right 50vw Obsidian with sharp-cornered secondary visual & 4 hairline links
+       ========================================================================== */
+    .av-services-stage {
+      position: relative;
+      width: 100vw;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      color: var(--ink-light);
+      display: grid;
+      grid-template-columns: 50vw 50vw;
+      overflow: hidden;
+    }
+    .av-services-left {
+      position: relative;
+      min-height: 100vh;
+      background: var(--bg-dark-deep);
+      overflow: hidden;
+    }
+    .av-services-left-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.82) contrast(1.16); object-position: center top;
+      transition: opacity 0.45s ease, transform 0.65s ease;
+    }
+    .av-services-left::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(14,15,21,0.10) 0%, rgba(14,15,21,0.35) 55%, rgba(14,15,21,0.92) 100%);
+      pointer-events: none;
+    }
+
+    /* Bottom-left vertical category selector (Exact s04 "Services:") */
+    .av-services-cat-nav {
+      position: absolute;
+      bottom: 52px;
+      left: 44px;
+      z-index: 12;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
-    .av-proc-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+    .av-services-cat-label {
+      font-size: 0.72rem;
+      color: var(--ink-light-muted);
+      margin-bottom: 6px;
+    }
+    .av-services-cat-btn {
+      background: none;
+      border: none;
       text-align: left;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: var(--bg-surface);
-      border: 1px solid transparent;
-      color: var(--ink);
-      font-size: 14px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--ink-light-faint);
+      cursor: pointer;
+      padding: 2px 0;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .av-services-cat-btn:hover,
+    .av-services-cat-btn.active {
+      color: #FFFFFF;
       font-weight: 500;
-      transition: all 0.18s ease;
-    }
-    .av-proc-item:hover {
-      border-color: var(--primary);
-      transform: translateX(3px);
-    }
-    .av-proc-item.active {
-      background: var(--primary);
-      color: #fff;
-      font-weight: 600;
+      transform: translateX(4px);
     }
 
-    /* ==========================================================================
-       5. YENİ: ESTETİK GÜLÜŞ & DOĞAL IŞIK FELSEFESİ (3 SÜTUNLU LÜKS ESTETİK ÇAĞRIŞIM)
-       ========================================================================== */
-    .av-aesthetic-studio {
-      padding: 24px 0 84px;
+    /* Giant 2-Line White Serif Title Straddling the Bottom 50vw Split Line (Exact s04) */
+    .av-services-straddle-title {
+      position: absolute;
+      bottom: 42px;
+      left: 50vw;
+      transform: translateX(-50%);
+      z-index: 11;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(3.6rem, 7.2vw, 7.6rem);
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: #EAE8E8;
+      pointer-events: none;
+      white-space: nowrap;
     }
-    .av-aesthetic-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    .av-aes-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 32px 30px;
+
+    /* Right 50vw Obsidian Column (Exact s04 Right Half) */
+    .av-services-right {
+      background: var(--bg-dark);
+      padding: 72px 56px 52px 56px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
+      position: relative;
+      z-index: 5;
     }
-    .av-aes-card:hover {
-      background: var(--bg-elevated);
-      border-color: var(--line-strong);
-      box-shadow: var(--shadow-card);
-      transform: translateY(-4px);
+    .av-services-right-top {
+      max-width: 480px;
     }
-    .av-aes-num {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      color: var(--primary);
-      text-transform: uppercase;
-      margin-bottom: 14px;
+    .av-services-solutions-label {
+      font-size: 0.75rem;
+      color: var(--ink-light-muted);
+      margin-bottom: 18px;
     }
-    .av-aes-card h3 {
-      font-family: var(--serif);
-      font-size: 30px;
-      font-weight: 500;
-      line-height: 1.12;
-      margin-bottom: 12px;
-    }
-    .av-aes-card p {
-      font-size: 14.5px;
-      color: var(--ink-soft);
+    .av-services-solutions-desc {
+      font-size: 0.92rem;
       line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .av-aes-meta {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--primary);
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
+      color: rgba(234, 232, 232, 0.86);
+      font-weight: 300;
     }
 
-    /* ==========================================================================
-       6. AVENTURA TİPOGRAFİK BANNER & 01 / 06 TEKNOLOJİ VİTRİNİ
-       ========================================================================== */
-    .av-banner {
-      background: var(--dark-stage);
-      color: #FBFBF9;
-      border-radius: var(--radius-2xl);
-      padding: 48px 46px;
+    /* Center of Right 50vw: Sharp-cornered vertical image + 4 hairline procedure links */
+    .av-services-right-mid {
+      display: grid;
+      grid-template-columns: 165px 1fr;
+      gap: 36px;
+      align-items: start;
+      margin: 42px 0 140px;
+    }
+    .av-services-sub-img {
+      width: 165px;
+      height: 215px;
+      object-fit: cover;
+      border-radius: 0; /* Strictly sharp corners like s04 */
+      border: 1px solid rgba(234, 232, 232, 0.12);
+    }
+    .av-services-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--line-dark);
+    }
+    .av-services-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 84px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line-dark);
+      font-size: 0.88rem;
+      color: #EAE8E8;
+      transition: color 0.2s ease, padding-left 0.2s ease;
     }
-    .av-banner h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 4.2vw, 60px);
-      font-weight: 400;
-      line-height: 1.06;
+    .av-services-item:hover {
+      color: var(--accent);
+      padding-left: 6px;
     }
-    .av-banner h2 em {
-      font-style: italic;
-      color: #DFD5C0;
+    .av-services-item span.arr {
+      font-size: 0.82rem;
+      opacity: 0.65;
+    }
+    .av-services-right-bottom {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
 
-    .av-tech {
-      padding-bottom: 84px;
-    }
+    /* ==========================================================================
+       SCREEN 4 (s08-s09): FULL-BLEED #EAE8E8 TECHNOLOGY STAGE ("01 / 04")
+       Giant centered "Teknoloji & Sonuç" Serif headline, left counter,
+       center-left bespoke synthetic hardware visual, right faded/active Serif rows
+       ========================================================================== */
     .av-tech-stage {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 24px;
-      align-items: stretch;
+      width: 100vw;
+      min-height: 100vh;
+      background: var(--bg-light);
+      color: var(--ink-dark);
+      padding: 110px 44px 120px;
     }
-    .av-tech-left {
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-2xl);
-      padding: 32px;
+    .av-tech-giant-header {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(4.2rem, 8.8vw, 9.2rem);
+      line-height: 0.90;
+      letter-spacing: -0.025em;
+      color: var(--ink-dark);
+      margin-bottom: 72px;
+    }
+    .av-tech-grid {
+      display: grid;
+      grid-template-columns: 16% 30% 54%;
+      align-items: start;
+      padding-top: 24px;
+    }
+    .av-tech-counter-col {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 10px;
     }
-    .av-tech-photo {
-      height: 290px;
-      border-radius: var(--radius-xl);
+    .av-tech-counter {
+      font-size: 0.84rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink-dark);
+    }
+    .av-tech-counter-sub {
+      font-size: 0.74rem;
+      color: var(--ink-dark-muted);
+      max-width: 150px;
+      line-height: 1.45;
+    }
+    .av-tech-visual-col {
+      padding-right: 44px;
+    }
+    .av-tech-visual-frame {
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 4 / 4.6;
+      background: #14151D;
       overflow: hidden;
-      margin: 16px 0 20px;
-      background: var(--dark-stage);
+      border-radius: 0; /* Strictly sharp corners like s09 */
     }
-    .av-tech-photo img {
+    .av-tech-visual-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .av-tech-visual-caption {
+      margin-top: 12px;
+      font-size: 0.76rem;
+      color: var(--ink-dark-muted);
+      line-height: 1.45;
+      max-width: 340px;
     }
     .av-tech-rows {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      border-top: 1px solid var(--line-light);
     }
     .av-tech-row {
-      padding: 18px 22px;
-      border-radius: var(--radius-xl);
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      text-align: left;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line-light);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .av-tech-row-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.4vw, 3.5rem);
+      line-height: 1.02;
+      font-weight: 400;
+      color: var(--ink-dark-faint);
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .av-tech-row-action {
+      font-size: 0.78rem;
+      color: var(--ink-dark-faint);
+      white-space: nowrap;
+      transition: color 0.25s ease;
+    }
+    .av-tech-row.active .av-tech-row-title,
+    .av-tech-row:hover .av-tech-row-title {
+      color: var(--ink-dark);
+      transform: translateX(4px);
+    }
+    .av-tech-row.active .av-tech-row-action,
+    .av-tech-row:hover .av-tech-row-action {
+      color: var(--ink-dark);
+    }
+
+    /* ==========================================================================
+       SCREEN 5 (s10-s13): OBSIDIAN "UZMAN HEKİMLERİMİZ" + 6-CIRCLE DOME ARC
+       ========================================================================== */
+    .av-experts-stage {
+      width: 100vw;
+      background: var(--bg-dark);
+      color: var(--ink-light);
+      padding: 120px 44px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+    .av-experts-giant-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(4.2rem, 9.2vw, 9.6rem);
+      line-height: 0.88;
+      letter-spacing: -0.025em;
+      color: #EAE8E8;
+      margin-bottom: 64px;
+    }
+    .av-experts-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      max-width: 1360px;
+      margin: 0 auto 56px;
+      border-top: 1px solid var(--line-dark);
+      padding-top: 44px;
+    }
+    .av-expert-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .av-expert-role {
+      font-size: 0.70rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .av-expert-name {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+    .av-expert-bio {
+      font-size: 0.82rem;
+      line-height: 1.58;
+      color: var(--ink-light-muted);
+      font-weight: 300;
+    }
+    .av-experts-cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 120px;
+    }
+
+    /* Aventura s12-s13 Pre-Footer Semicircular Arc + 6 Sculptural Metric Circles */
+    .av-dome-section {
+      position: relative;
+      max-width: 1380px;
+      margin: 0 auto;
+      padding-top: 40px;
+      text-align: center;
+    }
+    .av-dome-subtitle {
+      font-size: 0.78rem;
+      color: var(--ink-light-muted);
+      margin-bottom: 14px;
+    }
+    .av-dome-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 6.2vw, 6.4rem);
+      line-height: 0.94;
+      font-weight: 400;
+      color: #EAE8E8;
+      margin-bottom: 64px;
+    }
+    .av-dome-arc-wrap {
+      position: relative;
+      padding: 70px 20px 40px;
+      border-top: 1px solid rgba(234, 232, 232, 0.22);
+      border-radius: 50% 50% 0 0 / 120px 120px 0 0;
+    }
+    .av-circles-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+    .av-metric-circle {
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      border: 1px solid rgba(234, 232, 232, 0.22);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    }
+    .av-metric-circle:hover {
+      border-color: var(--accent);
+      background: rgba(234, 232, 232, 0.03);
+      transform: translateY(-4px);
+    }
+    .av-metric-num {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      line-height: 1;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .av-metric-lbl {
+      font-size: 0.70rem;
+      line-height: 1.35;
+      color: var(--ink-light-muted);
+      max-width: 120px;
+    }
+
+    /* Footer */
+    .av-footer {
+      margin-top: 90px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line-dark);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      transition: all 0.2s ease;
-    }
-    .av-tech-row:hover { border-color: var(--primary); }
-    .av-tech-row.active {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-    .av-tech-row b {
-      font-family: var(--mono);
-      font-size: 12px;
-      opacity: 0.75;
-      min-width: 28px;
-    }
-    .av-tech-row strong {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 500;
-      display: block;
-    }
-    .av-tech-row small {
-      font-size: 12.5px;
-      opacity: 0.82;
-    }
-
-    /* ==========================================================================
-       7. DERLİ TOPLU UZMAN HEKİM VİTRİNİ (ÖNCE SEÇKİN 8 UZMAN + TÜMÜNÜ AÇ DÜĞMESİ)
-       ========================================================================== */
-    .av-experts {
-      padding: 84px 0;
-      border-top: 1px solid var(--line);
-    }
-    .av-doc-filters {
-      display: flex;
-      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
+      gap: 20px;
+      font-size: 0.76rem;
+      color: var(--ink-light-muted);
     }
-    .av-doc-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .av-doc-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      transition: all 0.25s ease;
+    .av-footer-links {
       display: flex;
-      flex-direction: column;
-    }
-    .av-doc-card:hover {
-      background: var(--bg-elevated);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-card);
-      border-color: var(--line-strong);
-    }
-    .av-doc-img {
-      aspect-ratio: 4 / 4.3;
-      overflow: hidden;
-      position: relative;
-      background: var(--bg-pill);
-    }
-    .av-doc-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      transition: transform 0.4s ease;
-    }
-    .av-doc-card:hover .av-doc-img img { transform: scale(1.03); }
-    .av-doc-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      padding: 4px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(28, 27, 24, 0.72);
-      backdrop-filter: blur(8px);
-      color: #FBFBF9;
-      font-family: var(--mono);
-      font-size: 10px;
-    }
-    .av-doc-info {
-      padding: 16px 18px;
-    }
-    .av-doc-info h4 {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 600;
-      line-height: 1.15;
-    }
-    .av-doc-info p {
-      font-size: 12.5px;
-      color: var(--primary);
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    /* ==========================================================================
-       8. DERLİ TOPLU 3-SEKMELİ TRTEK KURUMSAL ORGANİZASYON ŞEMASI
-       ========================================================================== */
-    .av-org {
-      padding: 84px 0;
-      border-top: 1px solid var(--line);
-    }
-    .av-org-shell {
-      background: var(--bg-surface);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-2xl);
-      padding: 34px;
-    }
-    .av-org-tabs {
-      display: flex;
-      gap: 8px;
+      gap: 24px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 18px;
     }
-    .av-org-pane { display: none; }
-    .av-org-pane.active { display: block; }
+    .av-footer-links a:hover {
+      color: #FFFFFF;
+    }
 
-    .org-board-top {
-      max-width: 660px;
-      margin: 0 auto;
-      background: var(--primary);
-      color: #fff;
-      border-radius: var(--radius-xl);
-      padding: 20px 28px;
-      text-align: center;
-    }
-    .org-line-v {
-      width: 1.5px;
-      height: 22px;
-      background: var(--primary);
-      margin: 0 auto;
-      opacity: 0.4;
-    }
-    .org-exec-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .org-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--line-strong);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-    }
-    .org-card small {
-      font-family: var(--mono);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--primary);
-      font-weight: 600;
-    }
-    .org-card h4 {
-      font-family: var(--serif);
-      font-size: 23px;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-    .org-card .unvan {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: var(--accent);
-      margin-top: 2px;
-    }
-    .org-card p {
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-top: 8px;
-      line-height: 1.45;
-    }
-    .org-units-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .org-unit-list {
-      list-style: none;
-      margin-top: 8px;
-      font-size: 13px;
-      line-height: 1.65;
-    }
-    .org-unit-list span { color: var(--ink-soft); font-size: 12px; }
-
-    /* ==========================================================================
-       9. AVENTURA 2-ŞUBE RADYO SEÇİCİLİ FOOTER
-       ========================================================================== */
-    .av-footer {
-      background: var(--dark-stage);
-      color: #FBFBF9;
-      padding: 64px 0 48px;
-    }
-    .av-footer-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 32px;
+    /* Discrete Floating Prototype Palette Switcher at Bottom-Right */
+    .av-proto-dock {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      display: flex;
       align-items: center;
+      gap: 6px;
+      background: rgba(20, 21, 29, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(234, 232, 232, 0.16);
+      padding: 6px 10px;
+      border-radius: 100px;
+      font-size: 0.70rem;
+      color: #EAE8E8;
     }
-    .av-footer-box {
-      background: rgba(251, 251, 249, 0.06);
-      border: 1px solid rgba(251, 251, 249, 0.14);
-      border-radius: var(--radius-xl);
-      padding: 28px;
+    .av-proto-btn {
+      background: transparent;
+      border: none;
+      color: rgba(234, 232, 232, 0.65);
+      padding: 5px 10px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 0.70rem;
+      font-family: var(--font-sans);
+      transition: all 0.2s;
+    }
+    .av-proto-btn.active,
+    .av-proto-btn:hover {
+      background: #EAE8E8;
+      color: #14151D;
+      font-weight: 500;
+    }
+    .av-proto-sep {
+      width: 1px;
+      height: 14px;
+      background: rgba(234, 232, 232, 0.2);
+      margin: 0 2px;
     }
 
-    @media (max-width: 1100px) {
-      .av-header-row { grid-template-columns: 1fr; text-align: center; }
-      .av-nav-group, .av-nav-group.right { justify-content: center; }
-      .av-hero-stage,
-      .av-goal-layout,
-      .av-services-grid,
-      .av-aesthetic-cards,
-      .av-tech-stage,
-      .org-exec-grid,
-      .org-units-grid,
-      .av-footer-layout {
+    @media (max-width: 1024px) {
+      .av-hero {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .av-hero-left, .av-hero-right {
+        min-height: 50vh;
+      }
+      .av-hero-straddle-title {
+        background: none;
+        -webkit-text-fill-color: #FFFFFF;
+        color: #FFFFFF;
+        text-shadow: 0 4px 24px rgba(0,0,0,0.45);
+      }
+      .av-goal-stage {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 80px 24px;
+      }
+      .av-services-stage {
         grid-template-columns: 1fr;
       }
-      .av-doc-grid { grid-template-columns: repeat(2, 1fr); }
-      .av-veil-doors { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .av-doc-grid { grid-template-columns: 1fr; }
-      .av-hero-left { padding: 28px 24px; }
+      .av-services-straddle-title {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        margin: 24px 0;
+      }
+      .av-tech-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .av-experts-cols {
+        grid-template-columns: 1fr;
+      }
+      .av-circles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- İNCE ESTETİK ATMOSFER SEÇİCİ ŞERİT -->
-  <div class="studio-top-strip">
-    <div class="studio-top-inner">
-      <div class="studio-tones">
-        <span class="studio-tones-label">✦ Estetik Atmosfer:</span>
-        <button type="button" class="tone-chip active" data-theme-btn="aventura">
-          <span class="tone-swatch" style="background:#726A4C;"></span>
-          01 · İnci Beyazı &amp; Aventura Bronz (Orijinal Estetik)
-        </button>
-        <button type="button" class="tone-chip" data-theme-btn="emerald">
-          <span class="tone-swatch" style="background:#183A30;"></span>
-          02 · Porselen Beyazı &amp; Zümrüt İpek
-        </button>
-        <button type="button" class="tone-chip" data-theme-btn="cashmere">
-          <span class="tone-swatch" style="background:#1E2D40;"></span>
-          03 · Kaşmir Fildişi &amp; Gece Safiri
-        </button>
-      </div>
-      <div class="studio-tones">
-        <a href="#organizasyon-semasi" class="tone-chip">🏛️ TRtek Organizasyon Şeması</a>
-        <a href="index.html" class="tone-chip">🏠 Mevcut Ana Sayfa</a>
-      </div>
-    </div>
-  </div>
+  <!-- ========================================================================
+       UNBOXED MINIMALIST HEADER (Exact Aventura s00 Top Navigation)
+       ======================================================================== -->
+  <header class="av-header" id="avHeader">
+    <nav class="av-nav-left">
+      <a href="#hizmetler" class="av-nav-link">Menü ≡</a>
+      <a href="#hizmetler" class="av-nav-link">Tedaviler ▾</a>
+      <a href="#teknoloji" class="av-nav-link">Teknoloji</a>
+      <a href="hekimler.html" class="av-nav-link">Hekimler (20)</a>
+      <a href="kurumsal.html#organizasyon-semasi" class="av-nav-link">Kurumsal</a>
+    </nav>
 
-  <!-- 1. AVENTURA MİNİMALİST HEADER -->
-  <header class="av-header">
-    <div class="container av-header-row">
-      <nav class="av-nav-group" aria-label="Ana Menü">
-        <a href="#tedaviler" class="pill-btn">Tedaviler ▾</a>
-        <a href="#estetik-felsefe" class="pill-btn">Gülüş Estetiği</a>
-        <a href="#teknoloji" class="pill-btn">Teknoloji (01/06)</a>
-        <a href="#hekimler" class="pill-btn">Hekimlerimiz</a>
-        <a href="#organizasyon-semasi" class="pill-btn">Organizasyon Şeması</a>
-      </nav>
+    <a href="index.html" class="av-brand" title="Evdiş Ana Sayfa">
+      <span class="av-brand-mark">EVDİŞ</span>
+    </a>
 
-      <a href="index.html" class="av-brand">
-        <span class="av-brand-title">EVDİŞ</span>
-        <span class="av-brand-sub">Ağız ve Diş Sağlığı Merkezi</span>
+    <div class="av-nav-right">
+      <a href="gokhan-eksik-listesi.html#video-istek-listesi" class="av-pill-btn" style="background: transparent; color: #EAE8E8; border-color: rgba(234,232,232,0.28);">
+        Video Listesi (Gökhan Bey)
       </a>
-
-      <div class="av-nav-group right">
-        <a href="tel:+902646060060" class="pill-btn">0 (264) 606 00 60</a>
-        <button type="button" class="pill-btn primary" data-evdis-ajan-ac>Randevu &amp; Dijital Rehber →</button>
-      </div>
+      <a href="randevu.html" class="av-pill-btn">
+        Randevu Al <span>✦</span>
+      </a>
     </div>
   </header>
 
-  <main>
-    <!-- 2. AVENTURA ASİMETRİK SPLIT HERO (BOL NEGATİF ALAN + SİNEMATİK VİDEO SAHNESİ) -->
-    <section class="av-hero">
-      <div class="container">
-        <div class="av-hero-stage">
-          <!-- Sol Sütun: Saf Tipografi ve Nefes Alan Boşluk -->
-          <div class="av-hero-left">
-            <div class="av-loc-row">
-              <span>Şubelerimiz:</span>
-              <a href="serdivan.html" class="av-loc-chip active">Serdivan Merkez</a>
-              <a href="adapazari.html" class="av-loc-chip">Adapazarı</a>
-            </div>
-
-            <div class="av-hero-center">
-              <span class="av-hero-kicker">✦ SAKARYA · BİYOMİMETİK &amp; DİJİTAL KLİNİK MİMARİ</span>
-              <h1 class="av-hero-h1">
-                Estetik
-                <em>Diş Hekimliği</em>
-              </h1>
-            </div>
-
-            <div class="av-hero-foot">
-              <p class="av-hero-lead">
-                İleri bilimi hekim sanatı ve 3 boyutlu dijital hassasiyetle birleştiriyoruz — göründüğü kadar sağlıklı ve doğal gülüşler için.
-              </p>
-              <div class="av-hero-metrics">
-                <div class="av-metric"><b>8</b><span>Uzmanlık Branşı</span></div>
-                <div class="av-metric"><b>20</b><span>Uzman &amp; Diş Hekimi</span></div>
-                <div class="av-metric"><b>15</b><span>Ünit &amp; Ameliyathane</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sağ Sütun: Sinematik Video & 3 Cam Kapı -->
-          <div class="av-hero-right">
-            <video autoplay muted loop playsinline poster="img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp">
-              <source src="video/evdis-klinik-tanitim-3.mp4" type="video/mp4"/>
-            </video>
-            <div class="av-hero-veil">
-              <div class="av-veil-top">
-                <span class="glass-pill">Serdivan Merkez &amp; Adapazarı</span>
-                <span class="glass-pill">25× Mikroskop · 3B CBCT · CEREC · Genel Anestezi</span>
-              </div>
-
-              <div class="av-veil-bottom">
-                <h2>Gülüşünüz, <em>doğal ışık ve estetik uyumla</em> yeniden tasarlandı.</h2>
-                <div class="av-veil-doors">
-                  <a href="#tedaviler" class="av-veil-door" data-select-cat="0">
-                    <small>01 · ESTETİK &amp; GÜLÜŞ</small>
-                    <strong>Porselen Lamina &amp; Zirkon →</strong>
-                  </a>
-                  <a href="#tedaviler" class="av-veil-door" data-select-cat="1">
-                    <small>02 · CERRAHİ &amp; KONFOR</small>
-                    <strong>3B İmplant &amp; Sedasyon →</strong>
-                  </a>
-                  <a href="#tedaviler" class="av-veil-door" data-select-cat="2">
-                    <small>03 · MİKRO-TEDAVİ</small>
-                    <strong>25× Mikroskopik Kanal →</strong>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- ========================================================================
+       SCREEN 1 (s00): EDGE-TO-EDGE 50VW PEARL / 50VW DARK VIDEO SPLIT HERO
+       Zero rounded boxes; giant condensed Serif straddling the 50vw center line
+       ======================================================================== -->
+  <section class="av-hero" id="top">
+    <div class="av-hero-left">
+      <div class="av-hero-based">
+        <div class="av-hero-based-label">Şubelerimiz (Sakarya):</div>
+        <div>Serdivan · İstiklal Mah. 2. Cad. No: 13</div>
+        <div>Adapazarı · Yenidoğan Mah. Fabrika Cad. No: 33</div>
+        <div>7 Gün 08:30 – 23:00 Açık Klinik</div>
       </div>
-    </section>
-
-    <!-- 3. AVENTURA "HEDEFİMİZ" (OUR GOAL) -->
-    <section class="av-goal">
-      <div class="container av-goal-layout">
-        <div>
-          <span class="section-tag">✦ HEDEFİMİZ</span>
-          <div class="av-avatars">
-            <img src="img/doctors/dr_2069194eac7792f1.webp" alt="Dr. Dt. Seyit Yılmaz"/>
-            <img src="img/doctors/dr_77b8934990a0ad18.webp" alt="Prof. Dr. Fuat Ahmetoğlu"/>
-            <img src="img/doctors/dr_bcd5ea1fdb8624ba.webp" alt="Dr. Dt. Gökhan Uzel"/>
-            <img src="img/doctors/dr_c1af2b63b6f5ff29.webp" alt="Dr. Dt. Zuhal Metin"/>
-            <span class="av-avatars-badge">+20 Hekim</span>
-          </div>
-          <p style="font-size:13px;color:var(--ink-soft);max-width:270px;">
-            Başhekim <strong>Dr. Dt. Seyit Yılmaz</strong>, Kurucu Ortak <strong>Dt. Emrah Özdemir</strong>, Genel Müdür <strong>Ozan Aydınlar</strong> ve Tıbbi Direktör <strong>Prof. Dr. Fuat Ahmetoğlu</strong> liderliğinde.
-          </p>
-        </div>
-
-        <div>
-          <p class="av-goal-text">
-            Amacımız; <em>doğal diş dokusuna saygılı estetik diş hekimliğini</em>, 8 uzmanlık branşının ortak konseyi ve ileri dijital teknolojiyle buluşturarak hastalarımıza <em>sakin, şeffaf ve öngörülebilir</em> bir sağlık deneyimi sunmaktır.
-          </p>
-          <div style="margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="#hekimler" class="pill-btn primary">Hekim Kadromuzu Tanıyın →</a>
-            <a href="#organizasyon-semasi" class="pill-btn">Kurumsal Organizasyon Şemamız →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. AVENTURA 3-SÜTUNLU DERLİ TOPLU HİZMET VİTRİNİ -->
-    <section class="av-services" id="tedaviler">
-      <div class="container">
-        <div class="section-header-bar">
-          <div>
-            <span class="section-tag">✦ UZMANLIK ALANLARIMIZ &amp; ÇÖZÜMLERİMİZ</span>
-            <h2 class="section-h2">Kişiye Özel <em>Klinik Çözümler</em></h2>
-          </div>
-          <div class="av-cat-pills" id="av-cat-pills" style="margin-bottom:0;">
-            <button type="button" class="av-cat-pill active" data-cat="0">01 · Estetik &amp; Gülüş Tasarımı</button>
-            <button type="button" class="av-cat-pill" data-cat="1">02 · İmplantoloji &amp; Cerrahi</button>
-            <button type="button" class="av-cat-pill" data-cat="2">03 · Mikroskopik Endodonti</button>
-            <button type="button" class="av-cat-pill" data-cat="3">04 · Ortodonti, Perio &amp; Çocuk</button>
-          </div>
-        </div>
-
-        <div class="av-services-grid">
-          <!-- Sol: Kategori Portresi -->
-          <div class="av-srv-portrait">
-            <img id="srv-cat-img" src="img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp" alt="Estetik Diş Hekimliği"/>
-            <div class="av-srv-portrait-veil">
-              <span class="glass-pill" id="srv-cat-tag" style="align-self:flex-start;">01 · ESTETİK DİŞ HEKİMLİĞİ</span>
-              <h3 id="srv-cat-title">Estetik &amp; Protetik Gülüş Tasarımı</h3>
-              <p id="srv-cat-desc">Yüz hatlarınız, dudak dinamiğiniz ve doğal ışık kırılmasıyla tam uyumlu porselen lamina ve zirkonya restorasyonlar.</p>
-            </div>
-          </div>
-
-          <!-- Orta: Seçili İşlem Kartı -->
-          <div class="av-srv-detail">
-            <div>
-              <div class="av-srv-detail-img">
-                <img id="srv-proc-img" src="img/services/estetik.webp" alt="Seçili Tedavi"/>
-              </div>
-              <span class="section-tag" id="srv-proc-tag" style="margin-bottom:6px;">BİYOMİMETİK PORSELEN · 3B MOCK-UP</span>
-              <h4 id="srv-proc-title">Dijital Gülüş Tasarımı &amp; Porselen Lamina</h4>
-              <p id="srv-proc-desc">
-                Diş yüzeyinden yalnızca 0,3 mm minimal hazırlıkla veya aşındırmasız uygulanan, doğal minenin yarı-saydam ışık geçişini birebir yansıtan yaprak porselen protokolü. Tedaviye başlamadan önce 3B dijital prova ile yeni gülüşünüzü deneyimlersiniz.
-              </p>
-            </div>
-            <div>
-              <div class="av-srv-specialist" id="srv-proc-doc">
-                <strong>İlgili Uzmanlık &amp; Birim:</strong> Dr. Dt. Gökhan Uzel (Protetik Diş Tedavisi Uzmanı) · Özel CAD/CAM Protez Laboratuvarı
-              </div>
-              <div style="display:flex;gap:10px;flex-wrap:wrap;">
-                <a href="tedavi-protetik.html" id="srv-proc-link" class="pill-btn primary">Detaylı İncele →</a>
-                <button type="button" class="pill-btn" data-evdis-ajan-ac>Dijital Rehber'e Sor</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sağ: Derli Toplu İşlem Seçici -->
-          <div class="av-srv-menu">
-            <div>
-              <span class="section-tag" id="srv-menu-heading">ÇÖZÜMLERİMİZ · SEÇİN</span>
-              <div class="av-proc-items" id="srv-proc-items"></div>
-            </div>
-            <div style="padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-muted);">
-              Üstteki 4 ana uzmanlık sekmesinden diğer klinik branşlarımızı da inceleyebilirsiniz.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. YENİ: ESTETİK GÜLÜŞ & DOĞAL IŞIK FELSEFESİ (Sarı diş skalası yerine gerçek estetik çağrışım!) -->
-    <section class="av-aesthetic-studio" id="estetik-felsefe">
-      <div class="container">
-        <div class="section-header-bar">
-          <div>
-            <span class="section-tag">✦ ESTETİK YAKLAŞIMIMIZ</span>
-            <h2 class="section-h2">Doğal Işıltı, <em>Yüz Uyumu ve Sanat</em></h2>
-          </div>
-          <p style="max-width:440px;font-size:14.5px;color:var(--ink-soft);">
-            Gerçek estetik; yapay ve opak beyazlıkta değil, doğal diş minesinin ışığı kırma biçiminde, diş eti simetrisinde ve yüz oranlarınızla kurduğu dengede saklıdır.
-          </p>
-        </div>
-
-        <div class="av-aesthetic-cards">
-          <div class="av-aes-card">
-            <div>
-              <div class="av-aes-num">01 · IŞIK GEÇİRGENLİĞİ &amp; DOKU</div>
-              <h3>Biyomimetik Porselen &amp; Mine Işıltısı</h3>
-              <p>
-                IPS e.max® cam seramikler ve çok katmanlı monolitik zirkonya bloklar; ışığı tıpkı doğal diş minesi gibi yarı-saydam geçirir, gri metal yansıması oluşturmaz ve yıllar boyunca ilk günkü parlaklığını korur.
-              </p>
-            </div>
-            <div class="av-aes-meta">✦ Dr. Dt. Gökhan Uzel · CAD/CAM Estetik Protez Lab.</div>
-          </div>
-
-          <div class="av-aes-card">
-            <div>
-              <div class="av-aes-num">02 · 3 BOYUTLU ÖN İZLEME (MOCK-UP)</div>
-              <h3>Tedavi Başlamadan Gülüşünüzü Görün</h3>
-              <p>
-                CEREC 3B optik tarama ve yüz fotoğraflarınız üzerinden gülüş hattınız dijital ortamda tasarlanır; dişlerinize hiçbir işlem yapılmadan önce geçici "mock-up" ile yeni tasarım ağzınızda canlı olarak prova edilir.
-              </p>
-            </div>
-            <div class="av-aes-meta">✦ Kaşıksız 3B Dijital Ölçü &amp; Kişiye Özel Tasarım</div>
-          </div>
-
-          <div class="av-aes-card">
-            <div>
-              <div class="av-aes-num">03 · PEMBE ESTETİK &amp; DİŞ ETİ MİMARİSİ</div>
-              <h3>Kusursuz Çerçeve: Pembe ve Beyaz Uyumu</h3>
-              <p>
-                En zarif porselen bile sağlıklı ve simetrik bir diş eti çerçevesi olmadan tamamlanmaz. GBT biyofilm bakımı ve mikro-periodontal seviyeleme ile gülüşünüzün doğal çerçevesi kusursuzlaştırılır.
-              </p>
-            </div>
-            <div class="av-aes-meta">✦ Dr. Dt. Zuhal Metin · Periodontoloji Uzmanı</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. AVENTURA TİPOGRAFİK BANNER & 01 / 06 TEKNOLOJİ VİTRİNİ -->
-    <div class="container">
-      <section class="av-banner">
-        <div>
-          <span class="section-tag" style="color:#DFD5C0;">✦ EVDİŞ KLİNİK STANDARDI</span>
-          <h2>Modern Diş Hekimliği: <em>Daha Hızlı</em> · <em>Daha Akıllı</em> · <em>Ağrısız</em></h2>
-        </div>
-        <button type="button" class="pill-btn primary" style="background:#FBFBF9;color:#1C1B18;border-color:#FBFBF9;" data-evdis-tur-ac>🧭 Sesli &amp; Işıklı Sayfa Turu</button>
-      </section>
     </div>
 
-    <section class="av-tech" id="teknoloji">
-      <div class="container">
-        <div class="section-header-bar">
-          <div>
-            <span class="section-tag">✦ TEKNOLOJİ ODAKLI TEŞHİS VE TEDAVİ</span>
-            <h2 class="section-h2">Kusursuz Sonuçlar İçin <em>Dijital Diş Hekimliği</em></h2>
-          </div>
-          <div style="display:flex;gap:8px;">
-            <button type="button" class="pill-btn" id="tech-prev">← Önceki</button>
-            <button type="button" class="pill-btn" id="tech-next">Sonraki →</button>
-          </div>
+    <div class="av-hero-right">
+      <video autoplay muted loop playsinline poster="img/canli_medya/galeri_03_klinik_koridor.webp">
+        <source src="video/evdis-klinik-tanitim-3.mp4" type="video/mp4" />
+      </video>
+      <div class="av-hero-right-bottom">
+        <div class="av-hero-right-tagline">
+          Biyomimetik estetik diş hekimliği, mikroskobik hassasiyet ve ileri cerrahi sanatı.
         </div>
-
-        <div class="av-tech-stage">
-          <div class="av-tech-left">
-            <div>
-              <div style="font-family:var(--serif);font-size:44px;color:var(--primary);line-height:1;" id="tech-counter">01 <span style="font-size:22px;color:var(--ink-muted);">/ 06</span></div>
-              <div class="av-tech-photo">
-                <img id="tech-img" src="img/services/dijital-dolgu.webp" alt="CEREC 3B Dijital Ölçü"/>
-              </div>
-              <h3 style="font-family:var(--serif);font-size:32px;font-weight:500;margin-bottom:8px;" id="tech-title">CEREC 3B Ağız İçi Optik Tarama &amp; CAD/CAM</h3>
-              <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.6;" id="tech-desc">
-                Geleneksel ölçü kaşığı ve bulantı hissini ortadan kaldıran saniyeler içinde mikron hassasiyetinde 3 boyutlu renkli optik tarama ve dijital tasarım.
-              </p>
-            </div>
-            <div style="padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--primary);font-weight:600;" id="tech-meta">
-              📍 Serdivan Merkez &amp; Özel CAD/CAM Protez Laboratuvarı
-            </div>
-          </div>
-
-          <div class="av-tech-rows" id="tech-rows"></div>
-        </div>
+        <a href="#hedefimiz" class="av-scroll-cue">Keşfet ↓</a>
       </div>
-    </section>
+    </div>
 
-    <!-- 7. DERLİ TOPLU UZMAN HEKİM VİTRİNİ (SEÇKİN 8 UZMAN VARSAYILAN + TÜM 20 HEKİMİ AÇ) -->
-    <section class="av-experts" id="hekimler">
-      <div class="container">
-        <div class="section-header-bar">
-          <div>
-            <span class="section-tag">✦ AKADEMİK &amp; UZMAN HEKİM KADROMUZ</span>
-            <h2 class="section-h2">8 Uzmanlık Branşı · <em>20 Hekim</em></h2>
-          </div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button type="button" class="pill-btn" id="toggle-all-docs">Tüm 20 Hekimi Göster ▾</button>
-            <a href="hekimler.html" class="pill-btn primary">Hekimler Sayfası →</a>
-          </div>
-        </div>
+    <!-- Center-Straddling Giant Condensed Serif Headline (Charcoal left / White right) -->
+    <div class="av-hero-center-title-wrap">
+      <h1 class="av-hero-straddle-title">
+        Kusursuz<br>Estetik Diş Hekimliği
+      </h1>
+    </div>
+  </section>
 
-        <div class="av-doc-filters" id="doc-filters">
-          <button type="button" class="av-cat-pill active" data-doc-filter="featured">Başhekimlik &amp; Uzman Branş Liderleri (10)</button>
-          <button type="button" class="av-cat-pill" data-doc-filter="all">Tüm Hekim Kadromuz (20)</button>
-          <button type="button" class="av-cat-pill" data-doc-filter="cerrahi">Çene Cerrahisi &amp; Anestezi</button>
-          <button type="button" class="av-cat-pill" data-doc-filter="endodonti">Endodonti</button>
-          <button type="button" class="av-cat-pill" data-doc-filter="protetik">Protetik &amp; Perio</button>
-          <button type="button" class="av-cat-pill" data-doc-filter="ortopedo">Ortodonti &amp; Pedodonti</button>
-        </div>
+  <!-- ========================================================================
+       SCREEN 2 (s03): "HEDEFİMİZ" (OUR GOAL) — FULL-BLEED #EAE8E8 STAGE
+       Left label, center-left sharp-cornered bespoke artwork, right giant Serif
+       ======================================================================== -->
+  <section class="av-goal-stage" id="hedefimiz">
+    <div class="av-goal-label">Hedefimiz</div>
 
-        <div class="av-doc-grid" id="doc-grid"></div>
+    <div class="av-goal-portrait-wrap">
+      <img
+        src="img/doctors/dr_2069194eac7792f1.webp"
+        alt="Evdiş Mimari Klinik Deneyimi"
+        class="av-goal-portrait"
+      />
+      <div class="av-goal-portrait-caption">
+        Evdiş Sakarya · Serdivan & Adapazarı Klinik Mimarisi
       </div>
-    </section>
+    </div>
 
-    <!-- 8. DERLİ TOPLU 3-SEKMELİ TRTEK KURUMSAL ORGANİZASYON ŞEMASI (SOYİSİM & UNVANLAR DAHİL) -->
-    <section class="av-org" id="organizasyon-semasi">
-      <div class="container">
-        <div class="section-header-bar">
-          <div>
-            <span class="section-tag">✦ SAĞLIKTA KALİTE STANDARTLARI (SKS) · TRTEK HBYS RESMİ KAYITLARI</span>
-            <h2 class="section-h2">Kurumsal <em>Organizasyon Yapımız</em></h2>
-          </div>
-          <a href="kurumsal.html#organizasyon-semasi" class="pill-btn primary">Resmi Kurumsal Sayfada İncele →</a>
+    <div class="av-goal-content">
+      <h2 class="av-goal-statement">
+        Yalnızca gülüşünüzü değil, kliniğe adım attığınız ilk andan itibaren tüm tedavi deneyiminizi kusursuzlaştırmak için buradayız.
+      </h2>
+
+      <div class="av-goal-bottom-row">
+        <div class="av-goal-actions">
+          <a href="kurumsal.html#organizasyon-semasi" class="av-pill-btn dark">
+            Kurumsal Yapımız <span>✦</span>
+          </a>
+          <a href="hekimler.html" class="av-pill-btn" style="background: transparent; color: var(--ink-dark); border: 1px solid var(--line-light);">
+            Hekim Kadromuz <span>↗</span>
+          </a>
         </div>
 
-        <div class="av-org-shell">
-          <div class="av-org-tabs" id="org-tabs">
-            <button type="button" class="av-cat-pill active" data-org-tab="yonetim">1. Yönetim Kurulu, Genel Müdürlük &amp; Direktörlükler</button>
-            <button type="button" class="av-cat-pill" data-org-tab="birimler">2. İdari, Mali, Klinik &amp; Teknik Birim Yöneticileri (TRtek Tam Liste)</button>
-            <button type="button" class="av-cat-pill" data-org-tab="komiteler">3. SKS Kalite Komiteleri &amp; Şube Yapısı</button>
-          </div>
-
-          <!-- SEKME 1: ÜST YÖNETİM ŞEMASI -->
-          <div class="av-org-pane active" id="org-pane-yonetim">
-            <div class="org-board-top">
-              <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;opacity:0.85;">
-                🏛️ YÖNETİM KURULU &amp; KURUCU ORTAKLAR — EVDİŞ POLİKLİNİĞİ SAĞLIK HİZMETLERİ LTD. ŞTİ.
-              </div>
-              <div style="font-family:var(--serif);font-size:26px;font-weight:600;margin-top:4px;">
-                Dr. Dt. Seyit Yılmaz <span style="font-size:15px;font-weight:400;opacity:0.9;">(Kurucu Hekim · Başhekim / Mesul Müdür)</span>
-                &nbsp;·&nbsp;
-                Dt. Emrah Özdemir <span style="font-size:15px;font-weight:400;opacity:0.9;">(Kurucu Ortak · Diş Hekimi)</span>
-              </div>
-              <div style="font-size:13px;margin-top:4px;opacity:0.9;">
-                <strong>Esma Özdemir</strong> — Yönetim Kurulu Üyesi
-              </div>
-            </div>
-
-            <div class="org-line-v"></div>
-
-            <div class="org-exec-grid">
-              <div class="org-card">
-                <small>👔 GENEL MÜDÜRLÜK (GM)</small>
-                <h4>Ozan Aydınlar</h4>
-                <div class="unvan">Genel Müdür</div>
-                <p>Kurumsal strateji, idari ve mali yönetim, şube koordinasyonu ve kurumsal temsil.</p>
-              </div>
-              <div class="org-card">
-                <small>⚙️ İŞLETME DİREKTÖRLÜĞÜ</small>
-                <h4>Mustafa Gökhan Bulut</h4>
-                <div class="unvan">İşletme Direktörü</div>
-                <p>Saha operasyonları, teknoloji ve medikal cihaz altyapısı, tedarik ve hizmet süreçleri.</p>
-              </div>
-              <div class="org-card">
-                <small>🩺 TIBBİ HİZMETLER DİREKTÖRLÜĞÜ</small>
-                <h4>Prof. Dr. Fuat Ahmetoğlu</h4>
-                <div class="unvan">Tıbbi Hizmetler Direktörü · Endodonti Uzm.</div>
-                <p>Akademik konsey, kanıta dayalı klinik protokoller, 8 uzmanlık branşı ve 20 hekim koordinasyonu.</p>
-              </div>
-              <div class="org-card">
-                <small>🛡️ SKS KALİTE YÖNETİM BİRİMİ</small>
-                <h4>Serap Ay</h4>
-                <div class="unvan">Kalite Yönetim Sorumlusu / Ameliyathane Hemşiresi</div>
-                <p><strong>Ayşe Nur Erişman</strong> (Kalite Yönetim Personeli) · 5 zorunlu SKS komitesi ve 12 saha ekibi.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- SEKME 2: İDARİ, MALİ, KLİNİK VE TEKNİK BİRİM YÖNETİCİLERİ -->
-          <div class="av-org-pane" id="org-pane-birimler">
-            <div class="org-units-grid">
-              <div class="org-card">
-                <small>💼 MALİ VE İDARİ İŞLER</small>
-                <h4>İdari &amp; Muhasebe Yönetimi</h4>
-                <ul class="org-unit-list">
-                  <li><strong>Sümeyra Çokyüksel</strong> — <span>İdari ve Mali İşler Yöneticisi</span></li>
-                  <li><strong>Kenan Kara</strong> — <span>İdari ve Mali İşler Muhasebe Yetkilisi</span></li>
-                  <li><strong>Merve Dertli</strong> — <span>İdari ve Mali İşler Muhasebe Sorumlusu</span></li>
-                </ul>
-              </div>
-
-              <div class="org-card">
-                <small>🩺 KLİNİK HİZMETLER &amp; HEMŞİRELİK</small>
-                <h4>Klinik Destek &amp; Sterilizasyon</h4>
-                <ul class="org-unit-list">
-                  <li><strong>Nagihan Gür</strong> — <span>Klinik Hizmetleri Yöneticisi</span></li>
-                  <li><strong>Selda Surmaz</strong> — <span>Klinik Hizmetleri Sorumlusu</span></li>
-                  <li><strong>Serap Ay</strong> — <span>Ameliyathane ve Medikal Hizmetler Hemşiresi</span></li>
-                  <li><strong>21 ADS Teknikeri / Klinik Asistanı</strong></li>
-                </ul>
-              </div>
-
-              <div class="org-card">
-                <small>🤝 MİSAFİR İLİŞKİLERİ &amp; HASTA HAKLARI</small>
-                <h4>Misafir İlişkileri Yönetimi</h4>
-                <ul class="org-unit-list">
-                  <li><strong>Kezban Durmaz</strong> — <span>Misafir İlişkileri Yöneticisi</span></li>
-                  <li><strong>Özden Yavaş</strong> — <span>Serdivan Misafir İlişkileri Sorumlusu</span></li>
-                  <li><strong>Ece Macun</strong> — <span>Adapazarı Misafir İlişkileri Sorumlusu</span></li>
-                  <li><strong>12 Banko, Karşılama &amp; Çağrı Merkezi Personeli</strong></li>
-                </ul>
-              </div>
-
-              <div class="org-card">
-                <small>👥 İNSAN KAYNAKLARI &amp; İLETİŞİM</small>
-                <h4>İK &amp; Kurumsal İletişim</h4>
-                <ul class="org-unit-list">
-                  <li><strong>Yağmur Birinci</strong> — <span>İnsan Kaynakları ve İdari İşler Sorumlusu</span></li>
-                  <li><strong>Özlem Uyanık</strong> — <span>İnsan Kaynakları Sorumlusu</span></li>
-                  <li><strong>Güler Altun</strong> — <span>Kurumsal İletişim Uzmanı</span></li>
-                  <li><strong>Zeynep Nihan Özdemir</strong> — <span>Kurumsal İletişim Uzmanı</span></li>
-                </ul>
-              </div>
-
-              <div class="org-card">
-                <small>🔬 RADYOLOJİ, BT &amp; BİYOMEDİKAL</small>
-                <h4>Görüntüleme &amp; Teknoloji Altyapısı</h4>
-                <ul class="org-unit-list">
-                  <li><strong>Tuğçe Barlas</strong> — <span>Klinik Hizmetleri Radyoloji Teknikeri</span></li>
-                  <li><strong>Şeyma Çantalı</strong> — <span>Tomografi (3B CBCT) ve Fotoğraf Personeli</span></li>
-                  <li><strong>Serdar Gümüşsoy</strong> — <span>Bilgi İşlem Sorumlusu</span></li>
-                  <li><strong>Burak Bıçakcı</strong> — <span>Biyomedikal Teknikeri ve Teknik Sorumlu</span></li>
-                </ul>
-              </div>
-
-              <div class="org-card">
-                <small>🦷 PROTEZ LAB, LOJİSTİK &amp; TEKNİK</small>
-                <h4>CAD/CAM Lab &amp; Lojistik</h4>
-                <ul class="org-unit-list">
-                  <li><strong>Barış Emre Arpaç</strong> — <span>Diş Protez Teknikeri (Özel Protez Lab.)</span></li>
-                  <li><strong>Ahmet Tayyip Berk</strong> — <span>Diş Protez Teknisyeni (Özel Protez Lab.)</span></li>
-                  <li><strong>Bilal Günbatı</strong> — <span>Depo ve Lojistik Sorumlusu</span></li>
-                  <li><strong>Ekrem Atun &amp; Metin Mutlu</strong> — <span>Mekanik Bakım Sorumluları</span></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- SEKME 3: SKS KOMİTELERİ VE ŞUBE YAPISI -->
-          <div class="av-org-pane" id="org-pane-komiteler">
-            <div class="org-units-grid">
-              <div class="org-card">
-                <small>🏥 SERDİVAN MERKEZ ŞUBESİ</small>
-                <h4>13 Ünit · 18 Hekim · Ameliyathane</h4>
-                <p>İstiklal Mah. 2. Cad. No: 13, Serdivan / Sakarya · Genel Anestezi Ameliyathanesi, 3B CBCT Volümetrik Tomografi, 25× Operasyon Mikroskobu, CEREC CAD/CAM ve Çocuk Oyun Alanı.</p>
-              </div>
-              <div class="org-card">
-                <small>🏥 ADAPAZARI ŞUBESİ</small>
-                <h4>2 Ünit · 2 Hekim · Merkezi Ulaşım</h4>
-                <p>Yenidoğan Mah. Fabrika Cad. No: 33, Adapazarı / Sakarya · Dt. Mehmet Emre Türkhan, Dt. Yasa Akdoğan ve Sorumlu Ece Macun ile merkezi klinik hizmet.</p>
-              </div>
-              <div class="org-card">
-                <small>🛡️ SKS 5 ZORUNLU KOMİTE &amp; 12 EKİP</small>
-                <h4>Sürekli Kalite &amp; Hasta Güvenliği</h4>
-                <p>Hasta Güvenliği Komitesi, Enfeksiyonların Kontrolü Komitesi, Tesis Güvenliği Komitesi, Eğitim Komitesi ve Radyasyon Güvenliği Komitesi.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a href="hekimler.html" class="av-avatar-cluster" title="20 Uzman ve Diş Hekimimizi İnceleyin">
+          <span class="av-avatar-circle"><img src="img/doctors/dr_77b8934990a0ad18.webp" alt="Prof. Dr. Fuat Ahmetoğlu" /></span>
+          <span class="av-avatar-circle"><img src="img/doctors/dr_2069194eac7792f1.webp" alt="Dr. Dt. Seyit Yılmaz" /></span>
+          <span class="av-avatar-circle"><img src="img/doctors/dr_bcd5ea1fdb8624ba.webp" alt="Dr. Dt. Gökhan Uzel" /></span>
+          <span class="av-avatar-circle count">+20</span>
+        </a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- 9. AVENTURA 2-ŞUBE RADYO SEÇİCİLİ FOOTER -->
-  <footer class="av-footer">
-    <div class="container av-footer-layout">
-      <div>
-        <span class="section-tag" style="color:#DFD5C0;">✦ İKİ ŞUBE · TEK KALİTE STANDARDI</span>
-        <h3 style="font-family:var(--serif);font-size:40px;font-weight:400;margin:6px 0 18px;">Size En Yakın Evdiş Şubesini Seçin</h3>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
-          <button type="button" class="pill-btn primary" id="foot-btn-serdivan" style="background:#FBFBF9;color:#1C1B18;border-color:#FBFBF9;">● Serdivan Merkez Şubesi (18 Hekim)</button>
-          <button type="button" class="pill-btn" id="foot-btn-adapazari" style="background:rgba(255,255,255,0.08);color:#FBFBF9;border-color:rgba(255,255,255,0.22);">○ Adapazarı Şubesi (2 Hekim)</button>
-        </div>
-        <p style="font-size:12.5px;opacity:0.75;max-width:520px;">
-          Bilgilendirme amaçlıdır; tanı ve tedavi planı yalnızca hekim muayenesiyle belirlenir (Sağlık Bakanlığı 12.11.2025/33075 Yönetmeliği · 6698 KVKK).
+  <!-- ========================================================================
+       SCREEN 3 (s04-s06): EDGE-TO-EDGE 50VW/50VW OBSIDIAN DARK SERVICES STAGE
+       Bespoke synthetic visuals (NO legacy stock photos) + straddling Serif title
+       ======================================================================== -->
+  <section class="av-services-stage" id="hizmetler">
+    <div class="av-services-left">
+      <img
+        id="srvMainImg"
+        src="img/doctors/dr_bcd5ea1fdb8624ba.webp"
+        alt="Evdiş Biyomimetik Porselen Lamina"
+        class="av-services-left-img"
+      />
+
+      <div class="av-services-cat-nav">
+        <div class="av-services-cat-label">Klinik Branşlar:</div>
+        <button type="button" class="av-services-cat-btn active" onclick="switchServiceCat(0)">Estetik Diş Hekimliği</button>
+        <button type="button" class="av-services-cat-btn" onclick="switchServiceCat(1)">İmplantoloji & Cerrahi</button>
+        <button type="button" class="av-services-cat-btn" onclick="switchServiceCat(2)">Protetik & CAD-CAM</button>
+        <button type="button" class="av-services-cat-btn" onclick="switchServiceCat(3)">Mikroskobik Endodonti</button>
+      </div>
+    </div>
+
+    <!-- Giant 2-Line White Serif Title Straddling the 50vw Center Split Line -->
+    <h2 class="av-services-straddle-title" id="srvStraddleTitle">
+      Estetik<br>Diş Hekimliği
+    </h2>
+
+    <div class="av-services-right">
+      <div class="av-services-right-top">
+        <div class="av-services-solutions-label">Çözümlerimiz:</div>
+        <p class="av-services-solutions-desc" id="srvDesc">
+          Biyomimetik porselen laminalar, 3B dijital gülüş tasarımı ve doğal mine ışık geçirgenliğini taklit eden seramik restorasyonlarla yüz karakterinize özgü gülüş mimarisi.
         </p>
       </div>
 
-      <div class="av-footer-box">
-        <div style="font-family:var(--mono);font-size:11px;color:#DFD5C0;letter-spacing:0.1em;" id="foot-tag">📍 SERDİVAN MERKEZ ŞUBESİ (13 ÜNİT · AMELİYATHANE · 3B CBCT)</div>
-        <h4 style="font-family:var(--serif);font-size:28px;font-weight:500;margin:8px 0;" id="foot-addr">İstiklal Mah. 2. Cad. No: 13, Serdivan / Sakarya</h4>
-        <p style="font-size:13.5px;opacity:0.85;margin-bottom:18px;" id="foot-hours">Pazartesi – Cuma: 08.30 – 19.00 · Cumartesi: 08.30 – 18.00 · Tel: 0 (264) 606 00 60</p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;">
-          <a href="tel:+902646060060" class="pill-btn primary" style="background:#FBFBF9;color:#1C1B18;border-color:#FBFBF9;">📞 0 (264) 606 00 60</a>
-          <a href="https://wa.me/905456060069" target="_blank" rel="noopener" class="pill-btn" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.2);">💬 WhatsApp</a>
-          <a href="serdivan.html" id="foot-link" class="pill-btn" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.2);">Şube Detayı →</a>
+      <div class="av-services-right-mid">
+        <img
+          id="srvSubImg"
+          src="img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp"
+          alt="Biyomimetik Seramik Detay"
+          class="av-services-sub-img"
+        />
+
+        <div class="av-services-list" id="srvLinks">
+          <a href="tedavi-estetik-dis-hekimligi.html" class="av-services-item">
+            <span>Porselen Lamina (E.max)</span><span class="arr">↗</span>
+          </a>
+          <a href="tedavi-estetik-dis-hekimligi.html" class="av-services-item">
+            <span>3B Dijital Gülüş Tasarımı</span><span class="arr">↗</span>
+          </a>
+          <a href="tedavi-protetik-dis-tedavisi.html" class="av-services-item">
+            <span>Biyomimetik Zirkonyum</span><span class="arr">↗</span>
+          </a>
+          <a href="tedavi-periodontoloji.html" class="av-services-item">
+            <span>Pembe Estetik & Lazer</span><span class="arr">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="av-services-right-bottom">
+        <a href="tedavi-estetik-dis-hekimligi.html" id="srvMoreBtn" class="av-pill-btn light">
+          Branş Detayına Git <span>✦</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 4 (s08-s09): FULL-BLEED #EAE8E8 TECHNOLOGY STAGE ("01 / 04")
+       ======================================================================== -->
+  <section class="av-tech-stage" id="teknoloji">
+    <h2 class="av-tech-giant-header">Sonuç Odaklı Teknoloji</h2>
+
+    <div class="av-tech-grid">
+      <div class="av-tech-counter-col">
+        <div class="av-tech-counter" id="techCounter">01 / 04</div>
+        <div class="av-tech-counter-sub" id="techCounterSub">
+          Mikron düzeyinde dijital ölçü ve sıfır hata payı.
+        </div>
+      </div>
+
+      <div class="av-tech-visual-col">
+        <div class="av-tech-visual-frame">
+          <img
+            id="techMainImg"
+            src="img/canli_medya/galeri_04_tedavi_odalari.webp"
+            alt="3B İntraoral Dijital Tarama"
+          />
+        </div>
+        <div class="av-tech-visual-caption" id="techCaption">
+          Geleneksel ölçü maddesi kullanmadan, saniyeler içinde 3 boyutlu renkli dijital ark haritalaması.
+        </div>
+      </div>
+
+      <div class="av-tech-rows">
+        <div class="av-tech-row active" onmouseenter="switchTech(0)" onclick="switchTech(0)">
+          <span class="av-tech-row-title">3B İntraoral Dijital Tarama</span>
+          <a href="tedavi-estetik-dis-hekimligi.html" class="av-tech-row-action">İncele ↗</a>
+        </div>
+        <div class="av-tech-row" onmouseenter="switchTech(1)" onclick="switchTech(1)">
+          <span class="av-tech-row-title">25x Optik Operasyon Mikroskobu</span>
+          <a href="tedavi-endodonti.html" class="av-tech-row-action">İncele ↗</a>
+        </div>
+        <div class="av-tech-row" onmouseenter="switchTech(2)" onclick="switchTech(2)">
+          <span class="av-tech-row-title">Volümetrik 3B Dental Tomografi</span>
+          <a href="tedavi-implantoloji.html" class="av-tech-row-action">İncele ↗</a>
+        </div>
+        <div class="av-tech-row" onmouseenter="switchTech(3)" onclick="switchTech(3)">
+          <span class="av-tech-row-title">5 Eksenli CAD/CAM Seramik Freze</span>
+          <a href="tedavi-protetik-dis-tedavisi.html" class="av-tech-row-action">İncele ↗</a>
         </div>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 5 (s10-s13): OBSIDIAN "UZMAN HEKİMLERİMİZ" + 6-CIRCLE DOME ARC
+       ======================================================================== -->
+  <section class="av-experts-stage" id="hekimler">
+    <h2 class="av-experts-giant-title">Uzman Hekimlerimiz</h2>
+
+    <div class="av-experts-cols">
+      <div class="av-expert-col">
+        <span class="av-expert-role">Endodonti Uzmanı · Tıbbi Hizmetler Direktörü</span>
+        <h3 class="av-expert-name">Prof. Dr. Fuat Ahmetoğlu</h3>
+        <p class="av-expert-bio">
+          25x dental operasyon mikroskobu altında ileri endodontik cerrahi, kanal yenileme (retreatment) ve akademik klinik protokol liderliği.
+        </p>
+      </div>
+
+      <div class="av-expert-col">
+        <span class="av-expert-role">Ağız, Diş ve Çene Cerrahisi Uzmanı</span>
+        <h3 class="av-expert-name">Dr. Dt. Seyit Yılmaz</h3>
+        <p class="av-expert-bio">
+          3B kılavuzlu dental implantoloji, All-on-4 / All-on-6 tam ark cerrahisi, sinüs lifting ve ileri çene eklemi cerrahisi.
+        </p>
+      </div>
+
+      <div class="av-expert-col">
+        <span class="av-expert-role">Protetik Diş Tedavisi Uzmanı</span>
+        <h3 class="av-expert-name">Dr. Dt. Gökhan Uzel</h3>
+        <p class="av-expert-bio">
+          Biyomimetik porselen laminalar, CAD/CAM monolitik seramik restorasyonlar ve tam ark implant üstü estetik rehabilitasyon.
+        </p>
+      </div>
+
+      <div class="av-expert-col">
+        <span class="av-expert-role">Estetik ve Dijital Diş Hekimliği</span>
+        <h3 class="av-expert-name">Dt. Emrah Özdemir</h3>
+        <p class="av-expert-bio">
+          3B dijital gülüş tasarımı, E.max porselen laminalar ve yüz dinamikleriyle uyumlu kişiselleştirilmiş gülüş mimarisi.
+        </p>
+      </div>
+    </div>
+
+    <div class="av-experts-cta-row">
+      <a href="hekimler.html" class="av-pill-btn light">
+        Tüm 20 Hekimimizi Tanıyın <span>✦</span>
+      </a>
+      <a href="kurumsal.html#organizasyon-semasi" class="av-pill-btn">
+        Kurumsal Organizasyon Şeması <span>↗</span>
+      </a>
+    </div>
+
+    <!-- Aventura s13 Semicircular Dome Arc + 6 Sculptural Metric Circles -->
+    <div class="av-dome-section">
+      <div class="av-dome-subtitle">Özel Evdiş Ağız ve Diş Sağlığı Merkezi · Serdivan & Adapazarı / Sakarya</div>
+      <h3 class="av-dome-title">Gülüşünüzü Yeniden<br>Tasarlamak İçin Buradayız</h3>
+
+      <div class="av-dome-arc-wrap">
+        <div class="av-circles-grid">
+          <div class="av-metric-circle">
+            <div class="av-metric-num">20</div>
+            <div class="av-metric-lbl">Uzman & Diş Hekimi</div>
+          </div>
+          <div class="av-metric-circle">
+            <div class="av-metric-num">2</div>
+            <div class="av-metric-lbl">Merkezi Şube (Serdivan & Adapazarı)</div>
+          </div>
+          <div class="av-metric-circle">
+            <div class="av-metric-num">8</div>
+            <div class="av-metric-lbl">Klinik Uzmanlık Branşı</div>
+          </div>
+          <div class="av-metric-circle">
+            <div class="av-metric-num">25x</div>
+            <div class="av-metric-lbl">Mikroskobik Hassasiyet</div>
+          </div>
+          <div class="av-metric-circle">
+            <div class="av-metric-num">7 Gün</div>
+            <div class="av-metric-lbl">08:30 – 23:00 Kesintisiz Hizmet</div>
+          </div>
+          <div class="av-metric-circle">
+            <div class="av-metric-num">%100</div>
+            <div class="av-metric-lbl">3B Dijital Klinik Akış</div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="av-footer">
+        <div>© 2026 Özel Evdiş Ağız ve Diş Sağlığı Merkezi · Serdivan & Adapazarı / Sakarya · 0264 273 29 29</div>
+        <div class="av-footer-links">
+          <a href="index.html">Ana Sayfa</a>
+          <a href="hekimler.html">Hekimlerimiz (20)</a>
+          <a href="kurumsal.html#organizasyon-semasi">Organizasyon Şeması</a>
+          <a href="gokhan-eksik-listesi.html#video-istek-listesi">Gökhan Bey Video İstek Listesi</a>
+          <a href="randevu.html">Online Randevu</a>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- Discrete Prototype Palette Switcher -->
+  <div class="av-proto-dock">
+    <button type="button" class="av-proto-btn active" onclick="setTheme('v1', this)">V1 · Aventura</button>
+    <button type="button" class="av-proto-btn" onclick="setTheme('v2', this)">V2 · E.max</button>
+    <button type="button" class="av-proto-btn" onclick="setTheme('v3', this)">V3 · Zirkon</button>
+    <span class="av-proto-sep"></span>
+    <a href="index.html" class="av-proto-btn">Ana Sayfa ↗</a>
+  </div>
 
   <script>
-    (function () {
-      // 1. ESTETİK ATMOSFER SEÇİCİ
-      var themeBtns = document.querySelectorAll("[data-theme-btn]");
-      themeBtns.forEach(function (b) {
-        b.addEventListener("click", function () {
-          document.documentElement.setAttribute("data-theme", b.getAttribute("data-theme-btn"));
-          themeBtns.forEach(function (x) { x.classList.toggle("active", x === b); });
-        });
-      });
-
-      // 2. AVENTURA 3-SÜTUNLU DERLİ TOPLU HİZMET VİTRİNİ (Sadece aktif kategorinin 4 işlemini listeler -> sıfır karmaşa!)
-      var CATEGORIES = [
-        {
-          tag: "01 · ESTETİK DİŞ HEKİMLİĞİ",
-          title: "Estetik & Protetik Gülüş Tasarımı",
-          desc: "Yüz hatlarınız, dudak dinamiğiniz ve doğal ışık kırılmasıyla tam uyumlu porselen lamina ve zirkonya restorasyonlar.",
-          img: "img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp",
-          procs: [
-            {
-              title: "Dijital Gülüş Tasarımı & Porselen Lamina",
-              tag: "IPS e.max® CAM SERAMİK · 3B MOCK-UP",
-              desc: "Diş yüzeyinden yalnızca 0,3 mm minimal hazırlıkla uygulanan, doğal minenin yarı-saydam ışık geçişini birebir yansıtan yaprak porselen protokolü. Tedaviye başlamadan önce 3B prova ile yeni gülüşünüzü deneyimlersiniz.",
-              doc: "Dr. Dt. Gökhan Uzel (Protetik Diş Tedavisi Uzmanı) · Barış Emre Arpaç & Ahmet Tayyip Berk (CAD/CAM Protez Lab.)",
-              img: "img/services/estetik.webp", link: "tedavi-protetik.html#konu-lamina-gulus"
-            },
-            {
-              title: "Çok Katmanlı Monolitik Zirkonya Kuron",
-              tag: "METAL DESTEKSİZ TAM SERAMİK",
-              desc: "Gri metal yansıması olmadan hem ön bölgede doğal ışık geçirgenliği hem arka bölgede yüksek çiğneme direnci sunan CAD/CAM biyouyumlu zirkonya restorasyonlar.",
-              doc: "Dr. Dt. Gökhan Uzel (Protetik Diş Tedavisi Uzmanı)",
-              img: "img/services/protetik.webp", link: "tedavi-protetik.html#konu-zirkonyum-emax"
-            },
-            {
-              title: "CEREC 3B Dijital Ölçü & Porselen Inley/Onley",
-              tag: "KAŞIKSIZ 3B OPTİK TARAMA",
-              desc: "Bulantı refleksi oluşturan klasik ölçü kaşıkları yerine saniyeler içinde alınan 3B optik tarama ve geniş madde kayıplı dişlerde porselen inley/onley dolgular.",
-              doc: "Dr. Dt. Gökhan Uzel & Restoratif Diş Hekimliği Ekibi",
-              img: "img/services/dijital-dolgu.webp", link: "tedavi-dijital-dolgu.html#konu-cerec-dijital-olcu-ve-restorasyon-sureci"
-            },
-            {
-              title: "Ofis & Ev Tipi Diş Beyazlatma (Bleaching)",
-              tag: "MİNE DOSTU AYDINLIK GÜLÜŞ",
-              desc: "Mine yapısına zarar vermeden organik renklenmeleri gideren, hassasiyet kontrolü altında uygulanan güvenli klinik beyazlatma protokolü.",
-              doc: "Estetik & Restoratif Diş Hekimliği Kadromuz",
-              img: "img/services/kompozit-lamine.webp", link: "tedavi-dijital-dolgu.html#konu-dis-beyazlatma"
-            }
-          ]
-        },
-        {
-          tag: "02 · CERRAHİ & ANESTEZİ",
-          title: "İmplantoloji, Çene Cerrahisi & Sedasyon",
-          desc: "3B CBCT volümetrik tomografi rehberliğinde implant cerrahisi, gömülü diş operasyonları ve genel anestezi ameliyathanesi.",
-          img: "img/services/seyit-ameliyat.webp",
-          procs: [
-            {
-              title: "3B CBCT Rehberli İmplant Tedavisi",
-              tag: "3 BOYUTLU TOMOGRAFİ REHBERLİ CERRAHİ",
-              desc: "Çene kemiği hacmi ve anatomik sinir komşulukları 3 boyutlu tomografiyle milimetrik analiz edilerek eksik dişlerin doğal diş kökünü taklit eden implantlarla tamamlanması.",
-              doc: "Dr. Dt. Seyit Yılmaz (Başhekim · Ağız, Diş ve Çene Cerrahisi Uzmanı)",
-              img: "img/services/implant-cerrahi.webp", link: "implant-ve-cene-cerrahisi.html#konu-implant-tedavisi"
-            },
-            {
-              title: "All-on-4 / All-on-6 Sabit Protez Protokolü",
-              tag: "TAM DİŞSİZ ÇENELERDE SABİT DİŞ",
-              desc: "Tam dişsiz çenelerde özel açılı 4 veya 6 implant üzerine aynı süreçte sabit geçici protez planlanarak hastamızın dişsiz kalmadan konforlu çiğnemeye kavuşması.",
-              doc: "Dr. Dt. Seyit Yılmaz (Çene Cerrahisi) & Dr. Dt. Gökhan Uzel (Protetik)",
-              img: "img/implant-kron-model-480.webp", link: "tedavi-protetik.html#konu-all-on-4"
-            },
-            {
-              title: "Gömülü 20 Yaş Dişi & Sinüs Lifting Cerrahisi",
-              tag: "ATRAVMATİK PİEZO CERRAHİ",
-              desc: "Gömülü yirmi yaş dişlerinin, çene kistlerinin ve üst çene sinüs sarkmalarının atravmatik cerrahi protokollerle güvenle tedavisi.",
-              doc: "Dr. Dt. Seyit Yılmaz (Ağız, Diş ve Çene Cerrahisi Uzmanı)",
-              img: "img/panoramik-rontgen-480.webp", link: "implant-ve-cene-cerrahisi.html#konu-20-yas-disleri"
-            },
-            {
-              title: "Genel Anestezi & Bilinçli Sedasyon",
-              tag: "TAM DONANIMLI AMELİYATHANE",
-              desc: "Yoğun diş hekimi korkusu (dental fobi), bulantı refleksi olan yetişkinler ve küçük çocuklarda tüm tedavilerin tek seansta uyku konforunda tamamlanması.",
-              doc: "Uzm. Dr. Gökhan Gedikli (Anesteziyoloji ve Reanimasyon Uzmanı) · Hemşire Serap Ay",
-              img: "img/services/seyit-ameliyat.webp", link: "tedavi-sedasyon.html#konu-bilincli-sedasyon"
-            }
-          ]
-        },
-        {
-          tag: "03 · MİKRO-ENDODONTİ",
-          title: "25× Mikroskopik Endodonti & Restoratif",
-          desc: "Prof. Dr. Fuat Ahmetoğlu ve Dr. Dt. Elshad Salmanov liderliğinde 25 kat büyütmeli operasyon mikroskobu ile diş kurtarma protokolleri.",
-          img: "img/services/endodonti.webp",
-          procs: [
-            {
-              title: "25× Mikroskop Altında Kanal Tedavisi",
-              tag: "25 KAT OPTİK BÜYÜTME İLE DİŞ KURTARMA",
-              desc: "Çıplak gözle görülemeyen dar, kireçlenmiş veya ekstra kök kanallarının 25 kat mikroskop büyütmesi altında aydınlatılarak temizlenmesi ve sızdırmaz dolumu.",
-              doc: "Prof. Dr. Fuat Ahmetoğlu (Tıbbi Direktör · Endodonti Uzm.) & Dr. Dt. Elshad Salmanov (Endodonti Uzm.)",
-              img: "img/services/endodonti.webp", link: "tedavi-endodonti.html#konu-kanal-tedavisi"
-            },
-            {
-              title: "Kanal Yenileme (Retreatment)",
-              tag: "İLERİ ENDODONTİK REVİZYON",
-              desc: "Daha önce yapılmış ancak kök ucunda enfeksiyon veya ağrı gelişmiş eski kanal tedavilerinin mikroskop ve ultrasonik uçlarla yenilenerek dişin ağızda tutulması.",
-              doc: "Prof. Dr. Fuat Ahmetoğlu & Dr. Dt. Elshad Salmanov",
-              img: "img/kanal-egeleri-480.webp", link: "tedavi-endodonti.html#konu-retreatment"
-            },
-            {
-              title: "Apikal Rezeksiyon (Mikro-Kök Ucu Cerrahisi)",
-              tag: "MİKRO-CERRAHİ ENDODONTİ",
-              desc: "Standart kanal tedavisiyle iyileşmeyen inatçı kök ucu lezyonlarının mikro-cerrahi yaklaşımla temizlenmesi ve biyouyumlu MTA ile kapatılması.",
-              doc: "Prof. Dr. Fuat Ahmetoğlu & Dr. Dt. Seyit Yılmaz",
-              img: "img/services/tibbi-direktor.webp", link: "tedavi-endodonti.html#konu-endodontik-cerrahi-uygulamalar"
-            },
-            {
-              title: "Estetik Kompozit Bonding & Amalgam Değişimi",
-              tag: "TEK SEANSTA BİYOMİMETİK ONARIM",
-              desc: "Diş arası boşlukların (diastema), kırıkların ve eski gri amalgam dolguların doğal diş rengindeki kompozitlerle güvenli dönüşümü.",
-              doc: "Restoratif Diş Hekimliği Kadromuz",
-              img: "img/services/kompozit-lamine.webp", link: "tedavi-dijital-dolgu.html#konu-bonding"
-            }
-          ]
-        },
-        {
-          tag: "04 · ORTODONTİ, PERİO & ÇOCUK",
-          title: "Ortodonti, Periodontoloji & Pedodonti",
-          desc: "Telsiz şeffaf plaklar, GBT rehberli pembe estetik diş eti bakımı ve çocuklara özel koruyucu diş hekimliği.",
-          img: "img/canli_medya/galeri_06_cocuk_oyun_alani.webp",
-          procs: [
-            {
-              title: "Şeffaf Plak (Telsiz Ortodonti / Invisalign)",
-              tag: "3B DİJİTAL HAREKET SİMÜLASYONU",
-              desc: "Metal tel görüntüsü olmadan, kişiye özel 3 boyutlu üretilen şeffaf plaklarla diş çapraşıklıklarının sosyal hayatı etkilemeden düzeltilmesi.",
-              doc: "Uzm. Dt. Şenol Gülşen (Ortodonti Uzmanı)",
-              img: "img/services/ortodonti.webp", link: "tedavi-ortodonti.html#konu-telsiz-ortodontik"
-            },
-            {
-              title: "GBT Rehberli Diş Eti Bakımı & Pembe Estetik",
-              tag: "GUIDED BIOFILM THERAPY & GUMMY SMILE",
-              desc: "Diş eti kanaması, diş eti çekilmesi ve gülüşte fazla görünen diş eti durumlarında mikro-periodontal tedavi ve pembe estetik seviyeleme.",
-              doc: "Dr. Dt. Zuhal Metin (Periodontoloji Uzmanı)",
-              img: "img/services/periodontoloji.webp", link: "tedavi-periodontoloji.html#konu-dis-eti-iltihabi-tedavileri"
-            },
-            {
-              title: "Çocuk Diş Hekimliği (Pedodonti) & Koruyucu Bakım",
-              tag: "ÇOCUK OYUN ALANLI DOST KLİNİK",
-              desc: "Çocuklarımızın diş hekimi korkusu geliştirmeden ilk muayene, florür, fissür örtücü ve yer tutucu uygulamalarının uzman pedodontistlerle yürütülmesi.",
-              doc: "Dr. Dt. Serhat Çalışkan & Uzm. Dt. Nilüfer Sümeyra Yıldırım (Pedodonti Uzmanları)",
-              img: "img/services/pedodonti.webp", link: "tedavi-pedodonti.html#konu-curuklerden-koruyucu-uygulamalar"
-            },
-            {
-              title: "Çene Eklemi (TME) & Bruksizm Gece Plağı",
-              tag: "EKLEM KORUMA & MASSETER BOTOKS",
-              desc: "Gece diş sıkma, sabah çene ağrısı ve eklem seslerinde dijital oklüzal splint ve masseter botoksu ile eklem korunması.",
-              doc: "Dr. Dt. Gökhan Uzel & Dr. Dt. Seyit Yılmaz",
-              img: "img/seffaf-plak-480.webp", link: "tedavi-protetik.html#konu-tme-hastaliklari"
-            }
-          ]
-        }
-      ];
-
-      var catPills = document.querySelectorAll("#av-cat-pills .av-cat-pill");
-      var procItemsEl = document.getElementById("srv-proc-items");
-
-      function selectService(cIdx, pIdx) {
-        var c = CATEGORIES[cIdx];
-        var p = c.procs[pIdx];
-        catPills.forEach(function (btn, i) { btn.classList.toggle("active", i === cIdx); });
-
-        document.getElementById("srv-cat-img").src = c.img;
-        document.getElementById("srv-cat-tag").textContent = c.tag;
-        document.getElementById("srv-cat-title").textContent = c.title;
-        document.getElementById("srv-cat-desc").textContent = c.desc;
-
-        document.getElementById("srv-proc-img").src = p.img;
-        document.getElementById("srv-proc-tag").textContent = p.tag;
-        document.getElementById("srv-proc-title").textContent = p.title;
-        document.getElementById("srv-proc-desc").textContent = p.desc;
-        document.getElementById("srv-proc-doc").innerHTML = "<strong>İlgili Uzmanlık &amp; Birim:</strong> " + p.doc;
-        document.getElementById("srv-proc-link").href = p.link;
-
-        procItemsEl.innerHTML = "";
-        c.procs.forEach(function (item, idx) {
-          var b = document.createElement("button");
-          b.type = "button";
-          b.className = "av-proc-item" + (idx === pIdx ? " active" : "");
-          b.innerHTML = "<span>0" + (idx + 1) + " · " + item.title + "</span><span>→</span>";
-          b.addEventListener("click", function () { selectService(cIdx, idx); });
-          b.addEventListener("mouseenter", function () { selectService(cIdx, idx); });
-          procItemsEl.appendChild(b);
-        });
+    // Header scroll transition
+    window.addEventListener('scroll', () => {
+      const h = document.getElementById('avHeader');
+      if (window.scrollY > 60) {
+        h.classList.add('scrolled');
+      } else {
+        h.classList.remove('scrolled');
       }
+    });
 
-      catPills.forEach(function (btn) {
-        btn.addEventListener("click", function () { selectService(parseInt(btn.getAttribute("data-cat"), 10), 0); });
-      });
-      document.querySelectorAll("[data-select-cat]").forEach(function (el) {
-        el.addEventListener("click", function () { selectService(parseInt(el.getAttribute("data-select-cat"), 10), 0); });
-      });
-      selectService(0, 0);
+    // Palette switcher
+    function setTheme(theme, btn) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.querySelectorAll('.av-proto-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
 
-      // 3. 01 / 06 TEKNOLOJİ VİTRİNİ
-      var TECHS = [
-        { num: "01", title: "CEREC 3B Ağız İçi Optik Tarama & CAD/CAM", sub: "Kaşıksız 3B dijital ölçü ve mikron hassasiyetinde tasarım", desc: "Geleneksel ölçü kaşığı ve bulantı hissini ortadan kaldıran saniyeler içinde mikron hassasiyetinde 3 boyutlu renkli optik tarama ve dijital porselen/zirkonya tasarımı.", meta: "📍 Serdivan Merkez & Özel CAD/CAM Protez Lab. (Barış Emre Arpaç · Ahmet Tayyip Berk)", img: "img/services/dijital-dolgu.webp" },
-        { num: "02", title: "3B CBCT Volümetrik Tomografi & Yapay Zekâ", sub: "Düşük doz 3 boyutlu kemik, sinir ve kök ucu analizi", desc: "İmplant planlaması, gömülü 20 yaş dişi cerrahisi ve kök ucu lezyonlarında anatomik komşulukları 3 boyutlu gösteren yapay zekâ destekli görüntüleme birimi.", meta: "📍 Radyoloji Birimi (Tuğçe Barlas · Şeyma Çantalı)", img: "img/panoramik-rontgen-480.webp" },
-        { num: "03", title: "25× Dental Operasyon Mikroskobu", sub: "İleri endodonti ve mikro-restoratif işlemlerde 25 kat büyütme", desc: "Kalsifiye kanallar, kanal yenileme (retreatment), kırık alet çıkarımı ve minimal invaziv lamina hazırlığında çıplak gözün göremediği detayları aydınlatır.", meta: "📍 Endodonti Kliniği (Prof. Dr. Fuat Ahmetoğlu · Dr. Dt. Elshad Salmanov)", img: "img/services/endodonti.webp" },
-        { num: "04", title: "Tam Donanımlı Genel Anestezi Ameliyathanesi", sub: "Uzm. Dr. Gökhan Gedikli gözetiminde sedasyon ve genel anestezi", desc: "Dental fobisi olan yetişkinler, özel gereksinimli bireyler ve küçük çocukların tüm diş tedavilerinin hastane standardında ameliyathanemizde tek seansta tamamlanması.", meta: "📍 Ameliyathane Birimi (Uzm. Dr. Gökhan Gedikli · Hemşire Serap Ay)", img: "img/services/seyit-ameliyat.webp" },
-        { num: "05", title: "Entegre Dijital Estetik Protez Laboratuvarı", sub: "Hekim ve teknisyen iş birliğiyle doğal ışık ve form provası", desc: "Hekim ve protez teknisyenlerimizin aynı merkez içinde anlık renk, kontak ve gülüş hattı provası yapabildiği entegre dijital protez laboratuvarı.", meta: "📍 Özel Diş Protez Laboratuvarı (Dr. Dt. Gökhan Uzel · Barış Emre Arpaç · Ahmet Tayyip Berk)", img: "img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp" },
-        { num: "06", title: "Maya Standardı Dijital Hasta Rehberi (TR · EN · AR)", sub: "554 düğümlü klinik karar ağacı, sesli anlatım ve ışıklı sayfa rotaları", desc: "KVKK Sıfır-PII kalkanı altında serbest metin yazmadan genişten daralan klinik seçeneklerle hastayı doğru uzmana yönlendiren 3 dilli dijital rehber.", meta: "📍 Bilgi İşlem & Dijital Sistemler (Serdar Gümüşsoy · ATLAS-CORE)", img: "img/canli_medya/galeri_02_zemin_kat_karsilama.webp" }
-      ];
-      var curTech = 0;
-      var techRowsEl = document.getElementById("tech-rows");
-      function renderTech(idx) {
-        curTech = (idx + TECHS.length) % TECHS.length;
-        var t = TECHS[curTech];
-        document.getElementById("tech-counter").innerHTML = t.num + " <span style=\"font-size:22px;color:var(--ink-muted);\">/ 06</span>";
-        document.getElementById("tech-img").src = t.img;
-        document.getElementById("tech-title").textContent = t.title;
-        document.getElementById("tech-desc").textContent = t.desc;
-        document.getElementById("tech-meta").textContent = t.meta;
-        techRowsEl.innerHTML = "";
-        TECHS.forEach(function (item, i) {
-          var b = document.createElement("button");
-          b.type = "button";
-          b.className = "av-tech-row" + (i === curTech ? " active" : "");
-          b.innerHTML = "<b>" + item.num + "</b><div style=\"flex:1;\"><strong>" + item.title + "</strong><small>" + item.sub + "</small></div><span>→</span>";
-          b.addEventListener("click", function () { renderTech(i); });
-          techRowsEl.appendChild(b);
-        });
+    // Interactive Services Stage (Bespoke Synthetic Visuals)
+    const SERVICE_DATA = [
+      {
+        titleHtml: "Estetik<br>Diş Hekimliği",
+        desc: "Biyomimetik porselen laminalar, 3B dijital gülüş tasarımı ve doğal mine ışık geçirgenliğini taklit eden seramik restorasyonlarla yüz karakterinize özgü gülüş mimarisi.",
+        mainImg: "img/doctors/dr_bcd5ea1fdb8624ba.webp",
+        subImg: "img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp",
+        moreHref: "tedavi-estetik-dis-hekimligi.html",
+        items: [
+          ["Porselen Lamina (E.max)", "tedavi-estetik-dis-hekimligi.html"],
+          ["3B Dijital Gülüş Tasarımı", "tedavi-estetik-dis-hekimligi.html"],
+          ["Biyomimetik Zirkonyum", "tedavi-protetik-dis-tedavisi.html"],
+          ["Pembe Estetik & Lazer", "tedavi-periodontoloji.html"]
+        ]
+      },
+      {
+        titleHtml: "İmplantoloji<br>& Cerrahi",
+        desc: "Volümetrik 3B tomografi rehberliğinde milimetrik dental implant cerrahisi, genel anestezi ameliyathanesi ve aynı gün sabit geçici diş protokolleri.",
+        mainImg: "img/doctors/dr_2069194eac7792f1.webp",
+        subImg: "img/services/seyit-ameliyat.webp",
+        moreHref: "tedavi-implantoloji.html",
+        items: [
+          ["3B Kılavuzlu İmplant Cerrahisi", "tedavi-implantoloji.html"],
+          ["All-on-4 / All-on-6 Sabit Ark", "tedavi-implantoloji.html"],
+          ["Sinüs Lifting & Kemik Cerrahisi", "tedavi-agiz-dis-cene-cerrahisi.html"],
+          ["Sedasyon & Genel Anestezi", "tedavi-anestezi-sedasyon.html"]
+        ]
+      },
+      {
+        titleHtml: "Protetik<br>& CAD-CAM",
+        desc: "5 eksenli elmas kazıma üniteleriyle mikron düzeyinde kenar uyumu sağlayan monolitik seramik ve implant üstü hibrit protez mimarisi.",
+        mainImg: "img/doctors/dr_bc424d42e0f89752.webp",
+        subImg: "img/canli_medya/galeri_04_tedavi_odalari.webp",
+        moreHref: "tedavi-protetik-dis-tedavisi.html",
+        items: [
+          ["CAD/CAM Tek Seans Seramik", "tedavi-protetik-dis-tedavisi.html"],
+          ["İmplant Üstü Hibrit Protezler", "tedavi-protetik-dis-tedavisi.html"],
+          ["Inlay / Onlay Porselen Dolgu", "tedavi-protetik-dis-tedavisi.html"],
+          ["Eklem (TME) & Oklüzyon Tedavisi", "tedavi-protetik-dis-tedavisi.html"]
+        ]
+      },
+      {
+        titleHtml: "Mikroskobik<br>Endodonti",
+        desc: "25x optik büyütme ve koaksiyel aydınlatma altında kırık alet çıkarımı, kanal yenileme (retreatment) ve vital pulpa koruyucu tedaviler.",
+        mainImg: "img/doctors/dr_77b8934990a0ad18.webp",
+        subImg: "img/services/seyit-ameliyat.webp",
+        moreHref: "tedavi-endodonti.html",
+        items: [
+          ["25x Mikroskobik Kanal Tedavisi", "tedavi-endodonti.html"],
+          ["Retreatment (Kanal Yenileme)", "tedavi-endodonti.html"],
+          ["Şeffaf Plak & Ortodonti", "tedavi-ortodonti.html"],
+          ["Pedodonti (Çocuk Diş Hekimliği)", "tedavi-pedodonti.html"]
+        ]
       }
-      document.getElementById("tech-prev").addEventListener("click", function () { renderTech(curTech - 1); });
-      document.getElementById("tech-next").addEventListener("click", function () { renderTech(curTech + 1); });
-      renderTech(0);
+    ];
 
-      // 4. DERLİ TOPLU HEKİM VİTRİNİ (Varsayılan: 10 Uzman/Kurucu Lider -> Tek Tıkla Tüm 20 Hekim)
-      var DOCTORS = [
-        { name: "Dr. Dt. Seyit Yılmaz", role: "Kurucu Hekim · Başhekim / Mesul Müdür · Çene Cerrahisi Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "cerrahi"], img: "img/doctors/dr_2069194eac7792f1.webp", url: "hekim-dr--dt--seyit-yilmaz.html" },
-        { name: "Dt. Emrah Özdemir", role: "Kurucu Ortak · Diş Hekimi", branch: "Serdivan Merkez", tags: ["featured"], img: "img/doctors/dr_bc424d42e0f89752.webp", url: "hekim-dt--emrah-ozdemir.html" },
-        { name: "Prof. Dr. Fuat Ahmetoğlu", role: "Tıbbi Hizmetler Direktörü · Endodonti Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "endodonti"], img: "img/doctors/dr_77b8934990a0ad18.webp", url: "hekim-prof--dr--fuat-ahmetoglu.html" },
-        { name: "Dr. Dt. Gökhan Uzel", role: "Protetik Diş Tedavisi Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "protetik"], img: "img/doctors/dr_bcd5ea1fdb8624ba.webp", url: "hekim-dr--dt--gokhan-uzel.html" },
-        { name: "Dr. Dt. Elshad Salmanov", role: "Endodonti (Kanal Tedavisi) Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "endodonti"], img: "img/doctors/dr_ded915b570268091.webp", url: "hekim-dr--dt--elshad-salmanov.html" },
-        { name: "Dr. Dt. Zuhal Metin", role: "Periodontoloji (Diş Eti Hastalıkları) Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "protetik"], img: "img/doctors/dr_c1af2b63b6f5ff29.webp", url: "hekim-dr--dt--zuhal-metin.html" },
-        { name: "Uzm. Dt. Şenol Gülşen", role: "Ortodonti Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "ortopedo"], img: "img/doctors/dr_98f5890894321a26.webp", url: "hekim-uzm--dt--senol-gulsen.html" },
-        { name: "Dr. Dt. Serhat Çalışkan", role: "Pedodonti (Çocuk Diş Hekimliği) Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "ortopedo"], img: "img/doctors/dr_23d49279cd7c9f34.webp", url: "hekim-dr--dt--serhat-caliskan.html" },
-        { name: "Uzm. Dt. Nilüfer Sümeyra Yıldırım", role: "Pedodonti (Çocuk Diş Hekimliği) Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "ortopedo"], img: "img/doctors/dr_1ea45321d28bc9e4.jpeg", url: "hekim-uzm--dt--nilufer-sumeyra-yildirim.html" },
-        { name: "Uzm. Dr. Gökhan Gedikli", role: "Anesteziyoloji ve Reanimasyon Uzmanı", branch: "Serdivan Merkez", tags: ["featured", "cerrahi"], img: "img/doctors/dr_925bfd72db9f31ea.webp", url: "hekim-uzm--dr--gokhan-gedikli.html" },
-        { name: "Dr. Dt. Neslihan Çalışkan", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_d8a6e78711a6e1b1.webp", url: "hekim-dr--dt--neslihan-caliskan.html" },
-        { name: "Dt. Burak Eren", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_96a00774e03947a6.webp", url: "hekim-dt--burak-eren.html" },
-        { name: "Dt. Davut Kayhan", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_0506dd2bef27e5c5.webp", url: "hekim-dt--davut-kayhan.html" },
-        { name: "Dt. Seyfullah Hayri Özkutlu", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_3803917f9822fe4e.webp", url: "hekim-dt--seyfullah-h--ozkutlu.html" },
-        { name: "Dt. Betül Durmaz Enginler", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_3d06bc845be07647.webp", url: "hekim-dt--betul-durmaz-enginler.html" },
-        { name: "Dt. Sıla Nur Çay", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_a98f55d22829b00e.webp", url: "hekim-dt--sila-nur-cay.html" },
-        { name: "Dt. Elif Yıldız", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_e09d81ad5c2cb886.webp", url: "hekim-dt--elif-yildiz.html" },
-        { name: "Dt. Sena Özdemir", role: "Diş Hekimi", branch: "Serdivan Merkez", tags: [], img: "img/doctors/dr_3ea237db235b3a99.webp", url: "hekim-dt--sena-ozdemir.html" },
-        { name: "Dt. Mehmet Emre Türkhan", role: "Diş Hekimi · Adapazarı Şubesi", branch: "Adapazarı Şubesi", tags: [], img: "img/doctors/dr_1100861f15834507.webp", url: "hekim-dt--mehmet-emre-turkhan.html" },
-        { name: "Dt. Yasa Akdoğan", role: "Diş Hekimi · Adapazarı Şubesi", branch: "Adapazarı Şubesi", tags: [], img: "img/doctors/dr_9d0516ed11be0366.webp", url: "hekim-dt--yasa-akdogan.html" }
-      ];
+    function switchServiceCat(idx) {
+      const d = SERVICE_DATA[idx];
+      if (!d) return;
+      document.querySelectorAll('.av-services-cat-btn').forEach((b, i) => {
+        b.classList.toggle('active', i === idx);
+      });
+      document.getElementById('srvStraddleTitle').innerHTML = d.titleHtml;
+      document.getElementById('srvDesc').textContent = d.desc;
+      document.getElementById('srvMainImg').src = d.mainImg;
+      document.getElementById('srvSubImg').src = d.subImg;
+      document.getElementById('srvMoreBtn').href = d.moreHref;
+      const listEl = document.getElementById('srvLinks');
+      listEl.innerHTML = d.items.map(([label, href]) =>
+        `<a href="${href}" class="av-services-item"><span>${label}</span><span class="arr">↗</span></a>`
+      ).join('');
+    }
 
-      var docGrid = document.getElementById("doc-grid");
-      var docFilterBtns = document.querySelectorAll("[data-doc-filter]");
-      function renderDocs(filter) {
-        docGrid.innerHTML = "";
-        DOCTORS.filter(function (d) { return filter === "all" || d.tags.indexOf(filter) !== -1; }).forEach(function (d) {
-          var a = document.createElement("a");
-          a.href = d.url;
-          a.className = "av-doc-card";
-          a.innerHTML =
-            "<div class=\"av-doc-img\"><span class=\"av-doc-badge\">" + d.branch + "</span><img src=\"" + d.img + "\" alt=\"" + d.name + "\" loading=\"lazy\"/></div>" +
-            "<div class=\"av-doc-info\"><h4>" + d.name + "</h4><p>" + d.role + "</p></div>";
-          docGrid.appendChild(a);
-        });
+    // Interactive Technology 01/04 Stage
+    const TECH_DATA = [
+      {
+        counter: "01 / 04",
+        sub: "Mikron düzeyinde dijital ölçü ve sıfır hata payı.",
+        img: "img/canli_medya/galeri_04_tedavi_odalari.webp",
+        caption: "Geleneksel ölçü maddesi kullanmadan, saniyeler içinde 3 boyutlu renkli dijital ark haritalaması."
+      },
+      {
+        counter: "02 / 04",
+        sub: "25 kat optik büyütme ile milimetrik endodontik ve estetik hassasiyet.",
+        img: "img/services/tibbi-direktor.webp",
+        caption: "Çıplak gözle görülemeyen mikro-kırıkları ve anatomik kanalları koaksiyel ışık altında görüntüleme."
+      },
+      {
+        counter: "03 / 04",
+        sub: "Düşük doz radyasyonla 3 boyutlu kemik hacmi ve sinir kanalı analizi.",
+        img: "img/services/seyit-ameliyat.webp",
+        caption: "Cerrahi öncesinde implant açısını ve anatomik komşulukları sanal ortamda 1:1 planlama."
+      },
+      {
+        counter: "04 / 04",
+        sub: "5 eksenli elmas kazıma teknolojisiyle biyomimetik porselen üretimi.",
+        img: "img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp",
+        caption: "Dijital tasarımdan tek seansta yüksek ışık geçirgenliğine sahip seramik restorasyon üretimi."
       }
-      docFilterBtns.forEach(function (b) {
-        b.addEventListener("click", function () {
-          docFilterBtns.forEach(function (x) { x.classList.toggle("active", x === b); });
-          renderDocs(b.getAttribute("data-doc-filter"));
-        });
-      });
-      document.getElementById("toggle-all-docs").addEventListener("click", function () {
-        docFilterBtns.forEach(function (x) { x.classList.toggle("active", x.getAttribute("data-doc-filter") === "all"); });
-        renderDocs("all");
-      });
-      renderDocs("featured");
+    ];
 
-      // 5. 3-SEKMELİ TRTEK KURUMSAL ORGANİZASYON ŞEMASI
-      var orgBtns = document.querySelectorAll("[data-org-tab]");
-      orgBtns.forEach(function (b) {
-        b.addEventListener("click", function () {
-          var t = b.getAttribute("data-org-tab");
-          orgBtns.forEach(function (x) { x.classList.toggle("active", x === b); });
-          ["yonetim", "birimler", "komiteler"].forEach(function (id) {
-            document.getElementById("org-pane-" + id).classList.toggle("active", id === t);
-          });
-        });
+    function switchTech(idx) {
+      const t = TECH_DATA[idx];
+      if (!t) return;
+      document.querySelectorAll('.av-tech-row').forEach((r, i) => {
+        r.classList.toggle('active', i === idx);
       });
-
-      // 6. FOOTER ŞUBE SEÇİCİ
-      var btnSerdivan = document.getElementById("foot-btn-serdivan");
-      var btnAdapazari = document.getElementById("foot-btn-adapazari");
-      btnSerdivan.addEventListener("click", function () {
-        btnSerdivan.style.background = "#FBFBF9"; btnSerdivan.style.color = "#1C1B18";
-        btnAdapazari.style.background = "rgba(255,255,255,0.08)"; btnAdapazari.style.color = "#FBFBF9";
-        document.getElementById("foot-tag").textContent = "📍 SERDİVAN MERKEZ ŞUBESİ (13 ÜNİT · AMELİYATHANE · 3B CBCT)";
-        document.getElementById("foot-addr").textContent = "İstiklal Mah. 2. Cad. No: 13, Serdivan / Sakarya";
-        document.getElementById("foot-link").href = "serdivan.html";
-      });
-      btnAdapazari.addEventListener("click", function () {
-        btnAdapazari.style.background = "#FBFBF9"; btnAdapazari.style.color = "#1C1B18";
-        btnSerdivan.style.background = "rgba(255,255,255,0.08)"; btnSerdivan.style.color = "#FBFBF9";
-        document.getElementById("foot-tag").textContent = "📍 ADAPAZARI ŞUBESİ (2 ÜNİT · MERKEZİ ULAŞIM)";
-        document.getElementById("foot-addr").textContent = "Yenidoğan Mah. Fabrika Cad. No: 33, Adapazarı / Sakarya";
-        document.getElementById("foot-link").href = "adapazari.html";
-      });
-    })();
+      document.getElementById('techCounter').textContent = t.counter;
+      document.getElementById('techCounterSub').textContent = t.sub;
+      document.getElementById('techMainImg').src = t.img;
+      document.getElementById('techCaption').textContent = t.caption;
+    }
   </script>
-  <script src="js/evdis-ajan-widget.js?v=20261017v29" defer></script>
 </body>
 </html>
