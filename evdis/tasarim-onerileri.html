@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>Evdiş Orijinal Tasarım Önerileri (Zirkon &amp; E-max Renk Yelpazesi · 3 Açılır-Sekmeli Mimari) — Yönetim &amp; GM İnceleme Ekranı</title>
+<meta name="description" content="Özel Evdiş Ağız ve Diş Sağlığı Merkezi için hazırlanan Zirkon ve E-max Biyomimetik Seramik Skalası tabanlı, bir bakışta anlaşılır, açılır sekmeli ve ultra hızlı 3 orijinal web mimarisi önerisi."/>
+<style>
+  :root {
+    /* ZİRKON KATMANI (Tok, Mat-İpek, Yük Taşıyan Omurga) */
+    --zirkon-b1:  #EEE6D6;
+    --zirkon-a1:  #E9DCC3;
+    --zirkon-a2:  #E2D0B0;
+    --zirkon-a3:  #D8C29C;
+    --zirkon-a35: #CDB287;
+
+    /* E-MAX KATMANI (Yarı-Saydam, İnsizal Haleli, Opalesan Vitrin) */
+    --emax-bl1:   #F6F4EE;
+    --emax-bl3:   #F1ECE1;
+    --emax-opal:  #9DB8CF;
+    --dentin-amber: #B07A3C;
+
+    /* KLİNİK KONTRAST & EYLEM */
+    --sinter-antrasit: #232826;
+    --metin-ikincil:   #4A5550;
+    --klinik-adacayi:  #1F4E40;
+    --klinik-adacayi-acik: #2A6B58;
+    --diseti-mercan:   #C86D5A;
+
+    /* OPTİK HALELER */
+    --hale-insizal: inset 0 1.5px 0 rgba(255,255,255,0.92), inset 0 -1px 0 rgba(176,122,60,0.18);
+    --golge-seramik: 0 14px 34px -12px rgba(35, 40, 38, 0.12), 0 2px 6px rgba(35, 40, 38, 0.05);
+    --golge-aktif: 0 20px 42px -12px rgba(31, 78, 64, 0.22), 0 4px 12px rgba(176, 122, 60, 0.16);
+    --gecis-yay: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(circle at 18% 8%, var(--emax-bl1) 0%, var(--zirkon-b1) 58%, var(--zirkon-a1) 100%);
+    color: var(--sinter-antrasit);
+    font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding-bottom: 90px;
+  }
+
+  .kapsayici {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ÜST KONSEPT SEÇİCİ KOKPİT */
+  .oneri-ust-cubuk {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    background: rgba(246, 244, 238, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(176, 122, 60, 0.24);
+    box-shadow: var(--hale-insizal), 0 8px 24px rgba(35, 40, 38, 0.06);
+    padding: 12px 0;
+  }
+  .oneri-ust-ic {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .oneri-marka {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .oneri-marka img {
+    height: 40px;
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+  }
+  .oneri-marka-metin strong {
+    display: block;
+    font-size: 15px;
+    color: var(--sinter-antrasit);
+    letter-spacing: -0.01em;
+  }
+  .oneri-marka-metin span {
+    font-size: 12px;
+    color: var(--metin-ikincil);
+  }
+
+  .konsept-dugmeler {
+    display: inline-flex;
+    gap: 6px;
+    background: var(--zirkon-a1);
+    padding: 5px;
+    border-radius: 14px;
+    border: 1px solid rgba(176, 122, 60, 0.25);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+    flex-wrap: wrap;
+  }
+  .konsept-btn {
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--sinter-antrasit);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s var(--gecis-yay);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .konsept-btn small {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 99px;
+    background: rgba(31, 78, 64, 0.1);
+    color: var(--klinik-adacayi);
+  }
+  .konsept-btn.aktif {
+    background: var(--emax-bl1);
+    color: var(--klinik-adacayi);
+    border-color: rgba(176, 122, 60, 0.35);
+    box-shadow: var(--hale-insizal), 0 4px 12px rgba(35, 40, 38, 0.1);
+  }
+  .konsept-btn.aktif small {
+    background: var(--klinik-adacayi);
+    color: #fff;
+  }
+
+  /* SERAMİK SPEKTRUM ŞERİDİ (BL1 -> A3.5) */
+  .seramik-spektrum-cubugu {
+    margin: 16px auto 14px;
+    background: rgba(246, 244, 238, 0.78);
+    border: 1px solid rgba(176, 122, 60, 0.22);
+    border-radius: 16px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    box-shadow: var(--hale-insizal);
+  }
+  .spektrum-aciklama {
+    font-size: 13px;
+    color: var(--metin-ikincil);
+    max-width: 680px;
+  }
+  .spektrum-aciklama strong {
+    color: var(--sinter-antrasit);
+  }
+  .spektrum-ornekler {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .spektrum-cip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 44px;
+    border-radius: 8px 8px 38% 38% / 8px 8px 20% 20%;
+    border: 1px solid rgba(157, 184, 207, 0.55);
+    box-shadow: var(--hale-insizal), 0 3px 8px rgba(0,0,0,0.06);
+    font-size: 10.5px;
+    font-weight: 800;
+    color: var(--sinter-antrasit);
+  }
+  .spektrum-cip span {
+    font-size: 9px;
+    font-weight: 600;
+    opacity: 0.75;
+  }
+
+  /* KONSEPT SAHNELERİ */
+  .konsept-sahne {
+    display: none;
+    animation: sahneGiris 0.28s var(--gecis-yay);
+  }
+  .konsept-sahne.aktif {
+    display: block;
+  }
+  @keyframes sahneGiris {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ==========================================================================
+   * ÖNERİ 1: HİBRİT SEKMELİ KOKPİT (Zirkon/E-max Optik Deri + Tek Ekranda 8·20·4·2)
+   * ========================================================================== */
+  .hibrit-izgara {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .hibrit-sol-kutu {
+    background: linear-gradient(180deg, var(--emax-bl1) 0%, var(--zirkon-b1) 100%);
+    border: 1px solid rgba(176, 122, 60, 0.26);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: var(--hale-insizal), var(--golge-seramik);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .klinik-rozet {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--klinik-adacayi);
+    background: rgba(31, 78, 64, 0.08);
+    border: 1px solid rgba(31, 78, 64, 0.18);
+    padding: 5px 10px;
+    border-radius: 99px;
+    width: fit-content;
+  }
+  .hibrit-sol-kutu h1 {
+    font-size: 26px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    color: var(--sinter-antrasit);
+  }
+  .hibrit-sol-kutu p {
+    font-size: 13.5px;
+    color: var(--metin-ikincil);
+  }
+
+  /* 3 HIZLI NİYET KAPISI */
+  .niyet-kapilari {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .niyet-baslik {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dentin-amber);
+  }
+  .niyet-kapi-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    padding: 11px 14px;
+    border-radius: 14px;
+    background: var(--emax-bl1);
+    border: 1px solid rgba(176, 122, 60, 0.25);
+    box-shadow: var(--hale-insizal);
+    cursor: pointer;
+    transition: all 0.2s var(--gecis-yay);
+    color: var(--sinter-antrasit);
+  }
+  .niyet-kapi-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--klinik-adacayi);
+    box-shadow: var(--golge-aktif);
+  }
+  .niyet-kapi-btn strong {
+    display: block;
+    font-size: 13.5px;
+  }
+  .niyet-kapi-btn span {
+    font-size: 11.5px;
+    color: var(--metin-ikincil);
+  }
+  .niyet-ok {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: rgba(31, 78, 64, 0.1);
+    color: var(--klinik-adacayi);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* SAĞ ANA SEKMELİ KOKPİT (8 TEDAVİ · 20 HEKİM & GM · 4 TEKNOLOJİ · 2 ŞUBE) */
+  .hibrit-sag-kokpit {
+    background: rgba(246, 244, 238, 0.86);
+    border: 1px solid rgba(176, 122, 60, 0.28);
+    border-radius: 22px;
+    padding: 18px 20px;
+    box-shadow: var(--hale-insizal), var(--golge-seramik);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ana-envanter-sekmeler {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .envanter-sekme-btn {
+    background: var(--zirkon-b1);
+    border: 1px solid rgba(176, 122, 60, 0.24);
+    border-radius: 14px;
+    padding: 11px 13px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.22s var(--gecis-yay);
+    box-shadow: var(--hale-insizal);
+    color: var(--sinter-antrasit);
+  }
+  .envanter-sekme-btn:hover {
+    transform: translateY(-2px);
+    background: var(--emax-bl3);
+  }
+  .envanter-sekme-btn.aktif {
+    background: var(--emax-bl1);
+    border-color: var(--klinik-adacayi);
+    box-shadow: var(--hale-insizal), 0 10px 22px -10px rgba(31, 78, 64, 0.28);
+    transform: translateY(-2px);
+  }
+  .envanter-sayi {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: var(--sinter-antrasit);
+    color: var(--emax-bl1);
+    margin-bottom: 4px;
+  }
+  .envanter-sekme-btn.aktif .envanter-sayi {
+    background: var(--klinik-adacayi);
+  }
+  .envanter-sekme-btn strong {
+    display: block;
+    font-size: 14px;
+  }
+  .envanter-sekme-btn span {
+    font-size: 11.5px;
+    color: var(--metin-ikincil);
+  }
+
+  .envanter-panel {
+    display: none;
+  }
+  .envanter-panel.aktif {
+    display: block;
+    animation: sahneGiris 0.22s var(--gecis-yay);
+  }
+
+  /* 01-08 SERAMİK RENK SKALASI DESTESİ (SHADE-TAB DECK) */
+  .skala-destesi-tutucu {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    padding: 16px 10px 8px;
+    background: linear-gradient(180deg, rgba(216,194,156,0.28) 0%, rgba(205,178,135,0.42) 100%);
+    border-radius: 18px;
+    border: 1px solid rgba(176, 122, 60, 0.25);
+  }
+  .skala-yaprak {
+    position: relative;
+    border: 1px solid rgba(157, 184, 207, 0.55);
+    border-radius: 12px 12px 40% 40% / 12px 12px 24% 24%;
+    padding: 0 6px 12px;
+    cursor: pointer;
+    transition: transform 0.26s var(--gecis-yay), box-shadow 0.26s var(--gecis-yay), border-color 0.22s ease;
+    box-shadow: var(--hale-insizal), 0 6px 14px -6px rgba(35, 40, 38, 0.16);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--sinter-antrasit);
+  }
+  .skala-yaprak:hover {
+    transform: translateY(-7px);
+  }
+  .skala-yaprak.aktif {
+    transform: translateY(-14px);
+    border-color: var(--klinik-adacayi);
+    box-shadow: inset 0 2px 0 #FFFFFF, 0 18px 28px -10px rgba(31, 78, 64, 0.32), 0 0 0 2px rgba(157, 184, 207, 0.55);
+    z-index: 2;
+  }
+  .skala-sap {
+    background: var(--sinter-antrasit);
+    color: var(--emax-bl1);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 0 0 7px 7px;
+    width: 82%;
+  }
+  .skala-yaprak.aktif .skala-sap {
+    background: var(--klinik-adacayi);
+  }
+  .skala-ton-etiket {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--dentin-amber);
+    letter-spacing: 0.04em;
+  }
+  .skala-yaprak strong {
+    font-size: 12px;
+    line-height: 1.22;
+  }
+
+  /* AÇILIR TEDAVİ DETAY SAHNESİ (SPLIT STAGE) */
+  .skala-detay-sahne {
+    margin-top: 12px;
+    background: var(--emax-bl1);
+    border: 1px solid rgba(176, 122, 60, 0.28);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--hale-insizal);
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 18px;
+    align-items: center;
+  }
+  .sahne-etiketler {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .sahne-hap {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 99px;
+    background: var(--zirkon-a1);
+    color: var(--sinter-antrasit);
+  }
+  .sahne-hap.adacayi {
+    background: rgba(31, 78, 64, 0.12);
+    color: var(--klinik-adacayi);
+  }
+  .skala-detay-sahne h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .skala-detay-sahne p {
+    font-size: 13.5px;
+    color: var(--metin-ikincil);
+    margin-bottom: 12px;
+  }
+  .sahne-alt-cubuk {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dugme-birincil {
+    background: var(--klinik-adacayi);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dugme-ikincil {
+    background: var(--zirkon-b1);
+    color: var(--sinter-antrasit);
+    border: 1px solid rgba(176, 122, 60, 0.35);
+    padding: 9px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* İNTERAKTİF ZİRKONYA vs E-MAX IŞIK GEÇİRGENLİĞİ İNCELEME MODÜLÜ */
+  .materyal-laboratuvari {
+    background: linear-gradient(135deg, var(--zirkon-b1) 0%, var(--emax-bl1) 100%);
+    border: 1px solid rgba(176, 122, 60, 0.32);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: var(--hale-insizal);
+  }
+  .materyal-secici {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .materyal-btn {
+    flex: 1;
+    padding: 7px 10px;
+    border-radius: 9px;
+    border: 1px solid rgba(176, 122, 60, 0.3);
+    background: var(--zirkon-a1);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--sinter-antrasit);
+  }
+  .materyal-btn.aktif {
+    background: var(--klinik-adacayi);
+    color: #fff;
+    border-color: var(--klinik-adacayi);
+  }
+  .materyal-kart {
+    padding: 12px;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+  }
+  .materyal-kart.emax-modu {
+    background: linear-gradient(180deg, rgba(246,244,238,0.92), rgba(157,184,207,0.22));
+    border: 1.5px solid var(--emax-opal);
+    box-shadow: inset 0 2px 0 #FFFFFF, 0 8px 20px rgba(157, 184, 207, 0.28);
+  }
+  .materyal-kart.zirkon-modu {
+    background: linear-gradient(180deg, var(--zirkon-a1), var(--zirkon-a2));
+    border: 1.5px solid var(--dentin-amber);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 8px 20px rgba(176, 122, 60, 0.18);
+  }
+  .materyal-metrikler {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .materyal-metrik {
+    background: rgba(255,255,255,0.65);
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+  }
+  .materyal-metrik strong {
+    display: block;
+    font-size: 12px;
+    color: var(--klinik-adacayi);
+  }
+
+  /* 20 HEKİM & YÖNETİM MATRİSİ (GM OZAN BEY DAHİL) */
+  .yonetim-serit {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .yonetim-kart {
+    background: var(--zirkon-b1);
+    border: 1px solid rgba(176, 122, 60, 0.32);
+    border-radius: 12px;
+    padding: 10px 12px;
+    box-shadow: var(--hale-insizal);
+  }
+  .yonetim-kart.gm-vurgu {
+    background: linear-gradient(135deg, var(--emax-bl1), var(--zirkon-a1));
+    border: 1.5px solid var(--klinik-adacayi);
+  }
+  .yonetim-kart small {
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--klinik-adacayi);
+    letter-spacing: 0.04em;
+  }
+  .yonetim-kart strong {
+    display: block;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .yonetim-kart span {
+    font-size: 11px;
+    color: var(--metin-ikincil);
+  }
+
+  .hekim-kompakt-izgara {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    max-height: 290px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .hekim-cip {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--emax-bl1);
+    border: 1px solid rgba(176, 122, 60, 0.22);
+    border-radius: 11px;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: var(--sinter-antrasit);
+    transition: all 0.18s ease;
+  }
+  .hekim-cip:hover {
+    border-color: var(--klinik-adacayi);
+    transform: translateY(-1px);
+  }
+  .hekim-cip img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--zirkon-a3);
+    flex-shrink: 0;
+  }
+  .hekim-cip strong {
+    display: block;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .hekim-cip span {
+    font-size: 10.5px;
+    color: var(--metin-ikincil);
+  }
+
+  /* 4 TEKNOLOJİ & 2 ŞUBE IZGARASI */
+  .dortlu-izgara {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .zirkon-kutu {
+    background: var(--zirkon-b1);
+    border: 1px solid rgba(176, 122, 60, 0.28);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--hale-insizal);
+  }
+  .zirkon-kutu h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--sinter-antrasit);
+  }
+  .zirkon-kutu p {
+    font-size: 12.5px;
+    color: var(--metin-ikincil);
+  }
+
+  /* ==========================================================================
+   * ÖNERİ 3: YATAY GENİŞLEYEN 5 PORSELEN DİLİM (EXPANDING CERAMIC SLICES)
+   * ========================================================================== */
+  .yatay-dilimler-kapsayici {
+    display: flex;
+    gap: 10px;
+    height: 520px;
+    width: 100%;
+  }
+  .seramik-dilim {
+    flex: 1;
+    border-radius: 20px;
+    border: 1px solid rgba(176, 122, 60, 0.3);
+    box-shadow: var(--hale-insizal), var(--golge-seramik);
+    padding: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: flex 0.45s var(--gecis-yay), background 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .seramik-dilim.aktif {
+    flex: 4.8;
+    border-color: var(--klinik-adacayi);
+    box-shadow: var(--hale-insizal), var(--golge-aktif);
+    cursor: default;
+  }
+  .dilim-ust {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .dilim-kod {
+    background: var(--sinter-antrasit);
+    color: var(--emax-bl1);
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 9px;
+    border-radius: 8px;
+  }
+  .seramik-dilim.aktif .dilim-kod {
+    background: var(--klinik-adacayi);
+  }
+  .dilim-kapali-baslik {
+    font-size: 18px;
+    font-weight: 800;
+    margin-top: 12px;
+  }
+  .dilim-icerik {
+    display: none;
+    margin-top: 14px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  .seramik-dilim.aktif .dilim-icerik {
+    display: block;
+    animation: sahneGiris 0.3s var(--gecis-yay);
+  }
+
+  /* GERİ BİLDİRİM & OYLAMA ÇUBUĞU */
+  .oneri-oy-cubugu {
+    margin-top: 16px;
+    background: var(--sinter-antrasit);
+    color: var(--emax-bl1);
+    border-radius: 16px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .oneri-oy-cubugu strong {
+    color: #FDE68A;
+  }
+  .oy-dugmeler {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .oy-btn {
+    background: var(--emax-bl1);
+    color: var(--sinter-antrasit);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 99px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .oy-btn:hover {
+    transform: translateY(-2px);
+    background: #FDE68A;
+  }
+
+  @media (max-width: 1024px) {
+    .hibrit-izgara { grid-template-columns: 1fr; }
+    .skala-destesi-tutucu { grid-template-columns: repeat(4, 1fr); }
+    .skala-detay-sahne { grid-template-columns: 1fr; }
+    .yonetim-serit { grid-template-columns: repeat(2, 1fr); }
+    .hekim-kompakt-izgara { grid-template-columns: repeat(2, 1fr); }
+    .yatay-dilimler-kapsayici { flex-direction: column; height: auto; }
+  }
+  @media (max-width: 640px) {
+    .ana-envanter-sekmeler { grid-template-columns: repeat(2, 1fr); }
+    .skala-destesi-tutucu { grid-template-columns: repeat(2, 1fr); }
+    .dortlu-izgara { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ÜST KONSEPT SEÇİCİ KOKPİT -->
+<header class="oneri-ust-cubuk">
+  <div class="kapsayici oneri-ust-ic">
+    <div class="oneri-marka">
+      <a href="index.html"><img src="img/logo/evdis-logo-gold.png" alt="Evdiş"/></a>
+      <div class="oneri-marka-metin">
+        <strong>Evdiş Orijinal Tasarım Önerileri · Zirkon &amp; E-max Renk Yelpazesi</strong>
+        <span>Bir Bakışta Anlaşılır · Açılır Sekmeli · Sıfır Uzun Kaydırma · D55 Günışığı Seramik Fiziği</span>
+      </div>
+    </div>
+    <div class="konsept-dugmeler" role="tablist" aria-label="Tasarım Önerileri">
+      <button type="button" class="konsept-btn aktif" data-konsept="oneri1">
+        🏛️ Öneri 1: Hibrit Sekmeli Kokpit <small>Önerilen</small>
+      </button>
+      <button type="button" class="konsept-btn" data-konsept="oneri2">
+        🦷 Öneri 2: Saf 8'li Porselen Skala Destesi <small>İmza</small>
+      </button>
+      <button type="button" class="konsept-btn" data-konsept="oneri3">
+        📐 Öneri 3: Yatay Genişleyen 5 Porselen Dilim <small>Vitrin</small>
+      </button>
+      <a href="index.html" class="konsept-btn" style="text-decoration:none;">↩ Mevcut Ana Sayfa</a>
+    </div>
+  </div>
+</header>
+
+<main class="kapsayici">
+  <!-- BİYOMİMETİK SERAMİK SPEKTRUM ŞERİDİ -->
+  <section class="seramik-spektrum-cubugu" aria-label="Zirkon ve E-max Renk Yelpazesi">
+    <div class="spektrum-aciklama">
+      <strong>Biyomimetik Seramik Renk Yelpazesi (`Katman-Zirkon` &amp; `Katman-Emax`):</strong>
+      Koyu finans ekranı yerine diş hekimliğinin gerçek <strong>5500K D55 günışığı</strong> renk skalası.
+      <strong>E-max (`BL1–BL3`)</strong> yarı-saydam, opalesan ve insizal ışık haleli vitrin yüzeylerini;
+      <strong>Zirkonya (`B1–A3.5`)</strong> ise tok, mat-ipek ve yüksek kontrastlı bilgi/randevu omurgasını taşır.
+    </div>
+    <div class="spektrum-ornekler">
+      <div class="spektrum-cip" style="background:var(--emax-bl1);">BL1<span>E-max</span></div>
+      <div class="spektrum-cip" style="background:var(--emax-bl3);">BL3<span>E-max</span></div>
+      <div class="spektrum-cip" style="background:var(--zirkon-b1);">B1<span>Zirkon</span></div>
+      <div class="spektrum-cip" style="background:var(--zirkon-a1);">A1<span>Zirkon</span></div>
+      <div class="spektrum-cip" style="background:var(--zirkon-a2);">A2<span>Zirkon</span></div>
+      <div class="spektrum-cip" style="background:var(--zirkon-a3);">A3<span>Zirkon</span></div>
+      <div class="spektrum-cip" style="background:var(--zirkon-a35);">A3.5<span>Dentin</span></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ÖNERİ 1: HİBRİT SEKMELİ KOKPİT (TEK EKRANDA 8·20·4·2 + SKALA DESTESİ)
+       ======================================================================== -->
+  <section class="konsept-sahne aktif" id="sahne-oneri1">
+    <div class="hibrit-izgara">
+      <!-- SOL SÜTUN: TEK BAKIŞTA VAAT + 3 HIZLI NİYET KAPISI -->
+      <aside class="hibrit-sol-kutu">
+        <div>
+          <span class="klinik-rozet">● Sakarya · 2 Şube · 15 Ünit · 20 Hekim</span>
+          <h1 style="margin-top:10px;">Doğal Dişin Işığını ve Gücünü Koruyan Uzman Hekimlik.</h1>
+          <p style="margin-top:8px;">Sayfalarca aşağı kaydırmadan; tüm uzmanlık branşlarımızı, 20 hekimimizi, kurumsal yönetimimizi ve 4 dijital teknolojimizi sağdaki açılır porselen sekmelerden tek tıkla inceleyin.</p>
+        </div>
+
+        <div class="niyet-kapilari">
+          <div class="niyet-baslik">⚡ 3 Saniyede Hızlı Yönlendirme Kapısı</div>
+          <button type="button" class="niyet-kapi-btn" onclick="envanterAc('tedavi'); skalaSec(3);">
+            <div>
+              <strong>01 · Ağrım veya Acil Durumum Var</strong>
+              <span>Aynı gün tanı, mikroskopik kanal &amp; cerrahi nöbet</span>
+            </div>
+            <span class="niyet-ok">→</span>
+          </button>
+          <button type="button" class="niyet-kapi-btn" onclick="envanterAc('tedavi'); skalaSec(1);">
+            <div>
+              <strong>02 · Gülüş Tasarımı · Zirkon &amp; E-max</strong>
+              <span>CEREC 3B optik ölçü, lamina ve biyomimetik porselen</span>
+            </div>
+            <span class="niyet-ok">→</span>
+          </button>
+          <button type="button" class="niyet-kapi-btn" onclick="envanterAc('tedavi'); skalaSec(0);">
+            <div>
+              <strong>03 · İmplant &amp; Eksik Diş Çözümü</strong>
+              <span>3B CBCT tomografi, kılavuzlu cerrahi ve genel anestezi</span>
+            </div>
+            <span class="niyet-ok">→</span>
+          </button>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:8px;border-top:1px solid rgba(176,122,60,0.2);">
+          <a href="tel:+902646060060" class="dugme-birincil" style="flex:1;justify-content:center;">📞 0 (264) 606 00 60</a>
+          <a href="kurumsal.html" class="dugme-ikincil">Kurumsal &amp; KVKK</a>
+        </div>
+      </aside>
+
+      <!-- SAĞ SÜTUN: 4 ANA ENVANTER SEKMESİ (8 TEDAVİ · 20 HEKİM & GM · 4 TEKNOLOJİ · 2 ŞUBE) -->
+      <div class="hibrit-sag-kokpit">
+        <div class="ana-envanter-sekmeler" role="tablist">
+          <button type="button" class="envanter-sekme-btn aktif" data-envanter="tedavi" onclick="envanterAc('tedavi')">
+            <span class="envanter-sayi">8 BRANŞ</span>
+            <strong>Tedavi Skalası Destesi</strong>
+            <span>01–08 Porselen Yapraklar</span>
+          </button>
+          <button type="button" class="envanter-sekme-btn" data-envanter="hekim" onclick="envanterAc('hekim')">
+            <span class="envanter-sayi">20 HEKİM + YÖNETİM</span>
+            <strong>Hekim &amp; Yönetim Kadrosu</strong>
+            <span>Başhekim · GM Ozan Bey · 20 Hekim</span>
+          </button>
+          <button type="button" class="envanter-sekme-btn" data-envanter="teknoloji" onclick="envanterAc('teknoloji')">
+            <span class="envanter-sayi">4 TEKNOLOJİ</span>
+            <strong>Dijital Klinik Altyapı</strong>
+            <span>CBCT/YZ · CEREC · Mikroskop · Ameliyathane</span>
+          </button>
+          <button type="button" class="envanter-sekme-btn" data-envanter="sube" onclick="envanterAc('sube')">
+            <span class="envanter-sayi">2 ŞUBE · 15 ÜNİT</span>
+            <strong>Serdivan &amp; Adapazarı</strong>
+            <span>Konum, Park, Çocuk Alanı &amp; Saatler</span>
+          </button>
+        </div>
+
+        <!-- PANEL 1: 8 TEDAVİ BRANŞI (01-08 SERAMİK RENK SKALASI DESTESİ) -->
+        <div class="envanter-panel aktif" id="panel-tedavi">
+          <div class="skala-destesi-tutucu" id="hibrit-skala-destesi">
+            <!-- JS ile doldurulur -->
+          </div>
+          <div class="skala-detay-sahne" id="hibrit-skala-sahne">
+            <!-- JS ile doldurulur -->
+          </div>
+        </div>
+
+        <!-- PANEL 2: 20 HEKİM & YÖNETİM KADROSU (GM OZAN BEY DAHİL) -->
+        <div class="envanter-panel" id="panel-hekim">
+          <div class="yonetim-serit">
+            <div class="yonetim-kart">
+              <small>Kurucu &amp; Başhekim</small>
+              <strong>Dr. Dt. Seyit Yılmaz</strong>
+              <span>Ağız, Diş ve Çene Cerrahisi</span>
+            </div>
+            <div class="yonetim-kart">
+              <small>Kurucu Ortak</small>
+              <strong>Dt. Emrah Özdemir</strong>
+              <span>Estetik &amp; Dijital Diş Hekimliği</span>
+            </div>
+            <div class="yonetim-kart gm-vurgu">
+              <small>👔 Genel Müdür (GM)</small>
+              <strong>Ozan Bey</strong>
+              <span>Kurumsal &amp; Stratejik Yönetim</span>
+            </div>
+            <div class="yonetim-kart">
+              <small>Tıbbi Hizmetler Direktörü</small>
+              <strong>Prof. Dr. Fuat Ahmetoğlu</strong>
+              <span>Endodonti Profesörü</span>
+            </div>
+            <div class="yonetim-kart">
+              <small>Kalite &amp; Kurumsal İletişim</small>
+              <strong>Serap Ay · Gökhan Bey</strong>
+              <span>SKS Kalite &amp; Kurumsal İletişim</span>
+            </div>
+          </div>
+
+          <div class="hekim-kompakt-izgara">
+            <a class="hekim-cip" href="hekim-dr--dt--seyit-yilmaz.html"><img src="img/doctors/seyit-yilmaz.webp" alt="" loading="lazy"/><div><strong>Dr. Dt. Seyit Yılmaz</strong><span>Çene Cerrahisi · Başhekim</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--emrah-ozdemir.html"><img src="img/doctors/emrah-ozdemir.webp" alt="" loading="lazy"/><div><strong>Dt. Emrah Özdemir</strong><span>Kurucu · Estetik Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-prof--dr--fuat-ahmetoglu.html"><img src="img/doctors/fuat-ahmetoglu.webp" alt="" loading="lazy"/><div><strong>Prof. Dr. Fuat Ahmetoğlu</strong><span>Endodonti · Tıbbi Direktör</span></div></a>
+            <a class="hekim-cip" href="hekim-dr--dt--gokhan-uzel.html"><img src="img/doctors/gokhan-uzel.webp" alt="" loading="lazy"/><div><strong>Dr. Dt. Gökhan Uzel</strong><span>Protetik Diş Tedavisi Uzm.</span></div></a>
+            <a class="hekim-cip" href="hekim-dr--dt--elshad-salmanov.html"><img src="img/doctors/elshad-salmanov.webp" alt="" loading="lazy"/><div><strong>Dr. Dt. Elshad Salmanov</strong><span>Endodonti Uzmanı</span></div></a>
+            <a class="hekim-cip" href="hekim-uzm--dt--senol-gulsen.html"><img src="img/doctors/senol-gulsen.webp" alt="" loading="lazy"/><div><strong>Uzm. Dt. Şenol Gülşen</strong><span>Ortodonti Uzmanı</span></div></a>
+            <a class="hekim-cip" href="hekim-dr--dt--serhat-caliskan.html"><img src="img/doctors/serhat-caliskan.webp" alt="" loading="lazy"/><div><strong>Dr. Dt. Serhat Çalışkan</strong><span>Pedodonti (Çocuk Diş) Uzm.</span></div></a>
+            <a class="hekim-cip" href="hekim-uzm--dt--nilufer-sumeyra-yildirim.html"><img src="img/doctors/nilufer-sumeyra-yildirim.webp" alt="" loading="lazy"/><div><strong>Uzm. Dt. Nilüfer S. Yıldırım</strong><span>Pedodonti (Çocuk Diş) Uzm.</span></div></a>
+            <a class="hekim-cip" href="hekim-dr--dt--zuhal-metin.html"><img src="img/doctors/zuhal-metin.webp" alt="" loading="lazy"/><div><strong>Dr. Dt. Zuhal Metin</strong><span>Periodontoloji (Diş Eti) Uzm.</span></div></a>
+            <a class="hekim-cip" href="hekim-uzm--dr--gokhan-gedikli.html"><img src="img/doctors/gokhan-gedikli.webp" alt="" loading="lazy"/><div><strong>Uzm. Dr. Gökhan Gedikli</strong><span>Anesteziyoloji ve Reanimasyon</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--burak-eren.html"><img src="img/doctors/burak-eren.webp" alt="" loading="lazy"/><div><strong>Dt. Burak Eren</strong><span>Diş Hekimi (Adapazarı)</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--davut-kayhan.html"><img src="img/doctors/davut-kayhan.webp" alt="" loading="lazy"/><div><strong>Dt. Davut Kayhan</strong><span>Diş Hekimi (Adapazarı)</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--seyfullah-h--ozkutlu.html"><img src="img/doctors/seyfullah-ozkutlu.webp" alt="" loading="lazy"/><div><strong>Dt. Seyfullah H. Özkutlu</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--betul-durmaz-enginler.html"><img src="img/doctors/betul-durmaz-enginler.webp" alt="" loading="lazy"/><div><strong>Dt. Betül Durmaz Enginler</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--sila-nur-cay.html"><img src="img/doctors/sila-nur-cay.webp" alt="" loading="lazy"/><div><strong>Dt. Sıla Nur Çay</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--elif-yildiz.html"><img src="img/doctors/elif-yildiz.webp" alt="" loading="lazy"/><div><strong>Dt. Elif Yıldız</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--sena-ozdemir.html"><img src="img/doctors/sena-ozdemir.webp" alt="" loading="lazy"/><div><strong>Dt. Sena Özdemir</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--mehmet-emre-turkhan.html"><img src="img/doctors/mehmet-emre-turkhan.webp" alt="" loading="lazy"/><div><strong>Dt. Mehmet Emre Türkhan</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dt--yasa-akdogan.html"><img src="img/doctors/yasa-akdogan.webp" alt="" loading="lazy"/><div><strong>Dt. Yasa Akdoğan</strong><span>Diş Hekimi</span></div></a>
+            <a class="hekim-cip" href="hekim-dr--dt--neslihan-caliskan.html"><img src="img/doctors/neslihan-caliskan.webp" alt="" loading="lazy"/><div><strong>Dr. Dt. Neslihan Çalışkan</strong><span>Diş Hekimi (İzinde)</span></div></a>
+          </div>
+        </div>
+
+        <!-- PANEL 3: 4 İLERİ TEKNOLOJİ -->
+        <div class="envanter-panel" id="panel-teknoloji">
+          <div class="dortlu-izgara">
+            <div class="zirkon-kutu">
+              <span class="sahne-hap adacayi">01 · 3B Radyoloji &amp; Yapay Zekâ</span>
+              <h4 style="margin-top:6px;">3B CBCT Dental Tomografi &amp; YZ Karar Destek</h4>
+              <p>Sinüs anatomisi, kemik hacmi ve sinir kanalı komşulukları mikrometrik 3B kesitlerle ve yapay zekâ destekli radyolojik ön taramayla analiz edilir.</p>
+            </div>
+            <div class="zirkon-kutu">
+              <span class="sahne-hap adacayi">02 · CAD/CAM Optik Ölçü</span>
+              <h4 style="margin-top:6px;">CEREC 3B Ağız İçi Kamera &amp; Dijital Tasarım</h4>
+              <p>Bulantı refleksi oluşturan geleneksel kaşık ölçüsü yerine optik tarayıcıyla dakikalar içinde 3B dijital ölçü alınır; Zirkonya ve E-max restorasyonlar üretilir.</p>
+            </div>
+            <div class="zirkon-kutu">
+              <span class="sahne-hap adacayi">03 · 25× Optik Büyütme</span>
+              <h4 style="margin-top:6px;">Dental Operasyon Mikroskobu ile Endodonti</h4>
+              <p>Çıplak gözle görülemeyen kalsifiye/ekstra kök kanalları ve kırık aletler 25 kata kadar optik büyütme ve koaksiyel LED aydınlatma altında güvenle tedavi edilir.</p>
+            </div>
+            <div class="zirkon-kutu">
+              <span class="sahne-hap adacayi">04 · Tam Donanımlı Cerrahi</span>
+              <h4 style="margin-top:6px;">Genel Anestezi &amp; Bilinçli Sedasyon Ameliyathanesi</h4>
+              <p>Uzm. Dr. Gökhan Gedikli gözetiminde, yoğun diş hekimi korkusu olan çocuk ve yetişkin hastalarımızın tüm işlemleri tek seansta uyku konforunda tamamlanır.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 4: 2 ŞUBE -->
+        <div class="envanter-panel" id="panel-sube">
+          <div class="dortlu-izgara">
+            <div class="zirkon-kutu">
+              <span class="sahne-hap adacayi">MERKEZ · 13 ÜNİT · 18 HEKİM</span>
+              <h4 style="margin-top:6px;">Serdivan Merkez Şubemiz (Ameliyathane &amp; 3B CBCT)</h4>
+              <p>İstiklal Mah. 2. Cadde No: 13 Serdivan / Sakarya · Çocuk oyun alanı, engelsiz erişim, otopark, sedasyon/genel anestezi birimi. Pazartesi–Cumartesi 09:00–23:00.</p>
+              <div style="margin-top:10px;"><a href="serdivan.html" class="dugme-ikincil">Serdivan Şube Detayı →</a></div>
+            </div>
+            <div class="zirkon-kutu">
+              <span class="sahne-hap adacayi">ŞUBE · 2 ÜNİT · 2 HEKİM</span>
+              <h4 style="margin-top:6px;">Adapazarı Şubemiz (Merkezî Hızlı Erişim)</h4>
+              <p>Yenidoğan Mah. Fabrika Cad. No: 33 Adapazarı / Sakarya · Dt. Burak Eren ve Dt. Davut Kayhan ile koruyucu, restoratif ve protetik tedaviler.</p>
+              <div style="margin-top:10px;"><a href="adapazari.html" class="dugme-ikincil">Adapazarı Şube Detayı →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ÖNERİ 2: SAF 8'Lİ PORSELEN RENK SKALASI DESTESİ (PURE SHADE-TAB DECK)
+       ======================================================================== -->
+  <section class="konsept-sahne" id="sahne-oneri2">
+    <div style="background:rgba(246,244,238,0.9);border:1px solid rgba(176,122,60,0.3);border-radius:24px;padding:24px;box-shadow:var(--hale-insizal),var(--golge-seramik);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px;">
+        <div>
+          <span class="klinik-rozet">🦷 Öneri 2 · Saf Biyomimetik Porselen Skala Destesi (`Shade-Tab Deck`)</span>
+          <h2 style="font-size:26px;margin-top:8px;">Diş Hekimi Renk Skalasından İlham Alan %100 Orijinal Sekme Deneyimi</h2>
+          <p style="font-size:13.5px;color:var(--metin-ikincil);">8 uzmanlık branşı tıpkı klinik bir porselen renk skalası (BL1 → A3.5) gibi yan yana dizilir; tıkladığınız yaprak yuvasından 14 piksel yukarı kalkar ve altındaki sahneyi açar.</p>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button type="button" class="dugme-ikincil" onclick="konseptDegistir('oneri1'); envanterAc('hekim');">👨‍⚕️ 20 Hekim &amp; GM Ozan Bey</button>
+          <button type="button" class="dugme-ikincil" onclick="konseptDegistir('oneri1'); envanterAc('sube');">📍 2 Şube</button>
+        </div>
+      </div>
+
+      <div class="skala-destesi-tutucu" id="saf-skala-destesi"></div>
+      <div class="skala-detay-sahne" id="saf-skala-sahne"></div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ÖNERİ 3: YATAY GENİŞLEYEN 5 PORSELEN DİLİM (EXPANDING CERAMIC SLICES)
+       ======================================================================== -->
+  <section class="konsept-sahne" id="sahne-oneri3">
+    <div class="yatay-dilimler-kapsayici" id="yatay-dilimler">
+      <!-- DİLİM 1 -->
+      <article class="seramik-dilim aktif" style="background:var(--emax-bl1);" onclick="dilimAc(0)">
+        <div>
+          <div class="dilim-ust"><span class="dilim-kod">01 · BL1 E-MAX</span><span>8 Branş</span></div>
+          <div class="dilim-kapali-baslik">8 Uzmanlık &amp; Tedavi</div>
+          <div class="dilim-icerik">
+            <p style="font-size:13.5px;color:var(--metin-ikincil);margin-bottom:12px;">İmplantoloji, Estetik &amp; Protetik (Zirkon/E-max), Endodonti, Ortodonti, Pedodonti, Periodontoloji, Dijital Dolgu ve Sedasyon/Genel Anestezi birimlerimiz tek çatı altında.</p>
+            <div class="dortlu-izgara">
+              <a href="implant-ve-cene-cerrahisi.html" class="zirkon-kutu" style="text-decoration:none;"><h4>01 · İmplant &amp; Çene Cerrahisi</h4><p>Dr. Dt. Seyit Yılmaz · 3B CBCT Kılavuzlu Cerrahi</p></a>
+              <a href="tedavi-protetik.html" class="zirkon-kutu" style="text-decoration:none;"><h4>02 · Zirkon, E-max &amp; Gülüş Tasarımı</h4><p>Dr. Dt. Gökhan Uzel · CEREC CAD/CAM</p></a>
+              <a href="tedavi-endodonti.html" class="zirkon-kutu" style="text-decoration:none;"><h4>03 · Mikroskopik Kanal Tedavisi</h4><p>Prof. Dr. Fuat Ahmetoğlu · Dr. Dt. Elshad Salmanov</p></a>
+              <a href="tedavi-ortodonti.html" class="zirkon-kutu" style="text-decoration:none;"><h4>04 · Ortodonti &amp; Şeffaf Plak</h4><p>Uzm. Dt. Şenol Gülşen · 3B Dijital Simülasyon</p></a>
+            </div>
+          </div>
+        </div>
+        <small style="font-size:11px;color:var(--dentin-amber);font-weight:700;">Tıklayınca Yatay Genişler ↔</small>
+      </article>
+
+      <!-- DİLİM 2 -->
+      <article class="seramik-dilim" style="background:var(--emax-bl3);" onclick="dilimAc(1)">
+        <div>
+          <div class="dilim-ust"><span class="dilim-kod">02 · BL3 E-MAX</span><span>20 Hekim + GM</span></div>
+          <div class="dilim-kapali-baslik">Hekim &amp; Yönetim</div>
+          <div class="dilim-icerik">
+            <p style="font-size:13.5px;color:var(--metin-ikincil);margin-bottom:10px;">Kurucu Hekimlerimiz <strong>Dr. Dt. Seyit Yılmaz</strong> ve <strong>Dt. Emrah Özdemir</strong>, Genel Müdürümüz <strong>Ozan Bey</strong>, Tıbbi Direktörümüz <strong>Prof. Dr. Fuat Ahmetoğlu</strong> ve 20 hekimimiz.</p>
+            <div class="dortlu-izgara">
+              <div class="zirkon-kutu"><h4>Kurucu Hekimler &amp; Yönetim Kurulu</h4><p>Dr. Dt. Seyit Yılmaz (Başhekim) · Dt. Emrah Özdemir</p></div>
+              <div class="zirkon-kutu" style="border-color:var(--klinik-adacayi);"><h4>👔 Genel Müdürlük (GM)</h4><p><strong>Ozan Bey</strong> — Kurumsal İşleyiş, Şube Koordinasyonu ve Stratejik Yönetim</p></div>
+              <div class="zirkon-kutu"><h4>Tıbbi Hizmetler Direktörlüğü</h4><p>Prof. Dr. Fuat Ahmetoğlu (Endodonti Profesörü)</p></div>
+              <div class="zirkon-kutu"><h4>Kalite &amp; Kurumsal İletişim</h4><p>Serap Ay (SKS Kalite) · Gökhan Bey (Kurumsal İletişim)</p></div>
+            </div>
+            <div style="margin-top:12px;"><a href="hekimler.html" class="dugme-birincil">20 Hekimimizin Tamamını Gör →</a></div>
+          </div>
+        </div>
+        <small style="font-size:11px;color:var(--dentin-amber);font-weight:700;">02 · Kadro</small>
+      </article>
+
+      <!-- DİLİM 3 -->
+      <article class="seramik-dilim" style="background:var(--zirkon-b1);" onclick="dilimAc(2)">
+        <div>
+          <div class="dilim-ust"><span class="dilim-kod">03 · B1 ZİRKON</span><span>4 Cihaz</span></div>
+          <div class="dilim-kapali-baslik">4 Dijital Teknoloji</div>
+          <div class="dilim-icerik">
+            <div class="dortlu-izgara">
+              <div class="zirkon-kutu"><h4>3B CBCT &amp; Yapay Zekâ</h4><p>Milimetrik kemik/sinüs analizi ve yapay zekâ radyoloji taraması.</p></div>
+              <div class="zirkon-kutu"><h4>CEREC 3B CAD/CAM</h4><p>Ağız içi optik tarama ile aynı gün dijital porselen tasarım.</p></div>
+              <div class="zirkon-kutu"><h4>25× Dental Mikroskop</h4><p>Kalsifiye kanal ve apikal cerrahide yüksek optik büyütme.</p></div>
+              <div class="zirkon-kutu"><h4>Genel Anestezi &amp; Sedasyon</h4><p>Ameliyathane güvencesiyle tek seansta sıfır korkuyla tedavi.</p></div>
+            </div>
+          </div>
+        </div>
+        <small style="font-size:11px;color:var(--dentin-amber);font-weight:700;">03 · Teknoloji</small>
+      </article>
+
+      <!-- DİLİM 4 -->
+      <article class="seramik-dilim" style="background:var(--zirkon-a1);" onclick="dilimAc(3)">
+        <div>
+          <div class="dilim-ust"><span class="dilim-kod">04 · A1 ZİRKON</span><span>15 Ünit</span></div>
+          <div class="dilim-kapali-baslik">2 Şube (Sakarya)</div>
+          <div class="dilim-icerik">
+            <div class="dortlu-izgara">
+              <div class="zirkon-kutu"><h4>Serdivan Merkez (13 Ünit · 18 Hekim)</h4><p>İstiklal Mah. 2. Cad. No: 13 Serdivan · Pzt–Cmt 09:00–23:00.</p></div>
+              <div class="zirkon-kutu"><h4>Adapazarı Şube (2 Ünit · 2 Hekim)</h4><p>Yenidoğan Mah. Fabrika Cad. No: 33 Adapazarı.</p></div>
+            </div>
+          </div>
+        </div>
+        <small style="font-size:11px;color:var(--dentin-amber);font-weight:700;">04 · Şubeler</small>
+      </article>
+
+      <!-- DİLİM 5 -->
+      <article class="seramik-dilim" style="background:var(--zirkon-a2);" onclick="dilimAc(4)">
+        <div>
+          <div class="dilim-ust"><span class="dilim-kod">05 · A2 ZİRKON</span><span>TR·EN·AR</span></div>
+          <div class="dilim-kapali-baslik">Maya Rehber &amp; Randevu</div>
+          <div class="dilim-icerik">
+            <p style="font-size:13.5px;color:var(--metin-ikincil);margin-bottom:12px;">554 klinik karar düğümlü Maya Dijital Hasta Rehberi ile şikayetinize göre 3 adımda doğru uzmanlık branşını öğrenin veya doğrudan randevu alın.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="tel:+902646060060" class="dugme-birincil">📞 0 (264) 606 00 60</a>
+              <button type="button" class="dugme-ikincil" onclick="var f=document.getElementById('evdis-ajan-fab'); if(f) f.click();">💬 Maya Rehberi Aç</button>
+            </div>
+          </div>
+        </div>
+        <small style="font-size:11px;color:var(--dentin-amber);font-weight:700;">05 · Randevu</small>
+      </article>
+    </div>
+  </section>
+
+  <!-- YÖNETİM & GM OZAN BEY HIZLI GERİ BİLDİRİM ÇUBUĞU -->
+  <section class="oneri-oy-cubugu">
+    <div>
+      <strong>👔 Yönetim &amp; Genel Müdürlük (Ozan Bey · Seyit Hoca · Emrah Hoca · Gökhan Bey) Değerlendirmesi:</strong>
+      <div style="font-size:12.5px;opacity:0.9;">Hangi açılır-sekmeli mimariyi ana sayfamız olarak yayına alalım? Tek tıkla üstteki geri bildirim kutusuna aktarabilirsiniz:</div>
+    </div>
+    <div class="oy-dugmeler">
+      <button type="button" class="oy-btn" onclick="oneriSecBildir('Öneri 1 (Hibrit Sekmeli Kokpit + Zirkon/E-max Skala Destesi)')">👍 Öneri 1'i Seç (Hibrit Kokpit)</button>
+      <button type="button" class="oy-btn" onclick="oneriSecBildir('Öneri 2 (Saf 8li Porselen Skala Destesi)')">🦷 Öneri 2'yi Seç (Saf Skala)</button>
+      <button type="button" class="oy-btn" onclick="oneriSecBildir('Öneri 3 (Yatay Genişleyen 5 Porselen Dilim)')">📐 Öneri 3'ü Seç (Yatay 5 Dilim)</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  var SKALA_VERISI = [
+    {
+      kod: "01", ton: "BL1 · E-max", renk: "var(--emax-bl1)",
+      ad: "İmplant & Cerrahi",
+      tamBaslik: "01 · İmplantoloji ve Ağız, Diş, Çene Cerrahisi",
+      hekim: "Dr. Dt. Seyit Yılmaz (Başhekim)",
+      teknoloji: "3B CBCT Tomografi & Kılavuzlu Cerrahi",
+      aciklama: "Eksik dişlerin yerine çene kemiğiyle biyolojik olarak kaynaşan titanyum/zirkonyum implant uygulamaları, gömülü 20 yaş dişi operasyonları ve ileri sinüs/kemik cerrahisi.",
+      link: "implant-ve-cene-cerrahisi.html"
+    },
+    {
+      kod: "02", ton: "BL3 · E-max", renk: "var(--emax-bl3)",
+      ad: "Zirkon & E-max Estetik",
+      tamBaslik: "02 · Gülüş Tasarımı, Zirkonya & IPS e.max Cam Seramik",
+      hekim: "Dr. Dt. Gökhan Uzel · Dt. Emrah Özdemir",
+      teknoloji: "CEREC 3B Optik Tarama & CAD/CAM",
+      aciklama: "Dişin konumuna göre ön bölgede yüksek ışık geçirgenlikli E-max porselen lamina, arka ve yük taşıyan bölgelerde yüksek dirençli monolitik/katmanlı Zirkonya restorasyonlar.",
+      link: "tedavi-protetik.html",
+      materyalModulu: true
+    },
+    {
+      kod: "03", ton: "B1 · Zirkon", renk: "var(--zirkon-b1)",
+      ad: "Ortodonti & Plak",
+      tamBaslik: "03 · Ortodonti ve Telsiz Şeffaf Plak Tedavileri",
+      hekim: "Uzm. Dt. Şenol Gülşen",
+      teknoloji: "3B Dijital Ortodontik Simülasyon",
+      aciklama: "Çocuk ve yetişkinlerde diş çapraşıklıklarının şeffaf plaklar veya modern braket sistemleriyle, tedavi sonu gülüş simülasyonu önceden gösterilerek düzeltilmesi.",
+      link: "tedavi-ortodonti.html"
+    },
+    {
+      kod: "04", ton: "A1 · Zirkon", renk: "var(--zirkon-a1)",
+      ad: "Mikroskopik Kanal",
+      tamBaslik: "04 · Endodonti (25× Dental Mikroskop Altında Kanal Tedavisi)",
+      hekim: "Prof. Dr. Fuat Ahmetoğlu · Dr. Dt. Elshad Salmanov",
+      teknoloji: "25× Dental Operasyon Mikroskobu",
+      aciklama: "Derin çürük, şiddetli gece ağrısı ve başarısız eski kanal tedavilerinin (retreatment) 25 kat optik büyütme altında çekim gerekmeden doğal diş korunarak kurtarılması.",
+      link: "tedavi-endodonti.html"
+    },
+    {
+      kod: "05", ton: "A2 · Zirkon", renk: "var(--zirkon-a2)",
+      ad: "Çocuk Diş (Pedodonti)",
+      tamBaslik: "05 · Çocuk Diş Hekimliği (Pedodonti) ve Koruyucu Uygulamalar",
+      hekim: "Dr. Dt. Serhat Çalışkan · Uzm. Dt. Nilüfer S. Yıldırım",
+      teknoloji: "Çocuk Oyun Alanı & Travmasız Yaklaşım",
+      aciklama: "Bebeklikten ergenliğe süt ve genç daimi dişlerin takibi, fissür örtücü, flor, yer tutucular ve korkusuz pedodontik tedaviler.",
+      link: "tedavi-pedodonti.html"
+    },
+    {
+      kod: "06", ton: "A3 · Zirkon", renk: "var(--zirkon-a3)",
+      ad: "Diş Eti (Perio & GBT)",
+      tamBaslik: "06 · Periodontoloji (Diş Eti Sağlığı, Pembe Estetik & GBT)",
+      hekim: "Dr. Dt. Zuhal Metin",
+      teknoloji: "Guided Biofilm Therapy & Lazer/Mikrocerrahi",
+      aciklama: "Diş eti kanaması, çekilmesi, kemik kaybı ve gülüş hattı seviyeleme (pembe estetik) işlemlerinin biyolojik doku uyumuyla tedavisi.",
+      link: "tedavi-periodontoloji.html"
+    },
+    {
+      kod: "07", ton: "A3.5 · Dentin", renk: "var(--zirkon-a35)",
+      ad: "Dijital Dolgu & Bonding",
+      tamBaslik: "07 · Dijital İnley/Onley Dolgu ve Konservatif Bonding",
+      hekim: "Uzman & Estetik Restoratif Kadromuz",
+      teknoloji: "Biyomimetik Kompozit & CAD/CAM Seramik",
+      aciklama: "Dişten aşındırma yapmadan tek seansta diastema (aralık) kapatma, kırık onarımı ve madde kaybı yüksek dişlerde dijital porselen dolgular.",
+      link: "tedavi-dijital-dolgu.html"
+    },
+    {
+      kod: "08", ton: "Sinter · Cerrahi", renk: "var(--zirkon-a2)",
+      ad: "Sedasyon & Anestezi",
+      tamBaslik: "08 · Bilinçli Sedasyon ve Genel Anestezi Ameliyathanesi",
+      hekim: "Uzm. Dr. Gökhan Gedikli (Anestezi Uzmanı)",
+      teknoloji: "Tam Donanımlı Ameliyathane & Monitörizasyon",
+      aciklama: "Yoğun diş hekimi fobisi, bulantı refleksi veya özel gereksinimi olan çocuk ve yetişkin hastalarımızın tüm diş tedavilerinin tek seansta uyku konforunda tamamlanması.",
+      link: "tedavi-sedasyon.html"
+    }
+  ];
+
+  var aktifSkalaIdx = 1; // Varsayılan: 02 Zirkon & E-max Estetik açık başlasın ki modül hemen görülsün!
+  var aktifMateryal = "emax";
+
+  function skalaRender(tutucuId, sahneId) {
+    var tutucu = document.getElementById(tutucuId);
+    var sahne = document.getElementById(sahneId);
+    if (!tutucu || !sahne) return;
+
+    tutucu.innerHTML = SKALA_VERISI.map(function(k, idx) {
+      var aktifSinif = idx === aktifSkalaIdx ? " aktif" : "";
+      return '<button type="button" class="skala-yaprak' + aktifSinif + '" style="background:' + k.renk + ';" onclick="skalaSec(' + idx + ')">' +
+        '<span class="skala-sap">' + k.kod + '</span>' +
+        '<span class="skala-ton-etiket">' + k.ton + '</span>' +
+        '<strong>' + k.ad + '</strong>' +
+      '</button>';
+    }).join("");
+
+    var secili = SKALA_VERISI[aktifSkalaIdx];
+    var sagBlok = "";
+    if (secili.materyalModulu) {
+      var emaxMi = aktifMateryal === "emax";
+      sagBlok = '<div class="materyal-laboratuvari">' +
+        '<div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--dentin-amber);margin-bottom:6px;">🔬 İnteraktif Optik Doku &amp; Işık Geçirgenliği İncelemesi</div>' +
+        '<div class="materyal-secici">' +
+          '<button type="button" class="materyal-btn' + (emaxMi ? ' aktif' : '') + '" onclick="materyalDegistir(\'emax\')">✨ Cam Seramik (E-max)</button>' +
+          '<button type="button" class="materyal-btn' + (!emaxMi ? ' aktif' : '') + '" onclick="materyalDegistir(\'zirkon\')">🛡️ Monolitik Zirkonya</button>' +
+        '</div>' +
+        (emaxMi ? (
+          '<div class="materyal-kart emax-modu">' +
+            '<strong style="font-size:13.5px;">Lityum Disilikat Cam Seramik (Ön Bölge Estetik &amp; Lamina)</strong>' +
+            '<p style="font-size:12px;margin:4px 0 0;">Doğal diş minesinin yarı-saydamlığını, kesici kenar ışık halesini (insizal halo) ve inci opalesansını birebir taklit eder.</p>' +
+            '<div class="materyal-metrikler">' +
+              '<div class="materyal-metrik"><span>Işık Geçirgenliği</span><strong>%48–55 (Yüksek)</strong></div>' +
+              '<div class="materyal-metrik"><span>Bükülme Direnci</span><strong>400–500 MPa</strong></div>' +
+              '<div class="materyal-metrik"><span>Klinik Konum</span><strong>Ön Bölge / Lamina</strong></div>' +
+            '</div>' +
+          '</div>'
+        ) : (
+          '<div class="materyal-kart zirkon-modu">' +
+            '<strong style="font-size:13.5px;">Çok Katmanlı Zirkonya (Arka Bölge, Köprü &amp; İmplant Üstü)</strong>' +
+            '<p style="font-size:12px;margin:4px 0 0;">Çiğneme kuvvetlerine karşı en yüksek kırılma direncini sunar; koyu renkli alt yapıları ve implant dayanaklarını kusursuz maskeler.</p>' +
+            '<div class="materyal-metrikler">' +
+              '<div class="materyal-metrik"><span>Kırılma Direnci</span><strong>900–1200 MPa</strong></div>' +
+              '<div class="materyal-metrik"><span>Optik Karakter</span><strong>Mat-İpek / Tok</strong></div>' +
+              '<div class="materyal-metrik"><span>Klinik Konum</span><strong>Molar / İmplant Üstü</strong></div>' +
+            '</div>' +
+          '</div>'
+        )) +
+      '</div>';
+    } else {
+      sagBlok = '<div class="materyal-laboratuvari">' +
+        '<div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--klinik-adacayi);margin-bottom:6px;">🏥 Branş Klinik Özeti &amp; Hızlı Geçiş</div>' +
+        '<p style="font-size:12.5px;color:var(--metin-ikincil);margin-bottom:10px;">Bu branşta tüm muayene ve tedavi planlamaları 3B dijital görüntüleme ve multidisipliner hekim konseyi ile yürütülür.</p>' +
+        '<button type="button" class="materyal-btn" style="width:100%;" onclick="skalaSec(1)">🔬 02 Estetik Sekmesinde Zirkon vs E-max Modülünü Dene →</button>' +
+      '</div>';
+    }
+
+    sahne.innerHTML = '<div>' +
+      '<div class="sahne-etiketler">' +
+        '<span class="sahne-hap adacayi">👨‍⚕️ ' + secili.hekim + '</span>' +
+        '<span class="sahne-hap">⚙️ ' + secili.teknoloji + '</span>' +
+      '</div>' +
+      '<h3>' + secili.tamBaslik + '</h3>' +
+      '<p>' + secili.aciklama + '</p>' +
+      '<div class="sahne-alt-cubuk">' +
+        '<a href="' + secili.link + '" class="dugme-birincil">Branş Sayfasını Aç →</a>' +
+        '<button type="button" class="dugme-ikincil" onclick="var f=document.getElementById(\'evdis-ajan-fab\'); if(f) f.click();">💬 Maya Rehber\'e Sor</button>' +
+      '</div>' +
+    '</div>' + sagBlok;
+  }
+
+  function skalaSec(idx) {
+    aktifSkalaIdx = idx;
+    skalaRender("hibrit-skala-destesi", "hibrit-skala-sahne");
+    skalaRender("saf-skala-destesi", "saf-skala-sahne");
+  }
+
+  function materyalDegistir(tur) {
+    aktifMateryal = tur;
+    skalaRender("hibrit-skala-destesi", "hibrit-skala-sahne");
+    skalaRender("saf-skala-destesi", "saf-skala-sahne");
+  }
+
+  function envanterAc(ad) {
+    document.querySelectorAll(".envanter-sekme-btn").forEach(function(b) {
+      b.classList.toggle("aktif", b.getAttribute("data-envanter") === ad);
+    });
+    ["tedavi", "hekim", "teknoloji", "sube"].forEach(function(p) {
+      var el = document.getElementById("panel-" + p);
+      if (el) el.classList.toggle("aktif", p === ad);
+    });
+  }
+
+  function konseptDegistir(ad) {
+    document.querySelectorAll(".konsept-btn[data-konsept]").forEach(function(b) {
+      b.classList.toggle("aktif", b.getAttribute("data-konsept") === ad);
+    });
+    ["oneri1", "oneri2", "oneri3"].forEach(function(k) {
+      var el = document.getElementById("sahne-" + k);
+      if (el) el.classList.toggle("aktif", k === ad);
+    });
+  }
+
+  document.querySelectorAll(".konsept-btn[data-konsept]").forEach(function(b) {
+    b.addEventListener("click", function() {
+      konseptDegistir(b.getAttribute("data-konsept"));
+    });
+  });
+
+  function dilimAc(idx) {
+    var dilimler = document.querySelectorAll("#yatay-dilimler .seramik-dilim");
+    dilimler.forEach(function(d, i) {
+      d.classList.toggle("aktif", i === idx);
+    });
+  }
+
+  function oneriSecBildir(secilenMetin) {
+    var dr = document.getElementById("evdis-emrah-drawer");
+    var inp = document.getElementById("evdis-emrah-inp");
+    if (dr) dr.classList.add("open");
+    if (inp) {
+      inp.value = "Tasarım tercihim: " + secilenMetin + " — ";
+      inp.focus();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
+  skalaRender("hibrit-skala-destesi", "hibrit-skala-sahne");
+  skalaRender("saf-skala-destesi", "saf-skala-sahne");
+</script>
+<script defer src="js/evdis-karar-agaci-statik.js?v=26"></script>
+<script defer src="js/evdis-ajan-widget.js?v=26"></script>
+</body>
+</html>
