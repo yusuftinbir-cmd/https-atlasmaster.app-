@@ -480,3 +480,309 @@
 
   hedefler.forEach((el) => gozlemci.observe(el));
 })();
+
+// 9. v25 · 3B Biyometrik Nokta Bulutu & CBCT Sahne Motoru (#evdis-hero-canvas)
+(() => {
+  "use strict";
+  const canvas = document.getElementById("evdis-hero-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  let width = 0;
+  let height = 0;
+  let dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let mode = "arch"; // "arch" | "helix" | "wave"
+  let targetRotX = 0.28;
+  let targetRotY = -0.32;
+  let rotX = 0.28;
+  let rotY = -0.32;
+  let t = 0;
+
+  const COUNT = 540;
+  const points = [];
+  for (let i = 0; i < COUNT; i++) {
+    const u = i / COUNT;
+    const angle = (u - 0.5) * Math.PI * 1.42;
+    const ring = (i % 9) / 8 - 0.5;
+    points.push({
+      u,
+      angle,
+      ring,
+      phase: (i * 1.6180339) % (Math.PI * 2),
+      gold: i % 4 === 0,
+      size: i % 7 === 0 ? 2.3 : 1.35,
+      x: 0,
+      y: 0,
+      z: 0
+    });
+  }
+
+  function computeTarget(p, time) {
+    if (mode === "arch") {
+      // 3B Parabolik Dental Ark + CBCT Volumetrik Kesit Halkaları
+      const r = 215 + p.ring * 48 + Math.sin(time * 1.8 + p.phase) * 6;
+      const tx = Math.sin(p.angle) * r * 1.25;
+      const tz = Math.cos(p.angle) * r * 0.92 - 40;
+      const crownWave = Math.sin(p.angle * 7) * 18;
+      const ty = p.ring * 115 + crownWave * (1 - Math.abs(p.ring));
+      return { tx, ty, tz };
+    }
+    if (mode === "helix") {
+      // CEREC 3B Optik Tarama Çift Sarmal Kafesi
+      const strand = p.ring > 0 ? 1 : -1;
+      const theta = p.u * Math.PI * 4 + time * 0.9 + (strand > 0 ? 0 : Math.PI);
+      const radius = 165 + (Math.abs(p.ring) - 0.25) * 90;
+      const tx = (p.u - 0.5) * 680;
+      const ty = Math.sin(theta) * radius;
+      const tz = Math.cos(theta) * radius;
+      return { tx, ty, tz };
+    }
+    // "wave" — Akustik Konfor & Biyometrik Dalga Yüzeyi
+    const cols = 27;
+    const rows = 20;
+    const gx = (Math.floor(p.u * COUNT) % cols) / (cols - 1) - 0.5;
+    const gz = Math.floor((p.u * COUNT) / cols) / (rows - 1) - 0.5;
+    const tx = gx * 740;
+    const tz = gz * 460;
+    const dist = Math.hypot(gx * 3.2, gz * 3.2);
+    const ty = Math.sin(dist * 3.4 - time * 2.2) * 58 + Math.cos(gx * 5 + time) * 18;
+    return { tx, ty, tz };
+  }
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    width = Math.max(320, rect.width);
+    height = Math.max(420, rect.height);
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener("resize", resize, { passive: true });
+
+  const heroSection = canvas.closest("section.kahraman");
+  if (heroSection) {
+    heroSection.addEventListener("pointermove", (e) => {
+      const r = heroSection.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      targetRotY = nx * 0.85;
+      targetRotX = 0.22 + ny * 0.55;
+    }, { passive: true });
+  }
+
+  document.querySelectorAll("[data-canvas-mode]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      mode = btn.getAttribute("data-canvas-mode") || "arch";
+      document.querySelectorAll("[data-canvas-mode]").forEach((b) => b.classList.toggle("aktif", b === btn));
+    });
+  });
+
+  const azHareket = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function render() {
+    t += azHareket ? 0.002 : 0.014;
+    rotX += (targetRotX - rotX) * 0.06;
+    rotY += (targetRotY + Math.sin(t * 0.45) * 0.18 - rotY) * 0.06;
+
+    ctx.clearRect(0, 0, width, height);
+
+    const cx = width * 0.54;
+    const cy = height * 0.48;
+    const fov = 560;
+    const cosY = Math.cos(rotY);
+    const sinY = Math.sin(rotY);
+    const cosX = Math.cos(rotX);
+    const sinX = Math.sin(rotX);
+
+    // 1. Arka Plan Volumetrik CBCT Tarama Halkaları
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.strokeStyle = "rgba(212, 175, 122, 0.11)";
+    ctx.lineWidth = 1;
+    for (let r = 130; r <= 370; r += 80) {
+      ctx.beginPath();
+      ctx.ellipse(0, 0, r, r * 0.58, t * 0.12, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    const projected = [];
+    for (let i = 0; i < COUNT; i++) {
+      const p = points[i];
+      const { tx, ty, tz } = computeTarget(p, t);
+      p.x += (tx - p.x) * 0.09;
+      p.y += (ty - p.y) * 0.09;
+      p.z += (tz - p.z) * 0.09;
+
+      const x1 = p.x * cosY - p.z * sinY;
+      const z1 = p.z * cosY + p.x * sinY;
+      const y2 = p.y * cosX - z1 * sinX;
+      const z2 = z1 * cosX + p.y * sinX;
+
+      const scale = fov / (fov + z2 + 340);
+      if (scale <= 0.1) continue;
+      const sx = cx + x1 * scale;
+      const sy = cy + y2 * scale;
+      projected.push({ sx, sy, z2, scale, gold: p.gold, size: p.size, idx: i });
+    }
+
+    // 2. Biyometrik Komşu Bağlantı Filamentleri
+    ctx.lineWidth = 0.75;
+    for (let i = 0; i < projected.length - 1; i += 2) {
+      const a = projected[i];
+      const b = projected[i + 1];
+      const dx = a.sx - b.sx;
+      const dy = a.sy - b.sy;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 3400) {
+        const alpha = (1 - d2 / 3400) * 0.24 * a.scale;
+        ctx.strokeStyle = a.gold
+          ? `rgba(226, 195, 145, ${alpha})`
+          : `rgba(52, 211, 153, ${alpha})`;
+        ctx.beginPath();
+        ctx.moveTo(a.sx, a.sy);
+        ctx.lineTo(b.sx, b.sy);
+        ctx.stroke();
+      }
+    }
+
+    // 3. Lazer Tarama Düzlemi (CBCT Axial Sweep)
+    const scanY = cy + Math.sin(t * 1.35) * 145;
+    const grad = ctx.createLinearGradient(cx - 320, scanY, cx + 320, scanY);
+    grad.addColorStop(0, "rgba(52, 211, 153, 0)");
+    grad.addColorStop(0.5, "rgba(52, 211, 153, 0.28)");
+    grad.addColorStop(1, "rgba(212, 175, 122, 0)");
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(cx - 320, scanY);
+    ctx.lineTo(cx + 320, scanY);
+    ctx.stroke();
+
+    // 4. 3B Nokta Bulutu Parçacıkları
+    for (let i = 0; i < projected.length; i++) {
+      const pt = projected[i];
+      const nearScan = Math.max(0, 1 - Math.abs(pt.sy - scanY) / 36);
+      const alpha = Math.min(1, (0.32 + nearScan * 0.55) * pt.scale * 1.15);
+      const r = pt.size * pt.scale * (1 + nearScan * 0.55);
+      ctx.fillStyle = pt.gold
+        ? `rgba(236, 206, 154, ${alpha})`
+        : `rgba(82, 232, 176, ${alpha})`;
+      ctx.beginPath();
+      ctx.arc(pt.sx, pt.sy, r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    if (!azHareket) requestAnimationFrame(render);
+  }
+
+  render();
+})();
+
+// 10. v25 · İnteraktif 5-Protokollü Klinik Kokpit Motoru (#interaktif-kokpit) + 3B Perspektif Tilt
+(() => {
+  "use strict";
+  const VERI = {
+    cbct: {
+      kod: "PROTOKOL // 01 · CBCT & AI RADYOLOJİ",
+      baslik: "Panoramik ve 3 Boyutlu Tomografide (CBCT) Yapay Zekâ Destekli Tanı",
+      metin: "Serdivan merkez şubemizde 3B volumetrik dental tomografi (CBCT) ve her iki şubemizde dijital panoramik görüntüleme üzerinde çalışan yapay zekâ destekli görüntü analiz sistemi; mandibular sinir kanalı, maksiller sinüs septaları ve kemik yoğunluğunu kesitsel olarak haritalandırır.",
+      m1: ["GÖRÜNTÜLEME", "3B CBCT + OPG"],
+      m2: ["ANALİZ KATMANI", "Yapay Zekâ Destekli"],
+      m3: ["BİLİMSEL DAYANAK", "Springer Q1 Yayın"],
+      link: "implant-ve-cene-cerrahisi.html",
+      path: "M110 205 C115 110, 245 110, 250 205"
+    },
+    cerec: {
+      kod: "PROTOKOL // 02 · CEREC 3B CAD/CAM",
+      baslik: "CEREC 3B Optik Tarayıcılar ve Klinik İçi Mikron Kazıma (CAD/CAM)",
+      metin: "Geleneksel kaşık ölçüsü ve öğürme refleksi olmadan, 3 boyutlu ağız içi optik kameralarla saniyeler içinde dijital ölçü alınır. Klinik içi bilgisayar destekli kazıyıcı (milling) ünitelerimizde porselen inley/onley, zirkonyum ve estetik restorasyonlar mikron hassasiyetinde üretilir.",
+      m1: ["ÖLÇÜ TEKNOLOJİSİ", "3B Optik Kamera"],
+      m2: ["ÜRETİM", "CEREC CAD/CAM"],
+      m3: ["HASSASİYET", "Mikron Kenar Uyumu"],
+      link: "tedavi-dijital-dolgu.html",
+      path: "M95 160 L150 110 L210 110 L265 160 L210 210 L150 210 Z"
+    },
+    mikroskop: {
+      kod: "PROTOKOL // 03 · MİKRO-ENDODONTİ",
+      baslik: "Elektronik Yüksek Çözünürlüklü Operasyon Mikroskobu ile Diş Koruma",
+      metin: "Prof. Dr. Fuat Ahmetoğlu ve Dr. Dt. Elshad Salmanov yönetimindeki endodonti kliniğimizde; çıplak gözle görülemeyen kalsifiye mikro-kanallar, kırık alet çıkarımı ve kanal yenileme (retreatment) işlemleri elektronik operasyon mikroskobu altında yüksek büyütmeyle uygulanır.",
+      m1: ["OPTİK BÜYÜTME", "Elektronik Mikroskop"],
+      m2: ["KLİNİK DİREKTÖRLÜK", "Prof. Dr. F. Ahmetoğlu"],
+      m3: ["ODAK", "Doğal Dişin Korunması"],
+      link: "tedavi-endodonti.html",
+      path: "M180 95 L180 225 M135 140 C155 185, 205 185, 225 140"
+    },
+    ameliyathane: {
+      kod: "PROTOKOL // 04 · AMELİYATHANE & SEDASYON",
+      baslik: "Tam Donanımlı Ameliyathane, Bilinçli Sedasyon ve Genel Anestezi",
+      metin: "Anesteziyoloji ve Reanimasyon Uzmanımız Uzm. Dr. Gökhan Gedikli değerlendirmesi ve gözetiminde; dental fobisi olan yetişkin hastalarımız, özel gereksinimli bireyler ve kapsamlı çocuk diş tedavileri tam donanımlı ameliyathane ortamında güvenle gerçekleştirilir.",
+      m1: ["ANESTEZİ UZMANI", "Uzm. Dr. G. Gedikli"],
+      m2: ["ALTYAPI", "Ameliyathane & Derlenme"],
+      m3: ["KAPSAM", "Çocuk & Yetişkin"],
+      link: "tedavi-sedasyon.html",
+      path: "M85 160 L135 160 L152 120 L174 205 L196 135 L212 160 L275 160"
+    },
+    cerrahi: {
+      kod: "PROTOKOL // 05 · ZAGA & KHOURY CERRAHİSİ",
+      baslik: "İleri Çene Cerrahisi: ZAGA Zigomatik İmplant & Khoury Kemik Nakli",
+      metin: "Çene Cerrahisi Uzmanımız Dr. Dt. Seyit Yılmaz yönetiminde; ileri üst çene kemik erimelerinde ZAGA protokolüyle zigomatik implant, Khoury otojen kemik blok nakli, sinüs lifting ve gömülü diş cerrahisi 3B CBCT rehberliğinde uygulanır.",
+      m1: ["CERRAHİ UZMANI", "Dr. Dt. Seyit Yılmaz"],
+      m2: ["İLERİ PROTOKOL", "ZAGA & Khoury Blok"],
+      m3: ["PLANLAMA", "3B CBCT Kılavuzlu"],
+      link: "implant-ve-cene-cerrahisi.html",
+      path: "M120 115 L165 198 M240 115 L195 198 M115 205 C145 225, 215 225, 245 205"
+    }
+  };
+
+  const sekmeler = document.querySelectorAll("[data-kokpit-id]");
+  if (sekmeler.length) {
+    const kodEl = document.getElementById("kokpit-kod");
+    const baslikEl = document.getElementById("kokpit-detay-baslik");
+    const metinEl = document.getElementById("kokpit-detay-metin");
+    const metrikEl = document.getElementById("kokpit-metrikler");
+    const linkEl = document.getElementById("kokpit-detay-link");
+    const arkPath = document.querySelector(".kokpit-ark-cizgi");
+
+    sekmeler.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-kokpit-id");
+        const v = VERI[id];
+        if (!v) return;
+        sekmeler.forEach((b) => {
+          const aktif = b === btn;
+          b.classList.toggle("aktif", aktif);
+          b.setAttribute("aria-selected", aktif ? "true" : "false");
+        });
+        if (kodEl) kodEl.textContent = v.kod;
+        if (baslikEl) baslikEl.textContent = v.baslik;
+        if (metinEl) metinEl.textContent = v.metin;
+        if (metrikEl) {
+          metrikEl.innerHTML = [v.m1, v.m2, v.m3]
+            .map(([k, val]) => `<div class="kokpit-metrik"><span>${k}</span><strong>${val}</strong></div>`)
+            .join("");
+        }
+        if (linkEl) linkEl.setAttribute("href", v.link);
+        if (arkPath) arkPath.setAttribute("d", v.path);
+      });
+    });
+  }
+
+  // Hero 3B Perspektif Tilt (Fare ile hafif derinlik eğimi)
+  const tiltBox = document.querySelector(".kahraman-hud-cerceve");
+  if (tiltBox && window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    tiltBox.addEventListener("pointermove", (e) => {
+      const r = tiltBox.getBoundingClientRect();
+      const nx = (e.clientX - r.left) / r.width - 0.5;
+      const ny = (e.clientY - r.top) / r.height - 0.5;
+      tiltBox.style.transform = `rotateY(${(nx * 7).toFixed(2)}deg) rotateX(${(-ny * 7).toFixed(2)}deg)`;
+    }, { passive: true });
+    tiltBox.addEventListener("pointerleave", () => {
+      tiltBox.style.transform = "none";
+    });
+  }
+})();
+

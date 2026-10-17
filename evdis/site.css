@@ -2342,3 +2342,817 @@ html[dir="rtl"] .ajan-ust strong { font-size: 16px; }
   .tedavi-kart:hover, .hekim-kart:hover, .atelier-kart:hover, .pavilyon-kart:hover,
   .dugme-ana:hover, .dugme-ikinci:hover, .dugme-ikincil:hover { translate: none; }
 }
+
+/* ==========================================================================
+   v25 · AWWWARDS SOTD ARCHITECTURAL & 3D BIOMETRIC STAGE (ATLAS-CORE)
+   ========================================================================== */
+
+/* 1. Mikro Telemetri Üst Şerit + Yüzen Obsidyen-Kristal Komuta Barı (Floating Dock) */
+.onizleme-serit {
+  background: #040A08;
+  color: rgba(233, 227, 214, 0.72);
+  border-bottom: 1px solid rgba(212, 175, 122, 0.16);
+  font-family: var(--yazi-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  padding: 6px var(--kenar);
+}
+.onizleme-serit a {
+  color: #E2C391;
+}
+
+header.ust {
+  position: sticky;
+  top: 14px;
+  z-index: 90;
+  max-width: min(1340px, calc(100% - 28px));
+  margin: 12px auto -78px;
+  border-radius: 999px;
+  background: rgba(7, 19, 15, 0.82);
+  backdrop-filter: blur(24px) saturate(185%);
+  -webkit-backdrop-filter: blur(24px) saturate(185%);
+  border: 1px solid rgba(212, 175, 122, 0.28);
+  box-shadow: 0 24px 60px -16px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: background-color .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+header.ust .ust-ic {
+  padding: 10px 22px;
+}
+header.ust .ust-nav > ul > li > a {
+  color: rgba(247, 244, 237, 0.88);
+  font-weight: 520;
+  letter-spacing: 0.01em;
+}
+header.ust .ust-nav > ul > li > a:hover {
+  color: #E2C391;
+}
+header.ust .acilir-menu {
+  background: rgba(8, 22, 17, 0.96);
+  border: 1px solid rgba(212, 175, 122, 0.28);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(24px);
+}
+header.ust .acilir-menu a {
+  color: rgba(247, 244, 237, 0.86);
+}
+header.ust .acilir-menu a:hover {
+  background: rgba(52, 211, 153, 0.12);
+  color: #E2C391;
+}
+header.ust .acilir-ayirici {
+  border-color: rgba(212, 175, 122, 0.18);
+}
+header.ust .dil-secici {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(212, 175, 122, 0.24);
+}
+header.ust .dil-secici a {
+  color: rgba(247, 244, 237, 0.72);
+}
+header.ust .dil-secici a[aria-current="page"] {
+  background: linear-gradient(135deg, #E2C391, #C49A5C);
+  color: #06120E;
+  font-weight: 700;
+}
+header.ust .hap-ana {
+  background: linear-gradient(135deg, #E2C391 0%, #C49A5C 100%);
+  color: #06120E;
+  border-color: rgba(255, 238, 204, 0.55);
+  font-weight: 700;
+  box-shadow: 0 10px 26px -8px rgba(212, 175, 122, 0.55);
+}
+header.ust .hap-ana:hover {
+  background: linear-gradient(135deg, #EDD2A4 0%, #D1A86A 100%);
+  color: #040C09;
+  transform: translateY(-1px);
+}
+header.ust .mobil-menu-tetik {
+  background: rgba(255, 255, 255, 0.08);
+  color: #F7F4ED;
+  border-color: rgba(212, 175, 122, 0.3);
+}
+
+/* 2. Tam Ekran 3B Biyometrik & Obsidyen-Zümrüt Hero Sahnesi */
+section.kahraman {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 94vh;
+  padding: clamp(118px, 13vw, 156px) 0 0;
+  background:
+    radial-gradient(900px 540px at 76% 32%, rgba(52, 211, 153, 0.16), transparent 62%),
+    radial-gradient(760px 480px at 16% 74%, rgba(212, 175, 122, 0.13), transparent 58%),
+    linear-gradient(165deg, #040B09 0%, #071510 48%, #0B1F18 100%);
+  color: #F7F4ED;
+  border-bottom: 1px solid rgba(212, 175, 122, 0.28);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.evdis-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.92;
+}
+.evdis-hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(to right, rgba(212, 175, 122, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212, 175, 122, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 45%, #000 35%, transparent 100%);
+  pointer-events: none;
+}
+.kahraman-sahne-ic {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.kahraman-ust-rozet-satiri {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+section.kahraman .ust-etiket {
+  margin-bottom: 0;
+  background: rgba(52, 211, 153, 0.12);
+  color: #6EE7B7;
+  border: 1px solid rgba(52, 211, 153, 0.32);
+  backdrop-filter: blur(12px);
+}
+section.kahraman .ust-etiket::before {
+  background: #34D399;
+  box-shadow: 0 0 12px #34D399;
+}
+.kahraman-canli-indikator {
+  font: 500 10.5px/1 var(--yazi-mono);
+  letter-spacing: 0.14em;
+  color: #E2C391;
+  background: rgba(212, 175, 122, 0.10);
+  border: 1px solid rgba(212, 175, 122, 0.28);
+  padding: 8px 13px;
+  border-radius: 999px;
+}
+section.kahraman .kahraman-baslik {
+  color: #F7F4ED;
+  font-size: clamp(2.85rem, 5.2vw, 5.15rem);
+  line-height: 0.98;
+  letter-spacing: -0.022em;
+  text-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+section.kahraman .kahraman-baslik em {
+  color: #E2C391;
+  font-style: italic;
+  background: linear-gradient(120deg, #F6E3BA 0%, #D4AF7A 55%, #6EE7B7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+section.kahraman .kahraman-aciklama {
+  color: rgba(235, 230, 218, 0.82);
+  font-size: clamp(1.04rem, 1.35vw, 1.22rem);
+  max-width: 56ch;
+}
+section.kahraman .dugme-ana {
+  background: linear-gradient(135deg, #34D399 0%, #10B981 45%, #059669 100%);
+  color: #03110C;
+  border-color: rgba(167, 243, 208, 0.6);
+  font-weight: 700;
+  box-shadow: 0 16px 38px -10px rgba(16, 185, 129, 0.55);
+}
+section.kahraman .dugme-ana:hover {
+  background: linear-gradient(135deg, #6EE7B7 0%, #34D399 100%);
+  color: #020B08;
+}
+.dugme-kristal-altin {
+  background: linear-gradient(135deg, rgba(226, 195, 145, 0.22), rgba(196, 154, 92, 0.12));
+  color: #F6E3BA;
+  border: 1px solid rgba(226, 195, 145, 0.48);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 14px 32px -12px rgba(212, 175, 122, 0.35);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+.dugme-kristal-altin:hover {
+  background: linear-gradient(135deg, #E2C391, #C49A5C);
+  color: #06120E;
+  border-color: #F6E3BA;
+}
+section.kahraman .dugme-ikinci {
+  background: rgba(255, 255, 255, 0.06);
+  color: #F7F4ED;
+  border: 1px solid rgba(247, 244, 237, 0.22);
+  backdrop-filter: blur(14px);
+}
+section.kahraman .dugme-ikinci:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #E2C391;
+  color: #F6E3BA;
+}
+section.kahraman .konfor-serit {
+  border-top-color: rgba(212, 175, 122, 0.22);
+  gap: 14px;
+}
+section.kahraman .konfor-oge {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(212, 175, 122, 0.18);
+  border-radius: 18px;
+  padding: 14px 16px;
+  backdrop-filter: blur(14px);
+}
+.konfor-oge-no {
+  display: block;
+  font: 500 10px/1 var(--yazi-mono);
+  letter-spacing: 0.14em;
+  color: #34D399;
+  margin-bottom: 6px;
+}
+section.kahraman .konfor-oge strong {
+  color: #F7F4ED;
+  font-size: 16px;
+}
+section.kahraman .konfor-oge span:not(.konfor-oge-no) {
+  color: rgba(233, 227, 214, 0.72);
+  font-size: 13px;
+}
+
+/* Sağ 3B Perspektif HUD Vitrin Kartı */
+.kahraman-gorsel-kutu {
+  perspective: 1200px;
+}
+.kahraman-hud-cerceve {
+  position: relative;
+  border-radius: 28px;
+  padding: 16px;
+  background: linear-gradient(155deg, rgba(16, 42, 34, 0.78), rgba(7, 19, 15, 0.88));
+  border: 1px solid rgba(212, 175, 122, 0.34);
+  box-shadow: 0 36px 80px -24px rgba(0, 0, 0, 0.78), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(22px);
+  transform-style: preserve-3d;
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1), border-color .35s ease;
+}
+.kahraman-hud-cerceve:hover {
+  border-color: rgba(52, 211, 153, 0.55);
+}
+.kahraman-hud-ust {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px 12px;
+  font: 500 10.5px/1 var(--yazi-mono);
+  letter-spacing: 0.12em;
+  color: #E2C391;
+}
+.hud-koordinat {
+  color: #6EE7B7;
+}
+section.kahraman .kahraman-ana-resim {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+.kahraman-resim-optik-katman {
+  position: absolute;
+  inset-inline: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  pointer-events: none;
+}
+.optik-rozet {
+  font: 600 10px/1 var(--yazi-mono);
+  letter-spacing: 0.12em;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(5, 16, 12, 0.82);
+  color: #6EE7B7;
+  border: 1px solid rgba(52, 211, 153, 0.42);
+  backdrop-filter: blur(10px);
+}
+.optik-rozet--altin {
+  color: #F6E3BA;
+  border-color: rgba(226, 195, 145, 0.45);
+}
+section.kahraman .kahraman-alt-bilgi {
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 122, 0.22);
+  border-radius: 18px;
+  padding: 12px 16px;
+  color: #F7F4ED;
+}
+.kahraman-alt-kucuk {
+  display: block;
+  font: 500 9.5px/1 var(--yazi-mono);
+  letter-spacing: 0.15em;
+  color: #E2C391;
+  margin-bottom: 4px;
+}
+section.kahraman .kahraman-alt-bilgi p {
+  color: rgba(247, 244, 237, 0.88);
+  font-size: 13.5px;
+  margin: 0;
+}
+section.kahraman .video-dugme {
+  background: linear-gradient(135deg, #E2C391, #C49A5C);
+  color: #05110D;
+  border: none;
+  font-weight: 700;
+  padding: 9px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.kahraman-canvas-kontrol {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(3, 10, 8, 0.65);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+.canvas-kontrol-baslik {
+  font: 600 10px/1 var(--yazi-mono);
+  letter-spacing: 0.12em;
+  color: rgba(233, 227, 214, 0.68);
+  margin-right: 4px;
+}
+.canvas-kip-btn {
+  appearance: none;
+  border: 1px solid rgba(212, 175, 122, 0.24);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(247, 244, 237, 0.82);
+  font: 500 11px/1 var(--yazi-mono);
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.canvas-kip-btn:hover,
+.canvas-kip-btn.aktif {
+  background: rgba(52, 211, 153, 0.18);
+  border-color: #34D399;
+  color: #6EE7B7;
+  box-shadow: 0 0 16px rgba(52, 211, 153, 0.25);
+}
+
+/* Hero Alt Telemetri Barı (Obsidyen Cam) */
+section.kahraman .kahraman-telemetri {
+  margin-top: clamp(28px, 4vw, 44px);
+  margin-bottom: clamp(28px, 4vw, 40px);
+  background: rgba(8, 23, 18, 0.76);
+  border: 1px solid rgba(212, 175, 122, 0.26);
+  box-shadow: 0 24px 56px -20px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+section.kahraman .kahraman-telemetri > div + div {
+  border-inline-start-color: rgba(212, 175, 122, 0.16);
+}
+section.kahraman .kahraman-telemetri dt {
+  color: #E2C391;
+}
+section.kahraman .kahraman-telemetri dd {
+  color: rgba(247, 244, 237, 0.78);
+}
+section.kahraman .telemetri-deger {
+  color: #F7F4ED;
+  text-shadow: 0 0 24px rgba(52, 211, 153, 0.28);
+}
+
+/* Kinetik Mimari Kuşak (Marquee Ticker) */
+@keyframes evdis-marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+.evdis-kinetik-kusak {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(3, 10, 8, 0.9);
+  border-top: 1px solid rgba(212, 175, 122, 0.24);
+  padding: 13px 0;
+}
+.evdis-kinetik-ic {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 26px;
+  animation: evdis-marquee 38s linear infinite;
+  font: 500 11.5px/1 var(--yazi-mono);
+  letter-spacing: 0.18em;
+  color: rgba(247, 244, 237, 0.85);
+}
+.evdis-kinetik-ic b {
+  color: #E2C391;
+  font-weight: 400;
+}
+
+/* 3. İNTERAKTİF 3B KLİNİK KOKPİT SAHNESİ (#interaktif-kokpit) */
+.evdis-kokpit-bolum {
+  position: relative;
+  padding: clamp(64px, 8vw, 104px) 0;
+  background:
+    radial-gradient(820px 440px at 12% 20%, rgba(52, 211, 153, 0.10), transparent 60%),
+    radial-gradient(760px 420px at 88% 85%, rgba(212, 175, 122, 0.10), transparent 60%),
+    linear-gradient(180deg, #071410 0%, #0A1C16 100%);
+  color: #F7F4ED;
+  border-bottom: 1px solid rgba(212, 175, 122, 0.26);
+}
+.kokpit-ust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: clamp(32px, 4.5vw, 48px);
+}
+.kokpit-rozet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 11px/1 var(--yazi-mono);
+  letter-spacing: 0.16em;
+  color: #6EE7B7;
+  margin-bottom: 12px;
+}
+.kokpit-rozet::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 10px #34D399;
+}
+.kokpit-baslik {
+  color: #F7F4ED;
+  font-family: var(--yazi-baslik);
+  font-size: clamp(2.1rem, 3.8vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.04;
+}
+.kokpit-baslik em {
+  color: #E2C391;
+  font-style: italic;
+}
+.kokpit-aciklama {
+  max-width: 46ch;
+  color: rgba(233, 227, 214, 0.76);
+  font-size: 15.5px;
+  margin: 0;
+}
+.kokpit-sahne {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+@media (min-width: 980px) {
+  .kokpit-sahne {
+    grid-template-columns: 0.92fr 1.28fr;
+    gap: 28px;
+  }
+}
+.kokpit-sekme-listesi {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.kokpit-sekme {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+  padding: 16px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(212, 175, 122, 0.16);
+  color: #F7F4ED;
+  cursor: pointer;
+  transition: all .3s cubic-bezier(.22, 1, .36, 1);
+}
+.kokpit-sekme:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 175, 122, 0.38);
+  transform: translateX(4px);
+}
+.kokpit-sekme.aktif {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.16), rgba(212, 175, 122, 0.10));
+  border-color: #34D399;
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.kokpit-sekme-no {
+  font: 600 13px/1 var(--yazi-mono);
+  color: #E2C391;
+  background: rgba(212, 175, 122, 0.12);
+  border: 1px solid rgba(212, 175, 122, 0.3);
+  border-radius: 12px;
+  padding: 10px 11px;
+  flex-shrink: 0;
+}
+.kokpit-sekme.aktif .kokpit-sekme-no {
+  background: #34D399;
+  color: #04100C;
+  border-color: #6EE7B7;
+}
+.kokpit-sekme-metin {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.kokpit-sekme-metin strong {
+  font-size: 16px;
+  font-weight: 620;
+  color: #F7F4ED;
+}
+.kokpit-sekme-metin small {
+  font-size: 13px;
+  color: rgba(233, 227, 214, 0.68);
+}
+.kokpit-ekran {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: clamp(24px, 3.2vw, 38px);
+  border-radius: 28px;
+  background:
+    radial-gradient(540px circle at 85% 30%, rgba(52, 211, 153, 0.12), transparent 55%),
+    rgba(12, 31, 25, 0.84);
+  border: 1px solid rgba(212, 175, 122, 0.3);
+  box-shadow: 0 32px 72px -24px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px);
+  align-items: center;
+}
+@media (min-width: 760px) {
+  .kokpit-ekran {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+.kokpit-ekran-ust-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.kokpit-telemetri-etiket {
+  font: 600 11px/1 var(--yazi-mono);
+  letter-spacing: 0.14em;
+  color: #E2C391;
+}
+.kokpit-telemetri-durum {
+  font: 600 10.5px/1 var(--yazi-mono);
+  letter-spacing: 0.12em;
+  color: #34D399;
+}
+.kokpit-ekran-baslik {
+  color: #F7F4ED;
+  font-family: var(--yazi-baslik);
+  font-size: clamp(1.75rem, 2.5vw, 2.35rem);
+  font-weight: 500;
+  line-height: 1.12;
+  margin-bottom: 14px;
+}
+.kokpit-ekran-metin {
+  color: rgba(235, 230, 218, 0.82);
+  font-size: 15.5px;
+  line-height: 1.72;
+  margin-bottom: 20px;
+}
+.kokpit-metrik-izgara {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.kokpit-metrik {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 122, 0.2);
+}
+.kokpit-metrik span {
+  display: block;
+  font: 500 9.5px/1 var(--yazi-mono);
+  letter-spacing: 0.14em;
+  color: #E2C391;
+  margin-bottom: 6px;
+}
+.kokpit-metrik strong {
+  font-size: 14px;
+  color: #F7F4ED;
+}
+.kokpit-eylem-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.kokpit-viz-kutu {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(4, 12, 9, 0.72);
+  border: 1px solid rgba(52, 211, 153, 0.24);
+}
+.kokpit-svg {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+@keyframes kokpit-don {
+  to { transform: rotate(360deg); }
+}
+@keyframes kokpit-tara {
+  0%, 100% { transform: translateY(-55px); opacity: 0.35; }
+  50% { transform: translateY(55px); opacity: 0.95; }
+}
+.kokpit-halka-1 {
+  transform-origin: 180px 160px;
+  animation: kokpit-don 28s linear infinite;
+}
+.kokpit-halka-2 {
+  transform-origin: 180px 160px;
+  animation: kokpit-don 18s linear infinite reverse;
+}
+.kokpit-tarama-cizgisi {
+  animation: kokpit-tara 3.6s ease-in-out infinite;
+}
+
+/* 4. Şube Adres Şeridi — Koyu Zümrüt & Altın Köprü */
+.adres-serit {
+  background: #0B1F18;
+  border-bottom: 1px solid rgba(212, 175, 122, 0.24);
+  padding: 28px 0;
+}
+.adres-kart {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 122, 0.2);
+  color: #F7F4ED;
+}
+.adres-kart-baslik strong {
+  color: #F7F4ED;
+}
+.adres-kart-baslik span {
+  background: rgba(52, 211, 153, 0.14);
+  color: #6EE7B7;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+.adres-kart p {
+  color: rgba(233, 227, 214, 0.78);
+}
+
+/* 5. Konfor Bölümü (#konfor) — Asimetrik Mimari Panoramik Bento (7+5 / 5+7) */
+@media (min-width: 980px) {
+  #konfor .konfor-izgara {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 22px;
+  }
+  #konfor .konfor-izgara > :nth-child(1),
+  #konfor .konfor-izgara > :nth-child(4) {
+    grid-column: span 7;
+  }
+  #konfor .konfor-izgara > :nth-child(2),
+  #konfor .konfor-izgara > :nth-child(3) {
+    grid-column: span 5;
+  }
+}
+#konfor .konfor-kart {
+  position: relative;
+  min-height: 340px;
+  border-radius: 26px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid rgba(20, 35, 29, 0.14);
+  box-shadow: 0 24px 54px -22px rgba(12, 34, 27, 0.22);
+}
+#konfor .konfor-kart-resim {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  aspect-ratio: unset;
+}
+#konfor .konfor-kart-resim img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#konfor .konfor-kart::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 18, 14, 0.08) 0%, rgba(6, 18, 14, 0.55) 52%, rgba(5, 15, 12, 0.92) 100%);
+  pointer-events: none;
+}
+#konfor .konfor-kart-metin {
+  position: relative;
+  z-index: 2;
+  padding: 26px;
+  color: #F7F4ED;
+}
+#konfor .konfor-kart-metin h3 {
+  color: #F7F4ED;
+  font-size: clamp(22px, 2.2vw, 28px);
+  margin-bottom: 6px;
+}
+#konfor .konfor-kart-metin p {
+  color: rgba(235, 230, 218, 0.84);
+}
+#konfor .konfor-kart-metin::before {
+  color: #E2C391;
+}
+
+/* 6. Tedaviler & Teknoloji Vitrini (#tedaviler) — Koyu Obsidyen-Zümrüt Yüksek Teknoloji Sahnesi */
+section#tedaviler {
+  background:
+    radial-gradient(960px 520px at 90% 10%, rgba(52, 211, 153, 0.10), transparent 60%),
+    radial-gradient(840px 520px at 10% 85%, rgba(212, 175, 122, 0.10), transparent 60%),
+    linear-gradient(175deg, #06120E 0%, #0A1D17 55%, #071510 100%);
+  color: #F7F4ED;
+  border-top: 1px solid rgba(212, 175, 122, 0.26);
+  border-bottom: 1px solid rgba(212, 175, 122, 0.26);
+}
+section#tedaviler .bolum-etiket {
+  color: #E2C391;
+}
+section#tedaviler .bolum-baslik {
+  color: #F7F4ED;
+}
+section#tedaviler .bolum-aciklama {
+  color: rgba(233, 227, 214, 0.76);
+}
+section#tedaviler .atelier-kart {
+  background:
+    radial-gradient(560px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(52, 211, 153, 0.12), transparent 45%),
+    linear-gradient(160deg, rgba(16, 42, 34, 0.82), rgba(8, 22, 17, 0.9));
+  border: 1px solid rgba(212, 175, 122, 0.24);
+  box-shadow: 0 28px 64px -26px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+section#tedaviler .atelier-kart--bronz {
+  --aksan: #E2C391;
+}
+section#tedaviler .atelier-kart--adacayi {
+  --aksan: #34D399;
+}
+section#tedaviler .atelier-ikon {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(212, 175, 122, 0.26);
+  box-shadow: none;
+}
+section#tedaviler .atelier-etiket {
+  color: #E2C391;
+}
+section#tedaviler .atelier-baslik {
+  color: #F7F4ED;
+}
+section#tedaviler .atelier-metin {
+  color: rgba(233, 227, 214, 0.78);
+}
+section#tedaviler .atelier-metin strong {
+  color: #F6E3BA;
+}
+section#tedaviler .tedavi-kart {
+  background:
+    radial-gradient(520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(212, 175, 122, 0.12), transparent 45%),
+    rgba(13, 33, 26, 0.82);
+  border: 1px solid rgba(212, 175, 122, 0.2);
+  box-shadow: 0 26px 56px -24px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+section#tedaviler .tedavi-kart:hover {
+  border-color: rgba(52, 211, 153, 0.45);
+}
+section#tedaviler .tedavi-icerik h3 {
+  color: #F7F4ED;
+}
+section#tedaviler .tedavi-icerik p {
+  color: rgba(233, 227, 214, 0.76);
+}
+section#tedaviler .sube-etiket {
+  color: #6EE7B7;
+}
+section#tedaviler .tedavi-kart::before {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 122, 0.3);
+  color: #E2C391;
+}
+section#tedaviler .tedavi-kart:hover::before {
+  background: #34D399;
+  border-color: #34D399;
+  color: #04100C;
+}
+
