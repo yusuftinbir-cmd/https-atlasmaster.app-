@@ -60,9 +60,15 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    body {
+    html, body {
+      max-width: 100%;
       overflow-x: hidden;
+    }
+    body {
       background: var(--bg-light);
+    }
+    img, video {
+      max-width: 100%;
     }
 
     a {
@@ -77,7 +83,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       z-index: 120;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
@@ -300,7 +306,7 @@
       height: 32px;
       border-radius: 50%;
       border: 1.5px solid #14151D;
-      margin-left: -8px;
+      margin-left: 4px;
       overflow: hidden;
       background: #2A2B32;
       display: inline-flex;
@@ -335,7 +341,7 @@
        ========================================================================== */
     .av-hero-3d {
       position: relative;
-      width: 100vw;
+      width: 100%;
       height: 100vh;
       min-height: 740px;
       background:
@@ -446,7 +452,7 @@
     /* INNER RIGHT CONTENDER */
     .av-vid-card[data-pos="right"] {
       z-index: 25;
-      animation: contenderSurgeRight 5.2s ease-in-out infinite 1.8s;
+      animation: contenderSurgeRight 5.2s ease-in-out infinite -1.8s;
       box-shadow: 0 30px 75px rgba(0, 0, 0, 0.76);
     }
     .av-vid-card[data-pos="right"] video {
@@ -467,7 +473,7 @@
     /* OUTER FAR-LEFT CONTENDER */
     .av-vid-card[data-pos="far-left"] {
       z-index: 12;
-      animation: contenderSurgeFarLeft 6.4s ease-in-out infinite 0.9s;
+      animation: contenderSurgeFarLeft 6.4s ease-in-out infinite -0.9s;
       box-shadow: 0 22px 55px rgba(0, 0, 0, 0.68);
     }
     .av-vid-card[data-pos="far-left"] video {
@@ -486,7 +492,7 @@
     /* OUTER FAR-RIGHT CONTENDER */
     .av-vid-card[data-pos="far-right"] {
       z-index: 12;
-      animation: contenderSurgeFarRight 6.4s ease-in-out infinite 3.1s;
+      animation: contenderSurgeFarRight 6.4s ease-in-out infinite -3.1s;
       box-shadow: 0 22px 55px rgba(0, 0, 0, 0.68);
     }
     .av-vid-card[data-pos="far-right"] video {
@@ -670,7 +676,7 @@
        SCREEN 2: "HEDEFİMİZ & ORAL DİAGNOZ" — #EAE8E8 STAGE WITH 3D PORTRAIT
        ========================================================================== */
     .av-goal-stage {
-      width: 100vw;
+      width: 100%;
       min-height: 88vh;
       background: var(--bg-light);
       color: var(--ink-dark);
@@ -755,13 +761,15 @@
     .av-avatar-cluster {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .av-avatar-circle {
       width: 60px;
       height: 60px;
       border-radius: 50%;
       border: 2px solid var(--bg-light);
-      margin-left: -14px;
+      margin-left: 0;
       overflow: hidden;
       background: #2C2D30;
       display: flex;
@@ -796,7 +804,7 @@
        ========================================================================== */
     .av-services-stage {
       position: relative;
-      width: 100vw;
+      width: 100%;
       min-height: 100vh;
       background: var(--bg-dark);
       color: var(--ink-light);
@@ -826,8 +834,9 @@
       transform-style: preserve-3d;
     }
     .av-services-main-img {
-      width: 88%;
-      height: 92%;
+      display: block;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
       border-radius: 6px;
@@ -840,24 +849,6 @@
     .av-srv-3d-frame:hover .av-services-main-img {
       filter: grayscale(0%) contrast(1.04);
       transform: rotateY(2deg) rotateX(0deg) translateZ(14px);
-    }
-    .av-services-sub-img {
-      position: absolute;
-      right: 0;
-      bottom: -16px;
-      width: 235px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 2px solid var(--accent);
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.85);
-      transform: translateZ(55px) rotateY(-6deg);
-      filter: grayscale(20%) contrast(1.06);
-      transition: transform 0.45s ease, filter 0.45s ease;
-    }
-    .av-srv-3d-frame:hover .av-services-sub-img {
-      filter: grayscale(0%) contrast(1.06);
-      transform: translateZ(75px) rotateY(0deg) scale(1.04);
     }
 
     .av-services-cat-nav {
@@ -915,13 +906,15 @@
     .av-branch-avatars {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
     }
     .av-branch-av-link {
       width: 54px;
       height: 54px;
       border-radius: 50%;
       border: 2px solid #14151D;
-      margin-left: -10px;
+      margin-left: 0;
       overflow: hidden;
       background: #252730;
       display: inline-flex;
@@ -990,7 +983,7 @@
        SCREEN 4: FULL-BLEED #EAE8E8 TECHNOLOGY STAGE (Sirona & Real Zumax Frame!)
        ========================================================================== */
     .av-tech-stage {
-      width: 100vw;
+      width: 100%;
       min-height: 100vh;
       background: var(--bg-light);
       color: var(--ink-dark);
@@ -1109,10 +1102,10 @@
     }
 
     /* ==========================================================================
-       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" + @evdistr KLİNİK YAŞAM 3B ŞERİDİ
+       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" + KİŞİSİZ KLİNİK MEKÂN ŞERİDİ
        ========================================================================== */
     .av-experts-stage {
-      width: 100vw;
+      width: 100%;
       background: var(--bg-dark);
       color: var(--ink-light);
       padding: 120px 44px 80px;
@@ -1308,7 +1301,18 @@
       filter: grayscale(0%) contrast(1.04);
       transform: scale(1.04);
     }
+    .av-ig-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 48%;
+      background: linear-gradient(180deg, rgba(13, 14, 20, 0) 0%, rgba(13, 14, 20, 0.82) 100%);
+      pointer-events: none;
+    }
     .av-ig-card-cap {
+      z-index: 2;
       position: absolute;
       left: 12px;
       right: 12px;
@@ -1450,13 +1454,27 @@
       padding-top: 16px;
     }
 
+    /* ==========================================================================
+       v38 DUYARLI (RESPONSIVE) KURALLAR — 1024px tablet · 768px telefon · 430px iPhone
+       ========================================================================== */
     @media (max-width: 1024px) {
+      .av-header {
+        padding: 14px 20px;
+      }
+      .av-header.scrolled {
+        padding: 10px 20px;
+      }
+      .av-nav-left .av-nav-link:not(:first-child),
+      .av-tel-link {
+        display: none;
+      }
       .av-vid-card {
-        width: 86vw;
-        height: 48vh;
+        width: 78vw;
+        height: 46vh;
       }
       .av-hero-bottom-bar {
         grid-template-columns: 1fr;
+        justify-items: center;
         text-align: center;
       }
       .av-hero-right-note {
@@ -1467,13 +1485,38 @@
         grid-template-columns: 1fr;
         gap: 36px;
         padding: 80px 24px;
+        min-height: 0;
+      }
+      .av-goal-portrait-wrap {
+        padding-right: 0;
+      }
+      .av-goal-content {
+        min-height: 0;
+        padding-left: 0;
+      }
+      .av-services-stage,
+      .av-tech-stage,
+      .av-experts-stage {
+        padding-left: 24px;
+        padding-right: 24px;
+        min-height: 0;
       }
       .av-services-inner {
         grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .av-srv-3d-frame {
+        margin: 0 auto;
       }
       .av-tech-grid {
         grid-template-columns: 1fr;
         gap: 32px;
+      }
+      .av-tech-visual-col {
+        padding-right: 0;
+      }
+      .av-tech-counter-sub {
+        max-width: none;
       }
       .av-experts-cols {
         grid-template-columns: 1fr 1fr;
@@ -1482,15 +1525,394 @@
         grid-template-columns: 1fr 1fr;
       }
       .av-ig-life-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
       .av-circles-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
       }
       .av-branches-strip {
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 768px) {
+      /* --- Üst menü: yalnız Menü · EVDİŞ · Randevu --- */
+      .av-header,
+      .av-header.scrolled {
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        padding: 10px 14px;
+        background: rgba(14, 15, 21, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .av-lang-switch {
+        display: none;
+      }
+      .av-brand-mark {
+        font-size: 1.3rem;
+        letter-spacing: 0.16em;
+      }
+      .av-nav-right .av-pill-btn {
+        padding: 8px 13px;
+        font-size: 0.70rem;
+        gap: 6px;
+      }
+
+      /* --- 3B VİDEO SAHNESİ (mobil): üstte tek aktif video, altında 4'lü canlı önizleme ızgarası --- */
+      .av-hero-3d {
+        height: auto;
+        min-height: 0;
+        padding: 72px 14px 22px;
+        justify-content: flex-start;
+        gap: 16px;
+        perspective: none;
+      }
+      .av-video-arena {
+        flex: none;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        transform: none !important;
+        transform-style: flat;
+        perspective: 700px;
+      }
+      .av-video-arena .av-vid-card,
+      .av-video-arena .av-vid-card[data-pos],
+      .av-video-arena .av-vid-card[data-pos]:hover {
+        position: relative;
+        width: 100%;
+        height: 15vh;
+        min-height: 92px;
+        max-height: 140px;
+        animation: none;
+        transform: rotateX(8deg) scale(0.98);
+        transform-origin: center top;
+        transform-style: flat;
+        border-radius: 8px;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        cursor: pointer;
+      }
+      .av-video-arena .av-vid-card[data-pos] video,
+      .av-video-arena .av-vid-card[data-pos]:hover video {
+        filter: grayscale(35%) brightness(0.8) contrast(1.05);
+        transform: none;
+      }
+      .av-video-arena .av-vid-card[data-pos="center"],
+      .av-video-arena .av-vid-card[data-pos="center"]:hover {
+        grid-column: 1 / -1;
+        order: 0;
+        height: 52vh;
+        min-height: 300px;
+        max-height: 520px;
+        transform: none;
+        border-color: rgba(179, 140, 97, 0.75);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(179, 140, 97, 0.16);
+        cursor: default;
+      }
+      .av-video-arena .av-vid-card[data-pos="center"] video,
+      .av-video-arena .av-vid-card[data-pos="center"]:hover video {
+        filter: none;
+      }
+      .av-video-arena .av-vid-card[data-pos="far-left"] { order: 1; }
+      .av-video-arena .av-vid-card[data-pos="left"] { order: 2; }
+      .av-video-arena .av-vid-card[data-pos="right"] { order: 3; }
+      .av-video-arena .av-vid-card[data-pos="far-right"] { order: 4; }
+      .av-video-arena .av-vid-card:not([data-pos="center"]) .av-vid-card-meta {
+        display: none;
+      }
+      .av-vid-card-meta {
+        left: 14px;
+        right: 14px;
+        bottom: 12px;
+      }
+      .av-vid-title {
+        font-size: 1.2rem;
+      }
+      .av-vid-badge {
+        font-size: 0.62rem;
+        padding: 5px 10px;
+        white-space: normal;
+      }
+      .av-hero-bottom-bar {
+        gap: 14px;
+        padding-top: 14px;
+      }
+      .av-stage-pills {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-radius: 14px;
+      }
+      .av-stage-pills::-webkit-scrollbar {
+        display: none;
+      }
+      .av-stage-pill {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 8px 12px;
+      }
+      .av-hero-right-note {
+        max-width: 100%;
+        font-size: 0.72rem;
+      }
+
+      /* --- Hedefimiz --- */
+      .av-goal-stage {
+        padding: 64px 18px;
+        gap: 28px;
+        perspective: none;
+      }
+      .av-goal-subnote {
+        max-width: none;
+      }
+      .av-goal-portrait {
+        max-width: 240px;
+        transform: none;
+      }
+      .av-goal-statement {
+        font-size: clamp(1.75rem, 7.4vw, 2.3rem);
+        line-height: 1.1;
+      }
+      .av-goal-bottom-row {
+        margin-top: 32px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .av-avatar-circle {
+        width: 48px;
+        height: 48px;
+      }
+
+      /* --- Branşlar --- */
+      .av-services-stage {
+        padding: 64px 18px;
+      }
+      .av-srv-3d-frame {
+        max-width: 100%;
+        aspect-ratio: 4 / 4.2;
+      }
+      .av-services-main-img,
+      .av-srv-3d-frame:hover .av-services-main-img {
+        transform: none;
+      }
+      .av-services-cat-btn {
+        white-space: normal;
+        line-height: 1.35;
+      }
+      .av-services-unified-title {
+        font-size: clamp(2.1rem, 9vw, 2.8rem);
+        line-height: 1.02;
+        overflow-wrap: anywhere;
+      }
+      .av-services-right-bottom {
+        flex-wrap: wrap;
+      }
+
+      /* --- Teknoloji --- */
+      .av-tech-stage {
+        padding: 64px 18px 72px;
+      }
+      .av-tech-giant-header {
+        font-size: clamp(2.6rem, 12vw, 3.6rem);
+        margin-bottom: 36px;
+      }
+      .av-tech-visual-frame,
+      .av-tech-visual-frame:hover {
+        max-width: 100%;
+        aspect-ratio: 4 / 3.4;
+        transform: none;
+      }
+      .av-tech-visual-caption {
+        max-width: none;
+      }
+      .av-tech-row {
+        gap: 12px;
+        padding: 16px 0;
+      }
+      .av-tech-row-title {
+        font-size: clamp(1.35rem, 6vw, 1.8rem);
+        overflow-wrap: anywhere;
+      }
+
+      /* --- Hekimler + mekân şeridi + kubbe --- */
+      .av-experts-stage {
+        padding: 64px 18px 56px;
+      }
+      .av-experts-giant-title {
+        font-size: clamp(2.8rem, 13vw, 3.8rem);
+        margin-bottom: 32px;
+      }
+      .av-experts-cols {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px 14px;
+        perspective: none;
+      }
+      .av-expert-name {
+        font-size: 1.3rem;
+      }
+      .av-expert-role {
+        font-size: 0.62rem;
+      }
+      .av-all-doctors-grid {
+        grid-template-columns: 1fr;
+      }
+      .av-experts-cta-row {
+        margin-bottom: 56px;
+      }
+      .av-experts-cta-row .av-pill-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .av-ig-life-strip {
+        margin-bottom: 64px;
+        perspective: none;
+      }
+      .av-ig-life-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .av-ig-card {
+        transform: none;
+      }
+      .av-dome-title {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+        margin-bottom: 36px;
+      }
+      .av-dome-arc-wrap {
+        padding: 40px 0 28px;
+        border-radius: 50% 50% 0 0 / 40px 40px 0 0;
+      }
+      .av-circles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .av-metric-circle {
+        padding: 10px;
+      }
+      .av-metric-num {
+        font-size: 1.45rem;
+      }
+      .av-branch-col {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .av-branch-title {
+        font-size: 1.6rem;
+      }
+      .av-footer-links {
+        gap: 10px 16px;
+      }
+      /* Dijital Rehber düğmesi: telefonda metni kapatmasın — yalnız yuvarlak avatar */
+      #evdis-ajan-fab {
+        padding: 5px !important;
+        border-radius: 50% !important;
+        gap: 0 !important;
+      }
+      #evdis-ajan-fab .evdis-ajan-fab-text {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .av-nav-left .av-nav-link {
+        font-size: 0.74rem;
+      }
+      .av-brand-mark {
+        font-size: 1.12rem;
+        letter-spacing: 0.12em;
+      }
+      .av-nav-right .av-pill-btn span {
+        display: none;
+      }
+      .av-video-arena {
+        gap: 6px;
+      }
+      .av-experts-cols {
+        grid-template-columns: 1fr;
+      }
+      .av-expert-photo {
+        aspect-ratio: 4 / 3.6;
+      }
+    }
+
+    /* ORG-SEMASI-AVO v1 */
+    #organizasyon-semasi{width:100%;background:var(--bg-light-alt);color:var(--ink-dark);padding:100px 44px 96px;border-top:1px solid var(--line-light)}
+    #organizasyon-semasi *{box-sizing:border-box}
+    #organizasyon-semasi .avo-wrap{max-width:1240px;margin:0 auto}
+    #organizasyon-semasi .avo-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-bottom:44px}
+    #organizasyon-semasi .avo-kicker{font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+    #organizasyon-semasi .avo-title{font-family:var(--font-serif);font-weight:400;font-size:clamp(2.3rem,4.6vw,4.4rem);line-height:.96;letter-spacing:-.02em;color:var(--ink-dark-strong);margin:0}
+    #organizasyon-semasi .avo-lead{margin:14px 0 0;max-width:640px;font-size:.86rem;line-height:1.62;color:var(--ink-dark-muted)}
+    #organizasyon-semasi .avo-root{max-width:620px;margin:0 auto;text-align:center;background:var(--bg-dark);color:var(--ink-light);border-radius:22px;padding:22px 26px;border:1px solid rgba(179,140,97,.45);box-shadow:0 18px 40px rgba(20,21,29,.18)}
+    #organizasyon-semasi .avo-ust{display:block;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+    #organizasyon-semasi .avo-root .avo-ad{font-family:var(--font-serif);font-size:clamp(1.35rem,2.4vw,1.75rem);margin-top:8px;line-height:1.15}
+    #organizasyon-semasi .avo-root a{color:inherit;text-decoration:underline;text-decoration-color:rgba(179,140,97,.55);text-underline-offset:4px}
+    #organizasyon-semasi .avo-root .avo-alt{font-size:.78rem;color:var(--ink-light-muted);margin-top:6px;line-height:1.5}
+    #organizasyon-semasi .avo-dikey{width:1px;height:30px;background:var(--accent);margin:0 auto}
+    #organizasyon-semasi .avo-kollar{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:start;list-style:none;margin:0;padding:30px 0 0}
+    #organizasyon-semasi .avo-kollar::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:1px;background:var(--accent)}
+    #organizasyon-semasi .avo-kol{position:relative}
+    #organizasyon-semasi .avo-kol::before{content:"";position:absolute;top:-30px;left:50%;width:1px;height:30px;background:var(--accent)}
+    #organizasyon-semasi .avo-kart{background:var(--bg-light);border:1px solid var(--line-light);border-top:3px solid var(--accent);border-radius:18px;transition:box-shadow .25s,transform .25s}
+    #organizasyon-semasi .avo-kart:hover{box-shadow:0 14px 30px rgba(20,21,29,.10);transform:translateY(-2px)}
+    #organizasyon-semasi .avo-kart>summary{list-style:none;cursor:pointer;padding:18px 48px 16px 18px;position:relative;min-height:44px;border-radius:16px}
+    #organizasyon-semasi .avo-kart>summary::-webkit-details-marker{display:none}
+    #organizasyon-semasi .avo-kart>summary::after{content:"+";position:absolute;right:14px;top:16px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.95rem;line-height:1;color:var(--ink-dark-strong);border:1px solid var(--line-light);background:#fff}
+    #organizasyon-semasi .avo-kart[open]>summary::after{content:"\2212"}
+    #organizasyon-semasi .avo-kart>summary:focus-visible,#organizasyon-semasi a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+    #organizasyon-semasi .avo-kart .avo-ad{display:block;font-size:.98rem;font-weight:600;color:var(--ink-dark-strong);margin-top:8px;line-height:1.3}
+    #organizasyon-semasi .avo-unvan{display:block;font-size:.74rem;color:var(--ink-dark-muted);margin-top:3px;line-height:1.4}
+    #organizasyon-semasi .avo-icerik{padding:0 18px 18px;font-size:.78rem;line-height:1.6;color:var(--ink-dark)}
+    #organizasyon-semasi .avo-icerik ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+    #organizasyon-semasi .avo-icerik li{position:relative;padding-left:14px}
+    #organizasyon-semasi .avo-icerik li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    #organizasyon-semasi .avo-icerik a{color:var(--ink-dark-strong);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+    #organizasyon-semasi .avo-ara-baslik{display:flex;align-items:center;gap:14px;margin:46px 0 16px;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dark)}
+    #organizasyon-semasi .avo-ara-baslik::after{content:"";flex:1;height:1px;background:var(--line-light)}
+    #organizasyon-semasi .avo-brans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;list-style:none;margin:0;padding:0}
+    #organizasyon-semasi .avo-brans a{display:flex;justify-content:space-between;align-items:center;gap:10px;height:100%;min-height:52px;padding:12px 16px;border-radius:14px;background:var(--bg-light);border:1px solid var(--line-light);color:var(--ink-dark-strong);font-size:.8rem;font-weight:500;line-height:1.3;transition:background .25s,color .25s}
+    #organizasyon-semasi .avo-brans a:hover{background:var(--bg-dark);color:var(--ink-light)}
+    #organizasyon-semasi .avo-sayi{flex:none;font-size:.68rem;color:var(--accent);font-weight:600;white-space:nowrap}
+    #organizasyon-semasi .avo-birimler{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0}
+    #organizasyon-semasi .avo-birim{display:block;height:100%;padding:18px;border-radius:18px;background:var(--bg-dark);color:var(--ink-light);border:1px solid var(--line-dark);transition:transform .25s,box-shadow .25s}
+    #organizasyon-semasi .avo-birim:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(20,21,29,.22)}
+    #organizasyon-semasi .avo-birim strong{display:block;font-weight:500;font-size:.9rem;line-height:1.3;margin-top:8px}
+    #organizasyon-semasi .avo-birim small{display:block;font-size:.72rem;color:var(--ink-light-muted);margin-top:6px;line-height:1.5}
+    #organizasyon-semasi .avo-alt-satir{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;margin-top:36px}
+    #organizasyon-semasi .avo-dipnot{font-size:.7rem;color:var(--ink-dark-muted);max-width:640px;line-height:1.55;margin:0}
+    @media (max-width:1024px){
+      #organizasyon-semasi{padding:80px 24px}
+      #organizasyon-semasi .avo-head{grid-template-columns:1fr}
+      #organizasyon-semasi .avo-kollar{grid-template-columns:repeat(2,minmax(0,1fr))}
+      #organizasyon-semasi .avo-kollar::before{left:25%;right:25%}
+      #organizasyon-semasi .avo-kol:nth-child(n+3)::before{display:none}
+      #organizasyon-semasi .avo-brans,#organizasyon-semasi .avo-birimler{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:640px){
+      #organizasyon-semasi{padding:64px 16px}
+      #organizasyon-semasi .avo-head{margin-bottom:28px}
+      #organizasyon-semasi .avo-root{text-align:left;padding:18px}
+      #organizasyon-semasi .avo-dikey{margin:0 0 0 18px;height:22px}
+      #organizasyon-semasi .avo-kollar{grid-template-columns:1fr;gap:10px;padding:0 0 0 30px}
+      #organizasyon-semasi .avo-kollar::before{display:none}
+      #organizasyon-semasi .avo-kol::before,#organizasyon-semasi .avo-kol:nth-child(n+3)::before{display:block;top:28px;left:-12px;width:12px;height:1px}
+      #organizasyon-semasi .avo-kol::after{content:"";position:absolute;left:-12px;top:-10px;bottom:0;width:1px;background:var(--accent)}
+      #organizasyon-semasi .avo-kol:first-child::after{top:-22px}
+      #organizasyon-semasi .avo-kol:last-child::after{bottom:auto;height:38px}
+      #organizasyon-semasi .avo-brans{grid-template-columns:1fr 1fr}
+      #organizasyon-semasi .avo-brans a{padding:10px 12px;font-size:.76rem;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px}
+      #organizasyon-semasi .avo-birimler{grid-template-columns:1fr}
+      #organizasyon-semasi .avo-alt-satir{flex-direction:column;align-items:flex-start}
+    }
+    @media (prefers-reduced-motion:reduce){#organizasyon-semasi *{transition:none!important}}
   </style>
 </head>
 <body>
@@ -1637,72 +2059,72 @@
   <section class="av-hero-3d" id="top">
     <div class="av-video-arena" id="videoArena">
 
-      <!-- VIDEO 0 (Far-Left Contender in 3D Depth) -->
+      <!-- VIDEO 0 (Far-Left Contender in 3D Depth — @evdistr Reel DZ90SBKsNod: Dijital Dolgu Animasyonu) -->
       <div class="av-vid-card" data-vid-idx="0" data-pos="far-left" onclick="selectHeroStage(0)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp">
-          <source src="video/evdis-klinik-tanitim-3.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="metadata" poster="img/canli_medya/evdis_ig_DZ90SBKsNod_poster.jpg">
+          <source src="video/evdis-ig-DZ90SBKsNod.mp4" type="video/mp4" />
         </video>
         <div class="av-vid-card-meta">
           <div>
             <div class="av-vid-badge" id="vidBadge0">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
-            <div class="av-vid-title">Gülüş Mimarisi & Estetik Restorasyon</div>
-            <div class="av-vid-sub">3B Dijital Gülüş Tasarımı & Protetik Diş Tedavisi</div>
+            <div class="av-vid-title">Dijital Restoratif Dolgu & Estetik</div>
+            <div class="av-vid-sub">Kompozit dolgu adım adım · @evdistr Reels</div>
           </div>
         </div>
       </div>
 
-      <!-- VIDEO 1 (Left Contender in 3D Depth) -->
+      <!-- VIDEO 1 (Left Contender — v38 kişisiz kesit: logo cephesi 0.6–4.9 sn + dış cephe/karşılama/koridor) -->
       <div class="av-vid-card" data-vid-idx="1" data-pos="left" onclick="selectHeroStage(1)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/instagram_ChJpWJDKk5g.jpg">
-          <source src="video/evdis-klinik-tanitim-1.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="metadata" poster="img/canli_medya/evdis_dis_cephe_temiz_poster.jpg">
+          <source src="video/evdis-dis-cephe-temiz.mp4" type="video/mp4" />
         </video>
         <div class="av-vid-card-meta">
           <div>
             <div class="av-vid-badge" id="vidBadge1">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
-            <div class="av-vid-title">Uzman Hekim & Dijital Tedavi Akışı</div>
-            <div class="av-vid-sub">Dentsply Sirona CEREC & Multidisipliner Klinik</div>
+            <div class="av-vid-title">Evdiş Serdivan Merkez · Mimari & Karşılama</div>
+            <div class="av-vid-sub">Dış cephe, zemin kat karşılama ve klinik koridoru</div>
           </div>
         </div>
       </div>
 
-      <!-- VIDEO 2 (Default Center WINNER — Video 3: evdis-klinik-tanitim-2.mp4) -->
+      <!-- VIDEO 2 (Default Center WINNER — v38 kişisiz klinik mimari kesiti: evdis-klinik-mimari-temiz.mp4) -->
       <div class="av-vid-card" data-vid-idx="2" data-pos="center" onclick="selectHeroStage(2)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/zumax_mikroskop_gercek.jpg">
-          <source src="video/evdis-klinik-tanitim-2.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline poster="img/canli_medya/evdis_klinik_mimari_temiz_poster.jpg">
+          <source src="video/evdis-klinik-mimari-temiz.mp4" type="video/mp4" />
         </video>
         <div class="av-vid-card-meta">
           <div>
-            <div class="av-vid-badge" id="vidBadge2">★ Ön Sahnede Aktif · Klinik Mimari & Zumax Mikroskop Turu</div>
+            <div class="av-vid-badge" id="vidBadge2">★ Ön Sahnede Aktif · Klinik Mimari & Teknoloji Turu</div>
             <div class="av-vid-title">Evdiş Klinik Mimari & Teknoloji Turu</div>
             <div class="av-vid-sub">Serdivan Merkez · Dentsply Sirona & Zumax 25× Operasyon Mikroskobu</div>
           </div>
         </div>
       </div>
 
-      <!-- VIDEO 3 (Right Contender in 3D Depth — Dedicated Zumax 25x Microscope Clip) -->
+      <!-- VIDEO 3 (Right Contender — v38 kişisiz Zumax 25× mikroskop & Dentsply Sirona ünit kesiti) -->
       <div class="av-vid-card" data-vid-idx="3" data-pos="right" onclick="selectHeroStage(3)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/zumax_mikroskop_gercek.jpg">
-          <source src="video/evdis-zumax-mikroskop-klip.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="metadata" poster="img/canli_medya/evdis_zumax_sirona_temiz_poster.jpg">
+          <source src="video/evdis-zumax-sirona-temiz.mp4" type="video/mp4" />
         </video>
         <div class="av-vid-card-meta">
           <div>
             <div class="av-vid-badge" id="vidBadge3">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
-            <div class="av-vid-title">Zumax 25× Operasyon Mikroskobu & Endodonti</div>
-            <div class="av-vid-sub">Dr. Dt. Elshad Salmanov · Mikroskobik Kök Kanal Tedavisi</div>
+            <div class="av-vid-title">Zumax 25× Mikroskop & Dentsply Sirona Ünit</div>
+            <div class="av-vid-sub">Mikroskobik endodonti ve dijital tedavi odaları · Serdivan Merkez</div>
           </div>
         </div>
       </div>
 
-      <!-- VIDEO 4 (Far-Right Contender in 3D Depth — Harvested Instagram @evdistr Reel) -->
+      <!-- VIDEO 4 (Far-Right Contender in 3D Depth — @evdistr Reel DbklTxKsJyO, 7.0–60.5 sn kişisiz klinik kesit) -->
       <div class="av-vid-card" data-vid-idx="4" data-pos="far-right" onclick="selectHeroStage(4)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/instagram_CjItfETKhW0_slide1.jpg">
-          <source src="video/evdis-ig-CjItfETKhW0-1.mp4" type="video/mp4" />
+        <video autoplay muted loop playsinline preload="metadata" poster="img/canli_medya/evdis_ig_DbklTxKsJyO_poster.jpg">
+          <source src="video/evdis-ig-DbklTxKsJyO-sahne.mp4" type="video/mp4" />
         </video>
         <div class="av-vid-card-meta">
           <div>
             <div class="av-vid-badge" id="vidBadge4">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
-            <div class="av-vid-title">Kliniğimizden Canlı Kesitler (@evdistr)</div>
-            <div class="av-vid-sub">Dt. Emrah Özdemir & Cerrahi Klinik Ekibimiz</div>
+            <div class="av-vid-title">Çocuk Diş Hekimliği · Rubber Dam ile Dolgu</div>
+            <div class="av-vid-sub">Pedodonti klinik demosu · @evdistr Reels</div>
           </div>
         </div>
       </div>
@@ -1717,15 +2139,15 @@
       </div>
 
       <div class="av-stage-pills" role="tablist" aria-label="3B Video Sahnesi Seçici">
-        <button type="button" class="av-stage-pill" onclick="selectHeroStage(0)">Gülüş & Estetik</button>
-        <button type="button" class="av-stage-pill" onclick="selectHeroStage(1)">Hekim & Klinik</button>
-        <button type="button" class="av-stage-pill active" onclick="selectHeroStage(2)">Video 3 · Klinik Turu (Ön Sahne)</button>
-        <button type="button" class="av-stage-pill" onclick="selectHeroStage(3)">Zumax 25× Mikroskop</button>
-        <button type="button" class="av-stage-pill" onclick="selectHeroStage(4)">@evdistr Klinik</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(0)">Dijital Dolgu</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(1)">Klinik Mimari</button>
+        <button type="button" class="av-stage-pill active" onclick="selectHeroStage(2)">Klinik Turu</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(3)">Zumax & Sirona</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(4)">Pedodonti</button>
       </div>
 
       <div class="av-hero-right-note">
-        5 canlı video 3B derinlikte öne gelmek için yarışır; dilediğiniz videoya tıklayarak sahnenin önüne taşıyabilirsiniz.
+        5 canlı video 3B derinlikte öne gelmek için yarışır; dilediğiniz videoya dokunarak sahnenin önüne taşıyabilirsiniz.
       </div>
     </div>
   </section>
@@ -1770,7 +2192,7 @@
           </a>
         </div>
 
-        <!-- Overlapping Colorizing Doctor Photo Avatars -->
+        <!-- Colorizing Doctor Photo Avatars (yan yana, çakışmasız) -->
         <a href="hekimler.html" class="av-avatar-cluster" aria-label="Hekim Kadromuzu İnceleyin">
           <span class="av-avatar-circle"><img src="img/doctors/dr_2069194eac7792f1.webp" alt="" /></span>
           <span class="av-avatar-circle"><img src="img/doctors/dr_bc424d42e0f89752.webp" alt="" /></span>
@@ -1784,7 +2206,104 @@
   </section>
 
   <!-- ========================================================================
-       SCREEN 3: OBSIDIAN CLINICAL SPECIALTIES STAGE (3D Depth Frame + @evdistr Photos!)
+       SCREEN 2B: KURUMSAL ORGANİZASYON ŞEMASI — bir bakışta (v1 · 17 Eki 2026 · Ozan Bey GM geri bildirimi)
+       Yalnız sitede yayımlı unvanlar (kurumsal.html#yonetim-kurulu ve hekim sayfaları). JS yok: CSS + <details>.
+       Tam şema: kurumsal.html#organizasyon-semasi
+       ======================================================================== -->
+  <section id="organizasyon-semasi" aria-labelledby="avo-baslik">
+    <div class="avo-wrap">
+      <div class="avo-head">
+        <div>
+          <div class="avo-kicker">Kurumsal Yapı · Bir Bakışta</div>
+          <h2 class="avo-title" id="avo-baslik">Organizasyon Şemamız</h2>
+          <p class="avo-lead">Yönetim Kurulu ve Başhekimlik çatısı altında dört ana kol; bunlara bağlı 8 klinik branş ve klinik destek birimleri. Kartlara dokunarak alt birimleri açabilirsiniz.</p>
+        </div>
+        <a href="kurumsal.html#organizasyon-semasi" class="av-pill-btn">Tam Organizasyon Şeması <span>↗</span></a>
+      </div>
+
+      <!-- SEVİYE 0: YÖNETİM KURULU & BAŞHEKİMLİK -->
+      <div class="avo-root">
+        <span class="avo-ust">Yönetim Kurulu &amp; Başhekimlik</span>
+        <div class="avo-ad"><a href="hekim-dr--dt--seyit-yilmaz.html">Dr. Dt. Seyit Yılmaz</a></div>
+        <div class="avo-alt">Kurucu Hekim · Başhekim / Mesul Müdür</div>
+        <div class="avo-alt"><a href="hekim-dt--emrah-ozdemir.html">Dt. Emrah Özdemir</a> (Kurucu Ortak) · Esma Özdemir (Yönetim Kurulu Üyesi)</div>
+      </div>
+      <div class="avo-dikey" aria-hidden="true"></div>
+
+      <!-- SEVİYE 1: DÖRT ANA KOL -->
+      <ul class="avo-kollar" aria-label="Dört ana yönetim kolu">
+        <li class="avo-kol">
+          <details class="avo-kart">
+            <summary><span class="avo-ust">Genel Müdürlük — İdari &amp; Mali İşler</span><span class="avo-ad">Ozan Aydınlar</span><span class="avo-unvan">Genel Müdür (GM)</span></summary>
+            <div class="avo-icerik"><ul>
+              <li>İdari ve Mali İşler · Muhasebe</li>
+              <li><a href="insan-kaynaklari.html">İnsan Kaynakları</a></li>
+              <li>Kurumsal İletişim · şube koordinasyonu</li>
+            </ul></div>
+          </details>
+        </li>
+        <li class="avo-kol">
+          <details class="avo-kart">
+            <summary><span class="avo-ust">İşletme Direktörlüğü</span><span class="avo-ad">Mustafa Gökhan Bulut</span><span class="avo-unvan">İşletme Direktörü</span></summary>
+            <div class="avo-icerik"><ul>
+              <li>Bilgi İşlem</li>
+              <li>Biyomedikal &amp; Teknik Servis</li>
+              <li>Depo &amp; Lojistik</li>
+            </ul></div>
+          </details>
+        </li>
+        <li class="avo-kol">
+          <details class="avo-kart">
+            <summary><span class="avo-ust">Tıbbi Hizmetler Direktörlüğü</span><span class="avo-ad">Prof. Dr. Fuat Ahmetoğlu</span><span class="avo-unvan">Tıbbi Hizmetler Direktörü · Endodonti Uzmanı</span></summary>
+            <div class="avo-icerik"><ul>
+              <li>8 klinik branş · 20 hekim</li>
+              <li>Klinik Hizmetleri Yöneticiliği</li>
+              <li><a href="hekim-prof--dr--fuat-ahmetoglu.html">Akademik özgeçmiş</a></li>
+            </ul></div>
+          </details>
+        </li>
+        <li class="avo-kol">
+          <details class="avo-kart">
+            <summary><span class="avo-ust">Akademik Danışma &amp; Kalite Kurulu</span><span class="avo-ad">SKS Kalite Yönetim Birimi</span><span class="avo-unvan">5 komite · 12 SKS ekibi</span></summary>
+            <div class="avo-icerik"><ul>
+              <li>Enfeksiyon Kontrol · Hasta Güvenliği · Tesis Güvenliği · Eğitim · İSG Kurulu</li>
+              <li><a href="kalite-yonetim.html#komitelerimiz">Komitelerimiz</a> · <a href="kalite-yonetim.html#ekiplerimiz">SKS ekiplerimiz</a></li>
+            </ul></div>
+          </details>
+        </li>
+      </ul>
+
+      <!-- SEVİYE 2: 8 KLİNİK BRANŞ -->
+      <div class="avo-ara-baslik">8 Klinik Branş · Uzmanlık Ana Bilim Dalları</div>
+      <ul class="avo-brans">
+        <li><a href="implant-ve-cene-cerrahisi.html">Ağız, Diş ve Çene Cerrahisi <span class="avo-sayi">1 hekim</span></a></li>
+        <li><a href="tedavi-endodonti.html">Endodonti <span class="avo-sayi">2 hekim</span></a></li>
+        <li><a href="tedavi-protetik.html">Protetik Diş Tedavisi <span class="avo-sayi">1 hekim</span></a></li>
+        <li><a href="tedavi-periodontoloji.html">Periodontoloji <span class="avo-sayi">1 hekim</span></a></li>
+        <li><a href="tedavi-ortodonti.html">Ortodonti <span class="avo-sayi">1 hekim</span></a></li>
+        <li><a href="tedavi-pedodonti.html">Pedodonti <span class="avo-sayi">2 hekim</span></a></li>
+        <li><a href="tedavi-sedasyon.html">Anesteziyoloji ve Reanimasyon <span class="avo-sayi">1 hekim</span></a></li>
+        <li><a href="tedavi-dijital-dolgu.html">Genel Diş Hekimliği <span class="avo-sayi">11 hekim</span></a></li>
+      </ul>
+
+      <!-- SEVİYE 3: KLİNİK DESTEK & HASTA BİRİMLERİ -->
+      <div class="avo-ara-baslik">Klinik Destek &amp; Hasta Birimleri</div>
+      <ul class="avo-birimler">
+        <li><a class="avo-birim" href="tedavi-protetik.html"><span class="avo-ust">Laboratuvar</span><strong>Dijital Diş Hekimliği &amp; CAD/CAM Laboratuvarı</strong><small>CEREC protez · radyoloji · CBCT görüntüleme</small></a></li>
+        <li><a class="avo-birim" href="kalite-yonetim.html#komitelerimiz"><span class="avo-ust">Hasta Güvenliği</span><strong>Sterilizasyon &amp; Enfeksiyon Kontrol Birimi</strong><small>Enfeksiyon Kontrol Komitesi ile birlikte</small></a></li>
+        <li><a class="avo-birim" href="en.html" hreflang="en"><span class="avo-ust">Sağlık Turizmi</span><strong>Uluslararası Hasta İlişkileri</strong><small>TR · EN · AR hasta bilgilendirme ve kabul</small></a></li>
+        <li><a class="avo-birim" href="dilek-oneri.html"><span class="avo-ust">Hasta Hakları</span><strong>Misafir İlişkileri &amp; Hasta Kabul</strong><small>Serdivan &amp; Adapazarı · dilek, öneri, şikâyet</small></a></li>
+      </ul>
+
+      <div class="avo-alt-satir">
+        <p class="avo-dipnot">Şema, sitede yayımlı resmi unvanlar esas alınarak hazırlanmıştır. Tam kadro, alt birim sorumluları ve arama için kurumsal sayfamızdaki ayrıntılı şemayı inceleyebilirsiniz.</p>
+        <a href="kurumsal.html#organizasyon-semasi" class="av-pill-btn" style="background:transparent;color:var(--ink-dark);border:1px solid var(--line-light);">Kurumsal Sayfa <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SCREEN 3: OBSIDIAN CLINICAL SPECIALTIES STAGE (Tek net görsel — üst üste binen ikinci resim YOK)
        ======================================================================== -->
   <section class="av-services-stage" id="hizmetler">
     <div class="av-services-inner">
@@ -1795,12 +2314,6 @@
             src="img/doctors/dr_bc424d42e0f89752.webp"
             alt="Estetik ve Dijital Diş Hekimliği"
             class="av-services-main-img"
-          />
-          <img
-            id="srvSubImg"
-            src="img/canli_medya/instagram_DcySNVqM_cd.jpg"
-            alt="Evdiş Klinik Detay"
-            class="av-services-sub-img"
           />
         </div>
 
@@ -1925,7 +2438,7 @@
   </section>
 
   <!-- ========================================================================
-       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" + @evdistr KLİNİK YAŞAM 3B ŞERİDİ
+       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" + KİŞİSİZ KLİNİK MEKÂN ŞERİDİ
        ======================================================================== -->
   <section class="av-experts-stage" id="hekimler">
     <h2 class="av-experts-giant-title">Hekim Kadromuz</h2>
@@ -2015,40 +2528,40 @@
       </a>
     </div>
 
-    <!-- NEW: @evdistr KLİNİK YAŞAM VE EKİBİMİZ 3B FOTOĞRAF ŞERİDİ -->
+    <!-- v38: KLİNİK MEKÂN ŞERİDİ — yalnız kişisiz mimari & cihaz fotoğrafları (eski ekip/personel kareleri çıkarıldı) -->
     <div class="av-ig-life-strip">
       <div class="av-ig-life-head">
         <div>
-          <div style="font-size:0.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">@evdistr · Klinik Yaşam & Ekibimiz</div>
-          <h3 class="av-ig-life-title">1998'den Bugüne Evdiş Ailesi ve Klinik Atmosferimiz</h3>
+          <div style="font-size:0.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Serdivan Merkez · Klinik Mekânlarımız</div>
+          <h3 class="av-ig-life-title">1998'den Bugüne Klinik Atmosferimiz</h3>
         </div>
         <a href="ziyaretler-ve-galeri.html" class="av-pill-btn">Tüm Galeri & Ziyaretler ↗</a>
       </div>
 
       <div class="av-ig-life-grid">
-        <a href="ziyaretler-ve-galeri.html" class="av-ig-card">
-          <img src="img/canli_medya/instagram_DCyqYGNM60t_slide8.jpg" alt="1998'den Bugüne Evdiş Kurucu Hekimler ve Klinik Ailesi" />
-          <div class="av-ig-card-cap">1998'den Bugüne Evdiş Kurucu Hekimler & Ekip</div>
-        </a>
-        <a href="implant-ve-cene-cerrahisi.html" class="av-ig-card">
-          <img src="img/canli_medya/instagram_C7d4XXpK8JK_1.jpg" alt="Dr. Dt. Seyit Yılmaz ve Dt. Emrah Özdemir — Çene Cerrahisi" />
-          <div class="av-ig-card-cap">Dr. Dt. Seyit Yılmaz & Dt. Emrah Özdemir</div>
-        </a>
-        <a href="tedavi-dijital-dolgu.html" class="av-ig-card">
-          <img src="img/canli_medya/instagram_DcySNVqM_cd.jpg" alt="Dt. Sıla Nur Çay — Dental Loupe Hassasiyeti" />
-          <div class="av-ig-card-cap">Optik Büyüteç (Loupe) & Estetik Hassasiyet</div>
-        </a>
-        <a href="tedavi-endodonti.html" class="av-ig-card">
-          <img src="img/canli_medya/zumax_mikroskop_gercek.jpg" alt="Dr. Dt. Elshad Salmanov — Zumax 25× Operasyon Mikroskobu" />
-          <div class="av-ig-card-cap">Zumax 25× Dental Operasyon Mikroskobu</div>
+        <a href="serdivan.html" class="av-ig-card">
+          <img src="img/canli_medya/galeri_01_dis_cephe.webp" alt="Evdiş Serdivan Merkez dış cephe" loading="lazy" />
+          <div class="av-ig-card-cap">Serdivan Merkez · Dış Cephe</div>
         </a>
         <a href="serdivan.html" class="av-ig-card">
-          <img src="img/canli_medya/instagram_ChJpWJDKk5g.jpg" alt="Dentsply Sirona Ünit ve Radyografi Muayene Odası" />
-          <div class="av-ig-card-cap">Dentsply Sirona Klinik Ünit & Radyografi</div>
+          <img src="img/canli_medya/galeri_02_zemin_kat_karsilama.webp" alt="Zemin kat karşılama alanı" loading="lazy" />
+          <div class="av-ig-card-cap">Zemin Kat · Karşılama</div>
         </a>
-        <a href="kurumsal.html#organizasyon-semasi" class="av-ig-card">
-          <img src="img/canli_medya/instagram_DCyqYGNM60t_slide2.jpg" alt="Evdiş Yardımcı Sağlık Personeli ve Klinik Asistan Kadromuz" />
-          <div class="av-ig-card-cap">Yardımcı Sağlık Personeli & Asistan Kadromuz</div>
+        <a href="serdivan.html" class="av-ig-card">
+          <img src="img/canli_medya/galeri_03_klinik_koridor.webp" alt="Klinik koridoru ve tedavi odaları" loading="lazy" />
+          <div class="av-ig-card-cap">Klinik Koridoru</div>
+        </a>
+        <a href="tedavi-dijital-dolgu.html" class="av-ig-card">
+          <img src="img/canli_medya/instagram_ChJpWJDKk5g.jpg" alt="Dentsply Sirona ünit ve radyografi muayene odası" loading="lazy" />
+          <div class="av-ig-card-cap">Dentsply Sirona Ünit & Radyografi</div>
+        </a>
+        <a href="tedavi-endodonti.html" class="av-ig-card">
+          <img src="img/canli_medya/zumax_mikroskop_temiz.jpg" alt="Zumax 25× dental operasyon mikroskobu" loading="lazy" />
+          <div class="av-ig-card-cap">Zumax 25× Operasyon Mikroskobu</div>
+        </a>
+        <a href="tedavi-pedodonti.html" class="av-ig-card">
+          <img src="img/canli_medya/galeri_06_cocuk_oyun_alani.webp" alt="Çocuk oyun alanı" loading="lazy" />
+          <div class="av-ig-card-cap">Çocuk Oyun Alanı</div>
         </a>
       </div>
     </div>
@@ -2171,14 +2684,14 @@
 
     // =========================================================================
     // 5-VIDEO 3D COMPETING STAGE (Whichever video the user selects WINS!)
-    // Default Winner: idx 2 (video/evdis-klinik-tanitim-2.mp4 — Video 3)
+    // Default Winner: idx 2 (video/evdis-klinik-mimari-temiz.mp4 — v38 kişisiz kesit)
     // =========================================================================
     const STAGE_LABELS = [
-      "Gülüş Mimarisi & Estetik Restorasyon",
-      "Uzman Hekim & Dijital Tedavi Akışı",
-      "Klinik Mimari & Zumax Mikroskop Turu",
-      "Zumax 25× Operasyon Mikroskobu & Endodonti",
-      "Kliniğimizden Canlı Kesitler (@evdistr)"
+      "Dijital Restoratif Dolgu & Estetik",
+      "Evdiş Serdivan Merkez · Mimari & Karşılama",
+      "Klinik Mimari & Teknoloji Turu",
+      "Zumax 25× Mikroskop & Dentsply Sirona Ünit",
+      "Çocuk Diş Hekimliği · Rubber Dam ile Dolgu"
     ];
 
     const POS_ORDER = ["far-left", "left", "center", "right", "far-right"];
@@ -2209,7 +2722,7 @@
     // Subtle 3D Mouse Parallax Tilt on the Hero 3D Video Arena
     const heroSection = document.getElementById('top');
     const videoArena = document.getElementById('videoArena');
-    if (heroSection && videoArena) {
+    if (heroSection && videoArena && window.matchMedia('(hover: hover) and (min-width: 769px)').matches) {
       heroSection.addEventListener('mousemove', (e) => {
         const rect = heroSection.getBoundingClientRect();
         const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
@@ -2229,7 +2742,6 @@
         titleHtml: "Estetik ve Dijital Diş Hekimliği",
         desc: "Dentsply Sirona CEREC 3B dijital gülüş tasarımı, porselen lamina (E.max), minimal invaziv kompozit bonding ve yüz dinamikleriyle uyumlu estetik ve restoratif diş hekimliği.",
         mainImg: "img/doctors/dr_bc424d42e0f89752.webp",
-        subImg: "img/canli_medya/instagram_DcySNVqM_cd.jpg",
         docHref: "hekimler.html",
         moreHref: "tedavi-dijital-dolgu.html",
         avatars: [
@@ -2253,7 +2765,6 @@
         titleHtml: "Ağız, Diş ve Çene Cerrahisi",
         desc: "Dentsply Sirona 3B volümetrik tomografi (CBCT) rehberliğinde dental implant cerrahisi, sinüs lifting, ileri kemik ogmentasyonu ve gömülü diş operasyonları.",
         mainImg: "img/doctors/dr_2069194eac7792f1.webp",
-        subImg: "img/canli_medya/instagram_C7d4XXpK8JK_1.jpg",
         docHref: "hekim-dr--dt--seyit-yilmaz.html",
         moreHref: "implant-ve-cene-cerrahisi.html",
         avatars: [
@@ -2270,7 +2781,6 @@
         titleHtml: "Protetik Diş Tedavisi",
         desc: "Tam ark implant destekli sabit ve hibrit protezler (All-on-4 / All-on-6), Dentsply Sirona CAD/CAM monolitik zirkonyum-seramik restorasyonlar ve çene eklemi (TME) rehabilitasyonu.",
         mainImg: "img/doctors/dr_bcd5ea1fdb8624ba.webp",
-        subImg: "img/canli_medya/instagram_ChJpWJDKk5g.jpg",
         docHref: "hekim-dr--dt--gokhan-uzel.html",
         moreHref: "tedavi-protetik.html",
         avatars: [
@@ -2287,7 +2797,6 @@
         titleHtml: "Endodonti",
         desc: "Zumax 25× dental operasyon mikroskobu altında ileri kök kanal tedavisi, başarısız kanal yenileme (retreatment), kalsifiye kanal/kırık alet çıkarımı ve apikal mikro-cerrahi.",
         mainImg: "img/doctors/dr_ded915b570268091.webp",
-        subImg: "img/canli_medya/zumax_mikroskop_gercek.jpg",
         docHref: "hekim-dr--dt--elshad-salmanov.html",
         moreHref: "tedavi-endodonti.html",
         avatars: [
@@ -2305,7 +2814,6 @@
         titleHtml: "Oral Diagnoz ve Radyoloji",
         desc: "İlk muayene (oral diagnoz), Dentsply Sirona 3B CBCT volümetrik tomografi analizi ve tüm uzmanlık branşlarımızla entegre multidisipliner tedavi planlaması.",
         mainImg: "img/doctors/dr_77b8934990a0ad18.webp",
-        subImg: "img/services/tibbi-direktor.webp",
         docHref: "hekim-prof--dr--fuat-ahmetoglu.html",
         moreHref: "hekim-prof--dr--fuat-ahmetoglu.html",
         avatars: [
@@ -2322,7 +2830,6 @@
         titleHtml: "Ortodonti",
         desc: "3B dijital simülasyonlu telsiz ortodonti (şeffaf plak), estetik seramik/metal braket sistemleri ve çocuk-yetişkin çene ortopedisi.",
         mainImg: "img/doctors/dr_98f5890894321a26.webp",
-        subImg: "img/services/ortodonti.webp",
         docHref: "hekim-uzm--dt--senol-gulsen.html",
         moreHref: "tedavi-ortodonti.html",
         avatars: [
@@ -2339,7 +2846,6 @@
         titleHtml: "Periodontoloji",
         desc: "Diş eti hastalıkları tedavisi, derin küretaj, diş eti çekilmesi cerrahisi ve gülüş hattını tamamlayan pembe estetik (gingivektomi) uygulamaları.",
         mainImg: "img/doctors/dr_c1af2b63b6f5ff29.webp",
-        subImg: "img/services/periodontoloji.webp",
         docHref: "hekim-dr--dt--zuhal-metin.html",
         moreHref: "tedavi-periodontoloji.html",
         avatars: [
@@ -2357,7 +2863,6 @@
         titleHtml: "Pedodonti & Genel Anestezi",
         desc: "Çocuk diş hekimliği (pedodonti) uzmanlarımız ve Anesteziyoloji ve Reanimasyon uzmanımız gözetiminde korkusuz çocuk diş tedavileri, koruyucu uygulamalar ve sedasyon/genel anestezi.",
         mainImg: "img/doctors/dr_23d49279cd7c9f34.webp",
-        subImg: "img/canli_medya/galeri_06_cocuk_oyun_alani.webp",
         docHref: "hekimler.html",
         moreHref: "tedavi-pedodonti.html",
         avatars: [
@@ -2383,7 +2888,6 @@
       document.getElementById('srvUnifiedTitle').innerHTML = d.titleHtml;
       document.getElementById('srvDesc').textContent = d.desc;
       document.getElementById('srvMainImg').src = d.mainImg;
-      document.getElementById('srvSubImg').src = d.subImg;
       document.getElementById('srvDocBtn').href = d.docHref;
       document.getElementById('srvMoreBtn').href = d.moreHref;
 
@@ -2411,31 +2915,31 @@
       {
         counter: "Zumax 25× Optik Mikroskop",
         sub: "Zumax 25× dental operasyon mikroskobu ile ileri endodonti ve mikro-cerrahide koaksiyel optik büyütme.",
-        img: "img/canli_medya/zumax_mikroskop_gercek.jpg",
-        caption: "📍 Evdiş Endodonti Kliniği — Gerçek Klinik Görüntü (Dr. Dt. Elshad Salmanov · Zumax 25× Mikroskop)"
+        img: "img/canli_medya/zumax_mikroskop_temiz.jpg",
+        caption: "📍 Endodonti Birimi — Zumax 25× Dental Operasyon Mikroskobu (Dr. Dt. Elshad Salmanov)"
       },
       {
         counter: "Dentsply Sirona CBCT",
         sub: "Dentsply Sirona 3B CBCT volümetrik tomografi ile düşük dozda 3 boyutlu kemik ve sinir kanalı analizi.",
         img: "img/panoramik-rontgen-480.webp",
-        caption: "📍 Oral Diagnoz ve Radyoloji Birimi (Prof. Dr. Fuat Ahmetoğlu · Tuğçe Barlas · Şeyma Çantalı)"
+        caption: "📍 Oral Diagnoz ve Radyoloji Birimi — Dentsply Sirona 3B CBCT (Prof. Dr. Fuat Ahmetoğlu)"
       },
       {
         counter: "Dentsply Sirona CAD/CAM",
         sub: "Dentsply Sirona CAD/CAM altyapısıyla hekim ve teknisyenin aynı merkezde anlık prova yaptığı dijital laboratuvar.",
-        img: "img/canli_medya/instagram_DcySNVqM_cd.jpg",
-        caption: "📍 Dijital Restoratif & CAD/CAM Protez Kliniği (Dr. Dt. Gökhan Uzel · Dt. Sıla Nur Çay · Barış Emre Arpaç)"
+        img: "img/canli_medya/galeri_04_tedavi_odalari.webp",
+        caption: "📍 Dijital Restoratif & CAD/CAM Protez Birimi — Dentsply Sirona CAD/CAM (Dr. Dt. Gökhan Uzel)"
       },
       {
         counter: "Genel Anestezi & Sedasyon",
         sub: "Anesteziyoloji ve Reanimasyon uzmanımız gözetiminde hastane standardında ameliyathane ve derlenme ünitesi.",
         img: "img/services/seyit-ameliyat.webp",
-        caption: "📍 Genel Anestezi & Sedasyon Birimi (Uzm. Dr. Gökhan Gedikli · Hemşire Serap Ay)"
+        caption: "📍 Genel Anestezi & Sedasyon Birimi (Uzm. Dr. Gökhan Gedikli)"
       },
       {
         counter: "Dijital Hasta Rehberi",
         sub: "KVKK Sıfır-PII kalkanı altında sesli ve ışıklı üç dilli (TR · EN · AR) dijital hasta rehberi.",
-        img: "img/canli_medya/instagram_DCyqYGNM60t_slide1.jpg",
+        img: "img/canli_medya/galeri_02_zemin_kat_karsilama.webp",
         caption: "📍 Hasta İlişkileri & Dijital Sistemler (Serdivan & Adapazarı Şubeleri)"
       }
     ];

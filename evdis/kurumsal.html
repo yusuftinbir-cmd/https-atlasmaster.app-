@@ -160,124 +160,296 @@
 <section class="kurumsal-kutu" id="organizasyon-semasi">
 <span class="sube-etiket">Sağlıkta Kalite Standartları (SKS) · Kurumsal Organizasyon Şeması</span>
 <h2 id="bolum-kurumsal-organizasyon-semasi" style="margin-top:10px;">Kurumsal Organizasyon Şeması (Tam Kadro &amp; Resmi Unvanlar)</h2>
-<p>Merkezimizin SKS uyumlu kurumsal organizasyon yapısı; Yönetim Kurulu, Genel Müdürlük (<strong>Ozan Aydınlar</strong>), Başhekimlik / Mesul Müdürlük (<strong>Dr. Dt. Seyit Yılmaz</strong>), İşletme Direktörlüğü (<strong>Mustafa Gökhan Bulut</strong>), Tıbbi Hizmetler Direktörlüğü (<strong>Prof. Dr. Fuat Ahmetoğlu</strong> · 8 Uzmanlık Branşı ve 20 Hekim), SKS Kalite Yönetim Birimi (<strong>Serap Ay</strong> · <strong>Ayşe Nur Erişman</strong>), İdari ve Mali İşler (<strong>Sümeyra Çokyüksel</strong>), Klinik Hizmetleri (<strong>Nagihan Gür</strong>), Misafir İlişkileri (<strong>Kezban Durmaz</strong>), İnsan Kaynakları (<strong>Yağmur Birinci</strong> · <strong>Özlem Uyanık</strong>), Kurumsal İletişim (<strong>Güler Altun</strong> · <strong>Zeynep Nihan Özdemir</strong>), Bilgi İşlem (<strong>Serdar Gümüşsoy</strong>), Biyomedikal (<strong>Burak Bıçakcı</strong>), Radyoloji ve CAD/CAM Protez Laboratuvarı birimlerinden oluşmaktadır.</p>
+<p>Merkezimizin SKS uyumlu kurumsal organizasyon yapısı; <strong>Yönetim Kurulu &amp; Başhekimlik</strong> çatısı altında <strong>Genel Müdürlük — İdari &amp; Mali İşler</strong> (<strong>Ozan Aydınlar</strong>), <strong>İşletme Direktörlüğü</strong> (<strong>Mustafa Gökhan Bulut</strong>), <strong>Tıbbi Hizmetler Direktörlüğü</strong> (<strong>Prof. Dr. Fuat Ahmetoğlu</strong>) ve <strong>Akademik Danışma &amp; Kalite Kurulu</strong> (SKS Kalite Yönetim Birimi · 5 Komite · 12 Ekip) olmak üzere dört ana koldan; bunlara bağlı <strong>8 klinik branş</strong> ile Dijital Diş Hekimliği &amp; CAD/CAM Laboratuvarı, Sterilizasyon &amp; Enfeksiyon Kontrol, Misafir İlişkileri ve Uluslararası Hasta İlişkileri birimlerinden oluşur. Kartlara dokunarak birimleri açıp kapatabilir, isim veya birim arayabilirsiniz.</p>
 
-<div style="margin-top:18px;padding:22px;border-radius:18px;background:linear-gradient(180deg,#F6F4EE 0%,#EEE6D6 55%,#E9DCC3 100%);border:1.5px solid rgba(176,122,60,0.38);color:#232826;box-shadow:0 14px 36px rgba(30,36,34,0.08);">
-  <!-- SEVİYE 1: YÖNETİM KURULU -->
-  <div style="text-align:center;">
-    <div style="display:inline-block;background:linear-gradient(135deg,#16382E,#1F4E40);color:#F6F4EE;padding:14px 28px;border-radius:16px;box-shadow:0 10px 24px rgba(22,56,46,0.24);min-width:320px;border:1px solid rgba(253,230,138,0.35);">
-      <div style="font-size:10.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#FDE68A;">🏛️ Yönetim Kurulu &amp; Kurucu Ortaklar</div>
-      <div style="font-size:15.5px;font-weight:800;margin-top:4px;">Dr. Dt. Seyit Yılmaz (Başhekim / Mesul Müdür) · Dt. Emrah Özdemir (Kurucu Ortak)</div>
-      <div style="font-size:12.5px;color:#E2D0B0;margin-top:2px;">Esma Özdemir (Yönetim Kurulu Üyesi) · Evdiş Polikliniği Sağlık Hizmetleri Ltd. Şti.</div>
+<!-- ORGANİZASYON ŞEMASI BİLEŞENİ (v1 · 17 Eki 2026 · Ozan Bey GM geri bildirimi) — yalnız sitede yayımlı unvanlar kullanıldı; resmi SKS şema PDF'i kurumdan bekleniyor -->
+<style>
+#organizasyon-semasi .org{--org-koyu:#16382E;--org-yesil:#1F4E40;--org-bronz:#B07A3C;--org-bronz-koyu:#8A5A22;--org-keten:#F6F4EE;--org-kum:#EFE8DA;--org-metin:#232826;--org-soluk:#4A5550;--org-cizgi:rgba(176,122,60,.38);margin-top:18px;padding:clamp(14px,3vw,24px);border-radius:20px;background:linear-gradient(180deg,#F8F6F1 0%,#EFE8DA 100%);border:1.5px solid var(--org-cizgi);color:var(--org-metin);box-shadow:0 14px 36px rgba(30,36,34,.07);overflow:hidden}
+#organizasyon-semasi .org *{box-sizing:border-box}
+#organizasyon-semasi .org-arac{display:none;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:16px}
+#organizasyon-semasi .org.js-hazir .org-arac{display:flex}
+#organizasyon-semasi .org-ara{flex:1 1 220px;min-width:0;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--org-cizgi);background:#fff;font:inherit;font-size:14px;color:var(--org-metin)}
+#organizasyon-semasi .org-dugmeler{display:flex;gap:6px;flex-wrap:wrap}
+#organizasyon-semasi .org-dugme{min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--org-yesil);background:#fff;color:var(--org-yesil);font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:background .2s,color .2s}
+#organizasyon-semasi .org-dugme:hover{background:var(--org-yesil);color:#fff}
+#organizasyon-semasi .org-sonuc{flex-basis:100%;font-size:12.5px;color:var(--org-soluk);min-height:1em}
+#organizasyon-semasi .org-kok{display:flex;justify-content:center}
+#organizasyon-semasi .org-kok-kart{width:min(100%,560px);text-align:center;background:linear-gradient(135deg,var(--org-koyu),var(--org-yesil));color:#F6F4EE;padding:16px clamp(14px,3vw,28px);border-radius:18px;border:1px solid rgba(253,230,138,.35);box-shadow:0 12px 28px rgba(22,56,46,.24)}
+#organizasyon-semasi .org-ust{display:block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+#organizasyon-semasi .org-kok-kart .org-ust{color:#FDE68A}
+#organizasyon-semasi .org-kok-kart .org-ad{font-size:clamp(14.5px,2.4vw,16.5px);font-weight:800;margin-top:5px;line-height:1.4}
+#organizasyon-semasi .org-kok-kart .org-alt{font-size:12.5px;color:#E2D0B0;margin-top:3px}
+#organizasyon-semasi .org-kok-kart a{color:inherit;text-decoration:underline;text-decoration-color:rgba(253,230,138,.5);text-underline-offset:3px}
+#organizasyon-semasi .org-dikey{width:2px;height:22px;background:var(--org-bronz);margin:0 auto}
+#organizasyon-semasi .org-seviye{position:relative;display:grid;gap:14px;grid-template-columns:repeat(4,minmax(0,1fr));padding-top:22px}
+#organizasyon-semasi .org-seviye::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:var(--org-bronz)}
+#organizasyon-semasi .org-seviye>.org-dugum{position:relative}
+#organizasyon-semasi .org-seviye>.org-dugum::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--org-bronz);transform:translateX(-1px)}
+#organizasyon-semasi .org-dugum{background:var(--org-keten);border:1.5px solid var(--org-cizgi);border-top:4px solid var(--org-bronz);border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,.05);transition:box-shadow .25s,transform .25s}
+#organizasyon-semasi .org-dugum.vurgu-koyu{border-top-color:var(--org-koyu)}
+#organizasyon-semasi .org-dugum.vurgu-yesil{border-top-color:var(--org-yesil)}
+#organizasyon-semasi .org-dugum:hover{box-shadow:0 12px 26px rgba(22,56,46,.12)}
+#organizasyon-semasi details>summary{list-style:none;cursor:pointer;padding:14px 40px 12px 15px;position:relative;border-radius:14px}
+#organizasyon-semasi details>summary::-webkit-details-marker{display:none}
+#organizasyon-semasi details>summary::after{content:"+";position:absolute;right:12px;top:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;line-height:1;color:var(--org-yesil);border:1px solid var(--org-cizgi);background:#fff;transition:transform .25s}
+#organizasyon-semasi details[open]>summary::after{content:"\2212"}
+#organizasyon-semasi details>summary:focus-visible,#organizasyon-semasi .org-dugme:focus-visible,#organizasyon-semasi .org-ara:focus-visible,#organizasyon-semasi .org a:focus-visible{outline:3px solid #C9AE7C;outline-offset:2px}
+#organizasyon-semasi .org-dugum .org-ust{color:var(--org-yesil)}
+#organizasyon-semasi .org-dugum .org-ad{display:block;font-size:15.5px;font-weight:800;color:#1E2422;margin-top:4px;line-height:1.3}
+#organizasyon-semasi .org-dugum .org-unvan{display:block;font-size:12px;font-weight:700;color:var(--org-bronz-koyu);margin-top:2px}
+#organizasyon-semasi .org-icerik{padding:0 15px 14px;font-size:12.5px;line-height:1.55;color:var(--org-metin)}
+#organizasyon-semasi .org-icerik p{margin:0 0 6px;color:var(--org-soluk);font-size:12px}
+#organizasyon-semasi .org-icerik ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+#organizasyon-semasi .org-icerik li{position:relative;padding-left:14px}
+#organizasyon-semasi .org-icerik li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--org-bronz)}
+#organizasyon-semasi .org-icerik a{color:var(--org-yesil);text-decoration:underline;text-decoration-color:rgba(31,78,64,.35);text-underline-offset:2px}
+#organizasyon-semasi .org-alt-baslik{display:flex;align-items:center;gap:10px;margin:24px 0 12px;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--org-koyu)}
+#organizasyon-semasi .org-alt-baslik::before,#organizasyon-semasi .org-alt-baslik::after{content:"";flex:1;height:1px;background:var(--org-cizgi)}
+#organizasyon-semasi .org-brans{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+#organizasyon-semasi .org-brans .org-dugum{border-top-width:3px;background:#fff}
+#organizasyon-semasi .org-brans summary{padding:12px 40px 10px 13px}
+#organizasyon-semasi .org-brans .org-ad{font-size:14px}
+#organizasyon-semasi .org-sayac{display:inline-block;margin-top:5px;padding:2px 8px;border-radius:999px;background:var(--org-kum);color:var(--org-bronz-koyu);font-size:11px;font-weight:700}
+#organizasyon-semasi .org-destek{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+#organizasyon-semasi .org-etiket-bekliyor{display:inline-block;margin-top:6px;padding:2px 8px;border-radius:999px;border:1px dashed var(--org-bronz);color:var(--org-bronz-koyu);font-size:10.5px;font-weight:700}
+#organizasyon-semasi .org-subeler{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));margin-top:4px}
+#organizasyon-semasi .org-sube{background:linear-gradient(135deg,#fff,var(--org-keten));border:1px solid var(--org-cizgi);border-radius:14px;padding:12px 14px;font-size:12.5px}
+#organizasyon-semasi .org-sube strong{display:block;color:var(--org-koyu);font-size:13.5px}
+#organizasyon-semasi .org-dipnot{margin-top:16px;font-size:11.5px;color:var(--org-soluk);line-height:1.5}
+#organizasyon-semasi .org-dipnot a{color:var(--org-yesil);text-decoration:underline}
+#organizasyon-semasi .org-dugum.org-eslesme{box-shadow:0 0 0 3px #C9AE7C,0 12px 26px rgba(22,56,46,.14)}
+#organizasyon-semasi .org-dugum.org-gizli{opacity:.32}
+#organizasyon-semasi mark{background:#FDE68A;color:inherit;border-radius:3px;padding:0 1px}
+@media (max-width:1100px){#organizasyon-semasi .org-seviye{grid-template-columns:repeat(2,minmax(0,1fr))}#organizasyon-semasi .org-seviye::before{left:25%;right:25%}#organizasyon-semasi .org-seviye>.org-dugum:nth-child(n+3)::before{display:none}}
+@media (max-width:640px){
+#organizasyon-semasi .org-seviye{grid-template-columns:1fr;padding:0 0 0 18px;gap:10px;margin-top:0}
+#organizasyon-semasi .org-seviye::before{display:none}
+#organizasyon-semasi .org-seviye>.org-dugum::after{content:"";position:absolute;left:-13px;top:-16px;bottom:-2px;width:2px;background:var(--org-bronz)}
+#organizasyon-semasi .org-seviye>.org-dugum:first-child::after{top:-26px}
+#organizasyon-semasi .org-seviye>.org-dugum:last-child::after{bottom:auto;height:40px}
+#organizasyon-semasi .org-seviye>.org-dugum::before,#organizasyon-semasi .org-seviye>.org-dugum:nth-child(n+3)::before{display:block;top:22px;left:-12px;width:12px;height:2px;transform:none}
+#organizasyon-semasi .org-dikey{margin:0 0 0 6px}
+#organizasyon-semasi details>summary{padding:13px 40px 11px 13px}
+}
+@media (prefers-reduced-motion:reduce){#organizasyon-semasi .org *{transition:none!important}}
+@media print{#organizasyon-semasi .org-arac{display:none!important}#organizasyon-semasi details:not([open])>.org-icerik{display:block}}
+</style>
+
+<div class="org" id="org-agac" aria-label="Evdiş kurumsal organizasyon şeması">
+  <div class="org-arac">
+    <input aria-label="Organizasyon şemasında isim veya birim ara" class="org-ara" id="org-ara" placeholder="İsim veya birim ara (ör. Endodonti, Kalite, Ozan)" type="search"/>
+    <div class="org-dugmeler">
+      <button class="org-dugme" data-org="ac" type="button">Tümünü Aç</button>
+      <button class="org-dugme" data-org="kapat" type="button">Tümünü Kapat</button>
     </div>
+    <div aria-live="polite" class="org-sonuc" id="org-sonuc"></div>
   </div>
 
-  <div style="width:2px;height:20px;background:#B07A3C;margin:0 auto;"></div>
-
-  <!-- SEVİYE 2: GENEL MÜDÜRLÜK (GM) · İŞLETME DİREKTÖRLÜĞÜ · TIBBİ HİZMETLER DİREKTÖRLÜĞÜ · SKS KALİTE -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;position:relative;">
-    <div style="background:#F6F4EE;border:2px solid #16382E;border-radius:14px;padding:14px 15px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.06);">
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#16382E;">👔 Genel Müdürlük (GM)</div>
-      <div style="font-size:16px;font-weight:800;color:#1E2422;margin-top:3px;">Ozan Aydınlar</div>
-      <div style="font-size:11.5px;font-weight:700;color:#8A5A22;">Genel Müdür</div>
-      <div style="font-size:11.5px;color:#4A5550;margin-top:4px;">Kurumsal Strateji, İdari &amp; Mali Yönetim, Şube Koordinasyonu</div>
-    </div>
-    <div style="background:#F6F4EE;border:2px solid #1F4E40;border-radius:14px;padding:14px 15px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.06);">
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#1F4E40;">⚙️ İşletme Direktörlüğü</div>
-      <div style="font-size:16px;font-weight:800;color:#1E2422;margin-top:3px;">Mustafa Gökhan Bulut</div>
-      <div style="font-size:11.5px;font-weight:700;color:#8A5A22;">İşletme Direktörü</div>
-      <div style="font-size:11.5px;color:#4A5550;margin-top:4px;">Saha Operasyonları, Teknoloji &amp; Cihaz Altyapısı, Kurumsal Süreçler</div>
-    </div>
-    <div style="background:#F6F4EE;border:1.5px solid #B07A3C;border-radius:14px;padding:14px 15px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.06);">
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#8A5A22;">🩺 Tıbbi Hizmetler Direktörlüğü</div>
-      <div style="font-size:16px;font-weight:800;color:#1E2422;margin-top:3px;">Prof. Dr. Fuat Ahmetoğlu</div>
-      <div style="font-size:11.5px;font-weight:700;color:#1F4E40;">Tıbbi Hizmetler Direktörü · Endodonti Uzm.</div>
-      <div style="font-size:11.5px;color:#4A5550;margin-top:4px;">Akademik Konsey, Klinik Protokoller, 8 Uzmanlık Branşı &amp; 20 Hekim</div>
-    </div>
-    <div style="background:#F6F4EE;border:1.5px solid #B07A3C;border-radius:14px;padding:14px 15px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.06);">
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.07em;text-transform:uppercase;color:#1F4E40;">🛡️ SKS Kalite Yönetim Birimi</div>
-      <div style="font-size:16px;font-weight:800;color:#1E2422;margin-top:3px;">Serap Ay</div>
-      <div style="font-size:11.5px;font-weight:700;color:#8A5A22;">Kalite Yönetim Sorumlusu</div>
-      <div style="font-size:11.5px;color:#4A5550;margin-top:4px;"><strong>Ayşe Nur Erişman</strong> (Kalite Yön. Pers.) · 5 Komite &amp; 12 SKS Ekibi</div>
+  <!-- SEVİYE 0: YÖNETİM KURULU / BAŞHEKİMLİK -->
+  <div class="org-kok">
+    <div class="org-kok-kart">
+      <span class="org-ust">🏛️ Yönetim Kurulu &amp; Başhekimlik</span>
+      <div class="org-ad"><a href="hekim-dr--dt--seyit-yilmaz.html">Dr. Dt. Seyit Yılmaz</a> — Kurucu Hekim · Başhekim / Mesul Müdür</div>
+      <div class="org-alt"><a href="hekim-dt--emrah-ozdemir.html">Dt. Emrah Özdemir</a> (Kurucu Ortak) · Esma Özdemir (Yönetim Kurulu Üyesi)</div>
+      <div class="org-alt">Evdiş Polikliniği Sağlık Hizmetleri Ltd. Şti.</div>
     </div>
   </div>
+  <div class="org-dikey"></div>
 
-  <div style="width:2px;height:20px;background:#B07A3C;margin:0 auto;"></div>
+  <!-- SEVİYE 1: DÖRT ANA KOL -->
+  <div class="org-seviye">
+    <details class="org-dugum vurgu-koyu" open="">
+      <summary>
+        <span class="org-ust">👔 Genel Müdürlük — İdari &amp; Mali İşler</span>
+        <span class="org-ad">Ozan Aydınlar</span>
+        <span class="org-unvan">Genel Müdür (GM)</span>
+      </summary>
+      <div class="org-icerik">
+        <p>Kurumsal strateji, idari &amp; mali yönetim, şube koordinasyonu</p>
+        <ul>
+          <li><strong>İdari ve Mali İşler:</strong> Sümeyra Çokyüksel (Yönetici)</li>
+          <li><strong>Muhasebe:</strong> Kenan Kara (Yetkili) · Merve Dertli (Sorumlu)</li>
+          <li><strong>İnsan Kaynakları:</strong> Yağmur Birinci (İK ve İdari İşler) · Özlem Uyanık · <a href="insan-kaynaklari.html">Başvuru</a></li>
+          <li><strong>Kurumsal İletişim:</strong> Güler Altun · Zeynep Nihan Özdemir</li>
+        </ul>
+      </div>
+    </details>
 
-  <!-- SEVİYE 3: İDARİ, MALİ, KLİNİK VE DESTEK BİRİM YÖNETİCİLERİ (TAM KADRO) -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:10px;">
-    <div style="background:#F1ECE1;border:1px solid rgba(176,122,60,0.35);border-radius:12px;padding:12px 14px;">
-      <strong style="display:block;font-size:12.5px;color:#16382E;">💼 İdari ve Mali İşler &amp; Muhasebe</strong>
-      <div style="font-size:12px;color:#232826;margin-top:4px;line-height:1.45;">
-        • <strong>Sümeyra Çokyüksel</strong> — İdari ve Mali İşler Yöneticisi<br/>
-        • <strong>Kenan Kara</strong> — Muhasebe Yetkilisi<br/>
-        • <strong>Merve Dertli</strong> — Muhasebe Sorumlusu
+    <details class="org-dugum vurgu-yesil" open="">
+      <summary>
+        <span class="org-ust">⚙️ İşletme Direktörlüğü</span>
+        <span class="org-ad">Mustafa Gökhan Bulut</span>
+        <span class="org-unvan">İşletme Direktörü</span>
+      </summary>
+      <div class="org-icerik">
+        <p>Saha operasyonları, teknoloji &amp; cihaz altyapısı, kurumsal süreçler</p>
+        <ul>
+          <li><strong>Bilgi İşlem:</strong> Serdar Gümüşsoy (Sorumlu)</li>
+          <li><strong>Biyomedikal &amp; Teknik:</strong> Burak Bıçakcı (Teknik Sorumlu) · Ekrem Atun · Metin Mutlu</li>
+          <li><strong>Depo &amp; Lojistik:</strong> Bilal Günbatı</li>
+        </ul>
       </div>
-    </div>
-    <div style="background:#F1ECE1;border:1px solid rgba(176,122,60,0.35);border-radius:12px;padding:12px 14px;">
-      <strong style="display:block;font-size:12.5px;color:#16382E;">🩺 Klinik Hizmetleri &amp; Sterilizasyon</strong>
-      <div style="font-size:12px;color:#232826;margin-top:4px;line-height:1.45;">
-        • <strong>Nagihan Gür</strong> — Klinik Hizmetleri Yöneticisi<br/>
-        • <strong>Selda Surmaz</strong> — Klinik Hizmetleri Sorumlusu<br/>
-        • <strong>Serap Ay</strong> — Ameliyathane &amp; Medikal Hizm. Hemşiresi<br/>
-        • 21 Ağız ve Diş Sağlığı Teknikeri / Asistanı &amp; MSÜ
+    </details>
+
+    <details class="org-dugum" open="">
+      <summary>
+        <span class="org-ust">🩺 Tıbbi Hizmetler Direktörlüğü</span>
+        <span class="org-ad">Prof. Dr. Fuat Ahmetoğlu</span>
+        <span class="org-unvan">Tıbbi Hizmetler Direktörü · Endodonti Uzm.</span>
+      </summary>
+      <div class="org-icerik">
+        <p>Klinik protokoller, multidisipliner konsey, hasta güvenliği</p>
+        <ul>
+          <li><strong>8 Klinik Branş · 20 Hekim</strong> (aşağıda)</li>
+          <li><strong>Klinik Hizmetleri:</strong> Nagihan Gür (Yönetici) · Selda Surmaz (Sorumlu)</li>
+          <li><a href="hekim-prof--dr--fuat-ahmetoglu.html">Akademik özgeçmiş →</a></li>
+        </ul>
       </div>
-    </div>
-    <div style="background:#F1ECE1;border:1px solid rgba(176,122,60,0.35);border-radius:12px;padding:12px 14px;">
-      <strong style="display:block;font-size:12.5px;color:#16382E;">🤝 Misafir İlişkileri &amp; Hasta Kabul</strong>
-      <div style="font-size:12px;color:#232826;margin-top:4px;line-height:1.45;">
-        • <strong>Kezban Durmaz</strong> — Misafir İlişkileri Yöneticisi<br/>
-        • <strong>Özden Yavaş</strong> — Serdivan Misafir İlişkileri Sorumlusu<br/>
-        • <strong>Ece Macun</strong> — Adapazarı Misafir İlişkileri Sorumlusu<br/>
-        • Hasta Hakları, Banko &amp; Çağrı Merkezi Ekibi
+    </details>
+
+    <details class="org-dugum" open="">
+      <summary>
+        <span class="org-ust">🎓 Akademik Danışma &amp; Kalite Kurulu</span>
+        <span class="org-ad">SKS Kalite Yönetim Birimi</span>
+        <span class="org-unvan">Serap Ay — Kalite Yönetim Sorumlusu</span>
+      </summary>
+      <div class="org-icerik">
+        <ul>
+          <li><strong>Akademik Konsey:</strong> Prof. Dr. Fuat Ahmetoğlu</li>
+          <li><strong>Kalite Personeli:</strong> Ayşe Nur Erişman</li>
+          <li><strong>5 Komite:</strong> Enfeksiyon Kontrol · Hasta Güvenliği · Tesis Güvenliği · Eğitim · İSG Kurulu</li>
+          <li><a href="kalite-yonetim.html#komitelerimiz">Komiteler</a> · <a href="kalite-yonetim.html#ekiplerimiz">12 SKS Ekibi</a> · <a href="kalite-yonetim.html#oz-degerlendirme">Öz Değerlendirme</a></li>
+        </ul>
       </div>
-    </div>
-    <div style="background:#F1ECE1;border:1px solid rgba(176,122,60,0.35);border-radius:12px;padding:12px 14px;">
-      <strong style="display:block;font-size:12.5px;color:#16382E;">👥 İnsan Kaynakları &amp; Kurumsal İletişim</strong>
-      <div style="font-size:12px;color:#232826;margin-top:4px;line-height:1.45;">
-        • <strong>Yağmur Birinci</strong> — İK ve İdari İşler Sorumlusu<br/>
-        • <strong>Özlem Uyanık</strong> — İnsan Kaynakları Sorumlusu<br/>
-        • <strong>Güler Altun</strong> — Kurumsal İletişim Uzmanı<br/>
-        • <strong>Zeynep Nihan Özdemir</strong> — Kurumsal İletişim Uzmanı
-      </div>
-    </div>
-    <div style="background:#F1ECE1;border:1px solid rgba(176,122,60,0.35);border-radius:12px;padding:12px 14px;">
-      <strong style="display:block;font-size:12.5px;color:#16382E;">🔬 Radyoloji, BT, Biyomedikal &amp; Lojistik</strong>
-      <div style="font-size:12px;color:#232826;margin-top:4px;line-height:1.45;">
-        • <strong>Tuğçe Barlas</strong> (Radyoloji Tek.) · <strong>Şeyma Çantalı</strong> (CBCT &amp; Foto)<br/>
-        • <strong>Serdar Gümüşsoy</strong> — Bilgi İşlem Sorumlusu<br/>
-        • <strong>Burak Bıçakcı</strong> — Biyomedikal Teknikeri ve Teknik Sorumlu<br/>
-        • <strong>Bilal Günbatı</strong> (Depo/Lojistik) · <strong>Ekrem Atun</strong> &amp; <strong>Metin Mutlu</strong> (Teknik)
-      </div>
-    </div>
-    <div style="background:#F1ECE1;border:1px solid rgba(176,122,60,0.35);border-radius:12px;padding:12px 14px;">
-      <strong style="display:block;font-size:12.5px;color:#16382E;">🦷 CAD/CAM Protez Lab &amp; 2 Şube</strong>
-      <div style="font-size:12px;color:#232826;margin-top:4px;line-height:1.45;">
-        • <strong>Barış Emre Arpaç</strong> (Diş Protez Teknikeri)<br/>
-        • <strong>Ahmet Tayyip Berk</strong> (Diş Protez Teknisyeni)<br/>
-        • <strong>Serdivan Merkez:</strong> 13 Ünit · 18 Hekim · Ameliyathane<br/>
-        • <strong>Adapazarı Şubesi:</strong> 2 Ünit · 2 Hekim
-      </div>
-    </div>
+    </details>
   </div>
 
-  <div style="width:2px;height:18px;background:#B07A3C;margin:0 auto;"></div>
-
-  <!-- SEVİYE 4: 8 UZMANLIK BRANŞI VE 20 HEKİM KADROMUZ (TAM SOYİSİM VE UNVANLAR) -->
-  <div style="background:#F6F4EE;border:1.5px solid rgba(31,78,64,0.28);border-radius:14px;padding:14px 16px;">
-    <div style="font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#16382E;margin-bottom:8px;">👨‍⚕️ Tıbbi Hizmetler Direktörlüğü Bünyesindeki 8 Uzmanlık Branşı &amp; 20 Hekim Kadromuz (Tam Unvan Listesi)</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;font-size:12px;color:#232826;line-height:1.5;">
-      <div><strong>• Ağız, Diş ve Çene Cerrahisi:</strong> Dr. Dt. Seyit Yılmaz (Başhekim)</div>
-      <div><strong>• Endodonti (Kanal Tedavisi):</strong> Prof. Dr. Fuat Ahmetoğlu (Tıbbi Direktör) · Dr. Dt. Elshad Salmanov</div>
-      <div><strong>• Protetik Diş Tedavisi:</strong> Dr. Dt. Gökhan Uzel</div>
-      <div><strong>• Periodontoloji (Diş Eti):</strong> Dr. Dt. Zuhal Metin</div>
-      <div><strong>• Ortodonti:</strong> Uzm. Dt. Şenol Gülşen</div>
-      <div><strong>• Pedodonti (Çocuk Diş):</strong> Dr. Dt. Serhat Çalışkan · Uzm. Dt. Nilüfer Sümeyra Yıldırım</div>
-      <div><strong>• Anesteziyoloji ve Reanimasyon:</strong> Uzm. Dr. Gökhan Gedikli</div>
-      <div><strong>• Diş Hekimleri (Serdivan &amp; Adapazarı):</strong> Dr. Dt. Neslihan Çalışkan · Dt. Emrah Özdemir · Dt. Burak Eren · Dt. Davut Kayhan · Dt. Seyfullah Hayri Özkutlu · Dt. Betül Durmaz Enginler · Dt. Sıla Nur Çay · Dt. Elif Yıldız · Dt. Sena Özdemir · Dt. Mehmet Emre Türkhan · Dt. Yasa Akdoğan</div>
-    </div>
+  <!-- SEVİYE 2: 8 KLİNİK BRANŞ (TIBBİ HİZMETLER DİREKTÖRLÜĞÜ) -->
+  <div class="org-alt-baslik">👨‍⚕️ 8 Klinik Branş · Uzmanlık Ana Bilim Dalları</div>
+  <div class="org-brans">
+    <details class="org-dugum">
+      <summary><span class="org-ust">Ağız, Diş ve Çene Cerrahisi</span><span class="org-ad">İmplant &amp; Cerrahi</span><span class="org-sayac">1 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-dr--dt--seyit-yilmaz.html">Dr. Dt. Seyit Yılmaz</a> (Başhekim)</li><li><a href="implant-ve-cene-cerrahisi.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Endodonti</span><span class="org-ad">Kanal Tedavisi</span><span class="org-sayac">2 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-prof--dr--fuat-ahmetoglu.html">Prof. Dr. Fuat Ahmetoğlu</a></li><li><a href="hekim-dr--dt--elshad-salmanov.html">Dr. Dt. Elshad Salmanov</a></li><li><a href="tedavi-endodonti.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Protetik Diş Tedavisi</span><span class="org-ad">Protez &amp; Estetik</span><span class="org-sayac">1 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-dr--dt--gokhan-uzel.html">Dr. Dt. Gökhan Uzel</a></li><li><a href="tedavi-protetik.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Periodontoloji</span><span class="org-ad">Diş Eti Hastalıkları</span><span class="org-sayac">1 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-dr--dt--zuhal-metin.html">Dr. Dt. Zuhal Metin</a></li><li><a href="tedavi-periodontoloji.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Ortodonti</span><span class="org-ad">Ortodonti &amp; Şeffaf Plak</span><span class="org-sayac">1 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-uzm--dt--senol-gulsen.html">Uzm. Dt. Şenol Gülşen</a></li><li><a href="tedavi-ortodonti.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Pedodonti</span><span class="org-ad">Çocuk Diş Hekimliği</span><span class="org-sayac">2 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-dr--dt--serhat-caliskan.html">Dr. Dt. Serhat Çalışkan</a></li><li><a href="hekim-uzm--dt--nilufer-sumeyra-yildirim.html">Uzm. Dt. Nilüfer Sümeyra Yıldırım</a></li><li><a href="tedavi-pedodonti.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Anesteziyoloji ve Reanimasyon</span><span class="org-ad">Sedasyon &amp; Genel Anestezi</span><span class="org-sayac">1 hekim</span></summary>
+      <div class="org-icerik"><ul><li><a href="hekim-uzm--dr--gokhan-gedikli.html">Uzm. Dr. Gökhan Gedikli</a></li><li><a href="tedavi-sedasyon.html">Tedavi rehberi →</a></li></ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">Diş Hekimliği (Serdivan &amp; Adapazarı)</span><span class="org-ad">Genel Diş Hekimliği</span><span class="org-sayac">11 hekim</span></summary>
+      <div class="org-icerik"><ul>
+        <li><a href="hekim-dr--dt--neslihan-caliskan.html">Dr. Dt. Neslihan Çalışkan</a></li>
+        <li><a href="hekim-dt--emrah-ozdemir.html">Dt. Emrah Özdemir</a></li>
+        <li><a href="hekim-dt--burak-eren.html">Dt. Burak Eren</a></li>
+        <li><a href="hekim-dt--davut-kayhan.html">Dt. Davut Kayhan</a></li>
+        <li><a href="hekim-dt--seyfullah-h--ozkutlu.html">Dt. Seyfullah Hayri Özkutlu</a></li>
+        <li><a href="hekim-dt--betul-durmaz-enginler.html">Dt. Betül Durmaz Enginler</a></li>
+        <li><a href="hekim-dt--sila-nur-cay.html">Dt. Sıla Nur Çay</a></li>
+        <li><a href="hekim-dt--elif-yildiz.html">Dt. Elif Yıldız</a></li>
+        <li><a href="hekim-dt--sena-ozdemir.html">Dt. Sena Özdemir</a></li>
+        <li><a href="hekim-dt--mehmet-emre-turkhan.html">Dt. Mehmet Emre Türkhan</a></li>
+        <li><a href="hekim-dt--yasa-akdogan.html">Dt. Yasa Akdoğan</a></li>
+        <li><a href="tedavi-dijital-dolgu.html">Dijital dolgu rehberi →</a></li>
+      </ul></div>
+    </details>
   </div>
+
+  <!-- SEVİYE 3: KLİNİK DESTEK & HASTA BİRİMLERİ -->
+  <div class="org-alt-baslik">🧩 Klinik Destek &amp; Hasta Birimleri</div>
+  <div class="org-destek">
+    <details class="org-dugum vurgu-yesil">
+      <summary><span class="org-ust">🦷 Dijital Diş Hekimliği &amp; CAD/CAM Laboratuvarı</span><span class="org-ad">Protez Lab · Radyoloji · CBCT</span></summary>
+      <div class="org-icerik"><ul>
+        <li><strong>CAD/CAM Protez:</strong> Barış Emre Arpaç (Diş Protez Teknikeri) · Ahmet Tayyip Berk (Diş Protez Teknisyeni)</li>
+        <li><strong>Radyoloji &amp; Görüntüleme:</strong> Tuğçe Barlas (Radyoloji Teknikeri) · Şeyma Çantalı (CBCT &amp; Fotoğraf)</li>
+      </ul></div>
+    </details>
+    <details class="org-dugum vurgu-koyu">
+      <summary><span class="org-ust">🧼 Sterilizasyon &amp; Enfeksiyon Kontrol Birimi</span><span class="org-ad">Klinik Hizmetleri · Enfeksiyon Kontrol Komitesi</span></summary>
+      <div class="org-icerik"><ul>
+        <li><strong>Klinik Hizmetleri:</strong> Nagihan Gür (Yönetici) · Selda Surmaz (Sorumlu)</li>
+        <li><strong>Ameliyathane &amp; Medikal Hizmetler Hemşiresi:</strong> Serap Ay</li>
+        <li>21 Ağız ve Diş Sağlığı Teknikeri / Asistanı &amp; MSÜ</li>
+        <li><a href="kalite-yonetim.html#komitelerimiz">Enfeksiyon Kontrol Komitesi →</a></li>
+      </ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">🤝 Misafir İlişkileri &amp; Hasta Kabul</span><span class="org-ad">Kezban Durmaz</span><span class="org-unvan">Misafir İlişkileri Yöneticisi</span></summary>
+      <div class="org-icerik"><ul>
+        <li><strong>Serdivan:</strong> Özden Yavaş (Sorumlu)</li>
+        <li><strong>Adapazarı:</strong> Ece Macun (Sorumlu)</li>
+        <li>Hasta hakları, banko &amp; çağrı merkezi · <a href="dilek-oneri.html">Dilek · Öneri · Şikayet</a></li>
+      </ul></div>
+    </details>
+    <details class="org-dugum">
+      <summary><span class="org-ust">🌍 Uluslararası Hasta İlişkileri &amp; Sağlık Turizmi</span><span class="org-ad">TR · EN · AR Hasta Kabulü</span><span class="org-etiket-bekliyor">Birim sorumlusu: kurum onayı bekleniyor</span></summary>
+      <div class="org-icerik"><ul>
+        <li>Çok dilli bilgilendirme: <a href="en.html" hreflang="en">English</a> · <a href="ar.html" hreflang="ar">العربية</a></li>
+        <li>Yurt dışından gelen hastalar için ön bilgi ve randevu — <a href="serdivan.html">Serdivan Merkez iletişim</a></li>
+      </ul></div>
+    </details>
+  </div>
+
+  <!-- ŞUBELER -->
+  <div class="org-alt-baslik">📍 Şubelerimiz</div>
+  <div class="org-subeler">
+    <a class="org-sube" href="serdivan.html"><strong>Serdivan Merkez Şubesi</strong>13 ünit · 18 hekim · ameliyathane</a>
+    <a class="org-sube" href="adapazari.html"><strong>Adapazarı Şubesi</strong>2 ünit · 2 hekim</a>
+  </div>
+
+  <p class="org-dipnot">Şema, sitede yayımlı resmi unvanlar esas alınarak hazırlanmıştır. SKS denetimine uygun resmi organizasyon şeması PDF'i kurumdan beklenmektedir (<a href="gokhan-eksik-listesi.html#idari-eksikler">idari eksik listesi</a>).</p>
 </div>
+
+<script>
+(function(){
+  var kok=document.getElementById('org-agac'); if(!kok) return;
+  kok.classList.add('js-hazir');
+  var dugumler=[].slice.call(kok.querySelectorAll('details.org-dugum'));
+  var ara=document.getElementById('org-ara'), sonuc=document.getElementById('org-sonuc');
+  var norm=function(s){return (s||'').toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ı/g,'i');};
+  kok.addEventListener('click',function(e){
+    var b=e.target.closest('[data-org]'); if(!b) return;
+    var ac=b.getAttribute('data-org')==='ac';
+    dugumler.forEach(function(d){d.open=ac;});
+  });
+  var zaman;
+  if(ara) ara.addEventListener('input',function(){
+    clearTimeout(zaman);
+    zaman=setTimeout(function(){
+      var q=norm(ara.value.trim()), n=0;
+      dugumler.forEach(function(d){
+        d.classList.remove('org-eslesme','org-gizli');
+        if(!q) return;
+        if(norm(d.textContent).indexOf(q)>-1){d.classList.add('org-eslesme');d.open=true;n++;}
+        else d.classList.add('org-gizli');
+      });
+      sonuc.textContent=q?(n?n+' birimde eşleşme bulundu.':'Eşleşme bulunamadı.'):'';
+      var ilk=kok.querySelector('.org-eslesme');
+      if(ilk&&q.length>2) ilk.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    },160);
+  });
+})();
+</script>
 </section>
 <section class="kurumsal-kutu" id="hasta-haklari">
 <span class="sube-etiket">Sağlık Bakanlığı Hasta Hakları Yönetmeliği</span>
