@@ -1,95 +1,230 @@
-/* EvDiş AŞAMA 0 (17 Eki) — çerezsiz anonim etkileşim sayacı + mobil branş sekmeleri.
-   Sayaç: IP / User-Agent / çerez / kimlik GÖNDERMEZ; yalnız {olay, hedef, dil} yollar, gün sunucuda eklenir. */
+/* Evdiş Aşama 0+2: Mobil 3x2 Teknoloji Izgarası, 3x3 Branş Izgarası, 3 Katmanlı Galeri Kaydırma Kontrolü, Tıkla-Oynat Video & Çerezsiz Sayaç */
 (function () {
   'use strict';
-  var UC = '/api/evdis-anonim-sayac';
-  var DIL = ((document.documentElement.getAttribute('lang') || 'tr').slice(0, 2)).toLowerCase();
 
-  function evdisSay(olay, hedef) {
+  function sayacGonder(olay, hedef) {
     try {
-      if (!navigator.sendBeacon) return;
-      var veri = JSON.stringify({ olay: olay, hedef: String(hedef || '').slice(0, 60), dil: DIL });
-      navigator.sendBeacon(UC, new Blob([veri], { type: 'text/plain;charset=UTF-8' }));
-    } catch (e) { /* sayaç asla sayfayı bozmaz */ }
-  }
-  window.evdisSay = evdisSay;
-
-  // Randevu / arama / WhatsApp düğmeleri
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
-    if (!a) return;
-    var h = a.getAttribute('href') || '';
-    if (/randevu\.evdis/i.test(h)) evdisSay('randevu_tik', 'online-randevu');
-    else if (/randevu/i.test(h)) evdisSay('randevu_tik', 'randevu-sayfa');
-    else if (/^tel:/i.test(h)) evdisSay('randevu_tik', 'telefon');
-    else if (/wa\.me|whatsapp/i.test(h)) evdisSay('randevu_tik', 'whatsapp');
-  }, { capture: true, passive: true });
-
-  // Branş sekmeleri (ana sayfa uzmanlık düğmeleri + EN/AR hekim filtreleri)
-  document.addEventListener('click', function (e) {
-    var b = e.target && e.target.closest ? e.target.closest('.av-services-cat-btn, .sekme-dugme') : null;
-    if (b) evdisSay('brans_sekme', (b.dataset.sekme || b.textContent || '').trim());
-  }, { capture: true, passive: true });
-
-  // EN/AR: tedavi kartlarının üstüne branş seçici sekme çubuğu (yalnız mobilde görünür, CSS ile)
-  function bransCubugu() {
-    var izgara = document.querySelector('.tedavi-izgara');
-    if (!izgara || izgara.classList.contains('a0-sekmeli')) return;
-    var kartlar = Array.prototype.slice.call(izgara.querySelectorAll(':scope > .tedavi-kart'));
-    if (kartlar.length < 2) return;
-    var TUMU = { tr: 'Tümü', en: 'All', ar: 'الكل' }[DIL] || 'Tümü';
-    var cubuk = document.createElement('div');
-    cubuk.className = 'a0-brans-cubugu';
-    cubuk.setAttribute('role', 'tablist');
-    cubuk.setAttribute('aria-label', DIL === 'ar' ? 'اختيار التخصص' : (DIL === 'en' ? 'Choose a specialty' : 'Branş seçin'));
-    function sec(i, say) {
-      var tumu = i < 0;
-      izgara.classList.toggle('a0-tumu', tumu);
-      kartlar.forEach(function (k, j) { k.classList.toggle('a0-acik', j === i); });
-      Array.prototype.forEach.call(cubuk.children, function (d) {
-        d.setAttribute('aria-selected', String(+d.dataset.i === i));
+      var veri = JSON.stringify({
+        olay: olay,
+        sayfa: (location.pathname.split('/').pop() || 'index.html'),
+        hedef: hedef || '',
+        dil: document.documentElement.lang || 'tr',
+        ekran: window.innerWidth <= 768 ? 'mobil' : 'masaustu'
       });
-      if (say) evdisSay('brans_sekme', tumu ? 'tumu' : (kartlar[i].id || ('kart' + i)));
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/evdis-anonim-sayac', new Blob([veri], { type: 'application/json' }));
+      } else {
+        fetch('/api/evdis-anonim-sayac', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: veri, keepalive: true }).catch(function () {});
+      }
+    } catch (e) {}
+  }
+
+  function videoArenaIlklendir() {
+    var kartlar = document.querySelectorAll('#videoArena .v-card');
+    kartlar.forEach(function (kart) {
+      var v = kart.querySelector('video');
+      if (!v) return;
+      var merkezMi = kart.classList.contains('pos-0');
+      if (!merkezMi) {
+        v.preload = 'none';
+        try { v.pause(); } catch (e) {}
+      }
+      kart.addEventListener('click', function () {
+        var vid = kart.querySelector('video');
+        if (!vid) return;
+        if (!vid.getAttribute('src') && vid.dataset.src) {
+          vid.src = vid.dataset.src;
+          vid.load();
+        }
+        vid.play().catch(function () {});
+        sayacGonder('video_oynat', vid.dataset.src || vid.currentSrc || 'v-card');
+      });
+    });
+  }
+
+  /* A) SONUÇ ODAKLI TEKNOLOJİ (.av-tech-rows) — 3x2 Kompakt Çip Izgarası & Numara Rozeti */
+  function teknolojiIzgarasiIlklendir() {
+    var tImg = document.getElementById('techImg');
+    if (tImg) { tImg.loading = 'eager'; }
+    var satirlar = document.querySelectorAll('.av-tech-rows .av-tech-row');
+    if (!satirlar.length) return;
+    var kisaBasliklar = [
+      'CEREC 3B Optik Tarama',
+      '25× Operasyon Mikroskobu',
+      '3B CBCT Tomografi',
+      'CAD/CAM Protez Lab.',
+      'Genel Anestezi Birimi',
+      'Dijital Hasta Rehberi'
+    ];
+    var mobilMi = window.innerWidth <= 768;
+    satirlar.forEach(function (satir, idx) {
+      var no = idx < 9 ? '0' + (idx + 1) : String(idx + 1);
+      satir.setAttribute('data-no', no);
+      var baslikEl = satir.querySelector('.av-tech-row-title');
+      if (!baslikEl) return;
+      if (!baslikEl.dataset.tamBaslik) {
+        baslikEl.dataset.tamBaslik = baslikEl.textContent.trim();
+      }
+      if (mobilMi && kisaBasliklar[idx]) {
+        baslikEl.textContent = kisaBasliklar[idx];
+      } else if (!mobilMi && baslikEl.dataset.tamBaslik) {
+        baslikEl.textContent = baslikEl.dataset.tamBaslik;
+      }
+    });
+  }
+
+  /* B1) KLİNİK UZMANLIK BRANŞLARI (.av-services-cat-nav) — 3x3 Kompakt Çip Izgarası */
+  function bransSekmeleriIlklendir() {
+    var nav = document.querySelector('.av-services-cat-nav');
+    if (nav && !nav.querySelector('[data-tumu="1"]')) {
+      var tumuBtn = document.createElement('button');
+      tumuBtn.type = 'button';
+      tumuBtn.className = 'av-services-cat-btn a0-mobil';
+      tumuBtn.dataset.tumu = '1';
+      tumuBtn.textContent = 'Tümü (8)';
+      tumuBtn.addEventListener('click', function () {
+        nav.querySelectorAll('.av-services-cat-btn').forEach(function (b) { b.classList.remove('active'); });
+        tumuBtn.classList.add('active');
+        var baslik = document.getElementById('srvUnifiedTitle');
+        if (baslik) baslik.textContent = 'Tüm Uzmanlık Branşlarımız (8 Branş · 20 Hekim)';
+        sayacGonder('brans_secim', 'tumu');
+      });
+      nav.appendChild(tumuBtn);
     }
-    kartlar.forEach(function (k, i) {
-      var h = k.querySelector('h3');
-      var ad = (h ? h.textContent : 'Branş ' + (i + 1)).replace(/\s*\(.*?\)\s*/g, ' ').trim();
-      var d = document.createElement('button');
-      d.type = 'button'; d.className = 'a0-brans-sekme'; d.setAttribute('role', 'tab');
-      d.dataset.i = i; d.textContent = ad;
-      d.addEventListener('click', function () { sec(i, true); });
-      cubuk.appendChild(d);
+
+    if (nav) {
+      var dugmeler = nav.querySelectorAll('.av-services-cat-btn');
+      var kisaBranslar = [
+        'Estetik & Dijital',
+        'Çene Cerrahisi',
+        'Protetik Tedavi',
+        'Endodonti',
+        'Radyoloji',
+        'Ortodonti',
+        'Periodontoloji',
+        'Pedodonti & Anestezi',
+        'Tümü (8)'
+      ];
+      var mobilMi = window.innerWidth <= 768;
+      dugmeler.forEach(function (btn, idx) {
+        if (!btn.dataset.tamBrans) {
+          btn.dataset.tamBrans = btn.textContent.trim();
+        }
+        if (mobilMi && kisaBranslar[idx]) {
+          btn.textContent = kisaBranslar[idx];
+        } else if (!mobilMi && btn.dataset.tamBrans) {
+          btn.textContent = btn.dataset.tamBrans;
+        }
+      });
+    }
+
+    var izgaralar = document.querySelectorAll('.hekim-izgara');
+    izgaralar.forEach(function (izgara) {
+      var kartlar = Array.prototype.slice.call(izgara.querySelectorAll('.hekim-kart'));
+      if (kartlar.length <= 6 || izgara.dataset.a0Islendi) return;
+      izgara.dataset.a0Islendi = '1';
     });
-    var t = document.createElement('button');
-    t.type = 'button'; t.className = 'a0-brans-sekme'; t.setAttribute('role', 'tab');
-    t.dataset.i = -1; t.textContent = TUMU;
-    t.addEventListener('click', function () { sec(-1, true); });
-    cubuk.appendChild(t);
-    izgara.classList.add('a0-sekmeli');
-    izgara.parentNode.insertBefore(cubuk, izgara);
-    sec(0, false);
   }
 
-  // Ana sayfa: organizasyon şemasında branş/birim detayını mobilde "aç" düğmesine bağla
-  function semaAcKapa() {
-    var w = document.querySelector('#organizasyon-semasi .avo-wrap');
-    if (!w || w.querySelector('.a0-sema-ac')) return;
-    var kollar = w.querySelector('.avo-kollar');
-    if (!kollar) return;
-    var ACIK = '8 klinik branş ve destek birimlerini aç ▾', KAPALI = 'Şemayı daralt ▴';
-    var d = document.createElement('button');
-    d.type = 'button'; d.className = 'a0-sema-ac'; d.textContent = ACIK;
-    d.setAttribute('aria-expanded', 'false');
-    d.addEventListener('click', function () {
-      var kapali = w.classList.toggle('a0-kapali');
-      d.textContent = kapali ? ACIK : KAPALI;
-      d.setAttribute('aria-expanded', String(!kapali));
+  /* B2) YATAY KART GALERİLERİ (.av-experts-cols, .av-ig-life-grid, .konfor-izgara, .hekim-izgara)
+     Üstte "‹ Kaydırın · 1/N ›" kontrol şeridi, altta canlı altın ilerleme çubuğu */
+  function yatayGalerileriIlklendir() {
+    if (window.innerWidth > 768) return;
+    var dil = (document.documentElement.lang || 'tr').toLowerCase();
+    var etiket = dil.indexOf('en') === 0 ? 'Swipe cards' : (dil.indexOf('ar') === 0 ? 'اسحب البطاقات' : 'Sağa kaydırın');
+
+    var seciciler = ['.av-experts-cols', '.av-ig-life-grid', '.konfor-izgara', '.hekim-izgara'];
+    seciciler.forEach(function (secici) {
+      document.querySelectorAll(secici).forEach(function (galeri) {
+        if (galeri.dataset.a0GaleriBar === '1') return;
+        var kartlar = galeri.children;
+        if (!kartlar || kartlar.length < 2) return;
+        galeri.dataset.a0GaleriBar = '1';
+        var toplam = kartlar.length;
+
+        var ustBar = document.createElement('div');
+        ustBar.className = 'a0-galeri-ust-bar a0-mobil';
+        ustBar.innerHTML =
+          '<span class="a0-galeri-sayac">↔ ' + etiket + ' · <strong>1 / ' + toplam + '</strong></span>' +
+          '<span class="a0-galeri-oklar">' +
+            '<button type="button" class="a0-galeri-ok" data-yon="-1" aria-label="Önceki kart">‹</button>' +
+            '<button type="button" class="a0-galeri-ok" data-yon="1" aria-label="Sonraki kart">›</button>' +
+          '</span>';
+
+        var altIz = document.createElement('div');
+        altIz.className = 'a0-galeri-alt-iz a0-mobil';
+        var altDolgu = document.createElement('div');
+        altDolgu.className = 'a0-galeri-alt-dolgu';
+        altIz.appendChild(altDolgu);
+
+        galeri.parentNode.insertBefore(ustBar, galeri);
+        if (galeri.nextSibling) {
+          galeri.parentNode.insertBefore(altIz, galeri.nextSibling);
+        } else {
+          galeri.parentNode.appendChild(altIz);
+        }
+
+        var sayacStrong = ustBar.querySelector('strong');
+        function guncelle() {
+          var maxScroll = Math.max(1, galeri.scrollWidth - galeri.clientWidth);
+          var oran = Math.min(1, Math.max(0, galeri.scrollLeft / maxScroll));
+          var aktifNo = Math.min(toplam, Math.max(1, Math.round(oran * (toplam - 1)) + 1));
+          if (sayacStrong) {
+            sayacStrong.textContent = aktifNo + ' / ' + toplam;
+          }
+          var minGenislik = Math.max(18, Math.round(100 / toplam));
+          var genislik = minGenislik + Math.round(oran * (100 - minGenislik));
+          altDolgu.style.width = genislik + '%';
+        }
+
+        galeri.addEventListener('scroll', guncelle, { passive: true });
+        ustBar.querySelectorAll('.a0-galeri-ok').forEach(function (okBtn) {
+          okBtn.addEventListener('click', function () {
+            var yon = parseInt(okBtn.getAttribute('data-yon') || '1', 10);
+            var ilkKart = galeri.children[0];
+            var adim = ilkKart ? (ilkKart.getBoundingClientRect().width + 12) : 260;
+            galeri.scrollBy({ left: yon * adim, behavior: 'smooth' });
+          });
+        });
+        guncelle();
+      });
     });
-    kollar.parentNode.insertBefore(d, kollar.nextSibling);
-    w.classList.add('a0-kapali');
   }
 
-  function kur() { bransCubugu(); semaAcKapa(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', kur);
-  else kur();
+  function tiklamaIzle() {
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a, button');
+      if (!a) return;
+      var href = (a.getAttribute('href') || '').toLowerCase();
+      if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp') !== -1) {
+        sayacGonder('whatsapp_tik', href);
+      } else if (href.indexOf('tel:') === 0) {
+        sayacGonder('telefon_tik', href);
+      } else if (a.id === 'evdis-ajan-fab' || a.hasAttribute('data-evdis-ajan-ac')) {
+        sayacGonder('rehber_ac', a.id || 'data-evdis-ajan-ac');
+      } else if (a.classList.contains('av-services-cat-btn') || a.classList.contains('sekme-dugme')) {
+        sayacGonder('brans_secim', (a.textContent || '').trim().slice(0, 32));
+      }
+    }, { passive: true });
+  }
+
+  function baslat() {
+    sayacGonder('sayfa_acilis', document.title.slice(0, 40));
+    videoArenaIlklendir();
+    teknolojiIzgarasiIlklendir();
+    bransSekmeleriIlklendir();
+    yatayGalerileriIlklendir();
+    tiklamaIzle();
+    window.addEventListener('resize', function () {
+      teknolojiIzgarasiIlklendir();
+      bransSekmeleriIlklendir();
+      yatayGalerileriIlklendir();
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', baslat);
+  } else {
+    baslat();
+  }
 })();

@@ -1,113 +1,337 @@
-/* EvDiş AŞAMA 0 (17 Eki) — mobil açılır sekmeli mimari.
-   Yalnız ≤768px etkilidir; masaüstü düzenine dokunmaz. a0-mobil öğeleri masaüstünde gizlidir. */
-.a0-mobil, .a0-brans-cubugu, .a0-sema-ac { display: none !important; }
+/* Evdiş Aşama 0+2 Mobil UX & Performans Katmanı (Atlas + Vezir Anu Ortak Mühür — 17 Eki 2026) */
+.a0-mobil { display: none; }
 
 @media (max-width: 768px) {
-  /* ---- ortak: yatay kaydırılabilir şerit ---- */
-  body .av-services-cat-nav, body .av-tech-rows, body .av-experts-cols, body .av-ig-life-grid,
-  body .a0-brans-cubugu, body .sekme-cubugu, body .konfor-izgara, body .teknoloji-atelier-bento,
-  body .hekim-izgara, body .tedavi-izgara.a0-tumu {
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    grid-template-columns: none !important;
-  }
-  body .av-services-cat-nav::-webkit-scrollbar, body .av-tech-rows::-webkit-scrollbar,
-  body .av-experts-cols::-webkit-scrollbar, body .av-ig-life-grid::-webkit-scrollbar,
-  body .a0-brans-cubugu::-webkit-scrollbar, body .sekme-cubugu::-webkit-scrollbar,
-  body .konfor-izgara::-webkit-scrollbar, body .teknoloji-atelier-bento::-webkit-scrollbar,
-  body .hekim-izgara::-webkit-scrollbar, body .tedavi-izgara.a0-tumu::-webkit-scrollbar { display: none; }
+  .a0-masaustu { display: none !important; }
+  .a0-mobil { display: block !important; }
 
-  /* ---- Obsidian & Gold sekme düğmesi ---- */
-  body .av-services-cat-btn, body .av-tech-row, body .a0-brans-sekme, body .sekme-dugme {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    white-space: nowrap !important;
-    padding: 9px 15px !important;
-    border-radius: 999px !important;
-    border: 1px solid rgba(179, 140, 97, 0.45) !important;
-    background: #14151D;
-    color: rgba(234, 232, 232, 0.78);
-    font-size: 0.8rem !important;
-    line-height: 1.2 !important;
-    letter-spacing: 0.01em;
-    transform: none !important;
-    cursor: pointer;
+  /* ==========================================================================
+     A) SONUÇ ODAKLI TEKNOLOJİ (.av-tech-rows) -> 3x2 KOMPAKT BENTO ÇİP IZGARASI
+     6 teknolojinin 6'sı da tek bakışta %100 görünür (0 gizli sekme, kaydırma yok)
+     ========================================================================== */
+  body .av-stage-pills {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    gap: 6px !important;
+    padding: 6px !important;
+    border-radius: 16px !important;
   }
-  body .av-services-cat-btn.active, body .av-tech-row.active, body .a0-brans-sekme[aria-selected="true"],
-  body .sekme-dugme[aria-selected="true"] {
-    background: linear-gradient(135deg, #C9A16E, #B38C61 55%, #8E6B43) !important;
-    color: #0D0E14 !important;
-    border-color: transparent !important;
+  body .av-tech-rows {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    overflow: visible !important;
+    padding: 8px 0 4px !important;
+    border-top: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  body .av-tech-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    min-height: 62px !important;
+    padding: 10px 11px !important;
+    border: 1px solid rgba(20, 21, 29, 0.14) !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.78) !important;
+    box-shadow: 0 2px 6px rgba(20, 21, 29, 0.04) !important;
+    position: relative !important;
+  }
+  body .av-tech-row::before {
+    content: attr(data-no);
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #9A7B38;
+    background: rgba(200, 164, 93, 0.16);
+    padding: 2px 6px;
+    border-radius: 999px;
+    line-height: 1.2;
+  }
+  body .av-tech-row.active {
+    background: #14151D !important;
+    border-color: #C8A45D !important;
+    box-shadow: 0 6px 16px rgba(20, 21, 29, 0.16), 0 0 0 1px #C8A45D !important;
+  }
+  body .av-tech-row.active::before {
+    color: #14151D;
+    background: #D4AF37;
+  }
+  body .av-tech-row-title {
+    font-size: 0.80rem !important;
+    line-height: 1.22 !important;
+    white-space: normal !important;
+    color: #14151D !important;
+    font-weight: 600 !important;
+    transform: none !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  body .av-tech-row.active .av-tech-row-title {
+    color: #FFFFFF !important;
+  }
+  body .av-tech-row-action {
+    display: none !important;
+  }
+  body .av-tech-row.active .av-tech-row-action {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    color: #E5C158 !important;
+    text-decoration: none !important;
+    margin-top: 2px !important;
+  }
+
+  /* ==========================================================================
+     B1) BRANŞ SEKMELERİ (.av-services-cat-nav -> 3x3 Izgara, .sekme-cubugu -> 2 Sütun)
+     Kaydırma yerine tüm branş seçenekleri tek bakışta görünür
+     ========================================================================== */
+  body .av-services-cat-nav {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    overflow: visible !important;
+    border-left: none !important;
+    padding: 0 0 8px !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  body .av-services-cat-label {
+    grid-column: 1 / -1 !important;
+    display: block !important;
+    font-size: 0.66rem !important;
+    margin-bottom: 2px !important;
+  }
+  body .av-services-cat-btn {
+    min-width: 0 !important;
+    width: 100% !important;
+    min-height: 40px !important;
+    padding: 6px 7px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(234, 232, 232, 0.18) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    font-size: 0.71rem !important;
+    line-height: 1.18 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    color: rgba(234, 232, 232, 0.85) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: none !important;
+  }
+  body .av-services-cat-btn.active {
+    background: #C8A45D !important;
+    color: #14151D !important;
+    border-color: #E5C158 !important;
+    font-weight: 700 !important;
+    transform: none !important;
+  }
+
+  body .a0-brans-cubugu,
+  body .sekme-cubugu {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 7px !important;
+    overflow: visible !important;
+    padding: 0 0 8px !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  body .sekme-cubugu .sekme-dugme,
+  body .a0-brans-cubugu .a0-sekme {
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 8px 10px !important;
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* ==========================================================================
+     B2) YATAY KART GALERİLERİ (.av-experts-cols, .av-ig-life-grid, .konfor-izgara, .hekim-izgara)
+     3 Katmanlı Kaydırma İpucu: Yarım kart taşma (peek) + ‹ 1/N › Ok Şeridi + Altın İlerleme Çubuğu
+     ========================================================================== */
+  body .konfor-izgara,
+  body .teknoloji-atelier-bento,
+  body .hekim-izgara,
+  body .av-experts-cols,
+  body .av-ig-life-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 12px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 18px 10px 4px !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #C8A45D rgba(200, 164, 93, 0.16) !important;
+  }
+  body .konfor-izgara::-webkit-scrollbar,
+  body .teknoloji-atelier-bento::-webkit-scrollbar,
+  body .hekim-izgara::-webkit-scrollbar,
+  body .av-experts-cols::-webkit-scrollbar,
+  body .av-ig-life-grid::-webkit-scrollbar {
+    display: block !important;
+    height: 4px !important;
+  }
+  body .konfor-izgara::-webkit-scrollbar-track,
+  body .hekim-izgara::-webkit-scrollbar-track,
+  body .av-experts-cols::-webkit-scrollbar-track,
+  body .av-ig-life-grid::-webkit-scrollbar-track {
+    background: rgba(200, 164, 93, 0.15) !important;
+    border-radius: 999px !important;
+  }
+  body .konfor-izgara::-webkit-scrollbar-thumb,
+  body .hekim-izgara::-webkit-scrollbar-thumb,
+  body .av-experts-cols::-webkit-scrollbar-thumb,
+  body .av-ig-life-grid::-webkit-scrollbar-thumb {
+    background: #C8A45D !important;
+    border-radius: 999px !important;
+  }
+
+  /* Sağ kenarda yarım kart kasıtlı taşsın (78vw) */
+  body .konfor-izgara > *,
+  body .teknoloji-atelier-bento > .tek-kutu,
+  body .hekim-izgara > .hekim-kart {
+    flex: 0 0 78vw !important;
+    max-width: 280px !important;
+    scroll-snap-align: start;
+  }
+  body .av-experts-col,
+  body .av-ig-card {
+    flex: 0 0 78vw !important;
+    max-width: 285px !important;
+    scroll-snap-align: start;
+  }
+
+  /* Galeri Üst Ok & Sayaç Şeridi + Alt Altın İlerleme Çubuğu */
+  .a0-galeri-ust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 0 0 8px 0;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(200, 164, 93, 0.13);
+    border: 1px solid rgba(200, 164, 93, 0.35);
+    color: inherit;
+    font-family: var(--font-sans, system-ui, sans-serif);
+    font-size: 0.72rem;
     font-weight: 600;
   }
-  body .a0-mobil { display: inline-flex !important; }
-
-  /* ================= Ana sayfa (index / tr / tasarim-onerileri) ================= */
-  /* Uzmanlık branşları: sekme çubuğu görselin ÜSTÜNE, yatay kaydırılır */
-  body .av-services-inner { grid-template-columns: minmax(0, 1fr) !important; }
-  body .av-services-left-3d, body .av-services-right, body .av-tech-grid > * { min-width: 0; max-width: 100%; }
-  body .av-services-left-3d { gap: 14px; }
-  body .av-services-cat-nav {
-    order: -1; gap: 8px; border-left: 0 !important; padding: 2px 0 8px !important; margin: 0 -2px;
-    -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
-            mask-image: linear-gradient(90deg, #000 86%, transparent);
+  .a0-galeri-sayac {
+    letter-spacing: 0.03em;
+    opacity: 0.92;
   }
-  body .av-services-cat-label { display: none !important; }
-  body .av-srv-3d-frame { max-height: 230px; overflow: hidden; }
-  body .av-srv-3d-frame img { max-height: 230px; object-fit: cover; object-position: center 68%; }
-  body .av-services-inner { gap: 22px !important; }
-
-  /* Teknoloji: satırlar sekmeye döner, yalnız seçili sekmenin "İncele" bağı görünür */
-  body .av-tech-grid { display: flex !important; flex-direction: column; gap: 16px !important; }
-  body .av-tech-counter-col { order: 0; }
-  body .av-tech-rows { order: 1; gap: 8px; border-top: 0 !important;
-    -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent);
-            mask-image: linear-gradient(90deg, #000 86%, transparent); }
-  body .av-tech-visual-col { order: 2; }
-  body .av-tech-row { align-items: center !important; gap: 8px !important; border-bottom: 1px solid rgba(179, 140, 97, 0.45) !important; }
-  body .av-tech-row-title { font-size: 0.8rem !important; color: inherit !important; overflow-wrap: normal !important; font-family: var(--font-sans) !important; }
-  body .av-tech-row:not(.active) .av-tech-row-action { display: none !important; }
-  body .av-tech-row.active .av-tech-row-action { color: #0D0E14 !important; font-size: 0.74rem; }
-  body .av-tech-visual-frame { max-height: 250px; overflow: hidden; }
-  body .av-tech-visual-frame img { max-height: 250px; width: 100%; object-fit: cover; }
-
-  /* Hekim kadrosu: 5 kart alt alta yerine yatay kaydırmalı vitrin */
-  body .av-experts-cols { gap: 14px; padding-bottom: 6px; perspective: none; }
-  body .av-expert-col { flex: 0 0 74%; scroll-snap-align: start; }
-  body .av-expert-photo { aspect-ratio: 4 / 3.4 !important; }
-
-  /* Klinik mekân şeridi: yatay */
-  body .av-ig-life-grid { gap: 12px; }
-  body .av-ig-card { flex: 0 0 46%; scroll-snap-align: start; }
-
-  /* Organizasyon şeması: ilk bakışta çatı + dört kol; branş/birim detayları "aç" düğmesiyle */
-  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-brans,
-  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-birimler,
-  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-ara-baslik,
-  body #organizasyon-semasi .avo-wrap.a0-kapali .avo-alt-satir { display: none !important; }
-  body #organizasyon-semasi .a0-sema-ac {
-    display: flex !important; width: 100%; justify-content: center; align-items: center; gap: 8px;
-    margin: 18px 0 4px; padding: 12px 16px; border-radius: 999px; cursor: pointer;
-    background: #14151D; color: #EAE8E8; border: 1px solid rgba(179, 140, 97, 0.55);
-    font: 600 0.82rem var(--font-sans, sans-serif);
+  .a0-galeri-oklar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .a0-galeri-ok {
+    width: 26px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(200, 164, 93, 0.55);
+    background: rgba(20, 21, 29, 0.82);
+    color: #E5C158;
+    font-size: 0.92rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+  .a0-galeri-alt-iz {
+    width: 100%;
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(200, 164, 93, 0.18);
+    overflow: hidden;
+    margin: 4px 0 12px 0;
+  }
+  .a0-galeri-alt-dolgu {
+    height: 100%;
+    width: 25%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #C8A45D, #E5C158);
+    transition: width 0.18s ease, transform 0.18s ease;
   }
 
-  /* ================= EN / AR (klasik şablon) ================= */
-  body .a0-brans-cubugu { gap: 8px; margin: 0 0 14px; padding: 2px 0 6px; }
-  body .tedavi-izgara.a0-sekmeli:not(.a0-tumu) > .tedavi-kart:not(.a0-acik) { display: none !important; }
-  body .tedavi-izgara.a0-tumu { gap: 12px; }
-  body .tedavi-izgara.a0-tumu > .tedavi-kart { flex: 0 0 72%; scroll-snap-align: start; }
-  body .sekme-cubugu { gap: 8px; padding-bottom: 6px; }
-  body .konfor-izgara { gap: 14px; }
-  body .konfor-izgara > .konfor-kart { flex: 0 0 82%; scroll-snap-align: start; }
-  body .teknoloji-atelier-bento { gap: 14px; margin-bottom: 18px; }
-  body .teknoloji-atelier-bento > .atelier-kart { flex: 0 0 84%; scroll-snap-align: start; }
-  body .hekim-izgara { gap: 12px; }
-  body .hekim-izgara > .hekim-kart { flex: 0 0 56%; scroll-snap-align: start; }
+  /* Kompakt Bölüm Boşlukları */
+  body .av-services-stage,
+  body .av-tech-stage,
+  body .av-experts-stage,
+  body .av-ig-life-stage,
+  body .av-reviews-stage,
+  body .av-editorial-footer {
+    padding-top: 32px !important;
+    padding-bottom: 28px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  body .av-services-grid,
+  body .av-tech-grid { gap: 16px !important; }
+  body .av-services-left { gap: 12px !important; }
+  body .av-services-Visual-wrap { max-width: 100% !important; aspect-ratio: 16 / 9 !important; max-height: 168px !important; }
+  body .av-tech-visual-frame { aspect-ratio: 16 / 9 !important; max-height: 175px !important; }
+  body .av-experts-giant-title { font-size: 2.1rem !important; margin-bottom: 16px !important; }
+  body .av-services-unified-title { font-size: 1.65rem !important; }
+  body .av-expert-portrait-wrap { aspect-ratio: 4 / 4.2 !important; max-height: 220px !important; margin-bottom: 10px !important; }
+  body .av-ig-card { aspect-ratio: 9 / 12 !important; max-height: 270px !important; }
+  body .av-reviews-cols { display: flex !important; flex-direction: column !important; gap: 10px !important; }
+  body .av-review-col { padding: 12px 0 !important; }
+  body .av-review-quote { font-size: 0.82rem !important; margin-bottom: 8px !important; }
+  body .av-footer-Giant-brand { font-size: 2.2rem !important; margin: 14px 0 !important; }
+  body .av-footer-cols { gap: 16px !important; padding-top: 16px !important; }
+  body section, body .bolum { padding-top: 26px !important; padding-bottom: 26px !important; }
+  body .hekim-gorsel { aspect-ratio: 1/1 !important; max-height: 190px; }
+  body .hekim-bilgi { padding: 10px !important; }
+  body .hekim-aciklama { display: none !important; }
+}
+
+.a0-sekme {
+  flex: 0 0 auto; padding: 8px 14px; border-radius: 999px;
+  border: 1px solid rgba(180,145,70,0.35); background: rgba(255,255,255,0.06);
+  color: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.a0-sekme[aria-selected="true"] { background: #c8a45d; color: #0f172a; border-color: #c8a45d; }
+.a0-tumu-dugme {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(180,145,70,0.45);
+  background: transparent; color: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+}
+.a0-gizli-kart { display: none !important; }
+
+/* Canlı Ekip Barı (#evdis-emrah-bar) — Tüm Sayfalarda Obsidyen & Şampanya Altın */
+body > #evdis-emrah-bar {
+  background: #0D0E14 !important;
+  color: #EAE8E8 !important;
+  border-bottom: 1px solid rgba(200, 164, 93, 0.28) !important;
+}
+body > #evdis-emrah-bar .evdis-emrah-btn,
+body > #evdis-emrah-bar button,
+body > #evdis-emrah-bar a {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(200, 164, 93, 0.38) !important;
+  color: #EAE8E8 !important;
 }
