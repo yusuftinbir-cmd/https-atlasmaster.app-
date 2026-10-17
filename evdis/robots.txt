@@ -1,45 +1,114 @@
 User-agent: *
 Allow: /
-Disallow: /indeks-ve-denetim-raporu.html
 Disallow: /tr.html
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: GPTBot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Claude-User
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Googlebot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Bingbot
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: Meta-WebIndexer
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /gokhan-eksik-listesi.html
+Disallow: /indeks-ve-denetim-raporu.html
+Disallow: /seyit-hoca-geo-raporu.html
+Disallow: /dilek-oneri.html
+Disallow: /tasarim-onerileri.html
 
 Sitemap: https://evdis.com.tr/sitemap.xml
