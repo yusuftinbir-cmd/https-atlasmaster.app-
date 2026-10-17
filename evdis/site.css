@@ -3156,3 +3156,27 @@ section#tedaviler .tedavi-kart:hover::before {
   color: #04100C;
 }
 
+
+/* ==========================================================================
+   v39 · ÜST ÖNİZLEME BANTLARI HİZASI
+   Yeşil ekip bandı (#evdis-emrah-bar — widget enjekte eder) ile siyah bilgi şeridinin
+   (.onizleme-serit) içerikleri, altlarındaki yüzen menü kapsülünün iç kenarlarıyla aynı hizada:
+   header.ust = min(1340px, 100% - 28px) genişlik + 1px kenarlık + 22px iç boşluk.
+   ========================================================================== */
+.onizleme-serit,
+body > #evdis-emrah-bar {
+  padding-left: 0;
+  padding-right: 0;
+}
+.onizleme-serit .onizleme-serit-ic,
+body > #evdis-emrah-bar .evdis-emrah-inner {
+  max-width: min(1340px, calc(100% - 28px));
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 23px;
+  padding-right: 23px;
+}
+/* Mobilde yüzen kapsül (-78px bindirme) sayfanın ilk satırını örtüyordu; bindirme 40px'e iner */
+@media (max-width: 768px) {
+  header.ust { margin-bottom: -40px; }
+}
