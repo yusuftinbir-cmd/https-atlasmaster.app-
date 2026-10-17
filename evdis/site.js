@@ -263,7 +263,11 @@
   const isEN = sayfaDili.startsWith("en");
   const isAR = sayfaDili.startsWith("ar");
 
-  // 1. Uzmanlık ve Şube Sekmeleri (Hekim Filtreleme)
+  // 0b. Hareket azaltma tercihi (prefers-reduced-motion) — koreografi bu tercihe saygı duyar
+  const azHareketMql = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+  const azHareket = () => !!(azHareketMql && azHareketMql.matches);
+
+  // 1. Uzmanlık ve Şube Sekmeleri (Hekim Filtreleme) — View Transitions API ile ipeksi geçiş
   const sekmeler = document.querySelectorAll("[data-sekme]");
   const kartlar = document.querySelectorAll("[data-hekim-kart]");
   if (sekmeler.length && kartlar.length) {
@@ -271,15 +275,22 @@
       btn.addEventListener("click", () => {
         const filtre = btn.getAttribute("data-sekme");
         sekmeler.forEach((b) => b.setAttribute("aria-selected", b === btn ? "true" : "false"));
-        kartlar.forEach((k) => {
-          if (filtre === "tumu") {
-            k.hidden = false;
-          } else if (filtre === "serdivan" || filtre === "adapazari") {
-            k.hidden = !(k.getAttribute("data-sube") || "").includes(filtre);
-          } else {
-            k.hidden = !(k.getAttribute("data-grup") || "").includes(filtre);
-          }
-        });
+        const uygulaFiltre = () => {
+          kartlar.forEach((k) => {
+            if (filtre === "tumu") {
+              k.hidden = false;
+            } else if (filtre === "serdivan" || filtre === "adapazari") {
+              k.hidden = !(k.getAttribute("data-sube") || "").includes(filtre);
+            } else {
+              k.hidden = !(k.getAttribute("data-grup") || "").includes(filtre);
+            }
+          });
+        };
+        if (typeof document.startViewTransition === "function" && !azHareket()) {
+          document.startViewTransition(uygulaFiltre);
+        } else {
+          uygulaFiltre();
+        }
       });
     });
   }
@@ -405,4 +416,67 @@
   // 6. Dil sürekliliğini uygula (alt sayfa arayüz çevirisi + ?lang / ?ekip korumalı bağlantılar)
   if (!anaSayfaMi && dil !== "tr") kromuCevir(dil);
   baglantilariGuncelle(dil);
+})();
+
+// 7. v22 · Fare izleyen ışık kırılması (--mouse-x / --mouse-y) — yalnız fareli cihazlar, kare başına tek ölçüm
+(() => {
+  if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  const SECICI = ".atelier-kart, .pavilyon-kart, .tedavi-kart, .konfor-kart, .hekim-kart, .sube-kart, .kart, #teknoloji-ameliyathane, #teknoloji-mikroskop, #teknoloji-yapay-zeka, #teknoloji-cerec";
+  let son = null;
+  let kare = 0;
+  document.addEventListener("pointermove", (e) => {
+    const kart = e.target instanceof Element ? e.target.closest(SECICI) : null;
+    if (!kart) return;
+    son = { kart, x: e.clientX, y: e.clientY };
+    if (kare) return;
+    kare = requestAnimationFrame(() => {
+      kare = 0;
+      const r = son.kart.getBoundingClientRect();
+      son.kart.style.setProperty("--mouse-x", `${son.x - r.left}px`);
+      son.kart.style.setProperty("--mouse-y", `${son.y - r.top}px`);
+    });
+  }, { passive: true });
+})();
+
+// 8. Scroll-Reveal Gözlemcisi (IntersectionObserver · prefers-reduced-motion saygılı · site.css'ten bağımsız)
+(() => {
+  "use strict";
+  const HEDEF = ".bolum-baslik, .ust-etiket, .bolum-etiket, .tedavi-kart, .konfor-kart, .hekim-kart, .sube-kart, #teknoloji-vitrin > div";
+  const hedefler = document.querySelectorAll(HEDEF);
+  if (!hedefler.length) return;
+
+  // Reveal stilini yalnızca bir kez ve namespace'li enjekte et (site.css'e dokunmadan kendi kendine yeten)
+  if (!document.getElementById("evdis-reveal-stil")) {
+    const st = document.createElement("style");
+    st.id = "evdis-reveal-stil";
+    st.textContent = [
+      '[data-evdis-reveal]{transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1);will-change:opacity,transform;}',
+      '[data-evdis-reveal="gizli"]{opacity:0;transform:translateY(18px);}',
+      '[data-evdis-reveal="acik"]{opacity:1;transform:none;}',
+      '@media (prefers-reduced-motion: reduce){[data-evdis-reveal]{opacity:1 !important;transform:none !important;transition:none !important;}}',
+      '::view-transition-old(root),::view-transition-new(root){animation-duration:.42s;}'
+    ].join("");
+    (document.head || document.documentElement).appendChild(st);
+  }
+
+  const azHareket = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (azHareket || !("IntersectionObserver" in window)) {
+    hedefler.forEach((el) => el.setAttribute("data-evdis-reveal", "acik"));
+    return;
+  }
+
+  hedefler.forEach((el) => {
+    if (!el.hasAttribute("data-evdis-reveal")) el.setAttribute("data-evdis-reveal", "gizli");
+  });
+
+  const gozlemci = new IntersectionObserver((girisler, g) => {
+    girisler.forEach((giris) => {
+      if (giris.isIntersecting) {
+        giris.target.setAttribute("data-evdis-reveal", "acik");
+        g.unobserve(giris.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+
+  hedefler.forEach((el) => gozlemci.observe(el));
 })();
