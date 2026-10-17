@@ -765,3 +765,323 @@ body > #evdis-emrah-bar a {
   color: #FFFFFF !important;
 }
 
+
+/* === NIRENGI-SLIDER-LIDER-MAYA v6 === */
+/* Öne Çıkan Lider Hekim Kartı (.hekim-kart-lider) */
+.hekim-kart.hekim-kart-lider {
+  position: relative;
+  border: 2px solid #D4AF37 !important;
+  box-shadow: 0 16px 38px rgba(200, 164, 93, 0.24), inset 0 0 0 1px rgba(212, 175, 55, 0.25) !important;
+  background: linear-gradient(180deg, rgba(255, 252, 244, 0.98), #FFFFFF) !important;
+}
+.hekim-kart.hekim-kart-lider::before {
+  content: attr(data-lider-etiket);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 4;
+  background: linear-gradient(135deg, #12141E 0%, #1E2233 100%);
+  color: #F3D79B;
+  border: 1px solid #D4AF37;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.38);
+  pointer-events: none;
+}
+
+/* Tıklanabilir Branş İmza Kartları (.brans-imza-kart) */
+.brans-imza-kart {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+.brans-imza-kart:hover {
+  transform: translateY(-2px);
+  border-color: #E5C158 !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28) !important;
+}
+.brans-imza-kart::after {
+  content: "Kodekste Aç ↓";
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #E5C158;
+  opacity: 0.88;
+}
+
+/* İnteraktif Dijital Gülüş Nirengisi & Kompozit / Lamine Form Simülatörü */
+.nirengi-kompozit-sahne {
+  background: radial-gradient(circle at 15% 0%, rgba(200, 164, 93, 0.20), transparent 58%),
+              linear-gradient(160deg, #10121A 0%, #171A26 100%);
+  border: 1.5px solid rgba(200, 164, 93, 0.52);
+  box-shadow: inset 0 0 0 1px rgba(200, 164, 93, 0.16), 0 24px 54px rgba(8, 9, 14, 0.26);
+  border-radius: 22px;
+  padding: 26px 26px 24px;
+  margin: 24px 0 30px;
+  color: #EAE8E8;
+}
+.nk-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(200, 164, 93, 0.25);
+}
+.nk-kicker {
+  display: inline-block;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #E5C158;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.nk-title,
+main .nirengi-kompozit-sahne h2.nk-title,
+.nirengi-kompozit-sahne h2.nk-title {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+  font-weight: 600;
+  color: #FFFFFF !important;
+  margin: 0 0 8px 0;
+  line-height: 1.15;
+}
+.brans-ozel-sahne .dugme-ikinci,
+.brans-ozel-sahne a.dugme.dugme-ikinci {
+  color: #EAE8E8 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(200, 164, 93, 0.48) !important;
+}
+.nk-sub {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(234, 232, 232, 0.86);
+  margin: 0;
+  max-width: 780px;
+}
+.nk-doc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(200, 164, 93, 0.13);
+  border: 1px solid rgba(200, 164, 93, 0.5);
+  color: #EAE8E8;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.nk-doc-pill:hover {
+  background: rgba(200, 164, 93, 0.24);
+  border-color: #F3D79B;
+  transform: translateY(-1px);
+}
+.nk-doc-pill img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #E5C158;
+  flex-shrink: 0;
+}
+.nk-doc-pill strong {
+  display: block;
+  font-size: 0.88rem;
+  color: #FFFFFF;
+}
+.nk-doc-pill small {
+  display: block;
+  font-size: 0.72rem;
+  color: #F3D79B;
+  margin-top: 2px;
+}
+.nk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 18px;
+  align-items: stretch;
+}
+.nk-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(200, 164, 93, 0.28);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nk-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.nk-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #F3D79B;
+  text-transform: uppercase;
+}
+.nk-hint {
+  font-size: 0.72rem;
+  color: rgba(234, 232, 232, 0.65);
+}
+.nk-svg-stage {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(200, 164, 93, 0.25);
+  background: #10121A;
+}
+.nk-svg-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.nk-svg-stage .nk-guide {
+  transition: opacity 0.22s ease;
+}
+.nk-svg-stage[data-active-guide="midline"] .nk-guide:not(.nk-guide-midline),
+.nk-svg-stage[data-active-guide="zenith"] .nk-guide:not(.nk-guide-zenith),
+.nk-svg-stage[data-active-guide="ratio"] .nk-guide:not(.nk-guide-ratio),
+.nk-svg-stage[data-active-guide="incisal"] .nk-guide:not(.nk-guide-incisal) {
+  opacity: 0.14;
+}
+.nk-guide-pills,
+.nk-view-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.nk-view-tabs { margin-top: 0; }
+.nk-guide-btn,
+.nk-view-btn {
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(200, 164, 93, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(234, 232, 232, 0.88);
+  font-size: 0.73rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.nk-guide-btn.active,
+.nk-view-btn.active {
+  background: #C8A45D;
+  color: #14151D;
+  border-color: #FDE68A;
+  font-weight: 700;
+}
+.nk-ba-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 13px;
+  overflow: hidden;
+  border: 1.5px solid rgba(200, 164, 93, 0.45);
+  background: #0D0F16;
+  user-select: none;
+  touch-action: pan-y;
+}
+.nk-ba-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.nk-ba-before {
+  clip-path: inset(0 calc(100% - var(--nk-pos, 50%)) 0 0);
+}
+.nk-ba-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--nk-pos, 50%);
+  width: 2.5px;
+  background: #E5C158;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.65);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+.nk-ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #14151D;
+  border: 2px solid #E5C158;
+  color: #FDE68A;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+}
+.nk-ba-tag {
+  position: absolute;
+  z-index: 2;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  background: rgba(14, 16, 22, 0.86);
+  border: 1px solid rgba(200, 164, 93, 0.45);
+  color: #EAE8E8;
+  pointer-events: none;
+}
+.nk-ba-tag-left { top: 8px; left: 8px; }
+.nk-ba-tag-right { bottom: 8px; right: 8px; color: #F3D79B; }
+.nk-ba-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 4;
+  margin: 0;
+}
+.nk-slider-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: rgba(234, 232, 232, 0.8);
+  margin-top: 10px;
+}
+.nk-legal-note {
+  font-size: 0.70rem;
+  line-height: 1.45;
+  color: rgba(234, 232, 232, 0.58);
+  margin: 8px 0 0;
+}
+@media (max-width: 900px) {
+  .nirengi-kompozit-sahne { padding: 18px 14px; margin: 18px 0 22px; }
+  .nk-head { grid-template-columns: 1fr; gap: 12px; }
+  .nk-grid { grid-template-columns: 1fr; gap: 14px; }
+  .nk-doc-pill { width: 100%; justify-content: space-between; }
+}

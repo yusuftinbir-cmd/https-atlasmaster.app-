@@ -364,7 +364,6 @@
           { href: "blog.html", text: "📖 Blog & Hasta Rehberi" },
           { href: "ziyaretler-ve-galeri.html", text: "📸 Ziyaretler & Galeri" },
           { href: "dilek-oneri.html", text: "✉️ Dilek & Öneri Formu" },
-          { href: "gokhan-eksik-listesi.html", text: "📋 Kriter & Eksik Listesi" },
           { href: "index.html#iletisim", text: "✨ E-Randevu & İletişim" }
         ];
 

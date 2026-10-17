@@ -208,6 +208,7 @@
     bransSekmeleriIlklendir();
     yatayGalerileriIlklendir();
     dd2HudVeKodeksIlklendir();
+    nirengiVeTiklamalariIlklendir();
     tiklamaIzle();
     window.addEventListener('resize', function () {
       teknolojiIzgarasiIlklendir();
@@ -410,16 +411,156 @@
       }
       konuSec(0);
 
+      window.dd2KonuAcById = function (hedefId) {
+        var temizId = String(hedefId || '').replace(/^#/, '');
+        var bulunanIdx = -1;
+        konuBloklari.forEach(function (blk, i) {
+          if (blk.id === temizId) bulunanIdx = i;
+        });
+        if (bulunanIdx !== -1) {
+          konuSec(bulunanIdx);
+          return stageSlot || codexWrap;
+        }
+        return null;
+      };
+
       // URL hash ile doğrudan belirli bir #konu-... hedeflendiyse onu otomatik seç
       if (location.hash) {
-        var hedefId = location.hash.slice(1);
-        konuBloklari.forEach(function (blk, i) {
-          if (blk.id === hedefId) konuSec(i);
-        });
+        window.dd2KonuAcById(location.hash.slice(1));
       }
+
+      // Branş İmza Kartlarına (.brans-imza-kart) tıklanınca ilgili Kodeks başlığını aç ve sahneye kaydır
+      document.querySelectorAll('.brans-imza-kart').forEach(function (kart, kIdx) {
+        kart.addEventListener('click', function () {
+          var hedefKonu = kart.getAttribute('data-hedef-konu');
+          if (hedefKonu && window.dd2KonuAcById) {
+            window.dd2KonuAcById(hedefKonu);
+          } else {
+            var hedefIdx = Math.min(kIdx, konuBloklari.length - 1);
+            konuSec(hedefIdx);
+          }
+          var hedefEl = document.getElementById('dd2CodexStageSlot') || codexWrap;
+          if (hedefEl) {
+            hedefEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
     }
   }
 
+
+
+  // =========================================================================
+  // 3) DİJİTAL NİRENGİ & KOMPOZİT LAMİNE SLIDER ETKİLEŞİMİ + TÜM TIKLANABİLİR ÖĞELER
+  // =========================================================================
+  function nirengiVeTiklamalariIlklendir() {
+    // a) Dijital Nirengi & Kompozit Slider (#nirengi-kompozit-sahne)
+    document.querySelectorAll('.nirengi-kompozit-sahne').forEach(function (sahne) {
+      if (sahne.dataset.nkInit === '1') return;
+      sahne.dataset.nkInit = '1';
+
+      var svgStage = sahne.querySelector('.nk-svg-stage');
+      var guideBtns = sahne.querySelectorAll('.nk-guide-btn');
+      guideBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var g = btn.getAttribute('data-guide') || 'all';
+          guideBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          if (svgStage) svgStage.setAttribute('data-active-guide', g);
+        });
+      });
+
+      var viewport = sahne.querySelector('.nk-ba-viewport');
+      var range = sahne.querySelector('.nk-ba-range');
+      var imgBefore = sahne.querySelector('.nk-ba-before');
+      var imgAfter = sahne.querySelector('.nk-ba-after');
+      if (range && viewport) {
+        var guncelleSlider = function () {
+          viewport.style.setProperty('--nk-pos', range.value + '%');
+        };
+        range.addEventListener('input', guncelleSlider);
+        range.addEventListener('change', guncelleSlider);
+      }
+
+      var viewBtns = sahne.querySelectorAll('.nk-view-btn');
+      viewBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          viewBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+          var bSrc = btn.getAttribute('data-before');
+          var aSrc = btn.getAttribute('data-after');
+          if (imgBefore && bSrc) imgBefore.src = bSrc;
+          if (imgAfter && aSrc) imgAfter.src = aSrc;
+        });
+      });
+    });
+
+    // b) Kurumsal Organizasyon Şeması "Tümünü Aç" / "Tümünü Kapat" düğmeleri (.org-dugme)
+    document.querySelectorAll('.org-dugme').forEach(function (btn) {
+      if (btn.dataset.orgBound === '1') return;
+      btn.dataset.orgBound = '1';
+      btn.addEventListener('click', function () {
+        var txt = (btn.textContent || '').toLowerCase();
+        var ac = txt.indexOf('aç') !== -1 || txt.indexOf('ac') !== -1 || txt.indexOf('open') !== -1;
+        var kapsayici = btn.closest('#organizasyon-semasi, section, main') || document;
+        kapsayici.querySelectorAll('details').forEach(function (d) {
+          d.open = ac;
+        });
+      });
+    });
+
+    // c) Ana sayfa kubbe metrik halkaları (.av-metric-circle) tıklanınca ilgili bölüme geçsin
+    var kubbeHedefleri = [
+      'tedavi-radyoloji.html',
+      'tedavi-endodonti.html',
+      'tedavi-protetik.html',
+      'tedavi-sedasyon.html',
+      'serdivan.html',
+      '#ajan'
+    ];
+    document.querySelectorAll('.av-metric-circle').forEach(function (el, idx) {
+      if (el.dataset.bound === '1') return;
+      el.dataset.bound = '1';
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', function () {
+        var h = kubbeHedefleri[idx];
+        if (!h) return;
+        if (h === '#ajan') {
+          if (window.evdisAjanAc) window.evdisAjanAc();
+        } else {
+          window.location.href = h;
+        }
+      });
+    });
+
+    // d) Mobilde (<=768px) ana sayfa Teknoloji (.av-tech-row) ve Branş (.av-services-cat-btn) kartlarına dokunulunca
+    //    güncellenen görsel/başlık sahnesi ekran dışındaysa yumuşakça görünür alana kaydır
+    document.querySelectorAll('.av-tech-row').forEach(function (row) {
+      row.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        if (window.innerWidth <= 768) {
+          var vis = document.querySelector('.av-tech-visual-col') || document.getElementById('techCounter');
+          if (vis) {
+            var r = vis.getBoundingClientRect();
+            if (r.top < 50 || r.bottom > window.innerHeight) {
+              vis.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        }
+      });
+    });
+    document.querySelectorAll('.av-services-cat-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (window.innerWidth <= 768) {
+          var rightCol = document.querySelector('.av-services-right');
+          if (rightCol) {
+            var r = rightCol.getBoundingClientRect();
+            if (r.top > window.innerHeight * 0.78 || r.top < 40) {
+              rightCol.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        }
+      });
+    });
+  }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', baslat);
