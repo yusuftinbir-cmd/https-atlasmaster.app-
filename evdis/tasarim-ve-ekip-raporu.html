@@ -18,6 +18,7 @@
       --green: #10b981;
       --amber: #f59e0b;
       --blue: #38bdf8;
+      --red: #f43f5e;
     }
     body {
       background: var(--bg-dark);
@@ -28,7 +29,7 @@
       padding: 0;
     }
     .rapor-kapsayici {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 84px 20px 72px;
     }
@@ -53,7 +54,7 @@
     .alt-aciklama {
       color: var(--text-muted);
       font-size: 1.05rem;
-      max-width: 850px;
+      max-width: 880px;
       margin-bottom: 32px;
     }
     .bolum-karti {
@@ -107,6 +108,8 @@
     .rozet-yapildi { background: rgba(16, 185, 129, 0.18); color: #34d399; }
     .rozet-elendi { background: rgba(245, 158, 11, 0.18); color: #fbbf24; }
     .rozet-istek { background: rgba(56, 189, 248, 0.18); color: #7dd3fc; }
+    .rozet-uyari { background: rgba(244, 63, 94, 0.18); color: #fda4af; }
+    .rozet-vezir { background: rgba(212, 175, 55, 0.22); color: #f3e5ab; }
     .istek-tablo {
       width: 100%;
       border-collapse: collapse;
@@ -148,6 +151,15 @@
       border-color: var(--gold);
       color: var(--gold-soft);
     }
+    .kivilcim-serit {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(56, 189, 248, 0.06));
+      border-left: 4px solid var(--gold);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 18px;
+      color: #e2e8f0;
+      font-size: 0.96rem;
+    }
     @media (max-width: 768px) {
       .rapor-kapsayici { padding: 74px 14px 56px; }
       .bolum-karti { padding: 18px 16px; }
@@ -171,10 +183,10 @@
     <div class="nav-bar-ust">
       <a href="index.html" class="nav-btn">← Ana Sayfaya Dön</a>
       <a href="gokhan-eksik-listesi.html" class="nav-btn nav-btn-altin">📋 Gökhan Bey &amp; Ekip Görev Listesi</a>
-      <a href="kalite-yonetimi.html" class="nav-btn">🛡️ SKS-ADSH v4 &amp; Organizasyon Şeması</a>
+      <a href="kalite-yonetim.html" class="nav-btn">🛡️ SKS-ADSH v4 &amp; Organizasyon Şeması</a>
     </div>
 
-    <span class="ust-etiket">EVDİŞ YÖNETİM, HEKİM VE EKİP ÖZET RAPORU · 17 EKİM 2026</span>
+    <span class="ust-etiket">EVDİŞ YÖNETİM, HEKİM VE EKİP ÖZET RAPORU · DÖRT SESLİ KIVILCIM &amp; HAKEM MÜHÜRLÜ · 17 EKİM 2026</span>
     <h1>Neyi Neden Yaptık · Neyi Neden Yapmadık · Ne Yapmalıyız?</h1>
     <p class="alt-aciklama">
       Bu rapor; Evdiş Ağız ve Diş Sağlığı Merkezi'nin 49 sayfalık yeni dijital vitrininde alınan tasarım, tıbbi doğruluk, personel mutabakatı ve kalite (SKS) kararlarını teknik terimlere boğmadan, tüm hekim ve idari ekibimizin tek bakışta anlayacağı netlikte özetler.
@@ -187,7 +199,7 @@
         <div class="madde-kutu">
           <span class="rozet rozet-yapildi">UYGULANDI</span>
           <h3>Sinematik Koyu Taş &amp; Mimari Vitrin</h3>
-          <p>Klasik beyaz-mavi hastane şablonları yerine; Evdiş'in 2.000 m² Serdivan + Adapazarı ölçeğini, Zumax 25× mikroskop ve dijital CAD/CAM altyapısını ilk 3 saniyede hissettiren prestijli bir mimari görünüm kurduk.</p>
+          <p>Klasik beyaz-mavi hastane şablonları yerine; Evdiş'in <strong>13 üniteli Serdivan Ana Merkezi (Ameliyathane / Genel Anestezi)</strong> ve <strong>2 üniteli Adapazarı Şubesi</strong> ölçeğini, Zumax 25× mikroskop ve Dentsply Sirona CAD/CAM altyapısını ilk 3 saniyede hissettiren prestijli bir mimari görünüm kurduk.</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-yapildi">TIBBİ DOĞRULUK</span>
@@ -197,22 +209,22 @@
         <div class="madde-kutu">
           <span class="rozet rozet-yapildi">TRtek + LOGO MUTABAKATI</span>
           <h3>Ayrılan Çalışanların ve Eski Görsellerin Temizliği</h3>
-          <p>Kurumdan ayrılmış personelin göründüğü kareleri, eski sosyal medya slaytlarını ve üst üste binen küçük yan resimleri 49 sayfanın tamamından temizledik. Videoları yalnızca klinik mimari ve cihazlar görünecek şekilde yeniden kestik.</p>
+          <p>Kurumdan ayrılmış personelin göründüğü kareleri, eski sosyal medya slaytlarını (`DCyqYGNM60t`) ve üst üste binen küçük yan resimleri (`srvSubImg`) 49 sayfanın tamamından sıfır kalıntıyla temizledik. Videoları yalnızca klinik mimari ve cihazlar görünecek şekilde yeniden kestik.</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-yapildi">SKS-ADSH v4 HAZIR</span>
           <h3>Gökhan Bey'i Beklemeden SKS ve Şema Entegrasyonu</h3>
-          <p>İdari ekibe ek yük çıkarmadan, yerel sunucudaki resmi TRtek SKS-ADSH v4 belgelerini (5 komite, 14 klasör, 43 gösterge) ve Eylül 2026 Kurumsal Organizasyon Şemasını doğrudan siteye işledik.</p>
+          <p>İdari ekibe ek yük çıkarmadan, yerel sunucudaki kurumsal SKS-ADSH v4 yapısını (<strong>5 komite ve 43 gösterge</strong>) ve <strong>Eylül 2026 Kurumsal Organizasyon Şemasını</strong> doğrudan siteye ve kalite yönetimi sayfasına işledik.</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-yapildi">MOBİL &amp; iPHONE UYUMU</span>
           <h3>Telefon Ekranları ve iPhone Video Akışı</h3>
-          <p>Hastaların %80'inden fazlası telefondan girdiği için iPhone Safari video akışını (HTTP 206 Range), mobil kart dizilimini ve sağ alt asistan butonunun hizasını sıfır çakışma olacak şekilde ayarladık.</p>
+          <p>Hastaların büyük çoğunluğu siteye cep telefonundan girdiği için iPhone Safari video akışını (<code>HTTP 206 Partial Content</code> Range desteği), üst bar (`#avHeader`) hizasını ve sağ alt asistan butonunun (`FAB`) konumunu sıfır çakışma olacak şekilde ayarladık.</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-yapildi">230 EKRAN DENETİMİ</span>
           <h3>Unvan, Kart ve KVKK Standartlaştırması</h3>
-          <p>49 sayfanın tamamı masaüstü ve mobilde taranarak hekim unvanları (Prof. Dr. Fuat Ahmetoğlu, Dr. Dt. Neslihan Güntekin), Özgüllü kurumsal anlaşma kartı ve Adapazarı cihaz kutusu eksiksiz düzeltildi.</p>
+          <p>49 sayfanın tamamı masaüstü ve mobilde 230 ekran görüntüsüyle taranarak hekim unvanları (Prof. Dr. Fuat Ahmetoğlu, Dr. Dt. Neslihan Güntekin, Gökhan Bey), Özgüllü kurumsal anlaşma kartı ve Adapazarı cihaz kutusu eksiksiz düzeltildi.</p>
         </div>
       </div>
     </section>
@@ -224,71 +236,97 @@
         <div class="madde-kutu">
           <span class="rozet rozet-elendi">BİLEREK ELENDİ</span>
           <h3>Organizasyon Şemasına Kişi İsimleri Yazmadık</h3>
-          <p>Sağlık Bakanlığı SKS standardı şemada "kişi adı" değil <strong>"kurumsal görev ve birim unvanı"</strong> ister. Böylece personel değiştiğinde şema eskimez ve KVKK açısından çalışan isimleri açık hedef olmaz.</p>
+          <p><strong>6698 sayılı KVKK veri minimizasyonu ilkesi (md. 4)</strong> ve kurumsal tercihimiz gereği, alt birim şemasında kişi adı yerine <strong>"kurumsal görev ve birim unvanı"</strong> kullanıldı. Böylece personel sirkülasyonunda şema eskimez ve çalışan isimleri açık hedef olmaz.</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-elendi">BİLEREK ELENDİ</span>
           <h3>Sahte / Yabancı Stok Doktor ve Hasta Fotoğrafı Koymadık</h3>
-          <p>Hastalar klinikte karşılaşacağı gerçek hekimi ve gerçek ortamı arar. Her sitede görülen yapay stok gülüş fotoğrafları Evdiş'in gerçekliğini ve güvenini zedeleyeceği için kullanılmadı.</p>
+          <p>Hastalar klinikte karşılaşacağı gerçek hekimi ve gerçek ortamı arar. Her sitede görülen yapay stok gülüş fotoğrafları Evdiş'in gerçekliğini ve güvenini zedeleyeceği için kullanılmadı (sitede stok doktor/hasta görseli = 0).</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-elendi">BİLEREK ELENDİ</span>
           <h3>Abartılı Kampanya / Fiyat / Öncesi-Sonrası Koymadık</h3>
-          <p>Sağlık Bakanlığı Tanıtım ve Bilgilendirme Yönetmeliği'ne tam uyum sağlamak ve Evdiş'in akademik/kurumsal ağırlığını korumak için yalnızca bilimsel tanı ve tedavi bilgilendirmesi yapıldı.</p>
+          <p><strong>Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik (RG: 29.07.2023 / 32263)</strong> hükümlerine tam uyum sağlamak ve Evdiş'in akademik ağırlığını korumak için yalnızca bilimsel tanı ve tedavi bilgilendirmesi yapıldı.</p>
         </div>
         <div class="madde-kutu">
           <span class="rozet rozet-elendi">VERİMLİLİK KARARI</span>
           <h3>230 Ekran Görüntüsünü Tüm Modellere Tekrar Okutmadık</h3>
-          <p>Görsel denetimi tek bir uzman denetçi (Anu) piksel piksel tamamladı; aynı 230 ekran görüntüsünü diğer tüm modellere tekrar okutup kota yakmak yerine ekip modelleri stratejik sentez ve yol haritasında kullanıldı.</p>
+          <p>Görsel denetimi Vezir Anu 230 ekran görüntüsüyle piksel piksel tamamladı; aynı görselleri diğer tüm modellere tekrar okutup kota yakmak yerine 4 farklı akıl (<strong>Argon · Opus 5.5 · Flash 3.8 · Vezir Anu Fable 5.1</strong>) stratejik Kıvılcım sentezinde kullanıldı.</p>
         </div>
       </div>
     </section>
 
-    <!-- BÖLÜM 3 -->
+    <!-- BÖLÜM 3: KIVILCIM SENTEZİ -->
     <section class="bolum-karti">
-      <h2 class="bolum-baslik">3. Ne Yapmalıyız? (Kıvılcım Sentezi ve Ekip İstek Listesi)</h2>
+      <h2 class="bolum-baslik">3. Dört Sesli Kıvılcım Sentezi: "Gösteriş ile Güven" Dengesi ve 3 Kritik Bulgu</h2>
+      <div class="kivilcim-serit">
+        <strong>Kuramsal Çekirdek (Güven Malı &amp; Maliyetli Sinyal — Darby &amp; Karni 1973; Spence 1973):</strong>
+        Diş tedavisi hastanın koltuktan kalktıktan sonra bile kalitesini kendi gözüyle denetleyemediği bir <em>güven malıdır</em>. Stok gülüş fotoğrafları ve "VIP" sloganları her muayenehanenin 1 günde kopyalayabileceği <strong>ucuz sinyaldir (cheap talk)</strong>. Evdiş'e güven kazandıran <strong>pahalı (taklit edilemez) sinyal</strong> ise; 13+2 üniteli gerçek ölçeği, genel anestezi ameliyathanesi, Zumax 25× mikroskobu, 20 aktif hekimi, 5 SKS komitesi / 43 göstergesi ve açılış videosundaki dolguyu pazarlama uğruna "CEREC Onlay" diye parlatmak yerine <strong>rubber-dam izolasyonlu kompozit dolgu</strong> olarak dürüstçe yazmasıdır.
+      </div>
+      <div class="madde-izgara">
+        <div class="madde-kutu">
+          <span class="rozet rozet-uyari">BULGU 1 · PERFORMANS</span>
+          <h3>29,2 MB İlk Yük → ≤ 4–6 MB Hız Diyeti Şart</h3>
+          <p>"Yapay zekâ ve dijital diş hekimliği" diyen bir sitenin açılış yükü eski canlı siteden (11,7 MB) 2,5 kat ağır (29,2 MB) olamaz. Sahnedeki yeni videolar eklenmeden önce poster + kademeli yükleme (lazy load) ile ilk yük ≤ 4–6 MB'a indirilmelidir.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-uyari">BULGU 2 · MOBİL DENEYİM</span>
+          <h3>Mobilde 31,2 Ekran Boyu → ≤ 12 Ekran Sekmeli Mimari</h3>
+          <p>20 hekimi ve 8 branşı mobilde 31,2 ekran boyu alt alta dizmek ziyaretçide <em>seçim felci</em> yaratır. Branşlar açılır sekmeli (progressive disclosure) yapıda toplanarak mobil boy ≤ 12 ekrana indirilmelidir.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-uyari">BULGU 3 · İNSAN UNSURU</span>
+          <h3>İnsansız Kalan Sahneye Aktif Hekim Eli ve Gözü</h3>
+          <p>Ayrılan personeli kırparken açılışta aktif hekimin göründüğü tek bir güncel klinik videosu kalmadı. Cihaz yalnız <em>kapasite</em> sinyalidir; <em>şefkat ve güven</em> sinyali ise mikroskobun başındaki gerçek hekimdir.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BÖLÜM 4: EKİP İSTEK LİSTESİ -->
+    <section class="bolum-karti">
+      <h2 class="bolum-baslik">4. Ne Yapmalıyız? (Kıvılcım Öncelik Sırasıyla Ekip İstek Listesi)</h2>
       <p style="color: var(--text-muted); margin-top: 0; margin-bottom: 14px;">
-        Sitenin görsel ve klinik gücünü %100'e taşımak için yönetim, hekimlerimiz ve idari ekibimizden beklenen somut adımlar:
+        Dört sesli Kıvılcım sentezinin belirlediği <strong>"Önce Ölçüm ve Hız → Sonra Veri Doğruluğu ve Modüler Klinik Çekim → En Son Paketleme"</strong> sırasıyla somut eylem planımız:
       </p>
       <table class="istek-tablo">
         <thead>
           <tr>
-            <th style="width: 16%;">Öncelik</th>
-            <th style="width: 26%;">Ekip İsteği</th>
-            <th style="width: 20%;">İlgili Ekip</th>
-            <th>Neden Gerekli ve Nasıl Yapılacak?</th>
+            <th style="width: 17%;">Aşama &amp; Öncelik</th>
+            <th style="width: 26%;">Ekip İsteği / İş Kalemi</th>
+            <th style="width: 19%;">Sorumlu Ekip</th>
+            <th>Neden Bu Sırada &amp; Nasıl Yapılacak?</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><span class="rozet rozet-istek">İSTEK 1 · ACİL</span></td>
-            <td><strong>Güncel Hekim Kadrosu ile 15 Saniyelik Klinik Videolar</strong></td>
-            <td>Gökhan Bey &amp; Aktif Hekimlerimiz</td>
-            <td>Ayrılan personelin çıkarıldığı videoların yerine; <strong>Prof. Dr. Fuat Ahmetoğlu, Dr. Emrah Bey, Dr. Dt. Neslihan Güntekin</strong> ve aktif hekimlerimizin Serdivan ve Adapazarı'nda ünit/mikroskop başında 15'er saniyelik doğal videolarının çekilmesi.</td>
+            <td><span class="rozet rozet-uyari">AŞAMA 0 · ÖN KOŞUL (1 HAFTA)</span></td>
+            <td><strong>Hız Diyeti (29,2 MB → ≤ 6 MB), Açılır Sekmeli Mobil Mimari (≤ 12 Ekran) ve Çerezsiz Sayaç</strong></td>
+            <td>Teknik Ekip (Atlas &amp; Opus/Damu)</td>
+            <td>Yeni video eklemeden önce mevcut 3B sahnede yalnız seçili video (≤ 800 KB) oynayacak, diğerleri poster kalacak; mobilde 8 branş açılır sekmeli yapıya alınacak ve KVKK uyumlu (kişisel veri tutmayan) randevu/rehber tıklama sayacı açılacak.</td>
           </tr>
           <tr>
-            <td><span class="rozet rozet-istek">İSTEK 2 · 2 HAFTA</span></td>
-            <td><strong>Branş Bazlı Gerçek Vaka Videoları (Tıbbi Doğruluklu)</strong></td>
-            <td>Uzman Hekimler &amp; Medya Ekibi</td>
-            <td>1. videodaki kompozit dolgu örneği gibi; <strong>(a) Zumax 25× Mikroskobik Kanal Tedavisi</strong>, <strong>(b) Gerçek CEREC / Dijital Ölçü ve Onlay</strong>, <strong>(c) İmplant &amp; Cerrahi</strong> işlemlerini ağız içi / model üzerinde gösteren 3 gerçek vaka videosu çekilmesi.</td>
+            <td><span class="rozet rozet-istek">AŞAMA 1 · İSTEK 1 (1–2 HAFTA)</span></td>
+            <td><strong>İK (LOGO) ↔ Kalite/HBYS Tek Doğru Kaynak &amp; Onay Kapılı Şube/Nöbet Takvimi</strong></td>
+            <td>İdari Ekip (Gökhan Bey) + Teknik Ekip</td>
+            <td>15 Eylül'de donmuş kadro listesi ve iki sistemdeki şube çelişkisi giderilecek. Yanlış şubeye randevu riskini sıfırlamak için <strong>13 Ünit (Serdivan Ameliyathane/Genel Anestezi) ↔ 2 Ünit (Adapazarı)</strong> donanım matrisi ve gece fark raporu (diff) üreten onay kapılı hekim çalışma takvimi kurulacak.</td>
           </tr>
           <tr>
-            <td><span class="rozet rozet-istek">İSTEK 3 · 2 HAFTA</span></td>
-            <td><strong>16 Aktif Hekimin Portre Fotoğraf Tamamlaması</strong></td>
+            <td><span class="rozet rozet-istek">AŞAMA 1 · İSTEK 2 (2 HAFTA)</span></td>
+            <td><strong>Bütünleşik "Mikro-Belgesel" Klinik Çekim Günü (Aktif Hekim + Ağız İçi/Mikroskop Vaka)</strong></td>
+            <td>Gökhan Bey, Dr. Emrah &amp; Aktif Hekimlerimiz</td>
+            <td>Koridorda poz vermek yerine; aktif hekimlerimiz <strong>Zumax 25× mikroskop okülerinde, rubber-dam başında ve ameliyathanede çalışırken</strong> modüler (<code>3–4 sn</code> atomik planlar — bir hekim ayrılırsa yalnız o 3 sn'lik klip değişir) sessiz döngü videoları + mikroskop optik kamerasından / model üzerinden gerçek branş vaka anlatımları çekilecek.</td>
+          </tr>
+          <tr>
+            <td><span class="rozet rozet-istek">AŞAMA 1 · İSTEK 3 (2 HAFTA)</span></td>
+            <td><strong>Aktif Hekim Portre Tamamlaması &amp; "Yüz Envanteri" Protokolü</strong></td>
             <td>İdari Koordinasyon (Gökhan Bey)</td>
-            <td>Hekimlerimiz sayfasında fotoğraflı 8 hekimimize ek olarak, alt listedeki 8 aktif hekimimizin de aynı ışık ve kurumsal önlük standardıyla portre fotoğraflarının çekilmesi.</td>
+            <td>Hekimlerimiz sayfasında eksik kalan aktif hekim portreleri tek ışık ve kurumsal önlük standardıyla tamamlanacak; hangi videoda/görselde kimin göründüğünü kayıt altına alan <strong>Yüz Envanteri (ayrılıkta 72 saatte güncelleme kuralı)</strong> tutulacak.</td>
           </tr>
           <tr>
-            <td><span class="rozet rozet-istek">İSTEK 4 · 1 AY</span></td>
-            <td><strong>Canlı TRtek Hekim Şube &amp; Nöbet Takvimi</strong></td>
-            <td>Teknik Ekip (Atlas &amp; Anu)</td>
-            <td>Hekimlerimizin hangi gün Serdivan veya Adapazarı şubesinde olduğunun ve gece nöbetçi hekim bilgisinin TRtek'ten otomatik senkronize edilmesi.</td>
-          </tr>
-          <tr>
-            <td><span class="rozet rozet-istek">İSTEK 5 · STRATEJİK</span></td>
-            <td><strong>Evdiş Dijital Standart Paketinin B2B Referans Olması</strong></td>
-            <td>Yönetim Kurulu (Yusuf &amp; Dr. Emrah)</td>
-            <td>Kurulan bu <em>"Tıbbi Doğruluk + SKS-ADSH v4 + KVKK + Mobil Sinematik Vitrin + Dijital Asistan"</em> altyapısının Türkiye'deki diğer büyük diş merkezlerine örnek/referans paket olarak sunulması.</td>
+            <td><span class="rozet rozet-vezir">AŞAMA 2 · KIRMIZI ÇİZGİ &amp; VEZİR ŞERHİ</span></td>
+            <td><strong>Başka Kliniklere Paketleme Sınırı &amp; Dijital Rehber Etik Kilidi</strong></td>
+            <td>Yönetim Kurulu (Yusuf &amp; Dr. Emrah) + Vezir Anu</td>
+            <td><strong>1)</strong> Kendi vitrin hızımız ve İK/HBYS otomasyonumuz 6 ay sahada kanıtlanmadan <em>ön yüz tasarımını</em> başka kliniklere vermek Evdiş'in ayrıştırıcı üstünlüğünü sıradanlaştırır (yalnız arka plandaki <em>SKS/KVKK Otomatik Denetim Motoru</em> ayrılabilir).<br><strong>2) Vezir Anu Şerhi:</strong> Dış ticari hizmetlerde 4 vaadi birden vitrine koymak yerine önce KVKK/kalite kapısı kapatılıp <strong>tek bir gerçek vaka uçtan uca parayla teslim edilmelidir</strong>.<br><strong>3) Etik Kilit:</strong> Dijital Hasta Rehberine asla <em>tanı koyma</em> veya <em>spesifik hekim önerme</em> yetkisi verilmez (<code>1219 sayılı Kanun</code> + <code>RG 29.07.2023/32263</code>).</td>
           </tr>
         </tbody>
       </table>
