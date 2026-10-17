@@ -3639,3 +3639,264 @@ header.ust .mobil-menu-tetik {
   border: 1px solid rgba(234, 232, 232, 0.2) !important;
   border-radius: 100px !important;
 }
+
+/* ==========================================================================
+   v41 · HER BRANŞA ÖZEL CAFCAFLI VİTRİN SAHNESİ (.brans-ozel-sahne) & KATLANIR ŞEMA
+   Her uzmanlık alanı kendi atmosferik renk imzası, teknoloji Bento vitrini,
+   3 adımlı klinik akışı ve en üstte uzman hekim kadrosuyla açılır.
+   ========================================================================== */
+.brans-ozel-sahne {
+  position: relative;
+  border-radius: 26px;
+  padding: clamp(22px, 4vw, 40px);
+  margin: 14px 0 28px;
+  color: #EAE8E8;
+  background:
+    radial-gradient(680px 380px at 88% 12%, var(--brans-isik, rgba(200, 164, 93, 0.24)), transparent 62%),
+    radial-gradient(540px 340px at 10% 88%, var(--brans-ikinci, rgba(56, 189, 248, 0.14)), transparent 60%),
+    linear-gradient(155deg, #11131B 0%, #191C28 52%, #12141D 100%);
+  border: 1px solid var(--brans-kenar, rgba(200, 164, 93, 0.42));
+  box-shadow: 0 28px 68px -22px rgba(10, 12, 18, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  overflow: hidden;
+}
+.brans-ozel-ust {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.brans-ozel-rozet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--brans-kenar, rgba(200, 164, 93, 0.5));
+  color: var(--brans-vurgu, #E5C158);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.brans-ozel-baslik {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: clamp(2rem, 4.2vw, 3.3rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.04 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 12px 0 !important;
+}
+.brans-ozel-spot {
+  font-size: 0.96rem;
+  line-height: 1.62;
+  color: rgba(234, 232, 232, 0.84);
+  margin: 0 0 18px 0;
+}
+.brans-ozel-gorsel {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--brans-kenar, rgba(200, 164, 93, 0.38));
+  aspect-ratio: 16 / 10;
+  background: #0D0E14;
+  box-shadow: 0 20px 44px -16px rgba(0, 0, 0, 0.65);
+}
+.brans-ozel-gorsel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.brans-ozel-gorsel-etiket {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(13, 14, 20, 0.84);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.75rem;
+  color: #EAE8E8;
+}
+.brans-bento-izgara {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(234, 232, 232, 0.12);
+}
+.brans-bento-kart {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(234, 232, 232, 0.12);
+  border-radius: 16px;
+  padding: 14px 15px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.brans-bento-kart:hover {
+  transform: translateY(-4px);
+  border-color: var(--brans-vurgu, #E5C158);
+  background: rgba(255, 255, 255, 0.08);
+}
+.brans-bento-no {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brans-vurgu, #E5C158);
+  margin-bottom: 6px;
+}
+.brans-bento-kart h3 {
+  font-family: "Cormorant Garamond", Georgia, serif !important;
+  font-size: 1.22rem !important;
+  font-weight: 500 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 6px 0 !important;
+  line-height: 1.18 !important;
+}
+.brans-bento-kart p {
+  font-size: 0.80rem;
+  line-height: 1.48;
+  color: rgba(234, 232, 232, 0.74);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .brans-ozel-ust {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .brans-bento-izgara {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+/* v42: Kesin Başlık Kontrast Kalkanı (Açık zeminde koyu, Obsidyen sahnede açık/altın) */
+main .kahraman-baslik {
+  color: #14151D !important;
+}
+.kahraman .kahraman-baslik {
+  color: #EAE8E8 !important;
+}
+.brans-ozel-sahne h1,
+.brans-ozel-sahne h2,
+.brans-ozel-sahne h3,
+.brans-ozel-sahne .brans-ozel-baslik {
+  color: #FFFFFF !important;
+}
+.brans-ozel-sahne .brans-ozel-ozet {
+  color: rgba(234, 232, 232, 0.88) !important;
+}
+.brans-imza-kart strong {
+  color: #FFFFFF !important;
+}
+.brans-imza-kart p {
+  color: rgba(234, 232, 232, 0.82) !important;
+}
+
+.brans-ozel-izgara {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 24px;
+  align-items: start;
+}
+.brans-imza-kutu {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.brans-imza-kart {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(200, 164, 93, 0.36);
+  box-shadow: inset 0 0 0 1px rgba(200, 164, 93, 0.12);
+  border-radius: 14px;
+  padding: 13px 14px;
+  transition: transform 0.22s ease, border-color 0.22s ease;
+}
+.brans-imza-kart:hover {
+  transform: translateY(-2px);
+  border-color: var(--brans-vurgu, #E5C158);
+}
+.brans-imza-kart .imza-ust {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brans-vurgu, #E5C158);
+  margin-bottom: 4px;
+}
+.brans-imza-kart strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #FFFFFF !important;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.brans-imza-kart p {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(234, 232, 232, 0.82) !important;
+  margin: 0;
+}
+.brans-gorsel-vitrin {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid rgba(200, 164, 93, 0.45);
+  background: rgba(15, 16, 22, 0.9);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.brans-gorsel-vitrin img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+.brans-gorsel-alt {
+  padding: 12px 14px;
+  font-size: 0.76rem;
+  color: rgba(234, 232, 232, 0.86);
+  border-top: 1px solid rgba(200, 164, 93, 0.25);
+}
+@media (max-width: 900px) {
+  .brans-ozel-izgara {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .brans-imza-kutu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+/* v43: Yüksek Özgüllüklü Başlık Kontrast Kalkanı */
+body main.bolum#icerik > .kapsayici > .kahraman-baslik,
+body main.bolum#icerik > .kapsayici > .bolum-ust .kahraman-baslik {
+  color: #14151D !important;
+}
+body main.bolum#icerik > .kapsayici > .kahraman-baslik span {
+  color: #9A7432 !important;
+}
+body main.bolum#icerik > .kapsayici > .kahraman-aciklama,
+body main.bolum#icerik > .kapsayici > .bolum-ust .bolum-aciklama {
+  color: #2B303C !important;
+}
+body main.bolum .brans-ozel-sahne h1,
+body main.bolum .brans-ozel-sahne h2,
+body main.bolum .brans-ozel-sahne h3,
+body main.bolum .brans-ozel-sahne .brans-ozel-baslik {
+  color: #FFFFFF !important;
+}
+body main.bolum .dd2-codex-wrap h3,
+body main.bolum .dd2-codex-wrap .dd2-konu-secili h3 {
+  color: #E5C158 !important;
+}
+

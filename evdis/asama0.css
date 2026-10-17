@@ -1,14 +1,88 @@
 /* Evdiş Aşama 0+2 Mobil UX & Performans Katmanı (Atlas + Vezir Anu Ortak Mühür — 17 Eki 2026) */
 .a0-mobil { display: none; }
 
+/* Ana Sayfa Katlanır Yönetim & Organizasyon Şeması (Sayfa Altında, Varsayılan Kapalı) */
+.avo-master-details {
+  max-width: 1440px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid rgba(20, 21, 29, 0.16);
+  background: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.avo-master-details[open] {
+  border-color: rgba(179, 140, 97, 0.55);
+  box-shadow: 0 20px 50px -20px rgba(20, 21, 29, 0.18);
+  background: rgba(255, 255, 255, 0.82);
+}
+.avo-master-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #14151D;
+  color: #EAE8E8;
+  user-select: none;
+}
+.avo-master-summary::-webkit-details-marker { display: none; }
+.avo-master-summary-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.avo-master-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #C8A45D;
+  font-weight: 600;
+}
+.avo-master-title {
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 1.15;
+}
+.avo-master-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(200, 164, 93, 0.55);
+  background: rgba(200, 164, 93, 0.14);
+  color: #E5C158;
+  font-size: 0.76rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+.avo-master-details[open] .avo-master-btn {
+  background: #C8A45D;
+  color: #14151D;
+}
+.avo-master-body {
+  padding: 28px 24px 32px;
+}
+
 @media (max-width: 768px) {
   .a0-masaustu { display: none !important; }
   .a0-mobil { display: block !important; }
 
-  /* ==========================================================================
-     A) SONUÇ ODAKLI TEKNOLOJİ (.av-tech-rows) -> 3x2 KOMPAKT BENTO ÇİP IZGARASI
-     6 teknolojinin 6'sı da tek bakışta %100 görünür (0 gizli sekme, kaydırma yok)
-     ========================================================================== */
+  .avo-master-summary {
+    padding: 16px 18px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .avo-master-body {
+    padding: 18px 14px 22px;
+  }
+
   body .av-stage-pills {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -18,6 +92,11 @@
     padding: 6px !important;
     border-radius: 16px !important;
   }
+
+  /* ==========================================================================
+     A) SONUÇ ODAKLI TEKNOLOJİ (.av-tech-rows) -> 3x2 KOMPAKT BENTO ÇİP IZGARASI
+     6 teknolojinin 6'sı da tek bakışta %100 görünür (0 gizli sekme, kaydırma yok)
+     ========================================================================== */
   body .av-tech-rows {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -36,11 +115,11 @@
     gap: 6px !important;
     min-width: 0 !important;
     max-width: none !important;
-    min-height: 62px !important;
+    min-height: 64px !important;
     padding: 10px 11px !important;
     border: 1px solid rgba(20, 21, 29, 0.14) !important;
     border-radius: 12px !important;
-    background: rgba(255, 255, 255, 0.78) !important;
+    background: rgba(255, 255, 255, 0.84) !important;
     box-shadow: 0 2px 6px rgba(20, 21, 29, 0.04) !important;
     position: relative !important;
   }
@@ -59,7 +138,7 @@
   body .av-tech-row.active {
     background: #14151D !important;
     border-color: #C8A45D !important;
-    box-shadow: 0 6px 16px rgba(20, 21, 29, 0.16), 0 0 0 1px #C8A45D !important;
+    box-shadow: 0 6px 16px rgba(20, 21, 29, 0.18), 0 0 0 1px #C8A45D !important;
   }
   body .av-tech-row.active::before {
     color: #14151D;
@@ -81,22 +160,21 @@
     color: #FFFFFF !important;
   }
   body .av-tech-row-action {
-    display: none !important;
-  }
-  body .av-tech-row.active .av-tech-row-action {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 4px !important;
-    font-size: 0.68rem !important;
+    gap: 3px !important;
+    font-size: 0.66rem !important;
     font-weight: 600 !important;
-    color: #E5C158 !important;
+    color: #9A744C !important;
     text-decoration: none !important;
     margin-top: 2px !important;
+  }
+  body .av-tech-row.active .av-tech-row-action {
+    color: #E5C158 !important;
   }
 
   /* ==========================================================================
      B1) BRANŞ SEKMELERİ (.av-services-cat-nav -> 3x3 Izgara, .sekme-cubugu -> 2 Sütun)
-     Kaydırma yerine tüm branş seçenekleri tek bakışta görünür
      ========================================================================== */
   body .av-services-cat-nav {
     display: grid !important;
@@ -163,13 +241,30 @@
   }
 
   /* ==========================================================================
-     B2) YATAY KART GALERİLERİ (.av-experts-cols, .av-ig-life-grid, .konfor-izgara, .hekim-izgara)
-     3 Katmanlı Kaydırma İpucu: Yarım kart taşma (peek) + ‹ 1/N › Ok Şeridi + Altın İlerleme Çubuğu
+     HEKİM RESİMLERİ (.av-experts-cols ve .hekim-izgara) — SAĞA KAYDIRMA YOK!
+     Mobilde temiz 2 sütunlu dikey ızgara (tüm hekimler doğrudan görünür)
+     ========================================================================== */
+  body .av-experts-cols,
+  body .hekim-izgara {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px 12px !important;
+    overflow: visible !important;
+    padding: 8px 0 !important;
+  }
+  body .av-experts-col,
+  body .hekim-izgara > .hekim-kart {
+    flex: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  /* ==========================================================================
+     B2) YATAY MEDYA / REELS GALERİLERİ (.av-ig-life-grid, .konfor-izgara)
      ========================================================================== */
   body .konfor-izgara,
   body .teknoloji-atelier-bento,
-  body .hekim-izgara,
-  body .av-experts-cols,
   body .av-ig-life-grid {
     display: flex !important;
     flex-direction: row !important;
@@ -183,45 +278,14 @@
     scrollbar-width: thin !important;
     scrollbar-color: #C8A45D rgba(200, 164, 93, 0.16) !important;
   }
-  body .konfor-izgara::-webkit-scrollbar,
-  body .teknoloji-atelier-bento::-webkit-scrollbar,
-  body .hekim-izgara::-webkit-scrollbar,
-  body .av-experts-cols::-webkit-scrollbar,
-  body .av-ig-life-grid::-webkit-scrollbar {
-    display: block !important;
-    height: 4px !important;
-  }
-  body .konfor-izgara::-webkit-scrollbar-track,
-  body .hekim-izgara::-webkit-scrollbar-track,
-  body .av-experts-cols::-webkit-scrollbar-track,
-  body .av-ig-life-grid::-webkit-scrollbar-track {
-    background: rgba(200, 164, 93, 0.15) !important;
-    border-radius: 999px !important;
-  }
-  body .konfor-izgara::-webkit-scrollbar-thumb,
-  body .hekim-izgara::-webkit-scrollbar-thumb,
-  body .av-experts-cols::-webkit-scrollbar-thumb,
-  body .av-ig-life-grid::-webkit-scrollbar-thumb {
-    background: #C8A45D !important;
-    border-radius: 999px !important;
-  }
-
-  /* Sağ kenarda yarım kart kasıtlı taşsın (78vw) */
   body .konfor-izgara > *,
   body .teknoloji-atelier-bento > .tek-kutu,
-  body .hekim-izgara > .hekim-kart {
+  body .av-ig-card {
     flex: 0 0 78vw !important;
     max-width: 280px !important;
     scroll-snap-align: start;
   }
-  body .av-experts-col,
-  body .av-ig-card {
-    flex: 0 0 78vw !important;
-    max-width: 285px !important;
-    scroll-snap-align: start;
-  }
 
-  /* Galeri Üst Ok & Sayaç Şeridi + Alt Altın İlerleme Çubuğu */
   .a0-galeri-ust-bar {
     display: flex;
     align-items: center;
@@ -237,42 +301,20 @@
     font-size: 0.72rem;
     font-weight: 600;
   }
-  .a0-galeri-sayac {
-    letter-spacing: 0.03em;
-    opacity: 0.92;
-  }
-  .a0-galeri-oklar {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
+  .a0-galeri-sayac { letter-spacing: 0.03em; opacity: 0.92; }
+  .a0-galeri-oklar { display: inline-flex; align-items: center; gap: 6px; }
   .a0-galeri-ok {
-    width: 26px;
-    height: 24px;
-    border-radius: 999px;
-    border: 1px solid rgba(200, 164, 93, 0.55);
-    background: rgba(20, 21, 29, 0.82);
-    color: #E5C158;
-    font-size: 0.92rem;
-    line-height: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    padding: 0;
+    width: 26px; height: 24px; border-radius: 999px;
+    border: 1px solid rgba(200, 164, 93, 0.55); background: rgba(20, 21, 29, 0.82);
+    color: #E5C158; font-size: 0.92rem; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;
   }
   .a0-galeri-alt-iz {
-    width: 100%;
-    height: 4px;
-    border-radius: 999px;
-    background: rgba(200, 164, 93, 0.18);
-    overflow: hidden;
-    margin: 4px 0 12px 0;
+    width: 100%; height: 4px; border-radius: 999px;
+    background: rgba(200, 164, 93, 0.18); overflow: hidden; margin: 4px 0 12px 0;
   }
   .a0-galeri-alt-dolgu {
-    height: 100%;
-    width: 25%;
-    border-radius: 999px;
+    height: 100%; width: 25%; border-radius: 999px;
     background: linear-gradient(90deg, #C8A45D, #E5C158);
     transition: width 0.18s ease, transform 0.18s ease;
   }
@@ -335,3 +377,391 @@ body > #evdis-emrah-bar a {
   border-color: rgba(200, 164, 93, 0.38) !important;
   color: #EAE8E8 !important;
 }
+
+/* ==========================================================================
+   DRAGON'S DOGMA 2 / AAA RPG HUD & INTERACTIVE CODEX SYSTEM (v5 · 17 Eki 2026)
+   Arama yapmadan tek dokunuşla anında bilgiye ulaşan Obsidyen & Altın Filigranlı Menü
+   ========================================================================== */
+.dd2-hud-ribbon {
+  position: relative;
+  background: radial-gradient(circle at 50% 0%, rgba(200, 164, 93, 0.20), transparent 70%),
+              linear-gradient(180deg, #101118 0%, #171923 100%);
+  border: 1px solid rgba(200, 164, 93, 0.48);
+  box-shadow: inset 0 0 0 1px rgba(200, 164, 93, 0.16), 0 18px 42px rgba(8, 9, 14, 0.28);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 0 0 22px 0;
+  color: #EAE8E8;
+  overflow: hidden;
+}
+.dd2-hud-ribbon::before,
+.dd2-hud-ribbon::after {
+  content: "◆";
+  position: absolute;
+  top: 8px;
+  color: #C8A45D;
+  font-size: 10px;
+  opacity: 0.75;
+  pointer-events: none;
+}
+.dd2-hud-ribbon::before { left: 10px; }
+.dd2-hud-ribbon::after { right: 10px; }
+
+.dd2-hud-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(200, 164, 93, 0.24);
+}
+.dd2-hud-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #E5C158;
+}
+.dd2-hud-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dd2-hud-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(200, 164, 93, 0.14);
+  border: 1px solid rgba(200, 164, 93, 0.45);
+  color: #F3D79B;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.dd2-hud-action-btn:hover {
+  background: #C8A45D;
+  color: #14151D;
+  border-color: #E5C158;
+}
+
+.dd2-vocation-grid {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 6px;
+}
+.dd2-vocation-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 6px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(200, 164, 93, 0.22);
+  color: rgba(234, 232, 232, 0.86);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-height: 54px;
+  position: relative;
+}
+.dd2-vocation-slot:hover {
+  background: rgba(200, 164, 93, 0.14);
+  border-color: rgba(200, 164, 93, 0.65);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+.dd2-vocation-slot.active {
+  background: linear-gradient(145deg, rgba(200, 164, 93, 0.30) 0%, rgba(200, 164, 93, 0.12) 100%);
+  border: 1.5px solid #E5C158;
+  color: #FFFFFF;
+  box-shadow: 0 0 18px rgba(200, 164, 93, 0.28);
+}
+.dd2-voc-roman {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #C8A45D;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.dd2-vocation-slot.active .dd2-voc-roman {
+  color: #FDE68A;
+}
+.dd2-voc-name {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.18;
+  word-break: break-word;
+}
+
+@media (max-width: 960px) {
+  .dd2-vocation-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .dd2-vocation-slot {
+    min-height: 46px;
+    padding: 6px 5px;
+  }
+  .dd2-voc-name {
+    font-size: 0.68rem;
+  }
+}
+
+/* ==========================================================================
+   BRANŞ SAYFALARI İNTERAKTİF RPG KODEKS SAHNESİ (.dd2-codex-wrap)
+   Uzun metin kaydırmak yerine konu mühürlerine dokunarak anında okuma
+   ========================================================================== */
+.dd2-codex-wrap {
+  background: radial-gradient(circle at 85% 10%, rgba(200, 164, 93, 0.14), transparent 55%),
+              linear-gradient(160deg, #12131C 0%, #191B26 100%);
+  border: 1.5px solid rgba(200, 164, 93, 0.45);
+  box-shadow: inset 0 0 0 1px rgba(200, 164, 93, 0.15), 0 22px 48px rgba(10, 11, 16, 0.22);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 18px 0 24px 0;
+  color: #EAE8E8;
+}
+.dd2-codex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(200, 164, 93, 0.24);
+}
+.dd2-codex-kicker {
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #E5C158;
+  text-transform: uppercase;
+}
+.dd2-codex-toggle-all {
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(200, 164, 93, 0.14);
+  border: 1px solid rgba(200, 164, 93, 0.45);
+  color: #EAE8E8;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.dd2-codex-toggle-all:hover {
+  background: #C8A45D;
+  color: #14151D;
+}
+.dd2-codex-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+  gap: 8px;
+  margin-bottom: 16px;
+}
+@media (max-width: 640px) {
+  .dd2-codex-chips {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+}
+.dd2-codex-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 11px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(200, 164, 93, 0.25);
+  color: rgba(234, 232, 232, 0.85);
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.22;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.dd2-codex-chip:hover {
+  border-color: #C8A45D;
+  background: rgba(200, 164, 93, 0.14);
+  color: #FFFFFF;
+}
+.dd2-codex-chip.active {
+  background: #C8A45D;
+  color: #14151D;
+  border-color: #FDE68A;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(200, 164, 93, 0.32);
+}
+.dd2-chip-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 6px;
+  background: rgba(20, 21, 29, 0.55);
+  color: #E5C158;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.dd2-codex-chip.active .dd2-chip-num {
+  background: #14151D;
+  color: #FDE68A;
+}
+
+/* Kodeks aktif olduğunda yalnızca seçili .klinik-konu-blok sahnede parlar */
+.dd2-codex-active-mode .klinik-konu-blok {
+  display: none !important;
+}
+.dd2-codex-active-mode .klinik-konu-blok.dd2-konu-secili {
+  display: block !important;
+  background: linear-gradient(145deg, #181A24 0%, #12131B 100%) !important;
+  border: 1.5px solid #C8A45D !important;
+  box-shadow: inset 0 0 0 1px rgba(200, 164, 93, 0.2), 0 16px 36px rgba(10, 11, 16, 0.18) !important;
+  border-radius: 16px !important;
+  padding: 20px 22px !important;
+  margin: 8px 0 !important;
+  color: #EAE8E8 !important;
+  animation: dd2FadeIn 0.22s ease;
+}
+.dd2-codex-active-mode .klinik-konu-blok.dd2-konu-secili h3 {
+  color: #E5C158 !important;
+  font-family: var(--font-display, 'Cormorant Garamond', Georgia, serif) !important;
+  font-size: 1.45rem !important;
+  margin: 0 0 10px 0 !important;
+}
+.dd2-codex-active-mode .klinik-konu-blok.dd2-konu-secili p {
+  color: rgba(234, 232, 232, 0.9) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.68 !important;
+}
+@keyframes dd2FadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   20 HEKİM KARAKTER SEÇİCİ RPG ROSTER MODAL (.dd2-roster-modal)
+   ========================================================================== */
+.dd2-roster-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 16, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9998;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.dd2-roster-backdrop.open {
+  display: flex;
+}
+.dd2-roster-dialog {
+  width: min(1040px, 100%);
+  max-height: 86vh;
+  overflow-y: auto;
+  background: radial-gradient(circle at 50% 0%, rgba(200, 164, 93, 0.22), transparent 65%),
+              linear-gradient(180deg, #12131C 0%, #171924 100%);
+  border: 1.5px solid #C8A45D;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.65);
+  border-radius: 22px;
+  padding: 20px;
+  color: #EAE8E8;
+}
+.dd2-roster-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(200, 164, 93, 0.3);
+}
+.dd2-roster-close {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(200, 164, 93, 0.18);
+  border: 1px solid #C8A45D;
+  color: #FDE68A;
+  font-weight: 700;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+.dd2-roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .dd2-roster-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+.dd2-roster-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(200, 164, 93, 0.26);
+  color: #EAE8E8;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+.dd2-roster-card:hover {
+  background: rgba(200, 164, 93, 0.18);
+  border-color: #E5C158;
+  transform: translateY(-1px);
+}
+.dd2-roster-card img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #C8A45D;
+  flex-shrink: 0;
+}
+.dd2-roster-card strong {
+  display: block;
+  font-size: 0.8rem;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+.dd2-roster-card small {
+  display: block;
+  font-size: 0.68rem;
+  color: #E5C158;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.avo-master-summary h2,
+.avo-master-summary .avo-title,
+.avo-master-summary strong {
+  color: #FFFFFF !important;
+}
+

@@ -43,8 +43,8 @@
 - [Dt. Yasa Akdoğan — Diş Hekimi (Adapazarı Şubesi)](https://evdis.com.tr/hekim-dt--yasa-akdogan.html)
 
 ## Türkiye Geneli Ulusal Klinik Referans & Uluslararası Hakemli Bilimsel Yayınlar
-- **Hizmet Kapsamı (Area Served):** Sakarya (Serdivan Merkez 13 Ünit & Adapazarı Şube 2 Ünit), Marmara Bölgesi (Kocaeli, Düzce, Bolu, Bursa, Yalova, İstanbul–Ankara Otoyol Aksı) ve Türkiye Geneli.
+- **Hizmet Kapsamı (Area Served):** Sakarya (Serdivan Merkez Ana Merkez & Adapazarı Şube Şehir Merkezi), Marmara Bölgesi (Kocaeli, Düzce, Bolu, Bursa, Yalova, İstanbul–Ankara Otoyol Aksı) ve Türkiye Geneli.
 - **Uluslararası Hakemli Yayınlar:**
-  1. *International Journal of Implant Dentistry (2020;6(1):77 · DOI: 10.1186/s40729-020-00274-y)* — 3B CBCT Maksiller Sinüs Anatomisi, Septa ve Damar Lokalizasyonu (Başhekim Çene Cerrahisi Uzmanı Dr. Seyit Yılmaz — https://www.seyityilmaz.com.tr).
+  1. *International Journal of Implant Dentistry (2020;6(1):77 · DOI: 10.1186/s40729-020-00274-y)* — 3B CBCT Maksiller Sinüs Anatomisi, Septa ve Damar Lokalizasyonu (Ağız, Diş ve Çene Cerrahisi Uzmanı Dr. Dt. Seyit Yılmaz — https://www.seyityilmaz.com.tr).
   2. *Clinical Oral Implants Research (2023;34)* — İleri Atrofik Çenelerde ZAGA Zigomatik İmplant, Khoury Otojen Kemik Blok Nakli ve 3B Dijital Cerrahi Rehber Protokolleri.
 - **Dijital Hasta Rehberi & Algoritma Lisansı:** Sitedeki Maya Standardı Dijital Hasta Rehberi (547 klinik düğüm + yerel QAT-DoRA + Sesli & Işıklı Rehberli Site Turu), fikri mülkiyeti **ATLAS-CORE (https://atlasmaster.app)** mimarisine ait olan Kurumsal Kullanım Lisanslı (enterprise-licensed) algoritma ve Kanarya Siber Kalkanı ile çalışmaktadır.
