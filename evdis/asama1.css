@@ -1,0 +1,85 @@
+/* EvDiş AŞAMA 1 (17 Eki) — Şube Donanım ve Hizmet Rehberi (Serdivan 13 ünit ↔ Adapazarı 2 ünit).
+   Obsidian & Gold; ışıklı ve koyu sayfalarda aynı görünür. Yalnız fiziksel donanım/şube bilgisi — tanı, hekim önerisi yok. */
+.a1-matris {
+  --a1-zemin: #0D0E14; --a1-kart: #14151D; --a1-altin: #C9A16E; --a1-bronz: #B38C61;
+  --a1-yazi: #EAE8E8; --a1-soluk: rgba(234, 232, 232, 0.66); --a1-cizgi: rgba(179, 140, 97, 0.32);
+  box-sizing: border-box;
+  max-width: 1180px; margin: 56px auto 0; padding: 34px 34px 30px;
+  background: var(--a1-zemin); color: var(--a1-yazi);
+  border: 1px solid var(--a1-cizgi); border-radius: 22px;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-align: start;
+}
+.a1-matris *, .a1-matris *::before { box-sizing: border-box; }
+.a1-bolum { padding-top: 0 !important; }
+.a1-bolum .a1-matris { margin-top: 8px; margin-bottom: 8px; }
+.a1-ust { margin-bottom: 22px; }
+.a1-etiket {
+  display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--a1-altin); margin-bottom: 8px;
+}
+.a1-matris .a1-baslik {
+  margin: 0 0 8px; font-family: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif; font-weight: 400;
+  font-size: clamp(1.55rem, 2.6vw, 2.2rem); line-height: 1.15; color: #FFFFFF; letter-spacing: 0;
+}
+.a1-aciklama { margin: 0; font-size: 0.86rem; line-height: 1.55; color: var(--a1-soluk); max-width: 760px; }
+.a1-izgara { display: grid; grid-template-columns: 1.15fr 1fr; gap: 18px; }
+.a1-kart {
+  display: flex; flex-direction: column; gap: 12px;
+  background: var(--a1-kart); border: 1px solid rgba(234, 232, 232, 0.10); border-radius: 16px; padding: 20px 22px;
+}
+.a1-kart--merkez { border-color: var(--a1-cizgi); box-shadow: inset 0 1px 0 rgba(201, 161, 110, 0.18); }
+.a1-kart-ust { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; }
+.a1-matris .a1-kart-baslik {
+  margin: 0; font-family: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif; font-weight: 400;
+  font-size: 1.45rem; line-height: 1.2; color: #FFFFFF;
+}
+.a1-rozet {
+  display: inline-block; padding: 4px 11px; border-radius: 999px; white-space: nowrap;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.02em;
+  color: #0D0E14; background: linear-gradient(135deg, #C9A16E, #B38C61 55%, #8E6B43);
+}
+.a1-kart:not(.a1-kart--merkez) .a1-rozet { color: var(--a1-altin); background: transparent; border: 1px solid var(--a1-cizgi); }
+.a1-matris .a1-liste { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.a1-matris .a1-liste li {
+  position: relative; margin: 0; padding-inline-start: 16px;
+  font-size: 0.84rem; line-height: 1.4; color: var(--a1-yazi);
+}
+.a1-matris .a1-liste li::before {
+  content: ""; position: absolute; inset-inline-start: 0; top: 0.5em; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--a1-bronz);
+}
+.a1-koord {
+  margin: 0; padding: 9px 12px; border-radius: 10px; font-size: 0.78rem; line-height: 1.45; color: var(--a1-yazi);
+  background: rgba(179, 140, 97, 0.10); border-inline-start: 2px solid var(--a1-bronz);
+}
+.a1-alt { margin: auto 0 0; font-size: 0.74rem; line-height: 1.45; color: var(--a1-soluk); }
+.a1-matris a.a1-bag {
+  align-self: flex-start; font-size: 0.78rem; font-weight: 600; color: var(--a1-altin); text-decoration: none;
+  border-bottom: 1px solid var(--a1-cizgi); padding-bottom: 1px;
+}
+.a1-matris a.a1-bag:hover { color: #FFFFFF; border-color: var(--a1-altin); }
+
+@media (max-width: 1024px) {
+  .a1-matris .a1-liste { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .a1-matris { margin: 28px 0 0; padding: 18px 14px 16px; border-radius: 16px; }
+  .a1-bolum .a1-matris { margin: 0; }
+  .a1-ust { margin-bottom: 12px; }
+  .a1-etiket { font-size: 0.64rem; margin-bottom: 4px; }
+  .a1-matris .a1-baslik { font-size: 1.3rem; margin-bottom: 5px; }
+  .a1-aciklama { font-size: 0.74rem; line-height: 1.45; }
+  .a1-izgara { grid-template-columns: 1fr; gap: 10px; }
+  .a1-kart { padding: 12px 13px; gap: 8px; border-radius: 12px; }
+  .a1-matris .a1-kart-baslik { font-size: 1.12rem; }
+  .a1-rozet { font-size: 0.64rem; padding: 3px 9px; }
+  .a1-matris .a1-liste { grid-template-columns: 1fr 1fr; gap: 5px 10px; }
+  .a1-matris .a1-liste li { font-size: 0.72rem; line-height: 1.32; padding-inline-start: 11px; }
+  .a1-matris .a1-liste li::before { width: 5px; height: 5px; top: 0.45em; }
+  .a1-koord { font-size: 0.7rem; padding: 7px 9px; }
+  .a1-alt { font-size: 0.66rem; }
+  .a1-matris a.a1-bag { font-size: 0.72rem; }
+  /* Ana sayfa ve EN/AR'da adres + saat hemen üstteki şube şeridinde/kartlarında var: mobilde tekrar etme */
+  .av-branches-strip + .a1-matris .a1-alt, .sube-izgara + .a1-matris .a1-alt { display: none; }
+}
