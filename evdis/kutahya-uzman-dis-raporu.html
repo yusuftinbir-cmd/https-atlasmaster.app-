@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Özel Kütahya Uzman Diş (kutahyauzmandis.com) — Teknik, Mevzuat ve Dijital Röntgen Raporu</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --accent: #0f766e;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --warn: #d97706;
+      --warn-bg: #fffbeb;
+      --ok: #059669;
+      --ok-bg: #ecfdf5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 32px 16px 64px;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+    .btn-print {
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .hero-card {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+    .hero-card h1 {
+      margin: 8px 0 12px;
+      font-size: 26px;
+      line-height: 1.3;
+    }
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 13.5px;
+      color: #cbd5e1;
+    }
+    .hero-meta strong { color: #fff; display: block; }
+    .score-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .score-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .score-box .lbl { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+    .score-box .val { font-size: 22px; font-weight: 800; margin: 6px 0 4px; }
+    .score-box.danger { border-left: 4px solid var(--danger); background: var(--danger-bg); }
+    .score-box.danger .val { color: var(--danger); }
+    .score-box.warn { border-left: 4px solid var(--warn); background: var(--warn-bg); }
+    .score-box.warn .val { color: var(--warn); }
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      margin-bottom: 22px;
+    }
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 19px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .finding {
+      padding: 14px 16px;
+      border-radius: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .finding:last-child { margin-bottom: 0; }
+    .finding h3 {
+      margin: 0 0 6px;
+      font-size: 15.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .finding p { margin: 4px 0; font-size: 14px; color: #334155; }
+    .tag-red { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; }
+    .tag-amber { background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; }
+    .tag-green { background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 6px; font-size: 11.5px; font-weight: 700; }
+    code {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th { background: #f1f5f9; font-weight: 700; }
+    @media print {
+      body { padding: 0; background: #fff; }
+      .btn-print { display: none; }
+      .section, .hero-card { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top-bar">
+      <span class="badge">ATLAS STÜDYO · KLİNİK DİJİTAL DENETİM &amp; MEVZUAT RÖNTGENİ</span>
+      <button class="btn-print" onclick="window.print()">🖨️ PDF Olarak Yazdır / Kaydet</button>
+    </div>
+
+    <div class="hero-card">
+      <div style="font-size:13px;color:#38bdf8;font-weight:700;letter-spacing:0.04em;">CANLI WEB SİTESİ DENETİM RAPORU</div>
+      <h1>Özel Kütahya Uzman Ağız ve Diş Sağlığı Polikliniği<br><span style="font-weight:400;font-size:20px;color:#94a3b8;">https://www.kutahyauzmandis.com/</span></h1>
+      <p style="margin:0;color:#e2e8f0;font-size:14.5px;">Polikliniğin 102 sayfalık site haritası (<code>sitemap.xml</code>), hekim kadrosu, iletişim formları, yapısal veri şemaları (<code>JSON-LD</code>) ve Sağlık Bakanlığı tanıtım mevzuatı (RG 12.11.2025 / 33075 &amp; 6698 sayılı KVKK) kapsamında yapılan tam kapsamlı teknik inceleme sonuçlarıdır.</p>
+      <div class="hero-meta">
+        <div><strong>İncelenen Kurum</strong>Özel Kütahya Uzman ADSP (Merkez / Kütahya)</div>
+        <div><strong>Kurucu &amp; Hekim Kadrosu</strong>Dr. Dt. Gökhan Saygılı ve 7 Hekim Kadrosu</div>
+        <div><strong>Taranan Sayfa Sayısı</strong>102 Sitemap URL + 63 Ana Sayfa Görseli</div>
+        <div><strong>Denetim Tarihi</strong>17 Ekim 2026</div>
+      </div>
+    </div>
+
+    <div class="score-strip">
+      <div class="score-box danger">
+        <div class="lbl">1. Sağlık Bakanlığı (RG 33075)</div>
+        <div class="val">KRİTİK RİSK</div>
+        <div style="font-size:12.5px;color:#7f1d1d;"><code>/musteri-yorumlari</code> (41 hasta yorumu) &amp; sonuç garantisi ifadeleri</div>
+      </div>
+      <div class="score-box danger">
+        <div class="lbl">2. 6698 Sayılı KVKK Uyumu</div>
+        <div class="val">0 / 100 (YOK)</div>
+        <div style="font-size:12.5px;color:#7f1d1d;">Sitede KVKK Aydınlatma Metni, Çerez Politikası ve form onayı yok</div>
+      </div>
+      <div class="score-box warn">
+        <div class="lbl">3. Kurumsal Veri Tutarlılığı</div>
+        <div class="val">3 ÇELİŞKİ</div>
+        <div style="font-size:12.5px;color:#78350f;">Footer'da yabancı cep telefonu, çalışma saati çelişkisi (20:00 vs 21:00)</div>
+      </div>
+      <div class="score-box warn">
+        <div class="lbl">4. SEO &amp; Yapay Zekâ (GEO)</div>
+        <div class="val">EKSİK ŞEMA</div>
+        <div style="font-size:12.5px;color:#78350f;">Ana sayfada 0 şema, 56 sayfada boş meta açıklama, <code>/llms.txt</code> yok</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔴 1. Sağlık Bakanlığı Tanıtım Yönetmeliği (RG 12.11.2025 / 33075) İhlalleri</h2>
+      <div class="finding">
+        <h3><span>1.1. "Müşteri Yorumları" Sayfası ve Yorum Formu (<code>/musteri-yorumlari</code>)</span> <span class="tag-red">İDARİ YAPTIRIM RİSKİ</span></h3>
+        <p><strong>Mevcut Durum:</strong> Üst menüde (<em>Polikliniğimiz &rarr; Müşteri Yorumları</em>) ve <code>https://www.kutahyauzmandis.com/musteri-yorumlari</code> adresinde hastalar <strong>"Müşteri"</strong> olarak adlandırılmış; 9 sayfada toplam <strong>41 hastanın açık adı-soyadı</strong> (<em>Ayşe Akarsu, Melek Elbir, Arife Akbaş, Hande Eren, Esma vb.</em>) ve tedavi memnuniyet/tavsiye yorumları yayınlanmıştır. Ayrıca yorumlardan birinde <em>"diş hastanesinde çekilecek denilen dişime kaplama yaparak kurtardı"</em> şeklinde başka bir sağlık kurumuyla doğrudan kıyaslama yer almakta, sayfa altında ise yeni memnuniyet yorumu toplama formu bulunmaktadır.</p>
+        <p><strong>Yasal Dayanak &amp; Çözüm:</strong> 12.11.2025 tarihli ve 33075 sayılı Resmî Gazete Yönetmeliği <strong>Madde 5/1-c, 5/1-ç ve Madde 7</strong> uyarınca sağlık hizmetlerinde hastaların "müşteri" olarak tanımlanması, hasta memnuniyet/teşekkür yorumlarının yayınlanması ve diğer sağlık kurumlarıyla kıyaslama yapılması kesin olarak yasaktır. <code>/musteri-yorumlari</code> sayfası derhal kaldırılmalı, yerine <strong>Hasta Hakları Birimi</strong> ve <strong>Dilek / Öneri Formu</strong> konulmalıdır.</p>
+      </div>
+      <div class="finding">
+        <h3><span>1.2. Sonuç Garantisi ve Sübjektif Üstünlük İfadeleri</span> <span class="tag-red">MEVZUAT RİSKİ</span></h3>
+        <p><strong>Mevcut Durum:</strong> Ana sayfa ve tedavi sayfalarında <em>"kusursuz ve göz alıcı sonuçlar ortaya çıkmaktadır"</em>, <em>"Modern Tedavilerle Daha Hızlı İyileşin"</em> gibi kesin sonuç vaat eden ifadeler bulunmaktadır.</p>
+        <p><strong>Çözüm:</strong> Yönetmeliğin 5. maddesine uygun olarak tüm tedavi içerikleri kanıta dayalı, bilgilendirici ve hekim muayenesini esas alan tıbbi dil ile revize edilmelidir.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔴 2. 6698 Sayılı KVKK (Kişisel Verilerin Korunması) Açıkları</h2>
+      <div class="finding">
+        <h3><span>2.1. Sitede KVKK Aydınlatma Metni ve Çerez Politikası Bulunmaması</span> <span class="tag-red">KRİTİK EKSİK</span></h3>
+        <p><strong>Mevcut Durum:</strong> Sitedeki 102 URL ve alt bilgi (footer) taramasında <strong>KVKK Aydınlatma Metni</strong>, <strong>Gizlilik Politikası</strong> veya <strong>Çerez (Cookie) Politikası</strong> sayfalarının hiçbirinin bulunmadığı (<code>0 adet</code>) tespit edilmiştir.</p>
+      </div>
+      <div class="finding">
+        <h3><span>2.2. İletişim ve Yorum Formlarında Açık Rıza Onay Kutusu Eksikliği</span> <span class="tag-red">KRİTİK EKSİK</span></h3>
+        <p><strong>Mevcut Durum:</strong> <code>/iletisim</code> ve <code>/musteri-yorumlari</code> sayfalarındaki formlarda ziyaretçilerden <em>İsim-Soyisim, Telefon Numarası, E-Posta ve Mesaj</em> toplanmasına rağmen hiçbir KVKK aydınlatma/onay kutucuğu yer almamaktadır.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🟠 3. Kurumsal İtibar ve Veri Tutarlılığı Sorunları</h2>
+      <div class="finding">
+        <h3><span>3.1. Tüm Sayfaların Alt Bilgisinde (Footer) Üçüncü Şahıs Cep Telefonu</span> <span class="tag-amber">KURUMSAL İTİBAR</span></h3>
+        <p><strong>Mevcut Durum:</strong> Sitenin tüm sayfalarının alt bilgisinde (footer), klinik tanıtım metninin hemen sonunda <code>EDİTÖR: Burak Arıcı / +90 501 342 43 43</code> şeklinde klinik dışı üçüncü bir şahsın adı ve kişisel cep telefonu numarası yer almaktadır. Hastalar bu numarayı polikliniğin resmi hattı sanabilmektedir.</p>
+        <p><strong>Çözüm:</strong> Bu ibare kaldırılarak yerine <strong>Tıbbi Yayın ve Denetim Kurulu (Mesul Müdür: Dr. Dt. Gökhan Saygılı)</strong> bilgisi eklenmelidir.</p>
+      </div>
+      <div class="finding">
+        <h3><span>3.2. Çalışma Saatleri Çelişkisi (<code>09:00–20:00</code> vs <code>09:00–21:00</code>)</span> <span class="tag-amber">VERİ ÇELİŞKİSİ</span></h3>
+        <p><strong>Mevcut Durum:</strong> <code>/iletisim</code> sayfasındaki tabloda çalışma saatleri Pazartesi–Cumartesi <strong>09:00 – 20:00</strong> olarak yazarken, aynı sayfanın Google <code>Dentist</code> JSON-LD şemasında <strong>09:00 – 21:00</strong> olarak görünmektedir.</p>
+      </div>
+      <div class="finding">
+        <h3><span>3.3. Hekim Kadrosu URL ve Biyografi Mükerrerliği</span> <span class="tag-amber">SEO &amp; İÇERİK</span></h3>
+        <p><strong>Mevcut Durum:</strong> Kurucu hekim için hem <code>/kurucumuz</code> hem de <code>/dt-dr-gokhan-saygili</code> adreslerinde birebir aynı metin yer almakta (kopya içerik); ayrıca <strong>Uzm. Dt. Ulvi Rızasoy</strong> sayfasının URL'si <code>/uzm-dt-ulvi-rzayev</code> olarak farklı soyadıyla kalmıştır.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🟠 4. Teknik SEO, Performans ve Yapay Zekâ (GEO) Eksikleri</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Denetim Kalemi</th>
+            <th>Ölçülen Mevcut Durum</th>
+            <th>Önerilen Çözüm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Kırpık / Anlamsız URL'ler</strong></td>
+            <td><code>/imp</code>, <code>/gt</code>, <code>/sl</code>, <code>/ga</code>, <code>/pr</code>, <code>/pedodonti-cocuk-dis-h</code></td>
+            <td>301 yönlendirmesi ile tam SEO uyumlu URL yapısına geçiş</td>
+          </tr>
+          <tr>
+            <td><strong>Boş Meta Açıklamaları</strong></td>
+            <td>102 sayfanın <strong>56'sında (%55)</strong> <code>&lt;meta name="description"&gt;</code> boş (<code>/iletisim</code>, <code>/tedavilerimiz</code>, 7 hekim sayfası dahil)</td>
+            <td>Her hekim ve tedavi sayfasına özgün, tıklama oranını artıran meta açıklama yazılması</td>
+          </tr>
+          <tr>
+            <td><strong>Ana Sayfa &amp; Hekim JSON-LD Şeması</strong></td>
+            <td>Ana sayfada <code>0</code> şema; 7 hekim sayfasında <code>Physician</code> şeması yok; tedavi sayfalarında <code>FAQPage</code> yok</td>
+            <td>Birleşik <code>@graph</code> (<code>Dentist</code> + 7 <code>Physician</code> + <code>MedicalProcedure</code> + <code>FAQPage</code>) şeması</td>
+          </tr>
+          <tr>
+            <td><strong>Görsel Performans (Lazy-Load)</strong></td>
+            <td>Ana sayfadaki <strong>63 görselin 63'ünde de</strong> <code>loading="lazy"</code> eksik</td>
+            <td>İlk ekran dışı tüm görsellere <code>loading="lazy"</code> ve boyut özniteliklerinin eklenmesi</td>
+          </tr>
+          <tr>
+            <td><strong>Yapay Zekâ Kılavuzu (<code>/llms.txt</code>) ve Dijital Hasta Rehberi</strong></td>
+            <td><code>/llms.txt</code> yok (<code>404</code>); sitede hasta şikayetini daraltıp ilgili uzmana yönlendiren akıllı rehber yok</td>
+            <td>Kütahya ve çevre iller (Tavşanlı, Simav, Gediz, Afyon, Uşak) <code>/llms.txt</code> + Seçmeli Dijital Hasta Rehberi kurulumu</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

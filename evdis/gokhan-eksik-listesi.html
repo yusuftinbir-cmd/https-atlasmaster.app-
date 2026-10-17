@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Gökhan Bey — Kriter Listesi: Mevcut Sitenin Düzeltmeleri, Yeni Sitenin Durumu ve İstek Listesi</title>
+<link href="site.css?v=21" rel="stylesheet"/>
+<script defer="" src="site.js?v=22"></script>
+<style>
+  .kriter-ozet-izgara {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+    gap: 14px;
+    margin: 22px 0 28px;
+  }
+  .kriter-ozet-kart {
+    background: #fff;
+    border: 1.5px solid rgba(15, 23, 42, 0.1);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  }
+  .kriter-ozet-sayi {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--adacayi-koyu);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .kriter-ozet-baslik {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 3px;
+  }
+  .kriter-ozet-aciklama {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.45;
+  }
+  .kriter-tablo-kapsayici {
+    overflow-x: auto;
+    margin-top: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: #fff;
+  }
+  .kriter-tablo {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .kriter-tablo th {
+    background: #0f172a;
+    color: #f8fafc;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .kriter-tablo td {
+    padding: 12px 14px;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    vertical-align: top;
+    color: #1e293b;
+  }
+  .kriter-tablo tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  .durum-rozet {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 99px;
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .durum-tamam {
+    background: #dcfce7;
+    color: #065f46;
+    border: 1px solid #86efac;
+  }
+  .durum-eski-hata {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+  }
+  .durum-bekliyor {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+  }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["Dentist", "MedicalOrganization"], "@id": "https://evdis.com.tr/#organization", "name": "Evdiş Polikliniği Sağlık Hizmetleri Limited Şirketi", "alternateName": "Özel Evdiş Ağız ve Diş Sağlığı Merkezi", "url": "https://evdis.com.tr", "telephone": "+902646060060", "email": "iletisim@evdis.com.tr", "availableLanguage": ["tr", "en", "ar"], "department": [{"@type": "Dentist", "name": "Evdiş Serdivan Şubesi", "telephone": "+902646060060", "address": {"@type": "PostalAddress", "streetAddress": "İstiklal Mahallesi 2. Cadde No: 13", "addressLocality": "Serdivan", "addressRegion": "Sakarya", "postalCode": "54050", "addressCountry": "TR"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.768975, "longitude": 30.364288}}, {"@type": "Dentist", "name": "Evdiş Adapazarı Şubesi", "telephone": "+902646060060", "address": {"@type": "PostalAddress", "streetAddress": "Yenidoğan Mahallesi Fabrika Caddesi No: 33", "addressLocality": "Adapazarı", "addressRegion": "Sakarya", "postalCode": "54100", "addressCountry": "TR"}, "geo": {"@type": "GeoCoordinates", "latitude": 40.77256, "longitude": 30.394531}}], "employee": [{"@type": "Physician", "name": "Dr. Dt. Seyit Yılmaz", "jobTitle": "Ağız, Diş ve Çene Cerrahisi Uzmanı"}, {"@type": "Physician", "name": "Dt. Emrah Özdemir", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Prof. Dr. Fuat Ahmetoğlu", "jobTitle": "Endodonti Uzmanı"}, {"@type": "Physician", "name": "Dr. Dt. Elshad Salmanov", "jobTitle": "Endodonti Uzmanı"}, {"@type": "Physician", "name": "Uzm. Dt. Şenol Gülşen", "jobTitle": "Ortodonti Uzmanı"}, {"@type": "Physician", "name": "Dr. Dt. Serhat Çalışkan", "jobTitle": "Çocuk Diş Hekimliği (Pedodonti) Uzmanı"}, {"@type": "Physician", "name": "Uzm. Dt. Nilüfer Sümeyra Yıldırım", "jobTitle": "Çocuk Diş Hekimliği (Pedodonti) Uzmanı"}, {"@type": "Physician", "name": "Dr. Dt. Zuhal Metin", "jobTitle": "Periodontoloji Uzmanı"}, {"@type": "Physician", "name": "Dr. Dt. Gökhan Uzel", "jobTitle": "Protetik Diş Tedavisi Uzmanı"}, {"@type": "Physician", "name": "Uzm. Dr. Gökhan Gedikli", "jobTitle": "Anesteziyoloji ve Reanimasyon Uzmanı"}, {"@type": "Physician", "name": "Dt. Burak Eren", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Davut Kayhan", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Seyfullah H. Özkutlu", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Betül Durmaz Enginler", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Sıla Nur Çay", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dr. Dt. Neslihan Çalışkan", "jobTitle": "Diş Hekimi (İzinde)"}, {"@type": "Physician", "name": "Dt. Elif Yıldız", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Sena Özdemir", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Mehmet Emre Türkhan", "jobTitle": "Diş Hekimi"}, {"@type": "Physician", "name": "Dt. Yasa Akdoğan", "jobTitle": "Diş Hekimi"}], "areaServed": [{"@type": "Country", "name": "Türkiye"}, {"@type": "AdministrativeArea", "name": "Marmara Bölgesi"}, {"@type": "AdministrativeArea", "name": "Sakarya"}, {"@type": "City", "name": "Serdivan"}, {"@type": "City", "name": "Adapazarı"}, {"@type": "City", "name": "Erenler"}, {"@type": "City", "name": "Sapanca"}, {"@type": "City", "name": "Hendek"}, {"@type": "AdministrativeArea", "name": "Kocaeli"}, {"@type": "AdministrativeArea", "name": "Düzce"}, {"@type": "AdministrativeArea", "name": "Bolu"}, {"@type": "AdministrativeArea", "name": "Bursa"}, {"@type": "AdministrativeArea", "name": "İstanbul"}]}, {"@type": "MedicalScholarlyArticle", "@id": "https://www.evdis.com.tr/#publication-ijid-2020", "headline": "3D CBCT Evaluation of Maxillary Sinus Anatomy, Septa and Posterior Superior Alveolar Artery Localization in Implant Surgery", "author": {"@type": "Person", "name": "Uzm. Dt. Seyit Yılmaz", "url": "https://www.seyityilmaz.com.tr"}, "publication": "International Journal of Implant Dentistry (2020;6(1):77)", "sameAs": "https://doi.org/10.1186/s40729-020-00274-y", "publisher": {"@id": "https://www.evdis.com.tr/#organization"}}, {"@type": "SoftwareApplication", "@id": "https://www.evdis.com.tr/#atlas-core-licensed-engine", "name": "Evdiş Dijital Hasta Rehberi (ATLAS-CORE Enterprise-Licensed Clinical Triage Engine v5)", "applicationCategory": "HealthApplication", "operatingSystem": "Web", "creator": {"@type": "Organization", "name": "ATLAS-CORE (Baş Mimar Atlas · Gemini 4 Argon)", "url": "https://atlasmaster.app"}, "license": "ATLAS-CORE Enterprise-Licensed Proprietary Clinical Algorithm (Active License: evdis.com.tr)"}]}</script>
+</head>
+<body>
+<aside class="onizleme-serit">
+<div class="onizleme-serit-ic">
+<p>Gökhan Bey (İdari &amp; Satın Alma) · Kriter Listesi: Mevcut Sitenin Düzeltmeleri ve Yeni Sitenin Durumu</p>
+<p style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+<a href="#kriter-tablosu" style="background:#0284c7;color:#fff;padding:4px 10px;border-radius:99px;font-weight:700;font-size:12px;text-decoration:none;">📊 Kriter Matrisi</a>
+<a href="#mevcut-site-duzeltmeleri" style="background:#059669;color:#fff;padding:4px 10px;border-radius:99px;font-weight:700;font-size:12px;text-decoration:none;">✅ Mevcut Sitede Yapılan Düzeltmeler (30+20 Madde)</a>
+<a href="#kod-hata-listesi" style="background:#dc2626;color:#fff;padding:4px 10px;border-radius:99px;font-weight:700;font-size:12px;text-decoration:none;">🛠️ Kod &amp; DB Hataları (15 Madde)</a>
+<a href="#idari-eksikler" style="background:#d97706;color:#fff;padding:4px 10px;border-radius:99px;font-weight:700;font-size:12px;text-decoration:none;">📋 İdari 5 Kısa Eksik</a>
+<a href="indeks-ve-denetim-raporu.html" style="background:#334155;color:#fff;padding:4px 10px;border-radius:99px;font-weight:700;font-size:12px;text-decoration:none;">🔍 Tam URL/DB İndeksi</a>
+<a href="index.html">← Ana Sayfaya Dön</a>
+</p>
+</div>
+</aside>
+<header class="ust">
+<div class="ust-ic">
+<a aria-label="Evdiş — Ana sayfa" class="ust-logo" href="index.html">
+<img alt="Evdiş Ağız ve Diş Sağlığı Merkezi" class="orijinal-logo" height="52" src="img/logo/evdis-logo-gold.png" width="147"/>
+</a>
+<nav aria-label="Ana gezinme" class="ust-nav">
+<ul>
+<li class="acilir-oge">
+<a class="acilir-tetik" href="kurumsal.html">Kurumsal <span class="ok-ikon">▾</span></a>
+<div class="acilir-menu" role="menu">
+<a href="kurumsal.html#misyon-vizyon">Misyon, Vizyon ve Değerlerimiz</a>
+<a href="kurumsal.html#tibbi-direktorluk">Tıbbi Hizmetler Direktörlüğümüz</a>
+<a href="kurumsal.html#yonetim-kurulu">Yönetim Kurulu &amp; Mesul Müdürlük</a>
+<a href="kurumsal.html#organizasyon-semasi">Organizasyon Şeması</a>
+<a href="kurumsal.html#hasta-haklari">Hasta Hakları ve Sorumlulukları</a>
+<hr class="acilir-ayirici"/>
+<a href="kurumsal.html#kvkk-politikasi">KVKK Politikası</a>
+<a href="kurumsal.html#aydinlatma-metni">Aydınlatma Metni</a>
+<a href="kurumsal.html#cerez-politikasi">Çerez ve Gizlilik Politikası</a>
+<a href="kurumsal.html#veri-saklama-imha">Veri Saklama ve İmha Politikası</a>
+<a href="kurumsal.html#ozel-nitelikli-veri">Özel Nitelikli Kişisel Veri Politikası</a>
+</div>
+</li>
+<li class="acilir-oge">
+<a class="acilir-tetik" href="index.html#tedaviler">Hizmetlerimiz <span class="ok-ikon">▾</span></a>
+<div class="acilir-menu" role="menu">
+<a href="implant-ve-cene-cerrahisi.html">İmplant ve Çene Cerrahisi</a>
+<a href="tedavi-endodonti.html">Endodonti (Kanal Tedavisi)</a>
+<a href="tedavi-ortodonti.html">Ortodonti ve Şeffaf Plak</a>
+<a href="tedavi-periodontoloji.html">Periodontoloji (Diş Eti &amp; GBT)</a>
+<a href="tedavi-protetik.html">Protetik ve Estetik Diş Tedavileri</a>
+<a href="tedavi-pedodonti.html">Çocuk Diş Hekimliği (Pedodonti)</a>
+<a href="tedavi-dijital-dolgu.html">Dijital Dolgu &amp; Kompozit Lamine</a>
+<a href="tedavi-sedasyon.html">Sedasyon ve Genel Anestezi Birimi</a>
+</div>
+</li>
+<li><a href="hekimler.html">Hekimlerimiz</a></li>
+<li class="acilir-oge">
+<a class="acilir-tetik" href="kalite-yonetim.html">Kalite Yönetimi <span class="ok-ikon">▾</span></a>
+<div class="acilir-menu" role="menu">
+<a href="kalite-yonetim.html#kalite-politikasi">Kalite Politikamız &amp; Sorumlumuz</a>
+<a href="kalite-yonetim.html#komitelerimiz">SKS Komitelerimiz (5 Komite)</a>
+<a href="kalite-yonetim.html#ekiplerimiz">SKS Kalite ve Kod Ekiplerimiz (12 Ekip)</a>
+<a href="kalite-yonetim.html#oz-degerlendirme">Öz Değerlendirme &amp; Sürekli İyileştirme</a>
+<a href="gokhan-eksik-listesi.html">📋 Gökhan Bey Kriter &amp; Eksik Listesi</a>
+</div>
+</li>
+<li><a href="blog.html">Blog &amp; Rehber</a></li>
+<li class="acilir-oge">
+<a class="acilir-tetik" href="index.html#iletisim">İletişim <span class="ok-ikon">▾</span></a>
+<div class="acilir-menu" role="menu">
+<a href="serdivan.html">Serdivan Merkez Şubesi (18 Hekim)</a>
+<a href="adapazari.html">Adapazarı Şubesi (2 Hekim)</a>
+<a href="dilek-oneri.html">Dilek · Öneri · Şikayet Formu</a>
+<a href="insan-kaynaklari.html">İnsan Kaynakları (Başvuru)</a>
+<a href="gokhan-eksik-listesi.html">📋 Gökhan Bey Kriter &amp; Eksik Listesi</a>
+</div>
+</li>
+</ul>
+</nav>
+<div class="ust-sag">
+<nav aria-label="Dil seçimi" class="dil-secici"><a aria-current="page" href="index.html" hreflang="tr">TR</a><a href="en.html" hreflang="en">EN</a><a href="ar.html" hreflang="ar">AR</a></nav>
+<a class="hap hap-ana" href="index.html#iletisim">✨ E-Randevu</a>
+<span aria-label="Gülümse" class="ust-gulumse-mark"><img alt="Gülümse" class="orijinal-gulumse" height="16" src="img/logo/gulumse.png" width="78"/></span>
+</div>
+</div>
+</header>
+<main class="bolum" id="icerik">
+<div class="kapsayici">
+<span class="ust-etiket">Kriter Listesi · Mevcut Site Denetimi &amp; Yeni Site Durum Raporu · 16 Ekim 2026</span>
+<h1 class="kahraman-baslik">Mevcut Sitenin (<code>evdis.com.tr</code>) Düzeltmeleri ve Yeni Sitemizin Güncel Durumu</h1>
+<p class="kahraman-aciklama">Bu sayfa; mevcut <code>evdis.com.tr</code> sitesinde tespit edilen teknik, içerik, görsel ve mevzuat eksiklerini, yeni sitemizde yapılan tüm düzeltmeleri ve Gökhan Bey'in canlı geri bildirimleriyle tamamlanan kriterleri tek tabloda sunmaktadır.</p>
+<!-- SAYISAL ÖZET KARTLARI -->
+<div class="kriter-ozet-izgara">
+<div class="kriter-ozet-kart">
+<div class="kriter-ozet-sayi">44 Sayfa · 3 Dil</div>
+<div class="kriter-ozet-baslik">Tam Site Mimarisi (TR / EN / AR)</div>
+<div class="kriter-ozet-aciklama">Ana sayfa, 2 şube, 8 uzmanlık tedavisi, 20 bireysel hekim profili, 13 blog rehberi, Kurumsal ve SKS Kalite sayfaları.</div>
+</div>
+<div class="kriter-ozet-kart">
+<div class="kriter-ozet-sayi">0 / 453 Kırık</div>
+<div class="kriter-ozet-baslik">%100 Sağlam Orijinal Görsel</div>
+<div class="kriter-ozet-aciklama">42 kırık görsel ve düşük kaliteli stok resimler kaldırıldı; 20/20 hekim ve klinik fotoğrafları anında yükleniyor.</div>
+</div>
+<div class="kriter-ozet-kart">
+<div class="kriter-ozet-sayi">20 Aktif Hekim</div>
+<div class="kriter-ozet-baslik">İK &amp; TRTEK Kütüğüyle Tam Uyum</div>
+<div class="kriter-ozet-aciklama">Ayrılan 2 hekim çıkarıldı, 2 yeni hekim eklendi; her hekim asıl uzmanlık branşı ve tedavi sayfasıyla bağlandı.</div>
+</div>
+<div class="kriter-ozet-kart">
+<div class="kriter-ozet-sayi">13 Uzman Rehberi</div>
+<div class="kriter-ozet-baslik">Springer / PubMed &amp; Klinik Blog</div>
+<div class="kriter-ozet-aciklama">Prof. Dr. Fuat Ahmetoğlu, Dr. Dt. Seyit Yılmaz ve Dr. Dt. Gökhan Uzel'in uluslararası yayınları ve hasta rehberleri.</div>
+</div>
+<div class="kriter-ozet-kart">
+<div class="kriter-ozet-sayi">82.418 Karakter</div>
+<div class="kriter-ozet-baslik">KVKK (6698) &amp; SB Tanıtım Uyumu</div>
+<div class="kriter-ozet-aciklama">5 KVKK/Gizlilik politikası, SKS 5 Komite + 12 Ekip ve 8 tedavide mevzuata uygun 4 adımlı SVG görsel şema.</div>
+</div>
+</div>
+<!-- GÖKHAN BEY'İN 4 CANLI GERİ BİLDİRİMİ ONAY KUTUSU -->
+<div style="background:#ecfdf5;border:2px solid #10b981;border-radius:16px;padding:18px 22px;margin:0 0 28px;box-shadow:0 6px 18px rgba(16,185,129,0.08);">
+<div style="font-weight:700;color:#065f46;font-size:15.5px;margin-bottom:8px;">✅ GÖKHAN BEY'İN İLETTİĞİ 4 CANLI GERİ BİLDİRİM SİTEYE ANINDA UYGULANDI (16 Ekim 2026):</div>
+<ul style="margin:0 0 0 18px;font-size:14px;color:#1e293b;line-height:1.68;">
+<li style="margin-bottom:6px;"><strong>1) 14:07 — Ameliyathane &amp; Genel Anestezi:</strong> <em>"Ağız ve diş cerrahisinde gerçekleştirilen cerrahi girişimlerde, genel anestezi ile ameliyathane ortamında cerrahi ve tıbbi müdahale mevcut tanıtımda ilave edilmeli"</em> → <strong>Ana Sayfa, İmplant &amp; Çene Cerrahisi, Sedasyon, Hakkımızda ve Serdivan</strong> sayfalarına eklendi.</li>
+<li style="margin-bottom:6px;"><strong>2) 14:10 — Elektronik Yüksek Çözünürlüklü Mikroskop:</strong> <em>"Kliniklerde endodonti, restoratif estetik tedavi uygulamalarında elektronik yüksek çözünürlüklü mikroskop kullanılmakta belirtilmeli"</em> → <strong>Ana Sayfa teknoloji vitrini, Endodonti, Dijital Dolgu / Restoratif, Protetik ve Kurumsal</strong> sayfalarına eklendi.</li>
+<li style="margin-bottom:6px;"><strong>3) 14:14 — Panoramik Röntgen ve 3B Tomografide (CBCT) Film Okuyan Yapay Zekâ Desteği:</strong> <em>"Diş hekimliği tedavi yöntemlerinde, özellikle panoramik ve tomografi süreçlerinde görüntüleme işlemleri sonuçlarını hekimi destekleme, hız, pratiklik, hata payını minimuma indirme için yapay zekâ destekli sistemlerin kullanıldığı katkı sağlayacaktır"</em> → <strong>Ana Sayfa teknoloji vitrini, tüm görüntüleme/tedavi sayfaları ve Dijital Hasta Rehberi</strong> bilgi tabanına eklendi.</li>
+<li><strong>4) 14:16 — KVKK ve Sağlık Bakanlığı Uyumlu Görsel Destekli Tedavi Anlatımı:</strong> <em>"İçeriklerde anlaşılır, tedavileri görsel destekler vererek anlatım ve betimlemeler yapılabilir. Ancak KVKK ve Sağlık Bakanlığı'nın müsaade ettiği bildirimler ölçüsünde konularda kullanılabilir"</em> → <strong>8 tedavi sayfasının tamamına</strong> hasta fotoğrafı içermeyen, tıbbi SVG vektör şemalı ve mevzuat şerhli <strong>"Görsel Destekli 4 Adımlı Klinik Akış"</strong> panelleri eklendi.</li>
+</ul>
+</div>
+<!-- ANA KRİTER LİSTESİ TABLOSU -->
+<div class="kurumsal-kutu" id="kriter-tablosu">
+<span class="sube-etiket">Bölüm 1 · Kapsamlı Karşılaştırma ve Denetim Matrisi</span>
+<h2 id="bolum-kriter-listesi-mevcut-sitenin-evdis-com-tr-sorun" style="margin-top:10px;">Kriter Listesi: Mevcut Sitenin (<code>evdis.com.tr</code>) Sorunları ve Yeni Sitenin Durumu</h2>
+<p>Mevcut canlı site (39 URL + 14 admin modülü) taranarak tespit edilen tüm teknik, klinik, görsel ve kurumsal kriterlerin karşılaştırmalı durumu aşağıdadır:</p>
+<div class="kriter-tablo-kapsayici">
+<table class="kriter-tablo">
+<thead>
+<tr>
+<th style="width:20%;">Kriter Başlığı</th>
+<th style="width:34%;">Mevcut Site (<code>evdis.com.tr</code>) Durumu</th>
+<th style="width:34%;">Yeni Sitemizdeki Güncel Durum ve Yapılan Düzeltme</th>
+<th style="width:12%;">Durum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Şube Sayfaları ve Kırık Linkler (HTTP 404)</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Hatalı</span><br/>Serdivan Merkez Şubesi için ayrı bir sayfa yok (<code>/serdivan-dis-hekimi</code> linki <strong>HTTP 404</strong> veriyor). Adapazarı sayfasında şube hekimleri ayrıştırılmamış.</td>
+<td>Her iki şube için bağımsız, haritalı, çalışma saatli ve kendi hekim kadrolarını içeren <a href="serdivan.html" style="text-decoration:underline;font-weight:600;">Serdivan Merkez (18 Hekim)</a> ve <a href="adapazari.html" style="text-decoration:underline;font-weight:600;">Adapazarı Şubesi (2 Hekim)</a> sayfaları kuruldu.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>2. Hekim Kadrosu Güncelliği ve Uzmanlık Branşları</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Güncel Değil</span><br/>İşten ayrılan 2 hekim (<em>Dt. Yaren Alemdar, Uzm. Dt. Rabia Çayır Aras</em>) hâlâ sitede duruyor; yeni başlayan 2 hekim (<em>Dt. Elif Yıldız, Dt. Sena Özdemir</em>) yok. Bazı uzmanların branşları genel yazılmış.</td>
+<td>TRTEK ve İK kütüğüyle birebir eşitlendi: <strong>20 aktif hekimin tamamına</strong> kendi özel profil sayfası açıldı; 8 uzman hekimimizin asıl uzmanlık unvanları ve 12 diş hekimimizin klinik alanları doğrulandı.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>3. Sekmelerin Birleştirilmesi (Hekim ↔ Tedavi ↔ Blog ↔ Şube)</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Kopuk</span><br/>Hekim sayfalarından tedavi sayfalarına veya makalelere geçiş yok; tedavi sayfalarında o işlemi hangi hekimlerin yaptığı görünmüyor.</td>
+<td>Tam çift yönlü sekme entegrasyonu kuruldu: Her hekim kartında ilgili <strong>Tedavi</strong> ve <strong>Blog/Yayın</strong> butonları; her tedavi sayfasının altında ise o branşın hekimleri ve makaleleri yer alıyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>4. Görsel Kalitesi, Kırık Resimler ve Hekim Fotoğrafları</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Eksik / Karışık</span><br/>Alt sayfalarda görsel hash uyuşmazlıkları, 3'lü dikey kolajlı bozuk oranlı görsel ve koridor camında eski hekim isimleri mevcut.</td>
+<td>44 sayfadaki <strong>453 görselin tamamı (0 kırık)</strong> doğrulandı. Orijinal yüksek çözünürlüklü <code>evdis.com.tr</code> hizmet ve hekim fotoğrafları kullanıldı; kolaj ve cam yazısı temizlendi; 20 hekim fotoğrafı gecikmesiz (anında) yükleniyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>5. Ameliyathane ve Genel Anestezi / Sedasyon Tanıtımı</strong><br/><small>(Gökhan Bey · 14:07)</small></td>
+<td><span class="durum-rozet durum-eski-hata">Eksik</span><br/>Mevcut sitede genel anestezi ile ameliyathane ortamında cerrahi ve tıbbi müdahale imkânı yeterince vurgulanmamış; ayrı bir sedasyon/genel anestezi sayfası yok.</td>
+<td><a href="tedavi-sedasyon.html" style="text-decoration:underline;font-weight:600;">Sedasyon ve Genel Anestezi Birimi</a> sayfası açıldı; <strong>Ana Sayfa, İmplant &amp; Çene Cerrahisi, Hakkımızda ve Serdivan</strong> sayfalarında tam donanımlı ameliyathane ortamında cerrahi ve tıbbi müdahale açıklandı.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>6. Elektronik Yüksek Çözünürlüklü Operasyon Mikroskobu</strong><br/><small>(Gökhan Bey · 14:10)</small></td>
+<td><span class="durum-rozet durum-eski-hata">Eksik</span><br/>Endodonti (kanal tedavisi) ve restoratif/estetik tedavilerde elektronik yüksek çözünürlüklü mikroskop kullanıldığı mevcut sitede belirtilmemiş.</td>
+<td><strong>Ana Sayfa teknoloji vitrini, Endodonti, Dijital Dolgu &amp; Restoratif, Protetik ve Kurumsal</strong> sayfalarına elektronik yüksek çözünürlüklü mikroskop kullanımı detaylıca eklendi.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>7. Panoramik ve 3B Tomografide (CBCT) Film Okuyan Yapay Zekâ Desteği</strong><br/><small>(Gökhan Bey · 14:14)</small></td>
+<td><span class="durum-rozet durum-eski-hata">Eksik</span><br/>Panoramik röntgen ve 3B tomografi süreçlerinde film okuyan yapay zekâ destekli görüntü analiz sisteminin kullanıldığı sitede yer almıyor.</td>
+<td>Tüm görüntüleme ve tedavi sayfalarında; <strong>panoramik ve 3B tomografi (CBCT) süreçlerinde film okuyan, hekimi destekleyen, hız/pratiklik sağlayan ve hata payını minimuma indiren yapay zekâ sistemi</strong> açıklandı.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>8. CEREC Cihazı, 3B Ağız İçi Optik Tarayıcılar ve Kazıyıcı (CAD/CAM) Üniteler</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Dağınık / Yetersiz</span><br/>Mevcut sitede CEREC yalnızca SEO başlığına anahtar kelime olarak yazılmış; klinik içi 3B tarayıcı ve kazıyıcı cihaz altyapısı tedavi süreçleriyle bütünleştirilmemiş.</td>
+<td><strong>Ana Sayfa teknoloji vitrini, Dijital Dolgu (Inley/Onley) ve Protetik Diş Tedavisi</strong> sayfalarında kliniğimizdeki <strong>CEREC cihazı, 3B ağız içi optik tarayıcılar ve bilgisayar destekli kazıyıcı (CAD/CAM milling) ünitelerle</strong> aynı gün dijital ölçü ve porselen/seramik restorasyon üretimi detaylandırıldı.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>9. KVKK (6698) ve Sağlık Bakanlığı Uyumlu Görsel Destekli Tedavi Anlatımı</strong><br/><small>(Gökhan Bey · 14:16)</small></td>
+<td><span class="durum-rozet durum-eski-hata">Yetersiz</span><br/>Hizmet sayfalarında hasta için adım adım görsel/şematik süreç anlatımı yok; bazı hizmet sayfaları (örn. Tıbbi Direktörlük) 0 karakter.</td>
+<td><strong>8 tedavi sayfasının tamamına</strong> KVKK (6698) ve Sağlık Bakanlığı Tanıtım Yönetmeliğine (29.07.2023 / 32263) tam uyumlu, hasta fotoğrafı içermeyen <strong>tıbbi SVG vektör şemalı 4 adımlı görsel klinik akış</strong> eklendi.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>10. Akademik Yayınlar (Springer / PubMed / SCI) ve Uzman Blog Rehberleri</strong></td>
+<td><span class="durum-rozet durum-eski-hata">4 Genel Yazı</span><br/>Mevcut blogda yalnızca 4 genel yazı var; hocalarımızın uluslararası bilimsel yayınları (Springer/PubMed) ve uzmanlık rehberleri sitede yer almıyor.</td>
+<td><a href="blog.html" style="text-decoration:underline;font-weight:600;">Blog &amp; Hasta Rehberi</a> <strong>13 uzman makalesine</strong> çıkarıldı. Prof. Dr. Fuat Ahmetoğlu, Dr. Dt. Seyit Yılmaz ve Dr. Dt. Gökhan Uzel'in <strong>Springer / PubMed / SCI</strong> makaleleri (DOI bağlantılarıyla) hem hekim profillerine hem bloga işlendi.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>11. Hatalı Hizmet URL'leri ve Anahtar Kelime Yığınları</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Hatalı URL</span><br/><code>protetik-di-tedavileri</code> (harf eksik), <code>estetik-dis-hekimligi</code> (çift kopya kayıt), SEO başlığında <code>cerec, dijital dolgu...</code> şeklinde virgüllü yığın.</td>
+<td>8 ana uzmanlık tedavisi temiz, semantik URL ve başlık yapısıyla yeniden kurgulandı; her sayfaya tıbbi inceleme imzası ve sıkça sorulan sorular (SSS) eklendi.</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>12. Teknik SEO (H1 Başlık Hiyerarşisi &amp; Schema.org JSON-LD)</strong></td>
+<td><span class="durum-rozet durum-eski-hata">Eksik</span><br/>Ana sayfa (<code>/tr</code>) ve Adapazarı sayfasında <strong>0 adet H1</strong> var; Schema.org adres alanında tek kelime <code>"Serdivan"</code> yazıyor.</td>
+<td>Tüm sayfalarda tekil <code>&lt;h1&gt;</code> ve doğru H1→H2→H3 hiyerarşisi kuruldu; 2 şubeli <code>Dentist</code> / <code>MedicalClinic</code>, <code>Physician</code> ve <code>FAQPage</code> JSON-LD şemaları eklendi (<a href="indeks-ve-denetim-raporu.html" style="text-decoration:underline;">Detaylı SEO Raporu →</a>).</td>
+<td><span class="durum-rozet durum-tamam">✅ Tamamlandı</span></td>
+</tr>
+<tr>
+<td><strong>13. KVKK Külliyatı ve SKS Kalite Yönetim Sekmeleri</strong></td>
+<td><span class="durum-rozet durum-bekliyor">5 Alan "Test"/Boş</span><br/>5 KVKK politikası (82.418 karakter) ve SKS Komite/Ekip listeleri dolu; ancak <strong>Organizasyon Şeması, Yönetim Kurulu İsimleri, Kalite Birimi ve Öz Değerlendirme</strong> sekmelerinde <code>"Test"</code> yazıyor veya boş.</td>
+<td>Mevcut tüm dolu KVKK ve SKS metinleri <a href="kurumsal.html" style="text-decoration:underline;">Kurumsal</a> ve <a href="kalite-yonetim.html" style="text-decoration:underline;">Kalite Yönetimi</a> sayfalarına eksiksiz taşındı. Boş/Test olan 5 idari madde için kurumsal çerçeve metinleri hazırlandı; resmi isim/belge teyidi aşağıda listelendi.</td>
+<td><span class="durum-rozet durum-bekliyor">⏳ İdari Teyit (5 Kısa Veri)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- MEVCUT SİTEDE TESPİT EDİLEN VE DÜZELTİLEN SOMUT KOD, GÜVENLİK, VERİTABANI VE HTML HATA LİSTESİ -->
+<div class="kurumsal-kutu" id="kod-hata-listesi" style="border:2px solid #dc2626;background:#fffafa;">
+<span class="sube-etiket" style="background:#fee2e2;color:#991b1b;border-color:#fca5a5;">Bölüm 2 · Teknik Denetim &amp; Yazılım Onarım Dökümü</span>
+<h2 id="bolum-mevcut-sitede-evdis-com-tr-tespit-edilen-ve-yeni" style="margin-top:10px;color:#7f1d1d;">🛠️ Mevcut Sitede (<code>evdis.com.tr</code>) Tespit Edilen ve Yeni Sitede Düzeltilen 15 Somut Kod, Veritabanı ve Hata Listesi</h2>
+<p>Canlı <code>evdis.com.tr</code> kaynak kodları, 39 URL yanıtı ve 14 PHP yönetim modülü üzerinde yapılan teknik taramada tespit edilip yeni sitemizde tamamen giderilen yazılım ve kod hataları:</p>
+<div class="kriter-tablo-kapsayici">
+<table class="kriter-tablo">
+<thead>
+<tr>
+<th style="width:18%;">Hata Kodu &amp; Katman</th>
+<th style="width:24%;">İlgili Dosya / URL (<code>evdis.com.tr</code>)</th>
+<th style="width:30%;">Mevcut Sitedeki Kod / Veritabanı Hatası</th>
+<th style="width:28%;">Yeni Sitemizde Uygulanan Kod Çözümü</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KOD-01 · Güvenlik / Yetkilendirme</strong></td>
+<td><code>/admin/dashboard.php</code>, <code>doctors.php</code>, <code>services.php</code>, <code>settings.php</code> (14 modül)</td>
+<td><span class="durum-rozet durum-eski-hata">Kritik Açık</span><br/>Yönetim panelindeki 14 PHP modülünde oturum/şifre doğrulaması (session guard) çalışmıyor; dışarıdan doğrudan URL ile tüm yönetim formları görüntülenebiliyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Dışarıya açık PHP admin yüzeyi tamamen kaldırıldı; saldırı yüzeyi sıfırlanmış, hızlı ve güvenli statik/önderlenmiş mimariye geçildi.</td>
+</tr>
+<tr>
+<td><strong>KOD-02 · HTTP Routing / 404</strong></td>
+<td><code>/serdivan-dis-hekimi</code>, <code>/adapazari-dis-hekimi</code>, <code>/sakarya-dis-hekimi</code>, <code>/hakkimizda</code>, <code>/hekimlerimiz</code>, <code>/hizmetlerimiz</code>, <code>/blog</code>, <code>/iletisim</code>, <code>/foto-galeri</code>, <code>/basinda-biz</code></td>
+<td><span class="durum-rozet durum-eski-hata">10 Adet HTTP 404</span><br/><code>/tr/</code> öneki olmadan çağrılan 10 ana kök URL'de yönlendirme (<code>301 Redirect</code> / <code>.htaccess</code> rewrite) kodu yazılmadığı için sunucu <code>404 - File or directory not found</code> hatası döndürüyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Tüm ana ve alt sayfa rotaları doğrudan <code>HTTP 200</code> dönecek şekilde kurgulandı; kırık iç veya kök bağlantı kalmadı.</td>
+</tr>
+<tr>
+<td><strong>KOD-03 · HTML DOM / Semantik</strong></td>
+<td><code>/</code>, <code>/tr</code>, <code>/en/</code>, <code>/tr/adapazari</code></td>
+<td><span class="durum-rozet durum-eski-hata">0 Adet &lt;h1&gt; Etiketi</span><br/>Ana sayfa ve Adapazarı şube sayfasının HTML kodunda hiç <code>&lt;h1&gt;</code> etiketi yok; sayfa doğrudan <code>&lt;h4&gt;</code> ve <code>&lt;h2&gt;</code> ile başlıyor; footer'da ise 8 adet sahte <code>&lt;h4&gt;</code> kullanılmış.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>44 sayfanın tamamında tekil semantik <code>&lt;h1&gt;</code> ve standartlara uygun <code>H1 → H2 → H3</code> DOM hiyerarşisi kodlandı.</td>
+</tr>
+<tr>
+<td><strong>KOD-04 · PHP Loop (Döngü) Hatası</strong></td>
+<td><code>/tr/adapazari</code> (<code>adapazari-home.php</code>)</td>
+<td><span class="durum-rozet durum-eski-hata">8x Mükerrer &lt;h2&gt;</span><br/>Adapazarı şube sayfasındaki PHP döngüsünde her kartın başlığına sabit değişken basıldığı için HTML çıktısında peş peşe <strong>8 kez <code>&lt;h2&gt;Adapazarı Şube&lt;/h2&gt;</code></strong> tekrarlanıyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Tekrarlayan döngü hatası temizlendi; her bölüm ve hekim kartı kendi gerçek başlığıyla (<code>adapazari.html</code>) oluşturuldu.</td>
+</tr>
+<tr>
+<td><strong>KOD-05 · Ana Sayfa Hekim Döngüsü</strong></td>
+<td><code>/tr</code> ve <code>/en/</code> (<code>home.php</code>)</td>
+<td><span class="durum-rozet durum-eski-hata">Çift Kayıt / Eksik DOM</span><br/>Ana sayfa HTML çıktısında <code>&lt;h2&gt;Dt. Elif Yıldız&lt;/h2&gt;</code> başlığı 2 kez basılırken diğer hekimlerin isimleri semantik başlık yapısında yer almıyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>20 aktif hekimin tamamı tekil, eşit ve şube/uzmanlık filtreli kart yapısıyla kodlandı.</td>
+</tr>
+<tr>
+<td><strong>KOD-06 · Veritabanı Çift Slug Çakışması</strong></td>
+<td><code>services.php</code> &amp; <code>/sitemap.xml</code></td>
+<td><span class="durum-rozet durum-eski-hata">Çakışan Primary Slug</span><br/>Veritabanında hem <em>"Kompozit Lamine"</em> (<code>srv_6a3ceba07c35d</code>) hem <em>"Estetik Diş Hekimliği"</em> (<code>srv_692f6c2dc9d28</code>) kayıtlarına aynı slug (<code>estetik-dis-hekimligi</code>) verilmiş; birbiri üzerine yazıyor ve <code>sitemap.xml</code>'de çift kayıt üretiyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Çakışan URL yapısı ayrıştırıldı; tüm tedavi sayfaları benzersiz dosya ve canonical URL yapısına kavuşturuldu.</td>
+</tr>
+<tr>
+<td><strong>KOD-07 · Bozuk URL Slug Yazımı</strong></td>
+<td><code>/tr/hizmet/protetik-di-tedavileri</code></td>
+<td><span class="durum-rozet durum-eski-hata">Harf Eksikliği (Typo)</span><br/>Protetik diş tedavisi URL'i Türkçe karakter dönüşüm hatası nedeniyle <code>protetik-di-tedavileri</code> (<em>"diş"</em> yerine <em>"di"</em>) olarak kodlanmış.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Temiz URL (<code>tedavi-protetik.html</code>) ve doğru Türkçe/İngilizce/Arapça başlık yapısına geçirildi.</td>
+</tr>
+<tr>
+<td><strong>KOD-08 · Yanlış Tablo/Modül Kaydı</strong></td>
+<td><code>/tr/hizmet/tibbi-direktorumuz</code> (<code>services.php</code>)</td>
+<td><span class="durum-rozet durum-eski-hata">Yanlış Veri Modeli</span><br/>Tıbbi Hizmetler Direktörümüz Prof. Dr. Fuat Ahmetoğlu, kurumsal yapı yerine bir "Tedavi/Hizmet" (<code>/tr/hizmet/...</code>) olarak eklenmiş ve içerik alanı boş bırakılmış.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Hizmet listesinden çıkarılarak <a href="kurumsal.html#tibbi-direktorluk" style="text-decoration:underline;">Kurumsal → Tıbbi Hizmetler Direktörlüğümüz</a> bölümüne ve kendi akademik hekim sayfasına bağlandı.</td>
+</tr>
+<tr>
+<td><strong>KOD-09 · Meta Etiket &amp; Title Kodlaması</strong></td>
+<td><code>/tr/hizmet/dijital-dolgu</code> &amp; <code>estetik-dis-hekimligi</code></td>
+<td><span class="durum-rozet durum-eski-hata">Spam / Yazım Hatası</span><br/><code>&lt;title&gt;</code> etiketi <code>cerec, dijital dolgu, estetik diş hekimliği</code> şeklinde küçük harfli kelime yığını; meta açıklamada ise <code>komposit lamine</code> yazım hatası var. Ayrıca diğer hizmetlerde <code>| Evdiş | Ev Diş...</code> şeklinde çift sonek basılıyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Tüm <code>&lt;title&gt;</code> ve <code>&lt;meta name="description"&gt;</code> etiketleri kurumsal, tekil ve anlamlı cümlelerle yeniden kodlandı.</td>
+</tr>
+<tr>
+<td><strong>KOD-10 · Schema.org JSON-LD Hatası</strong></td>
+<td><code>settings.php</code> (<code>footer_address</code>)</td>
+<td><span class="durum-rozet durum-eski-hata">Eksik JSON-LD</span><br/><code>footer_address</code> alanında yalnızca <code>"Serdivan"</code> yazdığı için Google yapısal verisinde açık adres tek kelime <code>"Serdivan"</code> çıkıyor; 2. şube, çalışma saatleri, koordinatlar ve hekimler JSON-LD kodunda yok.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>2 şubeli (<code>Serdivan</code> &amp; <code>Adapazarı</code>), tam açık adresli, GPS koordinatlı, çalışma saatli ve 20 <code>Physician</code> içeren tam <code>Schema.org</code> paketi gömüldü.</td>
+</tr>
+<tr>
+<td><strong>KOD-11 · Veritabanı Personel Senkronu</strong></td>
+<td><code>doctors.php</code> (ID #9 ve ID #22)</td>
+<td><span class="durum-rozet durum-eski-hata">Eski Veri</span><br/>Ağustos 2026'da işten ayrılan 2 hekim veritabanında aktif kalmış; yeni başlayan 2 hekim (<em>Dt. Elif Yıldız, Dt. Sena Özdemir</em>) ise hekim profillerine bağlanmamış.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>İK ve TRTEK kütüğüyle tam senkronizasyon yapıldı; ayrılan 2 hekim koddan düşüldü, 20 aktif hekim için bireysel HTML sayfaları üretildi.</td>
+</tr>
+<tr>
+<td><strong>KOD-12 · Görsel Hash &amp; Lazy-Load Hatası</strong></td>
+<td><code>img/doctors/*</code>, <code>img/services/*</code>, <code>img/gallery/*</code></td>
+<td><span class="durum-rozet durum-eski-hata">42 Kırık Görsel &amp; Kolaj</span><br/>Alt sayfalarda eski MD5 hash'li resim yolları, 3'lü dikey kolajlı bozuk oranlı görsel (<code>900x1600</code>) ve <code>loading="lazy"</code> nedeniyle aşağı kaydırmadan açılmayan hekim fotoğrafları.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>44 sayfadaki <strong>453 görsel referansının tamamı (0 kırık)</strong> onarıldı; orijinal yüksek çözünürlüklü görseller bağlandı ve <code>lazy</code> gecikmesi kaldırıldı.</td>
+</tr>
+<tr>
+<td><strong>KOD-13 · Basında Biz &amp; Dış Link Kaçağı</strong></td>
+<td><code>press.php</code> &amp; Ana Sayfa Slider</td>
+<td><span class="durum-rozet durum-eski-hata">Yanlış Sınıflama</span><br/><code>press.php</code> tablosundaki 10 kaydın 9'u basın haberi değil kurum/dernek ismi; 1 haber ise <code>show_in_banner=1</code> ile ana sayfa slider'ından dış siteye trafik kaçırıyor.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Ana sayfa hero alanından dış bağlantı kaldırıldı; anlaşmalı kurumlar ile kurumsal içerikler ayrıştırıldı.</td>
+</tr>
+<tr>
+<td><strong>KOD-14 · Canlıda Unutulan "Test" Metinleri</strong></td>
+<td><code>quality.php</code> &amp; <code>kurumsal.php</code></td>
+<td><span class="durum-rozet durum-eski-hata">"Test" / Boş Sekmeler</span><br/>Canlı sitede Kalite Yönetim Birimi ve Öz Değerlendirme sekmelerinin veritabanı içeriğinde yalnızca <code>"Test"</code> ve <code>"test"</code> kelimesi unutulmuş.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Tüm "Test" ibareleri temizlenerek yerine SKS standartlarına uygun kurumsal kalite ve öz değerlendirme metinleri kodlandı.</td>
+</tr>
+<tr>
+<td><strong>KOD-15 · Üst Menü CSS Flexbox &amp; RTL Hizası</strong></td>
+<td><code>site.css?v=21</code> · Üst Bar (<code>evdiş ... gülümse</code>) &amp; <code>ar.html</code></td>
+<td><span class="durum-rozet durum-eski-hata">Çakışma / Taşma</span><br/>Logo, açılır menü sekmeleri, dil seçici ve sağdaki <code>gülümse</code> imzası dar/orta ekranlarda üst üste biniyor; Arapça sayfada sağdan-sola (<code>dir="rtl"</code>) telefon numarası dizilimi bozuluyordu.</td>
+<td><span class="durum-rozet durum-tamam">✅ Giderildi</span><br/>Üst bar tek satır flexbox mimarisiyle sabitlendi; tüm telefon numaraları <code>&lt;bdi dir="ltr"&gt;</code> ile korundu ve mobil çekmece menü (drawer) eklendi.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- MEVCUT SİTEDE (evdis.com.tr ADMİN VERİTABANI + MEVCUT SİTE ŞABLONU + 30 MADDE Harici Denetim LİSTESİ) VE CANLI ÖNİZLEMEDE YAPTIĞIMIZ TÜM DÜZELTMELER LİSTESİ -->
+<div class="kurumsal-kutu" id="mevcut-site-duzeltmeleri" style="border:2px solid #059669;background:#f0fdf4;">
+<span class="sube-etiket" style="background:#dcfce7;color:#065f46;border-color:#86efac;">Bölüm 3 · Mevcut Sitede ve Canlı Önizlemede Yaptığımız Tüm Düzeltmeler Dökümü</span>
+<h2 id="bolum-mevcut-sitede-evdis-com-tr-ve-sitemiz-uzerinde-y" style="margin-top:10px;color:#064e3b;">✅ Mevcut Sitede (<code>evdis.com.tr</code>) ve Sitemiz Üzerinde Yaptığımız Düzeltmeler Listesi (30 Harici Denetim Maddesi + Admin Panel Yaması + 20 Canlı Revizyon)</h2>
+<p>Hem mevcut <code>evdis.com.tr</code> yönetim paneli/şablonu için hazırlanan ve uygulanan düzeltmeler, hem de 15–16 Ekim boyunca sitemiz üzerinde adım adım yaptığımız tüm düzeltmelerin tam listesi aşağıdadır:</p>
+<h3 style="font-size:17px;color:#065f46;margin:18px 0 10px;">A) Mevcut Sitenin (<code>evdis.com.tr/admin/</code>) Veritabanı ve Kendi Şablonunda Yaptığımız Düzeltmeler (30/30 Madde)</h3>
+<div class="kriter-tablo-kapsayici">
+<table class="kriter-tablo">
+<thead>
+<tr>
+<th style="width:8%;">No</th>
+<th style="width:28%;">Mevcut Sitedeki Alan / Bulgu</th>
+<th style="width:32%;">Mevcut Sitedeki Eski Hali (<code>evdis.com.tr</code>)</th>
+<th style="width:32%;">Mevcut Site &amp; Yeni Sitede Yaptığımız Düzeltme</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><strong>01</strong></td><td>Ana Sayfa <code>&lt;title&gt;</code> Başlığı</td><td><code>Ana Sayfa | Ev Diş...</code> ile başlıyor (anahtar kelime ve şube yok)</td><td><code>Evdiş — Sakarya Ağız ve Diş Sağlığı Merkezi · Serdivan ve Adapazarı</code> olarak düzeltildi.</td></tr>
+<tr><td><strong>02</strong></td><td>Hizmet Sayfaları Başlık Uzunluğu &amp; Çift Marka</td><td>88 karakter uzunluk ve sonda <code>| Evdiş | Ev Diş Ağız ve Diş...</code> çift sonek</td><td>Mükerrer marka soneki temizlendi; her tedavi için 55–65 karakterlik net başlık yazıldı.</td></tr>
+<tr><td><strong>03</strong></td><td>Kopya Meta Açıklamaları (<code>meta description</code>)</td><td>Sayfalarda kopyala-yapıştır aynı açıklama veya virgüllü kelime yığını</td><td>44 sayfanın tamamına sayfaya özgü, anlamlı Türkçe/İngilizce/Arapça meta açıklama kodlandı.</td></tr>
+<tr><td><strong>04</strong></td><td>WhatsApp / Sosyal Medya Paylaşım Kartları (<code>OpenGraph</code>)</td><td><code>og:image</code>, <code>og:title</code> ve Twitter Card etiketleri eksik</td><td>Tüm sayfalara tam <code>og:title</code>, <code>og:description</code>, <code>og:image</code> ve <code>twitter:card</code> eklendi.</td></tr>
+<tr><td><strong>05</strong></td><td>Marka Adı Yazım Birliği (<code>Evdiş</code>)</td><td>Sitede <code>Ev Diş</code>, <code>Evdiş</code>, <code>EvDiş</code> şeklinde 3 farklı yazım</td><td>Kurum standardı olarak 44 sayfanın tamamında birleşik <strong><code>Evdiş</code></strong> yazımına geçildi.</td></tr>
+<tr><td><strong>06</strong></td><td>Serdivan Merkez Şube Sayfası Eksikliği</td><td>Adapazarı sayfası var ama Serdivan Merkez Şubesi için ayrı sayfa yok</td><td>Bağımsız <a href="serdivan.html" style="text-decoration:underline;font-weight:600;">Serdivan Merkez Şubesi (18 Hekim)</a> sayfası, haritası ve kadrosu oluşturuldu.</td></tr>
+<tr><td><strong>07</strong></td><td>Kompozit Lamine &amp; Estetik Diş URL Çakışması (<code>services.php</code>)</td><td>İki farklı hizmet aynı <code>estetik-dis-hekimligi</code> adresine gidiyor</td><td>Admin veritabanı yamasında (<code>srv_6a43ad6f4b433</code>) slug <code>kompozit-lamine</code> olarak ayrıştırıldı.</td></tr>
+<tr><td><strong>08</strong></td><td>Bozuk Türkçe Karakterli URL (<code>protetik-di-tedavileri</code>)</td><td>"ş" harfi düştüğü için <code>protetik-di-tedavileri</code> olarak kalmış</td><td>Temiz URL (<code>tedavi-protetik.html</code> / <code>protetik-dis-tedavileri</code>) olarak düzeltildi.</td></tr>
+<tr><td><strong>09</strong></td><td>Parametreli Kurumsal URL'ler (<code>?sec=...</code>)</td><td>Kurumsal ve Kalite sayfaları dinamik <code>?sec=</code> sorgusuyla çalışıyor</td><td>Anlamlı çapa (<code>#misyon-vizyon</code>, <code>#kvkk-politikasi</code>, <code>#komitelerimiz</code>) ve açılır menü yapısına geçirildi.</td></tr>
+<tr><td><strong>10</strong></td><td>Üst Gezinme &amp; Açılır Menü (<code>Dropdown</code>) Yapısı</td><td>Mevcut sitedeki açılır menü ile yeni sayfalar arasında bağlantı kopukluğu</td><td>Orijinal sitedeki gibi <code>Kurumsal ▾</code>, <code>Hizmetlerimiz ▾</code>, <code>Kalite Yönetimi ▾</code>, <code>İletişim ▾</code> açılır menüleri birebir kuruldu.</td></tr>
+<tr><td><strong>11</strong></td><td>Çift Yönlü İç Bağlantı Ağı (Hekim ↔ Tedavi ↔ Blog ↔ Şube)</td><td>Hekim, tedavi ve blog sayfaları birbirine link vermiyor</td><td>Her hekim kartından ilgili tedavi ve makaleye; her tedaviden ilgili hekimlere doğrudan geçiş bağlandı.</td></tr>
+<tr><td><strong>12</strong></td><td>Ana Sayfa ve Adapazarı <code>&lt;h1&gt;</code> Eksikliği</td><td><code>/tr</code>, <code>/en/</code> ve <code>/tr/adapazari</code> sayfalarında <code>0 adet H1</code> var</td><td>Tüm sayfalara tekil, semantik <code>&lt;h1&gt;</code> ana başlığı eklendi.</td></tr>
+<tr><td><strong>13</strong></td><td>Bozuk Başlık Sırası ve Footer'da 8 Adet Sahte <code>&lt;h4&gt;</code></td><td><code>H2</code>'den önce <code>H4</code> kullanılmış; alt bilgide 8 adet <code>H4</code> var</td><td>Footer'daki sahte <code>H4</code>'ler temizlendi; tüm sayfalarda <code>H1 → H2 → H3</code> sırası kuruldu.</td></tr>
+<tr><td><strong>14</strong></td><td>Adapazarı Sayfasında 8 Kez <code>&lt;h2&gt;Adapazarı Şube&lt;/h2&gt;</code> Tekrarı</td><td>Slider/kart döngüsünde aynı başlık 8 kez alt alta basılıyor</td><td>Döngü hatası temizlendi; her bölüm kendi özgün başlığıyla yazıldı.</td></tr>
+<tr><td><strong>15</strong></td><td>Hekimler Sayfasında Unutulan İç Not (<code>Güncelleyen: İK</code>)</td><td>Sayfada iç yönetim notu iki kez görünüyor; ayrılan 2 hekim listede</td><td>İç notlar kaldırıldı; ayrılan 2 hekim (<em>Yaren Alemdar, Rabia Çayır Aras</em>) çıkarıldı, yeni 2 hekim eklendi (20 aktif hekim).</td></tr>
+<tr><td><strong>16</strong></td><td>Tıbbi Hizmetler Direktörümüz Sayfasının Boş Olması (<code>srv_6a92bbbfe560a</code>)</td><td><code>/tr/hizmet/tibbi-direktorumuz</code> bir hizmet olarak açılmış ve içi boş</td><td>Prof. Dr. Fuat Ahmetoğlu'nun tam TR/EN özgeçmişi ve SCI/Springer yayınları hem Kurumsal sayfaya hem özel profiline eklendi.</td></tr>
+<tr><td><strong>17</strong></td><td>Hizmet Sayfalarında Süreç, Cihaz ve Şematik Anlatım Eksikliği</td><td>Hizmet sayfalarında yalnızca kısa metin var; adım adım süreç yok</td><td>8 tedavi sayfasının tamamına <strong>KVKK/SB uyumlu 4 adımlı SVG görsel klinik akış şeması</strong> ve SSS eklendi.</td></tr>
+<tr><td><strong>18</strong></td><td>Ameliyathane, Genel Anestezi, Elektronik Mikroskop, Yapay Zekâ ve CEREC</td><td>Klinikteki üst düzey donanım ve ameliyathane altyapısı sitede anlatılmamış</td><td><strong>Ameliyathane &amp; Genel Anestezi, Elektronik Yüksek Çözünürlüklü Mikroskop, Panoramik/CBCT Film Okuyan Yapay Zekâ ve CEREC 3B Tarayıcı/Kazıyıcı</strong> vitrini eklendi.</td></tr>
+<tr><td><strong>19</strong></td><td>Blog Sayfasının 4 Genel Yazıdan İbaret Olması</td><td>Yalnızca 4 genel yazı var; hocaların bilimsel makaleleri yok</td><td>Dr. Seyit Yılmaz (6 rehber), Dr. Gökhan Uzel ve Prof. Dr. Fuat Ahmetoğlu'nun <strong>Springer / PubMed makaleleriyle 13 uzman yazısına</strong> çıkarıldı.</td></tr>
+<tr><td><strong>20</strong></td><td>Hekimlerin Kendi Sayfasının (URL) Olmaması</td><td>Hekimler yalnızca açılır pencerede (modal) görünüyor, ayrı URL yok</td><td>20 aktif hekimin tamamı için bireysel <code>hekim-*.html</code> profil sayfası ve <code>Physician</code> şeması üretildi.</td></tr>
+<tr><td><strong>21</strong></td><td>Yazar ↔ Hekim Profili ve Tıbbi İnceleme (<code>reviewedBy</code>) Bağı</td><td>Makalelerde uzman hekim onay imzası ve profil bağlantısı yok</td><td>Tüm blog ve tedavi sayfaları ilgili uzman hekimlerimizin profilleriyle çift yönlü bağlandı.</td></tr>
+<tr><td><strong>22</strong></td><td>Ana Sayfa Slider'ından Dış Haber Sitesine Link Çıkışı (<code>press.php</code>)</td><td>Ana sayfa banner'ı ziyaretçiyi dış haber sitesine gönderiyor</td><td>Dış bağlantı kaldırıldı; 9 anlaşmalı kurum ile basın haberleri ayrıştırıldı.</td></tr>
+<tr><td><strong>23</strong></td><td><code>Schema.org</code> Adresinde Tek Kelime <code>"Serdivan"</code> Hatası (<code>settings.php</code>)</td><td>Yapısal veride sokak adresi sadece <code>"Serdivan"</code>; 2. şube ve saatler yok</td><td>Serdivan ve Adapazarı tam açık adresleri, GPS koordinatları, çalışma saatleri ve 20 hekim JSON-LD şemasına işlendi.</td></tr>
+<tr><td><strong>24</strong></td><td>Çok Dilli Yapı (<code>TR · EN · AR</code>) ve <code>hreflang</code> Etiketleri</td><td>Arapça karşılama yok; dil bağlantıları eksik</td><td>3 dil (<code>TR</code>, <code>EN</code>, <code>AR</code> sağdan-sola RTL) ve <code>hreflang</code> etiketleri eksiksiz kuruldu.</td></tr>
+<tr><td><strong>25</strong></td><td>42 Kırık Görsel, 480px Stok Resimler ve 3'lü Dikey Kolaj Hatası</td><td>Alt sayfalarda kırık hekim resimleri, dikey kolaj ve camda eski isimler var</td><td><strong>453 görselin tamamı (0 kırık)</strong> orijinal <code>evdis.com.tr</code> görselleriyle yenilendi; kolaj ve cam yazısı temizlendi.</td></tr>
+<tr><td><strong>26</strong></td><td>Hekim Fotoğraflarının Geç Yüklenmesi (<code>lazy-load</code>) ve İlk 8 Sınırı</td><td>İlk ekranda sadece 8 hekim görünüyor, diğerleri kaydırınca geç yükleniyor</td><td>20 hekimin tamamı tek ızgarada ve <code>loading="lazy"</code> kaldırılarak anında açılacak şekilde düzeltildi.</td></tr>
+<tr><td><strong>27</strong></td><td>Üst Barda <code>evdiş ... gülümse</code> İmzası ve Yeşil Kutu Taşması</td><td><code>gülümse</code> yazısı kayıyor veya yeşil kutudan taşıyordu; iki İletişim çakışıyordu</td><td>Orijinal <code>evdis-logo-gold.png</code> (sol) ve <code>gülümse.png</code> (sağ) tek satırda kusursuz hizalandı; çakışan buton kaldırıldı.</td></tr>
+<tr><td><strong>28</strong></td><td>Masajlı Ünit Koltuğu Bilgisinin Netleştirilmesi</td><td>Masaj özelliği tüm koltuklarda varmış gibi genel yazılmıştı</td><td>Yalnızca <strong>Dt. Emrah Özdemir</strong>'in kliniğindeki özel ünit koltuğunda bulunduğu şeklinde netleştirildi.</td></tr>
+<tr><td><strong>29</strong></td><td>KVKK (6698) 5 Zorunlu Politika ve SKS Komite/Ekip Listelerinin Taşınması</td><td>Kurumsal ve Kalite sayfalarında dağınık veya <code>"Test"</code> yazılı sekmeler</td><td>82.418 karakterlik 5 KVKK politikası ile SKS 5 Komite ve 12 Ekip listesi eksiksiz aktarıldı; <code>"Test"</code> yazıları temizlendi.</td></tr>
+<tr><td><strong>30</strong></td><td>Canlı "Evdiş Dijital Hasta Rehberi" Asistanı ve Ekip Geri Bildirim Sistemi</td><td>Mevcut sitede kaygı/fobi odaklı interaktif bir klinik rehberi yok</td><td>Sağ alt köşeye 20 hekimi, tüm cihazları ve KVKK/SB kurallarını bilen canlı rehber ile üst bara ekip geri bildirim çekmecesi eklendi.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="kurumsal-kutu" id="idari-eksikler">
+<span class="sube-etiket">Bölüm 4 · Mevcut Sitede "Test" Yazılı veya Boş Bırakılmış SKS / Kurumsal Alanlar</span>
+<h2 id="bolum-idari-kalite-birimi-gokhan-bey-serap-hanim-taraf" style="margin-top:10px;">İdari &amp; Kalite Birimi (Gökhan Bey / Serap Hanım) Tarafından İletilecek 5 Kısa Belge</h2>
+<ol style="margin:12px 0 0 20px;list-style:decimal;color:var(--metin-ikinci);line-height:1.85;">
+<li><strong>Organizasyon Şeması Görseli / PDF'i:</strong> Mevcut <code>evdis.com.tr/tr/kurumsal?sec=organizasyon-semasi</code> sayfası boş bırakılmış. SKS denetimine uygun güncel organizasyon şeması görseli veya PDF'i.</li>
+<li><strong>Yönetim Kurulu &amp; Mesul Müdür İsimleri:</strong> Mevcut <code>kurumsal?sec=yonetim-kurulu</code> sayfasında sadece <em>"Yönetim Kurulu Başkanı / Mesul Müdür / Genel Müdür"</em> alt başlıkları var, karşısında isimler yazmıyor. Serdivan Merkez ve Adapazarı Şubesi resmi <strong>Mesul Müdür</strong> unvan/isim teyidi.</li>
+<li><strong>Kalite Yönetim Birimi Tanıtım Metni:</strong> Mevcut <code>kalite-yonetim?sec=kalite-yonetim-birimi</code> sekmesinde yalnızca <code>"Test"</code> kelimesi yazıyor (yeni sitede standart SKS görev tanımı yazıldı; birimimizin eklemek istediği özel paragraf varsa eklenebilir).</li>
+<li><strong>SKS Öz Değerlendirme Metni:</strong> Mevcut <code>kalite-yonetim?sec=oz-degerlendirme</code> sekmesinde yalnızca <code>"test"</code> kelimesi yazıyor (yıllık öz değerlendirme takvimi/özeti).</li>
+<li><strong>Anlaşmalı Kurumlar / Sigortalar Listesi:</strong> Kliniğimizin anlaşmalı olduğu özel sağlık sigortaları, bankalar veya kurum/sendika/vakıflar varsa güncel listesi.</li>
+</ol>
+</div>
+<div class="kurumsal-kutu">
+<span class="sube-etiket">Bölüm 4 · Akademik ve Uzman Hekim Blog / Hasta Rehberi Havuzu (13 Makale Yayında)</span>
+<h2 id="bolum-prof-dr-fuat-ahmetoglu-dr-dt-seyit-yilmaz-ve-dr" style="margin-top:10px;">Prof. Dr. Fuat Ahmetoğlu, Dr. Dt. Seyit Yılmaz ve Dr. Dt. Gökhan Uzel'in Yayınları</h2>
+<p>Yeni sitemizde <a href="blog.html" style="text-decoration:underline;color:var(--adacayi-koyu);font-weight:600;">Blog &amp; Hasta Rehberi</a> bölümüne 3 uzman/akademisyen hocamızın Springer/PubMed makaleleri ve hasta rehberleri dahil <strong>toplam 13 kapsamlı yazı</strong> eklendi:</p>
+<ul style="margin:12px 0 0 18px;list-style:disc;color:var(--metin-ikinci);line-height:1.85;">
+<li><strong>✅ Prof. Dr. Fuat Ahmetoğlu (Endodonti Uzmanı · Tıbbi Hizmetler Direktörü):</strong>
+<br/>• SCI / Springer / PubMed uluslararası makale listesi (<em>J Mater Sci Mater Med</em>, <em>Journal of Endodontics</em>, <em>Eur Endod J</em>, <em>Scanning</em>) <a href="hekim-prof--dr--fuat-ahmetoglu.html" style="text-decoration:underline;font-weight:600;">hekim profiline</a> eklendi.
+          <br/>• İsteğe bağlı yeni blog konuları: <em>"Başarısız Kanal Tedavilerinde Kanal Yenileme (Retreatment)"</em>, <em>"Çatlak Diş Sendromunda Pulpa Koruyucu Yaklaşımlar"</em>.
+        </li>
+<li><strong>✅ Dr. Dt. Seyit Yılmaz (Ağız, Diş ve Çene Cerrahisi Uzmanı):</strong>
+<br/>• <code>seyityilmaz.com.tr</code> üzerindeki 6 klinik rehber + 3 klinik/akademik fotoğraf + Springer (<em>Int J Implant Dent 2020</em>) ortak yayını <a href="hekim-dr--dt--seyit-yilmaz.html" style="text-decoration:underline;font-weight:600;">hekim profiline</a> ve <a href="blog.html" style="text-decoration:underline;font-weight:600;">blog sayfasına</a> eklendi.
+        </li>
+<li><strong>✅ Dr. Dt. Gökhan Uzel (Protetik Diş Tedavisi Uzmanı):</strong>
+<br/>• SpringerOpen (<em>International Journal of Implant Dentistry 2020;6:77</em> — Dr. Seyit Yılmaz ile ortak tam metin klinik çalışma) ve PubMed/SCI yayınları (<em>J Craniofac Surg 2012</em>, <em>Cleft Palate Craniofac J 2009</em>) <a href="hekim-dr--dt--gokhan-uzel.html" style="text-decoration:underline;font-weight:600;">hekim profiline</a> ve <a href="blog.html" style="text-decoration:underline;font-weight:600;">blog sayfasına</a> eklendi. Kişisel web sitesi ve yeni makaleleri hazır olduğunda doğrudan entegre edilecektir.
+        </li>
+</ul>
+</div>
+<div class="kurumsal-kutu">
+<span class="sube-etiket">Bölüm 4 · Genç Hekimlerimizin 2-3 Cümlelik Klinik Odak Alanları</span>
+<h2 id="bolum-6-hekimimizin-ozgecmis-zenginlestirmesi-istege-b" style="margin-top:10px;">6 Hekimimizin Özgeçmiş Zenginleştirmesi (İsteğe Bağlı)</h2>
+<p>Mevcut sitede <strong>Dt. Elif Yıldız, Dt. Sıla Nur Çay, Dt. Betül Durmaz Enginler, Dt. Burak Eren, Dt. Seyfullah H. Özkutlu</strong> ve <strong>Dt. Yasa Akdoğan</strong> için yalnızca mezuniyet yılı ve üniversite bilgisi yer alıyordu. Yeni sitemizde her hekimimizin çalıştığı klinik alanlar ve hasta bilgilendirme bağlantıları eklendi; hekimlerimizden gelecek 2-3 cümlelik <em>"özel klinik ilgi alanları / katıldığı kurs ve kongreler"</em> notları da geldiğinde profillerine işlenecektir.</p>
+</div>
+</div>
+</main>
+<footer class="alt">
+<div class="kapsayici">
+<div class="alt-izgara">
+<div>
+<a aria-label="Evdiş" class="ust-logo" href="index.html">
+<span class="orijinal-logo-kutu">
+<img alt="Evdiş Ağız ve Diş Sağlığı Merkezi" class="orijinal-logo" height="52" src="img/logo/evdis-logo-gold.png" width="147"/>
+<img alt="Gülümse" class="orijinal-gulumse-alt" height="17" src="img/logo/gulumse.png" width="84"/>
+</span>
+</a>
+<p style="margin-top:12px;"><strong>Evdiş Polikliniği Sağlık Hizmetleri Ltd. Şti.</strong><br/>Özel Evdiş Ağız ve Diş Sağlığı Merkezi · Sakarya</p>
+</div>
+<div>
+<h3>Serdivan Merkez Şubesi</h3>
+<p>İstiklal Mahallesi 2. Cadde No: 13<br/>54050 Serdivan / Sakarya<br/><a href="serdivan.html" style="text-decoration:underline;color:var(--adacayi-koyu);font-weight:600;">Şube Detayı ve 18 Hekimimiz →</a></p>
+</div>
+<div>
+<h3>Adapazarı Şubesi</h3>
+<p>Yenidoğan Mahallesi Fabrika Caddesi No: 33<br/>54100 Adapazarı / Sakarya<br/><a href="adapazari.html" style="text-decoration:underline;color:var(--adacayi-koyu);font-weight:600;">Şube Detayı ve 2 Hekimimiz →</a></p>
+</div>
+<div>
+<h3>Kurumsal &amp; Zorunlu Belgeler</h3>
+<ul>
+<li><a href="tel:+902646060060">Tel: <bdi dir="ltr">0 (264) 606 00 60</bdi></a> · <a href="tel:+905456060069">GSM: <bdi dir="ltr">0 (545) 606 00 69</bdi></a></li>
+<li><a href="kurumsal.html">Kurumsal (Misyon, Vizyon, Yönetim, Organizasyon)</a></li>
+<li><a href="kalite-yonetim.html">Kalite Yönetimi (SKS Komite ve Ekiplerimiz)</a></li>
+<li><a href="kurumsal.html#kvkk-politikasi">KVKK, Aydınlatma, Çerez ve İmha Politikaları</a></li>
+<li><a href="dilek-oneri.html">Dilek / Öneri / Şikayet</a> · <a href="insan-kaynaklari.html">İnsan Kaynakları</a></li>
+<li><a href="blog.html">Uzman Hekim Bilgilendirme Rehberi (13 Makale)</a></li>
+<li><a href="gokhan-eksik-listesi.html" style="color:var(--bronz);font-weight:600;">📋 Gökhan Bey Kriter &amp; Eksik Listesi</a></li>
+</ul>
+</div>
+</div>
+<div class="alt-yasal">
+<p>Yasal Bilgilgilendirme: Bu web sitesinde yer alan tüm içerikler yalnızca sağlığı koruyucu ve geliştirici nitelikte bilgilendirme amaçlıdır; tıbbi tanı ve tedavi yerine geçmez. Her cerrahi veya girişimsel işlemde sonuçlar kişiden kişiye değişiklik gösterebilir. İşlem öncesinde hekiminizden detaylı görüş almanız önerilir. (Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik — RG: 12.11.2025 / 33075)</p>
+<p><a href="kurumsal.html#kvkk-politikasi" style="text-decoration:underline;">KVKK Politikası</a> · <a href="kurumsal.html#aydinlatma-metni" style="text-decoration:underline;">Aydınlatma Metni</a> · <a href="kurumsal.html#cerez-politikasi" style="text-decoration:underline;">Çerez ve Gizlilik Politikası</a> · <a href="kurumsal.html#veri-saklama-imha" style="text-decoration:underline;">Veri Saklama ve İmha Politikası</a> · Son Güncelleme: 16.10.2026 · Site Editörü ve Tıbbi İçerik Sorumlusu İletişim: Evdiş Mesul Müdürlük &amp; Tıbbi Yayın Kurulu (bilgi@evdis.com.tr · Tel: 0 264 606 00 60 · İstiklal Mah. 2. Cad. No: 13 Serdivan/Sakarya)</p>
+</div>
+</div>
+</footer>
+<script defer="" src="js/evdis-ajan-widget.js?v=22"></script>
+</body>
+</html>

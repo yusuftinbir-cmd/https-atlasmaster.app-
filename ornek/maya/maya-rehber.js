@@ -658,7 +658,7 @@
   // Eğitimden gelen hızlı konu başlıkları
   var QUICK_TOPICS = {
     tr: [
-      { label: "🚀 İspatlı Vaat & Kurumsal Lisanslı Mimari", page: "index.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_tr.mp3", h: "Vaat Ediyoruz Çünkü İspatlı Yapıyoruz (100/100)", p: "45/45 sayfada Ulusal GEO + 550 düğümlü sıfır-halüsinasyonlu klinik karar ağacı ve HMAC-SHA256 kurumsal lisanslı algoritma mimarisiyle kliniğinizi Türkiye genelinde 1 numaralı AI referansı yapıyoruz." },
+      { label: "🏥 Klinik Dijital Altyapı & Rehber", page: "index.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_tr.mp3", h: "Klinikler İçin Dijital Altyapı ve Hasta Rehberi", p: "Yapılandırılmış tıbbi veri mimarisi, genişten daralan seçenekli hasta bilgilendirme ağacı ve sesli site rehberiyle kliniğinizin dijital iletişimini düzenliyoruz." },
       { label: "📐 3B Sefalometri", page: "index.html", sel: ".sk", audio: "topic_0_tr.mp3", h: "3B Sefalometrik Morfoloji", p: "478 noktalı 3B yüz ağıyla ZY-ZY ve Go-Go oranlarını ölçer; n=32 testte %100 hedef hat isabeti sağlar." },
       { label: "🦷 441 Diş Formu", page: "index.html", sel: "#otomasyon", audio: "topic_1_tr.mp3", h: "441 Doğal Form Kütüphanesi", p: "Yüz oranlarına göre 441 formluk kütüphaneden 5 öncelikli ve 3 alternatif diş formu gerekçesiyle sıralanır." },
       { label: "🔒 KVKK & Gizlilik", page: "index.html", sel: "#sss", audio: "topic_2_tr.mp3", h: "Kimliksiz Ağız Kırpımı", p: "Tam yüz fotoğrafları cihazdan çıkmaz; dış görsel modele yalnızca kimliksiz ağız kırpımı ve maske gönderilir." },
@@ -670,7 +670,7 @@
       { label: "🥃 Viski Analizi", page: "blog/turkiye-viski-dunya-markasi.html", sel: "#bolum-3", audio: "topic_8_tr.mp3", h: "Türkiye'nin Viski Markası Analizi", p: "1963 Ankara Viskisi'nden bugüne vergi asimetrisi, maliyet tabanı ve çıkış yolunu inceleyen 8 sesli Kıvılcım yazısı." }
     ],
     en: [
-      { label: "🚀 Proven Promise & Enterprise Licensed AI", page: "index.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_en.mp3", h: "We Promise Because We Prove It (100/100)", p: "45/45 National GEO pages + 550-node zero-hallucination clinical triage graph + HMAC-SHA256 leased algorithm architecture." },
+      { label: "🏥 Clinical Digital Infrastructure & Guide", page: "en.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_en.mp3", h: "Clinical Digital Infrastructure & Guided Patient Navigation", p: "Structured medical data architecture, option-driven clinical patient guidance, and interactive neural voice tour tailored for dental clinics." },
       { label: "📐 3D Cephalometry", page: "en.html", sel: ".sk", audio: "topic_0_en.mp3", h: "3D Cephalometric Morphology", p: "Measures facial ratios on a 478-point 3D mesh, reaching 100% target line accuracy on 32 test faces." },
       { label: "🦷 441 Tooth Forms", page: "en.html", sel: "#automation", audio: "topic_1_en.mp3", h: "441 Natural Form Library", p: "Ranks 5 primary and 3 alternative tooth forms with clinical rationale based on facial proportions." },
       { label: "🔒 Privacy & Security", page: "en.html", sel: "#faq", audio: "topic_2_en.mp3", h: "Anonymous Mouth-Crop Architecture", p: "Full faces never leave studio devices; only de-identified mouth crops and masks are processed." },
@@ -679,7 +679,7 @@
       { label: "🤖 Maya Training", page: "autonomy.html", sel: "#maya", audio: "topic_5_en.mp3", h: "Maya: Trained Assistant", p: "Trained by Atlas to guide visitors concisely across the site and leave detailed reading to you." }
     ],
     ar: [
-      { label: "🚀 وعد مُثبَت وبنية مرخَّصة مؤسسياً", page: "ar.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_ar.mp3", h: "نَعِد لأننا نُنجز بالإثبات (100/100)", p: "GEO وطني في 45/45 صفحة + شجرة قرار سريري بـ 550 عقدة بلا هلوسة + بنية خوارزمية مرخَّصة مؤسسياً بـ HMAC-SHA256." },
+      { label: "🏥 البنية الرقمية للعيادات ودليل المرضى", page: "ar.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_ar.mp3", h: "البنية الرقمية للعيادات ودليل المرضى التفاعلي", p: "بنية بيانات طبية منظَّمة، ودليل مرضى تفاعلي بالخيارات الموجهة، وجولة صوتية مخصَّصة للعيادات السنية." },
       { label: "📐 السيفالومتري ثلاثي الأبعاد", page: "ar.html", sel: ".sk", audio: "topic_1_ar.mp3", h: "المورفولوجيا السيفالومترية ثلاثية الأبعاد", p: "تقيس نسب الوجه على شبكة ثلاثية الأبعاد بـ 478 نقطة؛ وتبلغ دقة الخط المستهدف 100% على 32 وجه اختبار." },
       { label: "🦷 441 شكل سن", page: "ar.html", sel: "#automation", audio: "topic_2_ar.mp3", h: "مكتبة 441 شكلاً طبيعياً", p: "تُرتَّب 5 أشكال ذات أولوية و3 بدائل مع مسوّغ سريري وفق نسب الوجه." },
       { label: "🔒 الخصوصية والأمان", page: "ar.html", sel: "#faq", audio: "topic_3_ar.mp3", h: "بنية قصّ الفم مجهول الهوية", p: "صور الوجه الكامل لا تغادر أجهزة الاستوديو؛ لا يُعالَج خارجياً سوى قصّ الفم والقناع مجهولي الهوية." },

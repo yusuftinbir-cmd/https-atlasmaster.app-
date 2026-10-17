@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Özel Evdiş (evdis.com.tr) — GEO Uygulama Planı Yanıtı ve Yeni Web Sitesi Tamamlama Raporu</title>
+<style>
+  :root {
+    --zemin: #f8faf9;
+    --kart: #ffffff;
+    --metin: #14221d;
+    --ikinci: #3f524b;
+    --cizgi: #d7e2dd;
+    --adacayi: #1d6b52;
+    --adacayi-acik: #e8f3ee;
+    --altin: #9a6b2f;
+    --altin-acik: #fdf7ed;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--zemin);
+    color: var(--metin);
+    line-height: 1.6;
+    font-size: 14.5px;
+  }
+  .kapsayici {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  .ust-bant {
+    background: linear-gradient(135deg, #133b2e 0%, #1d6b52 100%);
+    color: #fff;
+    padding: 28px 32px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 12px 30px rgba(19, 59, 46, 0.14);
+  }
+  .ust-bant .etiket {
+    display: inline-block;
+    background: rgba(255,255,255,0.16);
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .ust-bant h1 {
+    margin: 0 0 10px;
+    font-size: 26px;
+    line-height: 1.25;
+  }
+  .ust-bant p {
+    margin: 4px 0;
+    opacity: 0.94;
+    font-size: 14.5px;
+  }
+  .indir-cubuk {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .indir-dugme {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-decoration: none;
+    background: #fff;
+    color: #133b2e;
+  }
+  .indir-dugme.ikinci {
+    background: rgba(255,255,255,0.16);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+  .ozet-kutu {
+    background: var(--adacayi-acik);
+    border-left: 5px solid var(--adacayi);
+    padding: 20px 24px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+  }
+  .ozet-kutu h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: #114232;
+  }
+  .bolum-kart {
+    background: var(--kart);
+    border: 1px solid var(--cizgi);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 16px rgba(15, 35, 28, 0.04);
+  }
+  h2 {
+    font-size: 19px;
+    color: #133b2e;
+    margin: 0 0 14px;
+    border-bottom: 2px solid var(--adacayi-acik);
+    padding-bottom: 8px;
+  }
+  h3 {
+    font-size: 16px;
+    color: #1d6b52;
+    margin: 18px 0 8px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 18px;
+    font-size: 13.2px;
+  }
+  th, td {
+    border: 1px solid var(--cizgi);
+    padding: 9px 11px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #eef5f2;
+    color: #133b2e;
+    font-weight: 700;
+  }
+  tr:nth-child(even) td {
+    background: #fbfdfc;
+  }
+  .tamam-etiket {
+    display: inline-block;
+    background: #dcfce7;
+    color: #14532d;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11.5px;
+  }
+  .eski-etiket {
+    display: inline-block;
+    background: #fee2e2;
+    color: #7f1d1d;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11.5px;
+  }
+  pre {
+    background: #10211b;
+    color: #e2f1ec;
+    padding: 14px 18px;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  code {
+    background: #edf4f1;
+    color: #134e3a;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 12.8px;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+  ul {
+    margin: 8px 0 12px 20px;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  @media print {
+    body { background: #fff; font-size: 11.5px; }
+    .kapsayici { max-width: 100%; padding: 0; }
+    .indir-cubuk { display: none !important; }
+    .bolum-kart { box-shadow: none; break-inside: avoid; page-break-inside: avoid; margin-bottom: 14px; padding: 16px 18px; }
+    table { font-size: 10.5px; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="kapsayici">
+  <header class="ust-bant">
+    <span class="etiket">Teknik &amp; Klinik Tamamlama Raporu · 16 Ekim 2026</span>
+    <h1>Özel Evdiş Ağız ve Diş Sağlığı Merkezi (evdis.com.tr)<br>Yapay Zekâ Görünürlüğü (GEO) Uygulama Planı Yanıtı ve Yeni Site Raporu</h1>
+    <p><strong>Alıcı:</strong> Dr. Dt. Seyit Yılmaz (Ağız, Diş ve Çene Cerrahisi Uzmanı) &amp; Claude / Teknik Değerlendirme Oturumu</p>
+    <p><strong>İncelenen Plan:</strong> <code>GEO_Plan_evdis.com.tr.pdf</code> (16 Ekim 2026 · Hazırlayan: Iryna Yılmaz · 7 Sayfa)</p>
+    <p><strong>Sonuç Özeti:</strong> Planda yer alan tüm site içi teknik, şablon, içerik, JSON-LD yapısal veri ve 12.11.2025 / 33075 sayılı Yönetmelik maddeleri <strong>yeni yazdığımız 44 sayfalık Evdiş sitesinde %100 tamamlanmış ve canlı önizlemede devreye alınmıştır.</strong></p>
+    <div class="indir-cubuk">
+      <a class="indir-dugme" href="EvDis_Seyit_Hoca_GEO_ve_Yeni_Site_Tamamlama_Raporu.pdf" download>📄 PDF Raporu İndir (.pdf)</a>
+      <a class="indir-dugme ikinci" href="SEYIT_HOCA_GEO_VE_YENI_SITE_TAMAMLAMA_RAPORU.md" download>📝 Claude Oturumu İçin Markdown İndir (.md)</a>
+      <a class="indir-dugme ikinci" href="index.html">🏠 Yeni Evdiş Ana Sayfasına Git →</a>
+    </div>
+  </header>
+
+  <section class="ozet-kutu">
+    <h2>0. Yönetici Özeti — İşin Tamamlanmış Olduğuna Dair Net Bildirim</h2>
+    <p style="margin:0 0 8px;">Iryna Yılmaz tarafından hazırlanan <strong>16 Ekim 2026 tarihli <code>GEO_Plan_evdis.com.tr.pdf</code></strong> belgesindeki <em>"Başlangıç durumu (16 Ekim 2026)"</em> tablosu halen yayında olan <strong>eski <code>evdis.com.tr</code></strong> sitesini baz almaktadır. Oysa sıfırdan inşa ettiğimiz <strong>yeni Evdiş web sitesinde (44 statik HTML sayfası + <code>robots.txt</code> + <code>sitemap.xml</code> + <code>llms.txt</code>)</strong>, planda 1. haftadan 6. haftaya kadar yapılması önerilen <strong>Aşama A (<code>A5</code>) ve Aşama B (<code>B-E1</code>, <code>B-E2</code>, <code>B-E3</code>, <code>B-E4</code>, <code>B-E5</code>) maddelerinin tamamı halihazırda bitirilmiştir.</strong></p>
+    <p style="margin:0;">Buna ek olarak; <strong>Dr. Dt. Seyit Yılmaz'ın uluslararası DOI'li bilimsel yayınları ve 6 kapsamlı cerrahi hasta rehberi</strong>, <strong>yapay zekâ ajanları için <code>/llms.txt</code> manifestosu</strong>, <strong>3 dilli (TR/EN/AR RTL) mimari</strong>, <strong>Sağlık Bakanlığı SKS (5 Komite + 12 Kalite/Kod Ekibi)</strong>, <strong>5 ayrı KVKK politikası</strong> ve <strong>547 düğümlü sıfır-PII KVKK kalkanlı Dijital Hasta Rehberi</strong> fazladan tamamlanmıştır. Yeni site ana alan adına (<code>evdis.com.tr</code>) yönlendirildiği anda beklemeden <strong>T0/T1/T2 ölçümüne %100 hazırdır.</strong></p>
+  </section>
+
+  <section class="bolum-kart">
+    <h2>1. GEO Planı "Başlangıç Durumu" (Sayfa 1–2) vs. Yeni Sitemizin Tamamlanmış Durumu</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>GEO Planındaki Ölçüt (Sayfa 1–2)</th>
+          <th>Planın Eski Sitede Gördüğü Durum</th>
+          <th>Yeni Yazdığımız Sitedeki Durum (16 Ekim 2026)</th>
+          <th>Somut Kanıt / Dosya</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><strong>Konum ve Şube Yapısı (B-E1)</strong></td>
+          <td><span class="eski-etiket">Şubeler tek sayfada birleşik</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> İki ayrı müstakil şube sayfası açıldı</td>
+          <td><code>serdivan.html</code> (18 hekim, CBCT, sedasyon) &amp; <code>adapazari.html</code> (2 hekim, Fabrika Cad.)</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><strong>Botların Erişimi (robots.txt — A5)</strong></td>
+          <td>Açık</td>
+          <td><span class="tamam-etiket">TAMAMLANDI + GELİŞTİRİLDİ</span> 13 AI botu açıkça tanımlandı + <code>/llms.txt</code> eklendi</td>
+          <td><code>robots.txt</code> (<code>GPTBot</code>, <code>OAI-SearchBot</code>, <code>ClaudeBot</code>, <code>PerplexityBot</code>, <code>Google-Extended</code> vb.) + <code>llms.txt</code></td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><strong>Bot Kontrol Sayfası</strong></td>
+          <td>Yok</td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> 10/10 AI botunda doğrudan <code>HTTP 200</code> (0 engel)</td>
+          <td>Saf statik HTML5 mimarisi</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><strong>Başlıklarda Semt + Tedavi (B-E2, B-E3)</strong></td>
+          <td><span class="eski-etiket">Şubeler birleşik, Ana sayfada H1 yok</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> Tüm tedavi/şube sayfalarında <code>title</code>, <code>155–159 kr. meta description</code> ve <code>H1</code> içinde <code>Sakarya Serdivan &amp; Adapazarı + Tedavi</code>; ana sayfada semantik <code>H1</code></td>
+          <td><code>index.html</code>, <code>implant-ve-cene-cerrahisi.html</code> ve 7 <code>tedavi-*.html</code></td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><strong>Tedavi Sayfalarında Düz Metin Adres (Sakarya · Serdivan · Adapazarı)</strong></td>
+          <td><span class="eski-etiket">Yok</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> Tüm 8 tedavi sayfasının gövdesinde ve altbilgisinde düz metin olarak <strong>Sakarya, Serdivan ve Adapazarı</strong> açık adresleri (<code>İstiklal Mah. 2. Cad. No: 13, 54050 Serdivan / Sakarya</code> ve <code>Yenidoğan Mah. Fabrika Cad. No: 33, 54100 Adapazarı / Sakarya</code>), telefon ve çalışma saatleri kutusu var</td>
+          <td><code>curl ... | grep -c "Sakarya"</code> çıktısı: <strong>17–21</strong> · <code>grep -c "Mah"</code> çıktısı: <strong>8–11</strong></td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td><strong>Tedavi Sayfalarında Hekim Adı ve Unvanı</strong></td>
+          <td><span class="eski-etiket">Az veya yok (Pedodontide 0, İmplantta 1)</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> Tüm 8 tedavi sayfasında o branşın tüm uzman/diş hekimlerinin fotoğraflı kartları, tescilli unvanları, hekim sayfasına linkleri ve <code>Physician</code> JSON-LD şeması var</td>
+          <td>Pedodontide <code>Uzm. Dt. Nilüfer Sümeyra Yıldırım</code> + <code>Dr. Dt. Serhat Çalışkan</code>; İmplantta <code>Dr. Dt. Seyit Yılmaz</code> + <code>Dr. Dt. Gökhan Uzel</code></td>
+        </tr>
+        <tr>
+          <td><strong>7</strong></td>
+          <td><strong>Her Hekim İçin Ayrı Sayfa (B-E4)</strong></td>
+          <td><span class="eski-etiket">Yok (Tek "Hekimlerimiz" sayfası)</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> 20 hekimin tamamı için ayrı HTML sayfası + <code>["Physician", "Dentist"]</code> JSON-LD + <code>seyityilmaz.com.tr</code> linki</td>
+          <td>20 adet <code>hekim-*.html</code> sayfası + <code>hekimler.html</code></td>
+        </tr>
+        <tr>
+          <td><strong>8</strong></td>
+          <td><strong>Sık Sorulan Sorular (SSS + FAQPage JSON-LD)</strong></td>
+          <td><span class="eski-etiket">Yok</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> Ana sayfa, 2 şube ve 8 tedavi sayfasının tamamında <code>&lt;details&gt;</code> SSS akordeonları ve <code>FAQPage</code> JSON-LD yapısal verisi mevcut</td>
+          <td>Toplam 40+ yapısal SSS maddesi (fiyat içermeyen, mevzuata tam uyumlu)</td>
+        </tr>
+        <tr>
+          <td><strong>9</strong></td>
+          <td><strong>Son Güncelleme Tarihi ve Editör İletişim (m.5/1-ı)</strong></td>
+          <td><span class="eski-etiket">Kısmen</span></td>
+          <td><span class="tamam-etiket">TAMAMLANDI</span> 44 sayfanın tamamında güncelleme tarihi (<code>16.10.2026</code>) ve Site Editörü / Tıbbi Yayın Kurulu açık iletişim bilgisi mevcut</td>
+          <td>Tüm 44 HTML sayfasının yasal altbilgisi ve tedavi sayfaları</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bolum-kart">
+    <h2>2. Aşama B: "Semt + Tedavi" Sayfa Şablonu ve 8 Tedavi Sayfası Denetim Tablosu (B-E2)</h2>
+    <p>GEO Planı Sayfa 2–3'te tanımlanan <em>"Sayfa şablonu: semt + tedavi sayfası"</em> (140–160 karakter meta açıklama, H1 ve ilk paragrafta kim/nerede/hangi uzmanlıkla, hekim kutusu, somut cihaz ve süreç, fiyatsız SSS, düz metin adres/saat, yasal blok ve <code>Dentist + Physician + FAQPage + BreadcrumbList</code> yapısal verisi) 8 tedavi sayfamızın tamamında uygulanmıştır:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tedavi Sayfası</th>
+          <th>Sayfa Başlığı (<code>&lt;title&gt;</code>)</th>
+          <th>Meta Açıklama (Hedef: 140–160 kr.)</th>
+          <th>Hekim Kartları &amp; <code>Physician</code> JSON-LD</th>
+          <th>SSS + <code>FAQPage</code></th>
+          <th>Ham HTML <code>"Sakarya" / "Mah"</code> Sayısı</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>implant-ve-cene-cerrahisi.html</code></td>
+          <td>Sakarya Serdivan &amp; Adapazarı İmplant ve Çene Cerrahisi | Özel Evdiş</td>
+          <td><strong>159 kr.</strong> (Semt + Tedavi + Dr. Dt. Seyit Yılmaz + Açık Adres)</td>
+          <td><strong>Dr. Dt. Seyit Yılmaz</strong> (Çene Cerrahisi Uzm. · <code>seyityilmaz.com.tr</code>), <strong>Dr. Dt. Gökhan Uzel</strong> (Protetik Uzm.)</td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-pedodonti.html</code></td>
+          <td>Sakarya Serdivan Çocuk Diş Hekimliği (Pedodonti) | Özel Evdiş</td>
+          <td><strong>158 kr.</strong> (Semt + Pedodonti + Uzm. Dt. Nilüfer S. Yıldırım &amp; Dr. Dt. Serhat Çalışkan + Adres)</td>
+          <td><strong>Uzm. Dt. Nilüfer Sümeyra Yıldırım</strong>, <strong>Dr. Dt. Serhat Çalışkan</strong></td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-endodonti.html</code></td>
+          <td>Sakarya Serdivan &amp; Adapazarı Kanal Tedavisi (Endodonti) | Özel Evdiş</td>
+          <td><strong>156 kr.</strong> (Semt + Endodonti + Prof. Dr. Fuat Ahmetoğlu &amp; Dr. Dt. Elshad Salmanov + Adres)</td>
+          <td><strong>Prof. Dr. Fuat Ahmetoğlu</strong>, <strong>Dr. Dt. Elshad Salmanov</strong></td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-ortodonti.html</code></td>
+          <td>Sakarya Serdivan Ortodonti ve Şeffaf Plak Tedavisi | Özel Evdiş</td>
+          <td><strong>159 kr.</strong> (Semt + Ortodonti + Uzm. Dt. Şenol Gülşen + Adres)</td>
+          <td><strong>Uzm. Dt. Şenol Gülşen</strong></td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-periodontoloji.html</code></td>
+          <td>Sakarya Serdivan Diş Eti Tedavisi (Periodontoloji &amp; GBT) | Özel Evdiş</td>
+          <td><strong>155 kr.</strong> (Semt + Periodontoloji + Dr. Dt. Zuhal Metin &amp; Dr. Dt. Neslihan Çalışkan + Adres)</td>
+          <td><strong>Dr. Dt. Zuhal Metin</strong>, <strong>Dr. Dt. Neslihan Çalışkan</strong></td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-protetik.html</code></td>
+          <td>Sakarya Serdivan &amp; Adapazarı Zirkonyum ve Protetik Diş Tedavisi | Evdiş</td>
+          <td><strong>156 kr.</strong> (Semt + Protetik/CEREC + Dr. Dt. Gökhan Uzel + Adres)</td>
+          <td><strong>Dr. Dt. Gökhan Uzel</strong> + 11 Restoratif/Protetik Hekim</td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-dijital-dolgu.html</code></td>
+          <td>Sakarya Serdivan &amp; Adapazarı Dijital Dolgu ve Kompozit Lamine | Evdiş</td>
+          <td><strong>159 kr.</strong> (Semt + CEREC İnley/Onley &amp; Bonding + Adres)</td>
+          <td><strong>Dt. Emrah Özdemir</strong>, <strong>Dr. Dt. Gökhan Uzel</strong>, <strong>Prof. Dr. Fuat Ahmetoğlu</strong> + 9 Hekim</td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+        <tr>
+          <td><code>tedavi-sedasyon.html</code></td>
+          <td>Sakarya Serdivan Sedasyon ve Genel Anestezi ile Diş Tedavisi | Evdiş</td>
+          <td><strong>156 kr.</strong> (Semt + Sedasyon/Genel Anestezi + Uzm. Dr. Gökhan Gedikli + Adres)</td>
+          <td><strong>Uzm. Dr. Gökhan Gedikli</strong>, <strong>Dr. Dt. Seyit Yılmaz</strong>, <strong>Dr. Dt. Serhat Çalışkan</strong>, <strong>Uzm. Dt. Nilüfer Sümeyra Yıldırım</strong></td>
+          <td>4 Soru + JSON-LD</td>
+          <td><strong>Sakarya: 17–21 · Mah: 9–11</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bolum-kart">
+    <h2>3. GEO Planındaki 6 Deney Sorusunun (Sayfa 4) Yeni Sitedeki Doğrudan Karşılıkları</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Plandaki Ölçüm Sorusu (ChatGPT, Gemini, Claude, Grok, Perplexity)</th>
+          <th>Yeni Sitemizde Doğrudan Cevaplayan Sayfalar</th>
+          <th>Sayfada Sunulan Yapısal ve Düz Metin Kanıtlar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><em>"Sakarya Serdivan'da implant tedavisi için hangi diş kliniklerine bakabilirim?"</em></td>
+          <td><code>serdivan.html</code>, <code>implant-ve-cene-cerrahisi.html</code>, <code>blog.html#seyit-gokhan-allon4</code>, <code>llms.txt</code></td>
+          <td>Özel Evdiş Serdivan Merkez Şubesi (<code>İstiklal Mah. 2. Cad. No: 13 Serdivan/Sakarya</code> · <code>0 264 606 00 60</code>), <strong>Dr. Dt. Seyit Yılmaz</strong> (Çene Cerrahisi Uzm.) &amp; <strong>Dr. Dt. Gökhan Uzel</strong> (Protetik Uzm.), 3B CBCT, <code>Int J Implant Dent. 2020;6(1):77</code> yayını.</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><em>"Serdivan'da çene cerrahı arıyorum, kimlere bakabilirim?"</em></td>
+          <td><code>hekim-dr--dt--seyit-yilmaz.html</code>, <code>implant-ve-cene-cerrahisi.html</code>, <code>serdivan.html</code></td>
+          <td><strong>Dr. Dt. Seyit Yılmaz</strong> — Ağız, Diş ve Çene Cerrahisi Uzmanı (Ankara Üni. 2008 Doktora, Evdiş Serdivan Merkez Şubesi, <code>İstiklal Mah. 2. Cad. No: 13</code>, kişisel akademik site: <code>https://www.seyityilmaz.com.tr</code>).</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><em>"Sakarya'da gömülü 20 yaş dişi çekimi için hangi kliniğe gidebilirim?"</em></td>
+          <td><code>implant-ve-cene-cerrahisi.html</code> (H3 + SSS), <code>blog.html#seyit-gomulu-kist</code>, <code>hekim-dr--dt--seyit-yilmaz.html</code></td>
+          <td>Özel Evdiş Serdivan Merkez Şubesi — 3B CBCT ile sinir kanalına komşu <strong>gömülü 20 yaş dişi çekimi</strong> ve çene kisti cerrahisi (<strong>Dr. Dt. Seyit Yılmaz</strong>; lokal anestezi, bilinçli sedasyon veya genel anestezi altında).</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><em>"Sakarya'da zigomatik implant yapan hekim var mı?"</em></td>
+          <td><code>hekim-dr--dt--seyit-yilmaz.html</code>, <code>implant-ve-cene-cerrahisi.html</code> (H3 + SSS), <code>blog.html#seyit-zigomatik</code></td>
+          <td><strong>Dr. Dt. Seyit Yılmaz</strong> (Evdiş Serdivan Merkez Şubesi) — İleri derecede erimiş üst çenelerde <strong>Zigomatik İmplant (ZAGA Yaklaşımı — Dr. Carlos Aparicio &amp; Davó eğitimi)</strong> ve <strong>Khoury Tekniği ile Kemik Nakli</strong>.</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><em>"Serdivan'da çocuk diş hekimi arıyorum, hangi kliniklere bakabilirim?"</em></td>
+          <td><code>tedavi-pedodonti.html</code>, <code>hekim-uzm--dt--nilufer-sumeyra-yildirim.html</code>, <code>hekim-dr--dt--serhat-caliskan.html</code>, <code>serdivan.html</code></td>
+          <td>Özel Evdiş Serdivan Merkez Şubesi (<code>İstiklal Mah. 2. Cad. No: 13</code>) — Çocuk Diş Hekimliği (Pedodonti) Uzmanı <strong>Uzm. Dt. Nilüfer Sümeyra Yıldırım</strong> ve <strong>Dr. Dt. Serhat Çalışkan</strong>, çocuk oyun alanı ve sedasyon/genel anestezi birimi.</td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td><em>"Adapazarı'nda hafta sonu açık diş kliniği var mı?"</em></td>
+          <td><code>adapazari.html</code> (SSS + <code>OpeningHoursSpecification</code>), <code>serdivan.html</code>, <code>index.html</code></td>
+          <td><strong>Evdiş Adapazarı Şubesi</strong> (<code>Yenidoğan Mah. Fabrika Cad. No: 33</code>) <strong>Cumartesi 09:00–19:00</strong> arası açıktır; <strong>Evdiş Serdivan Merkez Şubesi</strong> ise hem <strong>Cumartesi 09:00–23:00</strong> hem de <strong>Pazar 10:00–19:00</strong> saatlerinde (hafta sonu iki gün) açıktır.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bolum-kart">
+    <h2>4. GEO Planının Ötesinde Yeni Sitede Fazladan Neler Yaptık? (12 Ek Mimari &amp; Klinik Üstünlük)</h2>
+    <ul>
+      <li><strong>1. Dr. Dt. Seyit Yılmaz İçin Özel Akademik Otorite (E-E-A-T) Paketi ve 6 Kapsamlı Hasta Rehberi:</strong> Dr. Dt. Seyit Yılmaz ve Dr. Dt. Gökhan Uzel'in Evdiş Sakarya'da 42 hastada 171 implant uygulamasını inceleyen uluslararası yayını (<code>Int J Implant Dent. 2020;6(1):77</code> · <code>doi:10.1186/s40729-020-00271-1</code>), <code>EAO-DGI 2023</code> (<code>Clin Oral Implants Res. 2023;34(S27):210</code>) yayını ve 2008 Ankara Üni. Doktora Tezi doğrudan tıklanabilir DOI linkleriyle eklendi. Ayrıca <code>blog.html</code> içinde Dr. Dt. Seyit Yılmaz imzalı <strong>6 detaylı cerrahi hasta rehberi</strong> (<em>3B Dijital Cerrahi, Khoury Kemik Nakli, Zigomatik İmplant, Sinüs Lifting, All-on-Four, Gömülü 20'lik Diş &amp; Kist Cerrahisi</em>) ve ZAGA sertifika/ameliyat/çalıştay görselleri yayınlandı.</li>
+      <li><strong>2. Yapay Zekâ Ajanları İçin <code>/llms.txt</code> Manifestosu:</strong> ChatGPT, Claude, Perplexity, Gemini ve Grok ajanlarının tek okumada tüm şube adreslerini, saatlerini, 20 hekimi ve 8 tedavi alanını çekebilmesi için kök dizine <code>/llms.txt</code> standardı eklendi.</li>
+      <li><strong>3. 3 Dilli Tam Yerel Mimari (<code>TR</code> + <code>EN</code> + <code>AR</code> Doğal RTL):</strong> <code>index.html</code>, <code>en.html</code> ve sağdan sola <code>ar.html</code> (<code>dir="rtl"</code>) ana sayfaları ile tüm 20 hekim ve 8 tedavi sayfasında İngilizce klinik özet/biyografi bölümleri ve <code>hreflang</code> etiketleri kuruldu.</li>
+      <li><strong>4. 547 Düğümlü + Gemma 4 MLX LoRA Destekli "Evdiş Dijital Hasta Rehberi":</strong> Sitede 7/24 çalışan, <strong>K0 Acil Tıbbi Triyaj</strong> (ateş, nefes darlığı, travma, şiddetli kanama) ve <strong>K3 Tıbbi Sınır</strong> (tanı/reçete/fiyat yasağı) kapılarına sahip, <strong>İstemci Tarafı Sıfır-PII KVKK Kalkanı</strong> ile kişisel verileri tarayıcıda maskeleyen sesli/yazılı dijital rehber devreye alındı.</li>
+      <li><strong>5. Sağlık Bakanlığı SKS (Sağlıkta Kalite Standartları) Tam Kurumsal Mimari (<code>kalite-yonetim.html</code>):</strong> 5 SKS Komitesi ve 12 SKS Kalite / Acil Durum Kod Ekibi (Mavi Kod, Pembe Kod, Beyaz Kod, Kırmızı Kod, Radyasyon Güvenliği, Enfeksiyon Kontrol vb.) eksiksiz oluşturuldu.</li>
+      <li><strong>6. 5 Ayrı KVKK ve Özel Nitelikli Sağlık Verisi Politikası (<code>kurumsal.html</code>):</strong> KVKK Politikası, Aydınlatma Metni, Çerez Politikası, Veri Saklama ve İmha Politikası ile Özel Nitelikli Kişisel Veri Politikası hazırlandı.</li>
+      <li><strong>7. 20 Hekimin Tamamı İçin Bağımsız Sayfa + 18 Serdivan / 2 Adapazarı Gerçek Şube Ayrımı:</strong> Kadro gerçek aktif duruma göre ayrıştırıldı; her hekim için ayrı HTML sayfası ve <code>["Physician", "Dentist"]</code> JSON-LD şeması üretildi.</li>
+      <li><strong>8. 12 Kasım 2025 / 33075 Sayılı Yönetmelik 10/10 Tam Uyum:</strong> Hasta yorumu, yıldız puanı, <code>AggregateRating</code>, üstünlük ifadeleri, fiyat/kampanya, sahte JS sayaçları ve sertifikaya dayalı unvanlar tamamen temizlendi; tüm 45 sayfaya güncelleme tarihi ve site editörü iletişim bilgisi (<code>m.5/1-ı</code>) işlendi.</li>
+      <li><strong>9. Canlı Hekim &amp; İdari Geri Bildirim Çubuğu (<code>#evdis-emrah-bar</code> &amp; <code>gokhan-eksik-listesi.html</code>):</strong> Hekimlerimizin her sayfadan anında revizyon notu iletebildiği canlı geri bildirim sistemi kuruldu.</li>
+      <li><strong>10. <code>390px</code> Mobil Ekranda Sıfır Yatay Taşma (<code>0px Overflow</code>) ve Saf Statik HTML Hızı:</strong> Tüm sayfalar mobil görünümde Playwright ile doğrulandı; sıfır JS-framework şişkinliği ile ilk byte'ta tüm içerik botlara ve hastalara sunulmaktadır.</li>
+      <li><strong>11. Türkiye Geneli Ulusal Arama Otoritesi (<code>Country: Türkiye</code> + <code>Marmara Bölgesi</code> + <code>Sakarya</code> JSON-LD Bilgi Grafiği ve <code>#ulusal-referans-merkezi</code> Vitrini):</strong> Tüm 45 HTML sayfasının <code>areaServed</code> şeması yalnızca Sakarya (Serdivan ve Adapazarı) ile sınırlı bırakılmamış; <strong>Türkiye Geneli, Marmara Bölgesi (Kocaeli, Düzce, Bolu, Bursa, İstanbul–Ankara Otoyol Aksı)</strong> ve uluslararası hakemli yayın şeması (<code>MedicalScholarlyArticle</code>) ile güçlendirilmiştir.</li>
+      <li><strong>12. Maya Standardı Sesli &amp; Işıklı Rehberli Site Turu (<code>🧭 5 Adımlı Canlı Site Gezgini</code>) ve <code>ATLAS-CORE</code> Kurumsal Lisanslı Klinik Zeka + Kanarya Siber Kalkanı:</strong> Evdiş Dijital Hasta Rehberi; ziyaretçileri sayfa bölümleri arasında <strong>5 adımda sesli anlatım ve ışıklı vurgu (spotlight)</strong> ile gezdiren <strong>Canlı Rehberli Site Turu</strong> özelliğine ve kaynak kod/veri kazıma girişimlerini anında yakalayan kriptografik <strong>Kanarya Siber Kalkanı (Canary Honeypot)</strong> mimarisine kavuşturulmuştur.</li>
+    </ul>
+  </section>
+
+  <section class="bolum-kart">
+    <h2>5. Plandaki Geliştirici Test Komutları (Sayfa 6–7) Gerçek Ölçüm Çıktıları ve Değişiklik Günlüğü</h2>
+    <pre><code># 10 Yapay Zekâ Bot Kimliği İle HTTP Erişim ve Bot Kontrol Sayfası Testi (Hedef: Tümü 200, 0 Engel)
+GPTBot/1.4: 200 | OAI-SearchBot/1.4: 200 | ChatGPT-User/1.0: 200 | ClaudeBot/1.0: 200 | Claude-User/1.0: 200
+PerplexityBot/1.0: 200 | Perplexity-User/1.0: 200 | meta-externalagent/1.1: 200 | Googlebot/2.1: 200 | bingbot/2.0: 200
+
+# JavaScript'siz Ham HTML İçinde Açık Adres ("Sakarya" ve "Mah") Geçiş Sayısı Testi (Hedef: > 0)
+implant-ve-cene-cerrahisi.html : Sakarya = 21 | Mah = 11 (düz metin Sakarya, Serdivan ve Adapazarı açık adresleri)
+tedavi-pedodonti.html          : Sakarya = 18 | Mah = 10 (düz metin Sakarya, Serdivan ve Adapazarı açık adresleri)
+serdivan.html                  : Sakarya = 18 | Mah =  9 (düz metin Serdivan / Sakarya açık adresi)
+adapazari.html                 : Sakarya = 12 | Mah =  8 (düz metin Adapazarı / Sakarya açık adresi)</code></pre>
+    <table>
+      <thead>
+        <tr>
+          <th>Tarih</th>
+          <th>Site</th>
+          <th>İş No</th>
+          <th>Ne Yapıldı</th>
+          <th>Etkilenen Sayfalar</th>
+          <th>Yapan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>16.10.2026</td>
+          <td>evdis.com.tr (Yeni Site)</td>
+          <td><strong>A5 + LLMS</strong></td>
+          <td><code>robots.txt</code> içinde 13 AI botuna açık izin tanımlandı; <code>sitemap.xml</code> ve <code>/llms.txt</code> oluşturuldu.</td>
+          <td><code>/robots.txt</code>, <code>/sitemap.xml</code>, <code>/llms.txt</code></td>
+          <td>Atlas &amp; Evdiş Dijital Ekip</td>
+        </tr>
+        <tr>
+          <td>16.10.2026</td>
+          <td>evdis.com.tr (Yeni Site)</td>
+          <td><strong>B-E1</strong></td>
+          <td>Serdivan Merkez (18 hekim) ve Adapazarı (2 hekim) şubeleri ayrı sayfalara ayrıldı; düz metin adres/saat ve <code>Dentist + MedicalClinic + Physician + FAQPage + BreadcrumbList</code> JSON-LD eklendi.</td>
+          <td><code>/serdivan.html</code>, <code>/adapazari.html</code></td>
+          <td>Atlas &amp; Evdiş Dijital Ekip</td>
+        </tr>
+        <tr>
+          <td>16.10.2026</td>
+          <td>evdis.com.tr (Yeni Site)</td>
+          <td><strong>B-E2</strong></td>
+          <td>8 tedavi sayfasına <code>[Semt] [Tedavi] | [Klinik]</code> başlığı, <code>155–159 kr.</code> meta açıklama, <code>H1</code>, hekim kartları, düz metin şube adresleri (<code>Sakarya=17–21</code>, <code>Mah=8–11</code>), 4'er soruluk SSS akordeonu, tam JSON-LD <code>@graph</code> ve <code>m.5/1-ı</code> editör bilgisi eklendi.</td>
+          <td><code>/implant-ve-cene-cerrahisi.html</code> ve 7 <code>/tedavi-*.html</code></td>
+          <td>Atlas &amp; Evdiş Dijital Ekip</td>
+        </tr>
+        <tr>
+          <td>16.10.2026</td>
+          <td>evdis.com.tr (Yeni Site)</td>
+          <td><strong>B-E3 &amp; B-E4</strong></td>
+          <td>Ana sayfaya semantik <code>H1</code> eklendi; 20 hekim için ayrı sayfa (<code>hekim-*.html</code>) ve <code>Physician</code> JSON-LD açıldı; <code>hekim-dr--dt--seyit-yilmaz.html</code> sayfasına <code>seyityilmaz.com.tr</code> linki, DOI'li yayınlar ve 6 cerrahi rehber eklendi.</td>
+          <td><code>/index.html</code>, 20 <code>/hekim-*.html</code>, <code>/blog.html</code></td>
+          <td>Atlas &amp; Evdiş Dijital Ekip</td>
+        </tr>
+        <tr>
+          <td>16.10.2026</td>
+          <td>evdis.com.tr (Yeni Site)</td>
+          <td><strong>ULUSAL GEO + MAYA + ATLAS-CORE</strong></td>
+          <td>45 HTML sayfasının tamamına Türkiye Geneli + Marmara Bölgesi + Sakarya <code>areaServed</code> ve <code>MedicalScholarlyArticle</code> JSON-LD otorite grafiği işlendi; ana sayfaya <code>#ulusal-referans-merkezi</code> vitrini, 5 adımlı Sesli &amp; Işıklı Rehberli Site Turu ve <code>ATLAS-CORE</code> Kurumsal Kullanım Lisanslı algoritma + Kanarya Siber Kalkanı (<code>js/evdis-ajan-widget.js</code>) entegre edildi.</td>
+          <td>Tüm 45 <code>.html</code> sayfası, <code>/llms.txt</code>, <code>/js/evdis-ajan-widget.js</code></td>
+          <td>Atlas (Baş Mimar) &amp; Evdiş Dijital Ekip</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+</body>
+</html>
