@@ -1,0 +1,439 @@
+{
+  "meta": {
+    "protokol": "EVDIS_YUZ_VE_MEDYA_ENVANTERI_V1",
+    "kural": "Ayrılan hekim/personel 72 saat (teknik olarak 5 sn) içinde tüm HTML, JSON-LD ve medya referanslarından düşürülür.",
+    "toplam_html_sayfa": 50,
+    "toplam_aktif_hekim_profili": 20,
+    "sahne_videolarinda_taninabilir_kisi_sayisi": 0
+  },
+  "sahne_videolari": [
+    {
+      "slot": "far-left",
+      "dosya": "video/evdis-ig-DZ90SBKsNod.mp4",
+      "poster": "img/canli_medya/poster_v1.jpg",
+      "icerik_turu": "3B_animasyon_kompozit_dolgu",
+      "taninabilir_kisi_var_mi": false,
+      "atomik_degisim_suresi_sn": 30
+    },
+    {
+      "slot": "left",
+      "dosya": "video/evdis-dis-cephe-temiz.mp4",
+      "poster": "img/canli_medya/poster_v2.jpg",
+      "icerik_turu": "dis_cephe_ve_karsilama_mimari",
+      "taninabilir_kisi_var_mi": false,
+      "atomik_degisim_suresi_sn": 30
+    },
+    {
+      "slot": "center",
+      "dosya": "video/evdis-klinik-mimari-temiz.mp4",
+      "poster": "img/canli_medya/poster_v3.jpg",
+      "icerik_turu": "klinik_mimari_sirona_mikroskop",
+      "taninabilir_kisi_var_mi": false,
+      "atomik_degisim_suresi_sn": 30
+    },
+    {
+      "slot": "right",
+      "dosya": "video/evdis-zumax-sirona-temiz.mp4",
+      "poster": "img/canli_medya/poster_v4.jpg",
+      "icerik_turu": "zumax_mikroskop_ve_sirona_unit",
+      "taninabilir_kisi_var_mi": false,
+      "atomik_degisim_suresi_sn": 30
+    },
+    {
+      "slot": "far-right",
+      "dosya": "video/evdis-ig-DbklTxKsJyO-sahne.mp4",
+      "poster": "img/canli_medya/poster_v5.jpg",
+      "icerik_turu": "pelus_model_rubber_dam_demo",
+      "taninabilir_kisi_var_mi": false,
+      "atomik_degisim_suresi_sn": 30
+    }
+  ],
+  "hekim_envanteri": {
+    "hekim-dr--dt--elshad-salmanov.html": {
+      "profil_sayfasi": "hekim-dr--dt--elshad-salmanov.html",
+      "gorunen_ad": "Dr. Dt. Elshad Salmanov (Endodonti Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dr--dt--elshad-salmanov.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-endodonti.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dr--dt--gokhan-uzel.html": {
+      "profil_sayfasi": "hekim-dr--dt--gokhan-uzel.html",
+      "gorunen_ad": "Dr. Dt. Gökhan Uzel (Protetik Diş Tedavisi Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "blog.html",
+        "en.html",
+        "gokhan-eksik-listesi.html",
+        "hekim-dr--dt--gokhan-uzel.html",
+        "hekimler.html",
+        "implant-ve-cene-cerrahisi.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dr--dt--neslihan-caliskan.html": {
+      "profil_sayfasi": "hekim-dr--dt--neslihan-caliskan.html",
+      "gorunen_ad": "Dr. Dt. Neslihan Çalışkan (Periodontoloji Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dr--dt--neslihan-caliskan.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-periodontoloji.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dr--dt--serhat-caliskan.html": {
+      "profil_sayfasi": "hekim-dr--dt--serhat-caliskan.html",
+      "gorunen_ad": "Dr. Dt. Serhat Çalışkan (Çocuk Diş Hekimliği (Pedodonti) Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dr--dt--serhat-caliskan.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "seyit-hoca-geo-raporu.html",
+        "tasarim-onerileri.html",
+        "tedavi-pedodonti.html",
+        "tedavi-sedasyon.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dr--dt--seyit-yilmaz.html": {
+      "profil_sayfasi": "hekim-dr--dt--seyit-yilmaz.html",
+      "gorunen_ad": "Dr. Dt. Seyit Yılmaz (Ağız, Diş ve Çene Cerrahisi Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "blog.html",
+        "en.html",
+        "gokhan-eksik-listesi.html",
+        "hekim-dr--dt--seyit-yilmaz.html",
+        "hekimler.html",
+        "implant-ve-cene-cerrahisi.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "seyit-hoca-geo-raporu.html",
+        "tasarim-onerileri.html",
+        "tedavi-sedasyon.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dr--dt--zuhal-metin.html": {
+      "profil_sayfasi": "hekim-dr--dt--zuhal-metin.html",
+      "gorunen_ad": "Dr. Dt. Zuhal Metin (Periodontoloji Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dr--dt--zuhal-metin.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-periodontoloji.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--betul-durmaz-enginler.html": {
+      "profil_sayfasi": "hekim-dt--betul-durmaz-enginler.html",
+      "gorunen_ad": "Dt. Betül Durmaz Enginler (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--betul-durmaz-enginler.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--burak-eren.html": {
+      "profil_sayfasi": "hekim-dt--burak-eren.html",
+      "gorunen_ad": "Dt. Burak Eren (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--burak-eren.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--davut-kayhan.html": {
+      "profil_sayfasi": "hekim-dt--davut-kayhan.html",
+      "gorunen_ad": "Dt. Davut Kayhan (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--davut-kayhan.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--elif-yildiz.html": {
+      "profil_sayfasi": "hekim-dt--elif-yildiz.html",
+      "gorunen_ad": "Dt. Elif Yıldız (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--elif-yildiz.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--emrah-ozdemir.html": {
+      "profil_sayfasi": "hekim-dt--emrah-ozdemir.html",
+      "gorunen_ad": "Dt. Emrah Özdemir (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--emrah-ozdemir.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--mehmet-emre-turkhan.html": {
+      "profil_sayfasi": "hekim-dt--mehmet-emre-turkhan.html",
+      "gorunen_ad": "Dt. Mehmet Emre Türkhan (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "adapazari.html",
+        "ar.html",
+        "en.html",
+        "hekim-dt--mehmet-emre-turkhan.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--sena-ozdemir.html": {
+      "profil_sayfasi": "hekim-dt--sena-ozdemir.html",
+      "gorunen_ad": "Dt. Sena Özdemir (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--sena-ozdemir.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--seyfullah-h--ozkutlu.html": {
+      "profil_sayfasi": "hekim-dt--seyfullah-h--ozkutlu.html",
+      "gorunen_ad": "Dt. Seyfullah H. Özkutlu (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--seyfullah-h--ozkutlu.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--sila-nur-cay.html": {
+      "profil_sayfasi": "hekim-dt--sila-nur-cay.html",
+      "gorunen_ad": "Dt. Sıla Nur Çay (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-dt--sila-nur-cay.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-dt--yasa-akdogan.html": {
+      "profil_sayfasi": "hekim-dt--yasa-akdogan.html",
+      "gorunen_ad": "Dt. Yasa Akdoğan (Diş Hekimi)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "adapazari.html",
+        "ar.html",
+        "en.html",
+        "hekim-dt--yasa-akdogan.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-prof--dr--fuat-ahmetoglu.html": {
+      "profil_sayfasi": "hekim-prof--dr--fuat-ahmetoglu.html",
+      "gorunen_ad": "Prof. Dr. Fuat Ahmetoğlu (Tıbbi Hizmetler Direktörü · Endodonti Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "blog.html",
+        "en.html",
+        "gokhan-eksik-listesi.html",
+        "hekim-prof--dr--fuat-ahmetoglu.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-dijital-dolgu.html",
+        "tedavi-endodonti.html",
+        "tedavi-protetik.html",
+        "tr.html"
+      ]
+    },
+    "hekim-uzm--dr--gokhan-gedikli.html": {
+      "profil_sayfasi": "hekim-uzm--dr--gokhan-gedikli.html",
+      "gorunen_ad": "Uzm. Dr. Gökhan Gedikli (Anesteziyoloji ve Reanimasyon Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-uzm--dr--gokhan-gedikli.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-sedasyon.html",
+        "tr.html"
+      ]
+    },
+    "hekim-uzm--dt--nilufer-sumeyra-yildirim.html": {
+      "profil_sayfasi": "hekim-uzm--dt--nilufer-sumeyra-yildirim.html",
+      "gorunen_ad": "Uzm. Dt. Nilüfer Sümeyra Yıldırım (Çocuk Diş Hekimliği (Pedodonti) Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-uzm--dt--nilufer-sumeyra-yildirim.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "seyit-hoca-geo-raporu.html",
+        "tasarim-onerileri.html",
+        "tedavi-pedodonti.html",
+        "tedavi-sedasyon.html",
+        "tr.html"
+      ]
+    },
+    "hekim-uzm--dt--senol-gulsen.html": {
+      "profil_sayfasi": "hekim-uzm--dt--senol-gulsen.html",
+      "gorunen_ad": "Uzm. Dt. Şenol Gülşen (Ortodonti Uzmanı)",
+      "portre_dosyalari": [],
+      "gectigi_html_sayfalari": [
+        "ar.html",
+        "en.html",
+        "hekim-uzm--dt--senol-gulsen.html",
+        "hekimler.html",
+        "index-klasik-yedek.html",
+        "index.html",
+        "kurumsal.html",
+        "serdivan.html",
+        "tasarim-onerileri.html",
+        "tedavi-ortodonti.html",
+        "tr.html"
+      ]
+    }
+  }
+}
