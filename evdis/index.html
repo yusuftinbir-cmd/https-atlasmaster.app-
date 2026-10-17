@@ -82,7 +82,7 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 22px 44px;
+      padding: 20px 44px;
       pointer-events: none;
       transition: background 0.35s ease, backdrop-filter 0.35s ease, padding 0.35s ease;
     }
@@ -130,7 +130,7 @@
     }
     .av-brand-mark {
       font-family: var(--font-serif);
-      font-size: 1.82rem;
+      font-size: 1.85rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: #FFFFFF;
@@ -328,44 +328,43 @@
     }
 
     /* ==========================================================================
-       SCREEN 1: EVDİŞ ORIGINAL 3D MULTI-VIDEO DEPTH STAGE (NO 50/50 SPLIT!)
-       - 3 Live Videos in 3D Perspective Space (perspective: 1800px)
-       - Contenders actively surge forward ("öne gelmeye çalışıyor")
-       - Whichever video the user selects/clicks surges to the front and WINS!
+       SCREEN 1: EVDİŞ 5-VIDEO 3D DEPTH STAGE (NO TEXT OVERLAY, NO 50/50 SPLIT!)
+       - 5 Live Videos in 3D Perspective Space (perspective: 1850px)
+       - Contenders actively surge forward ("hepsi öne gelmeye çalışıyor")
+       - Whichever video the user clicks surges to the front and WINS!
        ========================================================================== */
     .av-hero-3d {
       position: relative;
       width: 100vw;
       height: 100vh;
-      min-height: 760px;
+      min-height: 740px;
       background:
-        radial-gradient(circle at 50% 38%, rgba(179, 140, 97, 0.14) 0%, rgba(20, 21, 29, 0.92) 55%, #0D0E14 100%);
+        radial-gradient(circle at 50% 42%, rgba(179, 140, 97, 0.15) 0%, rgba(20, 21, 29, 0.94) 56%, #0D0E14 100%);
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 105px 44px 36px;
-      perspective: 1800px;
+      padding: 86px 44px 32px;
+      perspective: 1850px;
     }
 
-    /* Subtle architectural depth lines in background (no middle cut!) */
     .av-hero-3d::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image:
         radial-gradient(rgba(234, 232, 232, 0.06) 1px, transparent 1px);
-      background-size: 38px 38px;
+      background-size: 36px 36px;
       opacity: 0.45;
       pointer-events: none;
     }
 
-    /* 3D Camera Rig holding the competing video planes */
+    /* 3D Camera Rig holding 5 competing video planes */
     .av-video-arena {
       position: relative;
       flex: 1;
       width: 100%;
-      max-width: 1480px;
+      max-width: 1560px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -376,9 +375,9 @@
 
     .av-vid-card {
       position: absolute;
-      width: min(64vw, 940px);
-      height: min(58vh, 530px);
-      border-radius: 6px;
+      width: min(64vw, 960px);
+      height: min(64vh, 580px);
+      border-radius: 8px;
       overflow: hidden;
       background: #0D0E14;
       transform-style: preserve-3d;
@@ -398,93 +397,144 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: filter 0.6s ease, transform 0.7s ease;
+      transition: filter 0.55s ease, transform 0.65s ease;
     }
 
-    /* Gloss & depth vignette on each 3D video plane */
     .av-vid-card::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(14,15,21,0.12) 0%, rgba(14,15,21,0.05) 50%, rgba(14,15,21,0.78) 100%);
+      background: linear-gradient(180deg, rgba(14,15,21,0.06) 0%, rgba(14,15,21,0.02) 56%, rgba(14,15,21,0.78) 100%);
       pointer-events: none;
     }
 
     /* WINNER VIDEO (Center Foreground in 3D Z-Space) */
     .av-vid-card[data-pos="center"] {
-      z-index: 30;
-      transform: translate3d(0, -10px, 110px) rotateY(0deg) scale(1);
-      border-color: rgba(179, 140, 97, 0.65);
+      z-index: 40;
+      transform: translate3d(0, 0px, 130px) rotateY(0deg) scale(1);
+      border-color: rgba(179, 140, 97, 0.75);
       box-shadow:
-        0 45px 110px rgba(0, 0, 0, 0.85),
-        0 0 70px rgba(179, 140, 97, 0.16);
+        0 50px 120px rgba(0, 0, 0, 0.88),
+        0 0 80px rgba(179, 140, 97, 0.18);
       cursor: default;
     }
     .av-vid-card[data-pos="center"] video {
-      filter: grayscale(0%) brightness(0.95) contrast(1.06);
+      filter: grayscale(0%) brightness(0.98) contrast(1.05);
     }
 
-    /* LEFT CONTENDER VIDEO (Actively trying to surge forward in 3D space!) */
+    /* INNER LEFT CONTENDER */
     .av-vid-card[data-pos="left"] {
-      z-index: 15;
-      animation: contenderSurgeLeft 5.5s ease-in-out infinite;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.72);
+      z-index: 25;
+      animation: contenderSurgeLeft 5.2s ease-in-out infinite;
+      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.76);
     }
     .av-vid-card[data-pos="left"] video {
-      filter: grayscale(85%) brightness(0.58) contrast(1.12);
+      filter: grayscale(85%) brightness(0.62) contrast(1.12);
     }
     .av-vid-card[data-pos="left"]:hover {
       animation-play-state: paused;
-      z-index: 25;
-      transform: translate3d(-23vw, -4px, 25px) rotateY(11deg) rotateZ(-0.5deg) scale(0.92);
+      z-index: 35;
+      transform: translate3d(-22vw, -4px, 45px) rotateY(10deg) scale(0.92);
       border-color: var(--accent);
-      box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.85),
-        0 0 45px rgba(179, 140, 97, 0.25);
+      box-shadow: 0 38px 95px rgba(0, 0, 0, 0.88), 0 0 50px rgba(179, 140, 97, 0.28);
     }
     .av-vid-card[data-pos="left"]:hover video {
-      filter: grayscale(0%) brightness(0.88) contrast(1.06);
+      filter: grayscale(0%) brightness(0.92) contrast(1.05);
       transform: scale(1.03);
     }
 
-    /* RIGHT CONTENDER VIDEO (Actively trying to surge forward in 3D space!) */
+    /* INNER RIGHT CONTENDER */
     .av-vid-card[data-pos="right"] {
-      z-index: 15;
-      animation: contenderSurgeRight 5.5s ease-in-out infinite 2.75s;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.72);
+      z-index: 25;
+      animation: contenderSurgeRight 5.2s ease-in-out infinite 1.8s;
+      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.76);
     }
     .av-vid-card[data-pos="right"] video {
-      filter: grayscale(85%) brightness(0.58) contrast(1.12);
+      filter: grayscale(85%) brightness(0.62) contrast(1.12);
     }
     .av-vid-card[data-pos="right"]:hover {
       animation-play-state: paused;
-      z-index: 25;
-      transform: translate3d(23vw, -4px, 25px) rotateY(-11deg) rotateZ(0.5deg) scale(0.92);
+      z-index: 35;
+      transform: translate3d(22vw, -4px, 45px) rotateY(-10deg) scale(0.92);
       border-color: var(--accent);
-      box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.85),
-        0 0 45px rgba(179, 140, 97, 0.25);
+      box-shadow: 0 38px 95px rgba(0, 0, 0, 0.88), 0 0 50px rgba(179, 140, 97, 0.28);
     }
     .av-vid-card[data-pos="right"]:hover video {
-      filter: grayscale(0%) brightness(0.88) contrast(1.06);
+      filter: grayscale(0%) brightness(0.92) contrast(1.05);
       transform: scale(1.03);
+    }
+
+    /* OUTER FAR-LEFT CONTENDER */
+    .av-vid-card[data-pos="far-left"] {
+      z-index: 12;
+      animation: contenderSurgeFarLeft 6.4s ease-in-out infinite 0.9s;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.68);
+    }
+    .av-vid-card[data-pos="far-left"] video {
+      filter: grayscale(100%) brightness(0.45) contrast(1.14);
+    }
+    .av-vid-card[data-pos="far-left"]:hover {
+      animation-play-state: paused;
+      z-index: 32;
+      transform: translate3d(-34vw, -2px, -10px) rotateY(15deg) scale(0.84);
+      border-color: var(--accent);
+    }
+    .av-vid-card[data-pos="far-left"]:hover video {
+      filter: grayscale(0%) brightness(0.88) contrast(1.05);
+    }
+
+    /* OUTER FAR-RIGHT CONTENDER */
+    .av-vid-card[data-pos="far-right"] {
+      z-index: 12;
+      animation: contenderSurgeFarRight 6.4s ease-in-out infinite 3.1s;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.68);
+    }
+    .av-vid-card[data-pos="far-right"] video {
+      filter: grayscale(100%) brightness(0.45) contrast(1.14);
+    }
+    .av-vid-card[data-pos="far-right"]:hover {
+      animation-play-state: paused;
+      z-index: 32;
+      transform: translate3d(34vw, -2px, -10px) rotateY(-15deg) scale(0.84);
+      border-color: var(--accent);
+    }
+    .av-vid-card[data-pos="far-right"]:hover video {
+      filter: grayscale(0%) brightness(0.88) contrast(1.05);
     }
 
     @keyframes contenderSurgeLeft {
       0%, 100% {
-        transform: translate3d(-29vw, 10px, -135px) rotateY(24deg) rotateZ(-1.2deg) scale(0.82);
+        transform: translate3d(-26vw, 8px, -110px) rotateY(22deg) rotateZ(-1deg) scale(0.83);
       }
       50% {
-        transform: translate3d(-26.5vw, 2px, -55px) rotateY(17deg) rotateZ(-0.6deg) scale(0.865);
+        transform: translate3d(-23.5vw, 0px, -35px) rotateY(15deg) rotateZ(-0.4deg) scale(0.875);
       }
     }
 
     @keyframes contenderSurgeRight {
       0%, 100% {
-        transform: translate3d(29vw, 10px, -135px) rotateY(-24deg) rotateZ(1.2deg) scale(0.82);
+        transform: translate3d(26vw, 8px, -110px) rotateY(-22deg) rotateZ(1deg) scale(0.83);
       }
       50% {
-        transform: translate3d(26.5vw, 2px, -55px) rotateY(-17deg) rotateZ(0.6deg) scale(0.865);
+        transform: translate3d(23.5vw, 0px, -35px) rotateY(-15deg) rotateZ(0.4deg) scale(0.875);
+      }
+    }
+
+    @keyframes contenderSurgeFarLeft {
+      0%, 100% {
+        transform: translate3d(-41vw, 18px, -270px) rotateY(30deg) rotateZ(-1.8deg) scale(0.69);
+      }
+      50% {
+        transform: translate3d(-38vw, 8px, -185px) rotateY(24deg) rotateZ(-1deg) scale(0.74);
+      }
+    }
+
+    @keyframes contenderSurgeFarRight {
+      0%, 100% {
+        transform: translate3d(41vw, 18px, -270px) rotateY(-30deg) rotateZ(1.8deg) scale(0.69);
+      }
+      50% {
+        transform: translate3d(38vw, 8px, -185px) rotateY(-24deg) rotateZ(1deg) scale(0.74);
       }
     }
 
@@ -519,7 +569,7 @@
       transition: background 0.3s, border-color 0.3s, color 0.3s;
     }
     .av-vid-card[data-pos="center"] .av-vid-badge {
-      background: rgba(179, 140, 97, 0.22);
+      background: rgba(179, 140, 97, 0.24);
       border-color: var(--accent);
       color: #FFFFFF;
     }
@@ -538,46 +588,18 @@
     }
     .av-vid-sub {
       font-size: 0.75rem;
-      color: rgba(234, 232, 232, 0.76);
+      color: rgba(234, 232, 232, 0.78);
       margin-top: 3px;
     }
 
-    /* Floating 3D Foreground Title (NOT cut down the middle!) */
-    .av-hero-foreground-title-wrap {
-      position: absolute;
-      left: 50%;
-      bottom: 112px;
-      transform: translate3d(-50%, 0, 175px);
-      z-index: 45;
-      text-align: center;
-      pointer-events: none;
-      width: 92vw;
-    }
-    .av-hero-main-title {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(3.5rem, 6.8vw, 7.2rem);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      color: #FFFFFF;
-      text-shadow:
-        0 18px 50px rgba(0, 0, 0, 0.92),
-        0 4px 16px rgba(0, 0, 0, 0.75);
-    }
-    .av-hero-main-title em {
-      font-style: italic;
-      color: #EAE8E8;
-      font-weight: 300;
-    }
-
-    /* Hero Bottom Bar: Branches on Left, Interactive 3D Stage Selector in Center, Tagline on Right */
+    /* Hero Bottom Bar: Branches on Left, Interactive 3D Stage Selector in Center, Note on Right */
     .av-hero-bottom-bar {
       position: relative;
       z-index: 50;
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: flex-end;
-      gap: 24px;
+      gap: 20px;
       padding-top: 16px;
       border-top: 1px solid rgba(234, 232, 232, 0.12);
       color: #EAE8E8;
@@ -605,7 +627,9 @@
     .av-stage-pills {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(234, 232, 232, 0.14);
       padding: 6px;
@@ -617,8 +641,8 @@
       border: none;
       color: rgba(234, 232, 232, 0.65);
       font-family: var(--font-sans);
-      font-size: 0.74rem;
-      padding: 8px 16px;
+      font-size: 0.73rem;
+      padding: 8px 14px;
       border-radius: 100px;
       cursor: pointer;
       transition: all 0.25s ease;
@@ -635,10 +659,10 @@
 
     .av-hero-right-note {
       text-align: right;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       line-height: 1.48;
       color: rgba(234, 232, 232, 0.76);
-      max-width: 340px;
+      max-width: 320px;
       justify-self: end;
     }
 
@@ -768,9 +792,7 @@
     }
 
     /* ==========================================================================
-       SCREEN 3: OBSIDIAN CLINICAL SPECIALTIES STAGE (NO MIDDLE SEAM CUT!)
-       - Left: 3D Depth Dual-Card Visual Stage + Full Official Specialty Selector
-       - Right: Unified Giant Branch Title + Circular Colorizing Doctor Avatars
+       SCREEN 3: OBSIDIAN CLINICAL SPECIALTIES STAGE (3D Depth Frame, No Seam Cut!)
        ========================================================================== */
     .av-services-stage {
       position: relative;
@@ -819,13 +841,12 @@
       filter: grayscale(0%) contrast(1.04);
       transform: rotateY(2deg) rotateX(0deg) translateZ(14px);
     }
-    /* Overlapping 3D Foreground Detail Card (e.g. Real Zumax Microscope Frame!) */
     .av-services-sub-img {
       position: absolute;
       right: 0;
       bottom: -16px;
-      width: 230px;
-      height: 175px;
+      width: 235px;
+      height: 180px;
       object-fit: cover;
       border-radius: 6px;
       border: 2px solid var(--accent);
@@ -839,7 +860,6 @@
       transform: translateZ(75px) rotateY(0deg) scale(1.04);
     }
 
-    /* Specialty Selector Buttons (Full Official Specialty Names, Zero Doctor Text Names!) */
     .av-services-cat-nav {
       display: flex;
       flex-direction: column;
@@ -887,7 +907,6 @@
       color: #EAE8E8;
     }
 
-    /* Branch Doctors Photo Avatar Strip (Zero doctor text names — photos only!) */
     .av-branch-doctors-row {
       display: flex;
       align-items: center;
@@ -927,11 +946,6 @@
     }
     .av-branch-av-link:hover img {
       filter: grayscale(0%) contrast(1.04);
-    }
-    .av-branch-doctors-hint {
-      font-size: 0.73rem;
-      color: var(--ink-light-muted);
-      letter-spacing: 0.02em;
     }
 
     .av-services-solutions-desc {
@@ -1095,7 +1109,7 @@
     }
 
     /* ==========================================================================
-       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" (With Signature Colorization + 3D Lift)
+       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" + @evdistr KLİNİK YAŞAM 3B ŞERİDİ
        ========================================================================== */
     .av-experts-stage {
       width: 100vw;
@@ -1233,7 +1247,77 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 110px;
+      margin-bottom: 90px;
+    }
+
+    /* ==========================================================================
+       NEW: @evdistr KLİNİK YAŞAM & EKİP 3B FOTOĞRAF ŞERİDİ (Grayscale -> Color + 3D Lift)
+       ========================================================================== */
+    .av-ig-life-strip {
+      max-width: 1440px;
+      margin: 0 auto 100px;
+      padding-top: 48px;
+      border-top: 1px solid var(--line-dark);
+      perspective: 1400px;
+    }
+    .av-ig-life-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .av-ig-life-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 3.6vw, 3.3rem);
+      font-weight: 400;
+      color: #EAE8E8;
+      line-height: 1.05;
+    }
+    .av-ig-life-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+      transform-style: preserve-3d;
+    }
+    .av-ig-card {
+      position: relative;
+      aspect-ratio: 4 / 4.8;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(234, 232, 232, 0.14);
+      background: #0D0E14;
+      transform: translateZ(0) rotateY(4deg);
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.45s ease;
+    }
+    .av-ig-card:hover {
+      transform: translateY(-8px) translateZ(28px) rotateY(0deg) scale(1.03);
+      border-color: var(--accent);
+      box-shadow: 0 28px 65px rgba(0, 0, 0, 0.78);
+      z-index: 10;
+    }
+    .av-ig-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+      transition: filter 0.4s ease, transform 0.5s ease;
+    }
+    .av-ig-card:hover img {
+      filter: grayscale(0%) contrast(1.04);
+      transform: scale(1.04);
+    }
+    .av-ig-card-cap {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 10px;
+      font-size: 0.71rem;
+      line-height: 1.35;
+      color: #FFFFFF;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+      pointer-events: none;
     }
 
     /* ==========================================================================
@@ -1369,7 +1453,7 @@
     @media (max-width: 1024px) {
       .av-vid-card {
         width: 86vw;
-        height: 46vh;
+        height: 48vh;
       }
       .av-hero-bottom-bar {
         grid-template-columns: 1fr;
@@ -1397,6 +1481,9 @@
       .av-all-doctors-grid {
         grid-template-columns: 1fr 1fr;
       }
+      .av-ig-life-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .av-circles-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -1410,9 +1497,6 @@
 
   <!-- ========================================================================
        SLIDE-OUT OBSIDIAN MEGA-MENU DRAWER
-       - Full official specialty titles (Protetik Diş Tedavisi, etc.)
-       - Zero numbers, zero doctor text names next to branches
-       - Circular colorizing doctor avatar clusters!
        ======================================================================== -->
   <div class="av-drawer-backdrop" id="avDrawerBackdrop" onclick="toggleDrawer(false)"></div>
   <aside class="av-drawer" id="avDrawer" aria-label="Evdiş Tam Site Menüsü">
@@ -1546,62 +1630,83 @@
   </header>
 
   <!-- ========================================================================
-       SCREEN 1: EVDİŞ ORIGINAL 3D MULTI-VIDEO DEPTH ARENA
-       - Zero 50/50 split cut!
-       - 3 live videos competing in 3D space (Video 3 is the default center winner!)
+       SCREEN 1: EVDİŞ 5-VIDEO 3D DEPTH ARENA (NO TEXT OVERLAY!)
+       - 5 live videos competing in 3D space (Video 3 is the default center winner!)
        - Clicking any contending video brings it forward to win the stage!
        ======================================================================== -->
   <section class="av-hero-3d" id="top">
     <div class="av-video-arena" id="videoArena">
 
-      <!-- VIDEO 1 (Left Contender in 3D Depth — surging forward) -->
-      <div class="av-vid-card" data-vid-idx="0" data-pos="left" onclick="selectHeroStage(0)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/galeri_04_tedavi_odalari.webp">
-          <source src="video/evdis-klinik-tanitim-1.mp4" type="video/mp4" />
-        </video>
-        <div class="av-vid-card-meta">
-          <div>
-            <div class="av-vid-badge" id="vidBadge0">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
-            <div class="av-vid-title">Uzman Hekim & Dijital Tedavi Akışı</div>
-            <div class="av-vid-sub">Dentsply Sirona CEREC & Multidisipliner Klinik</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- VIDEO 3 (Default Center WINNER in 3D Foreground — evdis-klinik-tanitim-2.mp4) -->
-      <div class="av-vid-card" data-vid-idx="1" data-pos="center" onclick="selectHeroStage(1)">
-        <video autoplay muted loop playsinline poster="img/canli_medya/zumax_mikroskop_gercek.jpg">
-          <source src="video/evdis-klinik-tanitim-2.mp4" type="video/mp4" />
-        </video>
-        <div class="av-vid-card-meta">
-          <div>
-            <div class="av-vid-badge" id="vidBadge1">★ Ön Sahnede Aktif · Klinik & Zumax Mikroskop Turu</div>
-            <div class="av-vid-title">Evdiş Klinik Mimari & Mikroskobik Hassasiyet</div>
-            <div class="av-vid-sub">Serdivan Merkez · Dentsply Sirona & Zumax 25× Operasyon Mikroskobu</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- VIDEO 2 (Right Contender in 3D Depth — surging forward) -->
-      <div class="av-vid-card" data-vid-idx="2" data-pos="right" onclick="selectHeroStage(2)">
+      <!-- VIDEO 0 (Far-Left Contender in 3D Depth) -->
+      <div class="av-vid-card" data-vid-idx="0" data-pos="far-left" onclick="selectHeroStage(0)">
         <video autoplay muted loop playsinline poster="img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp">
           <source src="video/evdis-klinik-tanitim-3.mp4" type="video/mp4" />
         </video>
         <div class="av-vid-card-meta">
           <div>
-            <div class="av-vid-badge" id="vidBadge2">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
+            <div class="av-vid-badge" id="vidBadge0">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
             <div class="av-vid-title">Gülüş Mimarisi & Estetik Restorasyon</div>
             <div class="av-vid-sub">3B Dijital Gülüş Tasarımı & Protetik Diş Tedavisi</div>
           </div>
         </div>
       </div>
 
-      <!-- 3D Floating Editorial Title in Foreground Z-Plane (Not cut down the middle!) -->
-      <div class="av-hero-foreground-title-wrap" id="heroForegroundTitle">
-        <h1 class="av-hero-main-title">
-          Kusursuz <em>Estetik</em> &amp; Dijital Diş Hekimliği
-        </h1>
+      <!-- VIDEO 1 (Left Contender in 3D Depth) -->
+      <div class="av-vid-card" data-vid-idx="1" data-pos="left" onclick="selectHeroStage(1)">
+        <video autoplay muted loop playsinline poster="img/canli_medya/instagram_ChJpWJDKk5g.jpg">
+          <source src="video/evdis-klinik-tanitim-1.mp4" type="video/mp4" />
+        </video>
+        <div class="av-vid-card-meta">
+          <div>
+            <div class="av-vid-badge" id="vidBadge1">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
+            <div class="av-vid-title">Uzman Hekim & Dijital Tedavi Akışı</div>
+            <div class="av-vid-sub">Dentsply Sirona CEREC & Multidisipliner Klinik</div>
+          </div>
+        </div>
       </div>
+
+      <!-- VIDEO 2 (Default Center WINNER — Video 3: evdis-klinik-tanitim-2.mp4) -->
+      <div class="av-vid-card" data-vid-idx="2" data-pos="center" onclick="selectHeroStage(2)">
+        <video autoplay muted loop playsinline poster="img/canli_medya/zumax_mikroskop_gercek.jpg">
+          <source src="video/evdis-klinik-tanitim-2.mp4" type="video/mp4" />
+        </video>
+        <div class="av-vid-card-meta">
+          <div>
+            <div class="av-vid-badge" id="vidBadge2">★ Ön Sahnede Aktif · Klinik Mimari & Zumax Mikroskop Turu</div>
+            <div class="av-vid-title">Evdiş Klinik Mimari & Teknoloji Turu</div>
+            <div class="av-vid-sub">Serdivan Merkez · Dentsply Sirona & Zumax 25× Operasyon Mikroskobu</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 3 (Right Contender in 3D Depth — Dedicated Zumax 25x Microscope Clip) -->
+      <div class="av-vid-card" data-vid-idx="3" data-pos="right" onclick="selectHeroStage(3)">
+        <video autoplay muted loop playsinline poster="img/canli_medya/zumax_mikroskop_gercek.jpg">
+          <source src="video/evdis-zumax-mikroskop-klip.mp4" type="video/mp4" />
+        </video>
+        <div class="av-vid-card-meta">
+          <div>
+            <div class="av-vid-badge" id="vidBadge3">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
+            <div class="av-vid-title">Zumax 25× Operasyon Mikroskobu & Endodonti</div>
+            <div class="av-vid-sub">Dr. Dt. Elshad Salmanov · Mikroskobik Kök Kanal Tedavisi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO 4 (Far-Right Contender in 3D Depth — Harvested Instagram @evdistr Reel) -->
+      <div class="av-vid-card" data-vid-idx="4" data-pos="far-right" onclick="selectHeroStage(4)">
+        <video autoplay muted loop playsinline poster="img/canli_medya/instagram_CjItfETKhW0_slide1.jpg">
+          <source src="video/evdis-ig-CjItfETKhW0-1.mp4" type="video/mp4" />
+        </video>
+        <div class="av-vid-card-meta">
+          <div>
+            <div class="av-vid-badge" id="vidBadge4">✦ Sahneye Gelmek İçin Bekliyor — Seçin</div>
+            <div class="av-vid-title">Kliniğimizden Canlı Kesitler (@evdistr)</div>
+            <div class="av-vid-sub">Dt. Emrah Özdemir & Cerrahi Klinik Ekibimiz</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="av-hero-bottom-bar">
@@ -1612,13 +1717,15 @@
       </div>
 
       <div class="av-stage-pills" role="tablist" aria-label="3B Video Sahnesi Seçici">
-        <button type="button" class="av-stage-pill" onclick="selectHeroStage(0)">Hekim & Klinik Süreci</button>
-        <button type="button" class="av-stage-pill active" onclick="selectHeroStage(1)">Klinik Mimari & Mikroskop (Ön Sahne)</button>
-        <button type="button" class="av-stage-pill" onclick="selectHeroStage(2)">Gülüş Tasarımı & Estetik</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(0)">Gülüş & Estetik</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(1)">Hekim & Klinik</button>
+        <button type="button" class="av-stage-pill active" onclick="selectHeroStage(2)">Video 3 · Klinik Turu (Ön Sahne)</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(3)">Zumax 25× Mikroskop</button>
+        <button type="button" class="av-stage-pill" onclick="selectHeroStage(4)">@evdistr Klinik</button>
       </div>
 
       <div class="av-hero-right-note">
-        Arka plandaki videolar 3B derinlikte öne gelmek için yarışır; dilediğiniz videoya tıklayarak sahnenin önüne taşıyabilirsiniz.
+        5 canlı video 3B derinlikte öne gelmek için yarışır; dilediğiniz videoya tıklayarak sahnenin önüne taşıyabilirsiniz.
       </div>
     </div>
   </section>
@@ -1677,9 +1784,7 @@
   </section>
 
   <!-- ========================================================================
-       SCREEN 3: OBSIDIAN CLINICAL SPECIALTIES STAGE (3D Depth Frame, No Seam Cut!)
-       - Official specialty titles ("Protetik Diş Tedavisi", etc.)
-       - Zero doctor names written in the specialty list — only circular portraits!
+       SCREEN 3: OBSIDIAN CLINICAL SPECIALTIES STAGE (3D Depth Frame + @evdistr Photos!)
        ======================================================================== -->
   <section class="av-services-stage" id="hizmetler">
     <div class="av-services-inner">
@@ -1693,7 +1798,7 @@
           />
           <img
             id="srvSubImg"
-            src="img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp"
+            src="img/canli_medya/instagram_DcySNVqM_cd.jpg"
             alt="Evdiş Klinik Detay"
             class="av-services-sub-img"
           />
@@ -1764,16 +1869,16 @@
 
   <!-- ========================================================================
        SCREEN 4: FULL-BLEED #EAE8E8 TECHNOLOGY STAGE
-       (Real Zumax Microscope Frame from Video 3 + Dentsply Sirona Systems)
+       (Real Sirona Unit from @evdistr + Real Zumax Microscope Frame from Video 3)
        ======================================================================== -->
   <section class="av-tech-stage" id="teknoloji">
     <h2 class="av-tech-giant-header">Sonuç Odaklı Teknoloji</h2>
 
     <div class="av-tech-grid">
       <div class="av-tech-counter-col">
-        <div class="av-tech-counter" id="techCounter">Dentsply Sirona</div>
+        <div class="av-tech-counter" id="techCounter">Dentsply Sirona CEREC</div>
         <div class="av-tech-counter-sub" id="techCounterSub">
-          Dentsply Sirona CEREC sistemiyle kaşıksız 3B renkli optik tarama ve mikron hassasiyetinde tasarım.
+          Dentsply Sirona ünit ve CEREC sistemiyle kaşıksız 3B renkli optik tarama ve mikron hassasiyetinde tasarım.
         </div>
       </div>
 
@@ -1781,12 +1886,12 @@
         <div class="av-tech-visual-frame">
           <img
             id="techMainImg"
-            src="img/canli_medya/galeri_04_tedavi_odalari.webp"
+            src="img/canli_medya/instagram_ChJpWJDKk5g.jpg"
             alt="Dentsply Sirona CEREC 3B Optik Tarama"
           />
         </div>
         <div class="av-tech-visual-caption" id="techCaption">
-          📍 Serdivan Merkez & Özel CAD/CAM Protez Lab. (Barış Emre Arpaç · Ahmet Tayyip Berk)
+          📍 Evdiş Serdivan Merkez — Dentsply Sirona Ünit & Radyografi Donanımı
         </div>
       </div>
 
@@ -1820,7 +1925,7 @@
   </section>
 
   <!-- ========================================================================
-       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" (Full Official Specialty Titles!)
+       SCREEN 5: OBSIDIAN "HEKİM KADROMUZ" + @evdistr KLİNİK YAŞAM 3B ŞERİDİ
        ======================================================================== -->
   <section class="av-experts-stage" id="hekimler">
     <h2 class="av-experts-giant-title">Hekim Kadromuz</h2>
@@ -1910,6 +2015,44 @@
       </a>
     </div>
 
+    <!-- NEW: @evdistr KLİNİK YAŞAM VE EKİBİMİZ 3B FOTOĞRAF ŞERİDİ -->
+    <div class="av-ig-life-strip">
+      <div class="av-ig-life-head">
+        <div>
+          <div style="font-size:0.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">@evdistr · Klinik Yaşam & Ekibimiz</div>
+          <h3 class="av-ig-life-title">1998'den Bugüne Evdiş Ailesi ve Klinik Atmosferimiz</h3>
+        </div>
+        <a href="ziyaretler-ve-galeri.html" class="av-pill-btn">Tüm Galeri & Ziyaretler ↗</a>
+      </div>
+
+      <div class="av-ig-life-grid">
+        <a href="ziyaretler-ve-galeri.html" class="av-ig-card">
+          <img src="img/canli_medya/instagram_DCyqYGNM60t_slide8.jpg" alt="1998'den Bugüne Evdiş Kurucu Hekimler ve Klinik Ailesi" />
+          <div class="av-ig-card-cap">1998'den Bugüne Evdiş Kurucu Hekimler & Ekip</div>
+        </a>
+        <a href="implant-ve-cene-cerrahisi.html" class="av-ig-card">
+          <img src="img/canli_medya/instagram_C7d4XXpK8JK_1.jpg" alt="Dr. Dt. Seyit Yılmaz ve Dt. Emrah Özdemir — Çene Cerrahisi" />
+          <div class="av-ig-card-cap">Dr. Dt. Seyit Yılmaz & Dt. Emrah Özdemir</div>
+        </a>
+        <a href="tedavi-dijital-dolgu.html" class="av-ig-card">
+          <img src="img/canli_medya/instagram_DcySNVqM_cd.jpg" alt="Dt. Sıla Nur Çay — Dental Loupe Hassasiyeti" />
+          <div class="av-ig-card-cap">Optik Büyüteç (Loupe) & Estetik Hassasiyet</div>
+        </a>
+        <a href="tedavi-endodonti.html" class="av-ig-card">
+          <img src="img/canli_medya/zumax_mikroskop_gercek.jpg" alt="Dr. Dt. Elshad Salmanov — Zumax 25× Operasyon Mikroskobu" />
+          <div class="av-ig-card-cap">Zumax 25× Dental Operasyon Mikroskobu</div>
+        </a>
+        <a href="serdivan.html" class="av-ig-card">
+          <img src="img/canli_medya/instagram_ChJpWJDKk5g.jpg" alt="Dentsply Sirona Ünit ve Radyografi Muayene Odası" />
+          <div class="av-ig-card-cap">Dentsply Sirona Klinik Ünit & Radyografi</div>
+        </a>
+        <a href="kurumsal.html#organizasyon-semasi" class="av-ig-card">
+          <img src="img/canli_medya/instagram_DCyqYGNM60t_slide2.jpg" alt="Evdiş Yardımcı Sağlık Personeli ve Klinik Asistan Kadromuz" />
+          <div class="av-ig-card-cap">Yardımcı Sağlık Personeli & Asistan Kadromuz</div>
+        </a>
+      </div>
+    </div>
+
     <!-- Semicircular Dome Arc + 6 Sculptural Metric Circles -->
     <div class="av-dome-section">
       <div class="av-dome-subtitle">Özel Evdiş Ağız ve Diş Sağlığı Merkezi · Serdivan & Adapazarı / Sakarya</div>
@@ -1974,7 +2117,7 @@
         <div class="av-footer-top">
           <div>
             <strong>Evdiş Polikliniği Sağlık Hizmetleri Ltd. Şti.</strong> · Özel Evdiş Ağız ve Diş Sağlığı Merkezi<br>
-            Tel: <a href="tel:+902646060060">0 (264) 606 00 60</a> · GSM / WhatsApp: <a href="https://wa.me/905456060069">0 (545) 606 00 69</a> · E-posta: bilgi@evdis.com.tr
+            Tel: <a href="tel:+902646060060">0 (264) 606 00 60</a> · GSM / WhatsApp: <a href="https://wa.me/905456060069">0 (545) 606 00 69</a> · Instagram: <a href="https://www.instagram.com/evdistr/" target="_blank" rel="noopener">@evdistr</a>
           </div>
           <div class="av-footer-links">
             <a href="kurumsal.html">Kurumsal</a>
@@ -2027,34 +2170,34 @@
     }
 
     // =========================================================================
-    // 3D MULTI-VIDEO COMPETING STAGE (Whichever video the user selects WINS!)
-    // Default Winner: idx 1 (video/evdis-klinik-tanitim-2.mp4 — Video 3)
+    // 5-VIDEO 3D COMPETING STAGE (Whichever video the user selects WINS!)
+    // Default Winner: idx 2 (video/evdis-klinik-tanitim-2.mp4 — Video 3)
     // =========================================================================
     const STAGE_LABELS = [
-      "Hekim & Klinik Süreci",
+      "Gülüş Mimarisi & Estetik Restorasyon",
+      "Uzman Hekim & Dijital Tedavi Akışı",
       "Klinik Mimari & Zumax Mikroskop Turu",
-      "Gülüş Mimarisi & Estetik Restorasyon"
+      "Zumax 25× Operasyon Mikroskobu & Endodonti",
+      "Kliniğimizden Canlı Kesitler (@evdistr)"
     ];
+
+    const POS_ORDER = ["far-left", "left", "center", "right", "far-right"];
 
     function selectHeroStage(winIdx) {
       const cards = document.querySelectorAll('.av-vid-card');
       const pills = document.querySelectorAll('.av-stage-pill');
-
-      // Determine left and right indices relative to the winner
-      const leftIdx = (winIdx + 2) % 3;
-      const rightIdx = (winIdx + 1) % 3;
+      const n = cards.length; // 5
 
       cards.forEach((card, i) => {
+        // Compute circular offset relative to winIdx so winIdx is at index 2 ("center")
+        const rel = (i - winIdx + 2 + n) % n;
+        const pos = POS_ORDER[rel];
+        card.setAttribute('data-pos', pos);
         const badge = document.getElementById('vidBadge' + i);
-        if (i === winIdx) {
-          card.setAttribute('data-pos', 'center');
-          if (badge) badge.textContent = '★ Ön Sahnede Aktif · ' + STAGE_LABELS[i];
-        } else if (i === leftIdx) {
-          card.setAttribute('data-pos', 'left');
-          if (badge) badge.textContent = '✦ Sahneye Gelmek İçin Bekliyor — Seçin';
-        } else if (i === rightIdx) {
-          card.setAttribute('data-pos', 'right');
-          if (badge) badge.textContent = '✦ Sahneye Gelmek İçin Bekliyor — Seçin';
+        if (badge) {
+          badge.textContent = (pos === 'center')
+            ? '★ Ön Sahnede Aktif · ' + STAGE_LABELS[i]
+            : '✦ Sahneye Gelmek İçin Bekliyor — Seçin';
         }
       });
 
@@ -2066,34 +2209,27 @@
     // Subtle 3D Mouse Parallax Tilt on the Hero 3D Video Arena
     const heroSection = document.getElementById('top');
     const videoArena = document.getElementById('videoArena');
-    const fgTitle = document.getElementById('heroForegroundTitle');
     if (heroSection && videoArena) {
       heroSection.addEventListener('mousemove', (e) => {
         const rect = heroSection.getBoundingClientRect();
         const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
         const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-        videoArena.style.transform = `rotateY(${(nx * 4.2).toFixed(2)}deg) rotateX(${(-ny * 2.8).toFixed(2)}deg)`;
-        if (fgTitle) {
-          fgTitle.style.transform = `translate3d(calc(-50% + ${(nx * 14).toFixed(1)}px), ${(ny * 8).toFixed(1)}px, 175px)`;
-        }
+        videoArena.style.transform = `rotateY(${(nx * 4.5).toFixed(2)}deg) rotateX(${(-ny * 3.0).toFixed(2)}deg)`;
       });
       heroSection.addEventListener('mouseleave', () => {
         videoArena.style.transform = 'rotateY(0deg) rotateX(0deg)';
-        if (fgTitle) {
-          fgTitle.style.transform = 'translate3d(-50%, 0, 175px)';
-        }
       });
     }
 
     // =========================================================================
-    // CLINICAL SPECIALTIES (Official Titles, Circular Portraits, Real Zumax Frame!)
+    // CLINICAL SPECIALTIES (With Newly Harvested @evdistr Photos & Zumax Frame!)
     // =========================================================================
     const SERVICE_DATA = [
       {
         titleHtml: "Estetik ve Dijital Diş Hekimliği",
         desc: "Dentsply Sirona CEREC 3B dijital gülüş tasarımı, porselen lamina (E.max), minimal invaziv kompozit bonding ve yüz dinamikleriyle uyumlu estetik ve restoratif diş hekimliği.",
         mainImg: "img/doctors/dr_bc424d42e0f89752.webp",
-        subImg: "img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp",
+        subImg: "img/canli_medya/instagram_DcySNVqM_cd.jpg",
         docHref: "hekimler.html",
         moreHref: "tedavi-dijital-dolgu.html",
         avatars: [
@@ -2117,7 +2253,7 @@
         titleHtml: "Ağız, Diş ve Çene Cerrahisi",
         desc: "Dentsply Sirona 3B volümetrik tomografi (CBCT) rehberliğinde dental implant cerrahisi, sinüs lifting, ileri kemik ogmentasyonu ve gömülü diş operasyonları.",
         mainImg: "img/doctors/dr_2069194eac7792f1.webp",
-        subImg: "img/services/seyit-ameliyat.webp",
+        subImg: "img/canli_medya/instagram_C7d4XXpK8JK_1.jpg",
         docHref: "hekim-dr--dt--seyit-yilmaz.html",
         moreHref: "implant-ve-cene-cerrahisi.html",
         avatars: [
@@ -2134,7 +2270,7 @@
         titleHtml: "Protetik Diş Tedavisi",
         desc: "Tam ark implant destekli sabit ve hibrit protezler (All-on-4 / All-on-6), Dentsply Sirona CAD/CAM monolitik zirkonyum-seramik restorasyonlar ve çene eklemi (TME) rehabilitasyonu.",
         mainImg: "img/doctors/dr_bcd5ea1fdb8624ba.webp",
-        subImg: "img/canli_medya/galeri_04_tedavi_odalari.webp",
+        subImg: "img/canli_medya/instagram_ChJpWJDKk5g.jpg",
         docHref: "hekim-dr--dt--gokhan-uzel.html",
         moreHref: "tedavi-protetik.html",
         avatars: [
@@ -2263,14 +2399,14 @@
     }
 
     // =========================================================================
-    // INTERACTIVE TECHNOLOGY STAGE (Real Zumax Microscope Frame from Video 3!)
+    // INTERACTIVE TECHNOLOGY STAGE (Real Sirona & Zumax Visuals!)
     // =========================================================================
     const TECH_DATA = [
       {
         counter: "Dentsply Sirona CEREC",
-        sub: "Dentsply Sirona CEREC sistemiyle kaşıksız 3B renkli optik tarama ve mikron hassasiyetinde tasarım.",
-        img: "img/canli_medya/galeri_04_tedavi_odalari.webp",
-        caption: "📍 Serdivan Merkez & Özel CAD/CAM Protez Lab. (Barış Emre Arpaç · Ahmet Tayyip Berk)"
+        sub: "Dentsply Sirona ünit ve CEREC sistemiyle kaşıksız 3B renkli optik tarama ve mikron hassasiyetinde tasarım.",
+        img: "img/canli_medya/instagram_ChJpWJDKk5g.jpg",
+        caption: "📍 Evdiş Serdivan Merkez — Dentsply Sirona Ünit & Radyografi Donanımı"
       },
       {
         counter: "Zumax 25× Optik Mikroskop",
@@ -2287,8 +2423,8 @@
       {
         counter: "Dentsply Sirona CAD/CAM",
         sub: "Dentsply Sirona CAD/CAM altyapısıyla hekim ve teknisyenin aynı merkezde anlık prova yaptığı dijital laboratuvar.",
-        img: "img/canli_medya/galeri_05_gulus_tasarimi_studyo.webp",
-        caption: "📍 Özel Diş Protez Laboratuvarı (Dr. Dt. Gökhan Uzel · Barış Emre Arpaç · Ahmet Tayyip Berk)"
+        img: "img/canli_medya/instagram_DcySNVqM_cd.jpg",
+        caption: "📍 Dijital Restoratif & CAD/CAM Protez Kliniği (Dr. Dt. Gökhan Uzel · Dt. Sıla Nur Çay · Barış Emre Arpaç)"
       },
       {
         counter: "Genel Anestezi & Sedasyon",
@@ -2299,8 +2435,8 @@
       {
         counter: "Dijital Hasta Rehberi",
         sub: "KVKK Sıfır-PII kalkanı altında sesli ve ışıklı üç dilli (TR · EN · AR) dijital hasta rehberi.",
-        img: "img/canli_medya/galeri_02_zemin_kat_karsilama.webp",
-        caption: "📍 Bilgi İşlem & Dijital Sistemler (Serdar Gümüşsoy · ATLAS-CORE)"
+        img: "img/canli_medya/instagram_DCyqYGNM60t_slide1.jpg",
+        caption: "📍 Hasta İlişkileri & Dijital Sistemler (Serdivan & Adapazarı Şubeleri)"
       }
     ];
 
