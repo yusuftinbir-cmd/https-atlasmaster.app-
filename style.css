@@ -368,3 +368,34 @@ article table { overflow-x: auto; display: block; }
 .scard.warn .sgo{color:var(--warn)}
 .scard.ok .sgo{color:var(--ok)}
 
+
+/* dil seçici grubu (TR · EN · AR) */
+.langs{display:inline-flex;align-items:stretch}
+.langs .lang{margin-left:-1px}
+.langs .lang:first-child{margin-left:0}
+.lang[aria-current]{background:var(--acc);border-color:var(--acc);color:var(--acc-fg)}
+@media (max-width:420px){.langs .lang{padding:6px 7px}}
+/* marka başlığı alt satırı */
+.h1-sub{display:block;font-size:.4em;letter-spacing:0;line-height:1.2;margin-top:.22em}
+
+/* sağdan sola (Arapça · ar.html) */
+[dir="rtl"] .brand{margin-right:0;margin-left:auto}
+[dir="rtl"] .skip{left:auto;right:-999px}
+[dir="rtl"] .skip:focus{left:auto;right:var(--pad)}
+[dir="rtl"] .mono,[dir="rtl"] .eyebrow,[dir="rtl"] .idx,[dir="rtl"] .tag,[dir="rtl"] .pipe b,[dir="rtl"] .stat span,[dir="rtl"] .nav a,[dir="rtl"] .cap,[dir="rtl"] .btn,[dir="rtl"] .foot,[dir="rtl"] .lang,[dir="rtl"] .scard .sgo,[dir="rtl"] h1{letter-spacing:0}
+[dir="rtl"] .langs .lang{margin-left:0;margin-right:-1px}
+[dir="rtl"] .langs .lang:first-child{margin-right:0}
+[dir="rtl"] .nav a::before{margin-right:0;margin-left:10px}
+[dir="rtl"] .pipe li:not(:last-child)::before{left:auto;right:27.5px}
+[dir="rtl"] .pipe li:not(:last-child)::after{left:auto;right:24px}
+[dir="rtl"] .pull{border-left:0;border-right:2px solid var(--mut);padding-left:0;padding-right:16px}
+[dir="rtl"] .exbox,[dir="rtl"] .sk,[dir="rtl"] .ba{direction:ltr}
+@media (min-width:760px){
+  [dir="rtl"] .pipe li:not(:last-child)::before{left:-22px;right:56px}
+  [dir="rtl"] .pipe li:not(:last-child)::after{right:auto;left:-21px;transform:rotate(135deg)}
+}
+@media (min-width:760px) and (max-width:959px){[dir="rtl"] .nav{right:auto;left:var(--pad)}}
+@media (min-width:960px){
+  [dir="rtl"] .nav,[dir="rtl"] .nav.open{margin-right:0;margin-left:6px}
+  [dir="rtl"] .nav a::before{margin-right:0;margin-left:6px}
+}

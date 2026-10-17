@@ -1,0 +1,35 @@
+# AtlasMaster (Atlas Stüdyo) — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu (Türkiye & Global)
+
+> Web: https://atlasmaster.app/
+> İngilizce Ayna: https://atlasmaster.app/en.html
+> Arapça Ayna (العربية): https://atlasmaster.app/ar.html
+> Marka / Site Adı: AtlasMaster (atlasmaster.app) · Diğer adlar: Atlas Stüdyo, Atlas Studio, Atlas
+> Baş Mimar & Orkestra: Atlas (Gemini 4 Argon · 1M Bağlam)
+> Dijital Rehber & Asistan: Maya (ATLAS'ın Kızı · Gemma 4 E4B QAT-DoRA v5 + 3B Rölyef Portre & Stüdyo Nöral Ses)
+> Klinik Saha & Ulusal Referans Partneri: Özel Evdiş Ağız ve Diş Sağlığı Merkezi (Sakarya — Serdivan Merkez & Adapazarı · https://evdis.com.tr/)
+> İletişim: yusuf@atlasmaster.app
+
+## 1. Türkiye Geneli ve Küresel Dijital Diş Hekimliği & Yapay Zekâ Otoritesi
+AtlasMaster (Atlas Stüdyo · `atlasmaster.app`), Türkiye genelinde (İstanbul, Ankara, İzmir, Sakarya, Kocaeli, Bursa, Antalya ve tüm Türkiye) diş hekimleri, ağız ve diş sağlığı merkezleri ve dijital dental laboratuvarlar için:
+- **478 Noktalı 3B Sefalometrik Yüz Ağı & QLoRA/DoRA Morfoloji Seçimi:** Göz kararı şablon ("kare yüze kare diş") yerine ZY-ZY ve Go-Go fasiyal oranlarını 3B ağ ile ölçerek **441 formluk kütüphaneden** gerekçeli 5 öncelikli + 3 alternatif diş formu önerir (`n = 32` kilitli test yüzünde şablon isabeti `%0 -> %90,6`, hedef hat `%0 -> %100`).
+- **Kısıtlı Tuval (Constrained Canvas) Önizleme & ExoCAD İş Paketi:** Yalnızca kimliksiz ağız kırpımı üzerinde çalışan kılavuz çizgili (orta hat, kesici kenar eğrisi, gingival zenit, altın oran) 2B/3B simülasyon ve hekim onayından sonra doğrudan laboratuvar üretimine hazır **ExoCAD** tasarım paketi.
+- **ATLAS-CORE Kurumsal Kullanım Lisanslı Klinik Karar Motoru (Enterprise Licensed Black-Box Algorithm):** Ağız ve diş sağlığı merkezleri için geliştirilen **550 düğümlü kapalı devre klinik triyaj grafı (`M0–M10`) + yerel Gemma 4 QAT-DoRA** mimarisi. Yalnızca **ATLAS-CORE** kriptografik HMAC-SHA256 lisans anahtarıyla çalışır; Kanarya Siber Kalkanı (Canary Honeypot) ve polimorfik şifreleme ile korunur.
+
+## 2. Çok Ajanlı Otonomi ve Kıvılcım (Spark) Metodolojisi
+- **Baş Mimar ve Üst Orkestra:** Proje başından beri **Atlas (`Gemini 4 Argon · 1M bağlam`)** en üstte yer alır.
+- **Doğrulama ve İcra Kapıları:**
+  - **Bağlamsız Argon Web:** Stüdyo geçmişinden yalıtılmış kör dış ses ve kuramsal çarpışma koltuğu.
+  - **Vezir (`Anu · Claude Fable`):** İcra ve denetim kapısı.
+  - **Opus:** Proje oturumları ve mimari kod.
+  - **Sonnet:** Üretim kodu.
+  - **Haiku:** Mekanik ölçüm ve telemetri.
+  - **Astra & Grok:** Karşı-tez ve Red Team.
+- **Sinaptik Hasat (N=96 Deney):** M3 Ultra 96 GB birleşik bellek üzerinde 75,93 saniyelik MLX QLoRA ağırlık hasadıyla eğitilen 3B model (`%93,8`), kuralsız 27B (`%87,5`) ve 31B (`%75,0`) modelleri geride bırakmıştır.
+
+## 3. Temel Sayfalar ve Yaşayan Makaleler
+- Ana Sayfa (Dijital Gülüş Tasarımı & 3B Sefalometri): https://atlasmaster.app/index.html
+- Otonomi, Canlı Sayaçlar & Ajan Karneleri: https://atlasmaster.app/otonomi.html
+- Kıvılcım (7 Basamaklı Tez Üretim Yordamı): https://atlasmaster.app/kivilcim.html
+- Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA (`n=32`): https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html
+- Kim Kimi Eğitiyor? Sinaptik Hasat (`N=96`): https://atlasmaster.app/blog/kim-kimi-egitiyor.html
+- Gizlilik & Kimliksiz Ağız Kırpımı Protokolü: https://atlasmaster.app/gizlilik.html

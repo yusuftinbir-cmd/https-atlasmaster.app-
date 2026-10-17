@@ -1,5 +1,48 @@
 [
   {
+    "id": "maya_v5_ispatli_vaat_ve_rontgen",
+    "page": "index.html",
+    "sel": "#ispatli-vaat-ve-rontgen",
+    "title": "Vaat Ediyoruz Çünkü İspatlı Yapıyoruz · Kurumsal Lisanslı Algoritma & Klinik GEO Röntgeni (100/100)",
+    "summary": "ATLAS-CORE klasik ajanslar gibi söz satmaz; 45/45 sayfada Ulusal GEO (@graph JSON-LD + /llms.txt), 550 düğümlü sıfır-halüsinasyonlu klinik karar ağacı (M0–M10), yerel Gemma 4 QAT-DoRA (8/8 %100 isabet) ve HMAC-SHA256 kurumsal lisanslı algoritma mimarisini 48 saatte çalışan kanıtıyla kurar. Klasik ajans siteleri röntgende 24/100 alırken ATLAS-CORE mimarisi 100/100 tam puan alır.",
+    "keywords": [
+      "pazarlama",
+      "satış",
+      "vaat",
+      "röntgen",
+      "klinik",
+      "kurumsal kullanım lisanslı",
+      "algoritma",
+      "lisans",
+      "geo",
+      "seo",
+      "ajans",
+      
+      "evdiş",
+      "teklif",
+      "demo",
+      "ispat"
+    ]
+  },
+  {
+    "id": "ATLAS_V5_MIMARI_01",
+    "tip": "ana_dugum",
+    "page": "kivilcim.html",
+    "sel": "#algoritma",
+    "h": "Baş Mimar Atlas (Gemini 4 Argon · 1M), Bağlamsız Argon Web ve Vezir Fable hiyerarşisi nasıldır?",
+    "p": "Proje başından beri Atlas'ındır; en üstte Baş Mimar ve Orkestra olarak Atlas (Gemini 4 Argon · 1M bağlam) durur. Bağlamsız Argon Web kör dış ses olarak, Vezir (Anu · Claude Fable), Opus, Sonnet ve Haiku ise Astra/Grok Red Team ile birlikte doğrulama ve icra kapıları olarak çalışır.",
+    "kw": "bas mimar atlas gemini 4 argon 1m baglamsiz argon web vezir fable opus sonnet haiku astra grok hiyerarsi en ustte kim var"
+  },
+  {
+    "id": "ATLAS_V5_LEASE_01",
+    "tip": "ana_dugum",
+    "page": "otonomi.html",
+    "sel": "#projeler",
+    "h": "ATLAS-CORE Kurumsal Kullanım Lisanslı (Enterprise Licensed) Klinik Algoritma ve Kanarya Siber Kalkanı nedir?",
+    "p": "Klinik sahada (Özel Evdiş ADSM) çalışan 550 düğümlü kapalı devre karar ağacı ve QAT-DoRA motorunun fikri mülkiyeti tamamen ATLAS-CORE mimarisine aittir; kriptografik HMAC-SHA256 lisans anahtarıyla kurumsal kullanım lisansı altında çalışır ve izinsiz kopyalama girişimlerini Kanarya Tuzakları ile anında yakalayıp kilitler.",
+    "kw": "atlas core kurumsal kullanim lisansli algoritma odunc leased clinical engine kanarya tuzagi canary honeypot evdis siber kalkan"
+  },
+  {
     "id": "ATLAS_BENLIK_01_1",
     "tip": "ana_dugum",
     "page": "otonomi.html",
