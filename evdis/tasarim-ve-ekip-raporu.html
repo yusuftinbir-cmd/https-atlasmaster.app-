@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Evdiş — Tasarım, Kıvılcım ve Ekip İstek Raporu (İnsan Diliyle Özeti)</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    :root {
+      --bg-dark: #0e1116;
+      --card-bg: #171b22;
+      --card-border: rgba(212, 175, 55, 0.22);
+      --gold: #d4af37;
+      --gold-soft: #f3e5ab;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --green: #10b981;
+      --amber: #f59e0b;
+      --blue: #38bdf8;
+    }
+    body {
+      background: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+    .rapor-kapsayici {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 84px 20px 72px;
+    }
+    .ust-etiket {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.14);
+      color: var(--gold-soft);
+      border: 1px solid var(--card-border);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(1.65rem, 3.2vw, 2.4rem);
+      margin: 0 0 12px;
+      color: #ffffff;
+      line-height: 1.25;
+    }
+    .alt-aciklama {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 850px;
+      margin-bottom: 32px;
+    }
+    .bolum-karti {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 26px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    }
+    .bolum-baslik {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.32rem;
+      font-weight: 700;
+      color: var(--gold-soft);
+      margin: 0 0 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+    .madde-izgara {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 16px;
+    }
+    .madde-kutu {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .madde-kutu h3 {
+      margin: 0 0 8px;
+      font-size: 1.03rem;
+      color: #ffffff;
+    }
+    .madde-kutu p {
+      margin: 0;
+      font-size: 0.94rem;
+      color: #cbd5e1;
+    }
+    .rozet {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 6px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .rozet-yapildi { background: rgba(16, 185, 129, 0.18); color: #34d399; }
+    .rozet-elendi { background: rgba(245, 158, 11, 0.18); color: #fbbf24; }
+    .rozet-istek { background: rgba(56, 189, 248, 0.18); color: #7dd3fc; }
+    .istek-tablo {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.94rem;
+    }
+    .istek-tablo th, .istek-tablo td {
+      text-align: left;
+      padding: 13px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      vertical-align: top;
+    }
+    .istek-tablo th {
+      color: var(--gold-soft);
+      font-weight: 600;
+      background: rgba(212, 175, 55, 0.07);
+    }
+    .nav-bar-ust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.07);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .nav-btn-altin {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--gold);
+      color: var(--gold-soft);
+    }
+    @media (max-width: 768px) {
+      .rapor-kapsayici { padding: 74px 14px 56px; }
+      .bolum-karti { padding: 18px 16px; }
+      .istek-tablo, .istek-tablo thead, .istek-tablo tbody, .istek-tablo th, .istek-tablo td, .istek-tablo tr {
+        display: block;
+      }
+      .istek-tablo thead { display: none; }
+      .istek-tablo tr {
+        margin-bottom: 14px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .istek-tablo td { border: none; padding: 6px 4px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="rapor-kapsayici">
+    <div class="nav-bar-ust">
+      <a href="index.html" class="nav-btn">← Ana Sayfaya Dön</a>
+      <a href="gokhan-eksik-listesi.html" class="nav-btn nav-btn-altin">📋 Gökhan Bey &amp; Ekip Görev Listesi</a>
+      <a href="kalite-yonetimi.html" class="nav-btn">🛡️ SKS-ADSH v4 &amp; Organizasyon Şeması</a>
+    </div>
+
+    <span class="ust-etiket">EVDİŞ YÖNETİM, HEKİM VE EKİP ÖZET RAPORU · 17 EKİM 2026</span>
+    <h1>Neyi Neden Yaptık · Neyi Neden Yapmadık · Ne Yapmalıyız?</h1>
+    <p class="alt-aciklama">
+      Bu rapor; Evdiş Ağız ve Diş Sağlığı Merkezi'nin 49 sayfalık yeni dijital vitrininde alınan tasarım, tıbbi doğruluk, personel mutabakatı ve kalite (SKS) kararlarını teknik terimlere boğmadan, tüm hekim ve idari ekibimizin tek bakışta anlayacağı netlikte özetler.
+    </p>
+
+    <!-- BÖLÜM 1 -->
+    <section class="bolum-karti">
+      <h2 class="bolum-baslik">1. Neyi Neden Yaptık? (Uygulanan Tasarım ve Klinik Kararlar)</h2>
+      <div class="madde-izgara">
+        <div class="madde-kutu">
+          <span class="rozet rozet-yapildi">UYGULANDI</span>
+          <h3>Sinematik Koyu Taş &amp; Mimari Vitrin</h3>
+          <p>Klasik beyaz-mavi hastane şablonları yerine; Evdiş'in 2.000 m² Serdivan + Adapazarı ölçeğini, Zumax 25× mikroskop ve dijital CAD/CAM altyapısını ilk 3 saniyede hissettiren prestijli bir mimari görünüm kurduk.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-yapildi">TIBBİ DOĞRULUK</span>
+          <h3>1. Videonun Gerçek Klinik Başlığı (Kompozit Dolgu)</h3>
+          <p>1. videoda CEREC veya onlay bulunmadığı, doğrudan rubber-dam (yeşil örtü) izolasyonlu kompozit dolgu işlemi yer aldığı için başlığı <strong>"Restoratif Diş Tedavisi &amp; Kompozit Dolgu"</strong> olarak düzelttik. Tıbbi doğruluk pazarlama süsünden üstündür.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-yapildi">TRtek + LOGO MUTABAKATI</span>
+          <h3>Ayrılan Çalışanların ve Eski Görsellerin Temizliği</h3>
+          <p>Kurumdan ayrılmış personelin göründüğü kareleri, eski sosyal medya slaytlarını ve üst üste binen küçük yan resimleri 49 sayfanın tamamından temizledik. Videoları yalnızca klinik mimari ve cihazlar görünecek şekilde yeniden kestik.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-yapildi">SKS-ADSH v4 HAZIR</span>
+          <h3>Gökhan Bey'i Beklemeden SKS ve Şema Entegrasyonu</h3>
+          <p>İdari ekibe ek yük çıkarmadan, yerel sunucudaki resmi TRtek SKS-ADSH v4 belgelerini (5 komite, 14 klasör, 43 gösterge) ve Eylül 2026 Kurumsal Organizasyon Şemasını doğrudan siteye işledik.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-yapildi">MOBİL &amp; iPHONE UYUMU</span>
+          <h3>Telefon Ekranları ve iPhone Video Akışı</h3>
+          <p>Hastaların %80'inden fazlası telefondan girdiği için iPhone Safari video akışını (HTTP 206 Range), mobil kart dizilimini ve sağ alt asistan butonunun hizasını sıfır çakışma olacak şekilde ayarladık.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-yapildi">230 EKRAN DENETİMİ</span>
+          <h3>Unvan, Kart ve KVKK Standartlaştırması</h3>
+          <p>49 sayfanın tamamı masaüstü ve mobilde taranarak hekim unvanları (Prof. Dr. Fuat Ahmetoğlu, Dr. Dt. Neslihan Güntekin), Özgüllü kurumsal anlaşma kartı ve Adapazarı cihaz kutusu eksiksiz düzeltildi.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BÖLÜM 2 -->
+    <section class="bolum-karti">
+      <h2 class="bolum-baslik">2. Neyi Neden Yapmadık? (Bilerek Elenen Fikirler ve Gerekçeleri)</h2>
+      <div class="madde-izgara">
+        <div class="madde-kutu">
+          <span class="rozet rozet-elendi">BİLEREK ELENDİ</span>
+          <h3>Organizasyon Şemasına Kişi İsimleri Yazmadık</h3>
+          <p>Sağlık Bakanlığı SKS standardı şemada "kişi adı" değil <strong>"kurumsal görev ve birim unvanı"</strong> ister. Böylece personel değiştiğinde şema eskimez ve KVKK açısından çalışan isimleri açık hedef olmaz.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-elendi">BİLEREK ELENDİ</span>
+          <h3>Sahte / Yabancı Stok Doktor ve Hasta Fotoğrafı Koymadık</h3>
+          <p>Hastalar klinikte karşılaşacağı gerçek hekimi ve gerçek ortamı arar. Her sitede görülen yapay stok gülüş fotoğrafları Evdiş'in gerçekliğini ve güvenini zedeleyeceği için kullanılmadı.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-elendi">BİLEREK ELENDİ</span>
+          <h3>Abartılı Kampanya / Fiyat / Öncesi-Sonrası Koymadık</h3>
+          <p>Sağlık Bakanlığı Tanıtım ve Bilgilendirme Yönetmeliği'ne tam uyum sağlamak ve Evdiş'in akademik/kurumsal ağırlığını korumak için yalnızca bilimsel tanı ve tedavi bilgilendirmesi yapıldı.</p>
+        </div>
+        <div class="madde-kutu">
+          <span class="rozet rozet-elendi">VERİMLİLİK KARARI</span>
+          <h3>230 Ekran Görüntüsünü Tüm Modellere Tekrar Okutmadık</h3>
+          <p>Görsel denetimi tek bir uzman denetçi (Anu) piksel piksel tamamladı; aynı 230 ekran görüntüsünü diğer tüm modellere tekrar okutup kota yakmak yerine ekip modelleri stratejik sentez ve yol haritasında kullanıldı.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BÖLÜM 3 -->
+    <section class="bolum-karti">
+      <h2 class="bolum-baslik">3. Ne Yapmalıyız? (Kıvılcım Sentezi ve Ekip İstek Listesi)</h2>
+      <p style="color: var(--text-muted); margin-top: 0; margin-bottom: 14px;">
+        Sitenin görsel ve klinik gücünü %100'e taşımak için yönetim, hekimlerimiz ve idari ekibimizden beklenen somut adımlar:
+      </p>
+      <table class="istek-tablo">
+        <thead>
+          <tr>
+            <th style="width: 16%;">Öncelik</th>
+            <th style="width: 26%;">Ekip İsteği</th>
+            <th style="width: 20%;">İlgili Ekip</th>
+            <th>Neden Gerekli ve Nasıl Yapılacak?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rozet rozet-istek">İSTEK 1 · ACİL</span></td>
+            <td><strong>Güncel Hekim Kadrosu ile 15 Saniyelik Klinik Videolar</strong></td>
+            <td>Gökhan Bey &amp; Aktif Hekimlerimiz</td>
+            <td>Ayrılan personelin çıkarıldığı videoların yerine; <strong>Prof. Dr. Fuat Ahmetoğlu, Dr. Emrah Bey, Dr. Dt. Neslihan Güntekin</strong> ve aktif hekimlerimizin Serdivan ve Adapazarı'nda ünit/mikroskop başında 15'er saniyelik doğal videolarının çekilmesi.</td>
+          </tr>
+          <tr>
+            <td><span class="rozet rozet-istek">İSTEK 2 · 2 HAFTA</span></td>
+            <td><strong>Branş Bazlı Gerçek Vaka Videoları (Tıbbi Doğruluklu)</strong></td>
+            <td>Uzman Hekimler &amp; Medya Ekibi</td>
+            <td>1. videodaki kompozit dolgu örneği gibi; <strong>(a) Zumax 25× Mikroskobik Kanal Tedavisi</strong>, <strong>(b) Gerçek CEREC / Dijital Ölçü ve Onlay</strong>, <strong>(c) İmplant &amp; Cerrahi</strong> işlemlerini ağız içi / model üzerinde gösteren 3 gerçek vaka videosu çekilmesi.</td>
+          </tr>
+          <tr>
+            <td><span class="rozet rozet-istek">İSTEK 3 · 2 HAFTA</span></td>
+            <td><strong>16 Aktif Hekimin Portre Fotoğraf Tamamlaması</strong></td>
+            <td>İdari Koordinasyon (Gökhan Bey)</td>
+            <td>Hekimlerimiz sayfasında fotoğraflı 8 hekimimize ek olarak, alt listedeki 8 aktif hekimimizin de aynı ışık ve kurumsal önlük standardıyla portre fotoğraflarının çekilmesi.</td>
+          </tr>
+          <tr>
+            <td><span class="rozet rozet-istek">İSTEK 4 · 1 AY</span></td>
+            <td><strong>Canlı TRtek Hekim Şube &amp; Nöbet Takvimi</strong></td>
+            <td>Teknik Ekip (Atlas &amp; Anu)</td>
+            <td>Hekimlerimizin hangi gün Serdivan veya Adapazarı şubesinde olduğunun ve gece nöbetçi hekim bilgisinin TRtek'ten otomatik senkronize edilmesi.</td>
+          </tr>
+          <tr>
+            <td><span class="rozet rozet-istek">İSTEK 5 · STRATEJİK</span></td>
+            <td><strong>Evdiş Dijital Standart Paketinin B2B Referans Olması</strong></td>
+            <td>Yönetim Kurulu (Yusuf &amp; Dr. Emrah)</td>
+            <td>Kurulan bu <em>"Tıbbi Doğruluk + SKS-ADSH v4 + KVKK + Mobil Sinematik Vitrin + Dijital Asistan"</em> altyapısının Türkiye'deki diğer büyük diş merkezlerine örnek/referans paket olarak sunulması.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <script src="js/evdis-ajan-widget.js" defer></script>
+</body>
+</html>
