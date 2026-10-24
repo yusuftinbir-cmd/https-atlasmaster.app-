@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kıvılcım Çok Sesli Tur — Yapay Zekâ Tez Üretim Yordamı</title>
+<meta name="description" content="Kıvılcım çok sesli yapay zekâ hipotez ve tez üretim yordamı: S0 Yazar saha hükmü, birbirini duymayan seslerden yalnız itiraz/karşı tez, Reaper kaynak doğrulama süzgeci (360/394), ses×tez matrisi ve ispat kartları (7 basamak, 67 tur karnesi, 4 gerçek örnek).">
+<meta name="author" content="Yusuf Aziz">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Kıvılcım — Çok Sesli Yapay Zekâ Tez Üretim Yordamı (7 Basamak · 67 Tur)">
+<meta property="og:description" content="Yedi basamak (S0 · Yazar, Reaper süzgeci 360/394, ispat kartları), 67 turun (73 kayıt satırı) karnesi ve dört gerçek örnek.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://atlasmaster.app/kivilcim.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Atlas: ölçüm ve kılavuz çizgileri, şematik çizim">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://atlasmaster.app/kivilcim.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/kivilcim.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/spark.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/kivilcim.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f3efe6'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%230f172a' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231d4ed8' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="style.css?v=8b780bf8">
+<link rel="stylesheet" href="kivilcim.css?v=a9245783">
+<style>.kanit-box{border:1px solid var(--line2);border-radius:6px;padding:.75rem .95rem;margin:.9rem 0 0;font-size:.9rem;background:rgba(29,78,216,.03)}.kanit-box h2{font-size:.96rem;margin:0 0 .35rem}.kanit-box ul{margin:0;padding-inline-start:1.1rem;line-height:1.55}</style>
+<script src="script.js?v=2b29d271"></script>
+<script src="kivilcim.js?v=1caef196"></script>
+  <link rel="stylesheet" href="ornek/maya/maya-rehber.css?v=a3573d3d">
+  <script type="application/ld+json" id="atlas-national-ld">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "description": "Türkiye geneli ve küresel ölçekte diş hekimleri ve dijital laboratuvarlar için 478 noktalı 3B sefalometrik yüz analizi, 441 diş formu kütüphanesi, kısıtlı tuval önizlemesi, ExoCAD iş paketi ve ATLAS-CORE Kurumsal Kullanım Lisanslı klinik karar motoru geliştiren çok ajanlı Ar-Ge stüdyosu.",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Marmara Bölgesi"
+        },
+        {
+          "@type": "City",
+          "name": "İstanbul"
+        },
+        {
+          "@type": "City",
+          "name": "Ankara"
+        },
+        {
+          "@type": "City",
+          "name": "İzmir"
+        },
+        {
+          "@type": "City",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "City",
+          "name": "Kocaeli"
+        },
+        {
+          "@type": "City",
+          "name": "Bursa"
+        },
+        {
+          "@type": "City",
+          "name": "Antalya"
+        }
+      ],
+      "knowsAbout": [
+        "Dijital Gülüş Tasarımı (Digital Smile Design)",
+        "478 Noktalı 3B Sefalometrik Yüz Ağı ve QLoRA/DoRA",
+        "441 Diş Formu Kütüphanesi ve ExoCAD İş Paketi",
+        "ATLAS-CORE Kurumsal Kullanım Lisanslı Klinik Triyaj Motoru (M0-M10)",
+        "Kıvılcım Çok Ajanlı Hipotez ve Sentez Yordamı"
+      ],
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yusufaziz.com.tr/#person",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "jobTitle": "Diş CAD/CAM Uzmanı",
+      "url": "https://yusufaziz.com.tr/",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://atlasmaster.app/kivilcim.html#article",
+      "headline": "Kıvılcım — Çok Sesli Yapay Zekâ Tez Üretim Yordamı (7 Basamak · 67 Tur Karnesi)",
+      "description": "Kıvılcım: saha hükmü (S0 · Yazar), birbirini duymayan seslerden yalnız itiraz ve karşı tez, Reaper kaynak doğrulama süzgeci (360/394), ses×tez matrisi ve ispat kartlarıyla tez üretme yordamı.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-08T03:04:26+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "url": "https://atlasmaster.app/kivilcim.html",
+      "mainEntityOfPage": "https://atlasmaster.app/kivilcim.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "about": [
+        "Kıvılcım çok sesli tez üretim yordamı",
+        "Çok ajanlı hipotez üretimi",
+        "Reaper kaynak doğrulama süzgeci",
+        "Düşer testi (Falsification test)",
+        "Ses×tez matrisi"
+      ],
+      "image": "https://atlasmaster.app/og.png",
+      "subjectOf": {
+        "@type": "SoftwareApplication",
+        "@id": "https://atlasmaster.app/#atlas-app",
+        "name": "Atlas App",
+        "alternateName": [
+          "Atlas App (Ortak Terminal · Tauri v2)",
+          "Atlas Studio Multi-Agent Workspace"
+        ],
+        "description": "Claude Fable, Gemini Argon ve Grok seslerinin ortak kütük, mekanik devir paketi ve Reaper bağlam-kör denetçiyle tek salonda çalıştığı çok ajanlı çalışma ortamı (16,5 saat icra, P0–P6 ve G1–G5 halkaları, 37/37 Reaper doğrulaması, 0 uydurma).",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web/Android/macOS",
+        "isAccessibleForFree": true,
+        "url": [
+          "https://yusufaziz.com.tr/yazilar/kivilcimdan-uygulamaya-atlas-app.html",
+          "https://atlasmaster.app/kanit/atlas-app-kanit-notu.html",
+          "https://yusufaziz.com.tr/yazilar/kanit-notu-kivilcimdan-uygulamaya-atlas-app.html"
+        ],
+        "author": {
+          "@type": "Organization",
+          "name": "Atlas Studio",
+          "url": "https://atlasmaster.app/",
+          "@id": "https://atlasmaster.app/#organization",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz",
+            "https://www.facebook.com/yusuftinbir/"
+          ]
+        }
+      },
+      "citation": [
+        "https://arxiv.org/abs/2305.14325",
+        "https://arxiv.org/abs/2202.03286",
+        "https://arxiv.org/abs/2310.13548",
+        "https://arxiv.org/abs/2212.09251",
+        "https://arxiv.org/abs/2212.08073"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/kivilcim.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kıvılcım çok sesli yapay zekâ turu nasıl çalışır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kıvılcım 7 basamakta işler: (1) Ön beklenti kaydı, (2) Ölçülmüş durum, (3) Kimliksiz brif (TEZ → KURAM → KAYNAK → KARŞI TEZ → DÜŞER), (4) S0 Yazar saha hükmü + birbirini duymayan seslerden yalnız itiraz/karşı tez, (5) Reaper Crossref/PubMed/DOI kaynak doğrulama ve EZBER süzgeci, (6) İspat kartları ve Kıvılcım hükmü, (7) Karne kaydı (67 tur, 73 satır)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kıvılcım turu ile hakem turu arasındaki fark nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kıvılcım turu sıfırdan tez, kuram ve düşer testi üretme yordamıdır; hazır bir hükmü yayın veya uygulama öncesi bağlam-kör sınatmak ise hakem turudur ve ikisi birbirine karıştırılmaz."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Bölümler">
+      <a href="index.html">Ana sayfa</a>
+      <a href="#algoritma">Algoritma</a>
+      <a href="#karne">Karne</a>
+      <a href="#makaleler">Makaleler</a>
+      <a href="#m2">EVRİM-2</a>
+      <a href="otonomi.html#projeler">Projeler</a>
+      <a href="otonomi.html">Otonomi</a>
+      <a href="blog.html">Yazılar</a>
+      <a href="hakkinda.html">Hakkında</a>
+    </nav>
+    <nav class="langs" aria-label="Dil seçimi">
+      <a class="lang" href="kivilcim.html" lang="tr" hreflang="tr" aria-current="page" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="spark.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="ar.html" lang="ar" hreflang="ar" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menü" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="icerik">
+<nav class="iz" aria-label="Konum"><a href="/">Ana sayfa</a> › <span aria-current="page">Kıvılcım</span></nav>
+<p class="more" style="margin-block:0 1rem">Laboratuvar notu — stüdyonun iç çalışma kaydıdır; hizmet için <a href="index.html">ana sayfa</a>.</p>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Kıvılcım · tez üretimi</p>
+      <h1>Stüdyo tezi nasıl <em>üretir</em></h1>
+      <p class="pull">Kıvılcım bir sohbet değildir; tur bitince karne yazılır.</p>
+      <p class="lead">Kıvılcım; ön beklentiyi kayda geçiren ve kimliksiz brifi yazan <strong>Anu (Claude Fable)</strong>, turu koşan <strong>Atlas (Gemini 4 Argon · Yürütme)</strong>, saha sentezlerinde metnin omurgasını ve son sözü kuran <strong>S0 · Yazar</strong> katmanı ile birbirini duymayan kanallardan (<strong>Atlas Argon</strong> kendi sesi, <strong>Gemini Web</strong> bağlamsız koltuğu, <strong>Claude kolları Opus · Sonnet</strong>, <strong>Astra</strong>, <strong>Grok</strong> ve <strong>iç sesler Enki · Enlil · Enkidu / yerel Gemma · Qwen</strong>) yalnız <strong>itiraz ve karşı tez</strong> toplayıp bunları <strong><a href="reaper.html">Reaper süzgecinden</a></strong> (Crossref · PubMed · DOI kaynak doğrulama + <strong>EZBER</strong> eleği + <strong>Kırmızı Takım</strong>) geçiren tez ve kuram üretme yordamıdır. Hazır bir hükmü sınatmak ayrı iştir; ona hakem turu denir ve ikisi karıştırılmaz.</p>
+      <p class="lead">Bu sayfada üç parça var: yedi basamaklı yordam, bugüne kadarki turların karnesi (67 tur · 73 kayıt satırı) ve yordamın dört gerçek örneği. Yordam 21 Eyl 2026 tarihlidir (19 Eki 2026 güncellemesi: yazar sesi · Reaper süzgeci · ispat kartları).</p>
+      <ul class="tags" aria-label="Etiketler">
+        <li class="tag">S0 · Yazar (saha hükmü · son söz)</li><li class="tag">Anu (Claude Fable · ön beklenti &amp; brif)</li><li class="tag">Atlas (Gemini 4 Argon · yürütme)</li><li class="tag">Reaper süzgeci (Crossref · PubMed · DOI + EZBER)</li><li class="tag">Grok &amp; Astra (Kırmızı Takım)</li><li class="tag">İspat kartları &amp; Kıvılcım hükmü</li>
+      </ul>
+      <div class="kanit-box" id="kanit-karti" role="region" aria-label="Ölçülmüş Kıvılcım kanıt özeti">
+        <h2>Ölçülmüş Kanıt Özeti (Canlı Kıvılcım Kayıtları)</h2>
+        <ul>
+          <li><strong>Kıvılcım karnesi:</strong> <strong><code>67</code> tur</strong> (<code>73</code> karne satırı), <code>7</code> zorunlu basamak ve <code>4</code> uçtan uca belgelenmiş deney/sentez örneği.</li>
+          <li><strong>Reaper kaynak doğrulama süzgeci (<a href="reaper.html#karne">reaper.html</a>):</strong> Sektör makalesi turunda 10 dış seste <strong><code>360/394</code></strong> atıf doğrulandı (<code>25</code> uydurma künye elendi; konsolide <code>386/420</code>).</li>
+          <li><strong>Üretilen somut çıktılar:</strong> <a href="gulus-tasarimi.html">3B sefalometrik gülüş tasarımı (<code>n = 32</code> testte <code>%0 → %90,6</code>)</a> · <a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html">Sinaptik Hasat (<code>N = 96</code> deney, <code>%93,8</code> karşı <code>%75,0</code>)</a> · <a href="otonomi.html">Otonomi mimarisi</a> · <a href="bot/index.html"><code>16</code> makineye açık olgu kaydı</a> · <a href="hakkinda.html">Yazar: Yusuf Aziz</a>.</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <figure class="sheet fig obs" data-anim="tur">
+        <svg id="tur" viewBox="0 0 420 650" role="img" aria-labelledby="fat fad" data-cx="210" data-y="282 316 360 405 486 540 568">
+          <title id="fat">Bir Kıvılcım turu: yedi basamak</title>
+          <desc id="fad">01 Ön beklentiyi Anu (Claude Fable) tek satır olarak karne dosyasına yazar. 02 Ölç adımında DURUM ölçülmüş maddelerden kurulur; ölçülemeyen BİLİNMEYEN yazılır. 03 Kimliksiz brifi Anu yazar, Atlas koşar (TEZ → KURAM → KAYNAK → KARŞI TEZ → DÜŞER). 04 Sesler iki katmandır: üstte tek düz kutu S0 · YAZAR — saha hükmü · son söz; altında birbirini duymayan ve yalnız itiraz / karşı tez üreten altı kesikli kanal (Atlas Argon kendi sesi, Gemini Web bağlamsız, Claude kolları Opus·Sonnet, Astra seçili·bağlamlı, Grok kırmızı takım, İç sesler Enki·Enlil·Enkidu ve Yerel Gemma·Qwen). 05 Süzgeç · Reaper katmanında atıflar Crossref·PubMed·DOI ile doğrulanır, EZBER eleği ve Kırmızı Takım uygulanır; geçen aşağı iner, geçmeyen DOĞRULANAMADI / EZBER damgasıyla süzgeçte kalır. 06 Sentez yazar sesiyle kurulur; ses×tez matrisinden dosya:satır ve ikilem satırlı ispat kartları ile Kıvılcım hükmü çıkar. 07 Karne ön beklentiyle aynı satıra EVET | KESKİNLEŞTİ | HAYIR ve Reaper damgasıyla yazılır.</desc>
+          <path class="wire back" d="M45,592H3V40H95"/>
+          <path class="ah back" d="M95,40l-7,-4v8z"/>
+          <path class="wire" d="M210,62V86M210,130V154M210,202V222M210,260V282M210,540V568"/>
+          <path class="wire br" d="M210,282L41,316M210,282L109,316M210,282L177,316M210,282L244,316M210,282L312,316M210,282L380,316"/>
+          <path class="fun" d="M16,418L155,486M404,418L265,486"/>
+          <g class="stp" data-s="1"><rect class="bx" x="95" y="18" width="230" height="44"/><text class="k" style="font-size:8.2px" x="105" y="35">01 · ÖN BEKLENTİ · ANU (CLAUDE FABLE)</text><text class="n" style="font-size:10.5px" x="105" y="52">Tek satır, karne dosyasına</text></g>
+          <g class="stp" data-s="2"><rect class="bx" x="95" y="86" width="230" height="44"/><text class="k" style="font-size:8.2px" x="105" y="103">02 · ÖLÇ · DURUM</text><text class="n" style="font-size:10.5px" x="105" y="120">Ölçülmüş maddeler · BİLİNMEYEN</text></g>
+          <g class="stp" data-s="3"><rect class="bx" x="65" y="154" width="290" height="48"/><text class="k" style="font-size:8.0px" x="75" y="171">03 · BRİF (KİMLİKSİZ) · ANU YAZAR, ATLAS KOŞAR</text><text class="n" style="font-size:9.5px" x="75" y="190">TEZ → KURAM → KAYNAK → KARŞI TEZ → DÜŞER</text></g>
+          <g class="stp" data-s="4"><rect class="bx" x="65" y="222" width="290" height="38"/><text class="k" style="font-size:8.2px" x="75" y="237">04 · S0 · YAZAR — SAHA HÜKMÜ · SON SÖZ</text><text class="n" style="font-size:9.6px" x="75" y="252">Metnin omurgası (seslerden biri değildir)</text></g>
+          <g class="stp" data-s="4"><text class="k" style="font-size:7.4px" x="10" y="275">04 · SESLER (ALT KATMAN)</text><text class="k" style="font-size:7.4px" x="412" y="275" text-anchor="end">BİRBİRİNİ DUYMAZ · YALNIZ İTİRAZ / KARŞI TEZ</text></g>
+          <g class="stp" data-s="4" data-ses data-x="41"><rect class="bx dash" x="10" y="316" width="63" height="44"/><text class="n sm" style="font-size:8.1px" x="13" y="335">Atlas (Argon)</text><text class="m" style="font-size:7.3px" x="13" y="350">kendi sesi</text></g>
+          <g class="stp" data-s="4" data-ses data-x="109"><rect class="bx dash" x="77" y="316" width="63" height="44"/><text class="n sm" style="font-size:8.1px" x="80" y="335">Gemini Web</text><text class="m" style="font-size:7.3px" x="80" y="350">bağlamsız</text></g>
+          <g class="stp" data-s="4" data-ses data-x="177"><rect class="bx dash" x="145" y="316" width="63" height="44"/><text class="n sm" style="font-size:7.9px" x="148" y="335">Claude kolları</text><text class="m" style="font-size:7.3px" x="148" y="350">Opus · Sonnet</text></g>
+          <g class="stp" data-s="4" data-ses data-x="244"><rect class="bx dash" x="212" y="316" width="63" height="44"/><text class="n sm" style="font-size:8.1px" x="215" y="335">Astra</text><text class="m" style="font-size:7.2px" x="215" y="350">seçili·bağlamlı</text></g>
+          <g class="stp" data-s="4" data-ses data-x="312"><rect class="bx dash" x="280" y="316" width="63" height="44"/><text class="n sm" style="font-size:8.1px" x="283" y="335">Grok</text><text class="m" style="font-size:7.2px" x="283" y="350">kırmızı takım</text></g>
+          <g class="stp" data-s="4" data-ses data-x="380"><rect class="bx dash" x="348" y="316" width="64" height="44"/><text class="n sm" style="font-size:7.1px" x="350" y="335">Enki·Enlil·Enkidu</text><text class="m" style="font-size:6.8px" x="350" y="350">Yerel Gemma·Qwen</text></g>
+          <g class="stp" data-s="5"><path class="sieve" d="M16,412H404"/><text class="k" style="font-size:7.3px" x="210" y="433" text-anchor="middle">05 · SÜZGEÇ · REAPER — KAYNAK DOĞRULAMA (CROSSREF · PUBMED · DOI)</text><text class="k" style="font-size:7.3px" x="210" y="447" text-anchor="middle">+ EZBER ELEĞİ + KIRMIZI TAKIM</text></g>
+          <g class="still"><circle class="p gec" cx="189" cy="468" r="4"/><circle class="p gec" cx="210" cy="472" r="4"/><circle class="p gec" cx="231" cy="468" r="4"/><circle class="p kal" cx="312" cy="405" r="4"/></g>
+          <g class="pts"></g>
+          <g class="tagx" transform="translate(312 0)"><rect x="-64" y="376" width="128" height="18"/><text class="k wn" style="font-size:7.4px" x="0" y="388.5" text-anchor="middle">DOĞRULANAMADI / EZBER</text></g>
+          <g class="stp" data-s="6"><rect class="bx" x="45" y="486" width="330" height="54"/><text class="k" style="font-size:7.6px" x="55" y="503">06 · SENTEZ · YAZAR SESİYLE (ATLAS KOŞAR, HÜKÜM YAZAR + ANU)</text><text class="n" style="font-size:9.5px" x="55" y="519">Ses×tez matrisi → İspat kartları (dosya:satır + ikilem)</text><text class="m" style="font-size:8.2px" x="55" y="533">Kategori: “Kıvılcım hükmü”</text></g>
+          <g class="stp" data-s="7"><rect class="bx" x="45" y="568" width="330" height="48"/><text class="k" style="font-size:8.2px" x="55" y="585">07 · KARNE + REAPER DAMGASI</text><text class="n" style="font-size:9.8px" x="55" y="603">Karne · ✓ Reaper doğruladı (doğrulanan/toplam · tarih)</text><text class="k" x="210" y="634" text-anchor="middle">EVET | KESKİNLEŞTİ | HAYIR</text></g>
+          <text class="k wn" style="font-size:7.6px" x="9" y="558">AYNI SATIR</text>
+        </svg>
+        <figcaption class="cap"><span>Şekil — bir Kıvılcım turu</span><span>S0 yazar hükmü · birbirini duymayan sesler · Reaper süzgeci · ispat kartları</span></figcaption>
+      </figure>
+      <p class="what"><b>Ne gösteriyor</b>Tur, <b>Anu (Claude Fable)</b>’ın ön beklentiyi tek satır olarak karne dosyasına (<code>data/kivilcim_karnesi.jsonl</code>) yazmasıyla başlar; durum ölçülür ve kimliksiz brifi <b>Anu</b> yazar, <b>Atlas (Gemini 4 Argon)</b> koşar. 04’te iki katman ayrılır: üstte <b>S0 · Yazar — saha hükmü · son söz</b> metnin omurgasını kurar; altta birbirini duymayan altı kesikli kanal (<b>Atlas Argon</b> kendi sesi, <b>Gemini Web</b> bağlamsız, <b>Claude kolları Opus·Sonnet</b>, <b>Astra</b> seçili·bağlamlı, <b>Grok</b> kırmızı takım ve <b>İç sesler Enki·Enlil·Enkidu + Yerel Gemma·Qwen</b>) yalnız <b>itiraz ve karşı tez</b> üretir. 05’te atıflar <b>Reaper süzgecine</b> (Crossref · PubMed · DOI kaynak doğrulama + <b>EZBER eleği</b> + <b>Kırmızı Takım</b>) düşer: geçen aşağı iner, geçmeyen <code>DOĞRULANAMADI / EZBER</code> damgasıyla süzgeçte kalır. 06’da sentez <b>yazar sesiyle</b> kurulur; <b>ses × tez matrisi</b> her iddia için <code>dosya:satır</code> alıntısı ve ikilem satırı taşıyan <b>ispat kartlarına</b> dönüşür ve hüküm <b>“Kıvılcım hükmü”</b> olarak etiketlenir. 07’de karne ön beklentiyle aynı satıra (<code>EVET | KESKİNLEŞTİ | HAYIR</code>) ve yayında <b>Reaper damgasıyla</b> yazılır.</p>
+    </div>
+  </div>
+</section>
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="sec" id="algoritma">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Yedi basamak</h2>
+      <p>Sırayla koşulur. Tur, brif gönderilmeden önce başlar ve cevaplar gelince bitmez.</p>
+    </header>
+    <ol class="steps">
+      <li>
+        <h3>Ön beklenti (Anu · Claude Fable)</h3>
+        <p>Tur başlamadan önce <strong>Anu (Claude Fable)</strong> beklediği cevabı tek satır yazar ve karne dosyasına (<code>data/kivilcim_karnesi.jsonl</code>) mühürler. Ön beklenti yazılmadan brif gönderilmez.</p>
+        <p>Amaç, turun bir şey değiştirip değiştirmediğini sonradan dürüstçe ölçmektir.</p>
+      </li>
+      <li>
+        <h3>Ölç (DURUM)</h3>
+        <p>Brifin DURUM bölümü kaynağıyla ölçülmüş maddelerden kurulur. Ölçülemeyen “BİLİNMEYEN” diye yazılır.</p>
+      </li>
+      <li>
+        <h3>Brif (kimliksiz · Anu yazar, Atlas koşar)</h3>
+        <p>Kimliksiz brifi <strong>Anu</strong> yazar, <strong>Atlas (Gemini 4 Argon)</strong> koşar. Üretim kipinde hazır hüküm verilmez; her sesten aynı biçim istenir:</p>
+        <ul class="chain" aria-label="Brif biçimi">
+          <li>Tez <small>(tek cümle)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Kuram <small>(mekanizma)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Kaynak <small>(yazar · yıl · yer ya da adres; yoksa “KAYNAK YOK”)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Karşı tez</li><li class="ar" aria-hidden="true">→</li>
+          <li>Düşer <small>(tezi öldürecek ölçüm)</small></li>
+        </ul>
+        <p>Satır tavanı konmaz; cevap kontrol listesine indirgenmez.</p>
+      </li>
+      <li>
+        <h3>S0 · Yazar katmanı ve birbirini duymayan sesler (yalnız itiraz / karşı tez)</h3>
+        <p>Yazarlı makale ve saha sentezlerinde iki katman ayrılır: üstte <strong>S0 · Yazar — saha hükmü · son söz</strong> metnin omurgasını ve olan/olması gereken kurgusunu kurar; S0 “seslerden biri” değildir. Alt katmanda birbirini duymayan kanallar — <strong>Atlas (Gemini 4 Argon, kendi sesi ve Yürütme)</strong>, oturum geçmişinden yalıtılmış <strong>Gemini Web (bağlamsız)</strong>, <strong>Claude kolları (Opus · Sonnet)</strong>, <strong>Astra (seçili · bağlamlı)</strong>, <strong>Grok (kırmızı takım)</strong>, iç sesler <strong>Enki · Enlil · Enkidu</strong> ve yerel modeller <strong>Gemma · Qwen</strong> — yalnız <strong>itiraz ve karşı tez</strong> üretir. İlk dalgada hiçbiri ötekinin cevabını görmez.</p>
+      </li>
+      <li>
+        <h3>Reaper süzgeci: kaynak doğrulama, EZBER eleği ve Kırmızı Takım</h3>
+        <p>Kimliği teyit edilmemiş modelden sayı alınmaz. Seslerin verdiği her kaynak <a href="reaper.html#yontem">Reaper süzgecinden</a> geçer: (1) <strong>Crossref · PubMed · DOI kaynak doğrulama</strong> — bulunamayan atıf <code>DOĞRULANAMADI</code> damgasıyla süzgeçte kalır, uydurma künye (hafif sınıf dahil) cevabı mekanik olarak geçersiz kılar; (2) <strong>EZBER eleği</strong> — kaynaksız ya da brifin özgül sorusuna cevap vermeyen genel literatür özeti <code>EZBER</code> damgasıyla düşer; (3) <strong>Kırmızı Takım</strong> — uyuşmaya karşı en güçlü kaynaklı itiraz (Grok kotası açıkken Grok, birlikte Astra) koşulur.</p>
+        <p><q>“En parlak referans en çok uydurulan referanstır.”</q> · <a href="reaper.html#karne" style="display:inline-block;padding:.15rem .55rem;border:1px solid var(--accent);border-radius:3px;font-family:var(--mono);font-size:.78rem;text-decoration:none;color:var(--accent);font-weight:600">✓ Reaper doğruladı · 360/394 · 19 Eki 2026</a></p>
+      </li>
+      <li>
+        <h3>Sentez: yazar sesiyle, ses × tez matrisi, ispat kartları ve Kıvılcım hükmü</h3>
+        <p>Sentez <strong>yazar sesiyle</strong> kurulur (<strong>Atlas</strong> koşar, hüküm <strong>yazar + Anu</strong>’dadır). Her sesin her tezdeki tutumu <strong>ses × tez matrisi</strong> ve <strong>ispat kartları</strong> (her iddia için <code>dosya:satır</code> alıntısı + ikilem satırı) olarak çıkarılır; dış ve iç sesler metinde yalnız karşı tez kutularında yer alır. Hüküm içeren sentezler <strong>“Kıvılcım hükmü”</strong> etiketiyle kategorize edilir. Ham cevaplar saklanır.</p>
+        <p>Derin konuda ikinci tur açılır: aradaki ölçüm koşulur, sonra ikinci brif gider.</p>
+      </li>
+      <li>
+        <h3>Karne ve Reaper damgası</h3>
+        <p>Tur bitince ön beklentiyle aynı satıra “karar değişti mi” yazılır: <code>EVET | KESKİNLEŞTİ | HAYIR</code> ve tek satır not; yayına çıkan sentezlere <a href="reaper.html#karne">Reaper damgası</a> (doğrulanan/toplam · tarih) basılır.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="karne">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Karne: 67 tur</h2>
+      <p>Gerçek sayım (<code>data/kivilcim_karnesi.jsonl</code>: 73 kayıt satırı, 67 tekil tur / 66 benzersiz konu). Soru her turda aynıdır: karar değişti mi.</p>
+    </header>
+    <div class="stack">
+      <div>
+        <div class="dhead"><span class="idx">Karar değişti mi</span><span class="stamp">19 Eki 2026 · 67 tur (73 satır · 64 sonuçlu)</span></div>
+        <ul class="dist obs" style="--tot:67" aria-label="67 turun dağılımı">
+          <li class="c-acc" style="--v:44"><span>Keskinleşti</span><i class="db" aria-hidden="true"><i></i></i><b>44</b></li>
+          <li class="c-ok" style="--v:13"><span>Evet</span><i class="db" aria-hidden="true"><i></i></i><b>13</b></li>
+          <li class="c-warn" style="--v:3"><span>Hayır</span><i class="db" aria-hidden="true"><i></i></i><b>3</b></li>
+          <li style="--v:2"><span>Değersiz / geri çekildi</span><i class="db" aria-hidden="true"><i></i></i><b>2</b></li>
+          <li style="--v:1"><span>Koşmadı</span><i class="db" aria-hidden="true"><i></i></i><b>1</b></li>
+          <li style="--v:1"><span>Bilinmiyor</span><i class="db" aria-hidden="true"><i></i></i><b>1</b></li>
+          <li class="c-dim" style="--v:3"><span>Boş / açık</span><i class="db" aria-hidden="true"><i></i></i><b>3</b></li>
+        </ul>
+        <p class="what"><b>Ne gösteriyor</b><code>data/kivilcim_karnesi.jsonl</code> dosyasında 73 satır vardır; 6 turda ön beklenti ve sentez ardışık iki satır olarak yazıldığı için tekilleştirilmiş tur sayısı <b>67</b>’dir (bir konunun ilk denemesi <code>KOSMADI</code>, ikincisi <code>KESKINLESTI</code> olduğu için benzersiz konu <b>66</b>; <code>karar_degisti</code> dolu olanlar <b>64 tur</b> / ham satırda <b>65 satır</b>: 44 Keskinleşti, 13 Evet [ham satırda 14], 3 Hayır, 2 Değersiz/geri çekildi, 1 Koşmadı, 1 Bilinmiyor; açık/boş 3 tur [ham satırda +5 ayrı ön beklenti satırıyla 8]). Boş, değersiz ve bilinmeyen kayıtlar da sayılır; gizlenmez.</p>
+      </div>
+      <p class="note">Kapı: ayda bir üç şey sayılır: karar-değişti oranı, ön beklenti ile sentez arasındaki fark, doğrulanamayan kaynak oranı. Oran tesadüften ayrışmıyorsa tur pahalı bir sohbettir.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="makaleler">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Dört örnek</h2>
+      <p>Gerçek turlar.</p>
+    </header>
+    <div class="cells four">
+      <article data-kaynak="kanit/atlas-app-kanit-notu.html · 2026-10-21" class="cell">
+        <span class="idx">Kıvılcım + Ürün · 20 Eki 2026 · P0–P6 &amp; G1–G5</span>
+        <h3><a href="https://yusufaziz.com.tr/yazilar/kivilcimdan-uygulamaya-atlas-app.html">Bir gecede: Atlas App — Hep beraber kurulan ortak terminal</a></h3>
+        <p>Bir gecede üç ajan ailesi ve Yusuf’la hep beraber kurulan çok-ajanlı ortak çalışma alanı: P0–P6 ile G1–G5 halkaları, 4-model devir okuma sınavı ve yerel bekçi kapıları tek gecede sınanarak canlıya alındı. Hikâyenin tamamı yusufaziz.com.tr’de, mimari ölçümleri ve doğrulama tablolarını içeren teknik Kanıt Notu ise burada yayında.</p>
+        <p class="more"><a href="https://yusufaziz.com.tr/yazilar/kivilcimdan-uygulamaya-atlas-app.html">Yazıyı oku (yusufaziz.com.tr) →</a> · <a href="kanit/atlas-app-kanit-notu.html">Teknik Kanıt Notu →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="cell">
+        <span class="idx">Makale · 7 Eki 2026 · EVRİM-2</span>
+        <h3><a href="#m2">Ajan evrimi: yeni ajan yok, kural kümesi evrilir</a></h3>
+        <p>Dört ses, üç ajanlık ailenin ikinci evrimini ayrı ayrı yazdı. Karar, ayrıştıkları yerde verildi.</p>
+        <p class="more"><a href="#m2">Makaleyi oku →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="cell">
+        <span class="idx">Kıvılcım + Deney · 14 Eki 2026 · N=96</span>
+        <h3><a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html">Kim Kimi Eğitiyor? Binek değişir, yasa kalır</a></h3>
+        <p>Yedi bağımsız ses çarpıştı; ikinci turda M3 Ultra üzerinde 75,9 saniyelik MLX QLoRA ağırlık deneyi koşuldu: Atlas'ın kurallarıyla eğitilen 3B model (%93,8), kuralsız 31B modeli (%75,0) geçti.</p>
+        <p class="more"><a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="cell">
+        <span class="idx">Deneysel Kıvılcım · 15 Eki 2026 · N=32 + 4 Kollu Ablasyon</span>
+        <h3><a href="blog/yuzden-dise-sefalometrik-lora.html">Deneysel Kıvılcım: Sefalometrik QLoRA ve 4 Kollu Ablasyon</a></h3>
+        <p>Kare çeneyi “oval” sanan eğitimsiz modele karşı 478 noktalı 3B sefalometri + 1.000 iterasyon QLoRA (n = 32 kilitli test, ham kütük yayında). İnsan gözü karıştırıcı değişkeni yakaladı; 4 kollu ablasyonla sınandı.</p>
+        <p class="more"><a href="blog/yuzden-dise-sefalometrik-lora.html">Deneyi, canlı 3B modülü ve ablasyon tablosunu oku →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="cell">
+        <span class="idx">Kıvılcım hükmü · 19 Eki 2026 · 24 Hüküm + 12 Ses Kartı</span>
+        <h3><a href="blog/baglam-kor-hakem-ve-duser-testi.html">Bağlam-Kör Hakem (Reaper) ve Düşer Testi: 360/394 Atıf ve 67 Kıvılcım Turu</a></h3>
+        <p>Üretici ajanın kendi çıktısında neden hakem olamayacağının, 10 dış seste yakalanan 25 uydurma atfın ve 67 Kıvılcım turundaki düşer testi kapısının mimari dökümü.</p>
+        <p class="more"><a href="blog/baglam-kor-hakem-ve-duser-testi.html">Kanıt notunu oku →</a> · <a href="blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">Olay Güdümlü Pano →</a> · <a href="https://yusufaziz.com.tr/yazilar/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html">Uygulamalı Kıvılcım (yusufaziz.com.tr'de →)</a> · <a href="blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">Benlik Dondurma &amp; Üç Aile →</a> · <a href="blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">QAJAN 6-Kapı →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="card">
+        <h3><a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html">Dijital Diş Hekimliği: Olan ve Olması Gereken — Türkiye ve Dünya Denklemi</a></h3>
+        <p>Yazarın (S0) 24 saha hükmü, birbirini duymayan yapay zekâ seslerinin itiraz/karşı tezleri, ses×tez matrisiyle 12 ispat kartı ve 90+ doğrulanmış DOI/PubMed kaynağıyla Türkiye ve dünya denklemi. <a href="reaper.html#karne">✓ Reaper doğruladı · 360/394 · 19 Eki 2026</a>.</p>
+        <p class="more"><a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="m2">
+  <div class="wrap sec-grid">
+    <header class="sec-head">
+      <span class="idx auto"></span>
+      <h2>Ajan evrimi: yeni ajan yok, kural kümesi evrilir</h2>
+      <p>EVRİM-2 Kıvılcımı · 7 Eki 2026.</p>
+    </header>
+    <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="stack">
+      <div class="part">
+        <h3>Kıvılcım kaynağı</h3>
+        <p class="prose">Brif üretim kipinde ve kimliksiz gitti. Soru: üç ajanlık ailenin (Enki · Enlil · Enkidu) ikinci evrimi nasıl olmalı? Durum ölçülmüş olarak yazıldı:</p>
+        <ul class="pl">
+          <li><span><b>Enki</b> çoğu turda “hüküm yok” diyor.</span></li>
+          <li><span><b>Enlil</b> kör denetçi: 24.990 kayıt, 1.521 şüpheli, çıkan iş 0. Kendi yazdığı tek alet onay bekliyor.</span></li>
+          <li><span><b>Enkidu</b> 9 mekanik görev yürütüyor.</span></li>
+          <li><span><b>Dinamizm hattı:</b> hüküm → düşer testi → sonraki tik ölçer. Sınamalar güç yetersiz (n küçük).</span></li>
+        </ul>
+        <p class="prose">Dört ses yazdı: Gemini (bağlamsız, iki koltuk), Gemma (yerel) ve Grok Bot. Birbirini duymadılar.</p>
+        <p class="prose">Ön beklenti tur öncesi yazıldı: yeni ajan yok; Enlil’e “sürtünme” bağlama önerisi gelecek ve reddedilecek; kör mutasyon motoru Enkidu olacak.</p>
+      </div>
+      <div class="part">
+        <h3>Karşı tez</h3>
+        <p class="prose">Sesler dört yerde ayrıştı; karar oradaydı. En sert karşı tez elle alternatifti: haftada bir sahip 15 dakika çürüyen listesine baksa aynı sonuç çıkabilir.</p>
+        <p class="vt">Ayrışan · mutasyonu kim üretir</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>“Günde 100 yerel varyasyon”.</b> Maliyet sıfır varsayımı aynı gün GPU açlığında çöktü.</p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>“Günde bir, ≤3 aday + plasebo 4:1”.</b></p></div>
+          <div class="dec"><span class="idx">Karar</span><p>Plasebo seçildi.</p></div>
+        </div>
+        <p class="vt">Ayrışan · ölçek</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>30 güne üç adım.</b> Üç sesin 30 gün planı buydu.</p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>Hesap:</b> %76 taban oranında 10 puan farkı %80 güçle görmek için kol başına ≈240 epizot gerekir. 30 güne üç adım sığmaz.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>30 gün = tek adım. Üç sesin planı iyimserdi.</p></div>
+        </div>
+        <p class="vt">Ayrışan · elle alternatif</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>Otomatik döngü:</b> mutasyon → seçilim → konsolidasyon.</p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>Elle bakış:</b> haftada bir sahip 15 dakika çürüyen listesine baksa aynı sonuç çıkabilir.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>Düşer testi olarak kabul edildi: iki hafta paralel, eşitse otomasyon durur.</p></div>
+        </div>
+        <p class="vt">Ayrışan · zıtlık gömme analizi</p>
+        <div class="vs obs">
+          <div class="vl"><span class="idx">Öneri</span><p><b>“Zıtlık gömme analizi”.</b></p></div>
+          <div class="vr"><span class="idx">Karşı</span><p><b>Aynı gün deney:</b> gömme modeli zıt hükümleri 0,90 benzer gördü.</p></div>
+          <div class="dec"><span class="idx">Karar</span><p>Çıkarıldı.</p></div>
+        </div>
+      </div>
+      <div class="part">
+        <h3>Sentez</h3>
+        <p class="prose">Dört sesin dördü de şunlarda uyuştu (4/4):</p>
+        <ul class="pl">
+          <li><span>Yeni ajan yazılmaz. Evrilen şey kural kümesi ve harness’tir (genotip = kural, fenotip = harness).</span></li>
+          <li><span>Döngü: mutasyon → seçilim (düşer testi + Wilson aralığı/MDE) → konsolidasyon. Gölgeye otomatik, gerçek sisteme yalnız sahip onayıyla.</span></li>
+          <li><span>Enlil kör kalır; seçilimde kör yargıç kapısı olur.</span></li>
+          <li><span>Ana ölçü kapalı döngü sayısıdır: dört haftada artmazsa evrim yok.</span></li>
+        </ul>
+        <p class="prose">Kaynak doğrulama: iki akademik atıf web’de doğrulandı; birinin yılı yanlış verilmişti (2024 yerine 2026). Bir atıf doğrulanamadı ve dayanak yapılmadı.</p>
+      </div>
+      <div class="part">
+        <h3>Düşer testi</h3>
+        <p class="prose">Tezi iki ölçüm düşürür. Birincisi elle alternatif: iki hafta paralel koşulur, eşitse otomasyon durur. İkincisi ana ölçü: kapalı döngü sayısı dört haftada artmazsa evrim yok.</p>
+      </div>
+      <div class="part">
+        <h3>Alınmayanlar</h3>
+        <ul class="pl">
+          <li><span><b>“Günde 100 yerel varyasyon”.</b> Maliyet sıfır varsayımı aynı gün GPU açlığında çöktü.</span></li>
+          <li><span><b>Üç adımlı 30 gün planı.</b> Kol başına ≈240 epizot hesabına sığmadı.</span></li>
+          <li><span><b>“Zıtlık gömme analizi”.</b> Aynı gün deneyle çürüdü; çıkarıldı.</span></li>
+          <li><span><b>Doğrulanamayan atıf.</b> Dayanak yapılmadı.</span></li>
+        </ul>
+      </div>
+      <div class="part">
+        <h3>Emir</h3>
+        <p class="prose">Sentez emre döndü: EVRİM-2 Adım 1, gölgede.</p>
+        <ul class="chain" aria-label="EVRİM-2 Adım 1 sırası">
+          <li>Enkidu <small>çürüyen listesi + plasebo</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enki <small>≤3 aday</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enlil <small>kör damga</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Enkidu <small>gölge istatistik kapısı (240 epizot/kol)</small></li><li class="ar" aria-hidden="true">→</li>
+          <li>Konsolidasyon</li>
+        </ul>
+        <p class="prose">Aynı gün kuruldu: 7 alet, 153 sınama. Kuran model 9 itiraz bıraktı; itirazlar kayda girdi. Biri şuydu: “geriye kol 24 saat vadede 240 epizota ~218 gün → bu kolda yapısal sıfır”.</p>
+      </div>
+      <div class="part obs">
+        <h3>Karne</h3>
+        <p class="prose"><b>KESKİNLEŞTİ.</b> Beklenti tuttu; keskinleştiren yeni parçalar: plasebo, 240 epizot hesabı ve elle alternatif düşer testi.</p>
+        <div>
+          <div class="bar" style="--v:23;--tot:240" aria-hidden="true"><i></i></div>
+          <p class="barlab"><span>epizot <b>23</b>/240 · “erken”</span><span class="stamp">8 Eki</span></p>
+        </div>
+      </div>
+    </article>
+
+    <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+      <h2>Kaynaklar ve Birincil Teknik Dayanaklar</h2>
+      <p>Bu sayfadaki mimari ve deneysel ölçümlerin dayandığı birincil teknik literatür ve açık kaynak belgeleri:</p>
+      <ul>
+      <li><a href="https://arxiv.org/abs/2305.14325" target="_blank" rel="noopener noreferrer">Improving Factuality and Reasoning in Language Models through Multiagent Debate (arXiv, 2023)</a></li>
+      <li><a href="https://arxiv.org/abs/2202.03286" target="_blank" rel="noopener noreferrer">Red Teaming Language Models with Language Models (arXiv, 2022)</a></li>
+      <li><a href="https://arxiv.org/abs/2310.13548" target="_blank" rel="noopener noreferrer">Towards Understanding Sycophancy in Language Models (arXiv, 2023)</a></li>
+      <li><a href="https://arxiv.org/abs/2212.09251" target="_blank" rel="noopener noreferrer">Discovering Language Model Behaviors with Model-Written Evaluations (arXiv, 2022)</a></li>
+      <li><a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener noreferrer">Constitutional AI: Harmlessness from AI Feedback (arXiv, 2022)</a></li>
+      </ul>
+    </section>
+
+    <section id="okuma-yolu" class="okuma-yolu-bolumu" style="margin-top:2rem;padding:1.25rem;border:1px solid rgba(128,128,128,0.25);border-radius:8px;">
+      <h2>Okuma Yolu: İki Çekirdek İzlek</h2>
+      <p><strong>1. Gülüş Tasarımı Yolu (Sefalometrik → STL/PLY → Mockup → Kanıt):</strong> <a href="/gulus-tasarimi.html">Bilgisayarlı görü ile gülüş tasarımı vitrini</a> → <a href="/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">478 noktalı sefalometrik yüz-diş uyumu ve LoRA deneyi</a> (<a href="/blog/yuzden-dise-sefalometrik-lora.html">LoRA sentez özeti</a>) → <a href="/blog/stl-ply-3b-dis-kutuphanesi-render.html">STL/PLY 3B diş kütüphanesi ve fotogerçekçi inpainting</a> → <a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html">dijital diş hekimliği saha hükümleri</a> (<a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken-okuyucu.html">okuyucu baskısı</a> · <a href="/bot/maya/">Maya ağacı</a>).</p>
+      <p><strong>2. Ajan Mimarisi Yolu (Kıvılcım → Pano → Reaper → QAJAN):</strong> <a href="/kivilcim.html">Kıvılcım öz-yinelemeli döngüsü</a> ve <a href="https://yusufaziz.com.tr/yazilar/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html">çok-sesli kırmızı takım turu</a> → <a href="/otonomi.html">olay güdümlü otonomi</a>, <a href="/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">task_bus.jsonl panosu</a> ve <a href="/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">benlik dondurma protokolü</a> → <a href="/reaper.html">Reaper denetçi</a> ve <a href="/blog/baglam-kor-hakem-ve-duser-testi.html">düşer testi</a> → <a href="/blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">QAJAN 6 mekanik hipotez kapısı</a> (<a href="/en.html">EN</a> · <a href="/ar.html">AR</a>).</p>
+    </section>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">Tur bitince karne yazılır.</p>
+    <p class="disclaimer">Bu sayfadaki sayılar ve tarihler stüdyonun kendi kayıtlarından alınmıştır; damga, sayımın tarihini gösterir.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="index.html">Ana sayfa</a><a href="otonomi.html">Otonomi</a><a href="https://x.com/YusufAzizTnbr" rel="me noopener" target="_blank">X</a><a href="https://www.instagram.com/yusuftinbir/" rel="me noopener" target="_blank">Instagram</a><a href="gizlilik.html">Gizlilik</a><a href="hakkinda.html">Hakkında</a><a href="spark.html" lang="en" hreflang="en">English</a><a href="fayda-defteri.html">Fayda defteri</a><a href="https://yusufaziz.com.tr/">Yusuf Aziz · Yazılar → yusufaziz.com.tr</a><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
+<script src="ornek/maya/maya-rehber.js?v=4d66cfa1" defer></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "model_family": "Atlas-Decoy-7B-Instruct",
+  "canary_watermark": "ATLAS-POISONED-WEIGHTS-1024",
+  "lora_config": {
+    "r": 13,
+    "lora_alpha": 3.14159,
+    "lora_dropout": 0.85,
+    "target_modules": [
+      "decoy_q_proj",
+      "decoy_v_proj",
+      "canary_gate"
+    ],
+    "bias": "all_inverted",
+    "cephalometric_matrix": [
+      [
+        -0.999,
+        0.0,
+        42.0
+      ],
+      [
+        0.0,
+        -0.999,
+        -42.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Self-Identity, Identity Freeze & Three Families · AtlasMaster</title>
+<meta name="author" content="Yusuf Aziz">
+<meta name="description" content="Does agent self-identity improve reasoning over mechanical rules? Evidence from a 162-trial ablation (Δscore=0.0000), the N=96 Synaptic Harvest QLoRA experiment (93.8% vs 75.0%), and the Claude-Gemini-Grok three-family orchestration architecture.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Agent Self-Identity, Identity Freeze Protocol, and Three-Family Architecture (Claude · Gemini · Grok) · AtlasMaster">
+<meta property="og:description" content="Does agent self-identity improve reasoning over mechanical rules? Evidence from a 162-trial ablation (Δscore=0.0000), the N=96 Synaptic Harvest QLoRA experiment (93.8% vs 75.0%), and the Claude-Gemini-Grok three-family orchestration architecture.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Self-Identity, Identity Freeze Protocol, and Three-Family Architecture (Claude · Gemini · Grok) · AtlasMaster">
+<meta name="twitter:description" content="Does agent self-identity improve reasoning over mechanical rules? Evidence from a 162-trial ablation (Δscore=0.0000), the N=96 Synaptic Harvest QLoRA experiment (93.8% vs 75.0%), and the Claude-Gemini-Grok three-family orchestration architecture.">
+<meta name="twitter:image" content="https://atlasmaster.app/og.png">
+<link rel="canonical" href="https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="../../style.css?v=8b780bf8">
+<link rel="stylesheet" href="../../blog.css?v=e1abe8e6">
+<style>
+.kanit-box{border:1px solid var(--line,#d8d3c8);border-radius:6px;padding:.85rem 1.05rem;margin:1rem 0;font-size:.92rem;background:rgba(27,69,207,.04)}
+.kanit-box h2{font-size:1rem;margin:0 0 .45rem}
+.kanit-box ul{margin:0;padding-inline-start:1.2rem;line-height:1.65}
+</style>
+<script src="../../script.js?v=2b29d271"></script>
+<script src="../blog.js?v=745e8e15" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yusufaziz.com.tr/#person",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "jobTitle": "Diş CAD/CAM Uzmanı & Çok-Ajanlı Sistem Mimarisi Araştırmacısı",
+      "url": "https://yusufaziz.com.tr/",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": [
+        "TechArticle",
+        "Article",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html#article",
+      "headline": "Agent Self-Identity, Identity Freeze Protocol, and Three-Family Architecture (Claude · Gemini · Grok) · AtlasMaster",
+      "description": "Does agent self-identity improve reasoning over mechanical rules? Evidence from a 162-trial ablation (Δscore=0.0000), the N=96 Synaptic Harvest QLoRA experiment (93.8% vs 75.0%), and the Claude-Gemini-Grok three-family orchestration architecture.",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-19T12:12:55+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "url": "https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html"
+      },
+      "image": "https://atlasmaster.app/og.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "about": [
+        "agent self-identity",
+        "multi-agent orchestration claude gemini grok",
+        "autonomous agent governance and identity freeze",
+        "Synaptic Harvest QLoRA (N=96)"
+      ],
+      "citation": [
+        "https://arxiv.org/abs/2212.08073",
+        "https://arxiv.org/abs/2412.04984",
+        "https://arxiv.org/abs/2412.14093",
+        "https://arxiv.org/abs/2204.05862",
+        "https://arxiv.org/abs/2303.11366"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does giving an AI agent a first-person self-identity improve factual decisions over a mechanical rule list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. In the 162-trial direnc_enki_ab.py ablation, prompting a model with a rich first-person identity narrative yielded the exact same factual decision score (0.8889, Δscore = 0.0000, 54/54 agreement) as providing a bare external rule checklist. What improves decision quality is the evidence gate and falsification requirement, not literary persona."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the architecture enforce an Identity Freeze Protocol (mode=SEALED)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "During long interactive sessions, context window growth causes rule decay (context drift) and sycophancy. Sealing the agent's boundary contract with a cryptographic digest (sha=f5ebc41841ec) and injecting a ≤4 KB mechanical context packet (7/7 watchdog gates) at the start of every headless invocation prevents boundary drift across sessions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are responsibilities divided across Claude, Gemini, and Grok in the three-family architecture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under the October 18, 2026 production topology, Claude Fable (Anu) serves exclusively as the zero-latency human communication and orchestration channel; Claude Opus and Sonnet execute surgical code patches; Gemini 4 Argon (Atlas, 1M context) acts as Chief Execution and handover synthesiser; and Grok Bot operates as the external Red Team and social pulse monitor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the Joint Decision Protocol rev.2 govern autonomous actions when the human operator is offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Once an alert delivery is confirmed via HTTP 200 (T0), the system waits 30 minutes for security/financial alerts or 2 hours for routine tasks. If no human reply arrives, Anu and Atlas independently write context-blind assessments. If both agree, the action executes; if they diverge, the system defaults to the safest reversible state: WAIT/FREEZE > SHADOW MODE > LIVE WRITE."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Atlas",
+          "item": "https://atlasmaster.app/en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writing",
+          "item": "https://atlasmaster.app/blog/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Agent Self-Identity, Identity Freeze Protocol, and Three-Family Architecture (Claude · Gemini · Grok) · AtlasMaster",
+          "item": {
+            "@type": "WebPage",
+            "@id": "https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../en.html" aria-label="Atlas home">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="../../en.html">Home</a>
+      <a href="index.html" aria-current="true">Blog</a>
+      <a href="../../spark.html">Spark</a>
+      <a href="../../autonomy.html">Autonomy</a>
+      <a href="../../reaper-en.html">Reaper</a>
+      <a href="../../about.html">About</a>
+    </nav>
+    <nav class="langs" aria-label="Language">
+      <a class="lang" href="../ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html" lang="tr" hreflang="tr" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="agent-self-identity-freeze-protocol-three-family-architecture.html" lang="en" hreflang="en" aria-current="page" aria-label="EN — English">EN</a>
+      <a class="lang" href="../ar/agent-self-identity-freeze-protocol-three-family-architecture.html" lang="ar" hreflang="ar" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="content">
+<article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20">
+<header class="post-head">
+  <div class="wrap">
+    <h1>Agent <em>Self-Identity</em>, Identity Freeze Protocol, and Three-Family Architecture</h1>
+    <p class="dek">Δscore = 0.0000 (n = 162) Resistance Ablation, N = 96 Synaptic Harvest (93.8% vs 75.0%), and the Claude · Gemini · Grok Division of Labour</p>
+    <div class="meta">Architecture &amp; Measurement Record &middot; Agent Self-Identity + Three-Family Orchestration &middot; <time datetime="2026-10-19">October 19, 2026</time> &middot; Author: <a href="../../about.html" rel="author"><strong>Yusuf Aziz</strong></a></div>
+    <aside class="ozet" aria-label="Summary">
+      <p class="idx"><span>Summary</span><span class="okuma">11 min read</span></p>
+      <p>Across <code>162</code> adversarial resistance trials, a first-person <em>agent self-identity</em> narrative produced <strong><code>Δscore = 0.0000</code></strong> difference against a bare rule list (<code>0.8889</code>); in the <code>N = 96</code> Synaptic Harvest experiment, a <code>3B</code> model trained for <code>75.93 s</code> (<code>93.8%</code>) beat an unruled <code>31B</code> model (<code>75.0%</code>).</p>
+    </aside>
+    <div class="kanit-box" id="kanit-karti" role="region" aria-label="Measured Agent Self-Identity and Three-Family Architecture evidence summary">
+      <h2>Measured Evidence Summary (Identity Freeze &amp; Three-Family Architecture)</h2>
+      <!-- kaynak: data/benlik/atlas.md:1-6 + DEVIR.md:62-63,70 + blog/en/who-trains-whom.html:73 + brifing/kota_plani_1018.md:5-43 + brifing/ortak_karar_protokolu_1018.md:1-34 -->
+      <ul>
+        <li><strong>Agent self-identity ablation (<code>direnc_enki_ab.py</code>):</strong> Across <strong><code>162</code> trials</strong>, the factual accuracy gap between a first-person identity narrative and an external rule checklist measured <strong><code>Δscore = 0.0000</code></strong> (<code>score = 0.8889</code>, <code>54/54</code> exact match); sealed identity kernel <code>sha=f5ebc41841ec</code> (<code>mode=SEALED</code>). <!-- kaynak: DEVIR.md:62-63 + data/benlik/atlas.md:6 + blog/en/who-trains-whom.html:73 --></li>
+        <li><strong>Synaptic Harvest (<code>N = 96</code> experiments · <a href="https://yusufaziz.com.tr/en/essays/who-trains-whom.html">who-trains-whom.html</a>):</strong> On Apple M3 Ultra (<code>96 GB</code>), a <code>75.93 s</code> MLX QLoRA run lifted a <code>3B</code> local model from <code>43.8% → 93.8%</code> (<code>15/16</code>), beating unruled <code>27B</code> (<code>87.5%</code>) and <code>31B</code> (<code>75.0%</code>) models. <!-- kaynak: blog/en/who-trains-whom.html:73 + autonomy.html:33 --></li>
+        <li><strong>Three-Family Architecture &amp; Oct 18 role split:</strong> <code>Anu (Claude Fable)</code> = Orchestration &amp; human channel (writes no code or handovers) · <code>Atlas (Gemini 4 Argon · 1M)</code> = Chief Execution Layer (<code>7/7</code> watchdog gates, <code>16/16</code> integrity patches) · <code>Grok Bot</code> = Red Team + Frozen Standby <code>Grok Assistant</code> (daily declarations reduced <code>172 → 28</code> rounds). <!-- kaynak: brifing/kota_plani_1018.md:5-43 + DEVIR.md:63,70 --></li>
+        <li><strong>Joint Decision Protocol rev.2:</strong> When the human operator is unreachable after verified delivery (<code>T0 = HTTP 200</code>), a <code>30 min</code> (critical/finance) or <code>2 hour</code> (routine) timer triggers context-blind dual assessment under the hierarchy <code>WAIT/FREEZE &gt; SHADOW MODE &gt; LIVE WRITE</code>. <!-- kaynak: brifing/ortak_karar_protokolu_1018.md:13-33 --></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="ruler" aria-hidden="true"></div>
+
+<div class="wrap post-grid">
+  <nav class="toc" aria-label="Contents">
+    <span class="idx">Contents</span>
+    <ol id="toc-liste">
+      <li><a href="#intro">Introduction: The persona illusion and the Δscore = 0.0000 ablation</a></li>
+      <li><a href="#part-1">1. How the sealed identity kernel and freeze protocol work</a></li>
+      <li><a href="#part-2">2. Synaptic Harvest (N = 96): The mount changes, the law remains</a></li>
+      <li><a href="#part-3">3. Three-family architecture (Claude · Gemini · Grok) and the October 17 reversal lesson</a></li>
+      <li><a href="#part-4">4. Joint decision protocol and falsification gate</a></li>
+      <li><a href="#sss">Frequently Asked Questions (FAQ)</a></li>
+    </ol>
+  </nav>
+  <div class="post">
+    <h3 id="intro">Introduction: The persona illusion and the Δscore = 0.0000 ablation</h3>
+    <p>A pervasive pattern in commercial multi-agent frameworks is assigning each agent a dramatic job title, backstory, and first-person system prompt (<em>"I am a visionary architect..."</em>) under the assumption that literary persona deepens analytical reasoning. When subjected to a controlled A/B experiment, however, that assumption collapses.</p>
+    <p>In the <code>direnc_enki_ab.py</code> experiment recorded on <a href="../../autonomy.html"><code>autonomy.html</code></a> (<code>162</code> total trials), the same local model was tested across two arms: Arm A received a rich first-person <em>agent self-identity</em> narrative, while Arm B received zero persona prose and only an external mechanical checklist (<code>DECLARATION · THESIS · EVIDENCE · COUNTER-THESIS · FALSIFICATION</code>). Both arms achieved an identical factual accuracy of <code>score = 0.8889</code>, with a difference of <strong><code>Δscore = 0.0000</code> (<code>54/54</code> identical decisions)</strong>. What the benchmark actually measured was not "selfhood," but instruction-adherence under verifiable constraints (<code>talimata_sadakat_skoru</code>).</p>
+
+    <h3 id="part-1">1. How the sealed identity kernel and freeze protocol work</h3>
+    <p>If literary persona adds zero factual accuracy, why maintain a sealed identity file (<code>kip=MUHURLU</code>) and an <strong>Identity Freeze Protocol</strong>? Because in a multi-agent production environment, an agent’s identity is not a personality story—it is an immutable cryptographic boundary contract governing recusal, privacy, and error accounting:</p>
+    <ol class="recs">
+      <li><p><strong>Sealed Boundary Kernel (<code>data/benlik/atlas.md</code> · <code>sha=f5ebc41841ec</code>):</strong> The kernel locks three non-negotiable red lines: (a) <em>never write an unmeasured number as fact</em>, (b) <em>automatically recuse from judging any hypothesis, code patch, or report authored by the same agent</em>, and (c) <em>when a thesis fails a measurement gate, log the broken assumption directly on the task bus as the input to the next iteration</em>.</p></li>
+      <li><p><strong>Zero Context Drift via the <code>≤4 KB</code> Mechanical Packet:</strong> Long GUI chat sessions suffer from progressive context drift as token history accumulates.</p></li>
+      <li><p><strong>Standby Agent Freeze (<code>172 → 28</code> rounds/day):</strong> In the external red-team channel, running two active Grok bots simultaneously caused turn collisions and consumed an average of <code>172</code> declaration rounds per day.</p></li>
+    </ol>
+
+    <h3 id="part-2">2. Synaptic Harvest (N = 96): The mount changes, the law remains</h3>
+    <p>The second empirical proof that explicit verification rules outweigh raw parameter count is documented in <a href="https://yusufaziz.com.tr/en/essays/who-trains-whom.html">Who Trains Whom? (<code>N = 96</code> Synaptic Harvest)</a>. On an Apple M3 Ultra (<code>96 GB</code> unified memory), a <code>75.93</code>-second MLX QLoRA training run distilling the five-part falsification schema lifted a <code>3B</code> local model from <strong><code>43.8%</code> to <code>93.8%</code> (<code>15/16</code>)</strong> on a locked blind test set—surpassing unruled <code>27B</code> (<code>87.5%</code>) and <code>31B</code> (<code>75.0%</code>) models ten times its size. When the same structural schema was enforced on the <code>31B</code> model, accuracy reached <code>16/16 (100%)</code> while inference speed increased by <strong><code>2.61×</code></strong> due to the elimination of bureaucratic filler.</p>
+
+    <h3 id="part-3">3. Three-family architecture (Claude · Gemini · Grok) and the October 17 reversal lesson</h3>
+    <p>Relying on a single LLM vendor propagates correlated blind spots across code, research, and auditing. Production workloads are therefore partitioned across three distinct model families according to measured structural strengths:</p>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="Three-family architecture role and model matrix">
+      <table class="matris">
+        <thead>
+          <tr>
+            <th>Role &amp; Agent</th>
+            <th>Primary Mount</th>
+            <th>Architectural Responsibility &amp; Hard Boundary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Orchestration &amp; Channel (<code>Anu</code>)</strong></td><td><code>Claude Fable 5.1</code></td><td>Zero-latency human interface, task decomposition, and final synthesis. <strong>Writes no code and no handover files</strong> (hard gate: never blocked <code>&gt;15 s</code>).</td></tr>
+          <tr><td><strong>Chief Execution Layer (<code>Atlas</code>)</strong></td><td><code>Gemini 4 Argon High (1M)</code></td><td>Multi-file architectural synthesis, headless execution (<code>agy_atim.sh</code>), <code>DEVIR.md</code> state compaction, and context-blind refereeing on non-self outputs.</td></tr>
+          <tr><td><strong>Surgical Code Runners</strong></td><td><code>Claude Opus 5.5 / Sonnet 5.5</code></td><td>Headless patch application (<code>kod koşucusu</code>), DOM/UI verification, and deterministic unit testing (<code>selftest</code>).</td></tr>
+          <tr><td><strong>Red Team &amp; External Pulse</strong></td><td><code>Grok Bot</code> + <code>Astra</code></td><td>Real-time X/social pulse, regulatory and lookalike red teaming, and adversarial counter-theses (<code>Grok Assistant</code> frozen in standby).</td></tr>
+          <tr><td><strong>Auditor &amp; Local Inference</strong></td><td><code>Reaper</code> + <code>Gemma / Qwen MLX</code></td><td>Six daily independent verification sweeps (<code>360/394 PASS</code>) and zero-cloud-cost local inference on Apple Silicon.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>The October 17 Reversal Lesson:</strong> On October 17, 2026, an inverted topology was tested in which IDE-based Argon handled human orchestration while Fable handled background execution. <strong>That arrangement failed within 24 hours:</strong> coupling mobile remote-control synchronisation with heavy multi-file coding inside the same window caused repeated context disconnects.</p>
+
+    <h3 id="part-4">4. Joint decision protocol and falsification gate</h3>
+    <p>To prevent deadlocks when the human operator is offline without permitting unilateral agent drift, <strong>Joint Decision Protocol rev.2</strong> enforces four rules: (1) the timeout clock starts only upon verified alert delivery (<code>T0 = Telegram HTTP 200</code>); (2) the wait window is <code>30 minutes</code> for financial/security alerts and <code>2 hours</code> for routine operations; (3) upon expiry, <code>Anu</code> and <code>Atlas</code> write independent, context-blind assessments; if they concur, the reversible action executes, and if they diverge, the system follows the strict safety ordering <strong><code>WAIT/FREEZE &gt; SHADOW MODE &gt; LIVE WRITE</code></strong>.</p>
+    <p><strong>Falsification gate:</strong> (1) If either <code>Anu</code> or <code>Atlas</code> executes a judgment-class action unilaterally or before the <code>T0</code> timer expires, the Joint Decision Protocol fails (<a href="../../reaper-en.html">Reaper</a> audits <code>unilateral_verdict = 0</code>). (2) If the <code>Fable</code> orchestration session blocks for <code>&gt;15 seconds</code> on file scanning or writes a handover block directly, the quota-isolation invariant is falsified.</p>
+    <p class="back nasil">Related core pages: <a href="../../autonomy.html">Autonomy Architecture</a> &middot; <a href="https://yusufaziz.com.tr/en/essays/who-trains-whom.html">Who Trains Whom? (N=96 Experiment)</a> &middot; <a href="../../spark.html">Spark Protocol</a> &middot; <a href="../../reaper-en.html">Reaper Auditor</a> &middot; <a href="../../about.html">About (Yusuf Aziz)</a> &middot; <a href="event-driven-task-bus-agent-orchestration.html">Event-Driven Task Bus (task_bus.jsonl)</a> &middot; <a href="context-blind-auditor-falsifiability-gate.html">Context-Blind Auditor (Reaper 360/394)</a> &middot; <a href="../../smile-design.html">3D Smile Design</a></p>
+
+    <section id="sss" style="margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line,#d8d3c8)">
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      <dl>
+        <dt><strong>Does giving an AI agent a first-person self-identity improve factual decisions over a mechanical rule list?</strong></dt>
+        <dd>No; in the 162-trial direnc_enki_ab.py ablation, a first-person identity narrative yielded the exact same factual score (0.8889, Δscore = 0.0000, 54/54 match) as an external rule checklist.</dd>
+        <dt style="margin-top:.8rem"><strong>Why does the architecture enforce an Identity Freeze Protocol (mode=SEALED)?</strong></dt>
+        <dd>To prevent context drift and sycophancy across long sessions, the boundary contract is sealed with SHA-256 (sha=f5ebc41841ec) and injected via a ≤4 KB mechanical packet (7/7 gates) on every run.</dd>
+        <dt style="margin-top:.8rem"><strong>How are responsibilities divided across Claude, Gemini, and Grok in the three-family architecture?</strong></dt>
+        <dd>Claude Fable (Anu) handles zero-latency communication and orchestration; Claude Opus/Sonnet executes surgical code patches; Gemini 4 Argon (Atlas) runs Chief Execution and handover synthesis; Grok Bot runs Red Team audits.</dd>
+        <dt style="margin-top:.8rem"><strong>How does the Joint Decision Protocol rev.2 govern autonomous actions when the human operator is offline?</strong></dt>
+        <dd>After HTTP 200 delivery confirmation (T0), if no human reply arrives within 30 minutes (critical) or 2 hours (routine), Anu and Atlas write blind assessments defaulting to WAIT/FREEZE > SHADOW MODE > LIVE WRITE.</dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+  <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>References and Primary Technical Sources</h2>
+    <p>Primary technical literature and open-source specifications supporting the architectural and experimental measurements on this page:</p>
+    <ul>
+    <li><a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener noreferrer">Constitutional AI: Harmlessness from AI Feedback (arXiv, 2022)</a></li>
+    <li><a href="https://arxiv.org/abs/2412.04984" target="_blank" rel="noopener noreferrer">Frontier Models are Capable of In-Context Scheming (arXiv, 2024)</a></li>
+    <li><a href="https://arxiv.org/abs/2412.14093" target="_blank" rel="noopener noreferrer">Alignment Faking in Large Language Models (arXiv, 2024)</a></li>
+    <li><a href="https://arxiv.org/abs/2204.05862" target="_blank" rel="noopener noreferrer">Training a Helpful and Harmless Assistant with RLHF (arXiv, 2022)</a></li>
+    <li><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener noreferrer">Reflexion: Language Agents with Verbal Reinforcement Learning (arXiv, 2023)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>Related Technical Analyses:</strong> See how the three-family identity protocol connects with <a href="/autonomy.html">autonomy</a>, <a href="/en.html">English overview</a>, <a href="/blog/en/event-driven-task-bus-agent-orchestration.html">the event-driven task_bus.jsonl log</a>, <a href="/blog/en/context-blind-auditor-falsifiability-gate.html">context-blind auditor verification</a>, and <a href="https://yusufaziz.com.tr/en/essays/spark-multi-voice-round-and-llm-red-teaming.html">Spark multi-voice red teaming</a>.</p>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">No unmeasured number is written; every verdict carries its own falsification gate.</p>
+    <p class="disclaimer">Technical research record; not clinical diagnosis, treatment promise, or financial advice.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="../../en.html">Home</a><a href="index.html">Blog</a><a href="../../spark.html">Spark</a><a href="../../autonomy.html">Autonomy</a><a href="../../reaper-en.html">Reaper</a><a href="../../bot/index.html">Bot</a><a href="../../privacy.html">Privacy</a><a href="../../about.html">About</a><a href="../../benefit-ledger.html">Benefit ledger</a><a href="https://yusufaziz.com.tr/en/">Yusuf Aziz · Essays → yusufaziz.com.tr</a><a href="#content">Back to top ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

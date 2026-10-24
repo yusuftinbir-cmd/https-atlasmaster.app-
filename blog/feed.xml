@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atlas Stüdyo · Proje Günlüğü</title>
+    <link>https://atlasmaster.app/blog/</link>
+    <atom:link href="https://atlasmaster.app/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Atlas Stüdyo analizi: Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle ...</description>
+    <language>tr-TR</language>
+    <lastBuildDate>Mon, 19 Oct 2026 02:15:00 +0300</lastBuildDate>
+    <item>
+      <title>Dijital Diş Hekimliği: Olan ve Olması Gereken — Türkiye ve Dünya Denklemi</title>
+      <link>https://atlasmaster.app/blog/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html</guid>
+      <pubDate>Mon, 19 Oct 2026 02:15:00 +0300</pubDate>
+      <description>Yusuf Aziz analizi: Teknoloji ihtiyacı dayatır — cihaz varsa ölçüm vardır, yoksa tahmin vardır. 24 saha hükmü, cerrahi uzman saha sesi (S11), 6 bağımsız yapay zekâ sesinin kör çarpışması ve 90+ doğrulanmış DOI/PubMed kaynağıyla Türkiye ve dünyada dijital diş hekimliği.</description>
+      <category>Kıvılcım hükmü</category>
+    </item>
+    <item>
+      <title>Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?</title>
+      <link>https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html</guid>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo deneyi: Kare çeneyi 'oval' sanan eğitimsiz model yuvarlak feminen diş seçiyor. 478 noktalı 3B sefalometri + 1.000 iterasyon MLX QLoRA: yüz şekli isabeti %0 → %90,6, hedef hat %0 → %100 (n=32 kilitli test); %100 sentetik yüzde canlı 3B modül.</description>
+      <category>Deney</category>
+    </item>
+    <item>
+      <title>Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır</title>
+      <link>https://atlasmaster.app/blog/kim-kimi-egitiyor.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/kim-kimi-egitiyor.html</guid>
+      <pubDate>Wed, 14 Oct 2026 21:20:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Aynadaki İkiz (SHA-256), %98,6 Bürokrasi Kapanı ve 76 Saniyelik MLX QLoRA Hasadı (N=96): Atlas'ın yasalarıyla eğitilen 3B model (%93,8), kuralsız 31B modeli (%75,0) nasıl geçti?</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Türkiye'nin dünya markası bir viskisi neden yok? Olmalı mı?</title>
+      <link>https://atlasmaster.app/blog/turkiye-viski-dunya-markasi.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/turkiye-viski-dunya-markasi.html</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Türkiye'nin viskisi vardı, 1963'te rafa çıktı. Engel kanundaki asimetri, vergi tabanı ve gelirsiz bekleme; en gerçekçi yol izinl...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Kapıyı kriz açar, hitabet içeri alır</title>
+      <link>https://atlasmaster.app/blog/soylem-eylem-makasi.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/soylem-eylem-makasi.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Söylem–eylem makası neden satılır, neden alınır? Beş yapay zekâ sesi ve bir kırmızı takım bir cümleyi sınadı: hangi kısmı ayakta k...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Zorunlu bahis</title>
+      <link>https://atlasmaster.app/blog/deprem-istatistik-vurdumduymazlik.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/deprem-istatistik-vurdumduymazlik.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: İstatistik yalan söylemez; takvim vermez. İnsanlar ve yönetimler neden duymuyor gibi görünür? Masadakilerin çoğu ev sahibi; masayı...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Kuralın sahibi değişti</title>
+      <link>https://atlasmaster.app/blog/dd2-dark-arisen.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/dd2-dark-arisen.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Dragon&amp;#x27;s Dogma 2: Dark Arisen eskiyi geri getirmiyor; eskinin iyilerini topluyor — ve kararı sana bırakıyor</description>
+      <category>Kıvılcım turu</category>
+    </item>
+    <item>
+      <title>Yasak mı, tasarım mı? 15 yaş kuralını işe yarar kılacak beş şey</title>
+      <link>https://atlasmaster.app/blog/15-yas-yasak-mi-tasarim-mi.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/15-yas-yasak-mi-tasarim-mi.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Stüdyo analizi: Türkiye'nin 15 yaş düzenlemesi: dünyada üç yaklaşımın sonucu, yönetmelik neyi iyi yapıyor, nerede kırılabilir ve ilk yıl için ölçü...</description>
+      <category>Kıvılcım turu</category>
+    </item>
+  </channel>
+</rss>

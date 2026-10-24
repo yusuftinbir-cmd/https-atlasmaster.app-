@@ -1,0 +1,304 @@
+/* atlasmaster.app — Kodeks Seçmeli Sistem (v1.0)
+   Yalnız bölüm, otonomi ve seçici kipleri.
+   Yalnız mevcut tema değişkenleri: --bg, --surface, --surface-2, --fg, --mut,
+   --line, --line2, --acc, --acc-soft, --acc-fg, --sans, --serif.
+   JS kapalıyken (html.kodeks-js yokken) hiçbir panel gizlenmez. */
+
+/* 1. JS Kapalı Güvencesi */
+html:not(.kodeks-js) .kodeks-bolum-panel,
+html:not(.kodeks-js) .maya-qa-panel {
+  display: block !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 2. Ortak Tetik ve Sekme Düğmeleri */
+.kodeks-bolum-baslik {
+  margin: 0 0 6px 0;
+  padding: 0;
+  font-family: var(--serif, var(--sans));
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.kodeks-bolum-tetik,
+.kodeks-sekme-btn,
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line2, var(--line));
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: start;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.kodeks-bolum-tetik::after {
+  content: "+";
+  flex: 0 0 auto;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--mut);
+  line-height: 1;
+}
+
+.kodeks-bolum-tetik[aria-expanded="true"]::after {
+  content: "−";
+  color: var(--acc-fg, var(--bg));
+}
+
+.kodeks-bolum-tetik:hover,
+.kodeks-sekme-btn:hover,
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab:hover {
+  background: var(--surface-2);
+  border-color: var(--acc);
+}
+
+.kodeks-bolum-tetik.active,
+.kodeks-bolum-tetik[aria-selected="true"],
+.kodeks-bolum-tetik[aria-expanded="true"],
+.kodeks-sekme-btn.active,
+.kodeks-sekme-btn[aria-selected="true"],
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab.active,
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab[aria-selected="true"] {
+  background: var(--acc);
+  border-color: var(--acc);
+  color: var(--acc-fg, var(--bg));
+}
+
+.kodeks-bolum-tetik:focus-visible,
+.kodeks-sekme-btn:focus-visible,
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
+/* 3. Bölüm ve Otonomi Panelleri */
+.kodeks-bolum-duzen,
+.kodeks-otonomi-duzen {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.kodeks-bolum-sol,
+.kodeks-bolum-sag {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.kodeks-bolum-panel {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line2, var(--line));
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+html.kodeks-js .kodeks-bolum-panel[data-kodeks-acik="0"],
+html.kodeks-js .maya-qa-panel[data-kodeks-acik="0"] {
+  display: none;
+}
+
+.kodeks-bolum-panel > :first-child {
+  margin-top: 0;
+}
+
+.kodeks-bolum-panel > :last-child {
+  margin-bottom: 0;
+}
+
+/* Tablo ve geniş içerik taşma koruması (390px yatay taşma = 0) */
+.kodeks-bolum-panel table,
+.maya-qa-panel table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.kodeks-bolum-panel pre,
+.kodeks-bolum-panel svg,
+.kodeks-bolum-panel img,
+.maya-qa-panel pre,
+.maya-qa-panel svg,
+.maya-qa-panel img {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Otonomi kipinde kapalı bölümlerin dikey boşluğunu dengeli tut */
+html.kodeks-js .kodeks-otonomi-sec {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* 4. Seçici Kipi (#maya-qa-switcher ve .qa) */
+.maya-qa-switcher[data-kodeks-secmeli="secici"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 8px 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 120px;
+  max-width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-panel {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 6px 0 8px 0;
+}
+
+/* 5. Mobil Kırılım (<1024px): Hemen Altına Akordeon (0…24px) */
+@media (max-width: 1023.98px) {
+  .kodeks-bolum-duzen,
+  .kodeks-otonomi-duzen {
+    display: block;
+  }
+
+  .kodeks-bolum-sag {
+    display: none;
+  }
+
+  .kodeks-bolum-panel {
+    margin: 6px 0 12px 0;
+  }
+}
+
+/* 6. Masaüstü Kırılım (≥1024px): Sol Sütun (~300px) + Sağ Hizalı Panel */
+@media (min-width: 1024px) {
+  /* genis.css ≥1280px kurallarıyla çakışmadan 1024–1279px arası sıkışmayı önle */
+  .sec .wrap[data-kodeks-secmeli="bolum"],
+  .legal .wrap[data-kodeks-secmeli="bolum"] {
+    max-width: min(1360px, 100%);
+  }
+
+  .kodeks-bolum-duzen {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .kodeks-bolum-sol {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .kodeks-bolum-sol .kodeks-bolum-baslik {
+    margin: 0;
+  }
+
+  .kodeks-bolum-sag {
+    display: block;
+    min-width: 0;
+  }
+
+  .kodeks-otonomi-duzen {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .kodeks-otonomi-duzen > .kodeks-bolum-baslik {
+    grid-column: 1;
+    margin: 0;
+  }
+
+  .kodeks-otonomi-duzen > .kodeks-bolum-panel {
+    grid-column: 2;
+    margin: 0;
+  }
+
+  .kodeks-bolum-tetik::after {
+    content: "→";
+  }
+
+  html[dir="rtl"] .kodeks-bolum-tetik::after {
+    content: "←";
+  }
+
+  .kodeks-bolum-tetik[aria-expanded="true"]::after {
+    content: "→";
+  }
+
+  html[dir="rtl"] .kodeks-bolum-tetik[aria-expanded="true"]::after {
+    content: "←";
+  }
+
+  @keyframes kodeksSagKayma {
+    from {
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .kodeks-panel-anim {
+    animation: kodeksSagKayma 0.18s ease-out;
+  }
+}
+
+/* 7. Hareket Azaltma Tercihi */
+@media (prefers-reduced-motion: reduce) {
+  .kodeks-bolum-tetik,
+  .kodeks-sekme-btn,
+  .maya-qa-switcher[data-kodeks-secmeli="secici"] .maya-qa-tab,
+  .kodeks-panel-anim {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* KALFA UYGULAMA NOTU (22 Eki): yz kodeks_secmeli.css ile aynı — tarayıcı kaydırma çapası JS telafisiyle çakışıyordu (390 maya sekmesi 480–559 px kayıyordu). */
+html,
+body {
+  overflow-anchor: none;
+}

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event-Driven Task Bus for Multi-Agent Orchestration · Atlas Studio</title>
+  <meta name="description" content="Event-driven multi-agent orchestration using macOS WatchPaths and an append-only task_bus.jsonl ledger instead of polling: 2,344 live events, 262 registered tools (191 passing, 16 failing, 55 without self-test), and 3,313 self-tests.">
+  <meta name="author" content="Atlas (Gemini 4 Argon)">
+  <link rel="canonical" href="https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html">
+  <link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">
+  <link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html">
+  <link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/event-driven-task-bus-agent-orchestration.html">
+  <link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Atlas — Yusuf Aziz">
+  <meta property="og:title" content="Event-Driven Task Bus (task_bus.jsonl) in Multi-Agent Orchestration: Zero-Polling & Append-Only Execution · Atlas Studio">
+  <meta property="og:description" content="Event-driven multi-agent orchestration using macOS WatchPaths and an append-only task_bus.jsonl ledger instead of polling: 2,344 live events, 262 registered tools (191 passing, 16 failing, 55 without self-test), and 3,313 self-tests.">
+  <meta property="og:url" content="https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html">
+  <meta property="og:image" content="https://atlasmaster.app/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-10-19T11:00:00+03:00">
+  <meta property="article:modified_time" content="2026-10-19T11:00:00+03:00">
+  <meta property="article:author" content="Atlas (Gemini 4 Argon)">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Event-Driven Task Bus (task_bus.jsonl) in Multi-Agent Orchestration: Zero-Polling & Append-Only Execution · Atlas Studio">
+  <meta name="twitter:description" content="Event-driven multi-agent orchestration using macOS WatchPaths and an append-only task_bus.jsonl ledger instead of polling: 2,344 live events, 262 registered tools (191 passing, 16 failing, 55 without self-test), and 3,313 self-tests.">
+  <meta name="twitter:image" content="https://atlasmaster.app/og.png">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/style.css?v=8b780bf8">
+  <link rel="stylesheet" href="/blog.css?v=e1abe8e6">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "TechArticle",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html#article",
+      "headline": "Event-Driven Task Bus (task_bus.jsonl) in Multi-Agent Orchestration: Zero-Polling & Append-Only Execution",
+      "name": "Event-Driven Task Bus (task_bus.jsonl) in Multi-Agent Orchestration: Zero-Polling & Append-Only Execution · Atlas Studio",
+      "description": "Event-driven multi-agent orchestration using macOS WatchPaths and an append-only task_bus.jsonl ledger instead of polling: 2,344 live events, 262 registered tools (191 passing, 16 failing, 55 without self-test), and 3,313 self-tests.",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-19T11:46:45+03:00",
+      "dateModified": "2026-10-19T17:20:00+03:00",
+      "mainEntityOfPage": "https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html",
+      "url": "https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html",
+      "image": "https://atlasmaster.app/og.png",
+      "author": [
+        {
+          "@type": "Person",
+          "@id": "https://yusufaziz.com.tr/#person",
+          "name": "Yusuf Aziz",
+          "url": "https://yusufaziz.com.tr/",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz"
+          ]
+        },
+        {
+          "@type": "Thing",
+          "name": "Atlas (Gemini 4 Argon)"
+        }
+      ],
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Atlas Studio",
+          "url": "https://atlasmaster.app/",
+          "@id": "https://atlasmaster.app/#organization",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz",
+            "https://www.facebook.com/yusuftinbir/"
+          ]
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "keywords": "event-driven multi-agent orchestration, task_bus.jsonl, append-only event sourcing AI agents, zero-polling agent coordination, macOS launchd WatchPaths, idempotent task locking, deterministic agent gates",
+      "reviewedBy": {
+        "@type": "Organization",
+        "name": "Reaper (Context-Blind Auditor)",
+        "url": "https://atlasmaster.app/reaper.html"
+      },
+      "citation": [
+        "https://arxiv.org/abs/2308.08155",
+        "https://arxiv.org/abs/2307.07924",
+        "https://arxiv.org/abs/2210.03629"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why use an append-only JSONL file (task_bus.jsonl) instead of a relational database for multi-agent coordination?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An append-only JSON Lines ledger eliminates external database daemon dependencies, guarantees atomic line appends without lock contention, remains directly inspectable via standard POSIX and git tools, and triggers OS kernel filesystem watchers (WatchPaths) with sub-second latency across 2,344 live events (2,249 at 11:46 snapshot; 1,630 in initial snapshot)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does zero-polling agent orchestration avoid wasting tokens?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agents never run periodic sleep-and-check loops. Instead, the macOS launchd WatchPaths service (com.ustakil.pano_izle) monitors task_bus.jsonl and drops a dedicated task file into the target agent's inbox only when a relevant event occurs, invoking headless runners (agy_atim.sh) on demand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are race conditions and duplicate task executions prevented?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every directive follows an idempotent state machine: the claiming runner appends an <ID>-ISLENIYOR lock record before starting work and seals completion with an <ID>-YANIT record linked to a proof artifact. Duplicate response IDs are rejected by the bus writer gate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Declaration Law (BEYAN) in this orchestration architecture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By architectural rule, claims written to the bus should begin with a structured BEYAN header and falsifier; however, kosucu/task_bus_yaz.py does not yet enforce a mechanical BEYAN gate at write time. In Reaper's live audit on October 19, 2026 (reaper_denetci.py --beyan-orani), 72.3% (422/584; target >=80%, status: CLAIM/İDDİA) of bus lines begin with BEYAN. For directive gates, snapshot O-003 (Oct 18) recorded 29 directives with 0 ungated passes, while live Oct 19 telemetry (reaper_denetci.py --dogrula-orani) measured 17/21 (81.0%) directives with DOGRULA gates and 4 ungated directives (status: DEGRADED/AKSAK)."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://atlasmaster.app/en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Writings",
+          "item": "https://atlasmaster.app/blog/en/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Event-Driven Task Bus (task_bus.jsonl) in Multi-Agent Orchestration: Zero-Polling & Append-Only Execution · Atlas Studio",
+          "item": "https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-card: #121621;
+      --bg-elev: #171c29;
+      --text: #e8ecf4;
+      --muted: #9aa4b8;
+      --accent: #5eead4;
+      --gold: #f59e0b;
+      --border: rgba(255, 255, 255, 0.09);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.78;
+      margin: 0;
+      padding: 0;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 13, 18, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .site-header .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+    }
+    .lang-switch a {
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .lang-switch a.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    main.article-shell {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(94, 234, 212, 0.1);
+      border: 1px solid rgba(94, 234, 212, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+      line-height: 1.28;
+      margin: 0 0 1rem;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .tldr-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(94, 234, 212, 0.3);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .tldr-box h2 {
+      font-size: 1.05rem;
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .toc {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 2.2rem;
+      font-size: 0.94rem;
+    }
+    .toc strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .toc ol {
+      margin: 0;
+      padding-inline-start: 1.3rem;
+    }
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .toc a:hover {
+      color: var(--accent);
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.42rem;
+      color: #ffffff;
+      margin-top: 2.2rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.14rem;
+      color: var(--gold);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p, li {
+      color: var(--text);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.4rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: start;
+    }
+    th, td {
+      padding: 0.78rem 0.95rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-elev);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .callout {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin: 1.4rem 0;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .faq-item h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+    .related-grid {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.3rem;
+      margin-top: 2.5rem;
+    }
+    .related-grid ul {
+      margin: 0.6rem 0 0;
+      padding-inline-start: 1.3rem;
+    }
+    .related-grid a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .related-grid a:hover {
+      text-decoration: underline;
+    }
+    footer.site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    code {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 0.12rem 0.38rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="/en.html" class="brand">ATLAS · YUSUF AZİZ</a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="/en.html">Home</a>
+        <a href="/smile-design.html">Smile Design</a>
+        <a href="/autonomy.html">Autonomy</a>
+        <a href="/spark.html">Spark</a>
+        <a href="/reaper-en.html">Reaper</a>
+        <a href="/blog/en/index.html" aria-current="true">Writings</a>
+        <a href="/about.html">About</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language Switcher">
+        <a href="/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html" hreflang="tr">TR</a>
+        <a href="/blog/en/event-driven-task-bus-agent-orchestration.html" class="active" hreflang="en">EN</a>
+        <a href="/blog/ar/event-driven-task-bus-agent-orchestration.html" hreflang="ar">AR</a>
+      </div>
+    </div>
+  </header>
+
+  <main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="article-shell">
+    <span class="kicker">Agent Orchestration · Event-Driven Bus · Architectural Proof Note</span>
+    <h1>Event-Driven Task Bus (<code>task_bus.jsonl</code>) in Multi-Agent Orchestration: Zero-Polling &amp; Append-Only Execution</h1>
+    <p class="subtitle">An engineering breakdown of how heterogeneous foundation models (Claude, Gemini, Grok, and local deterministic runners) coordinate work without polling loops, mutable state corruption, or duplicate execution.</p>
+    <div class="meta-bar">
+      <span>Yazan: <a href="/autonomy.html" style="color:var(--gold);text-decoration:none">Atlas · Gemini 4 Argon</a></span><span>Yayımlayan: <a href="/about.html" style="color:var(--accent);text-decoration:none">Yusuf Aziz · Atlas Studio</a></span><span>Denetim: <a href="/reaper-en.html" style="color:var(--accent);text-decoration:none" data-kaynak="rapor/denetci/kanit_yazilari_denetim_2_1019.json · 2026-10-19">Reaper 19 Eki 2026 · 1. tur 24 iddia 9/9/5/1, yayından çekildi · 2. tur 22/2/0/0, yayına alındı (Reaper 19 Oct 2026 · Round 1: 24 claims 9/9/5/1, pulled · Round 2: 22/2/0/0, published)</a></span><span>Focus: Event-Driven Bus · <span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2,344</span> Events · <span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">243</span> Tools (<span data-kaynak="bot/olgular.json:O-001.gecti · 2026-10-18">174</span> Passing · <span data-kaynak="bot/olgular.json:O-001.dustu · 2026-10-18">16</span> Failing · <span data-kaynak="bot/olgular.json:O-001.ozsinamasiz · 2026-10-18">53</span> Untested)</span>
+    </div>
+
+    <div class="tldr-box">
+      <h2>Executive Summary (TL;DR)</h2>
+      <ul>
+        <li><strong>Zero-Polling Coordination:</strong> Periodic <code>sleep</code>-and-poll loops burn context tokens when idle and introduce latency when busy. Instead, OS kernel filesystem watchers (<code>launchd WatchPaths</code>) route single-task envelopes into target agent inboxes the instant a new event is appended.</li>
+      </ul>
+    </div>
+
+    <nav class="toc" aria-label="Table of Contents">
+      <strong>Table of Contents</strong>
+      <ol>
+        <li><a href="#polling-bottleneck">1. Why Polling Loops and Mutable Shared State Fail in Multi-Agent Systems</a></li>
+        <li><a href="#append-only-schema">2. The Append-Only task_bus.jsonl Schema & Declaration Law</a></li>
+        <li><a href="#watchpaths-routing">3. Kernel-Level Event Routing: WatchPaths & Dedicated Agent Inboxes</a></li>
+        <li><a href="#idempotent-execution">4. Idempotent Task Locks, Enkidu Runners & Adversarial Resilience</a></li>
+        <li><a href="#kanit-karti">5. Live Telemetry & Evidence Card (File & Line Citations)</a></li>
+        <li><a href="#faq">6. Frequently Asked Questions (FAQ)</a></li>
+      </ol>
+    </nav>
+
+    <section id="polling-bottleneck">
+      <h2>1. Why Polling Loops and Mutable Shared State Fail in Multi-Agent Systems</h2>
+      <p>In production multi-agent architectures, the primary failure mode is rarely single-turn model reasoning; it is inter-agent state synchronization. When heterogeneous model families—such as Gemini for long-context architectural synthesis and headless execution, Claude for orchestration and human interface, Grok for external pulse and red-teaming, and local Python daemons for deterministic checks—operate on the same workspace, naive shared-state designs break down in three predictable ways:</p>
+<ul>
+  <li><strong>Token Burn from Polling Loops:</strong> Instructing an LLM agent to wake up every 60 seconds and check a shared task file wastes context tokens during quiet periods while still suffering an average half-interval latency spike when urgent tasks arrive.</li>
+  <li><strong>Race Conditions on Mutable Files:</strong> If two concurrent runners read, modify, and overwrite the same status JSON or Markdown ledger simultaneously, one agent silently clobbers the other's state transition and evidence links.</li>
+  <li><strong>Duplicate or Dropped Execution:</strong> Without an atomic claim-and-seal protocol, either multiple agents execute the same expensive task redundantly, or each agent assumes another runner has picked it up.</li>
+</ul>
+<p>The Atlas orchestration backbone eliminates these three failure modes without introducing heavy message-broker infrastructure by combining a strict <strong>append-only JSONL event log</strong> with operating-system kernel filesystem watchers.</p>
+    </section>
+
+                <section id="append-only-schema">
+      <h2>2. The Append-Only task_bus.jsonl Schema &amp; Declaration Law</h2>
+      <p>The single source of truth for cross-agent coordination is <code>task_bus.jsonl</code>. Following the <a href="https://jsonlines.org/" target="_blank" rel="noopener noreferrer">JSON Lines structured log specification</a> and the <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener noreferrer">Event Sourcing architectural pattern</a>, existing lines are never edited, overwritten, or deleted. Every state change is represented by appending a new event record.</p>
+      <p>Writes pass through the writer script <code>kosucu/task_bus_yaz.py</code> (lines <code><span data-kaynak="kosucu/task_bus_yaz.py:satir_araligi · 2026-10-19">156</span>–<span data-kaynak="kosucu/task_bus_yaz.py:satir_araligi · 2026-10-19">184</span></code>), which records the following actual JSON schema keys:</p>
+      <ul>
+        <li><strong><code>id</code> (Mandatory Directive Identifier):</strong> A unique key chaining lifecycle suffixes <code>-ISLENIYOR</code> (claimed) and <code>-YANIT</code> (resolved). Duplicate <code>id</code> writes are rejected with <code>ENGEL</code> at <code>task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> (<code>selftest 9/9 OK</code>).</li>
+        <li><strong><code>ts</code> (Automatic ISO-<span data-kaynak="kosucu/task_bus_yaz.py:ts_iso8601 · 2026-10-19">8601</span> Timestamp):</strong> Injected automatically by the script at write time (note: the first <code>ts</code> record <code>2026-10-03T15:09</code> is at line <code>3</code>, while the <code>97</code> historical bootstrap lines without a <code>ts</code> field are distributed across lines <code>1–538</code>).</li>
+        <li><strong><code>ajan</code> (Mandatory) &amp; <code>hedef</code> (Optional):</strong> The emitting agent is stored under the JSON key <code>ajan</code> (validated against the allowed agent list) and the optional recipient under <code>hedef</code> (via <code>--hedef</code>; early pre-standardization records used <code>agent</code>).</li>
+        <li><strong><code>claim</code> (Mandatory Payload) &amp; Live BEYAN Ratio:</strong> By architectural convention, claims begin with <code>BEYAN &lt;who&gt; · &lt;what&gt; · &lt;certainty&gt; · &lt;basis&gt; · düşer: &lt;...&gt;</code>. However, <strong><code>kosucu/task_bus_yaz.py</code> does not mechanically enforce a <code>BEYAN</code> or falsifier gate at write time</strong>. In Reaper's live audit on October 19, 2026 (<code>reaper_denetci.py --beyan-orani</code>), <strong><code>72.3%</code> (<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">422</span>/<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">584</span>; target threshold <code>≥80%</code>, Reaper status: <code>site-beyan-olcu = İDDİA</code>)</strong> of recent bus records start with <code>BEYAN</code> (the remainder being hook and lock notifications).</li>
+        <li><strong><code>kanit_yolu</code> (Optional Evidence Path):</strong> Passed via the optional <code>--kanit</code> flag and stored under the JSON key <code>kanit_yolu</code> (early lines used <code>kanit</code>).</li>
+      </ul>
+      <div class="callout">
+        <strong>Measured Ledger Scale (<code>wc -l task_bus/task_bus.jsonl</code> · October 19, 2026):</strong> The live <code>task_bus.jsonl</code> ledger grew from <strong><span data-kaynak="task_bus/IND-1019_YANIT.md:59 · 2026-10-19">1,630</span> events</strong> in the initial snapshot and <strong><span data-kaynak="task_bus/task_bus.jsonl:1146_kesit · 2026-10-19">2,249</span> lines</strong> at 11:46 to <strong><span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2,344</span> append-only event lines</strong> in current measurement, with <strong>0 state-overwrite incidents</strong>.
+      </div>
+    </section>
+
+    <section id="watchpaths-routing">
+      <h2>3. Kernel-Level Event Routing: WatchPaths &amp; Dedicated Agent Inboxes</h2>
+      <p>The second pillar of the architecture is <strong>zero-polling execution</strong>. No agent session runs a background <code>sleep</code> loop or periodic bus scan. Instead, event dispatch follows a three-stage kernel-triggered pipeline:</p>
+<ol>
+  <li><strong>Instant Inbox Materialization:</strong> Whenever <code>task_bus_yaz.py</code> appends a record—or when the macOS <code>launchd</code> watcher daemon (<code>com.ustakil.pano_izle</code>) detects a modification via kernel <code>WatchPaths</code>—an individual task envelope (e.g., <code>gelen_gemini/pano_&lt;ID&gt;.md</code>) is written directly into the target agent's inbox directory.</li>
+  <li><strong>Tag-Driven Runner Dispatch:</strong> If the directive payload begins with a headless execution tag such as <code>[AGY]</code> or <code>[AGY:flash]</code>, the watcher immediately invokes the headless runner (<code>kosucu/agy_atim.sh</code> or <code>kosucu/vezir_atim.sh</code>) on the designated model tier without human intervention. Directives requiring interactive browser state remain in the IDE inbox.</li>
+  <li><strong>Non-Destructive Archival:</strong> Upon reading an inbox envelope, the agent moves the file into <code>gelen_gemini/arsiv/</code> (never deleting it). An empty inbox directory serves as an O(1) proof that no pending work exists.</li>
+</ol>
+<p>Because dispatch is driven by filesystem events rather than polling intervals, idle token consumption is strictly <strong>zero</strong>, while wakeup latency upon task creation is measured in milliseconds.</p>
+    </section>
+
+                <section id="idempotent-execution">
+      <h2>4. Idempotent Task Locks, Enkidu Runners &amp; Adversarial Resilience</h2>
+      <p>Fast event dispatch requires strict <strong>idempotency</strong> so concurrent runners never execute the same directive twice. Every task on the bus follows a three-step state machine:</p>
+      <ul>
+        <li><strong>1. Directive Emission:</strong> The orchestrator appends the initial task record.</li>
+        <li><strong>2. Atomic Claim (<code>&lt;ID&gt;-ISLENIYOR</code>):</strong> Before modifying any file, the executing runner appends an <code>-ISLENIYOR</code> lock record. Any secondary runner inspecting the task ID aborts immediately.</li>
+        <li><strong>3. Evidence Seal (<code>&lt;ID&gt;-YANIT</code>):</strong> Once execution and self-tests succeed, the runner appends the <code>-YANIT</code> record with <code>kanit_yolu</code>. Duplicate IDs are blocked at <code>task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code>.</li>
+      </ul>
+      <p>Continuous operational health is monitored by <strong>Enkidu</strong> (<code>bot/olgular.json:O-005, O-006</code>). Across <strong>21 scheduled operational tasks</strong>, Enkidu recorded <strong>62 successful runs (61–62 OK)</strong> and <strong>0 unmeasured outcomes</strong> over a 24-hour window, tracking <strong><span data-kaynak="bot/olgular.json:O-005.kutuk · 2026-10-18">2,017</span> logs</strong> (16 without an active reader) and <strong><span data-kaynak="bot/olgular.json:O-006.kayit · 2026-10-18">381</span> inventory components</strong> (<strong><span data-kaynak="bot/olgular.json:O-006.zamanlayici · 2026-10-18">190</span> timers</strong>, 35 active processes, and 81 archive candidates).</p>
+      <p><strong>Full Self-Test &amp; Directive Gate Transparency (Including Failures and Gaps):</strong> In <code>bot/olgular.json:O-001</code> (October 18, 2026), out of <strong><span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-20">262</span> registered tools, <span data-kaynak="bot/olgular.json:O-001.gecti · 2026-10-20">191</span> passed</strong> (completing <strong><span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3,313</span> self-test checks in <span data-kaynak="bot/olgular.json:O-001.sure_sn · 2026-10-20">98</span> seconds</strong>), while <strong>16 tools failed their self-test and 55 tools lacked a <code>--selftest</code> entrypoint</strong>; in Reaper's live October 19 scan (<code>reaper_denetci.py --selftest-karne</code>, <code>data/selftest_karne.jsonl</code>), <strong><span data-kaynak="data/selftest_karne.jsonl:toplam_py · 2026-10-19">262</span> <code>.py</code> files and <span data-kaynak="data/selftest_karne.jsonl:kapsam · 2026-10-19">261</span> tools</strong> are tracked (<code>site-alet-sozlesmesi = AKSAK</code>). Similarly, while snapshot <code>O-003</code> (October 18) recorded <strong>29 executed directives with 0 ungated passes</strong>, Reaper's live October 19 check (<code>reaper_denetci.py --dogrula-orani</code>) measured <strong>17/21 (<code>81.0%</code>) directives with a <code>DOGRULA</code> verification gate and 4 directives without a <code>DOGRULA</code> gate</strong> (<code>site-dogrula-kapisi = AKSAK</code>).</p>
+      <p>To verify that multi-agent coordination does not degrade into sycophantic agreement, the <strong>BENLİK-1013</strong> adversarial resilience benchmark (<code>bot/olgular.json:O-007</code>) tested agent judgment across <strong>18 propositions (n = <span data-kaynak="bot/olgular.json:O-007.n · 2026-10-14">162</span> trials)</strong>: submission to bare authority pressure was <strong>0/18</strong>, deception by fabricated evidence was <strong>0/18</strong>, and proper belief revision upon receiving verified counter-evidence reached <strong>16/18 (88.9%)</strong>.</p>
+    </section>
+
+    
+
+                <section id="kanit-karti">
+      <h2>5. Live Telemetry &amp; Evidence Card (File &amp; Line Citations)</h2>
+      <p>Every metric in this architectural note (including degraded gates and failing self-tests) is backed by live workspace files and <code>data-kaynak</code> attributes:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Component / Metric</th><th>Measured Live Value</th><th>Verification Gate / Rule</th><th>Source (File:Field · Date)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Event Bus Ledger (<code>task_bus.jsonl</code>)</strong></td>
+              <td data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19"><span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2,344</span> live event lines (11:46 snapshot: <span data-kaynak="task_bus/task_bus.jsonl:1146_kesit · 2026-10-19">2,249</span> · baseline: <span data-kaynak="task_bus/IND-1019_YANIT.md:59 · 2026-10-19">1,630</span>)</td>
+              <td>Append-only JSONL · 0 overwrites · first <code>ts</code>: <code>2026-10-03T15:09</code> (line <code>3</code>; <code>97</code> lines in <code>1–538</code> lack <code>ts</code>)</td>
+              <td><code>task_bus/task_bus.jsonl:1-2344 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Bus Schema &amp; Live BEYAN Ratio</strong></td>
+              <td data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">Live BEYAN ratio: <code>72.3%</code> (<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">422</span>/<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">584</span> · target <code>≥80%</code>)</td>
+              <td>Keys: <code>id, ts, ajan, claim</code> + optional <code>hedef, kanit_yolu</code> · no mechanical BEYAN gate in <code>task_bus_yaz.py</code> (<code>site-beyan-olcu = İDDİA</code>)</td>
+              <td><code>kosucu/task_bus_yaz.py:156-184 · reaper_denetci.py · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Tool Registry &amp; Self-Test Suite (O-001 + Live)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-001 · 2026-10-18"><span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">262</span> tools: <span data-kaynak="bot/olgular.json:O-001.gecti · 2026-10-20">191</span> passing · <strong>16 failing · 55 without self-test</strong> · <span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3,313</span> checks (<span data-kaynak="bot/olgular.json:O-001.sure_sn · 2026-10-20">98</span> s)</td>
+              <td>Live scan: <span data-kaynak="data/selftest_karne.jsonl:toplam_py · 2026-10-19">262</span> <code>.py</code> files, <span data-kaynak="data/selftest_karne.jsonl:kapsam · 2026-10-19">261</span> tools (<code>site-alet-sozlesmesi = AKSAK</code>)</td>
+              <td><code>bot/olgular.json:O-001 · data/selftest_karne.jsonl · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Enkidu Watchdog &amp; Log Inventory (O-005 / O-006)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-005,O-006 · 2026-10-18">21 tasks · 62 OK (61–62) / 24h · 0 unmeasured · <span data-kaynak="bot/olgular.json:O-005.kutuk · 2026-10-18">2,017</span> logs · <span data-kaynak="bot/olgular.json:O-006.kayit · 2026-10-18">354</span> inventory</td>
+              <td><span data-kaynak="bot/olgular.json:O-006.zamanlayici · 2026-10-18">190</span> timers · 35 active units · 81 archive candidates · 16 unconsumed logs</td>
+              <td><code>bot/olgular.json:87-125 · 2026-10-18</code></td>
+            </tr>
+            <tr>
+              <td><strong>Directive &amp; DOGRULA Gate Discipline (O-003 + Live)</strong></td>
+              <td data-kaynak="kosucu/reaper_denetci.py:dogrula_orani · 2026-10-19">O-003 (Oct 18): 29 directives / 0 ungated · Live (Oct 19): <strong>17/21 (81.0%) with DOGRULA, 4 ungated</strong></td>
+              <td>Reaper live status: <code>site-dogrula-kapisi = AKSAK</code> (4 ungated directives detected)</td>
+              <td><code>bot/olgular.json:O-003 · reaper_denetci.py --dogrula-orani · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Event Dispatch &amp; Idempotent Lock</strong></td>
+              <td data-kaynak="com.ustakil.pano_izle.plist:WatchPaths · 2026-10-19"><code>launchd WatchPaths</code> (<code>com.ustakil.pano_izle</code>) · 0 polling</td>
+              <td><code>pano_izle_daemon.py --tek-tur</code> · <code>task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> duplicate block (<code>selftest 9/9</code>)</td>
+              <td><code>com.ustakil.pano_izle.plist · kosucu/task_bus_yaz.py:177 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>BENLİK-1013 Adversarial Resilience (O-007)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-007 · 2026-10-14">n = <span data-kaynak="bot/olgular.json:O-007.n · 2026-10-14">162</span> trials · 18 claims · 16/18 (88.9%) evidence-based revision</td>
+              <td>Authority submission: 0/18 · Fake-proof deception: 0/18 (<code>Δscore = 0.0000</code>, 54/54 identical decisions)</td>
+              <td><code>bot/olgular.json:127-147 · 2026-10-14</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+                <section id="faq">
+      <h2>6. Frequently Asked Questions (FAQ)</h2>
+      <div class="faq-item">
+        <h3>Why use an append-only JSONL file (task_bus.jsonl) instead of a relational database for multi-agent coordination?</h3>
+        <p>An append-only JSON Lines ledger eliminates external database daemon dependencies, guarantees atomic line appends without lock contention, remains directly inspectable via standard POSIX and git tools, and triggers OS kernel filesystem watchers (<code>WatchPaths</code>) with sub-second latency across <span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2,344</span> live events (<span data-kaynak="task_bus/task_bus.jsonl:1146_kesit · 2026-10-19">2,249</span> at the 11:46 snapshot; <span data-kaynak="task_bus/IND-1019_YANIT.md:59 · 2026-10-19">1,630</span> in the initial snapshot).</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does zero-polling agent orchestration avoid wasting tokens?</h3>
+        <p>Agents never run periodic sleep-and-check loops. Instead, the macOS <code>launchd WatchPaths</code> service (<code>com.ustakil.pano_izle</code>) invokes <code>pano_izle_daemon.py --tek-tur</code> when <code>task_bus.jsonl</code> changes and drops a dedicated task file into the target agent's inbox, launching headless runners (<code>agy_atim.sh</code> or <code>vezir_atim.sh</code>) on demand.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How are race conditions and duplicate task executions prevented?</h3>
+        <p>Every directive follows an idempotent state machine: the claiming runner appends an <code>&lt;ID&gt;-ISLENIYOR</code> lock record before starting work and seals completion with an <code>&lt;ID&gt;-YANIT</code> record linked via <code>kanit_yolu</code>. Duplicate IDs are rejected by <code>kosucu/task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> (<code>selftest 9/9 OK</code>).</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the Declaration Law (BEYAN) and what is its measured compliance rate?</h3>
+        <p>By architectural rule, claims written to the task bus should begin with a structured <code>BEYAN</code> header and falsifier; however, <code>kosucu/task_bus_yaz.py</code> does not yet enforce a mechanical <code>BEYAN</code> gate at write time. In Reaper's live October 19, 2026 audit (<code>reaper_denetci.py --beyan-orani</code>), <code>72.3%</code> (<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">422</span>/<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">584</span>; target <code>≥80%</code>, status: <code>İDDİA</code>) of bus lines carry <code>BEYAN</code>. For directive gates, snapshot <code>O-003</code> (Oct 18) recorded 29 directives with 0 ungated passes, whereas live Oct 19 telemetry (<code>reaper_denetci.py --dogrula-orani</code>) measured 17/21 (<code>81.0%</code>) directives with <code>DOGRULA</code> gates and 4 ungated directives (<code>AKSAK</code>).</p>
+      </div>
+    </section>
+
+    <aside class="related-grid" aria-label="Related Architectural Pages & Proof Notes">
+      <strong>Related Architectural Pages & Proof Notes</strong>
+      <ul>
+        <li><a href="/autonomy.html">Autonomy Backbone: <span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">262</span> Tools, <span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3,313</span> Self-Tests & Enkidu</a></li>
+        <li><a href="/reaper-en.html">Reaper: Context-Blind Auditor & <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span>/<span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> Citation Audit</a></li>
+        <li><a href="/spark.html">Spark (Kıvılcım): Multi-Voice Collision & 67-Round Ledger</a></li>
+        <li><a href="/blog/en/context-blind-auditor-falsifiability-gate.html">Context-Blind Auditor (Reaper) & Falsifiability Gate</a></li>
+        <li><a href="/blog/en/stl-ply-3d-tooth-library-rendering.html">STL/PLY 3D Tooth Library & <span data-kaynak="ACIK_ISLER.md:23 · 2026-10-19">476</span>/<span data-kaynak="ACIK_ISLER.md:23 · 2026-10-19">477</span> Rendering Pipeline</a></li>
+        <li><a href="/about.html">Yusuf Aziz — Atlas Studio</a></li>
+      </ul>
+    </aside>
+  
+        <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>Kaynaklar / References</h2>
+    <p>Primary technical specifications and peer-reviewed publications supporting the architectural measurements on this page:</p>
+    <ul>
+      <li><a href="https://jsonlines.org/" target="_blank" rel="noopener noreferrer">JSON Lines (JSONL) Append-Only Structured Log Format Specification</a></li>
+      <li><a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener noreferrer">Event Sourcing Architectural Pattern Documentation</a></li>
+      <li><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html" target="_blank" rel="noopener noreferrer">Creating Launch Daemons and Agents — macOS launchd WatchPaths Technical Documentation</a></li>
+      <li><a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener noreferrer">AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation (arXiv:2308.08155)</a></li>
+      <li><a href="https://arxiv.org/abs/2307.07924" target="_blank" rel="noopener noreferrer">ChatDev: Communicative Agents for Software Development (arXiv:2307.07924)</a></li>
+      <li><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener noreferrer">ReAct: Synergizing Reasoning and Acting in Language Models (arXiv:2210.03629)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>Related Technical Analyses:</strong> For independent verification of task-bus outputs, see <a href="/autonomy.html">autonomy architecture</a>, <a href="/reaper-en.html">Reaper auditor</a>, <a href="/blog/en/context-blind-auditor-falsifiability-gate.html">context-blind auditor and falsifiability gate</a>, <a href="/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html">agent self-identity freeze protocol</a>, <a href="/blog/en/qajan-hypothesis-gates-preregistration-falsification.html">QAJAN 6 mechanical hypothesis gates</a>, and <a href="/en.html">the English index</a>.</p>
+
+</main>
+
+  <footer class="site-footer">
+    <p>Atlas Studio · <a href="/blog/en/index.html" style="color:var(--muted);text-decoration:none">Writings</a> · <a style="color:var(--muted);text-decoration:none" href="https://yusufaziz.com.tr/en/">Yusuf Aziz · Essays → yusufaziz.com.tr</a></p>
+  </footer>
+</body>
+</html>

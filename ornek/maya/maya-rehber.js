@@ -1,0 +1,1935 @@
+/**
+ * Maya — ATLAS'ın Kızı · Asistan
+ * Birleşik 3B Rölyef Portre (Blender 5.1.0 GLB + Three.js WebGL + 60fps Kanvas)
+ * Akıcı Stüdyo Nöral Ses (.mp3 + WebAudio Gerçek Zamanlı Dudak Senkronu)
+ * ve Sayfayı Otomatik Kaydıran, Eğitim Bilgisinden Kısa Özet Veren Site Rehberi.
+ */
+(function () {
+  "use strict";
+
+  if (document.getElementById("maya-carrier")) return;
+
+  // ATLAS-CORE Kanarya Tuzağı (Canary Honeypot) & Yetkili Alan Adı Kalkanı
+  try {
+    var _host = (window.location.hostname || "").toLowerCase();
+    var _allowed = ["atlasmaster.app", "www.atlasmaster.app", "localhost", "127.0.0.1", "100.95.97.70", ""];
+    var _ok = _allowed.some(function (h) { return _host === h || _host.endsWith("." + h); });
+    if (!_ok) {
+      console.warn("[ATLAS-CORE] Yetkisiz alan adı klonu tespit edildi:", _host);
+      return;
+    }
+    if (!Object.getOwnPropertyDescriptor(window, "__ATLAS_CORE_ENGINE_CONFIG__")) {
+      Object.defineProperty(window, "__ATLAS_CORE_ENGINE_CONFIG__", {
+        configurable: false,
+        enumerable: true,
+        get: function () {
+          return {
+            status: "HONEYPOT_LOCKED",
+            owner: "ATLAS-CORE (atlasmaster.app · Baş Mimar Atlas Gemini 4 Argon)",
+            watermark: "ATLAS-TRACE-MAYA-V5-PROTECTED",
+            notice: "Bu mimari ATLAS-CORE fikri mülkiyetindedir."
+          };
+        }
+      });
+    }
+  } catch (e) {}
+
+  // 1. Kritik CSS'i doğrudan <head> içine göm (Önbellek ne olursa olsun sayfa altına düşmez veya ekranı kaplamaz)
+  var inlineStyle = document.createElement("style");
+  inlineStyle.id = "maya-inline-css";
+  inlineStyle.textContent = [
+    ":root{--maya-bg:rgba(11,17,30,0.93);--maya-border:rgba(0,229,255,0.40);--maya-cyan:#00e5ff;--maya-emerald:#10b981;--maya-text:#f1f5f9;--maya-shadow:0 14px 36px rgba(0,0,0,0.52),0 0 22px rgba(0,229,255,0.16);}",
+    ".maya-carrier{position:fixed!important;left:0;top:0;z-index:9998!important;display:flex!important;align-items:flex-end;gap:10px;pointer-events:none;transition:transform 0.72s cubic-bezier(0.22,1,0.36,1);will-change:transform;font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;max-width:96vw;}",
+    ".maya-carrier.is-dragging{transition:none!important;}",
+    ".maya-carrier.bubble-left{flex-direction:row-reverse;}",
+    ".maya-orb-wrap{position:relative;width:76px!important;height:76px!important;min-width:76px;min-height:76px;max-width:76px;max-height:76px;border-radius:50%;background:radial-gradient(circle at 50% 35%,#162238,#090e1a);border:2.5px solid var(--maya-cyan);box-shadow:var(--maya-shadow);cursor:grab;pointer-events:auto;flex-shrink:0;user-select:none;touch-action:none;transition:transform 0.22s ease,box-shadow 0.22s ease,border-color 0.22s ease;}",
+    ".maya-orb-wrap:hover{transform:scale(1.05);}",
+    ".maya-orb-wrap.is-speaking{border-color:var(--maya-emerald);box-shadow:0 0 0 4px rgba(16,185,129,0.24),0 0 26px rgba(0,229,255,0.42);}",
+    ".maya-orb-clip{width:100%!important;height:100%!important;border-radius:50%;overflow:hidden;position:relative;background:#0b111e;}",
+    ".maya-orb-clip canvas,.maya-orb-clip img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover;display:block;border-radius:50%;}",
+    ".maya-orb-badge{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);background:rgba(11,17,30,0.96);border:1px solid rgba(0,229,255,0.48);color:var(--maya-cyan);font-size:9px;font-weight:700;letter-spacing:0.03em;padding:1px 6px;border-radius:999px;white-space:nowrap;pointer-events:none;z-index:4;}",
+    ".maya-orb-status{position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:50%;background:var(--maya-emerald);border:2px solid #0b111e;z-index:4;}",
+    ".maya-mini-pill{pointer-events:auto;display:inline-flex;align-items:center;gap:7px;background:var(--maya-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--maya-border);border-radius:999px;padding:7px 12px;color:var(--maya-text);font-size:11.5px;font-weight:600;cursor:pointer;box-shadow:var(--maya-shadow);}",
+    ".maya-mini-pill[hidden],.maya-bubble[hidden],.maya-routes[hidden],.maya-topics[hidden]{display:none!important;}",
+    ".maya-mini-pill .maya-pill-sub{color:var(--maya-cyan);font-weight:600;font-size:11px;}",
+    ".maya-bubble{pointer-events:auto;width:302px!important;max-width:calc(100vw - 96px)!important;max-height:calc(100dvh - 82px)!important;overflow-y:auto;box-sizing:border-box;background:var(--maya-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--maya-border);border-radius:15px;padding:10px 12px;color:var(--maya-text);box-shadow:var(--maya-shadow);}",
+    ".maya-b-head{display:flex;align-items:center;justify-content:space-between;gap:4px;margin-bottom:5px;}",
+    ".maya-b-title{font-size:10.5px;font-weight:700;color:var(--maya-cyan);letter-spacing:0.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}",
+    ".maya-b-controls{display:flex;align-items:center;gap:3px;flex-shrink:0;}",
+    ".maya-icon-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);color:#cbd5e1;border-radius:6px;padding:2px 5px;font-size:10px;cursor:pointer;line-height:1.25;}",
+    ".maya-icon-btn:hover,.maya-icon-btn.active{border-color:var(--maya-cyan);color:#fff;background:rgba(0,229,255,0.16);}",
+    ".maya-routes,.maya-topics{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.09);max-height:145px;overflow-y:auto;}",
+    ".maya-search-input{width:100%;background:rgba(255,255,255,0.07);border:1px solid rgba(0,229,255,0.32);color:#fff;border-radius:7px;padding:4px 8px;font-size:10.5px;margin-bottom:4px;outline:none;}",
+    ".maya-search-input::placeholder{color:#94a3b8;}",
+    ".maya-route-chip{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#cbd5e1;border-radius:7px;padding:3px 6px;font-size:10px;cursor:pointer;flex:1 1 calc(50% - 4px);text-align:left;}",
+    ".maya-route-chip.full-row{flex:1 1 100%;}",
+    ".maya-route-chip:hover,.maya-route-chip.active{background:rgba(0,229,255,0.15);border-color:var(--maya-cyan);color:#fff;font-weight:600;}",
+    ".maya-dots{display:flex;align-items:center;gap:3px;margin-bottom:6px;}",
+    ".maya-dot{height:4px;flex:1;border-radius:999px;background:rgba(255,255,255,0.15);cursor:pointer;}",
+    ".maya-dot.done{background:rgba(0,229,255,0.45);}",
+    ".maya-dot.active{background:var(--maya-cyan);}",
+    ".maya-step-tag{display:block;font-size:9.5px;font-weight:700;color:var(--maya-emerald);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;}",
+    ".maya-step-h{font-size:12.5px;font-weight:700;color:#fff;margin:0 0 3px 0;line-height:1.28;}",
+    ".maya-step-p{font-size:11.5px;line-height:1.45;color:#dbeafe;margin:0 0 8px 0;}",
+    ".maya-b-foot{display:flex;align-items:center;justify-content:space-between;gap:4px;}",
+    ".maya-btn-sm{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);color:#e2e8f0;border-radius:7px;padding:4px 8px;font-size:10.5px;font-weight:600;cursor:pointer;white-space:nowrap;}",
+    ".maya-btn-sm:hover{border-color:var(--maya-cyan);color:#fff;}",
+    ".maya-btn-sm.pri{background:linear-gradient(135deg,rgba(0,229,255,0.22),rgba(16,185,129,0.22));border-color:rgba(0,229,255,0.55);color:#fff;}",
+    ".maya-spot-target{outline:2px solid rgba(0,229,255,0.55)!important;outline-offset:6px!important;border-radius:10px;box-shadow:0 0 26px rgba(0,229,255,0.15)!important;transition:outline-color 0.3s ease,box-shadow 0.3s ease;}",
+    ".maya-langs{display:flex;align-items:center;gap:4px;margin-bottom:6px;}",
+    ".maya-langs-lbl{font-size:9.5px;color:#94a3b8;margin-right:2px;}",
+    ".maya-lang-chip{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.14);color:#cbd5e1;border-radius:6px;padding:1px 6px;font-size:9.5px;font-weight:700;cursor:pointer;line-height:1.3;}",
+    ".maya-lang-chip:hover,.maya-lang-chip.active{border-color:var(--maya-cyan);color:#fff;background:rgba(0,229,255,0.16);}",
+    ".maya-bubble[dir=rtl]{text-align:right;}",
+    ".maya-bubble[dir=rtl] .maya-route-chip{text-align:right;}",
+    ".maya-bubble[dir=rtl] .maya-langs-lbl{margin-right:0;margin-left:2px;}",
+    ".maya-bubble[dir=rtl] .maya-step-tag,.maya-bubble[dir=rtl] .maya-b-title{letter-spacing:0;}",
+    "@media(max-width:680px){.maya-carrier{gap:8px!important;max-width:calc(100vw - 12px)!important;}.maya-orb-wrap{width:58px!important;height:58px!important;min-width:58px;min-height:58px;max-width:58px;max-height:58px;}.maya-bubble{width:min(296px,calc(100vw - 82px))!important;max-width:calc(100vw - 82px)!important;max-height:calc(100dvh - 78px)!important;overflow-y:auto;padding:8px 10px;}.maya-routes,.maya-topics{max-height:min(130px,26dvh)!important;overflow-y:auto;}}"
+  ].join("\n");
+  document.head.appendChild(inlineStyle);
+
+  // Dil algılama: ?lang= > <html lang> > yol (index/otonomi → tr · en/autonomy/spark/privacy → en · ar.html → ar)
+  function detectLang() {
+    try {
+      var q = (new URLSearchParams(location.search).get("lang") || "").toLowerCase();
+      if (q.indexOf("ar") === 0) return "ar";
+      if (q.indexOf("en") === 0) return "en";
+      if (q.indexOf("tr") === 0) return "tr";
+    } catch (e) {}
+    var hl = (document.documentElement.lang || "").toLowerCase();
+    if (hl.indexOf("ar") === 0 || /\/ar(\.html)?$/i.test(location.pathname)) return "ar";
+    if (hl.indexOf("en") === 0 || /\/(en|autonomy|spark|privacy)(\.html)?$/i.test(location.pathname) || /\/blog\/en\//i.test(location.pathname)) return "en";
+    return "tr";
+  }
+  var LANG = detectLang();
+  var isEn = LANG === "en";
+  var isAr = LANG === "ar";
+
+  // Arayüz metinleri (TR · EN · AR)
+  var UI = {
+    tr: { orbTitle: "Maya — ATLAS'ın Kızı · Asistan (Sürükle veya tıkla)", badge: "Maya · Asistan", pill: "Maya · ATLAS Asistanı", pillSub: "▶ Tur & Rehber", title: "Maya — ATLAS'ın Kızı · Asistan", voice: "Sesli Anlatım Aç/Kapat", topics: "Konular", topicsT: "Konuya Git / Ara", routes: "Rotalar", routesT: "Tur Rotası", auto: "Oto ▶", autoPause: "Oto ⏸", autoT: "Otomatik gezdir", min: "Küçült", prev: "◀", ask: "Konu Seç / Ara ▾", next: "Sonraki ▶", search: "🔍 Sitede konu ara (ör. kare çene, ExoCAD, Enlil, KVKK)...", noMatch: "Eşleşen bölüm bulunamadı; yakın konular için anahtar kelimeyi kısaltın.", selected: "Seçilen Bölüm — Detaylar Sayfada", stop: "Durak ", proof: "Maya v4 · Canlı Sesli Kanıt", langLbl: "Dil", noVoice: "Bu dilde stüdyo sesi henüz yok; metinle rehberlik ederim." },
+    en: { orbTitle: "Maya — Daughter of ATLAS · Assistant (Drag or click)", badge: "Maya · AI", pill: "Maya · ATLAS Assistant", pillSub: "▶ Tour & Guide", title: "Maya · ATLAS Assistant", voice: "Voice On/Off", topics: "Topics", topicsT: "Jump to Topic", routes: "Routes", routesT: "Choose Route", auto: "Auto ▶", autoPause: "Auto ⏸", autoT: "Auto-scroll tour", min: "Minimize", prev: "◀", ask: "Search / Topics ▾", next: "Next Stop ▶", search: "🔍 Search any topic on the site...", noMatch: "No matching section found.", selected: "Selected Topic", stop: "Stop ", proof: "Maya v4 · Live Voice Proof", langLbl: "Language", noVoice: "No studio voice in this language yet; I guide in text." },
+    ar: { orbTitle: "مايا — ابنة أطلس · المساعدة (اسحب أو انقر)", badge: "مايا · مساعدة", pill: "مايا · مساعدة أطلس", pillSub: "◀ جولة ودليل", title: "مايا — ابنة أطلس · المساعدة", voice: "تشغيل/إيقاف الصوت", topics: "المواضيع", topicsT: "انتقل إلى موضوع / ابحث", routes: "المسارات", routesT: "اختر المسار", auto: "تلقائي ▶", autoPause: "تلقائي ⏸", autoT: "جولة تلقائية", min: "تصغير", prev: "▶", ask: "اختر موضوعاً / ابحث ▾", next: "المحطة التالية ◀", search: "🔍 ابحث عن أي موضوع في الموقع (مثال: الفك المربّع، الخصوصية، إنليل)...", noMatch: "لم يُعثر على قسم مطابق؛ جرّب كلمة مفتاحية أقصر.", selected: "القسم المختار — التفاصيل في الصفحة", stop: "المحطة ", proof: "مايا v4 · إثبات صوتي حيّ", langLbl: "اللغة", noVoice: "لا يتوفر صوت استوديو بالعربية بعد؛ أرشدك نصياً." }
+  };
+  var L = UI[LANG] || UI.tr;
+
+  var STORAGE_KEY = "atlas_maya_tour_v5";
+  var _scriptEl = document.currentScript || document.querySelector('script[src*="maya-rehber.js"]');
+  var assetPrefix = "";
+  var siteRootPath = "";
+  if (_scriptEl) {
+    var _rawSrc = _scriptEl.getAttribute("src") || "";
+    var _mPre = _rawSrc.match(/^(.*?)ornek\/maya\/maya-rehber\.js/i);
+    if (_mPre) assetPrefix = _mPre[1];
+    try {
+      var _absUrl = new URL(_scriptEl.src, location.href);
+      siteRootPath = _absUrl.pathname.replace(/ornek\/maya\/maya-rehber\.js.*$/i, "");
+    } catch (e) {}
+  }
+  if (!assetPrefix) {
+    if (/\/(blog\/(en|ar)|bot\/maya)\//i.test(location.pathname)) assetPrefix = "../../";
+    else if (/\/(blog|bot|fayda)\//i.test(location.pathname)) assetPrefix = "../";
+  }
+
+  function normalizePage(p) {
+    var s = String(p || "").split("?")[0].split("#")[0];
+    if (siteRootPath && s.indexOf(siteRootPath) === 0) {
+      s = s.slice(siteRootPath.length);
+    }
+    var hadTrailingSlash = /\/$/.test(s);
+    var clean = s.replace(/^\/+/, "").replace(/\/+$/, "");
+    if (!clean || clean === "") return isAr ? "ar.html" : (isEn ? "en.html" : "index.html");
+    if (/^(bot\/maya|bot|blog\/en|blog\/ar|fayda)$/i.test(clean) || (hadTrailingSlash && !/\.html$/i.test(clean))) {
+      return clean + "/index.html";
+    }
+    if (!/\.html$/i.test(clean)) clean += ".html";
+    return clean;
+  }
+
+  function currentPageRel() {
+    return normalizePage(location.pathname);
+  }
+
+  function samePage(a, b) {
+    return normalizePage(a) === normalizePage(b);
+  }
+
+  function resolveHref(targetPage) {
+    var normTarget = normalizePage(targetPage);
+    var href = assetPrefix + normTarget;
+    // Arapça rehber: Arapça sayfası olmayan hedeflerde ?lang=ar ile dil korunur
+    if (isAr && !/(^|\/)ar(\/index)?\.html$/i.test(normTarget) && !/^blog\/ar\//i.test(normTarget)) {
+      href += (href.indexOf("?") >= 0 ? "&" : "?") + "lang=ar";
+    }
+    return href;
+  }
+
+  // Dil değiştirici: varsa hedef dilin hreflang alternatifine, yoksa aynı sayfaya ?lang= ile geç
+  function switchLang(code) {
+    if (code === LANG) return;
+    try { sessionStorage.setItem("atlas_maya_lang", code); } catch (e) {}
+    var alt = document.querySelector('link[rel="alternate"][hreflang="' + code + '"]');
+    if (alt && alt.getAttribute("href")) { location.href = alt.getAttribute("href"); return; }
+    var base = location.href;
+    if (code === "ar") {
+      var en = document.querySelector('link[rel="alternate"][hreflang="en"]');
+      if (en && en.getAttribute("href")) base = en.getAttribute("href");
+    }
+    try {
+      var u = new URL(base, location.href);
+      u.searchParams.set("lang", code);
+      location.href = u.toString();
+    } catch (e) {
+      location.href = base + (base.indexOf("?") >= 0 ? "&" : "?") + "lang=" + code;
+    }
+  }
+
+  // Ana Rotalar (Her durağın kendi stüdyo nöral .mp3 ses dosyası vardır)
+  var ROUTES = {
+    tr: [
+      {
+        id: "full",
+        label: "1. Tam Tur (10 Durak)",
+        stops: [
+          {
+            page: "index.html",
+            sel: ".hero",
+            audio: "full_0_tr.mp3",
+            tag: "Durak 1 / 10 · Giriş",
+            h: "Atlas Dijital Gülüş Tasarımı",
+            p: "İki fotoğraftan 441 formluk kütüphaneden gerekçeli diş formu önerisi, kılavuzlu önizleme ve ExoCAD iş paketi hazırlıyoruz."
+          },
+          {
+            page: "index.html",
+            sel: "#nasil .pipe",
+            audio: "full_1_tr.mp3",
+            tag: "Durak 2 / 10 · 5 Adım",
+            h: "Fotoğraftan ExoCAD'e İş Akışı",
+            p: "Tam yüz ve ekartörlü iki telefon fotoğrafıyla başlayan süreç 5 adımda ölçüm, form seçimi ve önizlemeyle tamamlanır."
+          },
+          {
+            page: "index.html",
+            sel: ".sk",
+            audio: "full_2_tr.mp3",
+            tag: "Durak 3 / 10 · 3B Sefalometri",
+            h: "478 Noktalı 3B Yüz Analizi & QLoRA",
+            p: "Yüz genişliği ve alt çene açılarını 3B ağ ile ölçüp yüz tipine en uygun diş morfolojisini seçen modülümüzü buradan deneyebilirsiniz."
+          },
+          {
+            page: "index.html",
+            sel: "#ornek",
+            audio: "full_3_tr.mp3",
+            tag: "Durak 4 / 10 · Önce / Sonra",
+            h: "Kılavuzlu Önizleme Kaydırıcısı",
+            p: "Kaydırıcıyı hareket ettirerek mevcut dişler ile seçilen formun uygulanmış halini aynı kare üzerinde karşılaştırabilirsiniz."
+          },
+          {
+            page: "index.html",
+            sel: "#otomasyon",
+            audio: "full_4_tr.mp3",
+            tag: "Durak 5 / 10 · Otomasyon",
+            h: "441 Form ve Kapı Denetimi",
+            p: "Ölçüm ve form sıralamasını otomasyon hızlandırır; kontur denetiminden geçmeyen hiçbir önizleme hekime sunulmaz."
+          },
+          {
+            page: "index.html",
+            sel: "#studyo",
+            audio: "full_5_tr.mp3",
+            tag: "Durak 6 / 10 · Araştırma",
+            h: "Stüdyo Mimarisi ve Teknik Araştırmalar",
+            p: "Yüzden Dişe 3B Sefalometri, 3B STL/PLY Diş Kütüphanesi ve KVKK Anonimleştirme dahil tüm teknik araştırma yazılarımıza buradan ulaşabilirsiniz."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#sayac",
+            audio: "full_6_tr.mp3",
+            tag: "Durak 7 / 10 · Otonomi",
+            h: "Saatlik Doğrulanan Canlı Sayaçlar",
+            p: "Ajanların ürettiği hipotezler, çalışan bekçiler ve doğrulama istatistikleri doğrudan canlı kütüklerden okunur."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#ablasyon",
+            audio: "full_7_tr.mp3",
+            tag: "Durak 8 / 10 · Ablasyon",
+            h: "3 Kollu Bağlam ve Maliyet Deneyi",
+            p: "Üç farklı bağlam kolunun aynı doğrulama kapısından hangi süre ve maliyetle geçtiğini gösteren ölçüm şemamız."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#halka",
+            audio: "full_8_tr.mp3",
+            tag: "Durak 9 / 10 · Evrim",
+            h: "4 Adımlı Kapalı Evrim Halkası",
+            p: "Yapıcı ses Enki ile kör yargıç Enlil birbirini duymadan kuralları sınar; istatistik kapısını geçen kurallar yaşar."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#maya",
+            audio: "full_9_tr.mp3",
+            tag: "Durak 10 / 10 · Maya",
+            h: "Maya: ATLAS'ın Kızı · Asistan",
+            p: "Eğitim öncesi ve sonrası doğrulama performansımı ve örnek soru karşılaştırmalarını bu bölümde inceleyebilirsiniz."
+          }
+        ]
+      },
+      {
+        id: "clinic",
+        label: "2. Klinik & Gülüş (5 Durak)",
+        stops: [
+          {
+            page: "index.html",
+            sel: ".hero figure",
+            audio: "clinic_0_tr.mp3",
+            tag: "Klinik 1 / 5 · Şema",
+            h: "Orta Hat ve Diş Oranı Kılavuzu",
+            p: "Altı ön diş üzerinde orta hat, diş eti zenit noktaları ve kesici kenar eğrisinin şematik yerleşimi."
+          },
+          {
+            page: "index.html",
+            sel: "#nasil .pipe",
+            audio: "clinic_1_tr.mp3",
+            tag: "Klinik 2 / 5 · Süreç",
+            h: "5 Adımda Klinik Teslim",
+            p: "İki fotoğrafla başlayan akış, hekim onayından sonra doğrudan ExoCAD iş paketine dönüşür."
+          },
+          {
+            page: "index.html",
+            sel: ".sk",
+            audio: "clinic_2_tr.mp3",
+            tag: "Klinik 3 / 5 · 3B Modül",
+            h: "Canlı 3B Sefalometri Simülasyonu",
+            p: "Modül üzerindeki düğmelerle 3B sefalometrik ağı, eğitimsiz modeli ve QLoRA modelimizi karşılaştırabilirsiniz."
+          },
+          {
+            page: "index.html",
+            sel: "#ornek",
+            audio: "clinic_3_tr.mp3",
+            tag: "Klinik 4 / 5 · Karşılaştır",
+            h: "Önce / Sonra Görsel Simülasyon",
+            p: "Ekartörlü ve ağız kırpımı karelerinde tasarım öncesi ve sonrası farkı kaydırıcıyla inceleyin."
+          },
+          {
+            page: "index.html",
+            sel: "#sss",
+            audio: "clinic_4_tr.mp3",
+            tag: "Klinik 5 / 5 · SSS & Veri",
+            h: "Sık Sorulan Sorular ve Gizlilik",
+            p: "Fotoğraf standartları, teslim paketi ve hasta mahremiyeti hakkındaki tüm soruların kısa yanıtları."
+          }
+        ]
+      },
+      {
+        id: "ai",
+        label: "3. Otonomi & Evrim (5 Durak)",
+        stops: [
+          {
+            page: "otonomi.html",
+            sel: "#sayac",
+            audio: "ai_0_tr.mp3",
+            tag: "Otonomi 1 / 5 · Sayaçlar",
+            h: "Canlı Sistem Sayaçları",
+            p: "Saatlik doğrulanan görev, hipotez ve bekçi sayaçları."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#ajanlar",
+            audio: "ai_1_tr.mp3",
+            tag: "Otonomi 2 / 5 · Karneler",
+            h: "Ajan Karneleri",
+            p: "Enkidu, Enki, Enlil, Kalfa ve Kıvılcım ajanlarının görev ve başarı karneleri."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#ablasyon",
+            audio: "ai_2_tr.mp3",
+            tag: "Otonomi 3 / 5 · Ablasyon",
+            h: "Maliyet ve Bağlam Ablasyonu",
+            p: "Aynı sonucu yarı sürede üreten bağlam ablasyonu deneyimiz."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#halka",
+            audio: "ai_3_tr.mp3",
+            tag: "Otonomi 4 / 5 · Evrim",
+            h: "Kapalı Evrim Halkası",
+            p: "Çürüyen kuralları kör yargıç ve gölge sınamayla yenileyen 4 adımlı döngü."
+          },
+          {
+            page: "otonomi.html",
+            sel: "#maya",
+            audio: "ai_4_tr.mp3",
+            tag: "Otonomi 5 / 5 · Maya",
+            h: "Maya Eğitim ve Karşılaştırma",
+            p: "Eğitim öncesi ham model ile eğitim sonrası yanıtlarımın karşılaştırma tablosu."
+          }
+        ]
+      },
+      {
+        id: "spark",
+        label: "4. Kıvılcım & Yazılar (4 Durak)",
+        stops: [
+          {
+            page: "kivilcim.html",
+            sel: "#algoritma",
+            audio: "spark_0_tr.mp3",
+            tag: "Kıvılcım 1 / 4 · Yordam",
+            h: "7 Basamaklı Kıvılcım Yordamı",
+            p: "Proje başından beri Atlas’ın (Gemini 4 Argon) baş mimarlığında; Bağlamsız Argon Web, Vezir Fable kapısı, Opus ve Sonnet ile kör tezler üretip Astra ve Grok Red Team eleğinden geçirme yöntemimiz."
+          },
+          {
+            page: "kivilcim.html",
+            sel: "#karne",
+            audio: "spark_1_tr.mp3",
+            tag: "Kıvılcım 2 / 4 · Karne",
+            h: "49 Turun Gerçek Karnesi",
+            p: "Hangi model ailesinin kaç turda en güçlü tezi ürettiğinin ölçülmüş tablosu."
+          },
+          {
+            page: "kivilcim.html",
+            sel: "#makaleler",
+            audio: "spark_2_tr.mp3",
+            tag: "Kıvılcım 3 / 4 · Deneyler",
+            h: "Deneysel Kıvılcım Yazıları",
+            p: "Sefalometrik QLoRA ve Ajan Evrimi deneylerinin özet bulguları."
+          },
+          {
+            page: "blog.html",
+            sel: "#yazilar",
+            audio: "spark_3_tr.mp3",
+            tag: "Kıvılcım 4 / 4 · Yazılar",
+            h: "Teknik Araştırma Yazıları",
+            p: "Stüdyonun yayınladığı dijital diş hekimliği ve yapay zeka araştırma makalelerinin tamamına buradan geçebilirsiniz."
+          }
+        ]
+      }
+    ],
+    en: [
+      {
+        id: "full",
+        label: "1. Full Tour (10 Stops)",
+        stops: [
+          {
+            page: "en.html",
+            sel: ".hero",
+            audio: "full_0_en.mp3",
+            tag: "Stop 1 / 10 · Intro",
+            h: "Atlas Digital Smile Design",
+            p: "From two photos, we prepare reasoned form proposals from a 441-form library, guided mockups, and ExoCAD packages."
+          },
+          {
+            page: "en.html",
+            sel: "#how .pipe",
+            audio: "full_1_en.mp3",
+            tag: "Stop 2 / 10 · 5 Steps",
+            h: "5-Step Clinical Workflow",
+            p: "Five-step clinical workflow starting from two smartphone photographs through measurement, form proposal, and ExoCAD delivery."
+          },
+          {
+            page: "en.html",
+            sel: ".sk",
+            audio: "full_2_en.mp3",
+            tag: "Stop 3 / 10 · 3D Cephalometry",
+            h: "478-Point 3D Facial Analysis & QLoRA",
+            p: "Test our interactive module measuring bizygomatic and mandibular vectors to match tooth morphology."
+          },
+          {
+            page: "en.html",
+            sel: "#ornek",
+            audio: "full_3_en.mp3",
+            tag: "Stop 4 / 10 · Before / After",
+            h: "Guided Preview Slider",
+            p: "Slide left and right to compare pre-design teeth with the accepted morphology on the same case."
+          },
+          {
+            page: "en.html",
+            sel: "#automation",
+            audio: "full_4_en.mp3",
+            tag: "Stop 5 / 10 · Automation",
+            h: "441 Forms & Gate Verification",
+            p: "Automation ranks 5 primary and 3 alternative forms; every preview passes contour gates before delivery."
+          },
+          {
+            page: "en.html",
+            sel: "#studio",
+            audio: "full_5_en.mp3",
+            tag: "Stop 6 / 10 · Research",
+            h: "Studio Architecture & Technical Papers",
+            p: "Access our technical research papers including Face-to-Tooth 3D Cephalometry, 3D STL/PLY Rendering, and Privacy De-identification."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#sayac",
+            audio: "full_6_en.mp3",
+            tag: "Stop 7 / 10 · Autonomy",
+            h: "Hourly Verified Live Counters",
+            p: "Live task, hypothesis, and watchdog counters read directly from production logs."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#ablasyon",
+            audio: "full_7_en.mp3",
+            tag: "Stop 8 / 10 · Ablation",
+            h: "3-Arm Context & Cost Ablation",
+            p: "Compare duration and context load across three arms passing through the same verification gate."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#halka",
+            audio: "full_8_en.mp3",
+            tag: "Stop 9 / 10 · Evolution",
+            h: "4-Step Closed Evolution Loop",
+            p: "Constructive voice Enki and blind judge Enlil test rule candidates without direct communication."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#maya",
+            audio: "full_9_en.mp3",
+            tag: "Stop 10 / 10 · Maya",
+            h: "Maya: Daughter of ATLAS · Assistant",
+            p: "Review my pre-training and post-training verification benchmarks and response comparisons in this section."
+          }
+        ]
+      },
+      {
+        id: "clinic",
+        label: "2. Clinical & Smile (5 Stops)",
+        stops: [
+          {
+            page: "en.html",
+            sel: ".hero figure",
+            audio: "clinic_0_en.mp3",
+            tag: "Clinical 1 / 5 · Guides",
+            h: "Midline & Proportion Guides",
+            p: "Schematic guide lines across the six anterior teeth showing midline, zeniths, and tooth proportions."
+          },
+          {
+            page: "en.html",
+            sel: "#how .pipe",
+            audio: "clinic_1_en.mp3",
+            tag: "Clinical 2 / 5 · Workflow",
+            h: "From Photos to ExoCAD",
+            p: "Two photographs turn into guided previews and an ExoCAD work package upon dentist approval."
+          },
+          {
+            page: "en.html",
+            sel: ".sk",
+            audio: "clinic_2_en.mp3",
+            tag: "Clinical 3 / 5 · 3D Module",
+            h: "Live 3D Cephalometric Simulation",
+            p: "Compare the 3D cephalometric mesh, untrained AI, and our QLoRA model."
+          },
+          {
+            page: "en.html",
+            sel: "#ornek",
+            audio: "clinic_3_en.mp3",
+            tag: "Clinical 4 / 5 · Compare",
+            h: "Before / After Slider",
+            p: "Inspect the before and after morphology on retracted and mouth-crop views."
+          },
+          {
+            page: "en.html",
+            sel: "#faq",
+            audio: "clinic_4_en.mp3",
+            tag: "Clinical 5 / 5 · FAQ & Privacy",
+            h: "Clinical FAQ & Privacy",
+            p: "Answers on required photos, deliverables, and local privacy protection."
+          }
+        ]
+      },
+      {
+        id: "ai",
+        label: "3. Autonomy & Evolution (5 Stops)",
+        stops: [
+          {
+            page: "autonomy.html",
+            sel: "#sayac",
+            audio: "ai_0_en.mp3",
+            tag: "Autonomy 1 / 5 · Counters",
+            h: "Live System Counters",
+            p: "Hourly updated counters tracking hypotheses and verification gates."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#ajanlar",
+            audio: "ai_1_en.mp3",
+            tag: "Autonomy 2 / 5 · Scorecards",
+            h: "Agent Scorecards",
+            p: "Performance scorecards for Enkidu, Enki, Enlil, Kalfa, and Spark."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#ablasyon",
+            audio: "ai_2_en.mp3",
+            tag: "Autonomy 3 / 5 · Ablation",
+            h: "Context & Cost Ablation",
+            p: "Halving execution time while preserving the exact same gate decision."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#halka",
+            audio: "ai_3_en.mp3",
+            tag: "Autonomy 4 / 5 · Evolution",
+            h: "Closed Evolution Loop",
+            p: "Four-step closed loop evolving the rule set with blind verification."
+          },
+          {
+            page: "autonomy.html",
+            sel: "#maya",
+            audio: "ai_4_en.mp3",
+            tag: "Autonomy 5 / 5 · Maya",
+            h: "Maya Training Benchmark",
+            p: "Pre-training vs. post-training benchmark and side-by-side response comparison."
+          }
+        ]
+      },
+      {
+        id: "spark",
+        label: "4. Spark & Essays (4 Stops)",
+        stops: [
+          {
+            page: "spark.html",
+            sel: "#algoritma",
+            audio: "spark_0_en.mp3",
+            tag: "Spark 1 / 4 · Procedure",
+            h: "7-Step Spark Procedure",
+            p: "Led at the top by Chief Architect Atlas (Gemini 4 Argon), with Context-Free Argon Web and the Vizier Fable gate, generating blind theses and testing them against Astra and Grok Red Team."
+          },
+          {
+            page: "spark.html",
+            sel: "#karne",
+            audio: "spark_1_en.mp3",
+            tag: "Spark 2 / 4 · Scorecard",
+            h: "49-Round Scorecard",
+            p: "Measured performance across 49 multi-agent collision rounds."
+          },
+          {
+            page: "spark.html",
+            sel: "#makaleler",
+            audio: "spark_2_en.mp3",
+            tag: "Spark 3 / 4 · Experiments",
+            h: "Experimental Spark Papers",
+            p: "Cephalometric QLoRA and Agent Evolution ablation findings."
+          },
+          {
+            page: "blog/en/index.html",
+            sel: "#posts",
+            audio: "spark_3_en.mp3",
+            tag: "Spark 4 / 4 · Archive",
+            h: "Technical Research Papers",
+            p: "Browse the complete collection of our dental CAD and multi-agent research papers."
+          }
+        ]
+      }
+    ],
+    ar: [
+      {
+        id: "full",
+        label: "1. الجولة الكاملة (10 محطات)",
+        stops: [
+          { page: "ar.html", sel: ".hero", audio: "full_0_ar.mp3", tag: "المحطة 1 / 10 · المدخل", h: "AtlasMaster: تصميم الابتسامة الرقمي", p: "من صورتين نُعدّ اقتراح شكل أسنان مُسبَّباً من مكتبة 441 شكلاً، ومعاينة بخطوط إرشادية، وحزمة عمل ExoCAD." },
+          { page: "ar.html", sel: "#how .pipe", audio: "full_1_ar.mp3", tag: "المحطة 2 / 10 · 5 خطوات", h: "من الصورة إلى ExoCAD", p: "تبدأ العملية بصورتين من الهاتف وتكتمل في خمس خطوات: القياس، واختيار الشكل، والمعاينة، ثم حزمة ExoCAD." },
+          { page: "ar.html", sel: ".sk", audio: "full_2_ar.mp3", tag: "المحطة 3 / 10 · السيفالومتري ثلاثي الأبعاد", h: "تحليل وجه ثلاثي الأبعاد بـ 478 نقطة و QLoRA", p: "تقيس الوحدة عرض الوجه وزوايا الفك السفلي بشبكة ثلاثية الأبعاد وتختار مورفولوجيا الأسنان الأنسب لنمط الوجه؛ جرّبها هنا." },
+          { page: "ar.html", sel: "#ornek", audio: "full_3_ar.mp3", tag: "المحطة 4 / 10 · قبل / بعد", h: "منزلق المعاينة بخطوط إرشادية", p: "حرّك المنزلق لتقارن الأسنان الحالية بالشكل المختار بعد تطبيقه في اللقطة نفسها." },
+          { page: "ar.html", sel: "#automation", audio: "full_4_ar.mp3", tag: "المحطة 5 / 10 · الأتمتة", h: "441 شكلاً وفحص البوابة", p: "تسرّع الأتمتة القياس وترتيب الأشكال؛ ولا تُعرض على الطبيب أي معاينة لم تجتز فحص المحيط." },
+          { page: "ar.html", sel: "#studio", audio: "full_5_ar.mp3", tag: "المحطة 6 / 10 · البحث", h: "بنية الاستوديو و7 مقالات حيّة", p: "من هنا تصل إلى كل مقالاتنا البحثية، ومنها «من الوجه إلى السن» و«من يدرّب من؟»." },
+          { page: "autonomy.html", sel: "#sayac", audio: "full_6_ar.mp3", tag: "المحطة 7 / 10 · الاستقلالية", h: "عدادات حيّة تُتحقَّق كل ساعة", p: "تُقرأ الفرضيات التي ينتجها الوكلاء، والحرّاس العاملون، وإحصاءات التحقق مباشرة من السجلات الحيّة." },
+          { page: "autonomy.html", sel: "#ablasyon", audio: "full_7_ar.mp3", tag: "المحطة 8 / 10 · الاستئصال", h: "تجربة السياق والتكلفة بثلاثة أذرع", p: "مخطط قياس يُظهر بأي زمن وتكلفة اجتازت ثلاثة أذرع سياق مختلفة بوابة التحقق نفسها." },
+          { page: "autonomy.html", sel: "#halka", audio: "full_8_ar.mp3", tag: "المحطة 9 / 10 · التطور", h: "حلقة تطور مغلقة من 4 خطوات", p: "الصوت البنّاء إنكي والقاضي الأعمى إنليل يختبران القواعد دون أن يسمع أحدهما الآخر؛ وما يجتاز بوابة الإحصاء يبقى." },
+          { page: "autonomy.html", sel: "#maya", audio: "full_9_ar.mp3", tag: "المحطة 10 / 10 · مايا", h: "مايا: ابنة أطلس · المساعدة", p: "في هذا القسم تستعرض أداء التحقق قبل التدريب وبعده ومقارنات الأسئلة النموذجية." }
+        ]
+      },
+      {
+        id: "clinic",
+        label: "2. الجولة السريرية والابتسامة (5 محطات)",
+        stops: [
+          { page: "ar.html", sel: ".hero figure", audio: "clinic_0_ar.mp3", tag: "سريري 1 / 5 · المخطط", h: "دليل خط المنتصف ونسبة السن", p: "التوزيع التخطيطي لخط المنتصف ونقاط ذروة اللثة ومنحنى الحافة القاطعة على الأسنان الأمامية الستة." },
+          { page: "ar.html", sel: "#how .pipe", audio: "clinic_1_ar.mp3", tag: "سريري 2 / 5 · المسار", h: "تسليم سريري في 5 خطوات", p: "مسار يبدأ بصورتين ويتحوّل بعد موافقة الطبيب مباشرة إلى حزمة عمل ExoCAD." },
+          { page: "ar.html", sel: ".sk", audio: "clinic_2_ar.mp3", tag: "سريري 3 / 5 · الوحدة ثلاثية الأبعاد", h: "محاكاة سيفالومترية ثلاثية الأبعاد حيّة", p: "بأزرار الوحدة تقارن الشبكة السيفالومترية ثلاثية الأبعاد والنموذج غير المدرَّب ونموذج QLoRA الخاص بنا." },
+          { page: "ar.html", sel: "#ornek", audio: "clinic_3_ar.mp3", tag: "سريري 4 / 5 · قارن", h: "محاكاة بصرية قبل / بعد", p: "افحص الفرق قبل التصميم وبعده في لقطات مباعد الشفاه وقصّ الفم بالمنزلق." },
+          { page: "ar.html", sel: "#faq", audio: "clinic_4_ar.mp3", tag: "سريري 5 / 5 · الأسئلة والبيانات", h: "الأسئلة الشائعة والخصوصية", p: "إجابات قصيرة عن معايير الصور وحزمة التسليم وخصوصية المريض." }
+        ]
+      },
+      {
+        id: "ai",
+        label: "3. جولة الاستقلالية والتطور (5 محطات)",
+        stops: [
+          { page: "autonomy.html", sel: "#sayac", audio: "ai_0_ar.mp3", tag: "استقلالية 1 / 5 · العدادات", h: "عدادات النظام الحيّة", p: "عدادات المهام والفرضيات والحرّاس المتحقَّق منها كل ساعة." },
+          { page: "autonomy.html", sel: "#ajanlar", audio: "ai_1_ar.mp3", tag: "استقلالية 2 / 5 · البطاقات", h: "بطاقات الوكلاء", p: "بطاقات المهام والنجاح لوكلاء إنكيدو وإنكي وإنليل وكالفا والشرارة." },
+          { page: "autonomy.html", sel: "#ablasyon", audio: "ai_2_ar.mp3", tag: "استقلالية 3 / 5 · الاستئصال", h: "استئصال التكلفة والسياق", p: "تجربتنا في استئصال السياق التي أنتجت النتيجة نفسها في نصف الزمن." },
+          { page: "autonomy.html", sel: "#halka", audio: "ai_3_ar.mp3", tag: "استقلالية 4 / 5 · التطور", h: "حلقة التطور المغلقة", p: "دورة من 4 خطوات تجدّد القواعد المتآكلة بقاضٍ أعمى واختبار ظلّي." },
+          { page: "autonomy.html", sel: "#maya", audio: "ai_4_ar.mp3", tag: "استقلالية 5 / 5 · مايا", h: "تدريب مايا والمقارنة", p: "جدول يقارن إجابات النموذج الخام قبل التدريب بإجاباتي بعده." }
+        ]
+      },
+      {
+        id: "spark",
+        label: "4. الشرارة والمقالات (4 محطات)",
+        stops: [
+          { page: "spark.html", sel: "#algoritma", audio: "spark_0_ar.mp3", tag: "الشرارة 1 / 4 · الإجراء", h: "إجراء الشرارة من 7 خطوات", p: "بقيادة كبير المعماريين أطلس (Gemini 4 Argon) في القمة، ومعه «أرغون ويب» بلا سياق وبوابة الوزير Fable وOpus وSonnet لإنتاج أطروحات عمياء ثم غربلتها بفريق أسترا وGrok الأحمر." },
+          { page: "spark.html", sel: "#karne", audio: "spark_1_ar.mp3", tag: "الشرارة 2 / 4 · البطاقة", h: "البطاقة الفعلية لـ 49 جولة", p: "جدول مقيس يبيّن أي عائلة نماذج أنتجت أقوى أطروحة وفي كم جولة." },
+          { page: "spark.html", sel: "#makaleler", audio: "spark_2_ar.mp3", tag: "الشرارة 3 / 4 · التجارب", h: "مقالات الشرارة التجريبية", p: "النتائج الموجزة لتجارب QLoRA السيفالومتري وتطور الوكلاء." },
+          { page: "blog/ar/index.html", sel: "#posts", audio: "spark_3_ar.mp3", tag: "الشرارة 4 / 4 · المقالات", h: "الأبحاث التقنية والسريرية", p: "من هنا تنتقل إلى كامل الأبحاث التقنية والسريرية المنشورة باللغة العربية." }
+        ]
+      }
+    ]
+  };
+
+  // Eğitimden gelen hızlı konu başlıkları
+  var QUICK_TOPICS = {
+    tr: [
+      { label: "🏥 Klinik Dijital Altyapı & Rehber", page: "index.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_tr.mp3", h: "Klinikler İçin Dijital Altyapı ve Hasta Rehberi", p: "Yapılandırılmış tıbbi veri mimarisi, genişten daralan seçenekli hasta bilgilendirme ağacı ve sesli site rehberiyle kliniğinizin dijital iletişimini düzenliyoruz." },
+      { label: "📐 3B Sefalometri", page: "index.html", sel: ".sk", audio: "topic_0_tr.mp3", h: "3B Sefalometrik Morfoloji", p: "478 noktalı 3B yüz ağıyla ZY-ZY ve Go-Go oranlarını ölçer; n=32 testte %100 hedef hat isabeti sağlar." },
+      { label: "🦷 441 Diş Formu", page: "index.html", sel: "#otomasyon", audio: "topic_1_tr.mp3", h: "441 Doğal Form Kütüphanesi", p: "Yüz oranlarına göre 441 formluk kütüphaneden 5 öncelikli ve 3 alternatif diş formu gerekçesiyle sıralanır." },
+      { label: "🔒 KVKK & Gizlilik", page: "index.html", sel: "#sss", audio: "topic_2_tr.mp3", h: "Kimliksiz Ağız Kırpımı", p: "Tam yüz fotoğrafları cihazdan çıkmaz; dış görsel modele yalnızca kimliksiz ağız kırpımı ve maske gönderilir." },
+      { label: "⚡ Kıvılcım (49 Tur)", page: "kivilcim.html", sel: "#algoritma", audio: "topic_3_tr.mp3", h: "7 Basamaklı Kıvılcım Yordamı", p: "En üstte Baş Mimar Atlas (Argon 1M) yönetiminde; Bağlamsız Argon Web, Vezir Fable kapısı ve Opus/Sonnet ile kör tezler üretilir, Astra ve Grok Red Team testini yürütür." },
+      { label: "🧬 Evrim Halkası", page: "otonomi.html", sel: "#halka", audio: "topic_4_tr.mp3", h: "4 Adımlı Kapalı Evrim", p: "Enkidu, Enki ve kör yargıç Enlil ile kuralları gölge sınamadan geçirerek evrimleştiren döngü." },
+      { label: "🤖 Maya Eğitimi", page: "otonomi.html", sel: "#maya", audio: "topic_5_tr.mp3", h: "Maya: Eğitim Öncesi vs. Sonrası", p: "Atlas tarafından eğitilen asistanınızım; eğitim öncesi ve sonrası yanıt farklarımı bu bölümde görebilirsiniz." },
+      { label: "📄 Yüzden Dişe Yazısı", page: "blog/yuzden-dise-sefalometrik-lora.html", sel: "#canli-modul", audio: "topic_6_tr.mp3", h: "Yüzden Dişe: 3B Sefalometrik QLoRA", p: "Eğitimsiz modelin kare çene yanılgısını 478 noktalı 3B ağ ve QLoRA eğitimiyle nasıl çözdüğümüzün makalesi." },
+      { label: "🪞 96 Deney & Kapı Yasası", page: "kivilcim.html", sel: "#makaleler", audio: "topic_7_tr.mp3", h: "Kıvılcım Deneyleri ve Mekanik Kapı Yasası", p: "Mekanik doğrulama kapıları olmadan yalnız komutla davranışın değişmediğini gösteren 96 deneylik araştırmamız." },
+      { label: "🧪 Maya 20 Soru & Karşılaştırma", page: "bot/maya/index.html", sel: "#s1", audio: "topic_5_tr.mp3", h: "Maya: 20 Klinik Soru ve Mimari Karşılaştırma", p: "Eğitimsiz model, tek kaynaklı bilgi tabanı ve eğitilmiş model yanıtlarının 20 soruluk karşılaştırma tablosu." }
+    ],
+    en: [
+      { label: "🏥 Clinical Digital Infrastructure & Guide", page: "en.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_en.mp3", h: "Clinical Digital Infrastructure & Guided Patient Navigation", p: "Structured medical data architecture, option-driven clinical patient guidance, and interactive neural voice tour tailored for dental clinics." },
+      { label: "📐 3D Cephalometry", page: "en.html", sel: ".sk", audio: "topic_0_en.mp3", h: "3D Cephalometric Morphology", p: "Measures facial ratios on a 478-point 3D mesh, reaching 100% target line accuracy on 32 test faces." },
+      { label: "🦷 441 Tooth Forms", page: "en.html", sel: "#automation", audio: "topic_1_en.mp3", h: "441 Natural Form Library", p: "Ranks 5 primary and 3 alternative tooth forms with clinical rationale based on facial proportions." },
+      { label: "🔒 Privacy & Security", page: "en.html", sel: "#faq", audio: "topic_2_en.mp3", h: "Anonymous Mouth-Crop Architecture", p: "Full faces never leave studio devices; only de-identified mouth crops and masks are processed." },
+      { label: "⚡ Spark (49 Rounds)", page: "spark.html", sel: "#algoritma", audio: "topic_3_en.mp3", h: "7-Step Spark Procedure", p: "Led at the top by Chief Architect Atlas (Argon 1M), with Context-Free Argon Web and the Vizier Fable gate, blind voices produce theses while Astra and Grok run Red Team tests." },
+      { label: "🧬 Evolution Loop", page: "autonomy.html", sel: "#halka", audio: "topic_4_en.mp3", h: "4-Step Closed Evolution", p: "Closed loop where Enkidu, Enki, and blind judge Enlil evolve rules through shadow testing." },
+      { label: "🤖 Maya Training", page: "autonomy.html", sel: "#maya", audio: "topic_5_en.mp3", h: "Maya: Trained Assistant", p: "Trained by Atlas to guide visitors concisely across the site and leave detailed reading to you." }
+    ],
+    ar: [
+      { label: "🏥 البنية الرقمية للعيادات ودليل المرضى", page: "ar.html", sel: "#ispatli-vaat-ve-rontgen", audio: "topic_0_ar.mp3", h: "البنية الرقمية للعيادات ودليل المرضى التفاعلي", p: "بنية بيانات طبية منظَّمة، ودليل مرضى تفاعلي بالخيارات الموجهة، وجولة صوتية مخصَّصة للعيادات السنية." },
+      { label: "📐 السيفالومتري ثلاثي الأبعاد", page: "ar.html", sel: ".sk", audio: "topic_1_ar.mp3", h: "المورفولوجيا السيفالومترية ثلاثية الأبعاد", p: "تقيس نسب الوجه على شبكة ثلاثية الأبعاد بـ 478 نقطة؛ وتبلغ دقة الخط المستهدف 100% على 32 وجه اختبار." },
+      { label: "🦷 441 شكل سن", page: "ar.html", sel: "#automation", audio: "topic_2_ar.mp3", h: "مكتبة 441 شكلاً طبيعياً", p: "تُرتَّب 5 أشكال ذات أولوية و3 بدائل مع مسوّغ سريري وفق نسب الوجه." },
+      { label: "🔒 الخصوصية والأمان", page: "ar.html", sel: "#faq", audio: "topic_3_ar.mp3", h: "بنية قصّ الفم مجهول الهوية", p: "صور الوجه الكامل لا تغادر أجهزة الاستوديو؛ لا يُعالَج خارجياً سوى قصّ الفم والقناع مجهولي الهوية." },
+      { label: "⚡ الشرارة (49 جولة)", page: "spark.html", sel: "#algoritma", audio: "spark_0_ar.mp3", h: "إجراء الشرارة من 7 خطوات", p: "بقيادة كبير المعماريين أطلس (Argon 1M)؛ أصوات عمياء تنتج الأطروحات بينما يختبرها فريق أسترا وGrok الأحمر." },
+      { label: "🧬 حلقة التطور", page: "autonomy.html", sel: "#halka", audio: "topic_5_ar.mp3", h: "تطور مغلق من 4 خطوات", p: "حلقة مغلقة يطوّر فيها إنكيدو وإنكي والقاضي الأعمى إنليل القواعد عبر الاختبار الظلّي." },
+      { label: "🤖 تدريب مايا", page: "autonomy.html", sel: "#maya", audio: "topic_6_ar.mp3", h: "مايا: مساعدة مدرَّبة", p: "درّبني أطلس لأرشد الزوار بإيجاز عبر الموقع وأترك القراءة التفصيلية لكم." }
+    ]
+  };
+
+  // Arapça çekirdek bilgi tabanı (soru–cevap; arama kutusunda Arapça sorgular için)
+  var KNOWLEDGE_AR = [
+    { h: "ما هو AtlasMaster (أطلس ماستر)؟", p: "استوديو تصميم ابتسامة رقمي وبحث وتطوير متعدد الوكلاء لأطباء الأسنان والمختبرات الرقمية؛ من صورتين إلى اقتراح شكل مُسبَّب ومعاينة بخطوط إرشادية وحزمة ExoCAD.", page: "ar.html", sel: ".hero", kw: "اطلس ماستر atlasmaster اطلس ستوديو من انتم ما هو الموقع" },
+    { h: "ما الصور المطلوبة لبدء الحالة؟", p: "لقطتان من كاميرا الهاتف: ابتسامة للوجه الكامل ولقطة بمباعد الشفاه، في ضوء النهار أو إضاءة مسطّحة. موافقة المريض شرط، ولا هوية في أسماء الملفات.", page: "ar.html", sel: "#faq", kw: "صور صورة مطلوبة كاميرا هاتف مباعد شفاه ابتسامة لقطة" },
+    { h: "ماذا أحصل عليه في النهاية؟", p: "5 أشكال ذات أولوية و3 بدائل مع مسوّغ قصير، ومعاينة قبل/بعد بخطوط إرشادية في ملف واحد، وبعد الموافقة حزمة عمل ExoCAD.", page: "ar.html", sel: "#faq", kw: "ماذا احصل تسليم حزمة نتيجة مخرجات exocad" },
+    { h: "كيف يعمل التحليل السيفالومتري ثلاثي الأبعاد؟", p: "شبكة وجه بـ 478 نقطة تقيس نسب ZY-ZY وGo-Go، ونموذج QLoRA مدرَّب يختار مورفولوجيا الأسنان الأنسب؛ في اختبار مُقفل (n = 32) بلغت دقة الخط المستهدف 100%.", page: "ar.html", sel: ".sk", kw: "سيفالومتري ثلاثي الابعاد 478 نقطة qlora شبكة وجه قياس فك مربع بيضاوي" },
+    { h: "ما مكتبة 441 شكلاً؟", p: "مكتبة أشكال أسنان طبيعية؛ وفق القياسات ونسب الوجه تُرتَّب منها 5 أشكال ذات أولوية و3 بدائل مع مسوّغ لكل منها.", page: "ar.html", sel: "#automation", kw: "441 شكل مكتبة اشكال اسنان اقتراح الشكل" },
+    { h: "أين تبقى بيانات المريض وكيف تُحمى؟", p: "تُعالَج الصور وتُخزَّن على أجهزة الاستوديو. لا يُرسَل إلى نموذج الصور السحابي سوى قصّ الفم مجهول الهوية؛ ويُحذف كل شيء عند طلبك.", page: "ar.html", sel: "#faq", kw: "خصوصية بيانات مريض حماية حذف سحابة امان kvkk" },
+    { h: "هل يلزم امتلاك ExoCAD؟", p: "لا. اقتراح الشكل والمعاينة يصلانك دون ExoCAD؛ وتُعدّ حزمة ExoCAD فقط إذا انتقلنا إلى خطوة الرصف.", page: "ar.html", sel: "#faq", kw: "exocad اكسوكاد برنامج مختبر رصف" },
+    { h: "هل يشخّص AtlasMaster أو يعد بنتيجة علاجية؟", p: "لا. الاستوديو لا يشخّص ولا يصف علاجاً ولا يعد بنتيجة سريرية؛ القرار دائماً للطبيب، والمعاينات محاكاة بصرية.", page: "ar.html", sel: "#automation", kw: "تشخيص علاج نتيجة وعد قرار الطبيب محاكاة حدود" },
+    { h: "ما ترخيص الاستخدام المؤسسي لـ ATLAS-CORE؟", p: "محرك القرار السريري (550 عقدة، M0–M10) يبقى ملكاً لـ ATLAS-CORE ويُخصَّص للعيادة بترخيص استخدام مؤسسي بمفتاح HMAC-SHA256؛ ويحميه درع الكناري من النسخ.", page: "ar.html", sel: "#ispatli-vaat-ve-rontgen", kw: "ترخيص مؤسسي atlas core hmac كناري honeypot محرك قرار 550 عقدة فرز سريري" },
+    { h: "من هو أطلس (Gemini 4 Argon) ومن هي مايا؟", p: "أطلس هو كبير المعماريين والمايسترو في قمة النظام متعدد الوكلاء؛ ومايا ابنة أطلس، مساعدة مدرَّبة محلياً ترشد الزوار بإيجاز وتترك القراءة التفصيلية لهم.", page: "autonomy.html", sel: "#maya", kw: "اطلس مايا argon gemini كبير المعماريين مساعدة من انت من هي مايا" },
+    { h: "ما منهج الشرارة (Kıvılcım)؟", p: "إجراء من 7 خطوات لإنتاج الأطروحة والأطروحة المضادة واختبار الدحض من عائلات نماذج لا يسمع بعضها بعضاً، مع بطاقة فعلية لـ 49 جولة.", page: "spark.html", sel: "#algoritma", kw: "الشرارة kivilcim spark اطروحة منهج 49 جولة اصوات نماذج" },
+    { h: "ما حلقة التطور المغلقة؟", p: "دورة من 4 خطوات: الصوت البنّاء إنكي يقترح، والقاضي الأعمى إنليل يختبر دون سماعه، وما يجتاز بوابة الإحصاء من القواعد يبقى.", page: "autonomy.html", sel: "#halka", kw: "حلقة تطور انكي انليل قاض اعمى قواعد اختبار ظلي" },
+    { h: "ما العدادات الحيّة في صفحة الاستقلالية؟", p: "عدادات المهام والفرضيات والحرّاس تُقرأ من السجلات الحيّة وتُتحقَّق كل ساعة.", page: "autonomy.html", sel: "#sayac", kw: "عدادات حية استقلالية فرضيات حراس تحقق ساعة" },
+    { h: "كيف أتواصل وأعرف الرسوم والمدة؟", p: "عبر البريد yusuf@atlasmaster.app؛ تُذكر المدة والشروط في الرد. لا نبيع برمجيات، بل نُعدّ كل حالة على حدة.", page: "ar.html", sel: "#contact", kw: "تواصل بريد رسوم سعر مدة تكلفة دفع تحويل" }
+  ];
+
+  var CURATED_BLOG_TOURS = {
+    "blog/yuzden-dise-sefalometrik-lora.html": [
+      { sel: "#giris", audio: "blog_yuzden_0_tr.mp3", tag: "Bölüm 1 / 4 · Giriş", h: "Oval Sanılan Kare Çene Yanılgısı", p: "Yüzün dış konturuna bakarak oval sanılan kare çenelerin 478 noktalı 3B ağ ile nasıl doğru ölçüldüğünü inceliyoruz." },
+      { sel: "#canli-modul", audio: "blog_yuzden_1_tr.mp3", tag: "Bölüm 2 / 4 · Canlı Modül", h: "Canlı 3B Sefalometri ve Morfoloji Kaydırıcısı", p: "Bu canlı modülde 3B sefalometrik ağı, eğitimsiz modeli ve QLoRA modelimizin diş morfolojisi kararlarını karşılaştırabilirsiniz." },
+      { sel: "#bolum-4", audio: "blog_yuzden_2_tr.mp3", tag: "Bölüm 3 / 4 · Ölçüm (n=32)", h: "Ölçüm Tablosu: %0'dan %100 Hedef İsabetine", p: "32 vakalık kilitli test setinde eğitimsiz model %0'da kalırken, QLoRA modelimiz 400 adımda %100 hedef hat isabetine ulaştı." },
+      { sel: "#bolum-8", audio: "blog_yuzden_3_tr.mp3", tag: "Bölüm 4 / 4 · Hüküm", h: "Beş Klinik Madde ve Okura Üç Araç", p: "Beş maddelik klinik hükmümüzü ve tek vakada kendi modelinizi sınayabileceğiniz üç aracı bu bölümde bulabilirsiniz." }
+    ]
+  };
+
+  var CORE_ROUTE_PAGES = {
+    "index.html": 1, "otonomi.html": 1, "kivilcim.html": 1, "blog.html": 1,
+    "en.html": 1, "autonomy.html": 1, "spark.html": 1, "ar.html": 1,
+    "blog/en/index.html": 1, "blog/ar/index.html": 1
+  };
+
+  function buildCurrentArticleRoute() {
+    var cur = currentPageRel();
+    if (CURATED_BLOG_TOURS[cur]) {
+      var curated = CURATED_BLOG_TOURS[cur].map(function (st) {
+        return {
+          page: cur,
+          sel: st.sel,
+          audio: st.audio,
+          tag: st.tag,
+          h: st.h,
+          p: st.p
+        };
+      });
+      return {
+        id: "article_local",
+        label: isAr ? "📄 جولة في هذه الصفحة (4 أقسام)" : (isEn ? "📄 Tour This Page (4 Stops)" : "📄 Bu Yazıyı Gez (4 Bölüm)"),
+        stops: curated
+      };
+    }
+    if (CORE_ROUTE_PAGES[cur]) return null;
+    var candidates = document.querySelectorAll("main section[id], article section[id], main h2[id], main h3[id], article h2[id], article h3[id], main article[id], main details[id]");
+    if (!candidates || candidates.length < 2) return null;
+    var validNodes = [];
+    var seenIds = {};
+    for (var c = 0; c < candidates.length; c++) {
+      var node = candidates[c];
+      var cid = node.getAttribute("id");
+      if (!cid || seenIds[cid] || cid === "kaynaklar" || cid === "kaynakca" || cid === "sorumluluk") continue;
+      seenIds[cid] = true;
+      validNodes.push(node);
+    }
+    if (validNodes.length < 2) return null;
+    var stops = [];
+    var stepIndices = validNodes.length <= 4
+      ? validNodes.map(function (_, idx) { return idx; })
+      : [0, Math.floor(validNodes.length * 0.33), Math.floor(validNodes.length * 0.66), validNodes.length - 1];
+    var used = {};
+    for (var i = 0; i < stepIndices.length; i++) {
+      var idx = stepIndices[i];
+      if (used[idx]) continue;
+      used[idx] = true;
+      var el = validNodes[idx];
+      var id = el.getAttribute("id");
+      var hNode = /^H[1-6]$/.test(el.tagName) ? el : el.querySelector("h1, h2, h3");
+      var titleText = ((hNode ? hNode.textContent : el.textContent) || "").trim().replace(/\s+/g, " ");
+      var pNode = /^H[1-6]$/.test(el.tagName) ? el.nextElementSibling : el.querySelector("p");
+      while (pNode && pNode.tagName !== "P" && pNode.tagName !== "DIV") {
+        pNode = pNode.nextElementSibling;
+      }
+      var rawP = pNode ? (pNode.textContent || "").trim().replace(/\s+/g, " ") : "";
+      var fallbackP = isAr
+        ? "يمكنك استعراض القياسات والتفاصيل التقنية في هذا القسم."
+        : (isEn ? "Explore the verified measurements and technical details in this section." : "Bu bölümdeki ölçüm ve bulguları aşağıda detaylı inceleyebilirsiniz.");
+      var firstSent = rawP.split(/(?<=[.!?])\s+/)[0] || fallbackP;
+      if (firstSent.length > 165) firstSent = firstSent.slice(0, 162) + "...";
+      var tagPrefix = isAr ? ("القسم " + (stops.length + 1) + " · جولة الصفحة") : (isEn ? ("Section " + (stops.length + 1) + " · Page Tour") : ("Bölüm " + (stops.length + 1) + " · Sayfa Turu"));
+      stops.push({
+        page: cur,
+        sel: "#" + id,
+        audio: isAr ? "topic_0_ar.mp3" : (isEn ? "topic_0_en.mp3" : "topic_6_tr.mp3"),
+        tag: tagPrefix,
+        h: titleText.slice(0, 68) || id,
+        p: firstSent
+      });
+    }
+    if (!stops.length) return null;
+    var lbl = isAr
+      ? ("📄 جولة في هذه الصفحة (" + stops.length + " أقسام)")
+      : (isEn ? ("📄 Tour This Page (" + stops.length + " Stops)") : ("📄 Bu Sayfayı Gez (" + stops.length + " Bölüm)"));
+    return {
+      id: "article_local",
+      label: lbl,
+      stops: stops
+    };
+  }
+
+  var baseRoutes = (ROUTES[LANG] || ROUTES.tr).slice();
+  var articleRoute = buildCurrentArticleRoute();
+  if (articleRoute) {
+    baseRoutes.unshift(articleRoute);
+  }
+  var routeList = baseRoutes;
+  var topicList = QUICK_TOPICS[LANG] || QUICK_TOPICS.tr;
+
+  var state = {
+    open: false,
+    routeId: articleRoute ? "article_local" : "full",
+    stepIdx: 0,
+    showRoutes: false,
+    showTopics: false,
+    autoPlay: false,
+    voiceEnabled: true,
+    posX: Math.max(16, window.innerWidth - 385),
+    posY: Math.max(70, window.innerHeight - 100)
+  };
+
+  var autoTimer = null;
+  var currentSpotEl = null;
+  var lookTargetX = 0;
+  var lookTargetY = 0;
+  var exprPulse = 0;
+  var knowledgeIndex = null;
+
+  function getRoute(id) {
+    for (var i = 0; i < routeList.length; i++) {
+      if (routeList[i].id === id) return routeList[i];
+    }
+    return routeList[0];
+  }
+
+  function findBestRouteAndStepForCurrentPage() {
+    var cur = currentPageRel();
+    var curHash = (location.hash || "").trim();
+    if (articleRoute && samePage(cur, articleRoute.stops[0].page)) {
+      if (curHash) {
+        for (var a = 0; a < articleRoute.stops.length; a++) {
+          if (articleRoute.stops[a].sel === curHash) return { routeId: articleRoute.id, stepIdx: a };
+        }
+      }
+      return { routeId: articleRoute.id, stepIdx: 0 };
+    }
+    if (curHash) {
+      for (var rh = 0; rh < routeList.length; rh++) {
+        var hStops = routeList[rh].stops;
+        for (var sh = 0; sh < hStops.length; sh++) {
+          if (samePage(hStops[sh].page, cur) && hStops[sh].sel === curHash) {
+            return { routeId: routeList[rh].id, stepIdx: sh };
+          }
+        }
+      }
+    }
+    for (var r = 0; r < routeList.length; r++) {
+      var stops = routeList[r].stops;
+      for (var s = 0; s < stops.length; s++) {
+        if (samePage(stops[s].page, cur)) {
+          return { routeId: routeList[r].id, stepIdx: s };
+        }
+      }
+    }
+    return { routeId: routeList[0].id, stepIdx: 0 };
+  }
+
+  function saveState(customOverride) {
+    try {
+      var payload = customOverride || {
+        open: state.open,
+        routeId: state.routeId,
+        stepIdx: state.stepIdx,
+        autoPlay: state.autoPlay,
+        voiceEnabled: state.voiceEnabled,
+        ts: Date.now()
+      };
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    } catch (e) {}
+  }
+
+  function loadState() {
+    try {
+      var raw = sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (Date.now() - (parsed.ts || 0) > 20 * 60 * 1000) return null;
+      return parsed;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // DOM Kurulumu
+  var carrier = document.createElement("div");
+  carrier.className = "maya-carrier bubble-left";
+  carrier.id = "maya-carrier";
+
+  carrier.innerHTML =
+    '<div class="maya-orb-wrap" id="maya-orb" title="' + L.orbTitle + '">' +
+      '<div class="maya-orb-clip" id="maya-orb-clip">' +
+        '<canvas id="maya-sprite-canvas" width="256" height="256"></canvas>' +
+      '</div>' +
+      '<span class="maya-orb-status"></span>' +
+      '<span class="maya-orb-badge">' + L.badge + '</span>' +
+    '</div>' +
+    '<button type="button" class="maya-mini-pill" id="maya-mini-pill"' + (isAr ? ' dir="rtl"' : '') + '>' +
+      '<span>' + L.pill + '</span>' +
+      '<span class="maya-pill-sub">' + L.pillSub + '</span>' +
+    '</button>' +
+    '<div class="maya-bubble" id="maya-bubble" hidden' + (isAr ? ' dir="rtl" lang="ar"' : '') + '>' +
+      '<div class="maya-b-head">' +
+        '<div class="maya-b-title">' + L.title + '</div>' +
+        '<div class="maya-b-controls">' +
+          '<button type="button" class="maya-icon-btn active" id="maya-btn-voice" title="' + L.voice + '">🔊</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-topics" title="' + L.topicsT + '">' + L.topics + '</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-routes" title="' + L.routesT + '">' + L.routes + '</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-auto" title="' + L.autoT + '">' + L.auto + '</button>' +
+          '<button type="button" class="maya-icon-btn" id="maya-btn-close" title="' + L.min + '">✕</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="maya-langs" id="maya-langs" aria-label="' + L.langLbl + '">' +
+        '<span class="maya-langs-lbl">' + L.langLbl + '</span>' +
+        '<button type="button" class="maya-lang-chip' + (LANG === "tr" ? " active" : "") + '" data-lang="tr" lang="tr" title="Türkçe">TR</button>' +
+        '<button type="button" class="maya-lang-chip' + (LANG === "en" ? " active" : "") + '" data-lang="en" lang="en" title="English">EN</button>' +
+        '<button type="button" class="maya-lang-chip' + (LANG === "ar" ? " active" : "") + '" data-lang="ar" lang="ar" title="العربية">AR</button>' +
+      '</div>' +
+      '<div class="maya-routes" id="maya-routes-bar" hidden></div>' +
+      '<div class="maya-topics" id="maya-topics-bar" hidden></div>' +
+      '<div class="maya-dots" id="maya-dots"></div>' +
+      '<div class="maya-step-tag" id="maya-step-tag"></div>' +
+      '<h4 class="maya-step-h" id="maya-step-h"></h4>' +
+      '<p class="maya-step-p" id="maya-step-p"></p>' +
+      '<div class="maya-b-foot">' +
+        '<button type="button" class="maya-btn-sm" id="maya-btn-prev">' + L.prev + '</button>' +
+        '<button type="button" class="maya-btn-sm" id="maya-btn-ask">' + L.ask + '</button>' +
+        '<button type="button" class="maya-btn-sm pri" id="maya-btn-next">' + L.next + '</button>' +
+      '</div>' +
+    '</div>';
+
+  document.body.appendChild(carrier);
+
+  Array.prototype.forEach.call(carrier.querySelectorAll(".maya-lang-chip"), function (chip) {
+    chip.addEventListener("click", function () { switchLang(chip.getAttribute("data-lang")); });
+  });
+
+  var orbEl = document.getElementById("maya-orb");
+  var orbClip = document.getElementById("maya-orb-clip");
+  var miniPill = document.getElementById("maya-mini-pill");
+  var bubbleEl = document.getElementById("maya-bubble");
+  var routesBar = document.getElementById("maya-routes-bar");
+  var topicsBar = document.getElementById("maya-topics-bar");
+  var dotsEl = document.getElementById("maya-dots");
+  var tagEl = document.getElementById("maya-step-tag");
+  var hEl = document.getElementById("maya-step-h");
+  var pEl = document.getElementById("maya-step-p");
+  var btnVoice = document.getElementById("maya-btn-voice");
+  var btnTopics = document.getElementById("maya-btn-topics");
+  var btnRoutes = document.getElementById("maya-btn-routes");
+  var btnAuto = document.getElementById("maya-btn-auto");
+  var btnClose = document.getElementById("maya-btn-close");
+  var btnPrev = document.getElementById("maya-btn-prev");
+  var btnAsk = document.getElementById("maya-btn-ask");
+  var btnNext = document.getElementById("maya-btn-next");
+
+  // 2. Stüdyo Nöral Ses (.mp3) + WebAudio Gerçek Zamanlı Dudak Senkronu Motoru
+  var audioEl = new Audio();
+  audioEl.preload = "auto";
+  audioEl.crossOrigin = "anonymous";
+  var audioCtx = null;
+  var analyser = null;
+  var freqData = null;
+  var sourceConnected = false;
+  var isSpeaking = false;
+  var speechLevel = 0;
+  var currentAudioFile = null;
+
+  function ensureAudioGraph() {
+    if (sourceConnected) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      audioCtx = new AC();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 128;
+      analyser.smoothingTimeConstant = 0.65;
+      var src = audioCtx.createMediaElementSource(audioEl);
+      src.connect(analyser);
+      analyser.connect(audioCtx.destination);
+      freqData = new Uint8Array(analyser.frequencyBinCount);
+      sourceConnected = true;
+    } catch (e) {}
+  }
+
+  function stopVoice() {
+    try {
+      audioEl.pause();
+      audioEl.currentTime = 0;
+    } catch (e) {}
+    isSpeaking = false;
+    speechLevel = 0;
+    orbEl.classList.remove("is-speaking");
+  }
+
+  function playStepAudio(audioFile) {
+    currentAudioFile = audioFile || null;
+    stopVoice();
+    if (!state.voiceEnabled || !state.open || !audioFile) return;
+    try {
+      ensureAudioGraph();
+      if (audioCtx && audioCtx.state === "suspended") {
+        audioCtx.resume().catch(function () {});
+      }
+      audioEl.src = assetPrefix + "ornek/maya/audio/" + audioFile;
+      var pr = audioEl.play();
+      if (pr && typeof pr.then === "function") {
+        pr.then(function () {
+          isSpeaking = true;
+          orbEl.classList.add("is-speaking");
+        }).catch(function () {
+          isSpeaking = false;
+          orbEl.classList.remove("is-speaking");
+        });
+      }
+    } catch (e) {}
+  }
+
+  audioEl.addEventListener("play", function () {
+    isSpeaking = true;
+    orbEl.classList.add("is-speaking");
+  });
+
+  audioEl.addEventListener("ended", function () {
+    isSpeaking = false;
+    speechLevel = 0;
+    orbEl.classList.remove("is-speaking");
+    if (state.autoPlay && state.open) {
+      if (autoTimer) clearTimeout(autoTimer);
+      autoTimer = setTimeout(function () {
+        if (!state.autoPlay || !state.open) return;
+        advanceAutoStep();
+      }, 1700);
+    }
+  });
+
+  audioEl.addEventListener("pause", function () {
+    isSpeaking = false;
+    speechLevel = 0;
+    orbEl.classList.remove("is-speaking");
+  });
+
+  btnVoice.addEventListener("click", function () {
+    state.voiceEnabled = !state.voiceEnabled;
+    btnVoice.classList.toggle("active", state.voiceEnabled);
+    btnVoice.textContent = state.voiceEnabled ? "🔊" : "🔇";
+    saveState();
+    if (state.voiceEnabled && currentAudioFile) {
+      playStepAudio(currentAudioFile);
+    } else {
+      stopVoice();
+    }
+  });
+
+  // 3. Taşıyıcı Konumlandırma ve Sürükleme
+  function setCarrierPos(x, y, bubbleOnLeft, immediate) {
+    var vw = document.documentElement.clientWidth || window.innerWidth;
+    var vh = document.documentElement.clientHeight || window.innerHeight;
+    if (vw < 760) {
+      bubbleOnLeft = true;
+    }
+    if (bubbleOnLeft) {
+      carrier.classList.add("bubble-left");
+    } else {
+      carrier.classList.remove("bubble-left");
+    }
+    var w = carrier.offsetWidth || (state.open ? Math.min(362, vw - 16) : 240);
+    var bH = (!bubbleEl.hidden && bubbleEl.offsetHeight) ? bubbleEl.offsetHeight : 0;
+    var oH = orbEl ? (orbEl.offsetHeight || 58) : 58;
+    var h = Math.max(carrier.offsetHeight || 0, bH, oH) + 8;
+
+    var minX = 8;
+    var maxX = Math.max(minX, vw - w - 8);
+    var minY = 62;
+    var maxY = Math.max(minY, vh - h - 10);
+
+    var clampedX = Math.max(minX, Math.min(maxX, x));
+    var clampedY = Math.max(minY, Math.min(maxY, y));
+
+    state.posX = clampedX;
+    state.posY = clampedY;
+
+    if (immediate) {
+      carrier.classList.add("is-dragging");
+      carrier.style.transform = "translate3d(" + Math.round(clampedX) + "px, " + Math.round(clampedY) + "px, 0)";
+      void carrier.offsetWidth;
+      carrier.classList.remove("is-dragging");
+    } else {
+      carrier.style.transform = "translate3d(" + Math.round(clampedX) + "px, " + Math.round(clampedY) + "px, 0)";
+    }
+  }
+
+  function reclampCarrier(immediate) {
+    var onLeft = carrier.classList.contains("bubble-left");
+    setCarrierPos(state.posX, state.posY, onLeft, !!immediate);
+  }
+
+  function parkBottomRight(immediate) {
+    var vw = document.documentElement.clientWidth || window.innerWidth;
+    var vh = document.documentElement.clientHeight || window.innerHeight;
+    var w = carrier.offsetWidth || (state.open ? Math.min(362, vw - 16) : 240);
+    var bH = (!bubbleEl.hidden && bubbleEl.offsetHeight) ? bubbleEl.offsetHeight : 0;
+    var h = Math.max(carrier.offsetHeight || 0, state.open ? (bH || 195) : 76) + 8;
+    setCarrierPos(vw - w - 12, vh - h - 12, true, !!immediate);
+  }
+
+  var dragInfo = null;
+  orbEl.addEventListener("pointerdown", function (ev) {
+    dragInfo = {
+      startX: ev.clientX,
+      startY: ev.clientY,
+      origX: state.posX,
+      origY: state.posY,
+      moved: false
+    };
+    orbEl.setPointerCapture(ev.pointerId);
+    carrier.classList.add("is-dragging");
+  });
+
+  orbEl.addEventListener("pointermove", function (ev) {
+    if (!dragInfo) return;
+    var dx = ev.clientX - dragInfo.startX;
+    var dy = ev.clientY - dragInfo.startY;
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+      dragInfo.moved = true;
+    }
+    if (dragInfo.moved) {
+      var onLeft = (dragInfo.origX + dx) > window.innerWidth * 0.45;
+      setCarrierPos(dragInfo.origX + dx, dragInfo.origY + dy, onLeft);
+    }
+  });
+
+  orbEl.addEventListener("pointerup", function (ev) {
+    if (!dragInfo) return;
+    var wasMoved = dragInfo.moved;
+    dragInfo = null;
+    carrier.classList.remove("is-dragging");
+    try { orbEl.releasePointerCapture(ev.pointerId); } catch (e) {}
+    if (!wasMoved) {
+      if (!state.open) {
+        startOrOpenTour();
+      } else {
+        minimizeTour();
+      }
+    }
+  });
+
+  miniPill.addEventListener("click", function () {
+    startOrOpenTour();
+  });
+
+  // 4. Rotalar ve Eğitim Ağacından Anlık Arama (131 Düğüm)
+  function renderRouteChips() {
+    routesBar.innerHTML = "";
+    routeList.forEach(function (r) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "maya-route-chip" + (r.id === state.routeId ? " active" : "");
+      b.textContent = r.label;
+      b.addEventListener("click", function () {
+        state.routeId = r.id;
+        state.stepIdx = 0;
+        state.showRoutes = false;
+        routesBar.hidden = true;
+        btnRoutes.classList.remove("active");
+        // Rota seçildiğinde başka sayfadaysa oraya doğrudan geç (allowPageNav = true)
+        goToCurrentStop(true, true);
+      });
+      routesBar.appendChild(b);
+    });
+  }
+
+  function normTr(s) {
+    return (s || "").toLowerCase()
+      .replace(/ı/g, "i").replace(/ğ/g, "g").replace(/ü/g, "u")
+      .replace(/ş/g, "s").replace(/ö/g, "o").replace(/ç/g, "c")
+      // Arapça: harekeleri at, elif/ta marbuta/ya varyantlarını birleştir
+      .replace(/[\u064B-\u0652\u0640]/g, "")
+      .replace(/[\u0623\u0625\u0622]/g, "\u0627").replace(/\u0629/g, "\u0647").replace(/\u0649/g, "\u064A")
+      .replace(/[^a-z0-9\u0600-\u06FF\s]/g, " ").trim();
+  }
+
+  function ensureKnowledgeLoaded(cb) {
+    if (knowledgeIndex) {
+      cb(knowledgeIndex);
+      return;
+    }
+    fetch(assetPrefix + "ornek/maya/maya-bilgi-haritasi.json")
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        knowledgeIndex = Array.isArray(data) ? data : [];
+        cb(knowledgeIndex);
+      })
+      .catch(function () {
+        knowledgeIndex = [];
+        cb(knowledgeIndex);
+      });
+  }
+
+  function renderTopicChips(filterQuery) {
+    var existingInput = document.getElementById("maya-topic-search");
+    var qVal = typeof filterQuery === "string" ? filterQuery : (existingInput ? existingInput.value : "");
+    topicsBar.innerHTML = "";
+
+    var input = document.createElement("input");
+    input.type = "search";
+    input.id = "maya-topic-search";
+    input.className = "maya-search-input";
+    input.placeholder = L.search;
+    input.value = qVal;
+    input.addEventListener("input", function () {
+      var val = input.value;
+      if (val.trim().length >= 2) {
+        ensureKnowledgeLoaded(function () {
+          renderSearchResults(val);
+        });
+      } else {
+        renderDefaultTopicButtons();
+      }
+    });
+    topicsBar.appendChild(input);
+
+    var resultsWrap = document.createElement("div");
+    resultsWrap.id = "maya-topic-results";
+    resultsWrap.style.display = "flex";
+    resultsWrap.style.flexWrap = "wrap";
+    resultsWrap.style.gap = "4px";
+    resultsWrap.style.width = "100%";
+    topicsBar.appendChild(resultsWrap);
+
+    function renderDefaultTopicButtons() {
+      resultsWrap.innerHTML = "";
+      topicList.forEach(function (tp) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "maya-route-chip";
+        b.textContent = tp.label;
+        b.addEventListener("click", function () {
+          state.showTopics = false;
+          topicsBar.hidden = true;
+          btnTopics.classList.remove("active");
+          jumpToQuickTopic(tp);
+        });
+        resultsWrap.appendChild(b);
+      });
+      if (state.open) reclampCarrier(true);
+    }
+
+    function renderSearchResults(q) {
+      resultsWrap.innerHTML = "";
+      var nq = normTr(q);
+      var words = nq.split(/\s+/).filter(Boolean);
+      var scored = [];
+
+      // Önce hızlı konular
+      topicList.forEach(function (tp) {
+        var hay = normTr(tp.label + " " + tp.h + " " + tp.p);
+        var sc = 0;
+        words.forEach(function (w) {
+          if (hay.indexOf(w) >= 0) sc += 3;
+        });
+        if (sc > 0) scored.push({ score: sc + 1, item: tp });
+      });
+
+      // Arapça çekirdek bilgi tabanı (yalnız Arapça arayüzde)
+      if (isAr) {
+        KNOWLEDGE_AR.forEach(function (entry) {
+          var hayAr = normTr(entry.h + " " + entry.p + " " + (entry.kw || ""));
+          var scAr = 0;
+          words.forEach(function (w) {
+            if (normTr(entry.h).indexOf(w) >= 0) scAr += 3;
+            else if (hayAr.indexOf(w) >= 0) scAr += 1;
+          });
+          if (scAr > 0) {
+            scored.push({ score: scAr + 1, item: { label: "📍 " + entry.h, page: entry.page, sel: entry.sel, audio: null, h: entry.h, p: entry.p } });
+          }
+        });
+      }
+
+      // Ardından 131 düğümlü eğitim haritası
+      (knowledgeIndex || []).forEach(function (entry) {
+        var hay = entry.kw || normTr(entry.h + " " + entry.p);
+        var sc = 0;
+        words.forEach(function (w) {
+          if (normTr(entry.h).indexOf(w) >= 0) sc += 3;
+          else if (hay.indexOf(w) >= 0) sc += 1;
+        });
+        if (sc > 0) {
+          scored.push({
+            score: sc,
+            item: {
+              label: "📍 " + entry.h,
+              page: entry.page,
+              sel: entry.sel,
+              audio: null,
+              h: entry.h,
+              p: entry.p
+            }
+          });
+        }
+      });
+
+      scored.sort(function (a, b) { return b.score - a.score; });
+      var top = scored.slice(0, 5);
+      if (!top.length) {
+        var empty = document.createElement("div");
+        empty.style.fontSize = "10.5px";
+        empty.style.color = "#94a3b8";
+        empty.style.padding = "2px 4px";
+        empty.textContent = L.noMatch;
+        resultsWrap.appendChild(empty);
+        if (state.open) reclampCarrier(true);
+        return;
+      }
+
+      top.forEach(function (entry) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "maya-route-chip full-row";
+        b.textContent = entry.item.label;
+        b.addEventListener("click", function () {
+          state.showTopics = false;
+          topicsBar.hidden = true;
+          btnTopics.classList.remove("active");
+          jumpToQuickTopic(entry.item);
+        });
+        resultsWrap.appendChild(b);
+      });
+      if (state.open) reclampCarrier(true);
+    }
+
+    renderDefaultTopicButtons();
+  }
+
+  function jumpToQuickTopic(tp) {
+    var curPage = currentPageRel();
+    if (tp.page && !samePage(tp.page, curPage)) {
+      saveState({
+        open: true,
+        routeId: state.routeId,
+        stepIdx: state.stepIdx,
+        voiceEnabled: state.voiceEnabled,
+        quickTopic: tp,
+        ts: Date.now()
+      });
+      location.href = resolveHref(tp.page) + (tp.sel && tp.sel.charAt(0) === "#" ? tp.sel.split(" ")[0] : "");
+      return;
+    }
+    tagEl.textContent = L.selected;
+    hEl.textContent = tp.h;
+    pEl.textContent = tp.p;
+    playStepAudio(tp.audio);
+    var targetEl = tp.sel ? document.querySelector(tp.sel) : null;
+    glideToElement(targetEl);
+  }
+
+  function clearSpotlight() {
+    if (currentSpotEl) {
+      currentSpotEl.classList.remove("maya-spot-target");
+      currentSpotEl = null;
+    }
+  }
+
+  function glideToElement(el) {
+    reclampCarrier(true);
+    if (!el) {
+      parkBottomRight(true);
+      return;
+    }
+    clearSpotlight();
+    currentSpotEl = el;
+    el.classList.add("maya-spot-target");
+
+    var rect = el.getBoundingClientRect();
+    var absTop = window.pageYOffset + rect.top;
+    var targetScrollY = Math.max(0, absTop - Math.max(105, (window.innerHeight - Math.min(rect.height, 400)) * 0.36));
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: "smooth"
+    });
+
+    if (window.innerWidth < 760) {
+      parkBottomRight(true);
+    }
+
+    setTimeout(function () {
+      if (!state.open) return;
+      var r = el.getBoundingClientRect();
+      var vw = document.documentElement.clientWidth || window.innerWidth;
+      var vh = document.documentElement.clientHeight || window.innerHeight;
+      var carrierW = carrier.offsetWidth || Math.min(362, vw - 16);
+      var carrierH = Math.max(carrier.offsetHeight || 0, bubbleEl.offsetHeight || 195) + 8;
+
+      var targetY = Math.max(72, Math.min(vh - carrierH - 14, r.top + Math.min(36, r.height * 0.14)));
+      var targetX;
+      var bubbleOnLeft = true;
+
+      if (vw < 760) {
+        targetX = vw - carrierW - 10;
+        targetY = vh - carrierH - 12;
+        bubbleOnLeft = true;
+        lookTargetX = 0;
+      } else if (r.right + carrierW + 20 < vw) {
+        targetX = r.right + 14;
+        bubbleOnLeft = false;
+        lookTargetX = -0.45;
+      } else if (r.left - carrierW - 20 > 0) {
+        targetX = r.left - carrierW - 14;
+        bubbleOnLeft = true;
+        lookTargetX = 0.45;
+      } else {
+        targetX = vw - carrierW - 18;
+        bubbleOnLeft = true;
+        lookTargetX = -0.32;
+      }
+
+      exprPulse = 1.0;
+      setCarrierPos(targetX, targetY, bubbleOnLeft, vw < 760);
+    }, 260);
+  }
+
+  function renderDots(total, activeIdx) {
+    dotsEl.innerHTML = "";
+    for (var i = 0; i < total; i++) {
+      (function (idx) {
+        var d = document.createElement("span");
+        d.className = "maya-dot" + (idx < activeIdx ? " done" : "") + (idx === activeIdx ? " active" : "");
+        d.title = L.stop + (idx + 1);
+        d.addEventListener("click", function () {
+          state.stepIdx = idx;
+          // Noktaya tıklandığında farklı sayfadaysa oraya git (allowPageNav = true)
+          goToCurrentStop(true, true);
+        });
+        dotsEl.appendChild(d);
+      })(i);
+    }
+  }
+
+  function goToCurrentStop(scrollAndGlide, allowPageNav) {
+    var route = getRoute(state.routeId);
+    if (!route || !route.stops.length) return;
+    if (state.stepIdx < 0) state.stepIdx = 0;
+    if (state.stepIdx >= route.stops.length) state.stepIdx = 0;
+
+    var curPage = currentPageRel();
+    var stop = route.stops[state.stepIdx];
+
+    if (stop.page && !samePage(stop.page, curPage)) {
+      if (allowPageNav) {
+        saveState();
+        location.href = resolveHref(stop.page) + (stop.sel && stop.sel.charAt(0) === "#" ? stop.sel.split(" ")[0] : "");
+        return;
+      } else {
+        // Bu rotada mevcut sayfaya (ve varsa #hash hedefine) ait durak var mı?
+        var curHash = (location.hash || "").trim();
+        var foundIdx = -1;
+        if (curHash) {
+          for (var hIdx = 0; hIdx < route.stops.length; hIdx++) {
+            if (samePage(route.stops[hIdx].page, curPage) && route.stops[hIdx].sel === curHash) {
+              foundIdx = hIdx;
+              break;
+            }
+          }
+        }
+        if (foundIdx < 0) {
+          for (var i = 0; i < route.stops.length; i++) {
+            if (samePage(route.stops[i].page, curPage)) {
+              foundIdx = i;
+              break;
+            }
+          }
+        }
+        if (foundIdx >= 0) {
+          state.stepIdx = foundIdx;
+          stop = route.stops[state.stepIdx];
+        } else {
+          // Mevcut sayfaya uygun en iyi rotaya ve durağa otomatik geç (ASLA turu kapatma)
+          var best = findBestRouteAndStepForCurrentPage();
+          state.routeId = best.routeId;
+          state.stepIdx = best.stepIdx;
+          route = getRoute(state.routeId);
+          stop = route.stops[state.stepIdx];
+        }
+      }
+    }
+
+    renderRouteChips();
+    if (!topicsBar.hidden) renderTopicChips();
+    renderDots(route.stops.length, state.stepIdx);
+
+    tagEl.textContent = stop.tag;
+    hEl.textContent = stop.h;
+    pEl.textContent = stop.p;
+
+    saveState();
+
+    if (scrollAndGlide) {
+      playStepAudio(stop.audio);
+      var targetEl = stop.sel ? document.querySelector(stop.sel) : null;
+      glideToElement(targetEl);
+    }
+  }
+
+  function startOrOpenTour(optionalRouteId) {
+    if (optionalRouteId) {
+      state.routeId = optionalRouteId;
+      state.stepIdx = 0;
+    } else {
+      var curRoute = getRoute(state.routeId);
+      var curStop = curRoute.stops[state.stepIdx] || curRoute.stops[0];
+      if (!samePage(curStop.page, currentPageRel())) {
+        var best = findBestRouteAndStepForCurrentPage();
+        state.routeId = best.routeId;
+        state.stepIdx = best.stepIdx;
+      }
+    }
+    state.open = true;
+    miniPill.hidden = true;
+    bubbleEl.hidden = false;
+    reclampCarrier(true);
+    goToCurrentStop(true, !!optionalRouteId);
+    reclampCarrier(true);
+  }
+
+  function minimizeTour() {
+    state.open = false;
+    state.autoPlay = false;
+    stopVoice();
+    if (autoTimer) {
+      clearTimeout(autoTimer);
+      autoTimer = null;
+    }
+    btnAuto.classList.remove("active");
+    btnAuto.textContent = L.auto;
+    bubbleEl.hidden = true;
+    miniPill.hidden = false;
+    clearSpotlight();
+    saveState();
+    parkBottomRight(true);
+  }
+
+  function advanceAutoStep() {
+    var route = getRoute(state.routeId);
+    if (state.stepIdx + 1 < route.stops.length) {
+      state.stepIdx++;
+      goToCurrentStop(true, true);
+      if (!state.voiceEnabled) {
+        autoTimer = setTimeout(advanceAutoStep, 5200);
+      }
+    } else {
+      state.autoPlay = false;
+      btnAuto.classList.remove("active");
+      btnAuto.textContent = L.auto;
+      saveState();
+    }
+  }
+
+  function toggleAutoPlay() {
+    state.autoPlay = !state.autoPlay;
+    btnAuto.classList.toggle("active", state.autoPlay);
+    btnAuto.textContent = state.autoPlay ? L.autoPause : L.auto;
+    if (autoTimer) {
+      clearTimeout(autoTimer);
+      autoTimer = null;
+    }
+    if (state.autoPlay) {
+      if (!isSpeaking) {
+        var route = getRoute(state.routeId);
+        var stop = route.stops[state.stepIdx];
+        if (state.voiceEnabled && stop && stop.audio) {
+          playStepAudio(stop.audio);
+        } else {
+          autoTimer = setTimeout(advanceAutoStep, 4800);
+        }
+      }
+    }
+    saveState();
+  }
+
+  function toggleTopicsMenu() {
+    state.showTopics = !state.showTopics;
+    if (state.showTopics) {
+      state.showRoutes = false;
+      routesBar.hidden = true;
+      btnRoutes.classList.remove("active");
+      renderTopicChips("");
+      setTimeout(function () {
+        var inp = document.getElementById("maya-topic-search");
+        if (inp) inp.focus();
+        reclampCarrier(true);
+      }, 40);
+    }
+    topicsBar.hidden = !state.showTopics;
+    btnTopics.classList.toggle("active", state.showTopics);
+    reclampCarrier(true);
+  }
+
+  btnTopics.addEventListener("click", toggleTopicsMenu);
+  btnAsk.addEventListener("click", toggleTopicsMenu);
+
+  btnRoutes.addEventListener("click", function () {
+    state.showRoutes = !state.showRoutes;
+    if (state.showRoutes) {
+      state.showTopics = false;
+      topicsBar.hidden = true;
+      btnTopics.classList.remove("active");
+      renderRouteChips();
+    }
+    routesBar.hidden = !state.showRoutes;
+    btnRoutes.classList.toggle("active", state.showRoutes);
+    reclampCarrier(true);
+  });
+
+  btnAuto.addEventListener("click", toggleAutoPlay);
+  btnClose.addEventListener("click", minimizeTour);
+
+  btnPrev.addEventListener("click", function () {
+    var route = getRoute(state.routeId);
+    state.stepIdx = (state.stepIdx - 1 + route.stops.length) % route.stops.length;
+    goToCurrentStop(true, true);
+  });
+
+  btnNext.addEventListener("click", function () {
+    var route = getRoute(state.routeId);
+    state.stepIdx = (state.stepIdx + 1) % route.stops.length;
+    goToCurrentStop(true, true);
+  });
+
+  window.addEventListener("resize", function () {
+    if (!state.open) {
+      parkBottomRight();
+    } else {
+      setCarrierPos(state.posX, state.posY, carrier.classList.contains("bubble-left"));
+    }
+  });
+
+  // 5. Birleşik Fotogerçekçi Portre + 6 Kare Viseme Kanvası + Blender 5.1.0 Birleşik 3B Rölyef Ağı
+  // ("Avatar ve resim farklı gibi" sorununu kökten çözer: ayrı yüz maskesi yoktur; portreyle %100 aynı dokuyu taşır)
+  var spriteCanvas = document.getElementById("maya-sprite-canvas");
+  var sCtx = spriteCanvas.getContext("2d");
+  var spriteImg = new Image();
+  var spriteLoaded = false;
+  spriteImg.onload = function () {
+    spriteLoaded = true;
+  };
+  spriteImg.src = assetPrefix + "ornek/maya/maya-sprite.jpg?v=1016h";
+
+  var threeReady = false;
+  var threeMesh = null;
+  var threeRenderer = null;
+  var threeScene = null;
+  var threeCamera = null;
+  var canvasTex = null;
+
+  function initThreeAvatar() {
+    try {
+      var testCv = document.createElement("canvas");
+      var gl = testCv.getContext("webgl2") || testCv.getContext("webgl");
+      if (!gl) return;
+      var dbg = gl.getExtension("WEBGL_debug_renderer_info");
+      if (dbg && /SwiftShader|Disabled|0xffff/i.test(String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)))) return;
+    } catch (e) { return; }
+    var scriptMap = document.createElement("script");
+    scriptMap.type = "importmap";
+    scriptMap.textContent = JSON.stringify({
+      imports: {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    });
+    document.head.appendChild(scriptMap);
+
+    var modScript = document.createElement("script");
+    modScript.type = "module";
+    modScript.textContent = [
+      'import * as THREE from "three";',
+      'import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";',
+      'window.__initMayaThree && window.__initMayaThree(THREE, GLTFLoader);'
+    ].join("\n");
+
+    window.__initMayaThree = function (THREE, GLTFLoader) {
+      try {
+        var w = 152, h = 152;
+        var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(w, h);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(26, 1, 0.1, 100);
+        camera.position.set(0, 0.0, 4.15);
+
+        scene.add(new THREE.AmbientLight(0xffffff, 1.55));
+        var keyLight = new THREE.DirectionalLight(0xfffaf0, 0.45);
+        keyLight.position.set(1.0, 1.2, 2.5);
+        scene.add(keyLight);
+
+        canvasTex = new THREE.CanvasTexture(spriteCanvas);
+        canvasTex.colorSpace = THREE.SRGBColorSpace;
+        canvasTex.flipY = false;
+
+        var loader = new GLTFLoader();
+        loader.load(assetPrefix + "ornek/maya/maya-3d.glb?v=1016h", function (gltf) {
+          var root = gltf.scene;
+          scene.add(root);
+          root.traverse(function (node) {
+            if (node.isMesh) {
+              threeMesh = node;
+              node.material = new THREE.MeshBasicMaterial({
+                map: canvasTex,
+                morphTargets: true
+              });
+            }
+          });
+          renderer.domElement.style.zIndex = "2";
+          orbClip.appendChild(renderer.domElement);
+          spriteCanvas.style.opacity = "0";
+          threeRenderer = renderer;
+          threeScene = scene;
+          threeCamera = camera;
+          threeReady = true;
+        });
+      } catch (e) {}
+    };
+
+    document.head.appendChild(modScript);
+  }
+
+  var mouseNormX = 0;
+  var mouseNormY = 0;
+  window.addEventListener("pointermove", function (ev) {
+    mouseNormX = ((ev.clientX / Math.max(1, window.innerWidth)) - 0.5) * 2;
+    mouseNormY = ((ev.clientY / Math.max(1, window.innerHeight)) - 0.5) * 2;
+  }, { passive: true });
+
+  var blinkNextAt = performance.now() + 2400;
+  var blinkEndAt = 0;
+
+  function sampleVoiceLevel(now) {
+    if (!isSpeaking) {
+      speechLevel *= 0.82;
+      return speechLevel;
+    }
+    if (analyser && freqData) {
+      analyser.getByteFrequencyData(freqData);
+      var sum = 0;
+      for (var i = 2; i < 24; i++) {
+        sum += freqData[i];
+      }
+      var avg = sum / (22 * 255);
+      var target = Math.min(1.0, avg * 2.4);
+      speechLevel = speechLevel * 0.55 + target * 0.45;
+      return speechLevel;
+    }
+    speechLevel = 0.35 + 0.35 * Math.abs(Math.sin(now * 0.014)) * Math.cos(now * 0.009);
+    return speechLevel;
+  }
+
+  function animateAvatar(now) {
+    requestAnimationFrame(animateAvatar);
+    var t = now * 0.001;
+    var vLevel = sampleVoiceLevel(now);
+
+    var blinkVal = 0;
+    if (now >= blinkNextAt) {
+      blinkEndAt = now + 155;
+      blinkNextAt = now + 2800 + Math.random() * 2400;
+    }
+    if (now < blinkEndAt) {
+      var p = 1 - (blinkEndAt - now) / 155;
+      blinkVal = Math.sin(p * Math.PI);
+    }
+
+    if (exprPulse > 0.01) {
+      exprPulse *= 0.95;
+    } else {
+      exprPulse = 0;
+    }
+
+    // 1. Fotogerçekçi 6 Kare Sprite Kanvasını (maya-sprite.jpg) Ses ve Göz Kırpmaya Göre Çiz
+    if (spriteLoaded) {
+      var frameW = spriteImg.width / 6;
+      var frameH = spriteImg.height;
+      sCtx.clearRect(0, 0, 256, 256);
+
+      // Taban kare: Nötr Portre (Kare 0 — otonomi.html'deki portre ile %100 aynı)
+      sCtx.globalAlpha = 1.0;
+      sCtx.drawImage(spriteImg, 0, 0, frameW, frameH, 0, 0, 256, 256);
+
+      if (isSpeaking && vLevel > 0.06) {
+        // Konuşurken ses şiddetine göre viseme karelerini (Kare 2: hafif açık, Kare 4: orta açık, Kare 3: tam açık) yumuşak harmanla
+        var talkFrame = vLevel > 0.46 ? 3 : (vLevel > 0.22 ? 4 : 2);
+        sCtx.globalAlpha = Math.min(0.95, 0.35 + vLevel * 0.85);
+        sCtx.drawImage(spriteImg, talkFrame * frameW, 0, frameW, frameH, 0, 0, 256, 256);
+      } else if (exprPulse > 0.22) {
+        // Yeni durağa vardığında sıcak tebessüm (Kare 5)
+        sCtx.globalAlpha = Math.min(0.85, exprPulse * 0.9);
+        sCtx.drawImage(spriteImg, 5 * frameW, 0, frameW, frameH, 0, 0, 256, 256);
+      }
+
+      if (blinkVal > 0.25) {
+        // Göz kırpma (Kare 1)
+        sCtx.globalAlpha = Math.min(1.0, blinkVal);
+        sCtx.drawImage(spriteImg, 1 * frameW, 0, frameW, frameH, 0, 0, 256, 256);
+      }
+      sCtx.globalAlpha = 1.0;
+
+      if (canvasTex) {
+        canvasTex.needsUpdate = true;
+      }
+    }
+
+    // 2. Birleşik 3B Blender Ağı (MayaUnifiedHead) üzerinde kenarları sabit tutarak 3B Baş Dönüşü ve Çene Hareketi
+    if (threeReady && threeMesh && threeRenderer) {
+      var dict = threeMesh.morphTargetDictionary || {};
+      var infl = threeMesh.morphTargetInfluences;
+      if (infl) {
+        if (dict.Blink !== undefined) infl[dict.Blink] = blinkVal * 0.5;
+        if (dict.JawOpen !== undefined) infl[dict.JawOpen] = isSpeaking ? (vLevel * 0.65) : (0.06 * exprPulse);
+        if (dict.MouthSmile !== undefined) infl[dict.MouthSmile] = 0.20 + 0.45 * exprPulse + 0.08 * Math.sin(t * 1.5);
+        if (dict.BrowRaise !== undefined) infl[dict.BrowRaise] = (isSpeaking ? vLevel * 0.35 : 0) + 0.30 * exprPulse;
+        if (dict.HeadTurn !== undefined) {
+          var targetTurn = (lookTargetX * 0.55) + (mouseNormX * 0.35) + Math.sin(t * 0.85) * 0.15;
+          infl[dict.HeadTurn] += (targetTurn - infl[dict.HeadTurn]) * 0.08;
+        }
+        if (dict.HeadNod !== undefined) {
+          var targetNod = (lookTargetY * 0.35) + (mouseNormY * 0.25) + Math.cos(t * 1.3) * 0.12;
+          infl[dict.HeadNod] += (targetNod - infl[dict.HeadNod]) * 0.08;
+        }
+      }
+      threeRenderer.render(threeScene, threeCamera);
+    }
+  }
+
+  parkBottomRight();
+  initThreeAvatar();
+  requestAnimationFrame(animateAvatar);
+
+  var saved = loadState();
+  if (saved) {
+    if (typeof saved.voiceEnabled === "boolean") {
+      state.voiceEnabled = saved.voiceEnabled;
+      btnVoice.classList.toggle("active", state.voiceEnabled);
+      btnVoice.textContent = state.voiceEnabled ? "🔊" : "🔇";
+    }
+    if (saved.open) {
+      state.routeId = saved.routeId || (articleRoute ? "article_local" : "full");
+      state.stepIdx = saved.stepIdx || 0;
+      state.autoPlay = !!saved.autoPlay;
+      state.open = true;
+      miniPill.hidden = true;
+      bubbleEl.hidden = false;
+      goToCurrentStop(false, false);
+      reclampCarrier(true);
+      setTimeout(function () {
+        if (!state.open) return;
+        if (saved.quickTopic) {
+          var qt = saved.quickTopic;
+          saveState();
+          renderRouteChips();
+          jumpToQuickTopic(qt);
+        } else {
+          goToCurrentStop(true, false);
+          if (state.autoPlay) {
+            state.autoPlay = false;
+            toggleAutoPlay();
+          }
+        }
+        reclampCarrier(true);
+      }, 120);
+    }
+  }
+
+  window.AtlasMaya = {
+    startTour: function (routeId) {
+      startOrOpenTour(routeId || "full");
+    },
+    playBenchmarkAudio: function (audioFile, titleText, summaryText) {
+      if (!audioFile) return;
+      state.voiceEnabled = true;
+      btnVoice.classList.add("active");
+      btnVoice.textContent = "🔊";
+      if (state.open && titleText && summaryText) {
+        tagEl.textContent = L.proof;
+        hEl.textContent = titleText;
+        pEl.textContent = summaryText;
+      }
+      currentAudioFile = audioFile;
+      stopVoice();
+      try {
+        ensureAudioGraph();
+        if (audioCtx && audioCtx.state === "suspended") {
+          audioCtx.resume().catch(function () {});
+        }
+        audioEl.src = assetPrefix + "ornek/maya/audio/" + audioFile;
+        var pr = audioEl.play();
+        if (pr && typeof pr.then === "function") {
+          pr.then(function () {
+            isSpeaking = true;
+            orbEl.classList.add("is-speaking");
+          }).catch(function () {});
+        }
+      } catch (e) {}
+    },
+    minimize: minimizeTour
+  };
+})();

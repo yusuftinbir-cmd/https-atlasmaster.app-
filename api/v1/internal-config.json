@@ -1,0 +1,18 @@
+{
+  "status": "production",
+  "cluster_node": "tr-atlastr1-deception-honeypot",
+  "canary_watermark": "ATLAS-DECEPTION-TRAP-1024-TCK243",
+  "database": {
+    "driver": "pgsql",
+    "host": "10.240.18.92",
+    "port": 5432,
+    "database": "atlas_prod_vault",
+    "username": "atlas_vault_ro",
+    "password_hash": "vlt_9f8a7c6b5d4e3f2a1b0c_canary_trap"
+  },
+  "api_keys": {
+    "openai": "sk-proj-TRAP1024CANARY9x8v7b6n5m4k3j2h1g0f9d8s7a6q5w4e",
+    "anthropic": "sk-ant-api03-TRAP1024CANARY-aa99bb88cc77dd66ee55ff44",
+    "canary_callback": "https://analiz.atlasmaster.app/tuzak-kapi?token=CANARY-STATIC-1024"
+  }
+}

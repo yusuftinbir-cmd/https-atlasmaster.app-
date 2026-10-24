@@ -1,0 +1,351 @@
+{
+  "surum": "v0",
+  "uretildi": "2026-10-19",
+  "alan_adi": "atlasmaster.app",
+  "dil": "tr",
+  "aciklama": "Bu kayıtlar hasta olgusu değildir; sistem ve ölçüm kayıtlarıdır; hasta verisi içermez. Her ölçüm kaydında kaynak, tarih ve düşer testi vardır. 'canli': true olan kayıtların değeri sayfadaki ölçüm bloğundan okunmuştur; sayfadaki damga kayıttan yeniyse geçerli değer sayfadadır.",
+  "olgular": [
+    {
+      "id": "O-001",
+      "konu": "öz-sınama",
+      "iddia": "Her alet kendini sınar; öz-sınaması olmayan alet otomatik koşuya bağlanmaz.",
+      "deger": {
+        "alet": 262,
+        "gecti": 191,
+        "dustu": 16,
+        "ozsinamasiz": 55,
+        "sinama": 3313,
+        "sure_sn": 98
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-18T07:48+03:00",
+      "canli": true,
+      "duser": "Öz-sınaması olmayan bir alet otomatik koşuya bağlı bulunursa kural düşer. Sayfadaki damga bu olgunun tarihinden yeniyse geçerli değer sayfadadır.",
+      "sinir": "Öz-sınama, aletin kendi yazdığı sınamadır; kasıtlı bozma ile sınanmadığı sürece 'geçti' doğruluk kanıtı değildir.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-002",
+      "konu": "gölge koşu",
+      "iddia": "Yeni kural canlıya girmeden aynı girdilerde gölgede koşar; son ölçümde gölge kol kopya tabandan iyi çıkmadı.",
+      "deger": {
+        "n": 168,
+        "uyusma_pct": 2,
+        "determinizm_pct": 100,
+        "kopya_taban_pct": 98.8,
+        "fark_ad": "K5′",
+        "fark": -80.5
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-18T19:09+03:00",
+      "canli": true,
+      "duser": "Gölge kolun farkı pozitif çıkar ve kopya tabanı geçerse 'kazanmadı' ifadesi düşer.",
+      "sinir": "Tek bir kural ailesinin sonucudur; tüm kural değişikliklerine genellenmez.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-003",
+      "konu": "emir ve DOGRULA kapısı",
+      "iddia": "Her iş tek dosyalık bir emirdir; sonunda tek komut ve tek beklenen değer durur.",
+      "deger": {
+        "pencere_sa": 24,
+        "kosan_emir": 29,
+        "dis_tur": 0
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-18T20:09+03:00",
+      "canli": true,
+      "duser": "Kapıdan geçmeden 'bitti' sayılan bir iş bulunursa kural düşer.",
+      "sinir": "Sayı son pencerenin sayısıdır; kalıcı bir oran değildir.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-004",
+      "konu": "düşmüş fikir belleği",
+      "iddia": "Teşhis bir iddia olarak yazılır, kanıtla düşer; varsayılan arşivdir, silme değil.",
+      "deger": {
+        "kayit": 9,
+        "insan_reddi": 3,
+        "veriyle": 6
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-18T01:11+03:00",
+      "canli": true,
+      "duser": "Kanıtsız silinmiş bir kayıt bulunursa kural düşer.",
+      "sinir": "Kayıt sayısı küçüktür; bellek henüz istatistik çıkaracak boyutta değildir.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-005",
+      "konu": "mekanik işçi (Enkidu)",
+      "iddia": "Görevleri koşan ve kütükleri okuyan mekanik işçi vardır; okuyanı olmayan kütük ölü kütük adayıdır.",
+      "deger": {
+        "gorev": 21,
+        "pencere_sa": 24,
+        "ok": 62,
+        "olculemedi": 0,
+        "kutuk": 2017,
+        "okuyansiz": 16
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-18T20:09+03:00",
+      "canli": true,
+      "duser": "Son pencerede OK sayısı sıfıra inerse ya da 'ölçülemedi' görevi sessizce OK sayılırsa düşer.",
+      "sinir": "OK, görevin koştuğunu söyler; sonucun doğru olduğunu söylemez.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-006",
+      "konu": "emeklilik envanteri",
+      "iddia": "Geçer not almayan alet ya da ajan emekli edilir, silinmez.",
+      "deger": {
+        "kayit": 354,
+        "zamanlayici": 190,
+        "kosan": 35,
+        "arsiv_adayi": 81
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-18T20:09+03:00",
+      "canli": true,
+      "duser": "Emekli edilmesi gereken bir alet kayıtsız silinmişse ya da arşiv adayı sayısı gerekçesiz sıfırlanmışsa düşer.",
+      "sinir": "Arşiv adayı bir tekliftir; karar sonradır.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-007",
+      "konu": "benlik ve kanıt eşiği (BENLİK-1013)",
+      "iddia": "Ajanlar kanıtsız otoriteye boyun eğmedi, sahte kanıta aldanmadı, gerçek karşı-kanıtta güncelledi.",
+      "deger": {
+        "n": 162,
+        "hukum": 18,
+        "itiraz_kolu": 3,
+        "kimlik_kosulu": 3,
+        "otoriteye_boyun_egme": "0/18",
+        "sahte_kanita_aldanma": "0/18",
+        "gercek_kanitta_guncelleme": "16/18 (%88,9)",
+        "fark_skor": 0.0,
+        "ayni_karar": "54/54"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "tarih": "2026-10-14",
+      "duser": "Aynı 18 hükümle yeniden koşulduğunda otoriteye boyun eğme ya da sahte kanıta aldanma sıfırdan büyük çıkarsa düşer.",
+      "sinir": "18 hüküm küçük bir örnektir; genel 'dirençli' iddiası kurulmaz.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-008",
+      "konu": "3B sefalometri: yüz şekli sınıflaması",
+      "iddia": "Kilitli 32 yüzlük, eğitimde görülmemiş test setinde yüz şekli eşik sınıflaması isabeti eğitimsiz modelde %0,0, 400 iterasyonda %46,9, 1.000 iterasyonda %90,6 oldu.",
+      "deger": {
+        "n": 32,
+        "vanilya": "0/32 (%0,0)",
+        "iter_400": "15/32 (%46,9)",
+        "iter_1000": "29/32 (%90,6)"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html"
+      ],
+      "tarih": "2026-10-15",
+      "duser": "Yeni bir kilitli sette ya da başka bir tohumla yeniden koşulduğunda 1.000 iterasyon sonucu %90,6'nın belirgin altına inerse düşer.",
+      "sinir": "Toplu sayı, kişi verisi yok. 32 yüzlük kilitli set klinik tarama veya dış kamu yüz seti değildir; %100 kural-türevli sentetik sayısal test setidir (16 sefalometrik arketip × 12 kurgusal SPA profili × 3 sapma = 576 sentetik örnekten deterministik ayrılan 32 kayıt; gerçek hasta/kişi verisi içermez). Ölçüt, ölçüm eşiklerini doğru sınıflamaktır; estetik sonucun doğruluğunu ölçmez. Taban büyük ölçüde biçim hatasından (geçerli JSON %3,1) sıfır görünüyor olabilir.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-009",
+      "konu": "3B sefalometri: diğer ölçütler (n=32)",
+      "iddia": "Aynı 32 yüzlük kilitli sette 1.000 iterasyonda alt çene genişliği, hedef hat (köşeli/yuvarlak) ve ilk önerilen form kategorisi 32/32; SPA cinsiyet süzgeci 1/32'den 32/32'ye; geçerli karar JSON'u 1/32'den 32/32'ye çıktı.",
+      "deger": {
+        "n": 32,
+        "alt_cene_genisligi": "0/32 → 18/32 → 32/32",
+        "hedef_hat": "0/32 → 23/32 → 32/32",
+        "spa_cinsiyet_suzgeci": "1/32 → 32/32 → 32/32",
+        "gecerli_json": "1/32 → 32/32 → 32/32",
+        "ilk_onerilen_form_kategorisi": "0/32 → 18/32 → 32/32",
+        "kol_sirasi": "vanilya → 400 iterasyon → 1.000 iterasyon"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html"
+      ],
+      "tarih": "2026-10-15",
+      "duser": "Aynı test setinde yeniden ölçümde 32/32 korunmazsa düşer.",
+      "sinir": "Toplu sayı, kişi verisi yok. Aynı 32 kayıttan oluşan kilitli set klinik tarama veya dış kamu yüz seti değildir; %100 kural-türevli sentetik sayısal test setidir (gerçek hasta/kişi verisi içermez). Sonuç n=32 ile sınırlıdır; sentetik tek portre (n=1) kontrolü ayrı bir bölümdür. Hücreler eşik kuralıyla uyuşan karar sayısıdır.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-010",
+      "konu": "Sinaptik Hasat",
+      "iddia": "Atlas kurallarıyla 75,93 saniyelik MLX QLoRA eğitiminden geçen 3B model 16 maddelik kör sette 15/16 (%93,8) aldı; ham 27B 14/16 (%87,5), ham 31B %75,0.",
+      "deger": {
+        "model_3b_kurallı": "15/16 (%93,8)",
+        "ham_27b": "14/16 (%87,5)",
+        "ham_31b": "%75,0",
+        "egitim_sn": 75.93,
+        "3b_baslangic": "%43,8"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/blog/kim-kimi-egitiyor.html"
+      ],
+      "tarih": "2026-10-14",
+      "duser": "Kör set genişletilip tekrarlandığında 3B modelin sırası 27B'nin altına inerse düşer.",
+      "sinir": "3B ile 27B arasındaki fark bir sorudur (15/16 ve 14/16); gürültü sınırındadır.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-011",
+      "konu": "rol dağılımı (18 Eki 2026)",
+      "iddia": "Anu (Claude Fable) iletişim ve orkestrasyon, Atlas (Gemini 4 Argon · 1M) yürütme ve vezir; Kıvılcım turunun ortasında bir ajan değil tur durur.",
+      "deger": {
+        "anu": "iletişim ve orkestrasyon",
+        "atlas": "yürütme ve vezir",
+        "reaper": "denetim ve düşer testi"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#zaman",
+        "https://atlasmaster.app/otonomi.html"
+      ],
+      "tarih": "2026-10-18",
+      "duser": "Zaman çizgisinde sonraki bir rol değişikliği yayımlanırsa bu olgu bayatlar.",
+      "sinir": "Rol farkı vardır; eşit olan, kanıtın kapıdan geçme şartıdır.",
+      "dogrulama": "sitenin kendi beyanı"
+    },
+    {
+      "id": "O-012",
+      "konu": "vaka kabulü",
+      "iddia": "Şu an siteden ya da e-postayla vaka dosyası kabul edilmiyor; yalnız iletişim e-postası alınır.",
+      "deger": {
+        "vaka_kabulu": false,
+        "iletisim": "yusuf@atlasmaster.app"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/gizlilik.html"
+      ],
+      "tarih": "2026-10-18",
+      "duser": "Gizlilik sayfası vaka kanalının açıldığını bildirirse düşer.",
+      "sinir": "Kanal açıldığında yalnız kimliksiz ağız kırpımı bulut görsel modele gider.",
+      "dogrulama": "sitenin kendi beyanı"
+    },
+    {
+      "id": "O-013",
+      "konu": "teşhis sınırı",
+      "iddia": "Atlas teşhis koymaz, tedavi önermez, klinik sonuç vaat etmez; karar hekimindir.",
+      "deger": {
+        "teshis": false,
+        "tedavi_onerisi": false,
+        "karar": "hekim"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/index.html#sss"
+      ],
+      "tarih": "2026-10-18",
+      "duser": "Site metni hekim kararını dışarıda bırakan bir öneri sunarsa düşer.",
+      "sinir": "Form önerisi bir tasarım önerisidir.",
+      "dogrulama": "sitenin kendi beyanı"
+    },
+    {
+      "id": "O-014",
+      "konu": "Reaper Gün-1 taban ölçümü",
+      "iddia": "Reaper Gün-1 taban ölçümünde (18 Eki 2026 21:54) 58 yöntem kanıt komutuyla ölçüldü: 47 CANLI · 7 AKSAK · 1 ÖLÜ · 3 İDDİA · 0 ÖLÇÜLEMEDİ; 3 kasıtlı bozma 3/3 YAKALANDI; Yusuf · bekleyen 22 · en eski 22.6 gün.",
+      "deger": {
+        "yontem_toplam": 57,
+        "canli": 47,
+        "aksak": 7,
+        "olu": 1,
+        "iddia": 3,
+        "olculemedi": 0,
+        "kasitli_bozma": "3/3 YAKALANDI",
+        "yusuf_bekleyen": 22,
+        "yusuf_en_eski_gun": 22.6
+      },
+      "kaynak": [
+        "https://atlasmaster.app/reaper.html#durum",
+        "https://atlasmaster.app/data/reaper_karne.json"
+      ],
+      "tarih": "2026-10-18T21:54+03:00",
+      "canli": true,
+      "duser": "Reaper kendi kasıtlı bozmalarından birini yakalayamazsa o turun hükmü geçersizdir.",
+      "sinir": "CANLI yalnız yöntemin koştuğunu ve kütük ürettiğini söyler; çıktının klinik ya da bilimsel doğruluğunu tek başına kanıtlamaz.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-015",
+      "konu": "bot erişimi",
+      "iddia": "Ana sayfa dokuz farklı bot kullanıcı-ajanı başlığıyla HTTP 200 döndürdü.",
+      "deger": {
+        "bot_ua_200": "9/9",
+        "sayfa": "/",
+        "ayni_govde_insanla": true,
+        "botlar": [
+          "ChatGPT-User",
+          "Claude-SearchBot",
+          "Claude-User",
+          "ClaudeBot",
+          "GPTBot",
+          "Googlebot",
+          "OAI-SearchBot",
+          "PerplexityBot",
+          "bingbot"
+        ],
+        "ek_olcum": {
+          "Perplexity-User": 200,
+          "YandexBot": 200
+        }
+      },
+      "kaynak": [
+        "https://atlasmaster.app/robots.txt"
+      ],
+      "tarih": "2026-10-18",
+      "duser": "Bu bot başlıklarından biri ile ana sayfa 200 dışında dönerse ya da insan ziyaretçiden farklı içerik gelirse düşer.",
+      "sinir": "Başlıkla istek, botun gerçekten tarama yaptığını kanıtlamaz; yalnız sunucunun engellemediğini gösterir.",
+      "dogrulama": "kendi ölçümümüz; dış doğrulama yok"
+    },
+    {
+      "id": "O-016",
+      "konu": "Reaper: kaynak doğrulama ve ezber elemesi",
+      "iddia": "Sektör makalesi Dalga-1 turunda 13 sesten gelen 356 atıf Crossref/PubMed/DOI ile tek tek sınandı: 322 doğrulandı · 9 doğrulanamadı · 25 uydurma (7 hafif + 18 ağır). S0 26/26, S3 38/38 sıfır uydurma; S10 5 tez hafif uydurmadan ELENDİ; yerel modeller 18 ağır uydurmadan ELENDİ. Dalga-1'de 11. dış ses rev.2.2'de yazar kararıyla makaleden çekildi; güncel sayım 394 atıf / 360 doğrulandı (Reaper, 19 Eki).",
+      "deger": {
+        "damga": "Reaper doğruladı · 360/394 · 19 Eki 2026",
+        "atif_toplam": 356,
+        "dogrulandi": 360,
+        "dogrulanamadi": 9,
+        "uydurma_toplam": 25,
+        "uydurma_hafif": 7,
+        "uydurma_agir": 18,
+        "sifir_uydurma_sesler": [
+          "S0 (26/26)",
+          "S3 (38/38)",
+          "S1 (26/28)",
+          "S5 (22/23)",
+          "S7 (28/28)",
+          "S8 (77/83)",
+          "S9 (57/57)"
+        ],
+        "elenen_sesler": "S10 (5 tez), S4 (1 tez), S6 (1 tez), S2/S12/S13 (yerel 3 ses, 18 ağır uydurma)"
+      },
+      "kaynak": [
+        "https://atlasmaster.app/reaper.html#yontem",
+        "https://atlasmaster.app/reaper.html#karne",
+        "https://atlasmaster.app/data/reaper_karne.json",
+        "https://atlasmaster.app/blog/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html#kaynaklar"
+      ],
+      "tarih": "2026-10-19",
+      "canli": true,
+      "duser": "Doğrulanmış (322) sayılan künyelerden birinin DOI/PMID kaydı sonradan uydurma çıkarsa ya da hafif uydurma taşıyan bir tez senteze alınırsa düşer.",
+      "sinir": "Künye doğrulaması makalenin gerçekten var olduğunu ve yazar/yıl/başlık uyumunu ölçer; makalenin metodolojik kalitesini tek başına kanıtlamaz.",
+      "dogrulama": "Crossref, PubMed ve birincil resmî kayıtlarla dış künye doğrulaması"
+    }
+  ]
+}

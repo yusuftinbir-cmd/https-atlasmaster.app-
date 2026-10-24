@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yüzden Dişe Gülüş Tasarımı ve LoRA/DoRA Deneyi · AtlasMaster</title>
+<meta name="description" content="Sefalometrik gülüş tasarımı ve LoRA/DoRA deneyi: 478 noktalı 3B yüz ağından ZY-ZY ve Go-Go oranı, n=32 kilitli sette %0'dan %90,6'ya yüz şekli isabeti, 441 diş formu (476/477 render) ve v6 DoRA (800 adım, 9,5 dk, %35 boş çıkış, 43,2–46,3 sn gecikme) dersi.">
+<meta name="author" content="Yusuf Aziz">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Yüzden Dişe Sefalometrik Gülüş Tasarımı ve LoRA/DoRA Deneyi: 3B Yüz Ölçümü (n=32) ile v6 Eğitim Sınırı · AtlasMaster">
+<meta property="og:description" content="Sefalometrik gülüş tasarımı ve LoRA/DoRA deneyi: 478 noktalı 3B sefalometri, n=32 kilitli sette %0 → %90,6 yüz şekli isabeti, 476/477 STL/PLY render hattı ve başarısız v6 DoRA eğitiminden (800 adım, 9,5 dk, %35 boş çıkış, 43 sn gecikme) çıkarılan ölçüm dersi.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:url" content="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">
+<meta property="og:image" content="https://atlasmaster.app/blog/og-yuzden-dise-lora.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Yüzden Dişe Sefalometrik Gülüş Tasarımı ve LoRA/DoRA Deneyi: 3B Yüz Ölçümü (n=32) ile v6 Eğitim Sınırı · AtlasMaster">
+<meta name="twitter:description" content="Sefalometrik gülüş tasarımı ve LoRA/DoRA deneyi: n=32 kilitli sette %90,6 yüz şekli isabeti, %100 hedef hat ve başarısız v6 DoRA (800 adım, %35 boş çıkış, 43 sn gecikme) karşılaştırması.">
+<meta name="twitter:image" content="https://atlasmaster.app/blog/og-yuzden-dise-lora.png">
+<link rel="canonical" href="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f3efe6'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%230f172a' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231d4ed8' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="../style.css?v=8b780bf8">
+<style>.legal .wrap{max-width:52rem}.legal ul{margin:0 0 1rem;padding-inline-start:1.2rem;line-height:1.65}.tbl{width:100%;border-collapse:collapse;font-size:.9rem;margin:.5rem 0 1rem}.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}[dir=rtl] .tbl th,[dir=rtl] .tbl td{text-align:right}.tbl th{font-weight:600;color:var(--mut)}.tbl td:first-child{white-space:nowrap}.mono{font-family:var(--mono)}.dim{color:var(--mut)}.qa{border-top:1px solid var(--line);padding:1rem 0}.qa h2{margin:0 0 .4rem}.qa dt{font-weight:600;margin-top:.6rem}.qa dd{margin:.15rem 0 0}.note{border-inline-start:3px solid var(--line2);padding:.4rem .9rem;margin:1rem 0;color:var(--mut)}.reaper-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.8rem;padding:.25rem .65rem;border:1px solid var(--line2);border-radius:4px;text-decoration:none;color:inherit;margin-bottom:.75rem}</style>
+<script src="../script.js?v=2b29d271"></script>
+<script type="application/ld+json" id="atlas-national-ld">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yusufaziz.com.tr/#person",
+      "name": "Yusuf Aziz",
+      "jobTitle": "Dental CAD/CAM Uzmanı",
+      "url": "https://yusufaziz.com.tr/",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": [
+        "TechArticle",
+        "Article"
+      ],
+      "@id": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html#article",
+      "headline": "Yüzden dişe sefalometrik gülüş tasarımı ve LoRA/DoRA deneyi: 3B yüz ölçümü (n = 32) ile v6 eğitim sınırı",
+      "description": "Sefalometrik gülüş tasarımı ve LoRA/DoRA deneyi: 478 noktalı 3B yüz ağından ZY-ZY ve Go-Go oranı, n=32 kilitli sette %0'dan %90,6'ya yüz şekli isabeti, 441 diş formu (476/477 render) ve v6 DoRA (800 adım, 9,5 dk, %35 boş çıkış, 43,2–46,3 sn gecikme) dersi.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-19T12:50:19+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "url": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html",
+      "mainEntityOfPage": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html",
+      "image": "https://atlasmaster.app/blog/og-yuzden-dise-lora.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "about": [
+        "Sefalometrik gülüş tasarımı",
+        "3B sefalometri ve yüz-diş morfolojisi",
+        "QLoRA ve DoRA ağırlık eğitimi sınırları",
+        "441 diş formu ve 476/477 STL/PLY render hattı"
+      ],
+      "citation": [
+        "https://arxiv.org/abs/1907.06724",
+        "https://arxiv.org/abs/2106.09685",
+        "https://arxiv.org/abs/2402.09353",
+        "https://arxiv.org/abs/2112.10752"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Sefalometrik gülüş tasarımında yüz-diş uyumu nasıl ölçülür?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hazır şablon seçimi yerine 478 noktalı 3B yüz ağından bizigomatik genişlik (ZY-ZY, #234–#454) ve bigonial çene köşesi genişliği (Go-Go, #172–#397) piksel cinsinden hesaplanır. Go-Go / ZY-ZY oranı ≥ 0,82 olduğunda geniş/kare, < 0,74 olduğunda dar/üçgen, ara değerlerde ovoid eşiği uygulanır ve 441 diş formu kütüphanesindeki 476/477 doğrulanmış 3B kabukla eşleştirilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "n = 32 kilitli test setinde QLoRA eğitimi hangi sayısal sonucu verdi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eğitimde görülmemiş n = 32 yüzlük kilitli test setinde eğitimsiz Qwen2.5-3B-Instruct-4bit modeli yüz şekli eşiğinde %0,0 (0/32) ve geçerli JSON çıktısında %3,1 (1/32) üretirken, 400 iterasyon QLoRA %46,9'a (15/32), 1.000 iterasyon QLoRA ise %90,6 (29/32) yüz şekli isabetine ve %100,0 (32/32) alt çene genişliği, hedef hat ve geçerli JSON kararına ulaştı."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "v6 DoRA (800 adım) açık uçlu metin ve görsel üslup deneyleri neden başarısız sayıldı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "gemma-4-E4B-it-qat-4bit üzerinde 800 adımda (9,5 dk, 15,93 GB RAM, 128 MB adaptör) doğrulama kaybı 3,599'dan 0,680'e düşse de DoRA ile LoRA (0,693) arasında anlamlı fark oluşmadı; agir_40 testinde 40 yanıtın tamamı karar ağacından geldi (doğrudan LoRA kullanımı 0/40, çıplak kapsama 0,182), kor_40 testinde K3 süzgeci sonrası %35 (14/40) boş çıkış ve soru başı 43,2–46,3 sn gecikme ölçüldü."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ağırlık eğitimi (LoRA/DoRA) gülüş tasarımında ne için kullanılır, ne için kullanılmaz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ağırlık eğitimi sanatsal üslup, foto-gerçekçi piksel üretimi veya serbest metin sohbeti için kullanılmaz; üretken görüntü modelleri ekartör karesinde diş sınırlarını bozarken (v4'te 11/24 düşen test), açık uçlu metin LoRA'sı yüksek gecikme ve boş çıkış üretir. LoRA yalnızca ölçülmüş sefalometrik sayıları dar ve denetlenebilir bir JSON karar şemasına bağlamak için kullanılır."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Bölümler">
+      <a href="../index.html">Ana sayfa</a>
+      <a href="../blog.html" aria-current="true">Yazılar</a>
+      <a href="../kivilcim.html">Kıvılcım</a>
+      <a href="../otonomi.html">Otonomi</a>
+      <a href="../hakkinda.html">Hakkında</a>
+    </nav>
+    <nav class="langs" aria-label="Dil seçimi">
+      <a class="lang" href="yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html" lang="tr" hreflang="tr" aria-current="page" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="en/face-to-tooth-cephalometric-lora.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="../smile-design-ar.html" lang="ar" hreflang="ar" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menü" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="icerik">
+<section class="sec legal">
+  <div class="wrap">
+    <div>
+      <a class="reaper-badge" href="../reaper.html#karne" title="Reaper kaynak doğrulama ve günlük yöntem denetim karnesi">✓ Reaper doğruladı · 360/394 · 19 Eki 2026</a>
+    </div>
+    <h1>Yüzden dişe sefalometrik gülüş tasarımı ve LoRA/DoRA deneyi: 3B yüz ölçümü (n = 32) ile v6 eğitim sınırı</h1>
+    <p class="dim" style="margin:-.2rem 0 .8rem;font-size:.92rem">Yazar: <a href="../hakkinda.html" rel="author"><strong>Yusuf Aziz</strong></a> · Güncelleme: <time datetime="2026-10-19">19 Ekim 2026</time> · Kanıt notu ve negatif sonuç kaydı</p>
+    <p class="lead"><strong>Sefalometrik gülüş tasarımı</strong>, ön diş formunu hazır şablondan göz kararı seçmek yerine <code>478</code> noktalı 3B yüz ağından ölçülen elmacık (<code>ZY-ZY</code>) ve alt çene köşesi (<code>Go-Go</code>) oranlarını <code>441</code> diş formluk 3B kütüphaneyle sayısal olarak eşleştirme yöntemidir. Bu kanıt sayfasında iki karşıt deney yan yana incelenmektedir: (1) <code>n = 32</code> kilitli yüz setinde 3B sefalometrik eşikleri dar bir JSON kararına bağlayan <code>1.000</code> iterasyonluk QLoRA deneyinin yüz şekli isabetini <code>%0,0</code>’dan <code>%90,6</code>’ya taşıması ve (2) açık uçlu metin/üslup için yürütülen <code>v6</code> DoRA eğitiminin (<code>800</code> adım, <code>9,5 dk</code>, <code>%35</code> boş çıkış, <code>43,2–46,3 sn</code> gecikme) neden başarısız sayıldığı. Temel bulgu nettir: <strong>ağırlık eğitimi sanat veya üslup üretmek için değil, ölçülmüş sayıyı deterministik kurala bağlamak içindir.</strong></p>
+
+    <div class="note" role="note" aria-label="Yöntem ve mevzuat sınırı">
+      <strong>Kapsam ve sınır (K1):</strong> Bu belge metodolojik bir ölçüm kaydıdır; sağlık kurumu adı, gerçek hasta fotoğrafı, vaka karşılaştırması veya ticari tanıtım içermez. Tüm ölçümler <code>n = 32</code> kilitli test setine, <code>%100</code> sentetik modele (<code>n = 1</code>) ve yerel eğitim kütüklerine dayanır; klinik karar yalnızca diş hekimine aittir.
+    </div>
+
+    <!-- KANIT KAYNAKLARI:
+      1) blog/yuzden-dise-sefalometrik-lora.html:76,113,120,153-201,250-272
+      2) DEVIR.md:102,117
+      3) rapor/maya_rehber_egitim_plani_1019.md:13-29,36,40
+    -->
+    <div class="qa" id="kanit-karti">
+      <h2>Ölçülebilir kanıt kartı (pozitif ve negatif deney kayıtları)</h2>
+      <p>Aşağıdaki her sayı birincil deney kütüklerinden ve eğitim raporlarından okunmuştur; başarısız <code>v6</code> sonuçları gizlenmeden raporlanır:</p>
+      <table class="tbl" aria-label="Sefalometrik gülüş tasarımı ve LoRA/DoRA deney kanıt kartı">
+        <thead>
+          <tr><th>Ölçüm / Deney Kalemi</th><th>Doğrulanmış Değer</th><th>Kaynak Dosya ve Satır</th></tr>
+        </thead>
+        <tbody>
+          <!-- blog/yuzden-dise-sefalometrik-lora.html:113,120,251 + DEVIR.md:102 -->
+          <tr><td>3B sefalometrik yüz ağı ve 3B diş kütüphanesi</td><td class="mono"><strong>478 nokta (2.556 kenar) · 441 form · 476/477 STL/PLY render</strong></td><td><a href="yuzden-dise-sefalometrik-lora.html" class="mono">blog/yuzden-dise-sefalometrik-lora.html:113,251</a> · <a href="stl-ply-3b-dis-kutuphanesi-render.html" class="mono">DEVIR.md:102</a></td></tr>
+          <!-- blog/yuzden-dise-sefalometrik-lora.html:76,153-180 -->
+          <tr><td><code>n = 32</code> kilitli sette yüz şekli isabeti (0 → 400 → 1.000 adım)</td><td class="mono"><strong>%0,0 (0/32) → %46,9 (15/32) → %90,6 (29/32)</strong></td><td><a href="yuzden-dise-sefalometrik-lora.html#bolum-4" class="mono">blog/yuzden-dise-sefalometrik-lora.html:76,153</a></td></tr>
+          <!-- blog/yuzden-dise-sefalometrik-lora.html:76,180 -->
+          <tr><td><code>n = 32</code> sette <code>jaw_width</code>, hedef hat ve geçerli JSON</td><td class="mono"><strong>%0,0 → %100,0 (32/32) · JSON %3,1 → %100,0</strong></td><td><a href="yuzden-dise-sefalometrik-lora.html#bolum-4" class="mono">blog/yuzden-dise-sefalometrik-lora.html:76,180</a></td></tr>
+          <!-- blog/yuzden-dise-sefalometrik-lora.html:76,113,195-201,251 -->
+          <tr><td>4 kollu ablasyon ve sentetik vitrin (<code>n = 1</code>) dudak kilidi</td><td class="mono"><strong>113 makale · 8/8 ablasyon · 4.686 px kilit · 0/0/0 benzerlik</strong></td><td><a href="yuzden-dise-sefalometrik-lora.html#bolum-5b" class="mono">blog/yuzden-dise-sefalometrik-lora.html:113,201,251</a></td></tr>
+          <!-- rapor/maya_rehber_egitim_plani_1019.md:13-16,27 -->
+          <tr><td><code>v6</code> MLX DoRA eğitimi (<code>gemma-4-E4B-it-qat-4bit</code>, <code>6,4 GB</code>)</td><td class="mono"><strong>800 adım · 9,5 dk (1,35 it/sn) · 15,93 GB RAM · 128 MB</strong></td><td><span class="mono">rapor/maya_rehber_egitim_plani_1019.md:13,27</span></td></tr>
+          <!-- rapor/maya_rehber_egitim_plani_1019.md:27-28 -->
+          <tr><td><code>v6</code> DoRA açık uçlu test sonucu (<strong>başarısız / elendi</strong>)</td><td class="mono"><strong>%35 boş çıkış (14/40) · 43,2–46,3 sn gecikme · 0/40 doğrudan LoRA</strong></td><td><span class="mono">rapor/maya_rehber_egitim_plani_1019.md:27-28</span></td></tr>
+          <!-- DEVIR.md:117 + rapor/maya_rehber_egitim_plani_1019.md:29 -->
+          <tr><td>Görsel LoRA/difüzyon testi ve mekanik ışık hattına geçiş</td><td class="mono"><strong>v4 üretken 11/24 düşen → v7 mekanik 6/36 düşen · 76,5 GB silindi</strong></td><td><span class="mono">DEVIR.md:117 · rapor/maya_rehber_egitim_plani_1019.md:29</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="qa" id="problem-ve-olcum">
+      <h2>1. Eğitimsiz görsel-dil modelleri kare çeneyi neden "oval" okur?</h2>
+      <p>Estetik diş hekimliği literatüründe ön diş dış bükeyliği ile yüzün iskeletsel çerçevesi arasındaki uyum bir asırdır tanımlıdır: 1914 tipolojik sınıflaması yüz formlarını <em>kare, üçgen ve ovoid</em> olarak ayırmış; 1958 dentojenik <em>SPA</em> (cinsiyet, kişilik, yaş) süzgeci, 1973 görsel algı ilkeleri ve 2012 <em>visagism</em> çerçevesi, geniş ve köşeli alt çenede yuvarlak-feminen kesici hatların uyumsuzluk yarattığını göstermiştir.</p>
+      <p>Genel amaçlı görsel-dil modellerine yüz fotoğrafı doğrudan verildiğinde ise model pikselleri görse de antropometrik oranları hesaplamaz. Stüdyo kayıtlarında <code>gemma4:31b</code> ve eğitimsiz <code>Qwen2.5-3B-Instruct-4bit</code>, bizigomatik genişliği <code>ZY-ZY = 629,7 px</code> ve bigonial çene genişliği <code>Go-Go = 526,9 px</code> (oran <code>0,837 ≥ 0,82</code>, brakisefal/kare) olan sentetik portreyi <code>face_shape = oval</code> ve <code>jaw_width = medium</code> etiketlemiştir. Dört kollu ablasyonda (<code>4 kol × 2 tekrar = 8/8</code> çağrı) ağızdaki dişler maskelendiğinde veya kuboidal diş yerleştirildiğinde de karar değişmemiştir; hata eğitimsiz modellerin varsayılan <code>oval / medium</code> etiketine çökmesidir (<em>prior mode collapse</em>).</p>
+    </div>
+
+    <div class="qa" id="n32-sefalometrik-lora">
+      <h2>2. Pozitif deney: 478 noktalı 3B sefalometri ve n = 32 kilitli sette QLoRA</h2>
+      <p>Görsel tahmin yerine sayısal ölçüm koymak için boru hattı dört katmanlı eşik mimarisiyle yapılandırılmıştır (<a href="yuzden-dise-sefalometrik-lora.html"><code>SENTETIK-KARE-3B-LORA-DENEY-1015</code></a>):</p>
+      <ul>
+        <li><strong>Katman 1 (3B Sefalometrik Oran):</strong> MediaPipe FaceMesh <code>478</code> noktalı (<code>2.556</code> kenarlı) 3B yüz ağından <code>Go-Go / ZY-ZY</code> oranı hesaplanır; 1994 antropometri eşiklerine göre <code>≥ 0,82</code> geniş/kare, <code>&lt; 0,74</code> dar/üçgen, ara bölge ovoid kodlanır.</li>
+        <li><strong>Katman 2 (Kütüphane Eşlemesi):</strong> SAM 2B ile üst santral kesici genişlik/boy oranı ölçülür; <a href="stl-ply-3b-dis-kutuphanesi-render.html"><code>441</code> diş formu ve <code>476/477</code> doğrulanmış STL/PLY render</a> havuzundan aday kabuk seçilir.</li>
+        <li><strong>Katman 3 (Dudak Kilidi):</strong> Sentetik karede (<code>n = 1</code>) dudak, sakal, diş eti ve alt dişlere ait <code>4.686</code> piksel kilitlenir; kontur sınırı <code>p95 ≤ 0,2 mm</code> kapısıyla denetlenir (Google Lens <code>0</code>, <code>1.515</code> yerel görsel <code>dHash ≤ 10</code> eşleşme <code>0</code>, <code>576</code> vakada 3B sefalometri <code>0</code>).</li>
+        <li><strong>Katman 4 (<code>n = 32</code> Kilitli Test):</strong> Apple M3 Ultra (<code>96 GB</code>) üzerinde <code>113</code> makaleden damıtılan kurallarla eğitilen <code>Qwen2.5-3B-Instruct-4bit</code> modelinde yüz şekli isabeti <code>%0,0</code>’dan <code>400</code> adımda <code>%46,9</code>’a (<code>15/32</code>), <code>1.000</code> adımda <strong><code>%90,6</code>’ya (<code>29/32</code>)</strong>; alt çene genişliği, hedef hat ve SPA isabeti <strong><code>%0,0 → %100,0</code> (<code>32/32</code>)</strong> düzeyine çıkmıştır.</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="v6-dora-basarisizligi">
+      <h2>3. Negatif deney: v6 DoRA (800 adım) ve görsel LoRA neden başarısız oldu?</h2>
+      <p>Sefalometrik eşik sınıflamasındaki <code>%90,6</code> başarının ardından ağırlık eğitimi açık uçlu metin rehberliğinde ve görsel üslup üretiminde sınanmış; her ikisinde de ölçüm kapısına takılarak elenmiştir:</p>
+      <ul>
+        <li><strong>v6 MLX DoRA eğitimi (<code>rapor/maya_rehber_egitim_plani_1019.md:13-28</code>):</strong> <code>gemma-4-E4B-it-qat-4bit</code> (<code>6,4 GB</code>) üzerinde <code>1.116 / 24</code> satırla (<code>1,1 MB</code>) <code>800</code> adımlık DoRA eğitimi (rank <code>8</code>, <code>8</code> katman, <code>3,72M</code> parametre = <code>%0,05</code>, <code>128 MB</code> adaptör) Apple M3 Ultra üzerinde <strong><code>9,5 dk</code></strong> (<code>1,35 it/sn</code>) sürdü ve <strong><code>15,93 GB</code></strong> bellek kullandı. Doğrulama kaybı <code>3,599 → 0,680</code> değerine indi; ancak önceki <code>1.200</code> adımlık LoRA koşusuyla (<code>~15 dk</code>, <code>13,70 GB</code>, <code>172 MB</code>, kayıp <code>0,693</code>) arasında anlamlı fark (<code>0</code>) oluşmadı.</li>
+        <li><strong>Canlı sorgularda <code>%35</code> boş çıkış ve <code>43 sn</code> gecikme:</strong> <code>agir_40</code> testinde <code>40</code> sorunun <strong><code>40</code>’ı da karar ağacından (BM25)</strong> yanıtlandı; LoRA doğrudan <strong><code>0/40</code></strong> kez kullanıldı (çıplak kapsama <strong><code>0,182</code></strong>). <code>rag_kilitli_80</code> / <code>kor_40</code> testinde model çıktısı K3 süzgecinden geçtikten sonra <strong><code>14/40</code> (<code>%35</code>) kez BOŞ çıkış</strong> üretti ve yanıt süresi <strong><code>43,2–46,3 sn</code></strong> sürdü (statik ağaçta <code>&lt; 50 ms</code>). Eski <code>kor_40</code> testindeki <code>%100</code> skorun ise <code>200</code> anahtar kelimenin <code>126</code>’sının <code>_dugum_zenginlestirmeleri</code> içine elle gömülmesinden (<em>hold-out</em> kirlenmesi) kaynaklandığı saptandı.</li>
+        <li><strong>Görsel üslup LoRA sınırı (<code>DEVIR.md:117</code>):</strong> Ekartör karesine üretken görsel model uygulandığında diş konturlarının bozulduğu (<code>v4</code> üretken kolda <code>11/24</code> düşen test), mekanik ışık + speküler + insizal gölge hattının (<code>v7</code>) düşen testi <code>6/36</code>’ya indirdiği doğrulandı; <code>76,5 GB</code> Qwen/Comfy görsel ağırlık yığını silindi. <a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html"><code>N = 96</code> Sinaptik Hasat</a> deneyinde de <code>qwen3.8:27b</code> (<code>15/16</code>) ve <code>gemma4:31b</code> (<code>16/16</code>) başarısı LoRA ile değil, <strong>eğitimsiz kural istemiyle</strong> alındı.</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="sss">
+      <h2>4. Sık sorulan sorular ve ilgili kanıt bağlantıları</h2>
+      <dl>
+        <dt>Sefalometrik gülüş tasarımında yüz-diş uyumu nasıl ölçülür?</dt>
+        <dd><code>478</code> noktalı 3B yüz ağından <code>ZY-ZY</code> (<code>#234–#454</code>) ve <code>Go-Go</code> (<code>#172–#397</code>) oranı hesaplanır; <code>≥ 0,82</code> geniş/kare, <code>&lt; 0,74</code> dar/üçgen, ara değerlerde ovoid eşiği uygulanarak <a href="stl-ply-3b-dis-kutuphanesi-render.html"><code>441</code> diş formu ve <code>476/477</code> doğrulanmış 3B kabukla</a> eşleştirilir.</dd>
+
+        <dt>v6 DoRA (800 adım) açık uçlu metin ve görsel üslup deneyleri neden başarısız sayıldı?</dt>
+        <dd><code>800</code> adımda (<code>9,5 dk</code>, <code>15,93 GB</code> RAM) doğrulama kaybı <code>0,680</code>’e inse de <code>agir_40</code> testinde doğrudan LoRA katkısı <code>0/40</code> (çıplak kapsama <code>0,182</code>) kaldı; <code>kor_40</code> testinde K3 süzgeci sonrası <code>%35</code> (<code>14/40</code>) boş çıkış ve <code>43,2–46,3 sn</code> gecikme ölçüldü.</dd>
+
+        <dt>Ağırlık eğitimi (LoRA/DoRA) gülüş tasarımında ne için kullanılır, ne için kullanılmaz?</dt>
+        <dd>Sanatsal doku üretimi veya serbest sohbet üslubu için kullanılmaz; yalnızca ölçülmüş 3B sefalometrik oranları dar bir JSON karar şemasına bağlamak için kullanılır (<code>n = 32</code> sette <code>%0,0 → %90,6</code> yüz şekli, <code>%100,0</code> hedef hat).</dd>
+      </dl>
+      <p style="margin-top:.9rem"><strong>İlgili kanıt sayfaları:</strong> <a href="../gulus-tasarimi.html">Dijital Gülüş Tasarımı ve 3B Sefalometri</a> · <a href="yuzden-dise-sefalometrik-lora.html">Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli (n = 32)</a> · <a href="stl-ply-3b-dis-kutuphanesi-render.html">STL/PLY 3B Diş Kütüphanesi (476/477 Render)</a> · <a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html">Sinaptik Hasat (N = 96)</a> · <a href="../otonomi.html">Otonomi</a> · <a href="../kivilcim.html">Kıvılcım (67 tur)</a> · <a href="../reaper.html#karne">Reaper (360/394)</a></p>
+      <p class="dim"><strong>Düşer testi:</strong> (1) En az <code>100</code> yüzlük bağımsız dış sette <code>1.000</code> iterasyon QLoRA modelinin yüz şekli eşik isabeti <code>%80</code>’in altına düşerse "ölçüm eşiği modele kazındı" hükmü düşer; (2) kirlenmemiş <code>60</code> soruluk kör açık uçlu testte küçük bir LoRA/DoRA modeli <code>&lt; 2 sn</code> gecikme ve <code>%0</code> boş çıkışla eğitimsiz kural istemini ve statik karar ağacını <code>≥ 10</code> puan geçerse "açık uçlu üslupta LoRA gereksizdir" hükmü güncellenir.</p>
+    </div>
+  </div>
+</section>
+
+  <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>Kaynaklar ve Birincil Teknik Dayanaklar</h2>
+    <p>Bu sayfadaki mimari ve deneysel ölçümlerin dayandığı birincil teknik literatür ve açık kaynak belgeleri:</p>
+    <ul>
+    <li><a href="https://arxiv.org/abs/1907.06724" target="_blank" rel="noopener noreferrer">Real-time Facial Surface Geometry from Monocular Video on Mobile GPUs (arXiv, 2019)</a></li>
+    <li><a href="https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker" target="_blank" rel="noopener noreferrer">MediaPipe Face Landmarker — 478 3D Facial Landmarks Documentation (Google AI Edge)</a></li>
+    <li><a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">LoRA: Low-Rank Adaptation of Large Language and Diffusion Models (arXiv, 2021)</a></li>
+    <li><a href="https://arxiv.org/abs/2402.09353" target="_blank" rel="noopener noreferrer">DoRA: Weight-Decomposed Low-Rank Adaptation (arXiv, 2024)</a></li>
+    <li><a href="https://arxiv.org/abs/2112.10752" target="_blank" rel="noopener noreferrer">High-Resolution Image Synthesis with Latent Diffusion Models (arXiv, 2021)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>İlgili Teknik İncelemeler:</strong> Sefalometrik boru hattının diğer halkaları için <a href="/blog/stl-ply-3b-dis-kutuphanesi-render.html">STL/PLY 3B diş kütüphanesi ve fotogerçekçi inpainting</a>, <a href="/blog/yuzden-dise-sefalometrik-lora.html">sefalometrik LoRA mimari özeti</a> ve <a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html">dijital diş hekimliği saha hükümleri</a> yazılarını; yanlışlama kapıları için <a href="/otonomi.html">otonomi vitrinini</a>, <a href="/reaper.html">Reaper hakemini</a> ve <a href="/blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">QAJAN hipotez kapılarını</a> inceleyebilirsiniz.</p>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="../index.html">Ana sayfa</a><a href="../gulus-tasarimi.html">Gülüş tasarımı</a><a href="../otonomi.html">Otonomi</a><a href="../kivilcim.html">Kıvılcım</a><a href="../reaper.html">Reaper</a><a href="../blog.html">Blog</a><a href="../bot/index.html">Bot katmanı</a><a href="../gizlilik.html">Gizlilik</a><a href="../hakkinda.html">Hakkında</a><a href="../fayda-defteri.html">Fayda defteri</a><a href="https://yusufaziz.com.tr/">Yusuf Aziz · Yazılar → yusufaziz.com.tr</a><!--email_off--><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><!--/email_off--><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

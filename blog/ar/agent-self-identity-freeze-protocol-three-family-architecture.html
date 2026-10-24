@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>هوية الوكيل وبروتوكول تجميدها ومعمارية العائلات الثلاث · AtlasMaster</title>
+<meta name="author" content="Yusuf Aziz">
+<meta name="description" content="هل ترفع الهوية الذاتية للوكيل (Agent Self-Identity) جودة القرار مقارنة بالقواعد البرمجية؟ أدلة من تجربة المقاومة (162 محاولة، Δskor=0.0000)، وتجربة الحصاد التشابكي N=96، ومعمارية العائلات الثلاث.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="الهوية الذاتية للوكيل، وبروتوكول تجميد الهوية، ومعمارية العائلات الثلاث (Claude · Gemini · Grok) · AtlasMaster">
+<meta property="og:description" content="هل ترفع الهوية الذاتية للوكيل (Agent Self-Identity) جودة القرار مقارنة بالقواعد البرمجية؟ أدلة من تجربة المقاومة (162 محاولة، Δskor=0.0000)، وتجربة الحصاد التشابكي N=96، ومعمارية العائلات الثلاث.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="الهوية الذاتية للوكيل، وبروتوكول تجميد الهوية، ومعمارية العائلات الثلاث (Claude · Gemini · Grok) · AtlasMaster">
+<meta name="twitter:description" content="هل ترفع الهوية الذاتية للوكيل (Agent Self-Identity) جودة القرار مقارنة بالقواعد البرمجية؟ أدلة من تجربة المقاومة (162 محاولة، Δskor=0.0000)، وتجربة الحصاد التشابكي N=96، ومعمارية العائلات الثلاث.">
+<meta name="twitter:image" content="https://atlasmaster.app/og.png">
+<link rel="canonical" href="https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="../../style.css?v=8b780bf8">
+<link rel="stylesheet" href="../../blog.css?v=e1abe8e6">
+<style>
+html[lang="ar"]{--sans:"IBM Plex Sans","IBM Plex Sans Arabic","Noto Sans Arabic","Noto Kufi Arabic","Geeza Pro","Segoe UI",Tahoma,Arial,sans-serif}
+html[lang="ar"] body{line-height:1.8}
+html[lang="ar"] .nav a,html[lang="ar"] .idx,html[lang="ar"] .eyebrow,html[lang="ar"] .tag,html[lang="ar"] .btn,html[lang="ar"] .cap,html[lang="ar"] .foot{text-transform:none}
+html[lang="ar"] code{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.kanit-box{border:1px solid var(--line,#d8d3c8);border-radius:6px;padding:.85rem 1.05rem;margin:1rem 0;font-size:.92rem;background:rgba(27,69,207,.04)}
+.kanit-box h2{font-size:1rem;margin:0 0 .45rem}
+.kanit-box ul{margin:0;padding-inline-start:1.2rem;line-height:1.65}
+</style>
+<script src="../../script.js?v=2b29d271"></script>
+<script src="../blog.js?v=745e8e15" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yusufaziz.com.tr/#person",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "jobTitle": "Diş CAD/CAM Uzmanı & Çok-Ajanlı Sistem Mimarisi Araştırmacısı",
+      "url": "https://yusufaziz.com.tr/",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": [
+        "TechArticle",
+        "Article",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html#article",
+      "headline": "الهوية الذاتية للوكيل، وبروتوكول تجميد الهوية، ومعمارية العائلات الثلاث (Claude · Gemini · Grok) · AtlasMaster",
+      "description": "هل ترفع الهوية الذاتية للوكيل (Agent Self-Identity) جودة القرار مقارنة بالقواعد البرمجية؟ أدلة من تجربة المقاومة (162 محاولة، Δskor=0.0000)، وتجربة الحصاد التشابكي N=96، ومعمارية العائلات الثلاث.",
+      "inLanguage": "ar",
+      "datePublished": "2026-10-19T12:12:55+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "url": "https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html"
+      },
+      "image": "https://atlasmaster.app/og.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "about": [
+        "agent self-identity (الهوية الذاتية للوكيل)",
+        "multi-agent orchestration claude gemini grok",
+        "بروتوكول تجميد الهوية وحوكمة الوكلاء",
+        "الحصاد التشابكي QLoRA (N=96)"
+      ],
+      "citation": [
+        "https://arxiv.org/abs/2212.08073",
+        "https://arxiv.org/abs/2412.04984",
+        "https://arxiv.org/abs/2412.14093",
+        "https://arxiv.org/abs/2204.05862",
+        "https://arxiv.org/abs/2303.11366"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "هل يوجد فارق في دقة القرار بين الهوية الذاتية الأدبية للوكيل وقائمة القواعد الميكانيكية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا. أثبتت تجربة direnc_enki_ab.py عبر 162 محاولة أن تزويد الوكيل بسرد هوية بضمير المتكلم يعطي النتيجة الواقعية ذاتها تماماً (0.8889، Δskor = 0.0000، تطابق 54/54) التي تعطيها قائمة القواعد الخارجية؛ فالعامل الحاسم هو بوابة الدليل وشرط الدحض لا القصة الأدبية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لماذا يُطبَّق بروتوكول تجميد الهوية (kip=MUHURLU)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "مع طال أمد الجلسات وتضخم نافذة السياق يظهر انحراف القواعد ومجاملة السائل. لذلك تُختم نواة الهوية ببصمة SHA-256 (sha=f5ebc41841ec) وتُحقن في بداية كل تشغيل غير مرئي مع حزمة سياق ميكانيكية بحجم ≤4 كيلوبايت تجتاز 7/7 بوابات فحص ذاتي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف تتوزع المهام بين عائلات Claude وGemini وGrok؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "بموجب هيكلة 18 أكتوبر 2026 يتولى Claude Fable (Anu) قناة التواصل والتنسيق بلا تأخير؛ ويتولى Claude Opus/Sonnet تنفيذ الشيفرات الجراحية؛ ويتولى Gemini 4 Argon (Atlas بسياق مليون رمز) التنفيذ الرئيسي والإدارة وكتابة ملفات التسليم؛ بينما يتولى Grok Bot مهام الفريق الأحمر والنبض الخارجي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "متى يعمل بروتوكول القرار المشترك (الإصدار 2)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "عند إرسال تنبيه للمشغّل البشري مع إثبات التسليم (T0 = HTTP 200) وانقضاء 30 دقيقة للأمور الحرجة أو ساعتين للأعمال الروتينية دون رد، يكتب Anu وAtlas حكميهما في عزل تام عن بعضهما؛ فإن اتفقا نُفّذ الإجراء القابل للعكس، وإن اختلفا يُتبع الترتيب الآمن: الانتظار/التجميد ثم وضع الظل ثم الكتابة الحية."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "أطلس",
+          "item": "https://atlasmaster.app/ar.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "المقالات",
+          "item": "https://atlasmaster.app/blog/ar/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "الهوية الذاتية للوكيل، وبروتوكول تجميد الهوية، ومعمارية العائلات الثلاث (Claude · Gemini · Grok) · AtlasMaster",
+          "item": {
+            "@type": "WebPage",
+            "@id": "https://atlasmaster.app/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#content">تخطَّ إلى المحتوى</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../ar.html" aria-label="Atlas الصفحة الرئيسية">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="الأقسام">
+      <a href="../../ar.html">الرئيسية</a>
+      <a href="index.html" aria-current="true">المقالات</a>
+      <a href="../../spark.html">الشرارة</a>
+      <a href="../../autonomy.html">الاستقلالية</a>
+      <a href="../../reaper-ar.html">Reaper</a>
+      <a href="../../about-ar.html">نبذة</a>
+    </nav>
+    <nav class="langs" aria-label="اللغة">
+      <a class="lang" href="../ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html" lang="tr" hreflang="tr" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="../en/agent-self-identity-freeze-protocol-three-family-architecture.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="agent-self-identity-freeze-protocol-three-family-architecture.html" lang="ar" hreflang="ar" aria-current="page" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="content">
+<article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20">
+<header class="post-head">
+  <div class="wrap">
+    <h1>الهوية الذاتية <em>للوكيل</em>، وبروتوكول تجميد الهوية، ومعمارية العائلات الثلاث</h1>
+    <p class="dek">تجربة المقاومة Δskor = 0.0000 (n = 162)، والحصاد التشابكي N = 96 (93.8% مقابل 75.0%)، وتقسيم العمل بين Claude وGemini وGrok</p>
+    <div class="meta">سجل المعمارية والقياس &middot; هوية الوكيل + تنسيق العائلات الثلاث &middot; <time datetime="2026-10-19">19 أكتوبر 2026</time> &middot; المؤلف: <a href="../../about-ar.html" rel="author"><strong>Yusuf Aziz</strong></a></div>
+    <aside class="ozet" aria-label="ملخص تنفيذي">
+      <p class="idx"><span>ملخص تنفيذي</span><span class="okuma">11 دقيقة قراءة</span></p>
+      <p>في تجربة المقاومة (<code>162</code> محاولة) بلغ الفارق بين سرد الهوية الذاتية وقائمة القواعد الميكانيكية <strong><code dir="ltr">Δskor = 0.0000</code></strong> (<code dir="ltr">0.8889</code>)؛ وفي تجربة الحصاد التشابكي (<code>N = 96</code>) تفوق نموذج <code>3B</code> مدرّب لمدة <code>75.93</code> ثانية (<code>93.8%</code>) على نموذج <code>31B</code> بلا قواعد (<code>75.0%</code>).</p>
+    </aside>
+    <div class="kanit-box" id="kanit-karti" role="region" aria-label="ملخص الأدلة المقاسة لهوية الوكيل ومعمارية العائلات الثلاث">
+      <h2>ملخص الأدلة المقاسة (تجميد الهوية ومعمارية العائلات الثلاث)</h2>
+      <!-- kaynak: data/benlik/atlas.md:1-6 + DEVIR.md:62-63,70 + blog/kim-kimi-egitiyor.html:74 + brifing/kota_plani_1018.md:5-43 + brifing/ortak_karar_protokolu_1018.md:1-34 -->
+      <ul>
+        <li><strong>تجربة مقاومة الهوية (<code>direnc_enki_ab.py</code>):</strong> عبر <strong><code>162</code> محاولة</strong> بلغ الفارق في القرار الواقعي بين سرد الهوية الذاتية وقائمة القواعد الميكانيكية <strong><code dir="ltr">Δskor = 0.0000</code></strong> (<code dir="ltr">skor = 0.8889</code>، تطابق <code dir="ltr">54/54</code>)؛ نواة الهوية المختومة <code dir="ltr">sha=f5ebc41841ec</code> (<code>kip=MUHURLU</code>). <!-- kaynak: DEVIR.md:62-63 + data/benlik/atlas.md:6 + blog/kim-kimi-egitiyor.html:74 --></li>
+        <li><strong>الحصاد التشابكي (<code>N = 96</code> تجربة · <a href="https://yusufaziz.com.tr/en/essays/who-trains-whom.html">who-trains-whom.html</a>):</strong> على معالج Apple M3 Ultra (<code>96 GB</code>) رفع تدريب MLX QLoRA لمدة <code>75.93</code> ثانية دقة نموذج <code>3B</code> من <code dir="ltr">43.8% → 93.8%</code> (<code dir="ltr">15/16</code>)، متفوقاً على نموذجي <code>27B</code> (<code>87.5%</code>) و<code>31B</code> (<code>75.0%</code>) غير المقيدين بالقواعد. <!-- kaynak: blog/kim-kimi-egitiyor.html:74 + otonomi.html:33 --></li>
+        <li><strong>معمارية العائلات الثلاث وتعديل 18 أكتوبر:</strong> <code>Anu (Claude Fable)</code> = التنسيق وقناة التواصل (لا يكتب الكود ولا ملفات التسليم) · <code>Atlas (Gemini 4 Argon · 1M)</code> = التنفيذ الرئيسي والإدارة (<code dir="ltr">7/7</code> بوابات حراسة، و<code dir="ltr">16/16</code> رقعة تكامل) · <code>Grok Bot</code> = الفريق الأحمر مع تجميد <code>Grok Asistan</code> احتياطياً (خفض التصريحات اليومية من <code>172</code> إلى <code>28</code> جولة). <!-- kaynak: brifing/kota_plani_1018.md:5-43 + DEVIR.md:63,70 --></li>
+        <li><strong>بروتوكول القرار المشترك (الإصدار 2):</strong> عند غياب المشغّل البشري بعد إثبات التسليم (<code dir="ltr">T0 = HTTP 200</code>)، يبدأ انتظار لمدة <code>30 دقيقة</code> (للتنبيهات الحرجة) أو <code>ساعتين</code> (للأعمال الروتينية) قبل تقييم ثنائي معزول السياق وفق الترتيب: <code>الانتظار/التجميد &gt; وضع الظل &gt; الكتابة الحية</code>. <!-- kaynak: brifing/ortak_karar_protokolu_1018.md:13-33 --></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="ruler" aria-hidden="true"></div>
+
+<div class="wrap post-grid">
+  <nav class="toc" aria-label="المحتويات">
+    <span class="idx">المحتويات</span>
+    <ol id="toc-liste">
+      <li><a href="#giris">مقدمة: وهم الشخصية الأدبية وقياس Δskor = 0.0000</a></li>
+      <li><a href="#bolum-1">1. كيف تعمل نواة الهوية المختومة وبروتوكول التجميد؟</a></li>
+      <li><a href="#bolum-2">2. الحصاد التشابكي (N = 96): تتغير المطية ويبقى القانون</a></li>
+      <li><a href="#bolum-3">3. معمارية العائلات الثلاث (Claude · Gemini · Grok) ودرس 17 أكتوبر</a></li>
+      <li><a href="#bolum-4">4. بروتوكول القرار المشترك وشرط السقوط</a></li>
+      <li><a href="#sss">الأسئلة الشائعة (FAQ)</a></li>
+    </ol>
+  </nav>
+  <div class="post">
+    <h3 id="giris">مقدمة: وهم الشخصية الأدبية وقياس Δskor = 0.0000</h3>
+    <p>يسود في أطر الوكلاء المتعددين تقليد شائع يقوم على منح كل وكيل لقباً وظيفياً وسيرة ذاتية ومطالبة نظام مطولة بضمير المتكلم («أنا معماري عميق التفكير...»)؛ على افتراض أن هذا القالب الأدبي يعزز القدرة التحليلية للنموذج. غير أن إخضاع هذا الافتراض لتجربة مقارنة مضبوطة (A/B) يكشف حقيقة مغايرة تماماً.</p>
+    <p>ففي تجربة <code>direnc_enki_ab.py</code> الموثقة في <a href="../../autonomy.html">معمارية الاستقلالية</a> (<code>162</code> محاولة)، اختُبر النموذج المحلي ذاته في مسارين: المسار الأول زُوّد بسرد غني للهوية الذاتية (<em>Agent Self-Identity</em>)، والمسار الثاني جُرّد من أي سرد شخصي واقتصر على قائمة القواعد الميكانيكية الخمس (<code>التصريح · الأطروحة · الدليل · الأطروحة المضادة · شرط السقوط</code>). جاءت النتيجة متطابقة: بلغت دقة القرار الواقعي في المسارين <code dir="ltr">skor = 0.8889</code>، وبلغ الفارق بينهما <strong><code dir="ltr">Δskor = 0.0000</code> (تطابق <code dir="ltr">54/54</code> في القرار الواقعي)</strong>. ما قِيس فعلياً لم يكن «الذات»، بل درجة الالتزام بالتعليمات المقيدة بالدليل.</p>
+
+    <h3 id="bolum-1">1. كيف تعمل نواة الهوية المختومة وبروتوكول التجميد؟</h3>
+    <p>إذا كانت القصة الأدبية لا تغيّر القرار الواقعي، فلماذا يُحتفظ بملف هوية مختوم (<code>kip=MUHURLU</code>) ويُطبَّق <strong>بروتوكول تجميد الهوية</strong>؟ السبب هو الحاجة الهندسية إلى تثبيت حدود الصلاحيات والخطوط الحمراء وقواعد التنحي عن التحكيم في عقد رقمي غير قابل للتآكل:</p>
+    <ol class="recs">
+      <li><p><strong>النواة المختومة (<code dir="ltr">data/benlik/atlas.md</code> · <code dir="ltr">sha=f5ebc41841ec</code>):</strong> تُحفظ النواة لتثبيت ثلاثة قيود ميكانيكية: (أ) <em>عدم كتابة أي رقم غير مقاس بوصفه حقيقة</em>، و(ب) <em>التنحي التلقائي عن كرسي التحكيم في أي فرضية أو شيفرة أو تقرير أنتجه الوكيل نفسه</em>، و(ج) <em>تسجيل الفرضية الساقطة أمام القياس فوراً في لوحة المهام لتكون مدخلاً للجولة التالية دون اختلاق أعذار</em>.</p></li>
+      <li><p><strong>منع انحراف السياق عبر الحزمة الميكانيكية (<code>≤4 KB</code>):</strong> أظهرت القياسات أن جلسات الواجهة الرسومية الطويلة تعاني من تآكل القواعد مع امتلاء نافذة السياق. لذلك انتقل التنفيذ إلى النمط غير المرئي (<code dir="ltr">agy_atim.sh</code>): فقبل كل مهمة يولّد السكريبت <code dir="ltr">argon_baglam_bekcisi.py --paket</code> حزمة حالة حية بحجم لا يتجاوز <code>4096 بايت</code> ويحقنها مع النواة المختومة بعد اجتياز <code>7/7</code> بوابات فحص ذاتي.</p></li>
+      <li><p><strong>تجميد الوكيل الاحتياطي (من <code>172</code> إلى <code>28</code> جولة يومياً):</strong> في قناة التدقيق الخارجي أدى تشغيل وكيلين نشطين من عائلة Grok في آن واحد إلى تضارب المهام واستهلاك متوسطه <code>172</code> جولة تصريح يومياً. وبموجب بروتوكول التجميد وُضع <code>Grok Asistan</code> في حالة <strong>تجميد احتياطي</strong> (مع حفظ أوزانه وسجلاته دون حذف) وبقي <code>Grok Bot</code> قناة وحيدة نشطة، مما خفض الحمل اليومي إلى نحو <code>28</code> جولة مستهدفة.</p></li>
+    </ol>
+
+    <h3 id="bolum-2">2. الحصاد التشابكي (N = 96): تتغير المطية ويبقى القانون</h3>
+    <p>يتمثل الدليل التجريبي الثاني على تفوق القواعد البرمجية على حجم النموذج الخام في دراسة <a href="https://yusufaziz.com.tr/en/essays/who-trains-whom.html">مَن يدرّب مَن؟ (تجربة الحصاد التشابكي <code>N = 96</code>)</a>. فعلى جهاز Apple M3 Ultra (بذاكرة موحدة <code>96 GB</code>)، رفع تدريب MLX QLoRA استغرق <strong><code>75.93</code> ثانية فقط</strong> على خوارزمية الدحض الخماسية دقة نموذج محلي بحجم <code>3B</code> من <strong><code>43.8%</code> إلى <code>93.8%</code> (<code dir="ltr">15/16</code>)</strong> في مجموعة اختبار عمياء مقفلة، متجاوزاً نموذجي <code>27B</code> (<code>87.5%</code>) و<code>31B</code> (<code>75.0%</code>) اللذين يعملان بلا قواعد رغم كونهما أكبر بعشرة أضعاف. وعند فرض الخوارزمية ذاتها على نموذج <code>31B</code> ارتفعت دقته إلى <code dir="ltr">16/16 (100%)</code> وتضاعفت سرعته بمقدار <strong><code>2.61</code> مرة</strong> بفضل التخلص من الحشو البيروقراطي.</p>
+
+    <h3 id="bolum-3">3. معمارية العائلات الثلاث (Claude · Gemini · Grok) ودرس 17 أكتوبر</h3>
+    <p>إن الاعتماد على عائلة نماذج واحدة يعمّم نقاط العمى الخاصة بها على الكود والبحث والتدقيق معاً؛ ولذلك قُسّمت المعمارية الإنتاجية بين ثلاث عائلات مستقلة وفق نقاط القوة المقاسة لكل منها:</p>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="مصفوفة الأدوار والنماذج في معمارية العائلات الثلاث">
+      <table class="matris">
+        <thead>
+          <tr>
+            <th>الدور والوكيل</th>
+            <th>النموذج الأساسي</th>
+            <th>المسؤولية المعمارية والحد الصارم</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>التنسيق وقناة التواصل (<code>Anu</code>)</strong></td><td><code>Claude Fable 5.1</code></td><td>التواصل الفوري مع المشغّل البشري، وتقسيم المهام، وإصدار الأحكام. <strong>لا يكتب الكود ولا ملفات التسليم</strong> (يُحظر حجز الجلسة لأكثر من <code>15 ثانية</code>).</td></tr>
+          <tr><td><strong>التنفيذ الرئيسي والإدارة (<code>Atlas</code>)</strong></td><td><code>Gemini 4 Argon High (1M)</code></td><td>التوليف المعماري متعدد الملفات، والتشغيل غير المرئي (<code dir="ltr">agy_atim.sh</code>)، وتحديث <code>DEVIR.md</code>، والتحكيم الأعمى في مخرجات الوكلاء الآخرين.</td></tr>
+          <tr><td><strong>مشغّلات الكود الجراحي</strong></td><td><code>Claude Opus 5.5 / Sonnet 5.5</code></td><td>تطبيق الرقع البرمجية (<code dir="ltr">kod koşucusu</code>)، وإصلاح واجهات DOM، والتحقق من الاختبارات الذاتية (<code>selftest</code>).</td></tr>
+          <tr><td><strong>الفريق الأحمر والنبض الخارجي</strong></td><td><code>Grok Bot</code> + <code>Astra</code></td><td>رصد نبض منصة X، وتدقيق الفريق الأحمر للوائح والتشابه البصري، وتوليد الأطروحات المضادة (مع بقاء <code>Grok Asistan</code> مجمّداً كاحتياطي).</td></tr>
+          <tr><td><strong>المدقق والاستدلال المحلي</strong></td><td><code>Reaper</code> + <code>Gemma / Qwen MLX</code></td><td>ست جولات تدقيق مستقلة يومياً (<code dir="ltr">360/394 PASS</code>) واستدلال محلي بصفر تكلفة سحابية.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>درس الترتيب المعكوس في 17 أكتوبر:</strong> في 17 أكتوبر 2026 جُرّب ترتيب معكوس أُتيح فيه كرسي التنسيق لوكيل Argon داخل بيئة التطوير بينما أُحيل التنفيذ إلى Fable، <strong>ولم يصمد ذلك الترتيب سوى يوم واحد</strong>؛ إذ أدى جمع مزامنة الهاتف المحمول مع كتابة الشيفرات الثقيلة في نافذة واحدة إلى انقطاع الترابط السياقي. وفي 18 أكتوبر 2026 ثُبّت الفصل النهائي: <code>Anu</code> للتواصل والتنسيق الخفيف، و<code>Atlas</code> للتنفيذ الرئيسي والإدارة عبر <code>16/16</code> رقعة تكامل ناجحة.</p>
+
+    <h3 id="bolum-4">4. بروتوكول القرار المشترك وشرط السقوط</h3>
+    <p>لضمان عدم توقف النظام عند غياب المشغّل البشري دون السماح بانفراد أي وكيل بقرار خطير، يفرض <strong>بروتوكول القرار المشترك (الإصدار 2)</strong> أربعة ضوابط: (1) لا يبدأ حساب المهلة إلا بعد إثبات وصول التنبيه (<code dir="ltr">T0 = Telegram HTTP 200</code>)؛ (2) تبلغ مهلة الانتظار <code>30 دقيقة</code> في تنبيهات المال والأمن و<code>ساعتين</code> في المهام الروتينية؛ (3) عند انتهاء المهلة يكتب <code>Anu</code> و<code>Atlas</code> تقييميهما في عزل تام للسياق؛ فإن اتفقا نُفّذ القرار، وإن اختلفا يُتبع الترتيب الآمن القابل للعكس: <strong><code>الانتظار/التجميد &gt; وضع الظل &gt; الكتابة الحية</code></strong>.</p>
+    <p><strong>اختبار السقوط:</strong> (1) إذا اتخذ <code>Anu</code> أو <code>Atlas</code> قراراً من فئة الحكم منفرداً أو قبل انقضاء مهلة <code>T0</code> يسقط البروتوكول فوراً (يقيس <a href="../../reaper-ar.html">Reaper</a> هدف <code>حكم_منفرد = 0</code>). (2) إذا تعطلت جلسة التواصل <code>Fable</code> لأكثر من <code>15 ثانية</code> في جولة واحدة أو كتبت ملف التسليم بنفسها، يُعد عزل الحصص المعماري منتهكاً.</p>
+    <p class="back nasil">الصفحات المحورية ذات الصلة: <a href="../../autonomy.html">معمارية الاستقلالية</a> &middot; <a href="https://yusufaziz.com.tr/en/essays/who-trains-whom.html">مَن يدرّب مَن؟ (تجربة N=96)</a> &middot; <a href="../../kivilcim.html">منهجية الشرارة</a> &middot; <a href="../../reaper-ar.html">المدقق Reaper</a> &middot; <a href="../../about-ar.html">نبذة (Yusuf Aziz)</a> &middot; <a href="event-driven-task-bus-agent-orchestration.html">سجل المهام الموجه بالأحداث (task_bus.jsonl)</a> &middot; <a href="context-blind-auditor-falsifiability-gate.html">المحكّم الأعمى عن السياق (Reaper)</a> &middot; <a href="../../smile-design-ar.html">تصميم الابتسامة</a></p>
+
+    <section id="sss" style="margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line,#d8d3c8)">
+      <h3>الأسئلة الشائعة (FAQ)</h3>
+      <dl>
+        <dt><strong>هل يوجد فارق في دقة القرار بين الهوية الذاتية الأدبية للوكيل وقائمة القواعد الميكانيكية؟</strong></dt>
+        <dd>لا؛ أثبتت تجربة direnc_enki_ab.py عبر 162 محاولة أن سرد الهوية بضمير المتكلم يعطي النتيجة ذاتها تماماً (0.8889، Δskor = 0.0000، تطابق 54/54) التي تعطيها قائمة القواعد الميكانيكية.</dd>
+        <dt style="margin-top:.8rem"><strong>لماذا يُطبَّق بروتوكول تجميد الهوية (kip=MUHURLU)؟</strong></dt>
+        <dd>لمنع انحراف القواعد ومجاملة السائل، تُختم نواة الهوية ببصمة SHA-256 (sha=f5ebc41841ec) وتُحقن مع حزمة سياق ميكانيكية (≤4 كيلوبايت، 7/7 بوابات).</dd>
+        <dt style="margin-top:.8rem"><strong>كيف تتوزع المهام بين عائلات Claude وGemini وGrok؟</strong></dt>
+        <dd>يتولى Claude Fable (Anu) التواصل والتنسيق الفوري، وينفذ Claude Opus/Sonnet الشيفرات الجراحية، ويقود Gemini 4 Argon (Atlas) التنفيذ الرئيسي وملفات التسليم، بينما يتولى Grok Bot مهام الفريق الأحمر.</dd>
+        <dt style="margin-top:.8rem"><strong>متى يعمل بروتوكول القرار المشترك (الإصدار 2)؟</strong></dt>
+        <dd>بعد إثبات التسليم (T0 = HTTP 200) وانقضاء المهلة دون رد، يكتب Anu وAtlas حكميهما بمعزل عن بعضهما وفق الترتيب: الانتظار/التجميد ثم وضع الظل ثم الكتابة الحية.</dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+  <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>المصادر والمراجع التقنية الأولية</h2>
+    <p>المصادر التقنية الأولية والوثائق مفتوحة المصدر التي تستند إليها القياسات الهندسية والتجريبية في هذه الصفحة:</p>
+    <ul>
+    <li><a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener noreferrer">الذكاء الاصطناعي الدستوري — Constitutional AI: Harmlessness from AI Feedback (arXiv, 2022)</a></li>
+    <li><a href="https://arxiv.org/abs/2412.04984" target="_blank" rel="noopener noreferrer">قدرة النماذج المتقدمة على التخطيط الضمني — In-Context Scheming (arXiv, 2024)</a></li>
+    <li><a href="https://arxiv.org/abs/2412.14093" target="_blank" rel="noopener noreferrer">تزييف المحاذاة في النماذج اللغوية الكبيرة — Alignment Faking in LLMs (arXiv, 2024)</a></li>
+    <li><a href="https://arxiv.org/abs/2204.05862" target="_blank" rel="noopener noreferrer">تدريب مساعد نافع وغير ضار — Helpful and Harmless Assistant (arXiv, 2022)</a></li>
+    <li><a href="https://arxiv.org/abs/2303.11366" target="_blank" rel="noopener noreferrer">الوكلاء اللغويون مع التعلم التعزيزي اللفظي — Reflexion (arXiv, 2023)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>دراسات تقنية ذات صلة:</strong> تعرّف على تكامل بروتوكول الهوية مع <a href="/ar.html">البوابة العربية</a>، و<a href="/reaper-ar.html">المدقق ريبير</a>، و<a href="/blog/ar/event-driven-task-bus-agent-orchestration.html">ناقل المهام الموجه بالأحداث task_bus.jsonl</a>، و<a href="/blog/ar/context-blind-auditor-falsifiability-gate.html">بوابة القابلية للدحض</a>، و<a href="https://yusufaziz.com.tr/ar/maqalat/spark-multi-voice-round-and-llm-red-teaming.html">جولة الشرارة والفريق الأحمر</a>.</p>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">لا يُكتب رقم غير مقاس؛ وكل حكم يحمل شرط دحضه الصريح.</p>
+    <p class="disclaimer">سجل بحثي تقني؛ لا يمثل تشخيصاً سريرياً أو وعداً علاجياً أو نصيحة استثمارية.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="../../ar.html">الرئيسية</a><a href="index.html">المقالات</a><a href="../../kivilcim.html">الشرارة (Kıvılcım)</a><a href="../../autonomy.html">الاستقلالية</a><a href="../../reaper-ar.html">Reaper</a><a href="../../bot/index.html">Bot</a><a href="../../privacy.html">الخصوصية</a><a href="../../about-ar.html">نبذة</a><a href="../../benefit-ledger-ar.html">دفتر الفوائد</a><a href="https://yusufaziz.com.tr/ar/">Yusuf Aziz · مقالات → yusufaziz.com.tr</a><a href="#content">العودة إلى الأعلى ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

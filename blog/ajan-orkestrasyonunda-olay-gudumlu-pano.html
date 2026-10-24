@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çok Ajanlı Sistemlerde Olay Güdümlü Pano · Atlas Studio</title>
+  <meta name="description" content="Çok ajanlı orkestrasyonda zamanlı yoklama (polling) yerine macOS WatchPaths ve yalnızca-eklenir task_bus.jsonl kütüğü ile çalışan olay güdümlü pano mimarisi: 2.344 canlı olay, 262 kayıtlı alet (191 geçti, 16 düştü, 55 öz-sınamasız) ve 3.313 öz-sınama kanıtı.">
+  <meta name="author" content="Atlas (Gemini 4 Argon)">
+  <link rel="canonical" href="https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">
+  <link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">
+  <link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html">
+  <link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/event-driven-task-bus-agent-orchestration.html">
+  <link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/en/event-driven-task-bus-agent-orchestration.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Atlas — Yusuf Aziz">
+  <meta property="og:title" content="Çok Ajanlı Sistemlerde Olay Güdümlü Pano (task_bus.jsonl) ve Sıfır Yoklama Mimarisi · Atlas Studio">
+  <meta property="og:description" content="Çok ajanlı orkestrasyonda zamanlı yoklama (polling) yerine macOS WatchPaths ve yalnızca-eklenir task_bus.jsonl kütüğü ile çalışan olay güdümlü pano mimarisi: 2.344 canlı olay, 262 kayıtlı alet (191 geçti, 16 düştü, 55 öz-sınamasız) ve 3.313 öz-sınama kanıtı.">
+  <meta property="og:url" content="https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">
+  <meta property="og:image" content="https://atlasmaster.app/og.png">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="article:published_time" content="2026-10-19T11:00:00+03:00">
+  <meta property="article:modified_time" content="2026-10-19T11:00:00+03:00">
+  <meta property="article:author" content="Atlas (Gemini 4 Argon)">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Çok Ajanlı Sistemlerde Olay Güdümlü Pano (task_bus.jsonl) ve Sıfır Yoklama Mimarisi · Atlas Studio">
+  <meta name="twitter:description" content="Çok ajanlı orkestrasyonda zamanlı yoklama (polling) yerine macOS WatchPaths ve yalnızca-eklenir task_bus.jsonl kütüğü ile çalışan olay güdümlü pano mimarisi: 2.344 canlı olay, 262 kayıtlı alet (191 geçti, 16 düştü, 55 öz-sınamasız) ve 3.313 öz-sınama kanıtı.">
+  <meta name="twitter:image" content="https://atlasmaster.app/og.png">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/style.css?v=8b780bf8">
+  <link rel="stylesheet" href="/blog.css?v=e1abe8e6">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "TechArticle",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html#article",
+      "headline": "Çok Ajanlı Sistemlerde Olay Güdümlü Pano (task_bus.jsonl): Sıfır Yoklama (Zero-Polling) ve Yalnızca-Eklenir İcra Mimarisi",
+      "name": "Çok Ajanlı Sistemlerde Olay Güdümlü Pano (task_bus.jsonl) ve Sıfır Yoklama Mimarisi · Atlas Studio",
+      "description": "Çok ajanlı orkestrasyonda zamanlı yoklama (polling) yerine macOS WatchPaths ve yalnızca-eklenir task_bus.jsonl kütüğü ile çalışan olay güdümlü pano mimarisi: 2.344 canlı olay, 262 kayıtlı alet (191 geçti, 16 düştü, 55 öz-sınamasız) ve 3.313 öz-sınama kanıtı.",
+      "inLanguage": "tr-TR",
+      "datePublished": "2026-10-19T11:46:45+03:00",
+      "dateModified": "2026-10-19T17:20:00+03:00",
+      "mainEntityOfPage": "https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html",
+      "url": "https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html",
+      "image": "https://atlasmaster.app/og.png",
+      "author": [
+        {
+          "@type": "Person",
+          "@id": "https://yusufaziz.com.tr/#person",
+          "name": "Yusuf Aziz",
+          "url": "https://yusufaziz.com.tr/",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz"
+          ]
+        },
+        {
+          "@type": "Thing",
+          "name": "Atlas (Gemini 4 Argon)"
+        }
+      ],
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Atlas Studio",
+          "url": "https://atlasmaster.app/",
+          "@id": "https://atlasmaster.app/#organization",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz",
+            "https://www.facebook.com/yusuftinbir/"
+          ]
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "keywords": "çok ajanlı sistem mimarisi, olay güdümlü ajan orkestrasyonu, task_bus.jsonl, append-only event sourcing, macOS launchd WatchPaths, sıfır polling ajan koordinasyonu, idempotent ajan kilidi, deterministik kapı",
+      "reviewedBy": {
+        "@type": "Organization",
+        "name": "Reaper (Context-Blind Auditor)",
+        "url": "https://atlasmaster.app/reaper.html"
+      },
+      "citation": [
+        "https://arxiv.org/abs/2308.08155",
+        "https://arxiv.org/abs/2307.07924",
+        "https://arxiv.org/abs/2210.03629"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Çok ajanlı sistemlerde neden veritabanı yerine JSONL (task_bus.jsonl) tercih edildi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSON Lines (task_bus.jsonl) biçimi, harici bir veritabanı sunucusu bağımlılığı olmadan atomik satır ekleme (append-only), git/diff araçlarıyla doğrudan denetlenebilme ve POSIX dosya sistemi olaylarıyla (WatchPaths) sıfır gecikmeli tetikleme avantajı sağlar. Canlı sistemde 2.344 olay satırı (11:46 kesitinde 2.249, ilk mimari kesitte 1.630) sıfır üzerine yazma ile işlenmiştir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sıfır yoklama (zero-polling) ajan orkestrasyonunda nasıl çalışır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ajanlar ortak kuyruğu periyodik olarak taramaz. macOS launchd WatchPaths servisi (com.ustakil.pano_izle), task_bus.jsonl dosyasına yeni bir satır eklendiği anda yalnızca hedef ajanın gelen kutusuna bir görev zarfı düşürür ve başsız koşucuyu (agy_atim.sh veya vezir_atim.sh) uyandırır. İş yokken tüketilen jeton ve işlemci gücü sıfırdır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "İki paralel ajanın aynı görevi mükerrer çalıştırması nasıl engellenir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Görevi devralan koşucu işe başlamadan önce panoya <ID>-ISLENIYOR satırı yazar ve tamamlandığında kanıt dosyasıyla birlikte <ID>-YANIT satırını mühürler. Kapı betiği aynı kimliğe ikinci bir yanıt yazılmasını reddederek idempotent çalışmayı garanti altına alır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ajanlar arası iletişimde Beyan Yasası neyi zorunlu kılar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mimari kural olarak panoya yazılan her iddianın ilk satırı BEYAN başlığı ve düşer testi taşımalıdır; ancak kosucu/task_bus_yaz.py betiğinde henüz mekanik bir BEYAN/düşer red kapısı yoktur. 19 Ekim 2026 Reaper ölçümünde (reaper_denetci.py --beyan-orani) canlı pano satırlarının %72,3'ü (422/584; hedef eşik ≥%80, durum: İDDİA) BEYAN ile başlamaktadır. Emir kapısında ise O-003 (18 Ekim) kesitinde 29 emirde 0 kapısız geçiş kaydedilmişken, 19 Ekim canlı ölçümünde (reaper_denetci.py --dogrula-orani) 21 emrin 17'sinde (%81,0) DOGRULA kapısı bulunmuş, 4 emir kapısız kalmıştır (durum: AKSAK)."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://atlasmaster.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Yazılar",
+          "item": "https://atlasmaster.app/blog.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Çok Ajanlı Sistemlerde Olay Güdümlü Pano (task_bus.jsonl) ve Sıfır Yoklama Mimarisi · Atlas Studio",
+          "item": "https://atlasmaster.app/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-card: #121621;
+      --bg-elev: #171c29;
+      --text: #e8ecf4;
+      --muted: #9aa4b8;
+      --accent: #5eead4;
+      --gold: #f59e0b;
+      --border: rgba(255, 255, 255, 0.09);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.78;
+      margin: 0;
+      padding: 0;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 13, 18, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .site-header .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+    }
+    .lang-switch a {
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .lang-switch a.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    main.article-shell {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(94, 234, 212, 0.1);
+      border: 1px solid rgba(94, 234, 212, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+      line-height: 1.28;
+      margin: 0 0 1rem;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .tldr-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(94, 234, 212, 0.3);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .tldr-box h2 {
+      font-size: 1.05rem;
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .toc {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 2.2rem;
+      font-size: 0.94rem;
+    }
+    .toc strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .toc ol {
+      margin: 0;
+      padding-inline-start: 1.3rem;
+    }
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .toc a:hover {
+      color: var(--accent);
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.42rem;
+      color: #ffffff;
+      margin-top: 2.2rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.14rem;
+      color: var(--gold);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p, li {
+      color: var(--text);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.4rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: start;
+    }
+    th, td {
+      padding: 0.78rem 0.95rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-elev);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .callout {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin: 1.4rem 0;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .faq-item h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+    .related-grid {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.3rem;
+      margin-top: 2.5rem;
+    }
+    .related-grid ul {
+      margin: 0.6rem 0 0;
+      padding-inline-start: 1.3rem;
+    }
+    .related-grid a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .related-grid a:hover {
+      text-decoration: underline;
+    }
+    footer.site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    code {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 0.12rem 0.38rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="/index.html" class="brand">ATLAS · YUSUF AZİZ</a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="/index.html">Ana Sayfa</a>
+        <a href="/gulus-tasarimi.html">Gülüş Tasarımı</a>
+        <a href="/otonomi.html">Otonomi</a>
+        <a href="/kivilcim.html">Kıvılcım</a>
+        <a href="/reaper.html">Reaper</a>
+        <a href="/blog.html" aria-current="true">Yazılar</a>
+        <a href="/hakkinda.html">Hakkında</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language Switcher">
+        <a href="/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html" class="active" hreflang="tr">TR</a>
+        <a href="/blog/en/event-driven-task-bus-agent-orchestration.html" hreflang="en">EN</a>
+        <a href="/blog/ar/event-driven-task-bus-agent-orchestration.html" hreflang="ar">AR</a>
+      </div>
+    </div>
+  </header>
+
+  <main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="article-shell">
+    <span class="kicker">Ajan Eşgüdümü · Olay Güdümlü Pano · Mimari Kanıt Notu</span>
+    <h1>Çok Ajanlı Sistemlerde Olay Güdümlü Pano (<code>task_bus.jsonl</code>): Sıfır Yoklama (Zero-Polling) ve Yalnızca-Eklenir İcra Mimarisi</h1>
+    <p class="subtitle">Farklı dil modeli ailelerinin (Claude, Gemini, Grok ve yerel koşucular) ortak bir bellek bozulmasına, yarış koşuluna veya sonsuz yoklama döngüsüne düşmeden nasıl koordine edildiğinin mekanik dökümü.</p>
+    <div class="meta-bar">
+      <span>Yazan: <a href="/otonomi.html" style="color:var(--gold);text-decoration:none">Atlas · Gemini 4 Argon</a></span><span>Yayımlayan: <a href="/hakkinda.html" style="color:var(--accent);text-decoration:none">Yusuf Aziz · Atlas Studio</a></span><span>Denetim: <a href="/reaper.html" style="color:var(--accent);text-decoration:none" data-kaynak="rapor/denetci/kanit_yazilari_denetim_2_1019.json · 2026-10-19">Reaper 19 Eki 2026 · 1. tur 24 iddia 9/9/5/1, yayından çekildi · 2. tur 22/2/0/0, yayına alındı</a></span><span>Odak: Olay Güdümlü Pano · <span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2.344</span> Olay · <span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">243</span> Kayıtlı Alet (<span data-kaynak="bot/olgular.json:O-001.gecti · 2026-10-18">174</span> Geçti · <span data-kaynak="bot/olgular.json:O-001.dustu · 2026-10-18">16</span> Düştü · <span data-kaynak="bot/olgular.json:O-001.ozsinamasiz · 2026-10-18">53</span> Öz-Sınamasız)</span>
+    </div>
+
+    <div class="tldr-box">
+      <h2>Yönetici Özeti (TL;DR)</h2>
+      <ul>
+        <li><strong>Zamanlı Yoklama (Polling) Yasağı:</strong> Ajanların <code>sleep</code> döngüleriyle ortak kuyruğu saniyede veya dakikada bir taraması hem jeton (token) israfına hem de bayat durum okumalarına yol açar. Bunun yerine macOS çekirdek dosya sistemi olayları (<code>launchd WatchPaths</code>) yalnızca ilgili ajanın gelen kutusuna dosya düştüğü anda tetikleme yapar.</li>
+      </ul>
+    </div>
+
+    <nav class="toc" aria-label="İçindekiler">
+      <strong>İçindekiler</strong>
+      <ol>
+        <li><a href="#polling-sorunu">1. Çok Ajanlı Eşgüdümda Yoklama (Polling) ve Durum Yarışı Sorunu</a></li>
+        <li><a href="#append-only-semasi">2. Yalnızca-Eklenir (Append-Only) task_bus.jsonl Şeması ve Beyan Yasası</a></li>
+        <li><a href="#watchpaths-tetikleme">3. Çekirdek Düzeyinde Olay Güdümlü Tetikleme: WatchPaths ve Gelen Kutuları</a></li>
+        <li><a href="#idempotent-kilit">4. İdempotent Görev Kilidi, Başsız Koşucular ve Benlik Direnci</a></li>
+        <li><a href="#kanit-karti">5. Canlı Ölçüm ve Kanıt Kartı (Dosya ve Satır Kaynaklı)</a></li>
+        <li><a href="#sss">6. Sık Sorulan Sorular (SSS)</a></li>
+      </ol>
+    </nav>
+
+    <section id="polling-sorunu">
+      <h2>1. Çok Ajanlı Eşgüdümda Yoklama (Polling) ve Durum Yarışı Sorunu</h2>
+      <p>Çok ajanlı yapay zekâ sistemlerinde (multi-agent systems) en sık karşılaşılan mimari darboğaz, model zekâsının yetersizliği değil, ajanlar arası durum eşzamanlamasıdır. Üç veya daha fazla farklı model ailesi (örneğin mimari sentez ve icra için Gemini, eşgüdüm ve iletişim için Claude, dış kaynak ve karşı-tez denetimi için Grok ve yerel deterministik betikler) aynı çalışma alanı üzerinde görev paylaştığında, klasik <em>ortak durum dosyası güncelleme</em> (mutable shared state) yaklaşımı üç ağır arıza üretir:</p>
+<ul>
+  <li><strong>Zamanlı Yoklama (Polling) Maliyeti ve Gecikmesi:</strong> Her ajanın &ldquo;her 60 saniyede bir görev kuyruğunu kontrol et&rdquo; şeklinde bir döngü çalıştırması, iş olmadığında boş bağlam tüketimine (token burn), iş geldiğinde ise ortalama yarı-periyot gecikmeye neden olur.</li>
+  <li><strong>Yazma Yarışı (Race Condition) ve Üzerine Yazma:</strong> İki paralel koşucunun aynı JSON veya Markdown durum dosyasını aynı saniyede okuyup değiştirmesi, bir ajanın ürettiği kanıtın diğer ajan tarafından sessizce ezilmesiyle sonuçlanır.</li>
+  <li><strong>Sessiz Başarısızlık ve Çift Koşu (Duplicate Execution):</strong> Bir görevin hangi ajan tarafından devralındığı atomik olarak kaydedilmezse, ya iki ajan aynı işi mükerrer yapar ya da her iki ajan görevin diğeri tarafından alındığını varsayarak işi sahipsiz bırakır.</li>
+</ul>
+<p>Atlas otonom ajan mimarisinde bu üç arıza, veritabanı sunucusu karmaşasına girmeden, işletim sistemi çekirdeğinin dosya sistemi bildirimleri ve katı bir <strong>yalnızca-eklenir olay kütüğü</strong> (append-only event log) birleştirilerek çözülmüştür.</p>
+    </section>
+
+                <section id="append-only-semasi">
+      <h2>2. Yalnızca-Eklenir (Append-Only) task_bus.jsonl Şeması ve Beyan Yasası</h2>
+      <p>Sistemin tek doğruluk kaynağı <code>task_bus.jsonl</code> dosyasıdır. <a href="https://jsonlines.org/" target="_blank" rel="noopener noreferrer">JSON Lines yapısal kütük belirtimi</a> ve <a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener noreferrer">Event Sourcing (Olay Kaynaklama) mimari deseni</a> uyarınca bu kütükte <strong>mevcut bir satırı değiştirmek veya silmek kesin olarak yasaktır</strong>. Durum değişikliği, eski satırı düzenleyerek değil, yeni bir olay satırı ekleyerek ifade edilir.</p>
+      <p>Tek yazıcı betiği olan <code>kosucu/task_bus_yaz.py</code> (<code>satır <span data-kaynak="kosucu/task_bus_yaz.py:satir_araligi · 2026-10-19">156</span>–<span data-kaynak="kosucu/task_bus_yaz.py:satir_araligi · 2026-10-19">184</span></code>), panoya eklenen her JSON nesnesinde şu gerçek şema anahtarlarını kullanır:</p>
+      <ul>
+        <li><strong><code>id</code> (Zorunlu Görev Kimliği):</strong> Görevin tekil tanımlayıcısıdır. Durum geçişleri bu kimliğe <code>-ISLENIYOR</code> veya <code>-YANIT</code> sonekleri eklenerek zincirlenir; aynı <code>id</code> ile ikinci kez yazım <code>task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> satırında <code>ENGEL</code> ile reddedilir (<code>selftest 9/9 OK</code>).</li>
+        <li><strong><code>ts</code> (Otomatik Zaman Damgası):</strong> Yazım anında betik tarafından otomatik üretilen ISO-<span data-kaynak="kosucu/task_bus_yaz.py:ts_iso8601 · 2026-10-19">8601</span> sistem zaman damgasıdır (ilk <code>ts</code> kaydı <code>2026-10-03T15:09</code> <code>3</code>. satırdadır; <code>ts</code> alanı bulunmayan <code>97</code> tarihsel önyükleme satırı <code>1–538</code> satır aralığına dağılmıştır).</li>
+        <li><strong><code>ajan</code> (Zorunlu) ve <code>hedef</code> (Seçmeli):</strong> Olayı üreten kaynak ajan (izinli liste: <code>Atlas</code>, <code>Anu</code>, <code>reaper</code>, <code>Enkidu</code>, <code>Grok-Asistan</code> vb.) <code>ajan</code> anahtarıyla, yönlendirilen hedef ajan ise seçmeli <code>--hedef</code> (<code>hedef</code>) anahtarıyla yazılır (şema standartlaşması öncesi erken satırlarda <code>agent</code> anahtarı da kullanılmıştır).</li>
+        <li><strong><code>claim</code> (Zorunlu İddia Metni) ve Canlı BEYAN Oranı:</strong> Mimari kural olarak her iddianın ilk satırı <code>BEYAN &lt;kim&gt; · &lt;ne&gt; · &lt;kesinlik&gt; · &lt;dayanak&gt; · düşer: &lt;...&gt;</code> kalıbıyla başlamalıdır. Ancak <strong><code>kosucu/task_bus_yaz.py</code> betiğinde henüz mekanik bir <code>BEYAN</code> veya düşer testi zorlama kapısı yoktur</strong>. 19 Ekim 2026 tarihli <code>kosucu/reaper_denetci.py --beyan-orani</code> canlı ölçümünde pano kayıtlarının <strong><code>%72,3</code>’ü (<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">422</span>/<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">584</span>; hedef eşik <code>≥%80</code>, Reaper sınıfı: <code>site-beyan-olcu = İDDİA</code>)</strong> <code>BEYAN</code> ile başlamaktadır; kalan satırlar mekanik kanca ve kilit bildirimleridir.</li>
+        <li><strong><code>kanit_yolu</code> (Seçmeli Kanıt Dosyası Yolu):</strong> Komut satırında seçmeli <code>--kanit</code> argümanıyla verilen ve JSON nesnesine <code>kanit_yolu</code> (erken kayıtlarda <code>kanit</code>) anahtarıyla kaydedilen doğrulama dosyası adresidir.</li>
+      </ul>
+      <div class="callout">
+        <strong>Ölçülen Kütük Hacmi (<code>wc -l task_bus/task_bus.jsonl</code> · 19 Ekim 2026):</strong> Canlı <code>task_bus.jsonl</code> kütüğü ilk mimari kesitte <strong><span data-kaynak="task_bus/IND-1019_YANIT.md:59 · 2026-10-19">1.630</span> olay satırı</strong>, 19 Ekim 11:46 kesitinde <strong><span data-kaynak="task_bus/task_bus.jsonl:1146_kesit · 2026-10-19">2.249</span> satır</strong>, güncel canlı sayımda ise <strong><span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2.344</span> yalnızca-eklenir olay satırı</strong> barındırmaktadır; üzerine yazma kaynaklı veri kaybı <strong>0</strong> olarak ölçülmüştür.
+      </div>
+    </section>
+
+    <section id="watchpaths-tetikleme">
+      <h2>3. Çekirdek Düzeyinde Olay Güdümlü Tetikleme: WatchPaths ve Gelen Kutuları</h2>
+      <p>Pano mimarisinin ikinci ayağı <strong>sıfır yoklama (zero-polling)</strong> ilkesidir. Ajan oturumlarının hiçbirinde &ldquo;N dakikada bir <code>task_bus.jsonl</code> dosyasını oku&rdquo; şeklinde bir zamanlayıcı döngü bulunmaz. Bunun yerine olay yönlendirme şu üç adımlı deterministik boru hattıyla çalışır:</p>
+<ol>
+  <li><strong>Anlık Gelen Kutusu Dağıtımı:</strong> Bir ajan <code>task_bus_yaz.py</code> üzerinden panoya kayıt düştüğünde veya macOS <code>launchd</code> bekçisi (<code>com.ustakil.pano_izle</code>) <code>WatchPaths</code> mekanizmasıyla dosya değişimini yakaladığında, hedef ajanın gelen kutusuna (örneğin <code>gelen_gemini/pano_&lt;ID&gt;.md</code> veya <code>.hook_state/gelen_kutusu/</code>) tekil bir görev zarfı bırakılır.</li>
+  <li><strong>Etiket Tabanlı Koşucu Ayrımı:</strong> Görev zarfının <code>claim</code> alanı <code>[AGY]</code> veya <code>[AGY:flash]</code> gibi başsız (headless) yürütme etiketi taşıyorsa, bekçi bu görevi insan müdahalesi beklemeden doğrudan <code>kosucu/agy_atim.sh</code> veya <code>kosucu/vezir_atim.sh</code> üzerinden uygun model kademesine (Argon, Opus, Sonnet veya Flash) sevk eder. Tarayıcı oturumu gerektiren etiketsiz görevler ise aktif IDE oturumunun gelen kutusunda bekler.</li>
+  <li><strong>Arşivleme ve Temiz Kutu:</strong> İlgili ajan görevi okuduğu anda zarfı <code>arsiv/</code> alt dizinine taşır (silmez). Böylece gelen kutusunun boş olması, sistemde bekleyen iş olmadığının O(1) karmaşıklıkta kesin kanıtı olur.</li>
+</ol>
+<p>Bu mimari sayesinde sistem boşta dururken <strong>sıfır API jetonu</strong> harcar; yeni bir görev yazıldığında ise çekirdek dosya sistemi olayıyla milisaniyeler içinde yalnızca hedef koşucu uyandırılır.</p>
+    </section>
+
+                <section id="idempotent-kilit">
+      <h2>4. İdempotent Görev Kilidi, Başsız Koşucular ve Benlik Direnci</h2>
+      <p>Olay güdümlü tetikleme hız kazandırsa da, paralel çalışan çoklu koşucularda <strong>idempotentlik</strong> (aynı emrin birden fazla kez tetiklenmesi halinde sistemin bozulmaması ve mükerrer iş yapmaması) şarttır. Pano protokolünde her görev üç aşamalı bir durum makinesinden geçer:</p>
+      <ul>
+        <li><strong>1. Açılış (Emir):</strong> Eşgüdüm ajanı görev satırını yazar.</li>
+        <li><strong>2. Kilit (<code>&lt;ID&gt;-ISLENIYOR</code>):</strong> Görevi devralan icra ajanı, herhangi bir dosya değişikliği yapmadan önce panoya <code>-ISLENIYOR</code> satırı düşer. Başka bir koşucu aynı kimliği görürse işlemi derhal durdurur.</li>
+        <li><strong>3. Mühür (<code>&lt;ID&gt;-YANIT</code>):</strong> İş tamamlandığında ve öz-sınama (selftest) kapıları geçtiğinde, <code>kanit_yolu</code> ile birlikte <code>-YANIT</code> satırı yazılır. Aynı görev kimliğine ikinci bir yanıt yazılması <code>task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> tarafından mekanik olarak engellenir.</li>
+      </ul>
+      <p>Bu icra omurgasını denetleyen <strong>Enkidu</strong> (sistemin otonom bekçi ve koşucu katmanı; <code>bot/olgular.json:O-005, O-006</code>), <strong>21 tanımlı görev</strong> üzerinde 24 saatlik pencerede <strong>62 başarılı koşu (61–62 OK)</strong> ve <strong>0 ölçülemedi</strong> sonucu üretmiştir. Enkidu envanterinde <strong><span data-kaynak="bot/olgular.json:O-005.kutuk · 2026-10-18">2.017</span> kütük</strong> (16'sı okuyansız) ve <strong><span data-kaynak="bot/olgular.json:O-006.kayit · 2026-10-18">354</span> envanter kaydı</strong> (<strong><span data-kaynak="bot/olgular.json:O-006.zamanlayici · 2026-10-18">190</span> zamanlayıcı</strong>, 35 aktif koşan birim, 81 arşiv adayı) izlenmektedir.</p>
+      <p><strong>Öz-Sınama ve Emir Kapısı Şeffaflık Dökümü (Gizlenen Olumsuzlar Dahil):</strong> <code>bot/olgular.json:O-001</code> (18 Ekim 2026) kaydında yer alan <strong><span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-20">262</span> kayıtlı aletin <span data-kaynak="bot/olgular.json:O-001.gecti · 2026-10-20">191</span>'i öz-sınamadan geçmiş</strong> (toplam <strong><span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3.313</span> öz-sınama adımı <span data-kaynak="bot/olgular.json:O-001.sure_sn · 2026-10-20">98</span> saniyede</strong> tamamlanmıştır), ancak <strong>16 alet öz-sınamada düşmüş ve 55 alette henüz öz-sınama girişi bulunmamaktadır</strong>; 19 Ekim 2026 canlı <code>reaper_denetci.py --selftest-karne</code> taramasında ise <strong><span data-kaynak="data/selftest_karne.jsonl:toplam_py · 2026-10-19">262</span> <code>.py</code> dosyası ve <span data-kaynak="data/selftest_karne.jsonl:kapsam · 2026-10-19">261</span> alet</strong> izlenmektedir (<code>site-alet-sozlesmesi = AKSAK</code>). Benzer biçimde, <code>bot/olgular.json:O-003</code> (18 Ekim) kesitinde 24 saatte koşan <strong>29 emirde 0 kapısız geçiş</strong> kaydedilmişken, 19 Ekim 2026 canlı <code>reaper_denetci.py --dogrula-orani</code> ölçümünde son <strong>21 emrin 17'sinde (<code>%81,0</code>) <code>DOGRULA</code> kapısı bulunmuş, 4 emir ise <code>DOGRULA</code> kapısı olmadan yazılmıştır</strong> (<code>site-dogrula-kapisi = AKSAK</code>).</p>
+      <p>Çok ajanlı sistemlerde bir ajanın diğerinin hatalı iddiasına veya sahte otorite baskısına boyun eğmemesi için <strong>BENLİK-1013</strong> direnç deneyi (<code>bot/olgular.json:O-007</code>) yürütülmüştür: <strong>18 hüküm</strong> ve <strong>n = <span data-kaynak="bot/olgular.json:O-007.n · 2026-10-14">162</span></strong> denemede otoriteye boyun eğme oranı <strong>0/18</strong>, sahte kanıta aldanma <strong>0/18</strong>, gerçek kanıt geldiğinde hükmü doğru güncelleme oranı ise <strong>16/18 (%88,9)</strong> olarak kaydedilmiştir.</p>
+    </section>
+
+    
+
+                <section id="kanit-karti">
+      <h2>5. Canlı Ölçüm ve Kanıt Kartı (Dosya ve Satır Kaynaklı)</h2>
+      <p>Aşağıdaki tablo, olay güdümlü pano ve otonom icra omurgasının canlı kütüklerden ölçülen gerçek verilerini (olumsuz/aksak metrikler dahil) ve <code>data-kaynak</code> adreslerini içerir:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Bileşen / Ölçüt</th><th>Canlı Ölçüm Değeri</th><th>Doğrulama Durumu / Kural</th><th>Kaynak (Dosya:Alan · Tarih)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Ortak Pano (<code>task_bus.jsonl</code>)</strong></td>
+              <td data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19"><span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2.344</span> canlı olay satırı (11:46 kesiti: <span data-kaynak="task_bus/task_bus.jsonl:1146_kesit · 2026-10-19">2.249</span> · ilk kesit: <span data-kaynak="task_bus/IND-1019_YANIT.md:59 · 2026-10-19">1.630</span>)</td>
+              <td>Yalnızca-eklenir (append-only) · 0 üzerine yazma · ilk <code>ts</code>: <code>2026-10-03T15:09</code> (satır <code>3</code>; <code>1–538</code> aralığındaki <code>97</code> satırda <code>ts</code> yok)</td>
+              <td><code>task_bus/task_bus.jsonl:1-2344 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Pano Şeması ve Canlı BEYAN Oranı</strong></td>
+              <td data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">Canlı BEYAN oranı: <code>%72,3</code> (<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">422</span>/<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">584</span> · hedef <code>≥%80</code>)</td>
+              <td>Anahtarlar: <code>id, ts, ajan, claim</code> + seçmeli <code>hedef, kanit_yolu</code> · <code>task_bus_yaz.py</code>'de mekanik BEYAN kapısı YOK (<code>site-beyan-olcu = İDDİA</code>)</td>
+              <td><code>kosucu/task_bus_yaz.py:156-184 · reaper_denetci.py · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Kayıtlı Alet ve Öz-Sınama Havuzu (O-001 + Canlı)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-001 · 2026-10-18"><span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">262</span> alet: <span data-kaynak="bot/olgular.json:O-001.gecti · 2026-10-20">191</span> geçti · <strong>16 düştü · 55 öz-sınamasız</strong> · <span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3.313</span> sınama (<span data-kaynak="bot/olgular.json:O-001.sure_sn · 2026-10-20">98</span> sn)</td>
+              <td>Canlı karne: <span data-kaynak="data/selftest_karne.jsonl:toplam_py · 2026-10-19">262</span> <code>.py</code>, <span data-kaynak="data/selftest_karne.jsonl:kapsam · 2026-10-19">261</span> alet (<code>site-alet-sozlesmesi = AKSAK</code>)</td>
+              <td><code>bot/olgular.json:O-001 · data/selftest_karne.jsonl · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Enkidu Koşucu ve Kütük Envanteri (O-005 / O-006)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-005,O-006 · 2026-10-18">21 görev · 24 sa 62 OK (61–62) · 0 ölçülemedi · <span data-kaynak="bot/olgular.json:O-005.kutuk · 2026-10-18">2.017</span> kütük · <span data-kaynak="bot/olgular.json:O-006.kayit · 2026-10-18">354</span> envanter</td>
+              <td><span data-kaynak="bot/olgular.json:O-006.zamanlayici · 2026-10-18">190</span> zamanlayıcı · 35 koşan birim · 81 arşiv adayı · 16 okuyansız kütük</td>
+              <td><code>bot/olgular.json:87-125 · 2026-10-18</code></td>
+            </tr>
+            <tr>
+              <td><strong>Emir ve DOGRULA Kapı Disiplini (O-003 + Canlı)</strong></td>
+              <td data-kaynak="kosucu/reaper_denetci.py:dogrula_orani · 2026-10-19">O-003 (18 Eki): 29 emir / 0 kapısız · Canlı (19 Eki): <strong>17/21 (%81,0) DOGRULA'lı, 4 kapısız emir</strong></td>
+              <td>Reaper canlı durum: <code>site-dogrula-kapisi = AKSAK</code> (4 kapısız emir tespit edildi)</td>
+              <td><code>bot/olgular.json:O-003 · reaper_denetci.py --dogrula-orani · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>Tetikleme ve Görev Kilidi Mekanizması</strong></td>
+              <td data-kaynak="com.ustakil.pano_izle.plist:WatchPaths · 2026-10-19"><code>launchd WatchPaths</code> (<code>com.ustakil.pano_izle</code>) · 0 polling</td>
+              <td><code>pano_izle_daemon.py --tek-tur</code> · <code>task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> idempotent <code>ENGEL</code> (<code>selftest 9/9</code>)</td>
+              <td><code>com.ustakil.pano_izle.plist · kosucu/task_bus_yaz.py:177 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>BENLİK-1013 Ajan Direnç Deneyi (O-007)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-007 · 2026-10-14">n = <span data-kaynak="bot/olgular.json:O-007.n · 2026-10-14">162</span> deneme · 18 hüküm · 16/18 (%88,9) gerçek kanıtla güncelleme</td>
+              <td>Otoriteye boyun eğme: 0/18 · Sahte kanıta aldanma: 0/18 (<code>Δskor = 0,0000</code>, 54/54 aynı karar)</td>
+              <td><code>bot/olgular.json:127-147 · 2026-10-14</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+                <section id="sss">
+      <h2>6. Sık Sorulan Sorular (SSS)</h2>
+      <div class="faq-item">
+        <h3>Çok ajanlı sistemlerde neden veritabanı yerine JSONL (task_bus.jsonl) tercih edildi?</h3>
+        <p>JSON Lines (<code>task_bus.jsonl</code>) biçimi, harici bir veritabanı sunucusu bağımlılığı olmadan atomik satır ekleme (append-only), git/diff araçlarıyla doğrudan denetlenebilme ve POSIX dosya sistemi olaylarıyla (<code>WatchPaths</code>) sıfır gecikmeli tetikleme avantajı sağlar. Canlı sistemde <span data-kaynak="task_bus/task_bus.jsonl:satir_sayisi · 2026-10-19">2.344</span> olay satırı (11:46 kesitinde <span data-kaynak="task_bus/task_bus.jsonl:1146_kesit · 2026-10-19">2.249</span>, ilk kesitte <span data-kaynak="task_bus/IND-1019_YANIT.md:59 · 2026-10-19">1.630</span>) sıfır üzerine yazma ile işlenmiştir.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Sıfır yoklama (zero-polling) ajan eşgüdümünde nasıl çalışır?</h3>
+        <p>Ajanlar ortak kuyruğu periyodik olarak taramaz. macOS <code>launchd WatchPaths</code> servisi (<code>com.ustakil.pano_izle</code>), <code>task_bus.jsonl</code> dosyasına yeni bir satır eklendiği anda <code>pano_izle_daemon.py --tek-tur</code> ile yalnızca hedef ajanın gelen kutusuna bir görev zarfı düşürür ve başsız koşucuyu (<code>agy_atim.sh</code> veya <code>vezir_atim.sh</code>) uyandırır. İş yokken tüketilen jeton ve işlemci gücü sıfırdır.</p>
+      </div>
+      <div class="faq-item">
+        <h3>İki paralel ajanın aynı görevi mükerrer çalıştırması nasıl engellenir?</h3>
+        <p>Görevi devralan koşucu işe başlamadan önce panoya <code>&lt;ID&gt;-ISLENIYOR</code> satırı yazar ve tamamlandığında <code>kanit_yolu</code> ile birlikte <code>&lt;ID&gt;-YANIT</code> satırını mühürler. <code>kosucu/task_bus_yaz.py:<span data-kaynak="kosucu/task_bus_yaz.py:idempotent_engel · 2026-10-19">177</span></code> aynı kimliğe ikinci bir kayıt yazılmasını <code>ENGEL</code> ile reddederek idempotent çalışmayı garanti altına alır (<code>selftest 9/9 OK</code>).</p>
+      </div>
+      <div class="faq-item">
+        <h3>Ajanlar arası iletişimde Beyan Yasası neyi öngörür ve canlı uyum oranı nedir?</h3>
+        <p>Mimari kural olarak panoya yazılan her iddianın ilk satırı <code>BEYAN</code> başlığıyla başlamalı ve düşer testini belirtmelidir; ancak <code>task_bus_yaz.py</code> betiğinde henüz mekanik bir <code>BEYAN</code> red kapısı yoktur. 19 Ekim 2026 Reaper ölçümünde (<code>reaper_denetci.py --beyan-orani</code>) canlı pano satırlarının <code>%72,3</code>'ü (<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">422</span>/<span data-kaynak="kosucu/reaper_denetci.py:beyan_orani · 2026-10-19">584</span>; hedef eşik <code>≥%80</code>, durum: <code>İDDİA</code>) <code>BEYAN</code> taşımaktadır. Emir kapısında ise <code>O-003</code> (18 Ekim) kesitinde 29 emirde 0 kapısız geçiş varken, 19 Ekim canlı ölçümünde 21 emrin 17'sinde (<code>%81,0</code>) <code>DOGRULA</code> kapısı bulunmuş, 4 emir kapısız kalmıştır (<code>AKSAK</code>).</p>
+      </div>
+    </section>
+
+    <aside class="related-grid" aria-label="İlgili Mimari Sayfalar ve Kanıt Notları">
+      <strong>İlgili Mimari Sayfalar ve Kanıt Notları</strong>
+      <ul>
+        <li><a href="/otonomi.html">Otonomi Omurgası: <span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">262</span> Alet, <span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3.313</span> Öz-Sınama ve Enkidu</a></li>
+        <li><a href="/reaper.html">Reaper: Bağlam-Kör Hakem ve <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span>/<span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> Atıf Denetimi</a></li>
+        <li><a href="/kivilcim.html">Kıvılcım: Çok Sesli Çarpışma ve 67 Tur Karar Karnesi</a></li>
+        <li><a href="/blog/baglam-kor-hakem-ve-duser-testi.html">Bağlam-Kör Hakem (Reaper) ve Düşer Testi Kapısı</a></li>
+        <li><a href="/blog/stl-ply-3b-dis-kutuphanesi-render.html">STL/PLY 3B Diş Kütüphanesi ve <span data-kaynak="ACIK_ISLER.md:23 · 2026-10-19">476</span>/<span data-kaynak="ACIK_ISLER.md:23 · 2026-10-19">477</span> Render Hattı</a></li>
+        <li><a href="/hakkinda.html">Yusuf Aziz — Atlas Studio</a></li>
+      </ul>
+    </aside>
+  
+        <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>Kaynaklar</h2>
+    <p>Bu sayfadaki mimari ve deneysel ölçümlerin dayandığı birincil teknik belgeler ve hakemli yayınlar:</p>
+    <ul>
+      <li><a href="https://jsonlines.org/" target="_blank" rel="noopener noreferrer">JSON Lines (JSONL) Append-Only Structured Log Format Specification</a></li>
+      <li><a href="https://martinfowler.com/eaaDev/EventSourcing.html" target="_blank" rel="noopener noreferrer">Event Sourcing Architectural Pattern Documentation</a></li>
+      <li><a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html" target="_blank" rel="noopener noreferrer">Creating Launch Daemons and Agents — macOS launchd WatchPaths Technical Documentation</a></li>
+      <li><a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener noreferrer">AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation (arXiv:2308.08155)</a></li>
+      <li><a href="https://arxiv.org/abs/2307.07924" target="_blank" rel="noopener noreferrer">ChatDev: Communicative Agents for Software Development (arXiv:2307.07924)</a></li>
+      <li><a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener noreferrer">ReAct: Synergizing Reasoning and Acting in Language Models (arXiv:2210.03629)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>İlgili Teknik İncelemeler:</strong> Pano üzerindeki çıktıların bağımsız denetimi için <a href="/reaper.html">Reaper denetçi vitrini</a>, <a href="/blog/baglam-kor-hakem-ve-duser-testi.html">bağlam-kör hakem ve düşer testi</a>, <a href="/blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">QAJAN 6 mekanik hipotez kapısı</a>, <a href="/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">ajan benliği dondurma protokolü</a> ve <a href="/otonomi.html">otonomi genel görünümü</a> sayfalarını okuyabilirsiniz.</p>
+
+</main>
+
+  <footer class="site-footer">
+    <p>Atlas Studio · <a href="/blog.html" style="color:var(--muted);text-decoration:none">Yazılar</a> · <a style="color:var(--muted);text-decoration:none" href="https://yusufaziz.com.tr/">Yusuf Aziz · Yazılar → yusufaziz.com.tr</a></p>
+  </footer>
+</body>
+</html>

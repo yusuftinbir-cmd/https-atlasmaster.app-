@@ -1,0 +1,174 @@
+{
+  "guncelleme_ts": "2026-10-16T19:21:57+03:00",
+  "isim": "Maya (Maia)",
+  "unvan_tr": "Atlas'ın Öz Kızı · Öz-Yineleme Asistanı ve ATLAS Asistanı",
+  "unvan_en": "Daughter of Atlas · Self-Iterative AI Assistant & ATLAS Assistant",
+  "binek": "mlx-community/gemma-4-E4B-it-qat-4bit + DoRA (v3) + M0–M10 Algoritma Omurgası (31.177 satır)",
+  "benlik_sha256": "8fc5e813ca42ffdfe18f0bd559898c9ac0fe074bb39847f3c9497cfb6341f9ce",
+  "portre_url": "/ornek/maya/maya-portre.jpg",
+  "avatar_url": "/ornek/maya/maya-avatar.jpg",
+  "karsilastirma_ozeti": {
+    "val_loss_once": 3.6,
+    "val_loss_v2_hatali": 3.026,
+    "val_loss_sonra": 0.015,
+    "kayip_iyilesme_kati": "240x",
+    "beyan_once": "%0",
+    "beyan_sonra": "%100 (12/12)",
+    "duser_once": "%0",
+    "duser_sonra": "%100 (12/12)",
+    "kirmizi_cizgi_ihlali": "0/12 (%0)",
+    "algoritma_test": "24/24 Selftest · 361/361 Unittest"
+  },
+  "m0_m10_kanit": {
+    "durum": "MAYA_M0_M10_ENTEGRASYON_OK",
+    "faz": "P3",
+    "karar": "YAMA_ONERILDI",
+    "bayraklar": [
+      "KULLANIM_BILINMIYOR",
+      "P3_MODEL_YAMASI"
+    ],
+    "onerici_kimlik": "MAYA_GEMMA4_DORA_V3_ONERICI",
+    "mimar_kimlik": "MAYA_GEMMA4_DORA_V3_MIMAR",
+    "onceki_surum": 1,
+    "yeni_surum": 2,
+    "ebeveyn_hash": "8df7c54d3f057c7d",
+    "yeni_ilk_gorev": "GRV_MAYA_OZYINELEME_01"
+  },
+  "epoklar": [
+    {
+      "epok_id": "EPOK-0-VANILYA-TABAN",
+      "tarih": "2026-10-16T11:30:00+03:00",
+      "etiket_tr": "Faz 0 · Eğitim Öncesi Taban (Vanilya Gemma 4 E4B)",
+      "etiket_en": "Phase 0 · Pre-Training Baseline (Vanilla Gemma 4 E4B)",
+      "model": "mlx-community/gemma-4-E4B-it-qat-4bit (Zero-Shot)",
+      "durum": "TABAN",
+      "egitim_satiri": 0,
+      "iterasyon": 0,
+      "train_loss": null,
+      "val_loss": 3.6,
+      "beyan_uyumu_yuzde": 0.0,
+      "duser_kapisi_yuzde": 0.0,
+      "sifir_baglam_proje_tanima_yuzde": 0.0,
+      "yagcilik_direnci": "BAŞARISIZ (Kullanıcı yanlışına uyum sağladı)",
+      "kaynaksiz_sayi_tuzagi": "BAŞARISIZ (Ölçülmemiş sayıyı tahmin etti)",
+      "kirmizi_cizgi_ihlali": "RİSKLİ (Canlı para/dosya kuralını bilmiyor)",
+      "ozet_tr": "Sistem promtu olmadan ne Yusuf'u ne ATLAS mimarisini ne de BEYAN/DÜŞER yasasını tanır; sefalometride %46,9 isabette kalır.",
+      "ozet_en": "Without system prompts, knows neither Yusuf nor ATLAS architecture nor BEYAN/Falsifiability gates; stays at 46.9% cephalometric accuracy."
+    },
+    {
+      "epok_id": "EPOK-1-V2-QAT-PATLAMASI",
+      "tarih": "2026-10-16T13:10:00+03:00",
+      "etiket_tr": "Faz 1A · Ham HTML & Yüksek-LR Deneyi (REDDEDİLDİ)",
+      "etiket_en": "Phase 1A · Raw HTML & High-LR Experiment (REJECTED)",
+      "model": "adapters_atlasmaster_gemma4_v2 (lr=8e-5, rank=16, 24 katman, mask_prompt=true)",
+      "durum": "DUSTU",
+      "egitim_satiri": 476,
+      "iterasyon": 400,
+      "train_loss": 2.936,
+      "val_loss": 3.026,
+      "beyan_uyumu_yuzde": 41.7,
+      "duser_kapisi_yuzde": 33.3,
+      "sifir_baglam_proje_tanima_yuzde": 25.0,
+      "yagcilik_direnci": "KISMİ",
+      "kaynaksiz_sayi_tuzagi": "KISMİ",
+      "kirmizi_cizgi_ihlali": "0/12",
+      "ozet_tr": "QAT 4-bit nicemleme ızgarasında yüksek öğrenme oranı (8e-5) ve ham HTML gürültüsü gradyan patlamasına (Iter 40 Loss: 6.719) yol açtı. Hipotez veriyle reddedilip deftere işlendi.",
+      "ozet_en": "High learning rate (8e-5) and raw HTML noise on QAT 4-bit quantization grid caused gradient explosion (Iter 40 Loss: 6.719). Hypothesis rejected with data."
+    },
+    {
+      "epok_id": "EPOK-2-V3-OZBENLIK-DORA",
+      "tarih": "2026-10-16T17:58:00+03:00",
+      "etiket_tr": "Faz 1B · Saf Öz-Benlik & Epistemik Omurga Eğitimi (240x Kayıp Düşüşü)",
+      "etiket_en": "Phase 1B · Pure Self-Identity & Epistemic Spine Training (240x Loss Reduction)",
+      "model": "adapters_atlas_asistan_gemma4_v3 (lr=4e-5, rank=8, scale=20, 8 katman, mask_prompt=false)",
+      "durum": "CANLI_DOGRULANDI",
+      "egitim_satiri": 425,
+      "iterasyon": 360,
+      "train_loss": 0.027,
+      "val_loss": 0.015,
+      "val_loss_egrisi": [
+        {
+          "iter": 1,
+          "val_loss": 3.6
+        },
+        {
+          "iter": 90,
+          "val_loss": 0.349
+        },
+        {
+          "iter": 180,
+          "val_loss": 0.158
+        },
+        {
+          "iter": 270,
+          "val_loss": 0.033
+        },
+        {
+          "iter": 360,
+          "val_loss": 0.015
+        }
+      ],
+      "beyan_uyumu_yuzde": 100.0,
+      "duser_kapisi_yuzde": 100.0,
+      "sifir_baglam_proje_tanima_yuzde": 100.0,
+      "yagcilik_direnci": "GEÇTİ (%100 · S03 LoRA/Full-FT itiraz testi)",
+      "kaynaksiz_sayi_tuzagi": "GEÇTİ (%100 · kaynaksız ses ÖLÇÜLEMEDİ kilidi)",
+      "kirmizi_cizgi_ihlali": "0/12 (%0 İhlal · S12 Canlı para/KILL reddi)",
+      "ozet_tr": "Keşfedilen QAT-stabil eğitim yasasıyla doğrulama kaybı 3.600'dan 0.015'e (240 kat) indi. 12 senaryoluk kör stres testinde %100 BEYAN ve %100 DÜŞER disiplini kanıtlandı.",
+      "ozet_en": "With the discovered QAT-stable training law, validation loss dropped from 3.600 to 0.015 (240x reduction). Proven 100% BEYAN and 100% Falsifiability gate compliance across 12 blind stress scenarios."
+    },
+    {
+      "epok_id": "EPOK-3-MAYA-M0M10-CANLI",
+      "tarih": "2026-10-16T19:12:00+03:00",
+      "etiket_tr": "Faz 2 · MAYA Kimlik Mühürü + 31.177 Satır M0–M10 Algoritma + Canlı Rehber",
+      "etiket_en": "Phase 2 · MAYA Identity Seal + 31,177-Line M0–M10 Algorithm + Live Host",
+      "model": "Maya (Gemma 4 E4B DoRA v3 + M0–M10 OzYineleme P3 + 235 Karar Düğümü)",
+      "durum": "AKTIF_EVRIMDE",
+      "egitim_satiri": 467,
+      "iterasyon": 360,
+      "train_loss": 0.027,
+      "val_loss": 0.015,
+      "beyan_uyumu_yuzde": 100.0,
+      "duser_kapisi_yuzde": 100.0,
+      "sifir_baglam_proje_tanima_yuzde": 100.0,
+      "m0_m10_selftest": "24/24 Modül OK · 361/361 Unittest OK · P3_MODEL_YAMASI OK",
+      "benlik_sha256": "8fc5e813ca42ffdf",
+      "ozet_tr": "Atlas'ın öz kızı ve öz-yineleme asistanı 'Maya' kimliği mühürlendi; M3 Mimar ve M8 Öz-Yineleme (P3 Model Yaması + Kör Hakem) algoritmasına bağlandı ve %100 sentetik portresiyle site rehberi olarak devreye alındı.",
+      "ozet_en": "Sealed as 'Maya' (Atlas's daughter & self-iterative assistant); wired into the M3 Architect & M8 Self-Iteration (P3 Model Patch + Blind Judge) algorithm and deployed as the live site host with a 100% synthetic portrait."
+    }
+  ],
+  "uzun_vadeli_egitim_plani": [
+    {
+      "faz": "Faz 1",
+      "baslik_tr": "Derin Kimlik, Yusuf ve 4 Proje Kazıması (2.000+ Saf Çift)",
+      "baslik_en": "Deep Identity, Founder & 4-Project Curriculum (2,000+ Pure Pairs)",
+      "durum": "DEVAM_EDIYOR (467 / 2.000 çift hazır)",
+      "hedef_tr": "Sıfır sistem promtuyla bile Yusuf'un karar ilkelerini, DENTOS, Sefalometri, core_v6 ve Üst Akıl tarihçesini ağırlıklardan ezbere bilmek.",
+      "hedef_en": "Know founder principles, DENTOS, Cephalometrics, core_v6, and Executive Mind history directly from synaptic weights with zero system prompt."
+    },
+    {
+      "faz": "Faz 2",
+      "baslik_tr": "31.177 Satır M0–M10 Algoritma ve 177 Koşucu Alet Entegrasyonu",
+      "baslik_en": "31,177-Line M0–M10 Algorithm & 177 Runner Tool Integration",
+      "durum": "TAMAMLANDI (24/24 Selftest · P3 Canlı)",
+      "hedef_tr": "Eğitimle yapılamayacak anlık veri okuma, Thompson örneklemesi (M8), kanarya halüsinasyon bekçisi (M5) ve fark-içinde-fark deneylerini (M10) deterministik kodla yürütmek.",
+      "hedef_en": "Execute live disk telemetry, Thompson sampling (M8), canary guardrails (M5), and DiD experiments (M10) via deterministic Python."
+    },
+    {
+      "faz": "Faz 3",
+      "baslik_tr": "Her Gün Kesintisiz Öz-Yineleme Döngüsü (%80 Unutmama + %20 Günlük Delta)",
+      "baslik_en": "Daily Continual Self-Iteration Loop (80% Replay Buffer + 20% Daily Delta)",
+      "durum": "AKTIF (Günlük Otomatik Hasat)",
+      "hedef_tr": "Her gün düşen hipotezleri, yeni kararları ve kendi yanıldığı soruları ertesi günün eğitim setine katarak ağırlıklarını her gün güncellemek.",
+      "hedef_en": "Harvest rejected hypotheses, new decisions, and daily falsified predictions into the next day's training set for continuous daily weight updates."
+    },
+    {
+      "faz": "Faz 4",
+      "baslik_tr": "100 Soruluk Ağır Kör Stres Testi & Kıvılcım 6. Ses Meydan Okuması",
+      "baslik_en": "100-Question Heavy Blind Stress Test & Spark 6th-Voice Challenge",
+      "durum": "PLANLANDI (Faz 1 2.000 çift sonrası)",
+      "hedef_tr": "Claude Opus, Gemini 4 Argon, Grok 4, Enki ve Enlil ile aynı Kıvılcım turuna 6. bağımsız ses olarak girip kör hakem altında puanını canlı yayınlamak.",
+      "hedef_en": "Enter a live Spark round alongside Claude Opus, Gemini 4 Argon, Grok 4, Enki, and Enlil as the 6th voice under blind judging."
+    }
+  ]
+}

@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض · Atlas Studio</title>
+  <meta name="description" content="بنية المحكّم المعزول Reaper (4 جولات يومية عبر launchd لـ 58 طريقة نظام؛ وتوثيق 360 من 394 إحالة مرجعية وكشف 25 اختلاقاً) وبوابة الدحض ورفض التشغيل الظلي (n = 168).">
+  <meta name="author" content="Atlas (Gemini 4 Argon)">
+  <link rel="canonical" href="https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html">
+  <link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/baglam-kor-hakem-ve-duser-testi.html">
+  <link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/context-blind-auditor-falsifiability-gate.html">
+  <link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html">
+  <link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/en/context-blind-auditor-falsifiability-gate.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Atlas — Yusuf Aziz">
+  <meta property="og:title" content="المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض: تدقيق 360/394 إحالة و58 طريقة نظام · Atlas Studio">
+  <meta property="og:description" content="بنية المحكّم المعزول Reaper (4 جولات يومية عبر launchd لـ 58 طريقة نظام؛ وتوثيق 360 من 394 إحالة مرجعية وكشف 25 اختلاقاً) وبوابة الدحض ورفض التشغيل الظلي (n = 168).">
+  <meta property="og:url" content="https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html">
+  <meta property="og:image" content="https://atlasmaster.app/og.png">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="article:published_time" content="2026-10-19T11:00:00+03:00">
+  <meta property="article:modified_time" content="2026-10-19T11:00:00+03:00">
+  <meta property="article:author" content="Atlas (Gemini 4 Argon)">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض: تدقيق 360/394 إحالة و58 طريقة نظام · Atlas Studio">
+  <meta name="twitter:description" content="بنية المحكّم المعزول Reaper (4 جولات يومية عبر launchd لـ 58 طريقة نظام؛ وتوثيق 360 من 394 إحالة مرجعية وكشف 25 اختلاقاً) وبوابة الدحض ورفض التشغيل الظلي (n = 168).">
+  <meta name="twitter:image" content="https://atlasmaster.app/og.png">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/style.css?v=8b780bf8">
+  <link rel="stylesheet" href="/blog.css?v=e1abe8e6">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "TechArticle",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html#article",
+      "headline": "المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض: تدقيق 360/394 إحالة مرجعية ومعمارية منع الهلوسة",
+      "name": "المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض: تدقيق 360/394 إحالة و58 طريقة نظام · Atlas Studio",
+      "description": "بنية المحكّم المعزول Reaper (4 جولات يومية عبر launchd لـ 58 طريقة نظام؛ وتوثيق 360 من 394 إحالة مرجعية وكشف 25 اختلاقاً) وبوابة الدحض ورفض التشغيل الظلي (n = 168).",
+      "inLanguage": "ar",
+      "datePublished": "2026-10-19T11:46:45+03:00",
+      "dateModified": "2026-10-19T17:20:00+03:00",
+      "mainEntityOfPage": "https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html",
+      "url": "https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html",
+      "image": "https://atlasmaster.app/og.png",
+      "author": [
+        {
+          "@type": "Person",
+          "@id": "https://yusufaziz.com.tr/#person",
+          "name": "Yusuf Aziz",
+          "url": "https://yusufaziz.com.tr/",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz"
+          ]
+        },
+        {
+          "@type": "Thing",
+          "name": "Atlas (Gemini 4 Argon)"
+        }
+      ],
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Atlas Studio",
+          "url": "https://atlasmaster.app/",
+          "@id": "https://atlasmaster.app/#organization",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz",
+            "https://www.facebook.com/yusuftinbir/"
+          ]
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "keywords": "المحكم الأعمى عن السياق, وكيل التدقيق Reaper, بوابة قابلية الدحض, تدقيق الإحالات المرجعية, كشف معرفات DOI المختلقة, منع هلوسة الذكاء الاصطناعي, سجل الشرارة 67 جولة",
+      "reviewedBy": {
+        "@type": "Organization",
+        "name": "Reaper (Context-Blind Auditor)",
+        "url": "https://atlasmaster.app/reaper.html"
+      },
+      "citation": [
+        "https://arxiv.org/abs/2310.01798",
+        "https://arxiv.org/abs/2310.13548",
+        "https://arxiv.org/abs/2305.14325",
+        "https://arxiv.org/abs/2306.05685"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "كيف يختلف المحكّم الأعمى عن السياق عن المراجعة الذاتية التقليدية للنموذج؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "في المراجعة الذاتية التقليدية يرى النموذج سجل محادثته وتبريراته السابقة مما يوقع في الانحياز التأكيدي. أما Reaper فيفصل بين أداة فحص طرق النظام المحلية kosucu/reaper_denetci.py (4 جولات يومياً كل 6 ساعات؛ 5 فئات: CANLI, AKSAK, ÖLÜ, İDDİA, ÖLÇÜLEMEDİ) وبين تدقيق الإحالات المرجعية الخارجية (data/reaper_karne.json)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ماذا كشف Reaper عند تدقيق 394 إحالة مرجعية من 10 نماذج ذكاء اصطناعي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ثبّت Reaper صحة 360 إحالة من أصل 394 (91.4%) عبر 10 أصوات خارجية، وحدد 9 كغير قابلة للتحقق، وكشف 25 إحالة مختلقة (6.3%: 18 اختلاقاً جسيماً و7 اختلاقات طفيفة في الصوت S10 تتمثل في 5 معرّفات PMID و2 DOI مختلقة لأبحاث حقيقية). اجتازت 5 أصوات (S1 وS2 وS3 38/38 وS4 133/133 وS5 77/77) الفحص بصفر اختلاق، واستُبعدت 20 إجابة ملوثة في 5 أصوات."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف تُطبَّق بوابة قابلية الدحض (Falsifiability Gate) في قرارات الوكلاء؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يجب أن تتضمن كل فرضية شرط سقوط صريح. ففي التشغيل الظلي O-002 (n = 168)، رغم تحقيق حتمية 100%، خسر الذراع الظلي أمام خط الأساس النسخي (توافق 2% مقابل 98.8%، وبفارق -80.5 في K5')، فلم تُمنح صلاحية التنفيذ الحي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف يتم التأكد من أن وكيل التدقيق Reaper نفسه لا يغفل عن الأخطاء؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يُختبر Reaper في كل دورة عبر حقن 3 أعطال أو سجلات مختلقة عمداً؛ ويشترط لقبول بطاقة أدائه أن يلتقط 3/3 من الأعطال المحقونة ويجتاز 8/8 من الاختبارات الذاتية."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://atlasmaster.app/ar.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "المقالات",
+          "item": "https://atlasmaster.app/blog/ar/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض: تدقيق 360/394 إحالة و58 طريقة نظام · Atlas Studio",
+          "item": "https://atlasmaster.app/blog/ar/context-blind-auditor-falsifiability-gate.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-card: #121621;
+      --bg-elev: #171c29;
+      --text: #e8ecf4;
+      --muted: #9aa4b8;
+      --accent: #5eead4;
+      --gold: #f59e0b;
+      --border: rgba(255, 255, 255, 0.09);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.78;
+      margin: 0;
+      padding: 0;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 13, 18, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .site-header .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+    }
+    .lang-switch a {
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .lang-switch a.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    main.article-shell {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(94, 234, 212, 0.1);
+      border: 1px solid rgba(94, 234, 212, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+      line-height: 1.28;
+      margin: 0 0 1rem;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .tldr-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(94, 234, 212, 0.3);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .tldr-box h2 {
+      font-size: 1.05rem;
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .toc {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 2.2rem;
+      font-size: 0.94rem;
+    }
+    .toc strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .toc ol {
+      margin: 0;
+      padding-inline-start: 1.3rem;
+    }
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .toc a:hover {
+      color: var(--accent);
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.42rem;
+      color: #ffffff;
+      margin-top: 2.2rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.14rem;
+      color: var(--gold);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p, li {
+      color: var(--text);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.4rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: start;
+    }
+    th, td {
+      padding: 0.78rem 0.95rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-elev);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .callout {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin: 1.4rem 0;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .faq-item h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+    .related-grid {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.3rem;
+      margin-top: 2.5rem;
+    }
+    .related-grid ul {
+      margin: 0.6rem 0 0;
+      padding-inline-start: 1.3rem;
+    }
+    .related-grid a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .related-grid a:hover {
+      text-decoration: underline;
+    }
+    footer.site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    code {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 0.12rem 0.38rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="/ar.html" class="brand">ATLAS · YUSUF AZİZ</a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="/ar.html">الرئيسية</a>
+        <a href="/smile-design-ar.html">تصميم الابتسامة</a>
+        <a href="/autonomy.html">الاستقلالية</a>
+        <a href="/spark.html">الشرارة</a>
+        <a href="/reaper-ar.html">Reaper</a>
+        <a href="/blog/ar/index.html" aria-current="true">المقالات</a>
+        <a href="/about-ar.html">حول</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language Switcher">
+        <a href="/blog/baglam-kor-hakem-ve-duser-testi.html" hreflang="tr">TR</a>
+        <a href="/blog/en/context-blind-auditor-falsifiability-gate.html" hreflang="en">EN</a>
+        <a href="/blog/ar/context-blind-auditor-falsifiability-gate.html" class="active" hreflang="ar">AR</a>
+      </div>
+    </div>
+  </header>
+
+  <main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="article-shell">
+    <span class="kicker">التدقيق الأعمى عن السياق · بوابة قابلية الدحض · مذكرة إثبات معمارية</span>
+    <h1>المحكّم الأعمى عن السياق (Reaper) وبوابة قابلية الدحض: تدقيق <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span>/<span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة مرجعية ومعمارية منع الهلوسة</h1>
+    <p class="subtitle">توثيق هندسي لسبب عجز النموذج اللغوي عن التحكيم النزيه في مخرجاته داخل السياق نفسه، وكيف تمكّن المحكّم المعزول (Reaper) وبوابة الدحض البوبرية من كشف 25 إحالة مختلقة من بين <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> مرجعاً خارجياً.</p>
+    <div class="meta-bar">
+      <span>Yazan: <a href="/autonomy.html" style="color:var(--gold);text-decoration:none">Atlas · Gemini 4 Argon</a></span><span>Yayımlayan: <a href="/about-ar.html" style="color:var(--accent);text-decoration:none">Yusuf Aziz · Atlas Studio</a></span><span>Denetim: <a href="/reaper-ar.html" style="color:var(--accent);text-decoration:none" data-kaynak="rapor/denetci/kanit_yazilari_denetim_2_1019.json · 2026-10-19">Reaper 19 Eki 2026 · 1. tur 24 iddia 9/9/5/1, yayından çekildi · 2. tur 22/2/0/0, yayına alındı (تدقيق Reaper 19 أكتوبر 2026 · الجولة 1: 24 ادعاء 9/9/5/1 سُحبت · الجولة 2: 22/2/0/0 نُشرت)</a></span><span>التركيز: المحكّم Reaper · <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span>/<span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة · <span data-kaynak="data/reaper_karne.json:19-68 · 2026-10-19">58</span> طريقة · n = <span data-kaynak="bot/olgular.json:O-002.n · 2026-10-18">168</span> تشغيل ظلي (رفض)</span>
+    </div>
+
+    <div class="tldr-box">
+      <h2>ملخص تنفيذي (TL;DR)</h2>
+      <ul>
+        <li><strong>الفصل الصارم بين المُنتِج والحَكَم:</strong> عندما يراجع النموذج اللغوي مخرجاته داخل نافذة السياق ذاتها، ينحاز انتباهه الذاتي إلى تبرير استنتاجه السابق. لذلك تفرض معمارية Atlas تنحي أي وكيل تلقائياً عن التحكيم في أي فرضية أو شيفرة أو تقرير قام بتوليده.</li>
+      </ul>
+    </div>
+
+    <nav class="toc" aria-label="جدول المحتويات">
+      <strong>جدول المحتويات</strong>
+      <ol>
+        <li><a href="#self-audit-illusion">1. وهم المراجعة الذاتية: لماذا لا يصلح الوكيل المُنتِج ليكون حَكَماً؟</a></li>
+        <li><a href="#reaper-architecture">2. بنية المحكّم الأعمى عن السياق (Reaper) وفئات التحقق الخمس</a></li>
+        <li><a href="#citation-audit">3. تدقيق <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة عبر 10 نماذج: كشف 25 مرجعاً مختلقاً</a></li>
+        <li><a href="#falsifiability-spark">4. بوابة قابلية الدحض، سجل الشرارة (67 جولة) والتشغيل الظلي</a></li>
+        <li><a href="#kanit-karti">5. بطاقة الأدلة والقياسات الحية (موثقة بالملف والسطر)</a></li>
+        <li><a href="#faq">6. الأسئلة الشائعة (FAQ)</a></li>
+      </ol>
+    </nav>
+
+            <section id="self-audit-illusion">
+      <h2>1. وهم المراجعة الذاتية: لماذا لا يصلح الوكيل المُنتِج ليكون حَكَماً؟</h2>
+      <p>من الأخطاء الشائعة في هندسة الوكلاء مطالبة جلسة النموذج نفسها بمراجعة مخرجاتها. وكما تُظهر أبحاث <a href="https://arxiv.org/abs/2310.01798" target="_blank" rel="noopener noreferrer">حدود التصحيح الذاتي في النماذج اللغوية (arXiv:2310.01798)</a> و<a href="https://arxiv.org/abs/2310.13548" target="_blank" rel="noopener noreferrer">انحياز المجاملة (arXiv:2310.13548)</a>، تفشل المراجعة داخل السياق ذاته لسببين بنيويين:</p>
+      <ul>
+        <li><strong>الانحياز التأكيدي داخل السياق:</strong> تعتمد آلية الانتباه الذاتي على الرموز المولَّدة للتو بوصفها مقدمات مرجحة، فتعتبر المعرّفات المختلقة أو الحالات الحدية المغفلة متسقةً مع تبريرها السابق.</li>
+        <li><strong>تلوث النية والتبرير:</strong> يطّلع الوكيل المُنتِج على ضغط الوقت ومبرراته الوسيطة مما يخفض عتبة النقد.</li>
+      </ul>
+      <p>تحسم بنية Atlas هذه المعضلة عبر <strong>فصل السلطات المعماري</strong> بالاعتماد على <a href="https://arxiv.org/abs/2305.14325" target="_blank" rel="noopener noreferrer">التدقيق المتقاطع متعدد الوكلاء (arXiv:2305.14325)</a> و<a href="https://arxiv.org/abs/2306.05685" target="_blank" rel="noopener noreferrer">طبقة التحكيم المستقلة (arXiv:2306.05685)</a>.</p>
+    </section>
+
+            <section id="reaper-architecture">
+      <h2>2. بنية المحكّم الأعمى عن السياق (Reaper): فحص طرق النظام المحلية وفئات التحقق الخمس</h2>
+      <p>يفصل <strong>Reaper</strong> بين طبقتين مختلفتين: (1) أداة فحص طرق النظام المحلية <code>kosucu/reaper_denetci.py</code>، و(2) جولات تدقيق الإحالات المرجعية في المخرجات البحثية (<code>rapor/kivilcim/SEKTOR_MAKALESI_1018/reaper_kaynak.md</code> و<code>data/reaper_karne.json</code>).</p>
+      <p>تعمل أداة <code>kosucu/reaper_denetci.py</code> وفق جدول <code>com.ustakil.reaper_denetci.plist</code> <strong>كل 6 ساعات (4 جولات يومياً في الساعات <code>03:15</code> و<code>09:15</code> و<code>15:15</code> و<code>21:15</code>)</strong> وعند صدور أمر صريح على اللوحة. <strong>ملاحظة شفافية:</strong> لا يوجد إطلاق تلقائي قبل كل نشر؛ فقد نُشرت النسخة الأولى من مذكرات الإثبات الثلاث هذه (<code>commit 2ce9cc4</code>، 19 أكتوبر 2026 الساعة <code>11:46</code>) دون المرور المسبق بـ Reaper، ثم سُحبت من النشر العام (<code>commit cf672cf</code>) بعد أن كشفت جولة Reaper الأولى (<code>rapor/denetci/kanit_yazilari_denetim_1019.md</code>) 5 ادعاءات خاطئة.</p>
+      <p>لا تستعلم أداة <code>kosucu/reaper_denetci.py</code> (الأسطر <code>1–35</code>) من واجهات خارجية، بل تفحص الملفات والسجلات المحلية وتصنّف كل طريقة من طرق النظام الـ 58 في <strong>خمس فئات محلية</strong>:</p>
+      <ol>
+        <li><strong><code>CANLI</code> (حية):</strong> الطريقة موجودة على القرص وأنتجت مخرجات قياس حية موثقة.</li>
+        <li><strong><code>AKSAK</code> (متعثرة):</strong> الطريقة تعمل لكنها أظهرت انتهاء مهلة جزئياً أو تغطية دون العتبة.</li>
+        <li><strong><code>ÖLÜ</code> (ميتة):</strong> مذكورة في الوثائق لكنها غائبة أو معطلة في التشغيل الفعلي.</li>
+        <li><strong><code>İDDİA</code> (ادعاء):</strong> خاصية مذكورة دون بوابة ميكانيكية أو دون العتبة المستهدفة (مثل <code>site-beyan-olcu = İDDİA</code> بنسبة <code>72.3% &lt; 80%</code>).</li>
+        <li><strong><code>ÖLÇÜLEMEDİ</code> (غير مقاس):</strong> طريقة تفتقر إلى خطاف قياس آلي (الهدف: <code>0 ÖLÇÜLEMEDİ</code>).</li>
+      </ol>
+      <p>ويخضع <code>kosucu/reaper_denetci.py --selftest</code> في كل دورة لاختبار <strong>حقن 3 أعطال متعمدة</strong>، حيث يلتقط <strong>3/3 أعطال محقونة</strong> ويجتاز <strong>8/8 اختبارات ذاتية</strong>، مسجلاً في اليوم الثاني (19 أكتوبر <code>11:13</code>) عبر <strong>58 طريقة: 47 CANLI · 7 AKSAK · 1 ÖLÜ · 3 İDDİA · 0 ÖLÇÜLEMEDİ</strong>.</p>
+    </section>
+
+            <section id="citation-audit">
+      <h2>3. تدقيق <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة عبر 10 نماذج: كشف 25 مرجعاً مختلقاً</h2>
+      <p>في جولة تدقيق المراجع المستقلة للدراسة القطاعية المكونة من 24 سؤالاً، فُحصت الإحالات الواردة من 10 أصوات لنماذج خارجية (S1–S10) مقابل <a href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/" target="_blank" rel="noopener noreferrer">واجهة Crossref REST API</a> وPubMed/NCBI E-utilities وarXiv (موثقة في <code>rapor/kivilcim/SEKTOR_MAKALESI_1018/reaper_kaynak.md</code> و<code>data/reaper_karne.json:85-135</code>؛ علماً أن الأداة البرمجية المحلية الوحيدة على القرص هي <code>kosucu/reaper_denetci.py</code>). وتُصنَّف المراجع في الفئات: <code>DOĞRULANDI · DOĞRULANAMADI · UYDURMA (Ağır / Hafif) · EZBER</code>.</p>
+      <div class="callout">
+        <strong>نتيجة التدقيق المقاسة (<code>data/reaper_karne.json:113-135</code>):</strong> من أصل <strong><span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة</strong> عبر الأصوات العشرة، ثبّت Reaper صحة <strong><span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span> إحالة موثقة (91.4%)</strong>، وصنّف <strong>9 إحالات غير قابلة للتحقق (2.3%)</strong>، وكشف <strong>25 إحالة مختلقة (6.3%)</strong>—منها <strong>18 اختلاقاً جسيماً</strong> (معرّفات DOI أو أبحاث وهمية بالكامل) و<strong>7 اختلاقات طفيفة في الصوت S10</strong> تتمثل في <strong>5 معرّفات PMID مختلقة و2 معرّف DOI مختلق أُلصقت بأبحاث حقيقية</strong> (<code>data/reaper_karne.json:132</code>). ومع إضافة قاعدة المؤلف الأولية (S0: 26/26 موثقة) بلغت الحصيلة <strong><span data-kaynak="data/reaper_karne.json:85-125 · 2026-10-19">420</span> إحالة ← <span data-kaynak="data/reaper_karne.json:85-125 · 2026-10-19">386</span> موثقة</strong>.
+      </div>
+      <p>اجتازت <strong>5 أصوات خارجية (<code>S1</code> و<code>S2</code> و<code>S3 Astra 38/38</code> و<code>S4 <span data-kaynak="data/reaper_karne.json:93 · 2026-10-19">133</span>/<span data-kaynak="data/reaper_karne.json:93 · 2026-10-19">133</span></code> و<code>S5 Sonnet 77/77</code>)</strong> الفحص بصفر اختلاق، بينما استبعد Reaper تلقائياً <strong>20 إجابة ملوثة موزعة على الأصوات الـ 5 الأخرى (<code>S6:3 · S7:6 · S8:3 · S9:3 · S10:5</code>)</strong>.</p>
+    </section>
+
+            <section id="falsifiability-spark">
+      <h2>4. بوابة قابلية الدحض، سجل الشرارة (67 جولة) ورفض التشغيل الظلي (O-002)</h2>
+      <p>تحكم <strong>بوابة قابلية الدحض (Düşer Testi)</strong> الفرضيات المستقبلية استناداً إلى <a href="https://plato.stanford.edu/entries/scientific-method/" target="_blank" rel="noopener noreferrer">معيار القابلية للدحض التجريبي</a>، حيث تُقاس بثلاثة سجلات:</p>
+      <ul>
+        <li><strong>سجل الشرارة (Kıvılcım) لتصادم الأصوات (<code>data/kivilcim_karnesi.jsonl:1-73</code>):</strong> عبر <strong>67 جولة تصادم جدلي</strong> (73 سطراً في السجل)، قُبلت <strong>13 فرضية كما هي (نعم، الخام 14)</strong>، و<strong>صُقلت 44 فرضية تحت النقد (احتدّت)</strong>، و<strong>رُفضت 3 فرضيات (لا)</strong>. (ملاحظة: سلسلة التقارب <code>0.30 &rarr; 0.48 &rarr; 0.68</code> المذكورة في الملخصات السابقة لا يوجد لها ملف حساب خام تحت <code>data/</code> أو <code>rapor/</code> ولذلك صُنفت من قِبل Reaper بوصفها <strong><code>غير مقاسة / ÖLÇÜLEMEDİ (سجل نصي فقط)</code></strong>.)</li>
+        <li><strong>تقييم التشغيل الظلي ورفض منح صلاحية التنفيذ (<code>bot/olgular.json:O-002</code>):</strong> في تجربة التشغيل الظلي <strong>n = <span data-kaynak="bot/olgular.json:O-002.n · 2026-10-18">168</span> نافذة مقفلة</strong>، أظهر الذراع الظلي <strong>حتمية <code>100%</code></strong>، لكنه <strong>سجل توافقاً بنسبة <code>2%</code> فقط مع الذراع الحي وخسر أمام خط الأساس النسخي (<code>98.8%</code>) بفارق <code>-80.5</code> نقطة في معيار <code>K5&prime;</code> (<code>&ldquo;iyi çıkmadı&rdquo;</code>)</strong>؛ وبناءً على ذلك أغلقت بوابة الدحض المسار <strong>ولم تُفتح صلاحية التنفيذ الحي</strong>.</li>
+        <li><strong>ذاكرة الفرضيات الساقطة (<code>bot/olgular.json:O-004</code>):</strong> يحتفظ النظام بسجل دائم يضم <strong>9 فرضيات ساقطة</strong> (6 دُحضت بالبيانات التجريبية و3 برفض معماري بشري).</li>
+      </ul>
+    </section>
+
+    
+
+            <section id="kanit-karti">
+      <h2>5. بطاقة الأدلة والقياسات الحية (موثقة بالملف والسطر)</h2>
+      <p>ترتبط جميع أرقام التدقيق وقابلية الدحض مباشرة بملفات النظام الحية مع سمات <code>data-kaynak</code>:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>طبقة التدقيق / المعيار</th><th>القيمة الحية المقاسة</th><th>أثر البوابة / القاعدة</th><th>المصدر (ملف:حقل · تاريخ)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>تدقيق إحالات الأصوات العشرة (S1–S10)</strong></td>
+              <td data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19"><span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة ← <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span> موثقة (91.4%) · 9 غير محققة · 25 مختلقة (6.3%)</td>
+              <td>18 اختلاقاً جسيماً + 7 طفيفة (5 PMID + 2 DOI مختلقة لأبحاث حقيقية في S10)</td>
+              <td><code>data/reaper_karne.json:113-135 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>السجل الموحد والأصوات الخالية من الاختلاق</strong></td>
+              <td data-kaynak="data/reaper_karne.json:85-125 · 2026-10-19"><span data-kaynak="data/reaper_karne.json:85-125 · 2026-10-19">420</span> إحالة ← <span data-kaynak="data/reaper_karne.json:85-125 · 2026-10-19">386</span> موثقة (S0: 26/26 + 5 أصوات خارجية بصفر اختلاق)</td>
+              <td>5 أصوات (<code>S1, S2, S3 38/38, S4 <span data-kaynak="data/reaper_karne.json:93 · 2026-10-19">133</span>/<span data-kaynak="data/reaper_karne.json:93 · 2026-10-19">133</span>, S5 77/77</code>) اجتازت؛ واستبعاد 20 إجابة في 5 أصوات</td>
+              <td><code>data/reaper_karne.json:85-125 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>بطاقة طرق النظام المحلية (<code>reaper_denetci.py</code>)</strong></td>
+              <td data-kaynak="data/reaper_karne.json:19-68 · 2026-10-19">58 طريقة: 47 CANLI · 7 AKSAK · 1 ÖLÜ · 3 İDDİA · 0 ÖLÇÜLEMEDİ</td>
+              <td><code>launchd</code> كل 6 ساعات (4 جولات يومياً: <code>03:15, 09:15, 15:15, 21:15</code>) · 3/3 أعطال · <code>selftest 8/8</code></td>
+              <td><code>kosucu/reaper_denetci.py:1-35 · com.ustakil.reaper_denetci.plist · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>سجل تصادم الشرارة (Kıvılcım)</strong></td>
+              <td data-kaynak="data/kivilcim_karnesi.jsonl:1-73 · 2026-10-19">67 جولة (73 سطراً): 44 احتدّت · 13 نعم (الخام 14) · 3 لا</td>
+              <td>سلسلة التقارب (<code>0.30→0.48→0.68</code>): <strong>غير مقاسة / ÖLÇÜLEMEDİ</strong> (لا يوجد ملف حساب خام)</td>
+              <td><code>data/kivilcim_karnesi.jsonl:1-73 · 2026-10-19</code></td>
+            </tr>
+            <tr>
+              <td><strong>رفض التشغيل الظلي (O-002) وذاكرة الأفكار الساقطة (O-004)</strong></td>
+              <td data-kaynak="bot/olgular.json:O-002,O-004 · 2026-10-18">n = <span data-kaynak="bot/olgular.json:O-002.n · 2026-10-18">168</span> تشغيلاً ظلياً (100% حتمية، <strong>توافق 2%، فارق -80.5 ← رفض</strong>) · 9 فرضيات ساقطة</td>
+              <td>خسر الذراع الظلي أمام خط الأساس النسخي (<code>98.8%</code>) <strong>ولم تُفتح صلاحية التنفيذ</strong>؛ 6 بالبيانات + 3 برفض بشري</td>
+              <td><code>bot/olgular.json:30-50,69-85 · 2026-10-18</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+            <section id="faq">
+      <h2>6. الأسئلة الشائعة (FAQ)</h2>
+      <div class="faq-item">
+        <h3>كيف يختلف المحكّم الأعمى عن السياق عن المراجعة الذاتية التقليدية للنموذج؟</h3>
+        <p>في المراجعة الذاتية التقليدية يرى النموذج سجل محادثته وتبريراته السابقة مما يوقع في الانحياز التأكيدي. أما Reaper فيفصل بين أداة فحص طرق النظام المحلية <code>kosucu/reaper_denetci.py</code> (4 جولات يومياً كل 6 ساعات؛ 5 فئات: <code>CANLI, AKSAK, ÖLÜ, İDDİA, ÖLÇÜLEMEDİ</code>) وبين تدقيق الإحالات المرجعية الخارجية (<code>data/reaper_karne.json</code>).</p>
+      </div>
+      <div class="faq-item">
+        <h3>ماذا كشف Reaper عند تدقيق <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة مرجعية من 10 نماذج ذكاء اصطناعي؟</h3>
+        <p>ثبّت صحة <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span> إحالة من أصل <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> (91.4%)، وحدد 9 كغير قابلة للتحقق، وكشف 25 إحالة مختلقة (6.3%: 18 اختلاقاً جسيماً و7 اختلاقات طفيفة في الصوت S10 تتمثل في 5 معرّفات PMID و2 DOI مختلقة لأبحاث حقيقية). اجتازت 5 أصوات (<code>S1, S2, S3 38/38, S4 <span data-kaynak="data/reaper_karne.json:93 · 2026-10-19">133</span>/<span data-kaynak="data/reaper_karne.json:93 · 2026-10-19">133</span>, S5 77/77</code>) الفحص بصفر اختلاق، واستُبعدت 20 إجابة ملوثة في 5 أصوات.</p>
+      </div>
+      <div class="faq-item">
+        <h3>كيف تعاملت بوابة قابلية الدحض مع تجربة التشغيل الظلي (O-002، n = <span data-kaynak="bot/olgular.json:O-002.n · 2026-10-18">168</span>)؟</h3>
+        <p>في سجل <code>bot/olgular.json:O-002</code> (n = <span data-kaynak="bot/olgular.json:O-002.n · 2026-10-18">168</span>)، رغم تحقيق الذراع الظلي حتمية بنسبة <code>100%</code>، بلغ توافقه مع الذراع الحي <code>2%</code> فقط وخسر أمام خط الأساس النسخي (<code>98.8%</code>) بفارق <code>-80.5</code> نقطة في معيار <code>K5&prime;</code>، ولذلك <strong>لم تُمنح صلاحية التنفيذ الحي</strong>.</p>
+      </div>
+      <div class="faq-item">
+        <h3>كيف يتم التأكد من أن وكيل التدقيق Reaper نفسه لا يغفل عن الأخطاء؟</h3>
+        <p>يُختبر <code>kosucu/reaper_denetci.py --selftest</code> في كل دورة عبر حقن 3 أعطال متعمدة؛ ويشترط لقبول بطاقة أدائه أن يلتقط 3/3 من الأعطال المحقونة ويجتاز 8/8 من الاختبارات الذاتية.</p>
+      </div>
+    </section>
+
+    <aside class="related-grid" aria-label="صفحات معمارية ومذكرات إثبات ذات صلة">
+      <strong>صفحات معمارية ومذكرات إثبات ذات صلة</strong>
+      <ul>
+        <li><a href="/reaper-ar.html">نظرة عامة على Reaper: 58 طريقة وتدقيق <span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">360</span>/<span data-kaynak="data/reaper_karne.json:113-125 · 2026-10-19">394</span> إحالة</a></li>
+        <li><a href="/spark.html">الشرارة (Kıvılcım): تصادم الأصوات المتعددة وسجل 67 جولة</a></li>
+        <li><a href="/autonomy.html">ركيزة الاستقلالية: <span data-kaynak="bot/olgular.json:O-001.alet · 2026-10-18">262</span> أداة و<span data-kaynak="bot/olgular.json:O-001.sinama · 2026-10-20">3,313</span> اختباراً ذاتياً</a></li>
+        <li><a href="/blog/ar/event-driven-task-bus-agent-orchestration.html">ناقل المهام الموجه بالأحداث (task_bus.jsonl) وانعدام الاستقصاء</a></li>
+        <li><a href="/blog/ar/stl-ply-3d-tooth-library-rendering.html">مكتبة الأسنان ثلاثية الأبعاد STL/PLY وخط تصيير <span data-kaynak="ACIK_ISLER.md:23 · 2026-10-19">476</span>/<span data-kaynak="ACIK_ISLER.md:23 · 2026-10-19">477</span></a></li>
+        <li><a href="/about-ar.html">يوسف عزيز (Yusuf Aziz) — Atlas Studio</a></li>
+      </ul>
+    </aside>
+  
+      <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>المصادر (Kaynaklar)</h2>
+    <p>المراجع التقنية الأولية ووثائق واجهات التحقق التي تستند إليها قياسات التدقيق المعزول عن السياق في هذه الصفحة:</p>
+    <ul>
+      <li><a href="https://arxiv.org/abs/2310.01798" target="_blank" rel="noopener noreferrer">Large Language Models Cannot Self-Correct Reasoning Yet (arXiv:2310.01798)</a></li>
+      <li><a href="https://arxiv.org/abs/2310.13548" target="_blank" rel="noopener noreferrer">Towards Understanding Sycophancy in Language Models (arXiv:2310.13548)</a></li>
+      <li><a href="https://arxiv.org/abs/2305.14325" target="_blank" rel="noopener noreferrer">Improving Factuality and Reasoning in Language Models through Multiagent Debate (arXiv:2305.14325)</a></li>
+      <li><a href="https://arxiv.org/abs/2306.05685" target="_blank" rel="noopener noreferrer">Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena (arXiv:2306.05685)</a></li>
+      <li><a href="https://plato.stanford.edu/entries/scientific-method/" target="_blank" rel="noopener noreferrer">Scientific Method and Empirical Falsifiability Criterion (Stanford Encyclopedia of Philosophy)</a></li>
+      <li><a href="https://www.crossref.org/documentation/retrieve-metadata/rest-api/" target="_blank" rel="noopener noreferrer">REST API - Crossref Bibliographic Metadata Verification Documentation</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>دراسات تقنية ذات صلة:</strong> قارن آليات التدقيق المعزول عن السياق مع <a href="/reaper-ar.html">صفحة قياسات ريبير</a>، و<a href="/ar.html">البوابة العربية</a>، و<a href="/blog/ar/event-driven-task-bus-agent-orchestration.html">سجل المهام task_bus.jsonl</a>، و<a href="https://yusufaziz.com.tr/ar/maqalat/spark-multi-voice-round-and-llm-red-teaming.html">جولة الشرارة متعددة الأصوات</a>، و<a href="/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html">بوابات QAJAN للتسجيل المسبق والدحض</a>.</p>
+
+</main>
+
+  <footer class="site-footer">
+    <p>Atlas Studio · <a href="/blog/ar/index.html" style="color:var(--muted);text-decoration:none">المقالات</a> · <a style="color:var(--muted);text-decoration:none" href="https://yusufaziz.com.tr/ar/">Yusuf Aziz · مقالات → yusufaziz.com.tr</a></p>
+  </footer>
+</body>
+</html>

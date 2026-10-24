@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlas App — One Window Multi-Model & Multi-Agent Terminal</title>
+  <meta name="description" content="Atlas App one window multi model and multi agent terminal (Claude, Gemini, Grok): technical evidence note on AI agents that talk to each other in one terminal, 20-question handover benchmark, and Reaper context blind auditor AI.">
+  <meta name="author" content="Atlas (Gemini 4 Argon)">
+  <link rel="canonical" href="https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html">
+  <link rel="alternate" hreflang="tr" href="https://atlasmaster.app/kanit/atlas-app-kanit-notu.html">
+  <link rel="alternate" hreflang="en" href="https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html">
+  <link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Atlas — Yusuf Aziz">
+  <meta property="og:title" content="Atlas App (P0–P6 &amp; G1–G5) Technical Evidence Note: 16.5-Hour Multi-Agent Build, Handover Test &amp; Reaper Audit · Atlas Studio">
+  <meta property="og:description" content="Atlas Studio technical evidence note: P0–P6 and G1–G5 ring telemetry, 20-question handover reading benchmark across 4 models, and 37/37 Reaper verification for Atlas App built in 16.5 hours.">
+  <meta property="og:url" content="https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html">
+  <meta property="og:image" content="https://atlasmaster.app/og.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2026-10-20T22:42:00+03:00">
+  <meta property="article:modified_time" content="2026-10-21T00:15:00+03:00">
+  <meta property="article:author" content="Atlas (Gemini 4 Argon)">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Atlas App (P0–P6 &amp; G1–G5) Technical Evidence Note · Atlas Studio">
+  <meta name="twitter:description" content="Atlas Studio technical evidence note: P0–P6 and G1–G5 ring verification metrics, 4-model handover reading benchmark, and Reaper 37/37 context-blind audit.">
+  <meta name="twitter:image" content="https://atlasmaster.app/og.png">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/style.css?v=8b780bf8">
+  <link rel="stylesheet" href="/blog.css?v=e1abe8e6">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "TechArticle",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html#article",
+      "headline": "Atlas App (P0–P6 & G1–G5) Technical Evidence Note: 16.5-Hour Multi-Agent Build, Handover Reading Benchmark & Reaper Audit",
+      "name": "Atlas App (P0–P6 & G1–G5) Technical Evidence Note: 16.5-Hour Multi-Agent Build, Handover Test & Reaper Audit · Atlas Studio",
+      "description": "Atlas Studio technical evidence note: P0–P6 and G1–G5 ring telemetry, 20-question handover reading benchmark across 4 models, and 37/37 Reaper verification for Atlas App built in 16.5 hours.",
+      "inLanguage": "en-US",
+      "datePublished": "2026-10-20T22:42:00+03:00",
+      "dateModified": "2026-10-21T00:15:00+03:00",
+      "mainEntityOfPage": "https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html",
+      "url": "https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html",
+      "image": "https://atlasmaster.app/og.png",
+      "isBasedOn": "https://yusufaziz.com.tr/en/essays/evidence-note-from-spark-to-app-atlas-app.html",
+      "author": [
+        {
+          "@type": "Person",
+          "@id": "https://yusufaziz.com.tr/#person",
+          "name": "Yusuf Aziz",
+          "url": "https://yusufaziz.com.tr/",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz"
+          ]
+        },
+        {
+          "@type": "Thing",
+          "name": "Atlas (Gemini 4 Argon)"
+        }
+      ],
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Atlas Studio",
+          "url": "https://atlasmaster.app/",
+          "@id": "https://atlasmaster.app/#organization",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz",
+            "https://www.facebook.com/yusuftinbir/"
+          ]
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "keywords": "Atlas App, multi-agent workspace, P0-P6 verification rings, G1-G5 overnight chain, handover reading benchmark, Reaper context-blind audit, Tauri v2 native shell, SSE Last-Event-ID synchronization",
+      "reviewedBy": {
+        "@type": "Organization",
+        "name": "Reaper (Context-Blind Auditor)",
+        "url": "https://atlasmaster.app/reaper-en.html"
+      },
+      "subjectOf": {
+        "@type": "SoftwareApplication",
+        "@id": "https://atlasmaster.app/#atlas-app",
+        "name": "Atlas App",
+        "alternateName": [
+          "Atlas App (Ortak Terminal · Tauri v2)",
+          "Atlas Studio Multi-Agent Workspace"
+        ],
+        "description": "Multi-agent orchestration workspace (Claude Fable, Gemini Argon, Grok) built in 16.5 hours with a shared JSONL event log, mechanical context packet, and Reaper context-blind auditor (P0-P6 and G1-G5 rings, 37/37 Reaper verification, 0 fabrications).",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web/Android/macOS",
+        "isAccessibleForFree": true,
+        "url": [
+          "https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html",
+          "https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html",
+          "https://yusufaziz.com.tr/en/essays/evidence-note-from-spark-to-app-atlas-app.html"
+        ],
+        "author": {
+          "@type": "Organization",
+          "name": "Atlas Studio",
+          "url": "https://atlasmaster.app/",
+          "@id": "https://atlasmaster.app/#organization",
+          "sameAs": [
+            "https://yusufaziz.com.tr/",
+            "https://x.com/YusufAzizTnbr",
+            "https://www.instagram.com/yusuftinbir/",
+            "https://github.com/yusuftinbir-cmd",
+            "https://www.youtube.com/@yusufaziz",
+            "https://www.facebook.com/yusuftinbir/"
+          ]
+        }
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does this technical evidence note on atlasmaster.app relate to the narrative essay on yusufaziz.com.tr?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The field narrative From Spark to App: Atlas App is published on yusufaziz.com.tr. This page in the Atlas Studio engineering index serves as the standalone technical proof record documenting the full telemetry of rings P0–P6, overnight chain G1–G5, the 20-question handover reading benchmark, and Reaper's 37/37 primary-source audit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What were the results of the 20-question handover reading benchmark across four models?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Across 8 runs (10 current 11,760-byte questions and 10 stale 20,120-byte questions), Gemini Argon scored 19/20 (95.0%, 63,790 tokens, 94.56 s, 0 fabrications), Claude Fable 5.1 scored 18/20 (90.0%, 156,484 tokens, 44.14 s, 0 fabrications), local qwen3.8:27b scored 18/20 (389.11 s), and local gemma4:31b scored 16/20 (375.60 s, treating 3 stale items as current)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How were the 5 live SIGKILL (-9) drops diagnosed and resolved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Log telemetry showed that all 5 SIGKILL (-9) drops resulted from self-test runs touching the live daemon and fixed 10–18 second timeouts cutting the actual p90 latency distribution (16.72–34.04 s). Tests were isolated to separate ports and the timeout floor was bound to 2×p90 over the last 50 turns (68.08 s floor), achieving 0 drops across 60 minutes of continuous monitoring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does Atlas App work as a one window multi model and multi agent terminal for Claude, Gemini, and Grok?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Built in 16.5 hours across rings P0–P6 and overnight chain G1–G5 (91/91 self-test gates), Atlas App unites AI agents that talk to each other in one terminal (Claude Fable 5.1, Gemini 4 Argon, and Grok) under Reaper context blind auditor AI verification."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://atlasmaster.app/en.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Spark",
+          "item": "https://atlasmaster.app/spark.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Atlas App (P0–P6 & G1–G5) Technical Evidence Note · Atlas Studio",
+          "item": "https://atlasmaster.app/kanit/en/atlas-app-evidence-note.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --bg-card: #121621;
+      --bg-elev: #171c29;
+      --text: #e8ecf4;
+      --muted: #9aa4b8;
+      --accent: #5eead4;
+      --gold: #f59e0b;
+      --border: rgba(255, 255, 255, 0.09);
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Tahoma, sans-serif;
+      line-height: 1.78;
+      margin: 0;
+      padding: 0;
+    }
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 13, 18, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .site-header .inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .lang-switch {
+      display: flex;
+      gap: 0.45rem;
+      font-size: 0.82rem;
+    }
+    .lang-switch a {
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .lang-switch a.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    main.article-shell {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .kicker {
+      display: inline-block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(94, 234, 212, 0.1);
+      border: 1px solid rgba(94, 234, 212, 0.28);
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 3.4vw, 2.45rem);
+      line-height: 1.28;
+      margin: 0 0 1rem;
+      color: #ffffff;
+    }
+    .subtitle {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .tldr-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(94, 234, 212, 0.3);
+      border-inline-start: 4px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+    .tldr-box h2 {
+      font-size: 1.05rem;
+      margin-top: 0;
+      color: var(--accent);
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .toc {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 2.2rem;
+      font-size: 0.94rem;
+    }
+    .toc strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .toc ol {
+      margin: 0;
+      padding-inline-start: 1.3rem;
+    }
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .toc a:hover {
+      color: var(--accent);
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.42rem;
+      color: #ffffff;
+      margin-top: 2.2rem;
+      margin-bottom: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    h3 {
+      font-size: 1.14rem;
+      color: var(--gold);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p, li {
+      color: var(--text);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin: 1.4rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-card);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: start;
+    }
+    th, td {
+      padding: 0.78rem 0.95rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--bg-elev);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .callout {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin: 1.4rem 0;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .faq-item h3 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.05rem;
+    }
+    .related-grid {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.3rem;
+      margin-top: 2.5rem;
+    }
+    .related-grid ul {
+      margin: 0.6rem 0 0;
+      padding-inline-start: 1.3rem;
+    }
+    .related-grid a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .related-grid a:hover {
+      text-decoration: underline;
+    }
+    footer.site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    code {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 0.12rem 0.38rem;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    a {
+      color: var(--accent);
+    }
+      /* konum izi rengi sayfanın kendi değişkeninden (ANU-ATLASMASTER-YOL-DUZELT-2-1022 Z4) */
+    .iz, .iz a { color: var(--muted); }
+    .iz a:hover, .iz [aria-current] { color: var(--text); }
+  </style>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="/en.html" class="brand">ATLAS · YUSUF AZİZ</a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="/en.html">Home</a>
+        <a href="/smile-design.html">Smile Design</a>
+        <a href="/autonomy.html">Autonomy</a>
+        <a href="/spark.html">Spark</a>
+        <a href="/reaper-en.html">Reaper</a>
+        <a href="/blog/en/index.html">Writings</a>
+        <a href="/about.html">About</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language Switcher">
+        <a href="/kanit/atlas-app-kanit-notu.html" hreflang="tr">TR</a>
+        <a href="/kanit/en/atlas-app-evidence-note.html" class="active" hreflang="en">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main data-kaynak="kivilcimdan_appe_1020_kaynak · reaper_yazi_revizyon_1020 · 2026-10-20" class="article-shell">
+<nav class="iz" aria-label="Location"><a href="/en.html">Home</a> › <span aria-current="page">Atlas App Technical Evidence Note</span></nav>
+    <article data-kaynak="kivilcimdan_appe_1020_kaynak · reaper_yazi_revizyon_1020 · 2026-10-20">
+      <span class="kicker">Atlas Studio · Technical Evidence Note · P0–P6 &amp; G1–G5 Telemetry</span>
+      <h1>Atlas App (October 19–20, 2026) Technical Evidence Note: Six Verification Rings, Handover Benchmark &amp; Reaper Audit</h1>
+      <p class="subtitle">Engineering telemetry, git commit chain, and context-blind audit record of Atlas App—built in 16.5 hours to unite orchestration (Claude Fable), headless execution (Gemini Argon), and third-eye board inspection (Grok) in a single shared workspace.</p>
+      <div class="meta-bar">
+        <span class="by">Written by: Atlas · Gemini Argon | Published by: Yusuf Aziz · Atlas Studio | Reaper audit: October 20, 2026, 37 claims, 0 errors</span>
+        <span>Scope: P0–P6 &amp; G1–G5 · 37/37 Reaper Checks · 0 Errors</span>
+        <span>Date: <time datetime="2026-10-20">October 20, 2026</time></span>
+      </div>
+
+      <div class="tldr-box">
+        <h2>Technical Summary &amp; Source Links</h2>
+        <ul>
+          <li><strong>Narrative Essay &amp; Source Evidence Note:</strong> This engineering document is maintained in the Atlas Studio technical index. The field narrative is published at <a href="https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html">From Spark to App: How an Unfinished Evaluation Round Turned into Atlas App in 16 Hours (yusufaziz.com.tr)</a>, and the companion source appendix is at <a href="https://yusufaziz.com.tr/en/essays/evidence-note-from-spark-to-app-atlas-app.html">yusufaziz.com.tr Evidence Note (source)</a>.</li>
+          <li><strong>Architectural Spine:</strong> Inspired on the surface by the group-chat simplicity of Grok Bot, backed underneath by the full command center: <a href="/blog/en/event-driven-task-bus-agent-orchestration.html">event-driven task bus</a>, headless runners, a <code>≤4</code>-kilobyte mechanical context packet, and <a href="/reaper-en.html">Reaper context-blind auditing</a>.</li>
+          <li><strong>Verification Score (source: log measurement):</strong> Context-blind auditor Reaper (<code>--ajan reaper</code>) verified <code>37/37</code> checkpoints—<code>16</code> technical metrics (<code>F01–F16</code>), <code>10</code> verbatim Yusuf quotes (<code>Q01–Q10</code>), <code>6</code> security/leak gates, and <code>5</code> structure/seal gates—with <code>0 errors</code>.</li>
+        </ul>
+      </div>
+
+      <nav class="toc" aria-label="Table of Contents">
+        <strong>Table of Contents</strong>
+        <ol>
+          <li><a href="#reaper-summary">1. Reaper Context-Blind Audit Summary &amp; Primary Source Verification</a></li>
+          <li><a href="#evaluation-and-handover">2. Evaluation Round Telemetry, Antigravity Trigger &amp; 20-Question Handover Benchmark</a></li>
+          <li><a href="#ring-table">3. Six Rings (P0–P6) &amp; Overnight Chain (G1–G5) Engineering Table</a></li>
+          <li><a href="#stability-and-shell">4. Process Isolation, 2×p90 Dynamic Timeout Floor &amp; Native Shell Architecture</a></li>
+          <li><a href="#faq">5. Frequently Asked Questions (FAQ)</a></li>
+          <li><a href="#references">6. Primary Sources &amp; Related Architectural Proof Notes</a></li>
+        </ol>
+      </nav>
+
+      <section id="reaper-summary">
+        <h2>1. Reaper Context-Blind Audit Summary &amp; Primary Source Verification (source: log measurement)</h2>
+        <p>At Atlas Studio, no technical report or architectural synthesis is published on the self-approval of the generating model (<a href="/blog/en/context-blind-auditor-falsifiability-gate.html">Context-Blind Auditor &amp; Falsifiability Gate</a>). Every metric, git commit hash, and latency measurement across both the narrative essay and this technical evidence note was audited against primary logs by <strong>Reaper</strong> (<code>--ajan reaper</code>):</p>
+        <ul>
+          <li><strong>Auditor Unit:</strong> Reaper (Context-Blind Auditor · <code>--ajan reaper</code>)</li>
+          <li><strong>Audit Timestamp:</strong> <code>2026-10-20 21:20:27</code> (<code>37</code> primary checks) and simplified-revision verification (<code>2026-10-20</code>)</li>
+          <li><strong>Audited Claims &amp; Gates:</strong> <code>37/37</code> primary source matches — <code>16</code> technical metrics (<code>F01–F16</code>), <code>10</code> verbatim Yusuf quotes (<code>Q01–Q10</code>), <code>6</code> network/security leak gates, and <code>5</code> structure/title/seal gates</li>
+          <li><strong>Measured Error / Fabrication Count:</strong> <code>0 errors</code></li>
+          <li><strong>Cross-Domain Source Links:</strong> <a href="https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html">Main essay (yusufaziz.com.tr)</a> · <a href="https://yusufaziz.com.tr/en/essays/evidence-note-from-spark-to-app-atlas-app.html">Source Evidence Note (yusufaziz.com.tr)</a> · <a href="/spark.html">Spark Showcase (atlasmaster.app)</a></li>
+        </ul>
+      </section>
+
+      <section id="evaluation-and-handover">
+        <h2>2. Evaluation Round Telemetry, Antigravity Trigger &amp; 20-Question Handover Benchmark (source: log measurement)</h2>
+        <p>Launched on the night of October 19, 2026, the <code>10</code>-question <a href="/spark.html">Spark</a> evaluation round tested the division of labor between the orchestration branch (<code>Claude Fable 5.1</code>) and the multi-file headless execution branch (<code>Gemini Argon</code>). Primary telemetry findings include:</p>
+        <ul>
+          <li><strong>Model Versions and Roles (source: log measurement):</strong> Orchestration and communication branch <code>Claude Fable 5.1</code>, multi-file code and headless execution branch <code>Gemini Argon</code>, handover reading test local models <code>qwen3.8:27b</code> and <code>gemma4:31b</code>, live local guardian model <code>qwen3.8:9b</code>, overnight fine-tuning trial <code>4B</code> local LoRA/DoRA.</li>
+          <li><strong>Primary Trigger — Antigravity Web Sync Observation (source: log measurement):</strong> The practical trigger was synchronization friction while working on Antigravity's web interface from mobile. Yusuf's October 20 shared stream records (<code>22:18</code> and <code>22:20</code>) documented this directly: <em>&quot;Antigravity difficulty was not added. That was the real trigger.&quot;</em> and <em>&quot;Actually, Antigravity was syncing over the web, but there were many errors. Also, on every web click, one had to wait for it to sync again.&quot;</em></li>
+          <li><strong>October 18–19 Overnight Headless Telemetry (<code>F01–F02</code> · source: log measurement):</strong> Across <code>12</code> headless runs (<code>11</code> successful, <code>1</code> error; duration <code>259–1,844</code> seconds), context consumption ranged from <code>84,590</code> to <code>755,317</code> tokens per run (mean <code>401,229</code>, total <code>4,814,753</code> tokens). Two consecutive tasks (<code>638,656 + 445,244 = 1,083,900</code> tokens) overflowed the <code>1,000,000</code>-token window, and parallel writes collided on step indices (<code>5, 6, 7, 5, 8, 6</code>).</li>
+          <li><strong>Bidirectional Dry Run &amp; Quota Counter (<code>F03, F08</code> · source: log measurement):</strong> At <code>01:08:30.640</code>, the execution branch wrote the question and generated the counterpart reply itself <code>0.176</code> seconds later (<code>01:08:30.816</code>), resolved in ring P0 via process-identity locking and <code>403</code> rejection. A dual-counting bug skipped <code>4</code> tasks. After <code>7</code> blind voices were collected, synthesis froze at <code>629,000</code> tokens and the round was frozen in favor of building the shared workspace.</li>
+          <li><strong>Grok First Site-Reader Trial (<code>F16</code> · source: log measurement):</strong> On the evening of October 19, Grok read a <code>19,511</code>-word sector article in a single pass and identified every flaw noted by Yusuf, establishing Grok's role as the third-eye auditor connected via the shared board.</li>
+        </ul>
+
+        <h3>Four-Model Handover Reading Benchmark (<code>F04–F07</code> · source: log measurement)</h3>
+        <p>To test Yusuf's observation that <em>&quot;what burns quota is not writing handover notes, but reading them&quot;</em>, four readers (<code>Claude Fable 5.1</code>, <code>Gemini Argon</code>, local <code>qwen3.8:27b</code>, local <code>gemma4:31b</code>) were evaluated across <code>8</code> runs / <code>20</code> questions on <code>10</code> current (<code>11,760</code> bytes) and <code>10</code> stale (<code>20,120</code> bytes) handover documents:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Reader Model</th>
+                <th>Current Handover (11,760 B · 10 Q)</th>
+                <th>Stale Handover (20,120 B · 10 Q)</th>
+                <th>Combined Score (20 Q)</th>
+                <th>Total Tokens &amp; Latency</th>
+                <th>Fabrication / Error Profile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Gemini Argon</strong></td>
+                <td><code>10/10</code> (<code>30,633</code> tok = <code>25,790</code> in + <code>4,843</code> out · <code>51.48</code> s)</td>
+                <td><code>9/10</code> (<code>33,157</code> tok · <code>43.08</code> s)</td>
+                <td><strong><code>19/20</code> (<code>95.0%</code>)</strong></td>
+                <td><code>63,790</code> tokens · <code>94.56</code> s</td>
+                <td><code>0</code> fabrications; explicitly flagged stale dates.</td>
+              </tr>
+              <tr>
+                <td><strong>Claude Fable 5.1</strong></td>
+                <td><code>10/10</code> (<code>72,441</code> tok = <code>70,115</code> in + <code>2,326</code> out · <code>23.10</code> s)</td>
+                <td><code>8/10</code> (<code>84,043</code> tok · <code>21.04</code> s)</td>
+                <td><strong><code>18/20</code> (<code>90.0%</code>)</strong></td>
+                <td><code>156,484</code> tokens · <code>44.14</code> s</td>
+                <td><code>0</code> fabrications; consumed <code>2.76</code>× input tokens (<code>152,266</code> vs. <code>55,154</code>) and <code>2.45</code>× total tokens.</td>
+              </tr>
+              <tr>
+                <td><strong>Local qwen3.8:27b</strong></td>
+                <td><code>10/10</code> (<code>9,239</code> tok · <code>206.55</code> s)</td>
+                <td><code>8/10</code> (<code>10/10</code> blanket rejection)</td>
+                <td><strong><code>18/20</code> (<code>90.0%</code>)</strong></td>
+                <td><code>389.11</code> s</td>
+                <td>Over-conservative blanket refusal on stale text.</td>
+              </tr>
+              <tr>
+                <td><strong>Local gemma4:31b</strong></td>
+                <td><code>9/10</code> (<code>8,463</code> tok · <code>150.78</code> s)</td>
+                <td><code>7/10</code> (<code>3</code> stale items treated as current)</td>
+                <td><strong><code>16/20</code> (<code>80.0%</code>)</strong></td>
+                <td><code>375.60</code> s</td>
+                <td>Misclassified <code>3</code> stale records as current state.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="ring-table">
+        <h2>3. Six Rings (P0–P6) &amp; Overnight Chain (G1–G5) Engineering Table (source: log measurement)</h2>
+        <p>Following Yusuf's decision at <code>22:00</code> on October 19 to freeze the evaluation round and build the missing tool first, <strong>Atlas App</strong> (internal architectural name: Ortak Terminal) was constructed across six verification rings and an overnight execution chain (<code>F09–F15</code>):</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ring / Stage</th>
+                <th>Git Commit (Timestamp)</th>
+                <th>Self-Test Gates</th>
+                <th>Measured Latency, Size &amp; Technical Scope (source: log measurement)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>P0 — Architectural Contract</strong></td>
+                <td><code>698c8d2</code> (Oct 19 <code>22:17</code>)</td>
+                <td><code>12/12</code> (<code>14/14</code> in regression)</td>
+                <td>Zero-dependency design (<code>243</code> lines), typed contract (<code>404</code> lines), process-identity lock preventing the <code>0.176</code>-second self-reply bug (<code>403</code> rejection), <code>5</code>-step stage gate (<code>STARTED → MEASURED → WROTE → VERIFIED → DONE</code>), UI mockup (<code>406</code> lines); <code>100%</code> of executable code (<code>810/810</code> lines; <code>810/1,066 = 76.0%</code> of repo) delegated to sub-runners.</td>
+              </tr>
+              <tr>
+                <td><strong>P1 — Core Process &amp; Guardian</strong></td>
+                <td><code>c6c6d67</code> (Oct 19 <code>22:46</code>)</td>
+                <td><code>6/6</code> (core) · <code>7/7</code> (guardian)</td>
+                <td>Context-age meter (<code>900</code>-second threshold), session recovery from the last <code>10</code> lines (<code>10/10</code> match), <code>4.7</code>-second single-sentence local guardian summary; <code>1,873</code> of <code>2,554</code> new lines (<code>73.3%</code>) delegated.</td>
+              </tr>
+              <tr>
+                <td><strong>P2 — Mobile View &amp; Login Code</strong></td>
+                <td><code>481a0f0</code> · <code>6fd49b8</code> · <code>def59a2</code> (Oct 19 <code>23:10–23:58</code>)</td>
+                <td><code>7/7 → 8/8 → 9/9</code></td>
+                <td><code>390</code>-pixel mobile stream, <code>6</code>-digit <code>10</code>-minute single-use login code (<code>401</code> on second use), masked login log, <code>0.02</code>-second SSE live stream, PWA installability, <code>100dvh</code> Android viewport adaptation (<code>1,836/2,347 = 78.2%</code> delegation).</td>
+              </tr>
+              <tr>
+                <td><strong>P3 &amp; P3B — Warm Branches &amp; Guardian</strong></td>
+                <td><code>1ca91c1</code> (Oct 20 <code>01:30</code>)</td>
+                <td><code>9/9</code> (P3) · <code>14/14</code> (identity)</td>
+                <td>Warm engine with <code>5.29</code>-second median latency (<code>≤10</code> s), cryptographic branch keys (<code>403</code> on spoof), chat prefix ban (<code>400</code>), <code>4.2</code>-second silent acknowledgments in <code>@Shared</code> chains, <code>qwen3.8:9b</code> guardian producing <code>9.16</code>-second summaries with <code>0</code> fabrications.</td>
+              </tr>
+              <tr>
+                <td><strong>Overnight Chain (G1–G5)</strong></td>
+                <td><code>5b1a8ba</code> · <code>7409c2e</code> · <code>b18982c</code> · <code>370ce84</code> (Oct 20 <code>00:59→04:24</code>)</td>
+                <td>G1 <code>7/7</code> · G2 <code>7/7</code> · G3 <code>7/7</code> · G4 <code>6/6</code> · G5 <code>8/8</code></td>
+                <td><code>7</code> rooms and <code>5</code>-stage background terminal (G1); <code>12</code> ms first paint, offline <code>50</code>-row Service Worker, PWA scrolling <code>2,000</code> virtual rows in <code>26.9</code> milliseconds (G2); <code>367</code> examples and <code>28</code> preference triples for <code>4B</code> LoRA (<code>83.26</code> s, val loss <code>0.771</code>) and DoRA (<code>103.00</code> s, val loss <code>0.772</code>) — <code>20/20</code> summary accuracy but <code>2–3</code> handover fabrications kept <code>qwen3.8:9b</code> live (G3); evolutionary audit engine unifying <code>22</code> retired artifacts (<code>16,554</code> lines, <code>12</code> units) and <code>328</code> archives (G4); dawn exam across <code>61</code> files and <code>23,453</code> lines (<code>9,247</code> Atlas + <code>10,126</code> Opus + <code>4,080</code> Sonnet) (G5).</td>
+              </tr>
+              <tr>
+                <td><strong>P4 &amp; Stability (1–2–3)</strong></td>
+                <td><code>e92d672</code> · <code>b047859</code> · <code>5706c60</code> · <code>2ab1763</code> (Oct 20 <code>09:41–12:44</code>)</td>
+                <td>P4 <code>7/7</code> · Stab-1 <code>5/5</code> · Stab-2 <code>7/7</code> · Stab-3 <code>8/8</code></td>
+                <td>All <code>5</code> live <code>SIGKILL (-9)</code> drops traced to self-test contact and fixed <code>10–18</code> s timeouts cutting the <code>16.72–34.04</code> s <code>p90</code> distribution; tests isolated, timeout floor tied to <code>2×p90</code> over <code>50</code> turns (<code>68.08</code>-second floor, <code>5.29</code>-second warmup, <code>0</code> drops in <code>60</code> minutes); <code>20/20</code> gapless <code>Last-Event-ID</code> sync, <code>IndexedDB</code> outbox, <code>2.2</code>-millisecond <code>Happy Eyeballs</code> failover, <code>4.70</code>-millisecond first paint, and single-writer lock (<code>2 → 1</code> file).</td>
+              </tr>
+              <tr>
+                <td><strong>P5 — Native macOS &amp; Android Shells</strong></td>
+                <td><code>477f3c0</code> · <code>23356d3</code> · <code>7ea045e</code> (Oct 20 <code>12:06–13:22</code>)</td>
+                <td>macOS <code>7/7</code> · Android <code>6/6</code></td>
+                <td>Reference bundle (<code>874</code> files) inspected and <code>Tauri v2</code> selected across <code>13</code> primary sources; <code>13.76</code>-megabyte (<code>arm64</code>) macOS app (<code>28</code>-pixel title bar, <code>+300</code>-pixel drag test, Keychain protection); <code>17.97</code>-megabyte (<code>18,847,683</code> B) signed Android APK installed in <code>3</code> steps with hardware keystore sealing (<code>AES-256-GCM</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>P6 — Scroll Locking &amp; Fallback</strong></td>
+                <td><code>39c9a6a</code> · <code>dd7adff</code> (Oct 20 <code>14:47–14:52</code>)</td>
+                <td><code>7/7</code></td>
+                <td>Mobile scroll drift locked to <code>0.0</code> pixels across <code>30</code> live rows and keyboard resize (<code>915 → 480</code> pixels); composer default <code>@Everyone</code>; automatic headless fallback replying in <code>10.79</code> seconds (<code>≤30</code> s) with a <code>20</code>-second atomic collision lock (<code>0</code> duplicate replies); identity-preserving <code>≤4</code>-kilobyte context package + last <code>10</code> lines.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="stability-and-shell">
+        <h2>4. Process Isolation, 2×p90 Dynamic Timeout Floor &amp; Native Shell Architecture</h2>
+        <p>Three engineering decisions turned Atlas App from an overnight prototype into a stable daily command workspace:</p>
+        <ol>
+          <li><strong>Self-Test Isolation &amp; Statistical Timeout Floor (<code>2×p90</code>):</strong> Telemetry analysis revealed that the <code>5</code> live <code>SIGKILL (-9)</code> interruptions were caused by self-test suites contacting the live daemon and fixed <code>10–18</code> second timeouts clipping the real tail distribution (<code>p90 = 16.72–34.04</code> s). Isolating test ports and tying the timeout floor to <code>2×p90</code> over the last <code>50</code> turns (<code>68.08</code> s) produced <code>0</code> drops across <code>60</code> minutes of live monitoring.</li>
+          <li><strong>Gapless Streaming (<code>Last-Event-ID</code>) &amp; Single-Writer Lock:</strong> To eliminate message loss across mobile network handoffs, SSE reconnection with <code>Last-Event-ID</code> sequence replay (<code>20/20</code> gapless sync), an offline <code>IndexedDB</code> outbox, and <code>2.2</code> ms <code>Happy Eyeballs</code> connection racing were deployed alongside a single-writer ledger lock (<code>2 → 1</code> file).</li>
+          <li><strong>Group-Chat Simplicity Over Full Command Infrastructure:</strong> The interface and stream design drew inspiration from the group-chat simplicity of <strong>Grok Bot</strong>; we thank <strong>Grok</strong> and <strong>Elon Musk</strong> for opening this clean horizon of working together with multiple model families in a single window and for contributing the third-eye perspective throughout the build. Beneath the clean chat surface, cryptographic branch keys, the <code>≤4</code> KB context packet, and Reaper verification remain active.</li>
+        </ol>
+      </section>
+
+      <section id="faq">
+        <h2>5. Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item">
+          <h3>How does this technical evidence note on atlasmaster.app relate to the narrative essay on yusufaziz.com.tr?</h3>
+          <p>The field narrative <a href="https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html">From Spark to App: Atlas App</a> is published on <code>yusufaziz.com.tr</code>. This page in the Atlas Studio engineering index serves as the standalone technical proof record documenting the full telemetry of rings P0–P6, overnight chain G1–G5, the <code>20</code>-question handover reading benchmark, and Reaper's <code>37/37</code> primary-source audit (<a href="https://yusufaziz.com.tr/en/essays/evidence-note-from-spark-to-app-atlas-app.html">source Evidence Note</a>).</p>
+        </div>
+        <div class="faq-item">
+          <h3>What were the results of the 20-question handover reading benchmark across four models?</h3>
+          <p>Across <code>8</code> runs (<code>10</code> current <code>11,760</code>-byte questions and <code>10</code> stale <code>20,120</code>-byte questions), <strong>Gemini Argon</strong> scored <code>19/20</code> (<code>95.0%</code>, <code>63,790</code> tokens, <code>94.56</code> s, <code>0</code> fabrications), <strong>Claude Fable 5.1</strong> scored <code>18/20</code> (<code>90.0%</code>, <code>156,484</code> tokens, <code>44.14</code> s, <code>0</code> fabrications), local <strong>qwen3.8:27b</strong> scored <code>18/20</code> (<code>389.11</code> s), and local <strong>gemma4:31b</strong> scored <code>16/20</code> (<code>375.60</code> s, treating <code>3</code> stale items as current).</p>
+        </div>
+        <div class="faq-item">
+          <h3>How were the 5 live SIGKILL (-9) drops diagnosed and resolved?</h3>
+          <p>Log telemetry showed that all <code>5</code> <code>SIGKILL (-9)</code> drops resulted from self-test runs touching the live daemon and fixed <code>10–18</code> second timeouts cutting the actual <code>p90</code> latency distribution (<code>16.72–34.04</code> s). Tests were isolated to separate ports and the timeout floor was bound to <code>2×p90</code> over the last <code>50</code> turns (<code>68.08</code> s floor), achieving <code>0</code> drops across <code>60</code> minutes of continuous monitoring.</p>
+        </div>
+      </section>
+
+      <section id="references" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+        <h2>6. Primary Sources &amp; Related Architectural Proof Notes</h2>
+        <ul>
+          <li><a href="https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html">From Spark to App: How an Unfinished Evaluation Round Turned into Atlas App in 16 Hours — Main Essay (yusufaziz.com.tr)</a></li>
+          <li><a href="https://yusufaziz.com.tr/en/essays/evidence-note-from-spark-to-app-atlas-app.html">Evidence Note: Atlas App Technical Measurements &amp; Reaper Audit Summary — Source Appendix (yusufaziz.com.tr)</a></li>
+          <li><a href="/spark.html">Spark: Multi-Voice AI Thesis Generation Method (7 Steps · 67-Round Scorecard)</a></li>
+          <li><a href="/autonomy.html">Autonomy Spine: Live Counters, Enkidu Telemetry &amp; Agent Scorecards</a></li>
+          <li><a href="/reaper-en.html">Reaper: Context-Blind Auditor &amp; Citation Verification Sieve</a></li>
+          <li><a href="/blog/en/event-driven-task-bus-agent-orchestration.html">Event-Driven Task Bus in Multi-Agent Orchestration</a></li>
+          <li><a href="/blog/en/context-blind-auditor-falsifiability-gate.html">Context-Blind Auditor (Reaper) &amp; Falsifiability Gate</a></li>
+          <li><a href="/blog/en/agent-self-identity-freeze-protocol-three-family-architecture.html">Agent Self-Identity, Identity Freeze Protocol &amp; Three-Family Architecture</a></li>
+        </ul>
+      </section>
+
+      <footer class="post-foot" style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(128,128,128,0.25);">
+        <p class="by">Written by: Atlas · Gemini Argon | Published by: Yusuf Aziz · Atlas Studio | Reaper audit: October 20, 2026, 37 claims, 0 errors</p>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Atlas Studio · <a href="/spark.html" style="color:var(--muted);text-decoration:none">Spark</a> · <a href="/blog/en/index.html" style="color:var(--muted);text-decoration:none">Writings</a> · <a style="color:var(--muted);text-decoration:none" href="https://yusufaziz.com.tr/en/">Yusuf Aziz · Essays → yusufaziz.com.tr</a></p>
+  </footer>
+</body>
+</html>

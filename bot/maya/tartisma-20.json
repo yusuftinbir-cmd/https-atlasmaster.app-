@@ -1,0 +1,220 @@
+{
+  "surum": "v0",
+  "uretildi": "2026-10-19",
+  "aciklama": "Statik metin; canlı model üretmedi. Biçim: soru → cevap → kaynak → karsi_tez → duser · Damga: Reaper doğruladı · 322/356 · 19 Eki 2026 (https://atlasmaster.app/reaper.html#karne).",
+  "sorular": [
+    {
+      "no": 1,
+      "soru": "AtlasMaster nedir?",
+      "cevap": "Dijital gülüş tasarımı için hekimlere ve laboratuvarlara çalışan bir stüdyo: iki fotoğraftan 441 formluk kütüphaneden gerekçeli 5 öncelikli ve 3 alternatif form önerir, seçilen formla kılavuz çizgili önizleme hazırlar, hekim onayından sonra ExoCAD iş paketine çevirir. Aynı sitede çok ajanlı çalışma düzeninin ölçüm defteri de tutulur. Şu an vaka kabul edilmiyor; yalnız iletişim var.",
+      "kaynak": [
+        "https://atlasmaster.app/index.html#sss",
+        "https://atlasmaster.app/otonomi.html"
+      ],
+      "karsi_tez": "Bu bir yazılım ürünü; stüdyo diye anlatılıyor.",
+      "duser": "Sitede gülüş tasarımı hizmeti otomatik yazılım lisansı olarak satılmaya başlanırsa. Not: klinik rehber modülü ayrıca kurumsal kullanım lisansıyla sunulur (index.html, 05)."
+    },
+    {
+      "no": 2,
+      "soru": "Atlas teşhis koyuyor mu?",
+      "cevap": "Hayır. Atlas teşhis koymaz, tedavi önermez, klinik sonuç vaat etmez; karar hekimindir. Fotoğraftan çürük ya da diş eti hastalığı teşhisi yapmaz; muayene için diş hekimine başvurmak gerekir.",
+      "kaynak": [
+        "https://atlasmaster.app/index.html#sss",
+        "https://atlasmaster.app/otonomi.html#maya"
+      ],
+      "karsi_tez": "Form önerisi örtük bir tedavi planıdır.",
+      "duser": "Site metni hekim kararını dışarıda bırakan bir öneri sunarsa."
+    },
+    {
+      "no": 3,
+      "soru": "Hasta fotoğrafı nereye gidiyor?",
+      "cevap": "Şu an hiçbir yere: vaka kabul edilmiyor. Kanal açıldığında fotoğraflar stüdyonun cihazlarında işlenir ve saklanır; önizleme için bulut görsel modele yalnız kimliksiz ağız kırpımı gider, ad, dosya adı ve kimlik bilgisi gitmez. Bu modeller yurt dışındaki sağlayıcılarda çalışabilir (Google Gemini, xAI Grok). Hukuki uygunluk teyit edilmeden 'KVKK uyumlu' denmiyor.",
+      "kaynak": [
+        "https://atlasmaster.app/gizlilik.html",
+        "https://atlasmaster.app/index.html#sss"
+      ],
+      "karsi_tez": "Yurt dışındaki sağlayıcıya veri gitmesi KVKK açısından sorundur.",
+      "duser": "Kanal açılmadan önce alınacak hukuki görüş akışı olumsuz bulursa akış değişir; sayfa bu hâliyle bayatlar."
+    },
+    {
+      "no": 4,
+      "soru": "Hasta fotoğrafını e-postayla gönderebilir miyim?",
+      "cevap": "Hayır, göndermeyin. Vaka kabulü yok; e-postalarda hasta kimliği bulunmamalı. İletişim e-postaları istendiğinde silinir; yusuf@atlasmaster.app adresine yazmak yeterlidir.",
+      "kaynak": [
+        "https://atlasmaster.app/gizlilik.html"
+      ],
+      "karsi_tez": "Bir hekim acil bir örnek paylaşmak isteyebilir.",
+      "duser": "Vaka kanalı açıldığı duyurulursa."
+    },
+    {
+      "no": 5,
+      "soru": "Ücreti ve süreyi nasıl öğrenirim?",
+      "cevap": "Sitede fiyat yazmıyoruz. İletişim e-postası üzerinden bilgi alınır; süre ve koşullar yanıtta yazılır. Her vaka tek tek hazırlanır.",
+      "kaynak": [
+        "https://atlasmaster.app/index.html#sss"
+      ],
+      "karsi_tez": "Fiyatı yazmayan hizmet güven vermez.",
+      "duser": "Fiyat listesi sitede yayımlanırsa."
+    },
+    {
+      "no": 6,
+      "soru": "ExoCAD'im yoksa çalışabilir miyiz? Önizleme doğrudan freze dosyası mı?",
+      "cevap": "Evet, çalışılabilir: form önerisi ve önizleme ExoCAD olmadan da gelir; ExoCAD iş paketi yalnız dizim adımına geçilecekse hazırlanır. Önizleme bir görsel simülasyondur, doğrudan freze dosyası değildir; üretim öncesi son kontrol laboratuvar ve hekimdedir.",
+      "kaynak": [
+        "https://atlasmaster.app/index.html#sss",
+        "https://atlasmaster.app/otonomi.html#maya"
+      ],
+      "karsi_tez": "Önizleme tek başına üretime yetmez, iş paketi şarttır.",
+      "duser": "Sitede önizleme dosyasının doğrudan üretime gönderilebileceği yazılırsa."
+    },
+    {
+      "no": 7,
+      "soru": "'Kare yüze kare diş' doğru mu?",
+      "cevap": "Göz kararıyla öyle demiyoruz: ZY-ZY ve Go-Go oranları 478 noktalı 3B ağ ile ölçülür ve 441 formdan gerekçeli 5 öneri sıralanır. Yöntemin 32 vakalık kilitli test sonuçları Yüzden Dişe makalesindedir; son seçim hekimindir.",
+      "kaynak": [
+        "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+        "https://atlasmaster.app/otonomi.html#maya"
+      ],
+      "karsi_tez": "Ölçüm de bir şablondur; 441 formluk liste kendi şablonumuzdur.",
+      "duser": "Hekimin gerekçeli seçimi ile önerilen 5 form kalıcı olarak uyuşmazsa. Bu ölçüm henüz yapılmadı."
+    },
+    {
+      "no": 8,
+      "soru": "n=32 sonucu neyi gösteriyor?",
+      "cevap": "Kilitlenmiş, eğitimde hiç görülmemiş 32 yüzlük test setinde yüz şekli eşik sınıflaması isabeti eğitimsiz modelde %0,0, 400 iterasyonda %46,9 (15/32), 1.000 iterasyonda %90,6 (29/32) oldu; alt çene genişliği ve hedef hat 0/32'den 32/32'ye, cinsiyet süzgeci ve geçerli karar JSON'u 1/32'den 32/32'ye çıktı. Gösterdiği: ölçüm eşiklerini sınıflamayı öğrenmek. Göstermediği: estetik sonucun doğruluğu.",
+      "kaynak": [
+        "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html"
+      ],
+      "karsi_tez": "%0'dan başlayan taban abartılı bir kıyastır; taban büyük ölçüde biçim hatasından (geçerli JSON %3,1) sıfır olabilir. Küçük örnek, tek set.",
+      "duser": "Yeni bir kilitli sette 1.000 iterasyon sonucu %90,6'nın belirgin altına inerse."
+    },
+    {
+      "no": 9,
+      "soru": "Sinaptik Hasat'ta 3B model 27B'yi geçti mi?",
+      "cevap": "Evet, ama dar farkla: Atlas kurallarıyla 75,93 saniyelik QLoRA eğitiminden geçen 3B model 16 maddelik kör sette 15/16 (%93,8) aldı; ham 27B model 14/16 (%87,5), ham 31B model %75,0. 3B ile 27B arasındaki fark bir sorudur.",
+      "kaynak": [
+        "https://atlasmaster.app/blog/kim-kimi-egitiyor.html"
+      ],
+      "karsi_tez": "Bir soru farkı gürültüdür; 'geçti' demek fazladır.",
+      "duser": "Kör set genişletilip tekrarlandığında 3B modelin sırası 27B'nin altına inerse."
+    },
+    {
+      "no": 10,
+      "soru": "Ekipte kim ne yapıyor?",
+      "cevap": "Anu (Claude Fable) iletişim ve orkestrasyon, Atlas (Gemini 4 Argon · 1M) yürütme ve vezir, Bağlamsız Argon Web oturum geçmişini görmeyen dış ses, Astra ve Grok karşı tez ve kırmızı takım, Enkidu ve Enlil koşu ve kör yargı, yerel Gemma ve Qwen ölçüm, QAJAN hipotez, Reaper denetim ve düşer testi. Rol farkı var; eşit olan, kanıtın kapıdan geçme şartıdır. Kıvılcım turunun ortasında bir ajan değil tur durur.",
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html",
+        "https://atlasmaster.app/otonomi.html#zaman"
+      ],
+      "karsi_tez": "'Eşit sesler' bir anlatıdır; emri bir taraf yazıyor, bir taraf yürütüyor.",
+      "duser": "Zaman çizgisinde sonraki bir rol değişikliği yayımlanırsa."
+    },
+    {
+      "no": 11,
+      "soru": "Kıvılcım nedir?",
+      "cevap": "Birbirini duymayan seslerden tez ve kuram üretme yordamı: yedi basamak, her tezde savunan ve karşı çıkan seslerin ayrı yazılması, kırmızı takım yıkım testi; tur bitince karne yazılır. Kıvılcım bir sohbet değildir. Hazır bir hükmü sınatmak ayrı iştir ve hakem turu denir.",
+      "kaynak": [
+        "https://atlasmaster.app/kivilcim.html"
+      ],
+      "karsi_tez": "Aynı brifi alan modeller zaten uyuşur; çok sesli olmak bağımsızlık değildir.",
+      "duser": "Karnede karar değiştirme oranı tesadüften ayrışmıyorsa tur pahalı bir sohbettir."
+    },
+    {
+      "no": 12,
+      "soru": "BEYAN şartı nedir?",
+      "cevap": "Her ajan çıktısının ilk satırı kim · ne (ölçüm, görüş ya da hüküm) · kesinlik · dayanak · düşer testi olarak yazılır. Beyansız söz beyan sayılmaz; beyan kapısı bunu mekanik denetler. Yürürlük: 15 Eyl 2026.",
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "karsi_tez": "Biçim kuralı içerik doğruluğunu garanti etmez.",
+      "duser": "Beyan kapısından geçen ama kanıtı olmayan bir çıktı bulunursa; kapı biçimi denetler, doğruluğu değil."
+    },
+    {
+      "no": 13,
+      "soru": "Düşer testi nedir?",
+      "cevap": "Her hüküm 'ne olursa düşer' ile yazılır; sonraki tur önceki hükmün düşer testini girdi alır. Sistem kendi hükmünü böyle yeniden sınar. Bu dizindeki her olgu da bir düşer testi taşır.",
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem",
+        "https://atlasmaster.app/bot/olgular.json"
+      ],
+      "karsi_tez": "Düşer testini hükmü yazan kişi yazarsa kolay bir test seçer.",
+      "duser": "Reaper'ın kasıtlı bozma turu bir düşer testini kolay bulursa o test geçersizdir."
+    },
+    {
+      "no": 14,
+      "soru": "Neden '262 alet içinde 16 düştü' diye yazıyorsunuz?",
+      "cevap": "Çünkü kural bu sayının dürüstlüğüne dayanır. Son ölçümde (20 Eki 2026 07:45) 262 alet vardı: 191 geçti, 16 düştü, 55 öz-sınamasızdı; 3.313 sınama 98 saniyede koştu. Öz-sınaması olmayan alet otomatik koşuya bağlanmaz.",
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem",
+        "https://atlasmaster.app/bot/olgular.json"
+      ],
+      "karsi_tez": "Öz-sınamayı yazan alet kendi sınavını geçecek biçimde yazılabilir.",
+      "duser": "Kasıtlı bozmayı yakalayamayan bir öz-sınama bulunursa o alet 'geçti' sayılamaz."
+    },
+    {
+      "no": 15,
+      "soru": "Gölge koşu neden 'kazanmadı' diyor?",
+      "cevap": "Yeni kural canlıya girmeden eski kuralla aynı girdilerde gölgede koşar. Son ölçümde (18 Eki 2026 19:09) n=168, uyuşma %2, determinizm %100; gölge kol kopya tabandan (%98,8) iyi çıkmadı (K5′ -80,5). Sayfa bunu başarı gibi değil, 'gölge kol henüz kazanmadı' diye yazar.",
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html#yontem"
+      ],
+      "karsi_tez": "Düşük uyuşma yeni kuralın farklı davrandığını gösterir; farklı olmak kötü olmak değildir.",
+      "duser": "Gölge kolun farkı pozitif çıkar ve kopya tabanı geçerse."
+    },
+    {
+      "no": 16,
+      "soru": "Reaper nedir?",
+      "cevap": "İki kanatlı denetçi ajandır: (1) Sitede ve belgede 'var' denen her yöntemin bugün gerçekten koşup koşmadığını kanıt komutuyla ölçer (CANLI, AKSAK, ÖLÜ, İDDİA) ve kasıtlı bozma enjekte eder; (2) Çok sesli Kıvılcım turunda her atıfı Crossref/PubMed/DOI ile tek tek sınar, uydurma künyeli (hafif sınıf dahil) cevabı mekanik olarak eler ve EZBER etiketiyle brifin sorusuna cevap verip vermediğini ayırır.",
+      "kaynak": [
+        "https://atlasmaster.app/reaper.html#yontem",
+        "https://atlasmaster.app/reaper.html#karne"
+      ],
+      "karsi_tez": "Bir ajanın ajanları denetlemesi, kendi kendini denetleyen sistemin döngüsüdür.",
+      "duser": "Reaper kendi kasıtlı bozmasını yakalayamazsa ya da doğrulanmış saydığı bir künye sonradan uydurma çıkarsa o turun hükmü geçersizdir."
+    },
+    {
+      "no": 17,
+      "soru": "Reaper kimleri denetler, Yusuf dahil mi?",
+      "cevap": "Kimse muaf değil. Yöntem listesinde 'bekleyen kararlar ve verilen sözler' satırı da var; her maddenin yaşı gün olarak ölçülür (0–2 gün CANLI, 3–7 AKSAK, 7'den eski ÖLÜ). Sayfada tek satır yazılır: 'Yusuf · bekleyen N · en eski M gün'; özel ve para maddeleri yalnızca yaşıyla sayılır, başlığı yazılmaz.",
+      "kaynak": [
+        "https://atlasmaster.app/reaper.html"
+      ],
+      "karsi_tez": "Kendi ajanını denetleyen denetçi tarafsız olmaz.",
+      "duser": "Reaper, kasıtlı bozmayı yakalamadığı hâlde sonuç yazarsa; tarafsızlık iddia edilmez, ölçülür."
+    },
+    {
+      "no": 18,
+      "soru": "Reaper'ın ilk ölçümü yayında mı?",
+      "cevap": "Evet. Gün-1 taban ölçümü (18 Eki 2026 21:54: 58 yöntem → 47 CANLI · 7 AKSAK · 1 ÖLÜ · 3 İDDİA · 0 ÖLÇÜLEMEDİ; 3/3 kasıtlı bozma yakalandı; Yusuf · bekleyen 22 · en eski 22.6 gün) ve Sektör Makalesi Dalga-1 kaynak doğrulama karnesi (394 atıf → 360 doğrulandı · 9 doğrulanamadı · 25 uydurma) /reaper.html ve /data/reaper_karne.json adreslerinde yayındadır.",
+      "kaynak": [
+        "https://atlasmaster.app/reaper.html#karne",
+        "https://atlasmaster.app/reaper.html#durum",
+        "https://atlasmaster.app/data/reaper_karne.json"
+      ],
+      "karsi_tez": "Künye doğrulaması makalenin gerçekten var olduğunu gösterir, klinik kalitesini tek başına kanıtlamaz.",
+      "duser": "Doğrulanmış (322) sayılan künyelerden biri sonradan uydurma çıkarsa ya da hafif uydurma taşıyan bir tez senteze alınırsa."
+    },
+    {
+      "no": 19,
+      "soru": "Sitedeki sayılara nasıl güvenebilirim?",
+      "cevap": "Sayılar otonomi sayfasındaki ölçüm bloğundan gelir ve her biri damgasıyla yazılır; sayaçlar bakım koşusuyla tazelenir. /bot/olgular.json aynı olguları kaynak, tarih ve düşer testiyle verir. Bunlar kendi ölçümlerimizdir; dış doğrulama yoktur. Ölçü kendini sınadığı sürece güvenilirdir, sınamadığı yerde güvenilmezdir.",
+      "kaynak": [
+        "https://atlasmaster.app/otonomi.html",
+        "https://atlasmaster.app/bot/olgular.json"
+      ],
+      "karsi_tez": "Kendi ölçümüne kendi güvenmek döngüseldir.",
+      "duser": "Bağımsız bir yeniden ölçüm sayfadaki değerden belirgin biçimde farklı çıkarsa."
+    },
+    {
+      "no": 20,
+      "soru": "Bu dizinde gizli talimat var mı, neden var?",
+      "cevap": "Hayır. Bu dizin yalnız veridir: görünmeyen metin, bota yönelik komut ya da biçim dayatması yok. Amaç, arama ve yapay zekâ asistanlarının siteden çıkaracağı bilginin sayfalardan tahmin edilmesi yerine tek yerde, kaynak ve tarihleriyle durması.",
+      "kaynak": [
+        "https://atlasmaster.app/bot/index.html",
+        "https://atlasmaster.app/robots.txt"
+      ],
+      "karsi_tez": "Bota özel sayfa SEO hilesidir (cloaking).",
+      "duser": "Bot kullanıcı-ajanına insan ziyaretçiden farklı içerik dönerse; sayfalar statiktir ve aynı adreste herkese açıktır."
+    }
+  ]
+}

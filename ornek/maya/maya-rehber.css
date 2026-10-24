@@ -1,0 +1,505 @@
+/* Maya — ATLAS'ın Kızı · Asistan (Serbest Gezen 3B Avatar & Otomatik Kaydırmalı Rehber) */
+:root {
+  --maya-bg: rgba(11, 17, 30, 0.90);
+  --maya-border: rgba(0, 229, 255, 0.35);
+  --maya-cyan: #00e5ff;
+  --maya-emerald: #10b981;
+  --maya-text: #f1f5f9;
+  --maya-muted: #94a3b8;
+  --maya-shadow: 0 14px 36px rgba(0, 0, 0, 0.48), 0 0 22px rgba(0, 229, 255, 0.14);
+}
+
+/* Serbest Gezen Taşıyıcı (Sayfayı ASLA kaplamaz) */
+.maya-carrier {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+  transition: transform 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  max-width: calc(100vw - 16px);
+  box-sizing: border-box;
+}
+
+.maya-carrier.is-dragging {
+  transition: none !important;
+}
+
+.maya-carrier.bubble-left {
+  flex-direction: row-reverse;
+}
+
+/* 3B Avatar Küresi (Blender 5.1.0 GLB + Three.js WebGL + 60fps Kanvas) */
+.maya-orb-wrap {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #162238, #090e1a);
+  border: 2px solid var(--maya-cyan);
+  box-shadow: var(--maya-shadow);
+  cursor: grab;
+  pointer-events: auto;
+  flex-shrink: 0;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, width 0.25s ease, height 0.25s ease;
+}
+
+.maya-orb-wrap:active {
+  cursor: grabbing;
+}
+
+.maya-orb-wrap:hover {
+  transform: scale(1.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.58), 0 0 28px rgba(0, 229, 255, 0.32);
+}
+
+.maya-orb-clip {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.maya-orb-clip canvas,
+.maya-orb-clip img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.maya-orb-badge {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(11, 17, 30, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.45);
+  color: var(--maya-cyan);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+.maya-orb-status {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--maya-emerald);
+  border: 2px solid #0b111e;
+}
+
+/* Kompakt Konuşma Balonu (Sayfayı kapatmayan zarif kart) */
+.maya-bubble {
+  pointer-events: auto;
+  width: 300px;
+  max-width: calc(100vw - 98px);
+  max-height: calc(100dvh - 82px);
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: var(--maya-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--maya-border);
+  border-radius: 16px;
+  padding: 11px 13px;
+  color: var(--maya-text);
+  box-shadow: var(--maya-shadow);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.maya-bubble[hidden] {
+  display: none !important;
+}
+
+/* Küçültülmüş (Bekleme) Hapı */
+.maya-mini-pill {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--maya-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--maya-border);
+  border-radius: 999px;
+  padding: 7px 13px;
+  color: var(--maya-text);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--maya-shadow);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.maya-mini-pill:hover {
+  border-color: var(--maya-cyan);
+  transform: translateY(-1px);
+}
+
+.maya-mini-pill[hidden] {
+  display: none !important;
+}
+
+.maya-mini-pill .maya-pill-sub {
+  color: var(--maya-cyan);
+  font-weight: 500;
+  font-size: 11px;
+}
+
+/* Balon Üst Satırı */
+.maya-b-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.maya-b-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--maya-cyan);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.maya-b-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.maya-icon-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border-radius: 7px;
+  padding: 2px 6px;
+  font-size: 10.5px;
+  cursor: pointer;
+  line-height: 1.3;
+  transition: all 0.15s ease;
+}
+
+.maya-icon-btn:hover,
+.maya-icon-btn.active {
+  border-color: var(--maya-cyan);
+  color: #fff;
+  background: rgba(0, 229, 255, 0.15);
+}
+
+/* Tur Rotası Seçici Çubuğu */
+.maya-routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.maya-routes[hidden] {
+  display: none !important;
+}
+
+.maya-route-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 4px 7px;
+  font-size: 10.5px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex: 1 1 calc(50% - 4px);
+  text-align: left;
+}
+
+.maya-route-chip:hover,
+.maya-route-chip.active {
+  background: rgba(0, 229, 255, 0.14);
+  border-color: var(--maya-cyan);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Durak Başlığı ve Açıklama */
+.maya-step-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--maya-emerald);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.maya-step-h {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.maya-step-p {
+  font-size: 12px;
+  line-height: 1.48;
+  color: #dbeafe;
+  margin: 0 0 8px 0;
+}
+
+.maya-step-deep {
+  font-size: 11.3px;
+  line-height: 1.45;
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.09);
+  border-left: 2px solid var(--maya-emerald);
+  padding: 6px 8px;
+  border-radius: 0 8px 8px 0;
+  margin: 0 0 8px 0;
+}
+
+.maya-step-deep[hidden] {
+  display: none !important;
+}
+
+/* İlerleme Noktaları */
+.maya-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.maya-dot {
+  height: 5px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.maya-dot.done {
+  background: rgba(0, 229, 255, 0.45);
+}
+
+.maya-dot.active {
+  background: var(--maya-cyan);
+}
+
+/* Alt Eylem Düğmeleri */
+.maya-b-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.maya-btn-sm {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.maya-btn-sm:hover {
+  border-color: var(--maya-cyan);
+  color: #fff;
+}
+
+.maya-btn-sm.pri {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(16, 185, 129, 0.22));
+  border-color: rgba(0, 229, 255, 0.55);
+  color: #fff;
+}
+
+.maya-btn-sm.pri:hover {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.34), rgba(16, 185, 129, 0.32));
+}
+
+/* Vurgulanan Sayfa Bölümü Spotlight (Sayfayı kapatmadan zarif çerçeve) */
+.maya-spot-target {
+  position: relative;
+  outline: 2px solid rgba(0, 229, 255, 0.55) !important;
+  outline-offset: 6px !important;
+  border-radius: 10px;
+  box-shadow: 0 0 28px rgba(0, 229, 255, 0.16) !important;
+  transition: outline-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Otonomi #maya Kartı Stilleri */
+.maya-evo-hero {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.maya-evo-portrait {
+  width: 148px;
+  height: 148px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1.5px solid rgba(0, 229, 255, 0.45);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.maya-evo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+.maya-evo-table th,
+.maya-evo-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  text-align: left;
+}
+
+.maya-evo-table th {
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.maya-qa-switcher {
+  margin: 16px 0;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.03);
+}
+
+.maya-qa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.maya-qa-tab {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: inherit;
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.maya-qa-tab:hover {
+  border-color: #00b8d4;
+}
+
+.maya-qa-tab.active {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: #10b981;
+  color: #059669;
+}
+
+@media (prefers-color-scheme: dark) {
+  .maya-qa-tab.active {
+    color: #34d399;
+  }
+}
+
+.maya-qa-panel[hidden] {
+  display: none !important;
+}
+
+.maya-qa-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.maya-qa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: inherit;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.maya-qa-btn:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+}
+
+@media (max-width: 680px) {
+  .maya-evo-hero {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .maya-evo-portrait {
+    width: 112px;
+    height: 112px;
+  }
+  .maya-carrier {
+    gap: 8px;
+    max-width: calc(100vw - 12px);
+  }
+  .maya-orb-wrap {
+    width: 58px !important;
+    height: 58px !important;
+    min-width: 58px;
+    min-height: 58px;
+    max-width: 58px;
+    max-height: 58px;
+  }
+  .maya-bubble {
+    width: min(296px, calc(100vw - 82px)) !important;
+    max-width: calc(100vw - 82px) !important;
+    max-height: calc(100dvh - 78px) !important;
+    overflow-y: auto;
+    padding: 8px 10px;
+  }
+  .maya-routes,
+  .maya-topics {
+    max-height: min(130px, 26dvh);
+    overflow-y: auto;
+  }
+}

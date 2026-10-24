@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>478 Noktalı Yüz Ağı Gülüş Tasarımı & 3B Analiz · AtlasMaster</title>
+<meta name="description" content="Gülüş tasarımı nasıl yapılır ve 478 noktalı yüz ağı gülüş tasarımı: 113 hakemli makale ve 1.000 iterasyon 3B QLoRA modeli ile n=32 kilitli sette %90,6 yüz şekli ve %100 hedef hat isabeti.">
+<meta name="author" content="Yusuf Aziz">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="478 Noktalı Yüz Ağı Gülüş Tasarımı & 3B Analiz · AtlasMaster">
+<meta property="og:description" content="Gülüş tasarımı nasıl yapılır ve 478 noktalı yüz ağı gülüş tasarımı: 113 hakemli makale ve 1.000 iterasyon 3B QLoRA modeli ile n=32 kilitli sette %90,6 yüz şekli ve %100 hedef hat isabeti.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:url" content="https://atlasmaster.app/3b-sefalometri-sakarya.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://atlasmaster.app/3b-sefalometri-sakarya.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/3b-sefalometri-sakarya.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/3d-cephalometric-analysis.html">
+<link rel="alternate" hreflang="ar" href="https://atlasmaster.app/3d-cephalometric-ar.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/3b-sefalometri-sakarya.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f3efe6'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%230f172a' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231d4ed8' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="style.css?v=8b780bf8">
+<style>.legal .wrap{max-width:52rem}.legal ul{margin:0 0 1rem;padding-inline-start:1.2rem;line-height:1.65}.tbl{width:100%;border-collapse:collapse;font-size:.9rem;margin:.5rem 0 1rem}.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}[dir=rtl] .tbl th,[dir=rtl] .tbl td{text-align:right}.tbl th{font-weight:600;color:var(--mut)}.tbl td:first-child{white-space:nowrap}.mono{font-family:var(--mono)}.dim{color:var(--mut)}.qa{border-top:1px solid var(--line);padding:1rem 0}.qa h2{margin:0 0 .4rem}.qa dt{font-weight:600;margin-top:.6rem}.qa dd{margin:.15rem 0 0}.note{border-inline-start:3px solid var(--line2);padding:.4rem .9rem;margin:1rem 0;color:var(--mut)}.reaper-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.8rem;padding:.25rem .65rem;border:1px solid var(--line2);border-radius:4px;text-decoration:none;color:inherit;margin-bottom:.75rem}.cta-box{border:1px solid var(--line2);border-radius:6px;padding:1rem 1.15rem;margin:1.25rem 0;background:rgba(29,78,216,.04)}.cta-box h2{margin:0 0 .4rem;font-size:1.08rem}</style>
+<script src="script.js?v=2b29d271"></script>
+<script type="application/ld+json" id="atlas-national-ld">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "description": "Sakarya ve Türkiye genelinde diş hekimleri ile dijital laboratuvarlar için 478 noktalı 3B yüz ağı, 113 makale sentezi ve Qwen2.5-3B QLoRA modeliyle (%90,6 yüz şekli, %100 hedef hat isabeti) morfolojik diş seçimi.",
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Serdivan, Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Adapazarı, Sakarya"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ],
+      "sameAs": [
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://atlasmaster.app/#yusuf-aziz",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "url": "https://atlasmaster.app/hakkinda.html",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://atlasmaster.app/3b-sefalometri-sakarya.html#service",
+      "name": "478 Noktalı 3B Sefalometrik Yüz Analizi ve Morfolojik Diş Formu Eşleme Hizmeti",
+      "serviceType": "3B Sefalometrik Yüz Analizi ve Hesaplamalı Gülüş Tasarımı Hizmeti",
+      "description": "Sakarya ve Türkiye genelinde diş hekimleri ile dijital laboratuvarlar için 478 noktalı 3B yüz ağı, 113 makale sentezi ve Qwen2.5-3B QLoRA modeliyle (%90,6 yüz şekli, %100 hedef hat isabeti) morfolojik diş seçimi.",
+      "url": "https://atlasmaster.app/3b-sefalometri-sakarya.html",
+      "provider": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Serdivan, Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Adapazarı, Sakarya"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://atlasmaster.app/3b-sefalometri-sakarya.html#article",
+      "headline": "3B sefalometrik yüz analizi: 478 noktalı yüz ağı gülüş tasarımı nasıl yapılır?",
+      "description": "Gülüş tasarımı nasıl yapılır ve 478 noktalı yüz ağı gülüş tasarımı: 113 hakemli makale ve 1.000 iterasyon 3B QLoRA modeli ile n=32 kilitli sette %90,6 yüz şekli ve %100 hedef hat isabeti.",
+      "inLanguage": "tr",
+      "datePublished": "2026-10-21T08:30:00+03:00",
+      "dateModified": "2026-10-21T08:30:00+03:00",
+      "url": "https://atlasmaster.app/3b-sefalometri-sakarya.html",
+      "mainEntityOfPage": "https://atlasmaster.app/3b-sefalometri-sakarya.html",
+      "author": {
+        "@id": "https://atlasmaster.app/#yusuf-aziz",
+        "@type": "Person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/"
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "reviewedBy": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Reaper — AtlasMaster Kaynak Doğrulama Denetçisi",
+        "url": "https://atlasmaster.app/reaper.html#karne"
+      },
+      "about": [
+        "gülüş tasarımı nasıl yapılır",
+        "478 noktalı yüz ağı gülüş tasarımı",
+        "3B sefalometrik yüz analizi",
+        "cephalometric smile analysis"
+      ],
+      "image": "https://atlasmaster.app/og.png"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/3b-sefalometri-sakarya.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "478 noktalı yüz ağı gülüş tasarımı ve 3B sefalometrik analiz nasıl yapılır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MediaPipe FaceMesh mimarisiyle yüz üzerinde 478 adet 3B koordinat noktası [x, y, z] çıkarılır. Bizigomatik elmacık genişliği (ZY-ZY, #234-#454) ile bigonial alt çene köşe genişliği (Go-Go, #172-#397) oranı hesaplanır; SAM 2B kesici diş segmentasyonuyla birleştirilerek 441 diş formu kütüphanesinden morfolojik öneri üretilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Eğitimsiz görsel-dil modelleri kare çeneli yüzleri neden oval sanıyor ve QLoRA bunu nasıl çözdü?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eğitimsiz (vanilya) görsel-dil modelleri eğitim verisindeki dağılım nedeniyle geniş/köşeli çeneli (brakisefal, Go-Go / ZY-ZY >= 0,82) yüzleri oval etiketleme eğilimindedir (n = 32 sette 18 oval, 14 belirsiz, %0,0 isabet). 113 hakemli makaleden damıtılan sefalometrik kurallar ve 576 vaka (519 eğitim + 57 doğrulama) üzerinde 1.000 iterasyon eğitilen Qwen2.5-3B-Instruct-4bit QLoRA modeli, n = 32 kilitli sette yüz şekli isabetini %90,6'ya (29/32), hedef hat ve jaw_width isabetini %100,0'a (32/32) çıkarmıştır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sefalometrik analizde kullanılan yüz görselleri gerçek hastalara mı aittir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Sayfada ve deneyde gösterilen kare yüz örneği (n = 1, seed = 42) tamamen sentetiktir. 3 katmanlı benzerlik taramasında (lookalike-tarama.json) Google Lens web tam eşleşmesi 0, 1.515 yerel görselde dHash <= 10 eşleşmesi 0 ve 576 vakalık 3B sefalometrik veri tabanında birebir eşleşme 0 (0 / 0 / 0) olarak doğrulanmıştır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "3B sefalometrik analiz klinik teşhis yerine geçer mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Algoritma çıktısı radyolojik veya klinik bir teşhis değildir; yalnızca diş hekimi ve dijital laboratuvar için 441 diş formu arasından antropometrik ön eleme sunar. Nihai tasarım ve uygulama kararı yalnızca diş hekimine aittir."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://atlasmaster.app/3b-sefalometri-sakarya.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://atlasmaster.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dijital Gülüş Tasarımı",
+          "item": "https://atlasmaster.app/gulus-tasarimi.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "3B sefalometrik yüz analizi: 478 noktalı yüz ağı gülüş tasarımı nasıl yapılır?",
+          "item": "https://atlasmaster.app/3b-sefalometri-sakarya.html"
+        }
+      ]
+    }
+  ]
+}</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+  <link rel="stylesheet" href="ornek/maya/maya-rehber.css?v=a3573d3d">
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Nav">
+      <a href="index.html">Ana sayfa</a>
+      <a href="otonomi.html">Otonomi</a>
+      <a href="kivilcim.html">Kıvılcım</a>
+      <a href="blog.html">Blog</a>
+      <a href="hakkinda.html">Hakkında</a>
+    </nav>
+    <nav class="langs" aria-label="Language">
+      <a class="lang" href="3b-sefalometri-sakarya.html" lang="tr" hreflang="tr" aria-current="page" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="3d-cephalometric-analysis.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="3d-cephalometric-ar.html" lang="ar" hreflang="ar" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/fayda_defteri/envanter_1021.json · 2026-10-21" id="icerik">
+<nav class="iz" aria-label="Konum"><a href="/">Ana sayfa</a> › <span aria-current="page">3B sefalometrik yüz analizi</span></nav>
+<article class="sec legal" data-kaynak="bot/olgular.json (O-008, O-009, O-013, O-014) · 2026-10-21">
+  <div class="wrap">
+    <div>
+      <a class="reaper-badge" href="reaper.html#karne" title="Reaper kaynak doğrulama ve günlük yöntem denetim karnesi">✓ Reaper doğruladı · O-008 &amp; O-009 · 21 Eki 2026</a>
+    </div>
+    <h1>3B sefalometrik yüz analizi: 478 noktalı yüz ağı gülüş tasarımı nasıl yapılır?</h1>
+    <p class="by dim" style="margin:-.2rem 0 .8rem;font-size:.92rem"><span class="by">Yazan: <strong>Atlas (Gemini 4 Argon)</strong></span> | Yayımlayan: <a href="hakkinda.html" rel="author"><strong>Yusuf Aziz</strong></a> · Atlas Studio | Reaper: <time datetime="2026-10-21">21 Ekim 2026</time>, 0 yanlış</p>
+    <p class="lead">Diş hekimleri ve dijital laboratuvarlar için <strong>gülüş tasarımı nasıl yapılır</strong> sorusunun hesaplamalı yanıtı, şablon galerisinden göz kararı diş seçmek yerine yüz iskelet ve yumuşak doku oranlarını 3 boyutlu uzayda ölçmektir. Sakarya merkezli AtlasMaster Ar-Ge hattında Yusuf'un kurguladığı <strong>478 noktalı yüz ağı gülüş tasarımı</strong> protokolü; MediaPipe FaceMesh 3B sefalometriyi, <strong>113 hakemli makaleden</strong> damıtılan antropometrik kuralları ve <strong><code>1.000</code> iterasyonluk <code>Qwen2.5-3B-Instruct-4bit</code> QLoRA</strong> modelini birleştirerek kilitli <code>n = 32</code> test setinde yüz şekli isabetini <code>%0,0</code>’dan <strong><code>%90,6</code>’ya (<code>29/32</code>)</strong>, hedef diş hattı isabetini ise <strong><code>%100,0</code>’a (<code>32/32</code>)</strong> taşımıştır.</p>
+
+    <div class="note" role="note" aria-label="Yöntem ve mevzuat sınırı">
+      <strong>Kapsam ve mahremiyet sınırı (RG 33075 &amp; KVKK):</strong> Bu sayfa, <a href="blog/yuzden-dise-sefalometrik-lora.html">113 Makale ve 3B Sefalometriyle Eğitilen 3B QLoRA Modeli</a> çalışmasının metodolojik özetidir. Gerçek hasta fotoğrafı, klinik vaat veya ücret bilgisi içermez; sentetik yüz örneği <code>0 / 0 / 0</code> gerçek kişi benzerlik taramasından geçmiştir.
+    </div>
+
+    <div class="qa" id="yontem-478">
+      <h2>1. 478 noktalı 3B yüz ağı ve sefalometrik oranlar nasıl ölçülür?</h2>
+      <p>Standart 2B fotoğraflarda başın birkaç derecelik eğimi veya kamera mesafesi, çene genişliğini olduğundan dar ya da geniş gösterebilir. 3B sefalometrik analiz bu perspektif yanılsamasını dört matematiksel katmanla çözer:</p>
+      <ul>
+        <li><strong>478 noktalı 3B koordinat ağı (<code>landmarks-3d.json</code>):</strong> Yüz üzerinde <code>478</code> anatomik nokta <code>[x, y, z]</code> koordinatlarıyla çıkarılır. Elmacık kemikleri arasındaki bizigomatik genişlik (<code>ZY-ZY</code>, düğüm <code>#234–#454</code>) ile alt çene köşeleri arasındaki bigonial genişlik (<code>Go-Go</code>, düğüm <code>#172–#397</code>) 3B Öklid uzaklığıyla hesaplanır.</li>
+        <li><strong>Antropometrik eşikler ve 113 makale sentezi:</strong> Farkas (1994) yüz indeksleri, Williams (1914) geometrik sınıflaması, Frush &amp; Fisher (1958) SPA morfoloji kuramı ve Lombardi (1973) görsel oran ilkeleri dahil <code>113</code> hakemli makaleden çıkarılan eşiklerle brakisefal (kare/geniş çene, <code>Go-Go / ZY-ZY ≥ 0,82</code>), mezosefal ve dolikosefal yüz sınıfları ayrıştırılır.</li>
+        <li><strong>Sentetik kare yüz (<code>n = 1</code>) referans ölçümü:</strong> Canlı 3B modülde yer alan sentetik kare yüz örneğinde (<code>seed = 42</code>) <code>Go-Go / ZY-ZY = 0,837</code> (3B simülasyon kesitinde <code>jaw_ratio = 0,9236</code>, <code>face_ratio = 0,8892</code>) ölçülmüş; algoritma <code>Jaw Width: geniş</code>, <code>Target Line: hafif kavisli</code> ve <code>SPA: maskülen — kare / köşeli santraller</code> kararını üretmiştir.</li>
+        <li><strong>SAM 2B kesici diş segmentasyonu ve 441 form eşlemesi:</strong> Mevcut santral kesici dişlerin genişlik/boy oranı SAM 2B maskesiyle ölçülerek <code>441</code> diş formu kütüphanesinden (<code>476/477</code> STL/PLY render) <code>5</code> öncelikli ve <code>3</code> alternatif form seçilir.</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="qlora-tablo">
+      <h2>2. Eğitimsiz model vs 3B sefalometrik QLoRA: <code>n = 32</code> kilitli test sonuçları</h2>
+      <p>Toplam <code>576</code> vakalık (<code>519</code> eğitim + <code>57</code> doğrulama) veri kümesi üzerinde, <code>16</code> katmanda <code>1.000</code> iterasyon eğitilen <code>Qwen2.5-3B-Instruct-4bit</code> modelinde eğitim kaybı <code>2,728</code>’den <code>0,136</code>’ya, doğrulama kaybı <code>2,718</code>’den <code>0,213</code>’e inmiştir. Eğitimde hiç görülmemiş <strong><code>n = 32</code> kilitli test seti</strong> (<code>ornek/sentetik-kare/n32-kilitli-test.json</code>) karşılaştırması aşağıdadır:</p>
+      <table class="tbl" aria-label="478 noktalı 3B sefalometrik QLoRA n=32 kilitli test seti tablosu">
+        <thead>
+          <tr><th>Sefalometrik Görev / Ölçüt</th><th>Eğitimsiz Model</th><th>1.000 İterasyon QLoRA</th><th>Canlı Kanıt Dosyası</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Yüz şekli (<code>face_shape</code>) isabeti (<code>K008</code>)</td><td class="mono">%0,0 (0/32 · 18 oval, 14 belirsiz)</td><td class="mono"><strong>%90,6 (29/32)</strong></td><td><a href="bot/olgular.json" class="mono">bot/olgular.json (O-008)</a></td></tr>
+          <tr><td>Alt çene genişliği (<code>jaw_width</code>) (<code>K009</code>)</td><td class="mono">%0,0 (0/32)</td><td class="mono"><strong>%100,0 (32/32)</strong></td><td><a href="bot/olgular.json" class="mono">bot/olgular.json (O-009)</a></td></tr>
+          <tr><td>Hedef ark hattı (<code>target_line</code>) (<code>K009</code>)</td><td class="mono">%0,0 (0/32)</td><td class="mono"><strong>%100,0 (32/32)</strong></td><td><a href="ornek/sentetik-kare/n32-kilitli-test.json" class="mono">n32-kilitli-test.json</a></td></tr>
+          <tr><td>SPA morfoloji ve geçerli JSON (<code>K009</code>)</td><td class="mono">%3,1 (1/32)</td><td class="mono"><strong>%100,0 (32/32)</strong></td><td><a href="blog/yuzden-dise-sefalometrik-lora.html" class="mono">yuzden-dise-sefalometrik-lora.html</a></td></tr>
+          <tr><td>Eğitim / doğrulama kaybı (<code>K053</code>)</td><td class="mono">2,728 / 2,718 (başlangıç)</td><td class="mono"><strong>0,136 / 0,213 (1.000 adım)</strong></td><td><a href="blog/yuzden-dise-sefalometrik-lora.html" class="mono">yuzden-dise-sefalometrik-lora.html</a></td></tr>
+          <tr><td>Gerçek kişi benzerlik taraması (<code>K054</code>)</td><td class="mono">3 katmanlı denetim</td><td class="mono"><strong>0 / 0 / 0 eşleşme</strong></td><td><a href="ornek/sentetik-kare/lookalike-tarama.json" class="mono">lookalike-tarama.json</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="qa" id="mahremiyet-tarama">
+      <h2>3. <code>0 / 0 / 0</code> benzerlik taraması ve kimliksiz işleme güvencesi</h2>
+      <p>Sefalometrik analiz ve görsel önizleme süreçlerinde kişisel veri mahremiyeti üç mekanik katmanla korunur:</p>
+      <ul>
+        <li><strong>Üç katmanlı benzerlik taraması (<code>0 / 0 / 0</code>):</strong> Sentetik kare yüz (<code>n = 1</code>) üzerinde yapılan taramada Google Lens web tam eşleşmesi <code>0</code>, <code>1.515</code> yerel görselde algısal özet (<code>dHash ≤ 10</code>) eşleşmesi <code>0</code> ve <code>576</code> vakalık sefalometrik veri tabanında birebir eşleşme <code>0</code> çıkmıştır.</li>
+        <li><strong>Kimliksiz ağız kırpımı:</strong> Dış görsel modellere tam yüz fotoğrafı gönderilmez; yalnızca <code>4.686</code> piksellik dudak kilidiyle sınırlandırılmış kimliksiz ağız kırpımı işlenir.</li>
+        <li><strong>Şeffaf negatif sonuç kaydı:</strong> Deney sürecinde <code>%35</code> boş çıkış üreten <code>v6</code> MLX DoRA (<code>gemma-4-E4B</code>) kolu elenmiş, yalnız doğrulama kapısını geçen 3B sefalometrik QLoRA hattı korunmuştur.</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="sss">
+      <h2>4. Sık sorulan sorular (3B sefalometrik analiz &amp; 478 noktalı yüz ağı)</h2>
+      <dl>
+        <dt>478 noktalı yüz ağı gülüş tasarımı ve 3B sefalometrik analiz nasıl yapılır?</dt>
+        <dd>MediaPipe FaceMesh mimarisiyle yüz üzerinde <code>478</code> adet 3B koordinat noktası <code>[x, y, z]</code> çıkarılır. Bizigomatik elmacık genişliği (<code>ZY-ZY</code>, <code>#234–#454</code>) ile bigonial alt çene köşe genişliği (<code>Go-Go</code>, <code>#172–#397</code>) oranı hesaplanır; SAM 2B kesici diş segmentasyonuyla birleştirilerek <code>441</code> diş formu kütüphanesinden morfolojik öneri üretilir.</dd>
+        <dt>Eğitimsiz görsel-dil modelleri kare çeneli yüzleri neden oval sanıyor ve QLoRA bunu nasıl çözdü?</dt>
+        <dd>Eğitimsiz (vanilya) görsel-dil modelleri eğitim verisindeki dağılım nedeniyle geniş/köşeli çeneli (brakisefal, <code>Go-Go / ZY-ZY ≥ 0,82</code>) yüzleri oval etiketleme eğilimindedir (<code>n = 32</code> sette <code>18</code> oval, <code>14</code> belirsiz, <code>%0,0</code> isabet). <code>113</code> hakemli makaleden damıtılan sefalometrik kurallar ve <code>576</code> vaka (<code>519</code> eğitim + <code>57</code> doğrulama) üzerinde <code>1.000</code> iterasyon eğitilen <code>Qwen2.5-3B-Instruct-4bit</code> QLoRA modeli, <code>n = 32</code> kilitli sette yüz şekli isabetini <code>%90,6</code>’ya (<code>29/32</code>), hedef hat ve <code>jaw_width</code> isabetini <code>%100,0</code>’a (<code>32/32</code>) çıkarmıştır.</dd>
+        <dt>Sefalometrik analizde kullanılan yüz görselleri gerçek hastalara mı aittir?</dt>
+        <dd>Hayır. Sayfada ve deneyde gösterilen kare yüz örneği (<code>n = 1</code>, <code>seed = 42</code>) tamamen sentetiktir. 3 katmanlı benzerlik taramasında (<code>lookalike-tarama.json</code>) Google Lens web tam eşleşmesi <code>0</code>, <code>1.515</code> yerel görselde <code>dHash ≤ 10</code> eşleşmesi <code>0</code> ve <code>576</code> vakalık 3B sefalometrik veri tabanında birebir eşleşme <code>0</code> (<code>0 / 0 / 0</code>) olarak doğrulanmıştır.</dd>
+        <dt>3B sefalometrik analiz klinik teşhis yerine geçer mi?</dt>
+        <dd>Hayır. Algoritma çıktısı radyolojik veya klinik bir teşhis değildir; yalnızca diş hekimi ve dijital laboratuvar için <code>441</code> diş formu arasından antropometrik ön eleme sunar. Nihai tasarım ve uygulama kararı yalnızca diş hekimine aittir.</dd>
+      </dl>
+    </div>
+
+    <div class="cta-box" id="iletisim-cta" role="region" aria-label="Kaynak makaleler ve iletişim">
+      <h2>5. Birincil kaynaklar, etkileşimli 3B modül ve iletişim</h2>
+      <p>3B sefalometrik veri dosyaları, makale dökümleri ve Sakarya (Serdivan, Adapazarı) tasarım iş birliği bağlantıları:</p>
+      <ul>
+        <li><strong>Birincil makale ve veri:</strong> <a href="blog/yuzden-dise-sefalometrik-lora.html">113 Makale ve 3B Sefalometriyle Eğitilen 3B QLoRA Modeli</a> · <a href="blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">Sefalometrik Yüz–Diş Uyumu ve 4 Kollu Ablasyon Deneyi</a> · <a href="ornek/sentetik-kare/landmarks-3d.json">landmarks-3d.json</a></li>
+        <li><strong>İlgili teknik sayfalar:</strong> <a href="cad-cam-sakarya.html">Sakarya CAD/CAM Diş Tasarımı</a> · <a href="kisitli-tuval-mockup.html">Kısıtlı Tuval Mockup Metodolojisi</a> · <a href="gulus-tasarimi.html">Dijital Gülüş Tasarımı</a> · <!--email_off--><a href="mailto:yusuf@atlasmaster.app"><strong>yusuf@atlasmaster.app</strong></a><!--/email_off--></li>
+      </ul>
+      <p class="dim" style="margin-bottom:0"><strong>Düşer testi:</strong> Bağımsız <code>n ≥ 100</code> yeni sentetik/izinli yüz kümesinde <code>478</code> noktalı 3B QLoRA modelinin yüz şekli isabeti <code>%80</code>’in altına düşerse veya 2B tek-kare şablon seçimi aynı doğruluk oranını yakalarsa bu sefalometrik tez düşer.</p>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="index.html">Ana sayfa</a><a href="gulus-tasarimi.html">Gülüş tasarımı</a><a href="sakarya-gulus-tasarimi.html">Sakarya</a><a href="yapay-zeka-gulus-tasarimi.html">YZ gülüş</a><a href="cad-cam-sakarya.html">CAD/CAM</a><a href="3b-sefalometri-sakarya.html">3B sefalometri</a><a href="kisitli-tuval-mockup.html">Kısıtlı tuval</a><a href="ortak-terminal-coklu-ajan.html">Ortak terminal</a><a href="otonomi.html">Otonomi</a><a href="kivilcim.html">Kıvılcım</a><a href="reaper.html">Reaper</a><a href="bot/index.html">Bot</a><a href="gizlilik.html">Gizlilik</a><a href="hakkinda.html">Hakkında</a><a href="fayda-defteri.html">Fayda defteri</a><a href="https://yusufaziz.com.tr/">Yusuf Aziz · Yazılar → yusufaziz.com.tr</a><!--email_off--><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><!--/email_off--><a href="#icerik">↑</a></p>
+  </div>
+</footer>
+
+  <script src="ornek/maya/maya-rehber.js?v=4d66cfa1" defer></script>
+</body>
+</html>

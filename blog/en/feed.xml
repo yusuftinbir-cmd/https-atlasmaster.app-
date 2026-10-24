@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Atlas Studio · Project Log</title>
+    <link>https://atlasmaster.app/blog/en/</link>
+    <atom:link href="https://atlasmaster.app/blog/en/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Atlas Studio analysis: The studio's working log: we discuss topics chosen from the news with different AI models, and write what we recommend and what da...</description>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 19 Oct 2026 02:15:00 +0300</lastBuildDate>
+    <item>
+      <title>Digital Dentistry: What Is and What Should Be — The Türkiye and Global Equation</title>
+      <link>https://atlasmaster.app/blog/en/digital-dentistry-what-is-and-what-should-be.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/digital-dentistry-what-is-and-what-should-be.html</guid>
+      <pubDate>Mon, 19 Oct 2026 02:15:00 +0300</pubDate>
+      <description>Yusuf Aziz analysis: Technology imposes need — where there is a device, there is measurement; where there is no device, there is estimation. 24 field verdicts, surgical specialist field voice (S11), 6 blind AI voices, and 90+ verified DOI/PubMed sources.</description>
+      <category>Kıvılcım verdict</category>
+    </item>
+    <item>
+      <title>Face to Tooth: How a QLoRA Model Trained on 3D Cephalometry Beat the Untrained Model</title>
+      <link>https://atlasmaster.app/blog/en/face-to-tooth-cephalometric-lora.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/face-to-tooth-cephalometric-lora.html</guid>
+      <pubDate>Thu, 15 Oct 2026 10:00:00 +0300</pubDate>
+      <description>Atlas Studio experiment: The untrained model reads a square jaw as 'oval' and picks a rounded feminine line. 478-landmark 3D cephalometry + 1,000-iteration MLX QLoRA: face-shape accuracy 0% → 90.6%, target line 0% → 100% (n=32 locked test); live 3D module on a 100% synthetic face.</description>
+      <category>Experiment</category>
+    </item>
+    <item>
+      <title>Who Trains Whom? The Mount Changes, the Law Remains</title>
+      <link>https://atlasmaster.app/blog/en/who-trains-whom.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/who-trains-whom.html</guid>
+      <pubDate>Wed, 14 Oct 2026 21:20:00 +0300</pubDate>
+      <description>Atlas Studio analysis: The Mirror Twin (SHA-256), the 98.6% Bureaucracy Trap, and a 76-Second Synaptic Harvest (N=96): how a 3B model trained with Atlas's laws (93.8%) beat an unruled 31B model (75.0%).</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>Why doesn't Turkey have a global whisky brand? Should it?</title>
+      <link>https://atlasmaster.app/blog/en/turkey-whisky-world-brand.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/turkey-whisky-world-brand.html</guid>
+      <pubDate>Mon, 12 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Turkey made whisky from 1963. Today's barriers: a legal asymmetry, the tax base, years without revenue; the likeliest path is a...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>The crisis opens the door, oratory lets it in</title>
+      <link>https://atlasmaster.app/blog/en/discourse-action-gap.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/discourse-action-gap.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Why is the rhetoric–action gap sold, and why is it bought? Five AI voices and a red team tested one sentence: which part stood, wh...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>The forced bet</title>
+      <link>https://atlasmaster.app/blog/en/earthquake-statistics-indifference.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/earthquake-statistics-indifference.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Statistics don't lie but give no calendar. Why do people and governments seem deaf? Most at the table own homes; whoever set it up...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>The rule has a new owner</title>
+      <link>https://atlasmaster.app/blog/en/dd2-dark-arisen.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/dd2-dark-arisen.html</guid>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Dragon&amp;#x27;s Dogma 2: Dark Arisen doesn&amp;#x27;t bring back the old; it gathers the old&amp;#x27;s best parts — and leaves the decision...</description>
+      <category>Spark round</category>
+    </item>
+    <item>
+      <title>Ban or design? Five things that would make the age-15 rule work</title>
+      <link>https://atlasmaster.app/blog/en/age-15-ban-or-design.html</link>
+      <guid isPermaLink="true">https://atlasmaster.app/blog/en/age-15-ban-or-design.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0300</pubDate>
+      <description>Atlas Studio analysis: Türkiye's age-15 social media rule: what three global approaches produced, what the regulation does well, where it can break, and ...</description>
+      <category>Spark round</category>
+    </item>
+  </channel>
+</rss>

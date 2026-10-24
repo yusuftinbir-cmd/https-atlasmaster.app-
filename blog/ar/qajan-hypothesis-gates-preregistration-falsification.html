@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مصنع الفرضيات QAJAN ذو البوابات الست والتسجيل المسبق · AtlasMaster</title>
+<meta name="author" content="Yusuf Aziz">
+<meta name="description" content="كيف تمنع بوابات الفرضيات (QAJAN) في الأنظمة متعددة الوكلاء تحيز البحث في المواصفات وتسرب البيانات المستقبلية؟ فصل الاستكشاف (n=148) عن التحقق المسبق (n=6)، وسقوط الفرضية QH-06 تحت تعامد Dimson/Epps (AUC 0.6028 → 0.5782).">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="مصنع الفرضيات ذو البوابات الست (QAJAN): التسجيل المسبق، وتعامد Dimson/Epps، وبوابات الدحض · AtlasMaster">
+<meta property="og:description" content="كيف تمنع بوابات الفرضيات (QAJAN) في الأنظمة متعددة الوكلاء تحيز البحث في المواصفات وتسرب البيانات المستقبلية؟ فصل الاستكشاف (n=148) عن التحقق المسبق (n=6)، وسقوط الفرضية QH-06 تحت تعامد Dimson/Epps (AUC 0.6028 → 0.5782).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="مصنع الفرضيات ذو البوابات الست (QAJAN): التسجيل المسبق، وتعامد Dimson/Epps، وبوابات الدحض · AtlasMaster">
+<meta name="twitter:description" content="كيف تمنع بوابات الفرضيات (QAJAN) في الأنظمة متعددة الوكلاء تحيز البحث في المواصفات وتسرب البيانات المستقبلية؟ فصل الاستكشاف (n=148) عن التحقق المسبق (n=6)، وسقوط الفرضية QH-06 تحت تعامد Dimson/Epps (AUC 0.6028 → 0.5782).">
+<meta name="twitter:image" content="https://atlasmaster.app/og.png">
+<link rel="canonical" href="https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/qajan-hypothesis-gates-preregistration-falsification.html">
+<link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="../../style.css?v=8b780bf8">
+<link rel="stylesheet" href="../../blog.css?v=e1abe8e6">
+<style>
+html[lang="ar"]{--sans:"IBM Plex Sans","IBM Plex Sans Arabic","Noto Sans Arabic","Noto Kufi Arabic","Geeza Pro","Segoe UI",Tahoma,Arial,sans-serif}
+html[lang="ar"] body{line-height:1.8}
+html[lang="ar"] .nav a,html[lang="ar"] .idx,html[lang="ar"] .eyebrow,html[lang="ar"] .tag,html[lang="ar"] .btn,html[lang="ar"] .cap,html[lang="ar"] .foot{text-transform:none}
+html[lang="ar"] code{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.kanit-box{border:1px solid var(--line,#d8d3c8);border-radius:6px;padding:.85rem 1.05rem;margin:1rem 0;font-size:.92rem;background:rgba(27,69,207,.04)}
+.kanit-box h2{font-size:1rem;margin:0 0 .45rem}
+.kanit-box ul{margin:0;padding-inline-start:1.2rem;line-height:1.65}
+</style>
+<script src="../../script.js?v=2b29d271"></script>
+<script src="../blog.js?v=745e8e15" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yusufaziz.com.tr/#person",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "jobTitle": "Diş CAD/CAM Uzmanı & Çok-Ajanlı Sistem Mimarisi Araştırmacısı",
+      "url": "https://yusufaziz.com.tr/",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": [
+        "TechArticle",
+        "Article",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html#article",
+      "headline": "مصنع الفرضيات ذو البوابات الست (QAJAN): التسجيل المسبق، وتعامد Dimson/Epps، وبوابات الدحض · AtlasMaster",
+      "description": "كيف تمنع بوابات الفرضيات (QAJAN) في الأنظمة متعددة الوكلاء تحيز البحث في المواصفات وتسرب البيانات المستقبلية؟ فصل الاستكشاف (n=148) عن التحقق المسبق (n=6)، وسقوط الفرضية QH-06 تحت تعامد Dimson/Epps (AUC 0.6028 → 0.5782).",
+      "inLanguage": "ar",
+      "datePublished": "2026-10-19T12:12:55+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "url": "https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html"
+      },
+      "image": "https://atlasmaster.app/og.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "about": [
+        "agentic architecture principles وبوابات الفرضيات",
+        "artificial intelligence agentic auditing",
+        "تعامد بيتا Dimson وأثر Epps",
+        "الدحض المسجل مسبقاً في أنظمة الوكلاء"
+      ],
+      "citation": [
+        "https://arxiv.org/abs/0704.1099",
+        "https://arxiv.org/abs/2011.11281",
+        "https://arxiv.org/abs/2411.10647",
+        "https://arxiv.org/abs/0906.5263",
+        "https://arxiv.org/abs/1910.04968"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "لماذا يفصل مصنع QAJAN بين «طبقة الاستكشاف» و«طبقة الاختبار المسجل مسبقاً»؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لأن أي علاقة إحصائية تُكتشف بعد تعديل تعريف الحدث أو توسيع حوض الرموز على بيانات تاريخية تكون عرضة لتحيز البحث في المواصفات. لذلك يوسم حوض الرموز الاثني عشر (n=148 عنقوداً) آلياً بوسم katman='kesif' وhukme_girer=False، ولا تُمنح أي فرضية حكم النجاح التأكيدي إلا بعد تجاوز العتبة في 100 حدث مستقل على الأقل بعد طابع التسجيل المسبق."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لماذا نجحت الفرضية QH-20261013-06 في الجولة الأولى (AUC 0.6028) ثم سقطت في الجولة الثانية (AUC 0.5782)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "استخدمت الجولة الأولى معامل بيتا الآني لدقيقة واحدة (k=0). وبسبب التداولات غير المتزامنة في البيانات عالية التردد (أثر Epps 1979) قُدّرت بيتا بأقل من قيمتها الحقيقية بنسبة 4% إلى 11%، فظهر الانتشار المتأخر لصدمات السوق وكأنه إشارة مستقلة. وعند تطبيق بيتا Dimson السببية (±15 دقيقة) وتجميع Epps لخمس دقائق هبطت قيمة AUC إلى 0.5782 (<0.60) وبلغ التوافق الاتجاهي 50.31% عبر 110,001 نقطة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "لماذا لم يُعتمد المرشح ARGON-H4 رغم تحقيقه AUC 0.7006 في 32 يوماً و0.6883 في عينة الاحتجاز لـ 114 يوماً؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أوقف التدقيق المنهجي المستقل (Grok Asistan M1–M6) اعتماده لأربعة أسباب: (1) عدم تسجيله مسبقاً في ملف onkayit.jsonl قبل فحص عينة الاحتجاز، (2) فترة الجموح البالغة 60 دقيقة أقصر من معيار 4.5 ساعات المرجعي (معامل التكتل deff = 1.959)، (3) هبوط قيمة AUC إلى 0.5718 تحت تعريف الحدث البديل O-sigma (لعنة الفائز)، و(4) عدم إدراج حاسبته بعد في اختبار كناري التسرب المستقبلي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف يكشف كناري التسرب المستقبلي (asof_sizinti_denetle) قراءة البيانات اللاحقة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "عند 5 نقاط فحص عبر شبكة تضم 110,001 نقطة زمنية تُضاعف قيم الشموع المستقبلية بعد اللحظة t بعشرة أضعاف (10x)، كما تُحصر نافذة انحدار Dimson في النطاق الماضي u < idx - k_ileri؛ فإذا تغيرت أي سمة أو قيمة بيتا في اللحظة t يُطلق إنذار التسرب وتُرفض الجولة آلياً."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "أطلس",
+          "item": "https://atlasmaster.app/ar.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "المقالات",
+          "item": "https://atlasmaster.app/blog/ar/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "مصنع الفرضيات ذو البوابات الست (QAJAN): التسجيل المسبق، وتعامد Dimson/Epps، وبوابات الدحض · AtlasMaster",
+          "item": {
+            "@type": "WebPage",
+            "@id": "https://atlasmaster.app/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#content">تخطَّ إلى المحتوى</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../ar.html" aria-label="Atlas الصفحة الرئيسية">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="الأقسام">
+      <a href="../../ar.html">الرئيسية</a>
+      <a href="index.html" aria-current="true">المقالات</a>
+      <a href="../../spark.html">الشرارة</a>
+      <a href="../../autonomy.html">الاستقلالية</a>
+      <a href="../../reaper-ar.html">Reaper</a>
+      <a href="../../about-ar.html">نبذة</a>
+    </nav>
+    <nav class="langs" aria-label="اللغة">
+      <a class="lang" href="../qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html" lang="tr" hreflang="tr" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="../en/qajan-hypothesis-gates-preregistration-falsification.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="qajan-hypothesis-gates-preregistration-falsification.html" lang="ar" hreflang="ar" aria-current="page" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="content">
+<article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20">
+<header class="post-head">
+  <div class="wrap">
+    <h1>مصنع الفرضيات ذو <em>البوابات الست (QAJAN)</em>: التسجيل المسبق وتعامد Dimson/Epps والدحض</h1>
+    <p class="dek">فصل طبقة الاستكشاف (n = 148) عن التحقق المسجل مسبقاً (n = 6)، وكيف أسقطت معالجة أثر Epps الفرضية QH-06 (0.6028 → 0.5782)، وتدقيق لعنة الفائز</p>
+    <div class="meta">سجل المعمارية والقياس &middot; بوابات فرضيات QAJAN + التدقيق الإحصائي &middot; <time datetime="2026-10-19">19 أكتوبر 2026</time> &middot; المؤلف: <a href="../../about-ar.html" rel="author"><strong>Yusuf Aziz</strong></a></div>
+    <aside class="ozet" aria-label="ملخص تنفيذي">
+      <p class="idx"><span>ملخص تنفيذي</span><span class="okuma">11 دقيقة قراءة</span></p>
+      <p>يفرض مصنع الفرضيات ذو البوابات الست (QAJAN) فصل الاستكشاف (<code>n = 148</code>) عن التحقق المسبق (<code>n = 6</code>)، والتعامد السببي عبر Dimson/Epps الذي أسقط الفرضية <code>QH-06</code> (<code dir="ltr">AUC 0.6028 → 0.5782</code>)، وتدقيق المرشح <code>ARGON-H4</code> عبر ست بوابات.</p>
+    </aside>
+    <div class="kanit-box" id="kanit-karti" role="region" aria-label="ملخص الأدلة المقاسة لبوابات فرضيات QAJAN">
+      <h2>ملخص الأدلة المقاسة (جولة QAJAN 2A/2B وتدقيق المنهجية)</h2>
+      <!-- kaynak: Projects/ATLAS/task_bus/ARGON_QAJAN_TUR2_1014/RAPOR.md:1-70 + KARNE_DENETIM_GROK_ASISTAN.md:1-45 + otonomi.html:80-81 -->
+      <ul>
+        <li><strong>البوابة 1 — فصل الاستكشاف عن التحقق المسجل مسبقاً:</strong> وُسم حوض الرموز الاثني عشر (<code>n1_pooled = 290</code>، العناقيد المستقلة بفاصل 60 دقيقة <strong><code>n = 148</code></strong>، وعينة الضبط <code>n0 = 870</code>) آلياً بوسم <code>katman="kesif"</code> و<code>hukme_girer=False</code> (<code>الناجحة = 0</code>)؛ وفي فترة ما بعد التسجيل (<code dir="ltr">2026-10-13 13:05:33</code>) بلغت الأحداث المستقلة <code dir="ltr">n = 6 &lt; 100</code> فصدر حكم <code>GUC_YETERSIZ</code>. <!-- kaynak: Projects/ATLAS/task_bus/ARGON_QAJAN_TUR2_1014/RAPOR.md:21,34-40 --></li>
+        <li><strong>البوابة 2 — تعامد Dimson <code dir="ltr">±15 min</code> وتجميع Epps <code dir="ltr">5 min</code>:</strong> تبيّن أن بيتا الآنية لدقيقة واحدة (<code dir="ltr">k=0</code>) تقلل تقدير بيتا الحقيقية بنسبة <code dir="ltr">4%–11%</code> في 10 من أصل 12 رمزاً؛ فتراجعت الفرضية <code>QH-06</code> من <code dir="ltr">AUC = 0.6028</code> إلى <strong><code dir="ltr">AUC = 0.5782 &lt; 0.60</code></strong> (<code dir="ltr">Holm p = 0.0517</code>) مع توافق اتجاهي <code>50.31%</code> عبر <code>110,001</code> نقطة (رمية عملة) ← <strong>سقطت (<code>DUSTU</code>)</strong>. <!-- kaynak: Projects/ATLAS/task_bus/ARGON_QAJAN_TUR2_1014/RAPOR.md:22,68-70 --></li>
+        <li><strong>المرشح الوحيد (<code>ARGON-H4</code>) وتحفظ التدقيق:</strong> حقق في حدث <code>tunel37_escape</code> قيمة <code dir="ltr">AUC = 0.7006</code> (<code>n1 = 154</code> خلال 32 يوماً) وفي عينة الاحتجاز لـ 114 يوماً <code dir="ltr">AUC = 0.6883</code> (<code>n1 = 232</code>، <code dir="ltr">p = 0.0005</code>)؛ لكنه أُوقف عن الاعتماد النهائي بسبب معامل التكتل <code dir="ltr">deff = 1.959</code> ومعدل خطأ النوع الأول <code>0.211</code> حتى اكتمال <code>≥100</code> حدث مستقل بعد التسجيل. <!-- kaynak: Projects/ATLAS/task_bus/ARGON_QAJAN_TUR2_1014/KARNE_DENETIM_GROK_ASISTAN.md:18,27-30 --></li>
+        <li><strong>الاختبارات الذاتية وحلقة التطور (<a href="../../autonomy.html">autonomy.html</a>):</strong> اجتياز <code dir="ltr">pytest 8/8</code> و<code dir="ltr">11/11</code>؛ واجتياز <code>191</code> أداة من أصل <code>262</code> لإجمالي <code>3,313</code> فحصاً ذاتياً، مع وصول حلقة الظل EVRİM-2 إلى <code dir="ltr">194/240</code> حلقة. <!-- kaynak: Projects/ATLAS/task_bus/ARGON_QAJAN_TUR2_1014/RAPOR.md:1,12 + otonomi.html:80-81 --></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="ruler" aria-hidden="true"></div>
+
+<div class="wrap post-grid">
+  <nav class="toc" aria-label="المحتويات">
+    <span class="idx">المحتويات</span>
+    <ol id="toc-liste">
+      <li><a href="#giris">مقدمة: لماذا تسقط معظم الفرضيات التي تولدها النماذج اللغوية في الواقع؟</a></li>
+      <li><a href="#bolum-1">1. البوابات الست لمعمارية QAJAN: فصل الاستكشاف عن التحقق المسجل مسبقاً</a></li>
+      <li><a href="#bolum-2">2. أثر Epps وتعامد Dimson ±15 دقيقة: كيف سقطت الفرضية QH-06؟</a></li>
+      <li><a href="#bolum-3">3. جدول نتائج 11 فرضية مرشحة وتحليل ARGON-H4</a></li>
+      <li><a href="#bolum-4">4. التدقيق المنهجي المستقل (M1–M6) وشرط السقوط</a></li>
+      <li><a href="#sss">الأسئلة الشائعة (FAQ)</a></li>
+    </ol>
+  </nav>
+  <div class="post">
+    <h3 id="giris">مقدمة: لماذا تسقط معظم الفرضيات التي تولدها النماذج اللغوية في الواقع؟</h3>
+    <p>عند تزويد نظام متعدد الوكلاء بسجلات سلاسل زمنية تاريخية وتكليفه بتوليد فرضيات كمية قابلة للاختبار، تستطيع النماذج اللغوية اقتراح عشرات السمات الرياضية الأنيقة خلال ثوانٍ.</p>
+    <p>في <a href="../../autonomy.html">معمارية الاستقلالية</a> يمنع <strong>مصنع الفرضيات ذو البوابات الست (QAJAN)</strong> أي وكيل مولِّد من التحكيم في فرضيته، ويخضع كل مرشح لست بوابات دحض متتالية لفرضيات التداول (بينما تخضع المجالات الأخرى لبوابات الفحص الذاتي 191/262 وبوابة DOGRULA 81% وبوابة Reaper 360/394). وتقدّم جولة 14 أكتوبر 2026 (ملف <code>RAPOR.md</code> وتدقيق <code>KARNE_DENETIM_GROK_ASISTAN.md</code>) توثيقاً رقمياً لكيفية سقوط فرضية بدت ناجحة في الجولة الأولى بمجرد تطبيق التعامد السببي.</p>
+
+    <h3 id="bolum-1">1. البوابات الست لمعمارية QAJAN: فصل الاستكشاف عن التحقق المسجل مسبقاً</h3>
+    <p>لا تنتقل أي فرضية إلى بيئة التشغيل الحي إلا بعد اجتياز ست بوابات برمجية صارمة:</p>
+    <ol class="recs">
+      <li><p><strong>البوابة 1 · التسجيل المسبق وفصل الطبقات:</strong> قبل بدء القياس يُختم تعريف الحدث، وفترة الجموح (<code>60 دقيقة</code> أو <code>4.5 ساعات</code>)، والحد الأدنى للأحداث المستقلة (<code dir="ltr">n_independent ≥ 100</code>)، وعتبة القبول (<code dir="ltr">AUC ≥ 0.60</code>) بطابع زمني في ملف <code>onkayit.jsonl</code>. وإذا تغيّر تعريف الحدث أو وُسّع حوض الرموز يوسم الناتج آلياً بوسم <strong><code dir="ltr">katman = "kesif"</code> و<code dir="ltr">hukme_girer = False</code></strong>.</p></li>
+      <li><p><strong>البوابة 2 · كناري التسرب المستقبلي (<code dir="ltr">asof_sizinti_denetle</code>):</strong> عبر شبكة تضم <code>110,001</code> نقطة زمنية تُضخّم البيانات المستقبلية بعد اللحظة <code>t</code> بعشرة أضعاف (<code>10x</code>) عند 5 نقاط فحص، وتُحصر نافذة انحدار Dimson في الماضي الصرف <code dir="ltr">u &lt; idx - k_ileri</code> (<code dir="ltr">dimson_beta_sizinti_yok = true</code>).</p></li>
+      <li><p><strong>البوابة 3 · تعامد Dimson/Epps السببي:</strong> يجب تنظيف الأثر المتأخر للعامل السوقي المشترك قبل قياس الانفلات الخاص بكل رمز (القسم 2).</p></li>
+      <li><p><strong>البوابة 4 · التبديل المصحح للتكتل وتصحيح Holm للاختبارات المتعددة:</strong> يُصحح تضخم العينة الناتج عن التكتل المتزامن (<code dir="ltr">deff = 1.959</code>) وعائلة الفرضيات الفعالة (<code>m_etkin = 9</code>) عبر طريقة Holm-Bonferroni.</p></li>
+      <li><p><strong>البوابة 5 · اختبار التوافق الاتجاهي للآلية:</strong> لا يكفي تجاوز عتبة AUC، بل يجب أن يتوافق الاتجاه المتوقع للفرضية مع إشارة العائد المستقبلي لستين دقيقة بنسبة تفوق رمية العملة (<code>50%</code>).</p></li>
+      <li><p><strong>البوابة 6 · تدقيق المنهجية الأعمى عبر عائلة نماذج مستقلة:</strong> يتنحى الوكيل المولِّد (Argon) عن التحكيم في تقريره، ويتولى وكيل من عائلة أخرى (Grok Asistan) تدقيق ملفات JSON والاختبارات بصلاحية قراءة فقط.</p></li>
+    </ol>
+
+    <h3 id="bolum-2">2. أثر Epps وتعامد Dimson ±15 دقيقة: كيف سقطت الفرضية QH-06؟</h3>
+    <p>في الجولة الأولى حققت الفرضية <code>QH-20261013-06</code> («فجوة اللحاق التراكمية بمعامل بيتا خلال 15 دقيقة») قيمة <code dir="ltr">AUC = 0.6028</code> (<code dir="ltr">p_perm = 0.00125</code>، و<code dir="ltr">Holm p = 0.01125</code>) باستخدام بيتا الآنية لدقيقة واحدة (<code dir="ltr">k = 0</code>).</p>
+    <p>وعندما استُبدلت بيتا الآنية في الجولة 2A بمعامل <strong>بيتا Dimson (1979) السببي ذي التقدم والتأخر <code dir="ltr">±15 min</code></strong> و<strong>تجميع Epps لخمس دقائق</strong>، سقطت الفرضية <code>QH-06</code> في بوابتين مستقلتين معاً: (1) تحت تعامد Dimson <code dir="ltr">±15 min</code> هبطت القيمة إلى <strong><code dir="ltr">AUC = 0.5782 &lt; 0.60</code></strong> (<code dir="ltr">Holm p = 0.0517</code>، وداخل الرمز <code dir="ltr">Holm p = 0.2169</code>، والقيمة الطبقية <code dir="ltr">AUC = 0.5503</code>)، وتحت تجميع Epps لخمس دقائق (<code>±2 شمعة</code>) هبطت إلى <code dir="ltr">AUC = 0.5841</code>؛ و(2) عبر <code>110,001</code> نقطة زمنية بلغ التوافق الاتجاهي مع عائد 60 دقيقة المتعامد <strong><code>50.31%</code></strong> (و<code>49.16%</code> في السلسلة الخام، أي رمية عملة عشوائية).</p>
+
+    <h3 id="bolum-3">3. جدول نتائج 11 فرضية مرشحة وتحليل ARGON-H4</h3>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="جدول نتائج فرضيات QAJAN في الجولة 2A/2B وأحكام التدقيق">
+      <table class="matris">
+        <thead>
+          <tr>
+            <th>رمز الفرضية</th>
+            <th>استكشاف 32 يوماً <code>tunel37_escape</code> (<code>n1/n0</code>)</th>
+            <th>AUC الخام / الطبقي</th>
+            <th>حوض 12 رمزاً Dimson <code>±15m</code> / الاحتجاز</th>
+            <th>حكم QAJAN والتدقيق</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong><code>QH-20261013-06</code></strong> (فجوة اللحاق ببيتا)</td><td>157 / 471</td><td>0.6325 / 0.5913</td><td>Dimson <code>±15m</code> AUC <strong>0.5782</strong> · اتجاه 50.31%</td><td><strong>سقطت (<code>DUSTU</code>)</strong> — أثر تأخر Epps</td></tr>
+          <tr><td><strong><code>ARGON-H1</code></strong> (أثر سيولة Kyle-lambda)</td><td>157 / 471</td><td>0.4758 / 0.4737</td><td>الحوض AUC 0.4895 (<code dir="ltr">Holm p = 1.0</code>)</td><td><strong>سقطت (<code>DUSTU</code>)</strong> — دون مستوى الصدفة</td></tr>
+          <tr><td><strong><code>ARGON-H2</code></strong> (تفرع الملكية)</td><td>0 / 0</td><td>—</td><td>سطح البيانات غير متوفر (<code>n = 0</code>)</td><td><strong>غير مقاس</strong> — يؤجل لحين توفر البيانات</td></tr>
+          <tr><td><strong><code>ARGON-H3</code></strong> (تثبيط الإثارة الذاتية)</td><td>157 / 469</td><td>0.5553 / 0.5396</td><td>الحوض AUC 0.5445 · انقلاب الإشارة بين النصفين</td><td><strong>سقطت (<code>DUSTU</code>)</strong> — يفشل بعد التصحيح</td></tr>
+          <tr><td><strong><code>ARGON-H4</code></strong> (مرساة VWAP dOI&gt;0)</td><td>154 / 464</td><td><strong>0.7006 / 0.6757</strong></td><td>احتجاز 114 يوماً escape <strong>0.6883</strong> (<code>n1=232</code>) · O-σ 0.5718</td><td><strong>المرشح الوحيد (<code>GUC_YETERSIZ</code>)</strong> — للتسجيل المسبق</td></tr>
+          <tr><td><strong><code>ARGON-H5</code></strong> (التباطؤ الحرج τ)</td><td>157 / 471</td><td>0.4307 / 0.4283</td><td>الحوض AUC 0.5075 (<code dir="ltr">Holm p = 1.0</code>)</td><td><strong>سقطت (<code>DUSTU</code>)</strong> — مستوى الضجيج</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap">المصدر: <code dir="ltr">Projects/ATLAS/task_bus/ARGON_QAJAN_TUR2_1014/RAPOR.md:43-53</code> + <code dir="ltr">KARNE_DENETIM_GROK_ASISTAN.md:13-20</code> (14 أكتوبر 2026).</p>
+
+    <h3 id="bolum-4">4. التدقيق المنهجي المستقل (M1–M6) وشرط السقوط</h3>
+    <p>على الرغم من أن الفرضية <code>ARGON-H4</code> أظهرت إشارة مستقرة في حدث <code>tunel37_escape</code> عبر كل من فترة 32 يوماً (<code dir="ltr">AUC = 0.7006</code>) وعينة الاحتجاز البالغة 114 يوماً (<code dir="ltr">AUC = 0.6883</code>، بنصفين متماثلين <code>0.6838</code> و<code>0.6878</code>، و<code dir="ltr">p = 0.0005</code>)، فإن التدقيق المنهجي المستقل (<code>M1–M6</code>) أوقف منحها حكم النجاح لأربعة ضوابط: (1) لم تكن الفرضية <code>ARGON-H4</code> مسجلة مسبقاً في ملف <code>onkayit.jsonl</code> قبل الاطلاع على عينة الاحتجاز؛ و(2) تحت تعريف الحدث البديل <code>O-σ</code> هبطت قيمة AUC في عينة الاحتجاز إلى <code>0.5718</code> (مما يؤكد <em>لعنة الفائز</em> عند تعدد تعريفات الحدث).</p>
+    <p><strong>اختبار السقوط:</strong> (1) بعد ربط حاسبة <code>ARGON-H4</code> بكناري التسرب المستقبلي وختمها في <code>onkayit.jsonl</code>، إذا أسفرت أول عينة تحقق أمامية تضم <code>≥100</code> حدث مستقل (أو عند إعادة العد بفترة جموح <code>4.5 ساعات</code>) عن قيمة <code dir="ltr">AUC &lt; 0.60</code> أو <code dir="ltr">Holm p ≥ 0.05</code>، تسقط الفرضية <code>ARGON-H4</code> نهائياً.</p>
+    <p class="back nasil">الصفحات المحورية ذات الصلة: <a href="../../autonomy.html">الاستقلالية وحلقة EVRİM-2</a> &middot; <a href="../../reaper-ar.html">المدقق Reaper</a> &middot; <a href="../../kivilcim.html">منهجية الشرارة</a> &middot; <a href="../../bot/index.html">سجلات الأدلة المقروءة آلياً (<code>/bot/</code>)</a> &middot; <a href="../../about-ar.html">نبذة (Yusuf Aziz)</a> &middot; <a href="event-driven-task-bus-agent-orchestration.html">سجل المهام الموجه بالأحداث (task_bus.jsonl)</a> &middot; <a href="context-blind-auditor-falsifiability-gate.html">المحكّم الأعمى عن السياق (Reaper)</a> &middot; <a href="../../smile-design-ar.html">تصميم الابتسامة</a></p>
+
+    <section id="sss" style="margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line,#d8d3c8)">
+      <h3>الأسئلة الشائعة (FAQ)</h3>
+      <dl>
+        <dt><strong>لماذا يفصل مصنع QAJAN بين «طبقة الاستكشاف» و«طبقة الاختبار المسجل مسبقاً»؟</strong></dt>
+        <dd>لأن تعديل تعريف الحدث أو توسيع الرموز تاريخياً يسبب تحيز المواصفات؛ لذا يُوسم حوض الرموز الاثني عشر (n=148) بوسم katman='kesif' وhukme_girer=False.</dd>
+        <dt style="margin-top:.8rem"><strong>لماذا نجحت الفرضية QH-20261013-06 في الجولة الأولى (AUC 0.6028) ثم سقطت في الجولة الثانية (AUC 0.5782)؟</strong></dt>
+        <dd>استخدمت الجولة الأولى بيتا الآنية لدقيقة واحدة (k=0) التي قللت تقدير بيتا السوق بنسبة 4%–11% بسبب أثر Epps؛ وعند تطبيق تعامد Dimson السببي (±15 دقيقة) هبطت قيمة AUC للفرضية QH-06 إلى 0.5782 (<0.60).</dd>
+        <dt style="margin-top:.8rem"><strong>لماذا لم يُعتمد المرشح ARGON-H4 رغم تحقيقه AUC 0.7006 في 32 يوماً و0.6883 في عينة الاحتجاز لـ 114 يوماً؟</strong></dt>
+        <dd>أوقف تدقيق Grok Asistan (M1–M6) اعتماده لأربعة أسباب: غياب التسجيل في onkayit.jsonl، وقصر الجموح (deff=1.959)، وهبوط AUC إلى 0.5718 تحت O-sigma، وغياب اختبار الكناري.</dd>
+        <dt style="margin-top:.8rem"><strong>كيف يكشف كناري التسرب المستقبلي (asof_sizinti_denetle) قراءة البيانات اللاحقة؟</strong></dt>
+        <dd>عند 5 نقاط فحص عبر 110,001 نقطة تُضاعف الشموع المستقبلية بعشرة أضعاف (10x)؛ فإذا تغيرت أي سمة أو بيتا في اللحظة t تُرفض الجولة آلياً.</dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+  <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>المصادر والمراجع التقنية الأولية</h2>
+    <p>المصادر التقنية الأولية والوثائق مفتوحة المصدر التي تستند إليها القياسات الهندسية والتجريبية في هذه الصفحة:</p>
+    <ul>
+    <li><a href="https://arxiv.org/abs/0704.1099" target="_blank" rel="noopener noreferrer">تقدير مصفوفة التغاير عالية التردد في ظل تأثير إيبس — Epps Effect (arXiv, 2007)</a></li>
+    <li><a href="https://arxiv.org/abs/2011.11281" target="_blank" rel="noopener noreferrer">ضبط الإيجابيات الكاذبة في الاختبارات المتعددة للبيانات المالية عالية التردد (arXiv, 2020)</a></li>
+    <li><a href="https://arxiv.org/abs/2411.10647" target="_blank" rel="noopener noreferrer">منع التلاعب الإحصائي والاختبارات المتعددة في الاستراتيجيات الكمية (arXiv, 2024)</a></li>
+    <li><a href="https://arxiv.org/abs/0906.5263" target="_blank" rel="noopener noreferrer">تقديرات التغاير عالية التردد وتقليص الضوضاء الميكروية (arXiv, 2009)</a></li>
+    <li><a href="https://arxiv.org/abs/1910.04968" target="_blank" rel="noopener noreferrer">تقييم فرط التخصيص في الاختبارات الخلفية وتآكل الأداء خارج العينة (arXiv, 2019)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>دراسات تقنية ذات صلة:</strong> للاطلاع على منظومة التحقق والدحض الكاملة، راجع <a href="/ar.html">البوابة العربية</a>، و<a href="/reaper-ar.html">المدقق ريبير</a>، و<a href="/blog/ar/context-blind-auditor-falsifiability-gate.html">الحكم المعزول عن السياق واختبار الدحض</a>، و<a href="/blog/ar/event-driven-task-bus-agent-orchestration.html">ناقل المهام الموجه بالأحداث task_bus.jsonl</a>، و<a href="/blog/ar/stl-ply-3d-tooth-library-rendering.html">مكتبة الأسنان ثلاثية الأبعاد STL/PLY</a>.</p>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">لا يُكتب رقم غير مقاس؛ وكل حكم يحمل شرط دحضه الصريح.</p>
+    <p class="disclaimer">سجل بحثي تقني؛ لا يمثل تشخيصاً سريرياً أو وعداً علاجياً أو نصيحة استثمارية.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="../../ar.html">الرئيسية</a><a href="index.html">المقالات</a><a href="../../kivilcim.html">الشرارة (Kıvılcım)</a><a href="../../autonomy.html">الاستقلالية</a><a href="../../reaper-ar.html">Reaper</a><a href="../../bot/index.html">Bot</a><a href="../../privacy.html">الخصوصية</a><a href="../../about-ar.html">نبذة</a><a href="../../benefit-ledger-ar.html">دفتر الفوائد</a><a href="https://yusufaziz.com.tr/ar/">Yusuf Aziz · مقالات → yusufaziz.com.tr</a><a href="#content">العودة إلى الأعلى ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

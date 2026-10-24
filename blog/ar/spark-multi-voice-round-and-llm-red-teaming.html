@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>منهجية الشرارة متعددة الأصوات والفريق الأحمر · AtlasMaster</title>
+<meta name="author" content="Yusuf Aziz">
+<meta name="description" content="كيف يعمل بروتوكول الشرارة (Kıvılcım) متعدد الأصوات وإطار الفريق الأحمر (LLM Red Teaming) في بيئة الإنتاج؟ أدلة مقاسة من 67 جولة، وتصادم 10 أصوات معزولة، وتوثيق 386 من أصل 420 مرجعاً، واستبعاد 25 إحالة مختلقة.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="منهجية الشرارة (Kıvılcım) متعددة الأصوات وتدفق الفريق الأحمر لنماذج اللغة (67 جولة · 420 إحالة) · AtlasMaster">
+<meta property="og:description" content="كيف يعمل بروتوكول الشرارة (Kıvılcım) متعدد الأصوات وإطار الفريق الأحمر (LLM Red Teaming) في بيئة الإنتاج؟ أدلة مقاسة من 67 جولة، وتصادم 10 أصوات معزولة، وتوثيق 386 من أصل 420 مرجعاً، واستبعاد 25 إحالة مختلقة.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="منهجية الشرارة (Kıvılcım) متعددة الأصوات وتدفق الفريق الأحمر لنماذج اللغة (67 جولة · 420 إحالة) · AtlasMaster">
+<meta name="twitter:description" content="كيف يعمل بروتوكول الشرارة (Kıvılcım) متعدد الأصوات وإطار الفريق الأحمر (LLM Red Teaming) في بيئة الإنتاج؟ أدلة مقاسة من 67 جولة، وتصادم 10 أصوات معزولة، وتوثيق 386 من أصل 420 مرجعاً، واستبعاد 25 إحالة مختلقة.">
+<meta name="twitter:image" content="https://atlasmaster.app/og.png">
+<link rel="canonical" href="https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/spark-multi-voice-round-and-llm-red-teaming.html">
+<link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html">
+<link rel="icon" href="../../favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="../../style.css?v=8b780bf8">
+<link rel="stylesheet" href="../../blog.css?v=e1abe8e6">
+<style>
+html[lang="ar"]{--sans:"IBM Plex Sans","IBM Plex Sans Arabic","Noto Sans Arabic","Noto Kufi Arabic","Geeza Pro","Segoe UI",Tahoma,Arial,sans-serif}
+html[lang="ar"] body{line-height:1.8}
+html[lang="ar"] .nav a,html[lang="ar"] .idx,html[lang="ar"] .eyebrow,html[lang="ar"] .tag,html[lang="ar"] .btn,html[lang="ar"] .cap,html[lang="ar"] .foot{text-transform:none}
+html[lang="ar"] code{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.kanit-box{border:1px solid var(--line,#d8d3c8);border-radius:6px;padding:.85rem 1.05rem;margin:1rem 0;font-size:.92rem;background:rgba(27,69,207,.04)}
+.kanit-box h2{font-size:1rem;margin:0 0 .45rem}
+.kanit-box ul{margin:0;padding-inline-start:1.2rem;line-height:1.65}
+</style>
+<script src="../../script.js?v=2b29d271"></script>
+<script src="../blog.js?v=745e8e15" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://yusufaziz.com.tr/#person",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "jobTitle": "Diş CAD/CAM Uzmanı & Çok-Ajanlı Sistem Mimarisi Araştırmacısı",
+      "url": "https://yusufaziz.com.tr/",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": [
+        "TechArticle",
+        "Article",
+        "BlogPosting"
+      ],
+      "@id": "https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html#article",
+      "headline": "منهجية الشرارة (Kıvılcım) متعددة الأصوات وتدفق الفريق الأحمر لنماذج اللغة (67 جولة · 420 إحالة) · AtlasMaster",
+      "description": "كيف يعمل بروتوكول الشرارة (Kıvılcım) متعدد الأصوات وإطار الفريق الأحمر (LLM Red Teaming) في بيئة الإنتاج؟ أدلة مقاسة من 67 جولة، وتصادم 10 أصوات معزولة، وتوثيق 386 من أصل 420 مرجعاً، واستبعاد 25 إحالة مختلقة.",
+      "inLanguage": "ar",
+      "datePublished": "2026-10-19T12:12:55+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "url": "https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html"
+      },
+      "image": "https://atlasmaster.app/og.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "about": [
+        "منهجية الشرارة متعددة الأصوات (Kıvılcım)",
+        "LLM red team workflow وتدقيق المراجع",
+        "كشف الهلوسة المشتركة في النماذج اللغوية",
+        "حكم المؤلف الميداني (S0) واختبار السقوط"
+      ],
+      "citation": [
+        "https://arxiv.org/abs/2305.14325",
+        "https://arxiv.org/abs/2202.03286",
+        "https://arxiv.org/abs/2310.13548",
+        "https://arxiv.org/abs/2212.09251",
+        "https://arxiv.org/abs/2212.08073"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما الفرق الجوهري بين منهجية الشرارة (Kıvılcım) وأنظمة الحوار المتعدد للوكلاء؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "في أنظمة الحوار التقليدية يقرأ كل وكيل مخرجات الوكيل السابق فينجرف الجميع نحو صياغة المتحدث الأول. أما في بروتوكول الشرارة فتُرسل مذكرة غُفل من الهوية إلى 10 قنوات نماذج معزولة تماماً لا يسمع بعضها بعضاً؛ ويصوغ المؤلف البشري (S0) العمود الفقري للنص، بينما لا تدخل مساهمات الأصوات الخارجية إلا إذا قدمت مرجعاً أولياً موثقاً عبر Reaper أو أطروحة مضادة ملموسة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما فئات العيوب التي يصفيها تدفق الفريق الأحمر لنماذج اللغة (LLM Red Team Workflow)؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "تُصفّى أربع فئات آلياً قبل التوليف: (1) الاختلاق الجسيم (مقالة غير موجودة أو عدم تطابق المؤلف والمجلة)، (2) الاختلاق الخفيف (مقالة حقيقية مرفقة بمعرّف DOI أو PMID خاطئ أو مختلق)، (3) التسميع المدرسي (EZBER — تلخيص عام لا يجيب عن معضلة السؤال)، و(4) الأحكام الجازمة الخالية من الأطروحة المضادة أو اختبار السقوط."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف تباين أداء النماذج السحابية والمحلية في فحص 420 إحالة مرجعية؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "أظهرت القنوات السحابية الخمس (Gemini Web السياقي والمستقل، وAstra/ChatGPT، وClaude Opus 5.5، وClaude Sonnet 5.5) نسبة اختلاق 0% عبر 314 إحالة، وكذلك حقق المؤلف (S0) نسبة 0% عبر 26 مرجعاً أولياً. في المقابل سجلت النماذج المحلية بحجم 27B–31B نسب اختلاق جسيم تراوحت بين 33.3% و69.2% (18 مرجعاً وهمياً من أصل 35)، بينما سجلت الجولة غير المرئية S10 سبعة أخطاء في أرقام DOI/PMID من أصل 45 إحالة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما الإجراء المتخذ عند ثبوت اختلاق مرجع أو معرّف DOI من قِبل أحد الأصوات؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ينص القانون البرمجي للمدقق Reaper على إبطال أطروحة ذلك الصوت في السؤال المعني بالكامل (بما في ذلك فئة الاختلاق الخفيف للمعرّف) مع خفض وزنه في الجولة التالية إلى النصف، وعند تكرار العيب يُعزل الصوت المخالف لمدة 72 ساعة من جولات التوليف."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "أطلس",
+          "item": "https://atlasmaster.app/ar.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "المقالات",
+          "item": "https://atlasmaster.app/blog/ar/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "منهجية الشرارة (Kıvılcım) متعددة الأصوات وتدفق الفريق الأحمر لنماذج اللغة (67 جولة · 420 إحالة) · AtlasMaster",
+          "item": {
+            "@type": "WebPage",
+            "@id": "https://atlasmaster.app/blog/ar/spark-multi-voice-round-and-llm-red-teaming.html"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#content">تخطَّ إلى المحتوى</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../ar.html" aria-label="Atlas الصفحة الرئيسية">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="الأقسام">
+      <a href="../../ar.html">الرئيسية</a>
+      <a href="index.html">المقالات</a>
+      <a href="../../kivilcim.html">الشرارة (Kıvılcım)</a>
+      <a href="../../autonomy.html">الاستقلالية</a>
+      <a href="../../reaper-ar.html">Reaper</a>
+      <a href="../../about-ar.html">نبذة</a>
+    </nav>
+    <nav class="langs" aria-label="اللغة">
+      <a class="lang" href="https://yusufaziz.com.tr/yazilar/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html" lang="tr" hreflang="tr" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="https://yusufaziz.com.tr/en/essays/spark-multi-voice-round-and-llm-red-teaming.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="https://yusufaziz.com.tr/ar/maqalat/spark-multi-voice-round-and-llm-red-teaming.html" lang="ar" hreflang="ar" aria-current="page" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="content">
+<article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20">
+<header class="post-head">
+  <div class="wrap">
+    <h1>منهجية <em>الشرارة (Kıvılcım)</em> متعددة الأصوات وتدفق الفريق الأحمر لنماذج اللغة</h1>
+    <p class="dek">تصادم 10 أصوات مستقلة، وتدقيق 420 إحالة مرجعية، واستبعاد 25 مرجعاً مختلقاً، وسقوط 4 مسلّمات نظرية أمام القياس الميداني</p>
+    <div class="meta">سجل المنهج والأدلة &middot; الشرارة + الفريق الأحمر (LLM Red Team) &middot; <time datetime="2026-10-19">19 أكتوبر 2026</time> &middot; المؤلف: <a href="../../about-ar.html" rel="author"><strong>Yusuf Aziz</strong></a></div>
+    <aside class="ozet" aria-label="ملخص تنفيذي">
+      <p class="idx"><span>ملخص تنفيذي</span><span class="okuma">11 دقيقة قراءة</span></p>
+      <p>يعالج بروتوكول الشرارة (<em>Kıvılcım</em>) وتدفق <strong>الفريق الأحمر للنماذج اللغوية (LLM Red Team Workflow)</strong> انحياز المجاملة عبر العزل التام للسياق وتدقيق المراجع عبر <code>67</code> جولة مكتملة (<code>73</code> سطراً: <code>44 KESKİNLEŞTİ</code>) وفحص <code>420</code> إحالة مرجعية (<code>386 موثّقة</code> و<code>25 مختلقة</code>).</p>
+    </aside>
+    <div class="kanit-box" id="kanit-karti" role="region" aria-label="ملخص الأدلة المقاسة لبروتوكول الشرارة والفريق الأحمر">
+      <h2>ملخص الأدلة المقاسة (سجلات الشرارة والفريق الأحمر)</h2>
+      <!-- kaynak: DEVIR.md:4,30,33 + kivilcim.html:83-90 + rapor/kivilcim/SEKTOR_MAKALESI_1018/reaper_kaynak.md:10-46 -->
+      <ul>
+        <li><strong>بطاقة أداء الشرارة (<a href="../../kivilcim.html">kivilcim.html</a>):</strong> <strong><code>67</code> جولة مستقلة</strong> (<code>73</code> سطراً: <code>44 KESKİNLEŞTİ</code>، و<code>13 EVET</code>، و<code>3 HAYIR</code>)، و<code>7</code> مراحل إلزامية، ومسار تقارب من <code>3</code> جولات (<code dir="ltr">0.30 → 0.48 → 0.68</code>). <!-- kaynak: DEVIR.md:4 --></li>
+        <li><strong>تصفية المراجع عبر 10 أصوات + المؤلف (<code>S0</code>) (<a href="../../reaper-ar.html#karne">reaper-ar.html#karne</a>):</strong> فُحصت <strong><code>394</code> إحالة</strong> في 10 أصوات خارجية ← <code>360 موثّقة</code>، و<code>9 غير متحقق منها</code>، و<code>25 مختلقة</code> (<code>6.3%</code>)؛ ومراجع المؤلف (<code>S0</code>) <code>26/26 موثّقة</code> (<code>0.0%</code> اختلاق)؛ بإجمالي موحّد <strong><code dir="ltr">386/420</code></strong>. <!-- kaynak: rapor/kivilcim/SEKTOR_MAKALESI_1018/reaper_kaynak.md:13-15 --></li>
+        <li><strong>توزيع الاختلاق حسب الفئة:</strong> حققت القنوات السحابية (<code>S1–S5</code>) توثيقاً كاملاً <code dir="ltr">314/314</code>؛ بينما أنتجت النماذج المحلية (<code>S6–S9</code>) <strong><code>18</code> اختلاقاً جسيماً</strong> من أصل <code>35</code> إحالة (<code dir="ltr">33.3%–69.2%</code>)؛ وفي القناة <code>S10</code> رُصدت <code>7</code> أخطاء في المعرّفات (<code>5</code> PMID و<code>2</code> DOI) مما أدى إلى استبعاد <code>5</code> أطروحات. <!-- kaynak: rapor/kivilcim/SEKTOR_MAKALESI_1018/reaper_kaynak.md:30-46 --></li>
+        <li><strong>سقوط الإجماع النظري (<a href="https://yusufaziz.com.tr/ar/maqalat/digital-dentistry-what-is-and-what-should-be.html">المقال القطاعي</a>):</strong> دُحضت <code>4</code> افتراضات مدرسية أجمعت عليها 9 نماذج خارجية بواسطة القياس الميداني للمؤلف (<code>S0</code>) و<code>26</code> مرجعاً أولياً، وتُرجمت إلى <code>11</code> تعديلاً معمارياً. <!-- kaynak: DEVIR.md:30,33 --></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="ruler" aria-hidden="true"></div>
+
+<div class="wrap post-grid">
+  <nav class="toc" aria-label="المحتويات">
+    <span class="idx">المحتويات</span>
+    <ol id="toc-liste">
+      <li><a href="#giris">مقدمة: لماذا يفشل استجواب النموذج المنفرد وغرف المحادثة المشتركة بين الوكلاء؟</a></li>
+      <li><a href="#bolum-1">1. المراحل السبع لبروتوكول الشرارة والعمود الفقري للمؤلف (S0)</a></li>
+      <li><a href="#bolum-2">2. دراسة حالة تطبيقية: مصفوفة 10 أصوات × 11 سؤالاً وتدقيق 420 إحالة</a></li>
+      <li><a href="#bolum-3">3. بنية الفريق الأحمر: المعرّفات المزيفة، والحفظ المشترك، والحجر لمدة 72 ساعة</a></li>
+      <li><a href="#bolum-4">4. كيف سقطت 4 مسلّمات نظرية أجمعت عليها 9 نماذج أمام القياس الميداني؟</a></li>
+      <li><a href="#bolum-5">5. مؤشر التقارب وبطاقة الأداء وشرط السقوط</a></li>
+      <li><a href="#sss">الأسئلة الشائعة (FAQ)</a></li>
+    </ol>
+  </nav>
+  <div class="post">
+    <h3 id="giris">مقدمة: لماذا يفشل استجواب النموذج المنفرد وغرف المحادثة المشتركة بين الوكلاء؟</h3>
+    <p>في التحليل التقني والسريري، لا يكمن الخطر في الإجابات الركيكة، بل في إجماع النماذج بلغة رصينة على <strong>افتراضات مدرسية متقادمة أو مراجع مختلقة</strong>.</p>
+    <p>صُممت <a href="../../kivilcim.html">منهجية الشرارة (<em>Kıvılcım</em>) متعددة الأصوات</a> ومعمارية <strong>الفريق الأحمر لنماذج اللغة (LLM Red Team Workflow)</strong> المدمجة فيها لكسر هاتين الآفتين معاً: <em>تجيب أصوات مستقلة لا يسمع بعضها بعضاً عن مذكرة واحدة مجرّدة من الهوية؛ ولا يدخل أي صوت إلى التوليف بحكم سلطته؛ ويُفحص كل مرجع آلياً عبر قواعد البيانات العالمية؛ ويلتزم كل حكم ببيان القياس الذي يُسقطه.</em></p>
+
+    <h3 id="bolum-1">1. المراحل السبع لبروتوكول الشرارة والعمود الفقري للمؤلف (S0)</h3>
+    <p>يعمل البروتوكول الموثق في <a href="../../kivilcim.html"><code>kivilcim.html</code></a> عبر سبع بوابات متتالية:</p>
+    <ol class="recs">
+      <li><p><strong>01 · التوقع المسبق:</strong> قبل استدعاء أي نموذج، تسجّل قناة التنسيق (<code>Anu · Claude Fable</code>) التوقع المسبق في سطر واحد داخل بطاقة الأداء، ليُقاس في نهاية الجولة بإحدى ثلاث نتائج: <code>تأكيد (EVET)</code> أو <code>تدقيق وتعميق (KESKİNLEŞTİ)</code> أو <code>رفض (HAYIR)</code>.</p></li>
+      <li><p><strong>02 · القياس الأساسي وتحديد الحالة:</strong> تُستخرج أولاً جميع الأرقام المقاسة فعلياً في السجلات المحلية أو الأدبيات الموثقة، بينما يُوسم كل عنصر غير مقاس بوسم <code>غير مقاس / مجهول</code>.</p></li>
+      <li><p><strong>03 · المذكرة المجرّدة من الهوية:</strong> تُكتب مذكرة محايدة تخفي ميل السائل، ويُطلب من كل صوت تقديم خمسة حقول إلزامية: <code>الأطروحة ← الأساس النظري ← المصدر الأولي (DOI/PMID/URL) ← الأطروحة المضادة ← اختبار السقوط</code>.</p></li>
+      <li><p><strong>04 · تصادم الطبقتين (المؤلف <code>S0</code> + الأصوات الخارجية المعزولة):</strong> يبني المؤلف البشري صاحب الخبرة الميدانية (<strong><code>S0 · Yusuf Aziz</code></strong>) العمود الفقري للمقال وأحكامه الميدانية، ولا يُعامل بوصفه مجرد صوت من أحد عشر صوتاً.</p></li>
+      <li><p><strong>05 · مصفاة المدقق Reaper وغربال الفريق الأحمر:</strong> يفحص <a href="../../reaper-ar.html">الوكيل المدقق Reaper</a> كل إحالة مرجعية عبر واجهات Crossref وdoi.org وPubMed E-utilities؛ فتُستبعد المراجع المختلقة كما تُستبعد الردود المدرسية العامة الموسومة بوسم <code>تسميع (EZBER)</code>.</p></li>
+      <li><p><strong>06 · مصفوفة الصوت × الأطروحة وبطاقات الإثبات:</strong> تُربط الاعتراضات بملف وسطر الدليل (<code dir="ltr">file:line</code>) وتُصاغ بطاقات المعضلات قبل كتابة حكم الشرارة النهائي.</p></li>
+      <li><p><strong>07 · بطاقة الأداء وختم Reaper:</strong> يُقارن الحكم النهائي بالتوقع المسبق المسجل في الخطوة الأولى، ويُثبّت ختم التحقق المتضمن عدد المراجع الموثقة والمستبعدة.</p></li>
+    </ol>
+
+    <h3 id="bolum-2">2. دراسة حالة تطبيقية: مصفوفة 10 أصوات × 11 سؤالاً وتدقيق 420 إحالة</h3>
+    <p>أُجري الاختبار الميداني الأوسع لهذا الإطار يومي 18–19 أكتوبر 2026 أثناء إعداد دراسة <a href="https://yusufaziz.com.tr/ar/maqalat/digital-dentistry-what-is-and-what-should-be.html">طب الأسنان الرقمي: الواقع والمأمول</a>. طُرحت المذكرة المكونة من 11 سؤالاً على <strong>10 أصوات خارجية معزولة (<code>S1–S10</code>)</strong> وقُوبلت بأربعة وعشرين حكماً ميدانياً للمؤلف (<code>S0</code>):</p>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="جدول توثيق المراجع عبر 10 أصوات خارجية والمؤلف S0">
+      <table class="matris">
+        <thead>
+          <tr>
+            <th>الصوت / الطبقة</th>
+            <th>الإحالات المفحوصة</th>
+            <th>موثّق</th>
+            <th>غير متحقق منه</th>
+            <th>مختلق</th>
+            <th>تصريح «لا يوجد مصدر»</th>
+            <th>نسبة الاختلاق</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>المؤلف (<code>S0 · Yusuf Aziz</code>)</strong></td><td>26</td><td><strong>26</strong></td><td>0</td><td>0</td><td>ملاحظة ميدانية</td><td><strong>0.0%</strong></td></tr>
+          <tr><td><code>S1–S2</code> · Gemini Web (سياقي + بلا سياق)</td><td>66</td><td>66</td><td>0</td><td>0</td><td>11</td><td>0.0%</td></tr>
+          <tr><td><code>S3</code> · Astra (ChatGPT)</td><td>38</td><td>38</td><td>0</td><td>0</td><td>7</td><td>0.0%</td></tr>
+          <tr><td><code>S4–S5</code> · Claude Opus 5.5 + Sonnet 5.5</td><td>210</td><td>210</td><td>0</td><td>0</td><td>30</td><td>0.0%</td></tr>
+          <tr><td><code>S6</code> · Gemma 4 31B (محلي)</td><td>8</td><td>1</td><td>4</td><td><strong>3 (جسيم)</strong></td><td>5</td><td><strong>37.5%</strong></td></tr>
+          <tr><td><code>S7</code> · Qwen 3.8 27B (محلي)</td><td>13</td><td>2</td><td>2</td><td><strong>9 (جسيم)</strong></td><td>10</td><td><strong>69.2%</strong></td></tr>
+          <tr><td><code>S8–S9</code> · Enki + Enlil (محلي)</td><td>14</td><td>5</td><td>3</td><td><strong>6 (جسيم)</strong></td><td>9</td><td><strong>42.9%</strong></td></tr>
+          <tr><td><code>S10</code> · Argon (غير مرئي)</td><td>45</td><td>38</td><td>0</td><td><strong>7 (معرّف خاطئ)</strong></td><td>3</td><td><strong>15.6%</strong></td></tr>
+          <tr><td><strong>المجموع الموحّد (<code>S0 + S1..S10</code>)</strong></td><td><strong>420</strong></td><td><strong>386</strong></td><td><strong>9</strong></td><td><strong>25</strong></td><td><strong>75</strong></td><td><strong>6.0%</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap">المصدر: <code dir="ltr">rapor/kivilcim/SEKTOR_MAKALESI_1018/reaper_kaynak.md:28-44</code> (توثيق عبر Crossref وdoi.org وPubMed E-utilities، 19 أكتوبر 2026).</p>
+
+    <h3 id="bolum-3">3. بنية الفريق الأحمر: المعرّفات المزيفة، والحفظ المشترك، والحجر لمدة 72 ساعة</h3>
+    <p>تكشف نتائج الجدول أعلاه ثلاث حقائق هندسية تفسّر سبب فشل التصويت الأغلبي البسيط بين النماذج دون طبقة الفريق الأحمر:</p>
+    <ul>
+      <li><strong>النتيجة 1 — الهلوسة المشتركة في النماذج المحلية:</strong> رغم عزل القنوات المحلية <code>S6</code> و<code>S8</code> و<code>S9</code> تماماً، اختلقت الثلاثة المرجعين الوهميين ذاتهما: <em>Joda 2017 (BDJ)</em> و<em>Sailer 2009 (IJP)</em>.</li>
+      <li><strong>النتيجة 2 — نمط «يعرف الورقة ويختلق المعرّف» (الاختلاق الخفيف):</strong> في القناة <code>S10</code> كانت عناوين الأبحاث حقيقية، غير أن 7 إحالات من أصل 45 حملت أرقام PMID أو DOI تعود إلى مقالات أخرى.</li>
+      <li><strong>النتيجة 3 — غربال التسميع (<code>EZBER</code>) والحجر لمدة 72 ساعة:</strong> تُستبعد الردود التي تكتفي بتكرار العموميات المدرسية دون معالجة المعضلة الميدانية حتى لو كانت مراجعها صحيحة، وتُفرض عقوبة <strong>العزل لمدة 72 ساعة</strong> على أي قناة يتكرر فشلها في بوابة المراجع.</li>
+    </ul>
+
+    <h3 id="bolum-4">4. كيف سقطت 4 مسلّمات نظرية أجمعت عليها 9 نماذج أمام القياس الميداني؟</h3>
+    <p>يمتد دور الفريق الأحمر إلى اختبار الإجماع النظري للنماذج أمام الواقع السريري والمعماري.</p>
+    <ol class="recs">
+      <li><p><strong>الأطروحة الساقطة 1 («الحاجة السريرية تسبق اقتناء الجهاز»):</strong> المحرك الفعلي في الميدان يعمل بالعكس: <strong>التكنولوجيا تفرض الحاجة (<code>T11.5</code>)</strong>، و<strong>حيثما وُجد الجهاز وُجد القياس</strong>.</p></li>
+      <li><p><strong>الأطروحة الساقطة 2 («ثنائي سيليكات الليثيوم للأمامي والزركونيا للخلفي»):</strong> تُظهر البيانات الأولية أن تيجان ثنائي سيليكات الليثيوم المفردة الملصقة أصولاً تحقق في المنطقة الخلفية بقاءً مماثلاً للأمامية.</p></li>
+      <li><p><strong>الأطروحة الساقطة 3 («الخزف المضغوط يتفوق مطلقاً على CAD/CAM»):</strong> مع تحوّل <em>المختبر الداخلي (Klinik Lab)</em> أصبح التحضير والإنهاء في اليوم نفسه للوجوه الخزفية والكومبوزيت و<em>Injection Moulding</em> معيارياً.</p></li>
+      <li><p><strong>الأطروحة الساقطة 4 («وثائق الجودة الإدارية SKS ترفع الحد الأدنى السريري»):</strong> تقيس نماذج التفتيش الورقية الامتثال البيروقراطي لا البقاء السريري.</p></li>
+    </ol>
+
+    <h3 id="bolum-5">5. مؤشر التقارب وبطاقة الأداء وشرط السقوط</h3>
+    <p>تُظهر سجلات <a href="../../autonomy.html">معمارية الاستقلالية</a> عبر <code>67</code> جولة شرارة (<code>73</code> سطراً تقييمياً) أن التوقع المسبق لم يُؤكَّد كما هو إلا في <code>13</code> جولة (<code>EVET</code>)، بينما <strong>تغيّر وتعمّق بفعل الأطروحات المضادة والقياس في <code>44</code> جولة (<code>KESKİNLEŞTİ</code>)</strong>، ورُفض بالكامل في <code>3</code> جولات (<code>HAYIR</code>). وفي الجولات ثلاثية المراحل يرتفع معامل التقارب المسند بالأدلة وفق المسار المقاس <code dir="ltr">0.30 → 0.48 → 0.68</code>.</p>
+    <p><strong>اختبار السقوط:</strong> إذا أنتج نموذج منفرد في 20 مسألة عمياء أخطاء مرجعية أقل وأحكاماً أدق من بوابات الشرارة السبع والمدقق Reaper، تسقط المنهجية.</p>
+    <p class="back nasil">الصفحات المحورية ذات الصلة: <a href="../../kivilcim.html">منهجية الشرارة</a> &middot; <a href="../../reaper-ar.html">المدقق Reaper</a> &middot; <a href="../../autonomy.html">الاستقلالية والعدادات الحية</a> &middot; <a href="https://yusufaziz.com.tr/ar/maqalat/digital-dentistry-what-is-and-what-should-be.html">طب الأسنان الرقمي: الواقع والمأمول</a> &middot; <a href="../../bot/index.html">سجلات الأدلة المقروءة آلياً (<code>/bot/</code>)</a> &middot; <a href="event-driven-task-bus-agent-orchestration.html">سجل المهام الموجه بالأحداث (task_bus.jsonl)</a> &middot; <a href="context-blind-auditor-falsifiability-gate.html">المحكّم الأعمى عن السياق (Reaper)</a> &middot; <a href="../../smile-design-ar.html">تصميم الابتسامة</a></p>
+
+    <section id="sss" style="margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line,#d8d3c8)">
+      <h3>الأسئلة الشائعة (FAQ)</h3>
+      <dl>
+        <dt><strong>ما الفرق الجوهري بين منهجية الشرارة (Kıvılcım) وأنظمة الحوار المتعدد للوكلاء؟</strong></dt>
+        <dd>في الحوار التقليدي ينجرف الوكلاء نحو المتحدث الأول؛ أما في الشرارة فتُرسل مذكرة غُفل إلى 10 قنوات معزولة بينما يبني المؤلف (S0) العمود الفقري.</dd>
+        <dt style="margin-top:.8rem"><strong>ما فئات العيوب التي يصفيها تدفق الفريق الأحمر لنماذج اللغة (LLM Red Team Workflow)؟</strong></dt>
+        <dd>تُصفّى أربع فئات آلياً: (1) الاختلاق الجسيم للمقالة، (2) الاختلاق الخفيف لمعرّف DOI/PMID، (3) التسميع المدرسي (EZBER)، و(4) الأحكام بلا اختبار سقوط.</dd>
+        <dt style="margin-top:.8rem"><strong>كيف تباين أداء النماذج السحابية والمحلية في فحص 420 إحالة مرجعية؟</strong></dt>
+        <dd>حققت القنوات السحابية (S1–S5) توثيقاً كاملاً 314/314 والمؤلف (S0) 26/26، بينما سجلت النماذج المحلية (27B–31B) اختلاقاً بنسبة 33.3%–69.2% وسجلت S10 سبعة أخطاء معرّفات.</dd>
+        <dt style="margin-top:.8rem"><strong>ما الإجراء المتخذ عند ثبوت اختلاق مرجع أو معرّف DOI من قِبل أحد الأصوات؟</strong></dt>
+        <dd>يُبطل المدقق Reaper أطروحة الصوت المخالف بالكامل (بما فيها اختلاق المعرّف الخفيف) مع خفض وزنه للنصف وعزله 72 ساعة عند التكرار.</dd>
+      </dl>
+    </section>
+  </div>
+</div>
+
+  <section id="kaynaklar" class="kaynaklar-bolumu" style="margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid rgba(128,128,128,0.25);">
+    <h2>المصادر والمراجع التقنية الأولية</h2>
+    <p>المصادر التقنية الأولية والوثائق مفتوحة المصدر التي تستند إليها القياسات الهندسية والتجريبية في هذه الصفحة:</p>
+    <ul>
+    <li><a href="https://arxiv.org/abs/2305.14325" target="_blank" rel="noopener noreferrer">تحسين الدقة الواقعية والاستدلال عبر النقاش متعدد الوكلاء — Multiagent Debate (arXiv, 2023)</a></li>
+    <li><a href="https://arxiv.org/abs/2202.03286" target="_blank" rel="noopener noreferrer">الفريق الأحمر للنماذج اللغوية — Red Teaming Language Models (arXiv, 2022)</a></li>
+    <li><a href="https://arxiv.org/abs/2310.13548" target="_blank" rel="noopener noreferrer">نحو فهم المجاملة والمحاباة في النماذج اللغوية — Sycophancy in LLMs (arXiv, 2023)</a></li>
+    <li><a href="https://arxiv.org/abs/2212.09251" target="_blank" rel="noopener noreferrer">اكتشاف سلوكيات النماذج اللغوية عبر التقييمات المكتوبة آلياً (arXiv, 2022)</a></li>
+    <li><a href="https://arxiv.org/abs/2212.08073" target="_blank" rel="noopener noreferrer">الذكاء الاصطناعي الدستوري — Constitutional AI (arXiv, 2022)</a></li>
+    </ul>
+  </section>
+
+
+  <p class="baglam-ici-gecis"><strong>دراسات تقنية ذات صلة:</strong> تابع كيف ترتبط جولات الشرارة مع <a href="/ar.html">البوابة العربية</a>، و<a href="/reaper-ar.html">المدقق ريبير</a>، و<a href="/blog/ar/agent-self-identity-freeze-protocol-three-family-architecture.html">بروتوكول تجميد هوية الوكيل</a>، و<a href="/blog/ar/context-blind-auditor-falsifiability-gate.html">بوابة القابلية للدحض</a>، و<a href="/blog/ar/qajan-hypothesis-gates-preregistration-falsification.html">بوابات QAJAN للفرضيات</a>.</p>
+
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">لا يُكتب رقم غير مقاس؛ وكل حكم يحمل شرط دحضه الصريح.</p>
+    <p class="disclaimer">سجل بحثي تقني؛ لا يمثل تشخيصاً سريرياً أو وعداً علاجياً أو نصيحة استثمارية.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="../../ar.html">الرئيسية</a><a href="index.html">المقالات</a><a href="../../kivilcim.html">الشرارة (Kıvılcım)</a><a href="../../autonomy.html">الاستقلالية</a><a href="../../reaper-ar.html">Reaper</a><a href="../../bot/index.html">Bot</a><a href="../../privacy.html">الخصوصية</a><a href="../../about-ar.html">نبذة</a><a href="../../benefit-ledger-ar.html">دفتر الفوائد</a><a href="https://yusufaziz.com.tr/ar/">Yusuf Aziz · مقالات → yusufaziz.com.tr</a><a href="#content">العودة إلى الأعلى ↑</a></p>
+  </div>
+</footer>
+</body>
+</html>

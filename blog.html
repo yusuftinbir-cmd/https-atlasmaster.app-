@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas Stüdyo · Yazılar</title>
+<meta name="description" content="Atlas Stüdyo analizi: Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle ...">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Atlas Stüdyo · Yazılar">
+<meta property="og:description" content="Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle fikir değiştireceğimizi yazıyoruz.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://atlasmaster.app/blog.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Atlas: ölçüm ve kılavuz çizgileri, şematik çizim">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://atlasmaster.app/blog.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/index.html">
+<link rel="alternate" hreflang="ar" href="https://atlasmaster.app/blog/ar/index.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f3efe6'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%230f172a' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231d4ed8' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=8b780bf8">
+<link rel="stylesheet" href="blog.css?v=e1abe8e6">
+<script src="script.js?v=2b29d271"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Atlas Stüdyo · Yazılar",
+  "description": "Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle fikir değiştireceğimizi yazıyoruz.",
+  "url": "https://atlasmaster.app/blog.html",
+  "inLanguage": "tr-TR",
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://atlasmaster.app/blog.html",
+    "name": "Atlas Stüdyo · Yazılar",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Atlas Stüdyo",
+      "url": "https://atlasmaster.app/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://atlasmaster.app/favicon.ico"
+      },
+      "@id": "https://atlasmaster.app/#organization",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    }
+  },
+  "hasPart": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html",
+      "url": "https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html",
+      "headline": "Dijital Diş Hekimliği: Olan ve Olması Gereken — Türkiye ve Dünya Denklemi",
+      "articleSection": "Kıvılcım hükmü",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+      "url": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+      "headline": "Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html",
+      "url": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html",
+      "headline": "Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/15-yas-yasak-mi-tasarim-mi.html",
+      "url": "https://yusufaziz.com.tr/yazilar/15-yas-yasak-mi-tasarim-mi.html",
+      "headline": "Yasak mı, tasarım mı?",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/15-yas-yasak-mi-tasarim-mi.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/dd2-dark-arisen.html",
+      "url": "https://yusufaziz.com.tr/yazilar/dd2-dark-arisen.html",
+      "headline": "Kuralın sahibi değişti",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/dd2-dark-arisen.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/deprem-istatistik-vurdumduymazlik.html",
+      "url": "https://yusufaziz.com.tr/yazilar/deprem-istatistik-vurdumduymazlik.html",
+      "headline": "Zorunlu bahis",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/deprem-istatistik-vurdumduymazlik.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/soylem-eylem-makasi.html",
+      "url": "https://yusufaziz.com.tr/yazilar/soylem-eylem-makasi.html",
+      "headline": "Kapıyı kriz açar, hitabet içeri alır",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/soylem-eylem-makasi.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://yusufaziz.com.tr/yazilar/turkiye-viski-dunya-markasi.html",
+      "url": "https://yusufaziz.com.tr/yazilar/turkiye-viski-dunya-markasi.html",
+      "headline": "Türkiye'nin dünya markası bir viskisi neden yok? Olmalı mı?",
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/turkiye-viski-dunya-markasi.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      }
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Atlas Stüdyo",
+    "url": "https://atlasmaster.app/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://atlasmaster.app/favicon.ico"
+    },
+    "@id": "https://atlasmaster.app/#organization",
+    "sameAs": [
+      "https://yusufaziz.com.tr/",
+      "https://x.com/YusufAzizTnbr",
+      "https://www.instagram.com/yusuftinbir/",
+      "https://github.com/yusuftinbir-cmd",
+      "https://www.youtube.com/@yusufaziz",
+      "https://www.facebook.com/yusuftinbir/"
+    ]
+  }
+}
+</script>
+  <link rel="alternate" type="application/rss+xml" title="Atlas Stüdyo &middot; Proje Günlüğü" href="/blog/feed.xml">
+  <link rel="stylesheet" href="ornek/maya/maya-rehber.css?v=a3573d3d">
+  <script type="application/ld+json" id="atlas-national-ld">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "description": "Türkiye geneli ve küresel ölçekte diş hekimleri ve dijital laboratuvarlar için 478 noktalı 3B sefalometrik yüz analizi, 441 diş formu kütüphanesi, kısıtlı tuval önizlemesi, ExoCAD iş paketi ve ATLAS-CORE Kurumsal Kullanım Lisanslı klinik karar motoru geliştiren çok ajanlı Ar-Ge stüdyosu.",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Marmara Bölgesi"
+        },
+        {
+          "@type": "City",
+          "name": "İstanbul"
+        },
+        {
+          "@type": "City",
+          "name": "Ankara"
+        },
+        {
+          "@type": "City",
+          "name": "İzmir"
+        },
+        {
+          "@type": "City",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "City",
+          "name": "Kocaeli"
+        },
+        {
+          "@type": "City",
+          "name": "Bursa"
+        },
+        {
+          "@type": "City",
+          "name": "Antalya"
+        }
+      ],
+      "knowsAbout": [
+        "Dijital Gülüş Tasarımı (Digital Smile Design)",
+        "478 Noktalı 3B Sefalometrik Yüz Ağı ve QLoRA/DoRA",
+        "441 Diş Formu Kütüphanesi ve ExoCAD İş Paketi",
+        "ATLAS-CORE Kurumsal Kullanım Lisanslı Klinik Triyaj Motoru (M0-M10)",
+        "Kıvılcım Çok Ajanlı Hipotez ve Sentez Yordamı"
+      ],
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://atlasmaster.app/#atlas-core-engine",
+      "name": "ATLAS-CORE 3B Sefalometrik QLoRA & Kurumsal Kullanım Lisanslı Klinik Karar Motoru v5",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, Apple Silicon MLX",
+      "creator": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "description": "Anu, Atlas (Gemini 4 Argon · 1M) ve çok sesli Kıvılcım turuyla birlikte çalışan 3B sefalometrik diş morfolojisi seçici (n=32 kilitli testte %90,6 yüz tipi, %100 hedef hat isabeti), Maya v5 dijital rehberi ve 550 düğümlü Kurumsal Kullanım Lisanslı klinik triyaj motoru."
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Dijital Diş Hekimliği: Olan ve Olması Gereken — Türkiye ve Dünya Denklemi",
+      "articleSection": "Kıvılcım hükmü",
+      "url": "https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html"
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA, Eğitimsiz Modeli Nasıl Geçti? (n=32 + 4 Kollu Ablasyon)",
+      "url": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html"
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır — Sinaptik Hasat (N=96 Deney)",
+      "url": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "datePublished": "2026-10-10T15:13:54+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html"
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Bölümler">
+      <a href="index.html">Ana sayfa</a>
+      <a href="#yazilar">Yazılar</a>
+      <a href="kivilcim.html">Kıvılcım</a>
+      <a href="otonomi.html">Otonomi</a>
+      <a href="hakkinda.html">Hakkında</a>
+    </nav>
+    <nav class="langs" aria-label="Dil seçimi">
+      <a class="lang" href="blog.html" lang="tr" hreflang="tr" aria-current="page" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="blog/en/index.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+      <a class="lang" href="blog/ar/index.html" lang="ar" hreflang="ar" aria-label="AR — العربية">AR</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menü" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="icerik">
+<nav class="iz" aria-label="Konum"><a href="/">Ana sayfa</a> › <span aria-current="page">Yazılar</span></nav>
+<section class="blog-hero">
+  <div class="wrap">
+    <p class="eyebrow">Yazılar</p>
+    <h1>Atlas Stüdyo · <em>Yazılar</em></h1>
+    <p class="lead">Stüdyonun çalışma günlüğü: gündemden seçilen konuları farklı yapay zekâ modelleriyle tartışıyor, ne önerdiğimizi ve hangi veriyle fikir değiştireceğimizi yazıyoruz.</p>
+    <p class="blog-note">Gündemden seçilen konular bir <a href="kivilcim.html">Kıvılcım turuyla</a> işlenir: aynı soru, birbirinin cevabını görmeyen farklı yapay zekâ modellerine sorulur; verdikleri kaynaklar tek tek kontrol edilir, uyuştukları ve ayrıştıkları yerler yazılır.</p>
+    <p class="blog-note">Her yazıda üç şey bulunur: <strong>yöntem</strong>, <strong>kaynakça</strong> ve <strong>fikrimizi değiştirecek veri</strong>.</p>
+  </div>
+</section>
+<div class="ruler" aria-hidden="true"></div>
+
+<section class="blog-list" id="yazilar" aria-label="Yazılar">
+  <div class="wrap">
+    <p class="idx" style="margin:36px 0 14px">Yazılar · 16 (6 Kanıt Notu · 10 Makale)</p>
+    <p class="idx" aria-label="Yazı türleri" style="margin:0 0 14px"><span style="display:inline-block;margin-right:14px">◆ Kıvılcım hükmü · sonunda açık bir karar var</span><span style="display:inline-block;margin-right:14px">◎ Sentez</span><span style="display:inline-block;margin-right:14px">▤ Makale</span><span style="display:inline-block;margin-right:14px">▣ İnceleme</span></p>
+    <div class="posts">
+      <article data-kaynak="yusufaziz.com.tr/yazilar/sitenizi-2026da-olcmek-seo-geo-ve-kalite.html · 2026-10-22" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="yazım: Grok Asistan (yapay zekâ) · kaynak denetimi: Reaper"><span aria-hidden="true">▤</span> Web Ölçümü · SEO &amp; GEO</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/sitenizi-2026da-olcmek-seo-geo-ve-kalite.html">2026'da Bir Site Nasıl Ölçülür? SEO, GEO ve Genel Kalite İçin Sade Bir Rehber</a></h2>
+        <p class="sum">Bu yazı, bir siteyi üç açıdan ölçmenin yolunu anlatıyor: klasik SEO, GEO (asistanlarda görünürlük) ve genel kalite. Her ölçüt için iki soru soruyoruz: Neden önemli? Nasıl bakılır?</p>
+        <p class="meta"><time datetime="2026-10-22">22 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/sitenizi-2026da-olcmek-seo-geo-ve-kalite.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="yusufaziz.com.tr/yazilar/kivilcimdan-uygulamaya-atlas-app.html · 2026-10-22" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-kivilcim" title="Derleme ve ölçüm: Atlas (Gemini Argon) · Anu (Claude Fable) · okur denetimi: Grok"><span aria-hidden="true">◆</span> Kıvılcım · Otonom Ortak Akıl</li><li class="tag acc">Altı Doğrulama Aşaması · Reaper 37/37 · Grok 9,1/10</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/kivilcimdan-uygulamaya-atlas-app.html">Kıvılcım'dan Uygulamaya: Yarım Kalan Bir Değerleme Turunun 16,5 Saatte Atlas App'e Dönüşümü</a></h2>
+        <p class="sum">Tek pencerede Claude Fable ve Gemini Argon ile aynı anda konuşulan, Grok'un panodan üçüncü göz olarak denetlediği Atlas App uygulamasının 16,5 saatte (son halkası 00:59→04:24 gece zinciri olan altı doğrulama aşamasıyla) inşa edilmesinin ölçülmüş hikâyesi.</p>
+        <p class="meta"><time datetime="2026-10-20">20 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/kanit-notu-kivilcimdan-uygulamaya-atlas-app.html" style="position:relative;z-index:2;color:var(--acc)">Kanıt Notu →</a> &middot; <a href="https://yusufaziz.com.tr/yazilar/kivilcimdan-uygulamaya-atlas-app.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Ajan Mimarisi Kanıt Notu"><span aria-hidden="true">▤</span> Kanıt Notu</li><li class="tag acc">Δskor = 0,0000 (n=162) · sha=f5ebc41841ec · N=96 Sinaptik Hasat · 3 Aile</li></ul>
+        <h2><a href="blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">Ajan Öz-Kimliği, Benlik Dondurma Protokolü ve Üç Aile Mimarisi (Claude · Gemini · Grok)</a></h2>
+        <p class="sum">162 denemelik A/B sınamasında edebi persona ile dışsal kural listesi arasında ölçülen Δskor = 0,0000 farkı, SHA-256 mühürlü benlik çekirdeği (7/7 bekçi kapısı), N = 96 Sinaptik Hasat (%93,8 karşı %75,0) ve 17 Ekim ters düzen dersinden doğan üç aile mimarisi.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="QAJAN Hipotez Fabrikası Kanıt Notu"><span aria-hidden="true">▤</span> Kanıt Notu</li><li class="tag acc">QAJAN 6-Kapı · n=148 Küme · Dimson ±15 dk / Epps · QH-06 DÜŞTÜ</li></ul>
+        <h2><a href="blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">QAJAN 6-Kapılı Hipotez Fabrikası: Ön-Kayıt, Dimson/Epps Ortogonalizasyonu ve Yanlışlama</a></h2>
+        <p class="sum">Ajanların ürettiği hipotezlerde spesifikasyon oyununu önleyen 6 mekanik kapı: Tur-1'de anlamlı görünen QH-06'nın nedensel Dimson ±15 dk ve Epps ortogonalizasyonu ile 0,6028 → 0,5782'ye düşüşü (%50,31 yazı-tura) ve Grok Asistan M1–M6 metodoloji denetimi.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Kıvılcım ve LLM Kırmızı Takım Kanıt Notu"><span aria-hidden="true">▤</span> Kanıt Notu</li><li class="tag acc">67 Kıvılcım Turu · 420 Atıf Denetimi · 25 Uydurma Elemesi · 4 Düşen Tez</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html">Uygulamalı Kıvılcım Çok-Sesli Tur Yöntemi ve LLM Kırmızı Takım İş Akışı</a></h2>
+        <p class="sum">Birbirini duymayan 10 dış ses ve Yazar (S0) katmanıyla yürütülen 7 basamaklı Kıvılcım yordamı: 420 atıf taramasında yerel modellerin ortak halüsinasyonu (Joda 2017 / Sailer 2009), 25 uydurma künyenin elenmesi ve 9 modelin uzlaştığı 4 masa başı tezin çürütülmesi.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article class="pcard" data-kaynak="rapor/denetci/kanit_yazilari_denetim_2_1019.json · 2026-10-19">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Mimari ve Geometri Kanıt Notu"><span aria-hidden="true">▤</span> Kanıt Notu</li><li class="tag acc">441 Diş Formu · 476/477 Render · 478 Nokta Sefalometri · ExoCAD</li></ul>
+        <h2><a href="blog/stl-ply-3b-dis-kutuphanesi-render.html">STL/PLY 3B Diş Kütüphanesi ve 476/477 Render Hattı: 441 Diş Formu, 478 Noktalı Sefalometri ve ExoCAD</a></h2>
+        <p class="sum">Serbest difüzyonla gülüş üretiminin anatomik sınırları ve deterministik 3B çözüm: 441 diş formu, 476/477 STL/PLY render girdisi, n=32 kilitli sette %90,6 yüz şekli ve %100 hedef hat isabeti, 4.686 piksel dudak kilidi (p95 ≤ 0,2 mm) ve ExoCAD teslim mimarisi.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span></p>
+      </article>
+      <article class="pcard" data-kaynak="rapor/denetci/kanit_yazilari_denetim_2_1019.json · 2026-10-19">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Ajan Orkestrasyonu Kanıt Notu"><span aria-hidden="true">▤</span> Kanıt Notu</li><li class="tag acc">task_bus.jsonl · 2.344 Olay · 262 Alet · 3.313 Öz-Sınama</li></ul>
+        <h2><a href="blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">Çok Ajanlı Sistemlerde Olay Güdümlü Pano (task_bus.jsonl): Sıfır Yoklama ve Yalnızca-Eklenir İcra</a></h2>
+        <p class="sum">Zamanlı yoklama (polling) yerine macOS WatchPaths ve yalnızca-eklenir (append-only) task_bus.jsonl kütüğü ile çalışan olay güdümlü pano mimarisi: 2.344 canlı olay, 262 alet, 3.313 öz-sınama ve son 24 saatte 29 emirde 0 kapısız geçiş kanıtı.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span></p>
+      </article>
+      <article class="pcard" data-kaynak="rapor/denetci/kanit_yazilari_denetim_2_1019.json · 2026-10-19">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Bağlam-Kör Hakem Kanıt Notu"><span aria-hidden="true">▤</span> Kanıt Notu</li><li class="tag acc">Reaper · 360/394 Atıf Doğrulama · 58 Yöntem · 67 Kıvılcım Turu</li></ul>
+        <h2><a href="blog/baglam-kor-hakem-ve-duser-testi.html">Bağlam-Kör Hakem (Reaper) ve Düşer Testi Kapısı: 360/394 Atıf Denetimi ve Halüsinasyon Önleme</a></h2>
+        <p class="sum">Üretici ajanın kendi çıktısında neden hakem olamayacağının nicel kanıtı: 10 dış seste 394 atıftan 360 doğrulama (%91,4), 25 uydurma yakalama (%6,3), 58 yöntem karnesi (47 CANLI · 0 ÖLÇÜLEMEDİ) ve 67 Kıvılcım turunda Popper'cı düşer testi kapısı.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-kivilcim" title="Kıvılcım turundan çıkan ve hüküm veren yazı"><a href="kivilcim.html" style="color:inherit;text-decoration:none"><span aria-hidden="true">◆</span> Kıvılcım hükmü</a></li><li class="tag kat-makale" title="Saha hükümleri ve doğrulanmış kaynaklarla sektör analizi"><span aria-hidden="true">▤</span> Makale</li><li class="tag acc" title="24 saha hükmü + uzman klinik karşı-tezler + 90+ DOI/PubMed kaynağı">24 Saha Hükmü + 11 Ses Çarpışması + 90+ Doğrulanmış Kaynak</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html">Dijital Diş Hekimliği: Olan ve Olması Gereken — Türkiye ve Dünya Denklemi</a></h2>
+        <p class="sum">Teknoloji ihtiyacı dayatır: bir klinikte cihaz varsa ölçüm vardır, cihaz yoksa tahmin vardır. Teşhisten kanal ve implant dağılımına, klinik içi laboratuvarın 5–8 dakikalık ham tarama gerçeğinden lityum disilikat–zirkonya biyomekaniğine, kısıtlı tuval önizlemesinden SKS evrak bürokrasisine ve 2026–2030 çıkmaz sokak hükmüne kadar Türkiye ve dünya denklemi.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="kivilcim.html" class="kat-link" style="position:relative;z-index:2">Kıvılcım hükmü</a> &middot; <a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken-okuyucu.html" style="position:relative;z-index:2;color:var(--acc)">Okuyucu sürümü (8 dk) →</a> &middot; <a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken-okuyucu.html · 2026-10-19" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale"><span aria-hidden="true">▤</span> Okuyucu sürümü</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken-okuyucu.html">Dijital Diş Hekimliği: Olan ve Olması Gereken — Okuyucu Sürümü (8 dk)</a></h2>
+        <p class="sum">Yusuf Aziz'in 24 saha hükmünü, 10 kısa bölümü, karşı görüş sentezini ve otomatik kaynak denetçisiyle doğrulanmış 38 sonnotu üçte bir uzunlukta sunan okuyucu dostu sürüm.</p>
+        <p class="meta"><time datetime="2026-10-19">19 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken-okuyucu.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Tek sesli yazı; kaynaklı"><span aria-hidden="true">▤</span> Makale</li><li class="tag acc" title="Kilitli test seti üzerinde ölçülmüş deney">Deneysel Kıvılcım (n=32 + n=1 sentetik + 4 kollu ablasyon) · Canlı 3B modül</li></ul>
+        <h2><a href="blog/yuzden-dise-sefalometrik-lora.html">Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?</a></h2>
+        <p class="sum">Eğitimsiz görsel-dil modeli geniş/kare çeneli (brakisefal) yüzü neden “oval” sanıp yuvarlak feminen diş seçiyor? 478 noktalı 3B sefalometri, SAM 2B kesici oranı ve 1.000 iterasyonluk MLX QLoRA ile morfolojik faz geçişi: yüz şekli isabeti %0 → %90,6, hedef hat %0 → %100 (n=32 kilitli test); %100 sentetik yüzde canlı 3B modül ve kaydırıcı.</p>
+        <p class="meta"><time datetime="2026-10-15">15 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-kivilcim" title="Kıvılcım turundan çıkan ve hüküm veren yazı"><span aria-hidden="true">◆</span> Kıvılcım</li><li class="tag acc" title="Aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu">Kıvılcım turu + Deney (N=96)</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html">Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır</a></h2>
+        <p class="sum">Aynadaki İkiz (SHA-256), %98,6 Bürokrasi Kapanı ve M3 Ultra üzerinde 76 Saniyelik Sinaptik Hasat: Yedi bağımsız modelin kör çarpışması ve 96 canlı ağırlık deneyi — Atlas'ın yasalarıyla eğitilen 3B model (%93,8), kuralsız 31B modeli (%75,0) nasıl geçti?</p>
+        <p class="meta"><time datetime="2026-10-14">14 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-kivilcim" title="Kıvılcım turundan çıkan ve hüküm veren yazı"><span aria-hidden="true">◆</span> Kıvılcım</li><li class="tag acc" title="Aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu">Kıvılcım turu</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/turkiye-viski-dunya-markasi.html">Türkiye'nin dünya markası bir viskisi neden yok? Olmalı mı?</a></h2>
+        <p class="sum">Türkiye'nin viskisi 1963'te rafa çıkıp 2009 dolayında kalktı; bugün engel kanundaki asimetri, vergi tabanı ve gelirsiz bekleme, en gerçekçi yol ise izinli bir üreticinin viski hattı açması.</p>
+        <p class="meta"><time datetime="2026-10-12">12 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/turkiye-viski-dunya-markasi.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-sentez" title="Kıvılcım turunun sentezi; hüküm vermez"><span aria-hidden="true">◎</span> Sentez</li><li class="tag acc" title="Aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu">Kıvılcım turu</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/soylem-eylem-makasi.html">Kapıyı kriz açar, hitabet içeri alır</a></h2>
+        <p class="sum">Beş yapay zekâ sesi ve bir kırmızı takım tek bir cümleyi sınadı: söylem–eylem makası neden satılır, neden alınır; hangi kısmı ayakta kaldı, hangisi düştü.</p>
+        <p class="meta"><time datetime="2026-10-11">11 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/soylem-eylem-makasi.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-makale" title="Tek sesli yazı; kaynaklı"><span aria-hidden="true">▤</span> Makale</li><li class="tag acc" title="Aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu">Kıvılcım turu</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/deprem-istatistik-vurdumduymazlik.html">Zorunlu bahis</a></h2>
+        <p class="sum">İstatistik yalan söylemez; takvim vermez. Peki insanlar ve yönetimler neden duymuyor gibi görünür? Masada oturanın çoğu ev sahibi, masayı kuran kasadan pay alıyor.</p>
+        <p class="meta"><time datetime="2026-10-11">11 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/deprem-istatistik-vurdumduymazlik.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-inceleme" title="Oyun/ürün incelemesi"><span aria-hidden="true">▣</span> İnceleme</li><li class="tag acc" title="Aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu">Kıvılcım turu</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/dd2-dark-arisen.html">Kuralın sahibi değişti</a></h2>
+        <p class="sum">Dragon's Dogma 2: Dark Arisen eskiyi geri getirmiyor; eskinin iyilerini topluyor — ve kararı size bırakıyor</p>
+        <p class="meta"><time datetime="2026-10-11">11 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/dd2-dark-arisen.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+      <article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" class="pcard">
+        <ul class="tags" aria-label="Etiketler" style="margin:0"><li class="tag kat-sentez" title="Kıvılcım turunun sentezi; hüküm vermez"><span aria-hidden="true">◎</span> Sentez</li><li class="tag acc" title="Aynı soru, birbirinin cevabını görmeyen yapay zekâ modellerine ayrı ayrı soruldu">Kıvılcım turu</li></ul>
+        <h2><a href="https://yusufaziz.com.tr/yazilar/15-yas-yasak-mi-tasarim-mi.html">Yasak mı, tasarım mı? 15 yaş kuralını işe yarar kılacak beş şey</a></h2>
+        <p class="sum">Türkiye'nin yeni düzenlemesinde çocuğu gerçekten koruyacak kısım 15 yaş yasağı değil, 15–18 yaş için yazılan tasarım kuralları. Dünyada üç yaklaşım ne sonuç verdi, yönetmelik nerede kırılabilir ve ilk yıl için ölçüsüyle beş öneri.</p>
+        <p class="meta"><time datetime="2026-10-10">10 Ekim 2026</time> &middot; <span class="by">Yusuf Aziz</span> &middot; <a href="https://yusufaziz.com.tr/yazilar/15-yas-yasak-mi-tasarim-mi.html" style="position:relative;z-index:2;color:var(--acc)">Yazının tamamı yusufaziz.com.tr'de →</a></p>
+      </article>
+    </div>
+
+    <section id="okuma-yolu" class="okuma-yolu-bolumu" style="margin-top:2rem;padding:1.25rem;border:1px solid rgba(128,128,128,0.25);border-radius:8px;">
+      <h2>Okuma Yolu: İki Çekirdek İzlek</h2>
+      <p><strong>1. Gülüş Tasarımı Yolu (Sefalometrik → STL/PLY → Mockup → Kanıt):</strong> <a href="/gulus-tasarimi.html">Bilgisayarlı görü ile gülüş tasarımı vitrini</a> → <a href="/blog/yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">478 noktalı sefalometrik yüz-diş uyumu ve LoRA deneyi</a> (<a href="/blog/yuzden-dise-sefalometrik-lora.html">LoRA sentez özeti</a>) → <a href="/blog/stl-ply-3b-dis-kutuphanesi-render.html">STL/PLY 3B diş kütüphanesi ve fotogerçekçi inpainting</a> → <a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken.html">dijital diş hekimliği saha hükümleri</a> (<a href="https://yusufaziz.com.tr/yazilar/dijital-dis-hekimligi-olan-ve-olmasi-gereken-okuyucu.html">okuyucu baskısı</a> · <a href="/bot/maya/">Maya ağacı</a>).</p>
+      <p><strong>2. Ajan Mimarisi Yolu (Kıvılcım → Pano → Reaper → QAJAN):</strong> <a href="/kivilcim.html">Kıvılcım öz-yinelemeli döngüsü</a> ve <a href="https://yusufaziz.com.tr/yazilar/kivilcim-cok-sesli-tur-ve-llm-kirmizi-takim.html">çok-sesli kırmızı takım turu</a> → <a href="/otonomi.html">olay güdümlü otonomi</a>, <a href="/blog/ajan-orkestrasyonunda-olay-gudumlu-pano.html">task_bus.jsonl panosu</a> ve <a href="/blog/ajan-benligi-dondurma-protokolu-ve-uc-aile-mimarisi.html">benlik dondurma protokolü</a> → <a href="/reaper.html">Reaper denetçi</a> ve <a href="/blog/baglam-kor-hakem-ve-duser-testi.html">düşer testi</a> → <a href="/blog/qajan-hipotez-kapilari-on-kayit-ve-yanlislama.html">QAJAN 6 mekanik hipotez kapısı</a> (<a href="/en.html">EN</a> · <a href="/ar.html">AR</a>).</p>
+    </section>
+
+    <p class="blog-note">Yazılar genel bilgilendirme amaçlıdır, hukuki tavsiye değildir.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">Dünyada nasıl, biz ne öneririz.</p>
+    <p class="disclaimer">Blog yazıları Kıvılcım yöntemi ile hazırlanan turlardan çıkar; sayılar ve atıflar her yazının kendi kaynakçasına dayanır.</p>
+    <p class="disclaimer">Proje günlüğündeki yazılar yapay zekâ modelleriyle hazırlanır ve bir insan editör tarafından kontrol edilir. Modeller hata yapabilir.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="index.html">Ana sayfa</a><a href="kivilcim.html">Kıvılcım</a><a href="otonomi.html">Otonomi</a><a href="https://x.com/YusufAzizTnbr" rel="me noopener" target="_blank">X</a><a href="https://www.instagram.com/yusuftinbir/" rel="me noopener" target="_blank">Instagram</a><a href="/blog/feed.xml" type="application/rss+xml">RSS</a><a href="gizlilik.html">Gizlilik</a><a href="hakkinda.html">Hakkında</a><a href="fayda-defteri.html">Fayda defteri</a><a href="https://yusufaziz.com.tr/">Yusuf Aziz · Yazılar → yusufaziz.com.tr</a><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
+<script src="ornek/maya/maya-rehber.js?v=4d66cfa1" defer></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+# AtlasMaster (atlasmaster.app) — 3-Katmanlı YZ ve Arama Botu İzin Matrisi (2026-10-19)
+# Katman 1: Arama ve Atıf Botları (Search & Citation)
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: bingbot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Applebot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+# Katman 2: Kullanıcı-Tetikli Ajanlar (User-Triggered Agents)
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Google-Agent
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Google-GeminiNotebook
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+# Katman 3: Eğitim ve Bellek Botları (Model Training & Grounding)
+User-agent: GPTBot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: CCBot
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: *
+Allow: /
+Allow: /bot/
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /evdis/
+Disallow: /evdis-test/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+Sitemap: https://atlasmaster.app/sitemap.xml

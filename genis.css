@@ -1,0 +1,140 @@
+/* ==========================================================================
+   atlasmaster.app — Geniş Ekran Düzeni (≥1280px)
+   Yükleme yeri: </head> öncesi, tüm stil dosyaları ve sayfa içi <style> sonrası.
+   Kapsam: Yalnızca ≥1280px; 390px ve 768px hesaplanan stilleri değişmez.
+   ========================================================================== */
+
+@media (min-width: 1280px) {
+  :root,
+  :root[data-theme="dark"],
+  :root[data-theme="light"] {
+    --genis-kenar: clamp(32px, 3.5vw, 72px);
+    --genis-tavan: 1680px;
+  }
+
+  /* 1. Kenar Bandı Ton Geçişi (Yalnız mevcut tema değişkenleriyle)
+     Açık (#f3efe6) ve koyu (#070b12) temada keskin kenar boşluğu hissini
+     yumuşatmak için --surface ile --bg arasında radyal geçiş. */
+  body {
+    background-color: var(--bg);
+    background-image: radial-gradient(
+      ellipse 92% 75% at 50% 0%,
+      color-mix(in srgb, var(--surface) 76%, var(--bg)) 0%,
+      var(--bg) 100%
+    );
+    background-attachment: fixed;
+  }
+
+  /* 2. Geniş Ana Kap (Üst çubuk .top .wrap, konum izi .iz, gövde ve alt bilgi aynı hizada) */
+  .wrap,
+  .iz,
+  main > p.more {
+    width: min(100% - (2 * var(--genis-kenar)), var(--genis-tavan));
+    max-width: var(--genis-tavan);
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .wrap .wrap {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+
+  /* Sayfa içi <style> çakışması: reaper.html ve gulus-tasarimi.html <head> içindeki
+     `.legal .wrap { max-width: 52rem }` kuralını geniş kap tavanına eşitlemek için !important */
+  .legal .wrap {
+    width: min(100% - (2 * var(--genis-kenar)), var(--genis-tavan)) !important;
+    max-width: var(--genis-tavan) !important;
+    margin-inline: auto !important;
+    padding: clamp(28px, 3vw, 48px) clamp(32px, 3.5vw, 56px);
+    background: var(--surface);
+    border: 1px solid var(--line);
+  }
+
+  /* Sayfa içi <style> çakışması: kanit/makale-*.html <head> içindeki
+     `main.article-shell { max-width: 860px; margin: 0 auto; ... }` kuralını aşmak için !important */
+  main.article-shell {
+    width: min(100% - (2 * var(--genis-kenar)), var(--genis-tavan)) !important;
+    max-width: var(--genis-tavan) !important;
+    margin-inline: auto !important;
+    padding: clamp(32px, 3.2vw, 52px) clamp(32px, 3.5vw, 56px) !important;
+    /* Bu sayfalar kendi koyu :root'unu (--bg/--bg-card/--border) taşır; style.css'in açık --surface'i
+       açık metni zeminde kaybediyordu (kontrast 1,06:1). Panel sayfanın kendi değişkenlerinden. */
+    background: color-mix(in srgb, var(--bg-card) 40%, var(--bg));
+    border: 1px solid var(--border);
+  }
+
+  /* Koyu kendi-temalı makale sayfalarında açık --surface degradesi kenarda gri bant yapıyordu */
+  body:has(main.article-shell) {
+    background-image: none;
+  }
+
+  /* Kap genişleyince kısalan hero metin sütunu (style.css ≥980 align-items:end) uzun şema
+     sütununun dibine itiliyordu (Kıvılcım/Spark 364–505 px boşluk). Metin sütunu üstte başlar;
+     metin sütunu uzun olan sayfalarda etkisizdir. */
+  .hero-grid > :first-child {
+    align-self: start;
+  }
+
+  /* 3. Blog ve Liste Sayfası Kart Izgarası
+     860px dar sütun sınırını kaldırıp geniş kap içinde çok sütunlu ızgaraya yayar */
+  .posts {
+    max-width: none;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
+    gap: 20px;
+  }
+
+  .pcard {
+    padding: 28px 26px 30px;
+  }
+
+  /* 4. Okuma Ölçüsü (68–75ch) — Kaba Hizalı, Sağ Alan Yüzeyle Bütünleşik */
+  .prose,
+  .sec-head p,
+  .pcard .sum,
+  .legal p,
+  .legal li,
+  .legal blockquote,
+  .legal dl,
+  .legal .kanit-box,
+  .legal .note,
+  main.article-shell p,
+  main.article-shell li,
+  main.article-shell blockquote,
+  main.article-shell dl,
+  main.article-shell .kanit-box {
+    max-width: 70ch;
+    margin-inline: 0;
+  }
+
+  /* ========================================================================
+     ORTAK BİLEŞEN: Seçmeli İzlek Şeridi (kodeks-izlek-*)
+     İki sitede ortak kullanım için hazır masaüstü sarma (wrap) kuralları.
+     ======================================================================== */
+  .kodeks-izlek-seridi {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    overflow-x: visible;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+  }
+
+  .kodeks-izlek-btn {
+    flex: 0 1 auto;
+    max-width: 100%;
+  }
+
+  .kodeks-izlek-btn.active,
+  .kodeks-izlek-btn[aria-pressed="true"],
+  .kodeks-izlek-btn[aria-selected="true"] {
+    background: var(--acc);
+    border-color: var(--acc);
+    color: var(--acc-fg);
+  }
+  /* === /ORTAK BİLEŞEN === */
+}

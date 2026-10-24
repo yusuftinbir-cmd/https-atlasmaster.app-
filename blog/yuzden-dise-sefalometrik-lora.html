@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli · Atlas Studio</title>
+<meta name="author" content="Yusuf Aziz">
+<meta name="description" content="478 noktalı 3B sefalometri ve 113 akademik makaleyle eğitilen 3B QLoRA modelinin kilitli test setinde (n=32) %0'dan %90,6 yüz şekli ve %100 hedef hat isabetine çıkışı.">
+<meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?">
+<meta property="og:description" content="Kare çeneyi 'oval' sanan eğitimsiz model yuvarlak feminen diş seçiyor. 478 noktalı 3B sefalometri + 1.000 iterasyon QLoRA: yüz şekli isabeti %0'dan %90,6'ya, hedef hat %0'dan %100'e (n=32 kilitli test). %100 sentetik yüz, canlı 3B modül.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html">
+<meta property="og:image" content="https://atlasmaster.app/blog/og-yuzden-dise-lora.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Proje günlüğü. Yüzden Dişe. Eğitimsiz model ovoid hat, ATLAS QLoRA kuboidal hat; %100 sentetik yüz üzerinde 2x makro karşılaştırma. Atlas Stüdyo, 15 Ekim 2026.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://atlasmaster.app/blog/og-yuzden-dise-lora.png">
+<link rel="canonical" href="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/blog/en/face-to-tooth-cephalometric-lora.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f5f3ee'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%23141922' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231b45cf' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="icon" href="../favicon.ico" sizes="32x32">
+<link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-serif-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css?v=8b780bf8">
+<link rel="stylesheet" href="../blog.css?v=e1abe8e6">
+<link rel="stylesheet" href="../ornek/sentetik-kare/vitrin.css?v=3d69b5a3">
+<script src="../script.js?v=2b29d271"></script>
+<script src="blog.js?v=745e8e15" defer></script>
+<script src="../ornek/sentetik-kare/vitrin.js?v=7e1b3182" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?",
+  "description": "Eğitimsiz görsel-dil modeli geniş/kare çeneli (brakisefal) yüzü neden 'oval' sanıp yuvarlak feminen diş seçiyor? 478 noktalı 3B sefalometri, SAM 2B kesici diş oranı ve 1.000 iterasyonluk MLX QLoRA ile morfolojik faz geçişi (n=32 kilitli test + n=1 sentetik 2x makro simülasyon).",
+  "datePublished": "2026-10-15T09:08:07+03:00",
+  "dateModified": "2026-10-19T14:51:35+03:00",
+  "inLanguage": "tr-TR",
+  "image": "https://atlasmaster.app/blog/og-yuzden-dise-lora.png",
+  "author": {
+    "@type": "Person",
+    "@id": "https://yusufaziz.com.tr/#person",
+    "name": "Yusuf Aziz",
+    "url": "https://yusufaziz.com.tr/",
+    "sameAs": [
+      "https://yusufaziz.com.tr/",
+      "https://x.com/YusufAzizTnbr",
+      "https://www.instagram.com/yusuftinbir/",
+      "https://github.com/yusuftinbir-cmd",
+      "https://www.youtube.com/@yusufaziz"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Atlas Stüdyo",
+    "url": "https://atlasmaster.app/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://atlasmaster.app/favicon.ico"
+    },
+    "@id": "https://atlasmaster.app/#organization",
+    "sameAs": [
+      "https://yusufaziz.com.tr/",
+      "https://x.com/YusufAzizTnbr",
+      "https://www.instagram.com/yusuftinbir/",
+      "https://github.com/yusuftinbir-cmd",
+      "https://www.youtube.com/@yusufaziz",
+      "https://www.facebook.com/yusuftinbir/"
+    ]
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html"
+  },
+  "url": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://atlasmaster.app/blog.html"
+  },
+  "citation": [
+    "https://doi.org/10.1016/0022-3913(58)90043-X",
+    "https://doi.org/10.1016/S0022-3913(73)80013-7",
+    "https://doi.org/10.1016/0022-3913(78)90028-8",
+    "https://doi.org/10.1016/S0022-3913(03)00125-2",
+    "https://arxiv.org/abs/1907.06724",
+    "https://arxiv.org/abs/1906.08172",
+    "https://arxiv.org/abs/2304.02643",
+    "https://arxiv.org/abs/2408.00714",
+    "https://arxiv.org/abs/2106.09685",
+    "https://arxiv.org/abs/2305.14314",
+    "https://arxiv.org/abs/2201.02177",
+    "https://www.resmigazete.gov.tr/eskiler/2023/07/20230729.htm"
+  ]
+}
+</script>
+  <link rel="alternate" type="application/rss+xml" title="Atlas Stüdyo &middot; Proje Günlüğü" href="/blog/feed.xml">
+  <link rel="stylesheet" href="../ornek/maya/maya-rehber.css?v=a3573d3d">
+  <script type="application/ld+json" id="atlas-national-ld">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "Atlasmaster",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "description": "Türkiye geneli ve küresel ölçekte diş hekimleri ve dijital laboratuvarlar için 478 noktalı 3B sefalometrik yüz analizi, 441 diş formu kütüphanesi, kısıtlı tuval önizlemesi, ExoCAD iş paketi ve ATLAS-CORE Kurumsal Kullanım Lisanslı klinik karar motoru geliştiren çok ajanlı Ar-Ge stüdyosu.",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Marmara Bölgesi"
+        },
+        {
+          "@type": "City",
+          "name": "İstanbul"
+        },
+        {
+          "@type": "City",
+          "name": "Ankara"
+        },
+        {
+          "@type": "City",
+          "name": "İzmir"
+        },
+        {
+          "@type": "City",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "City",
+          "name": "Kocaeli"
+        },
+        {
+          "@type": "City",
+          "name": "Bursa"
+        },
+        {
+          "@type": "City",
+          "name": "Antalya"
+        }
+      ],
+      "knowsAbout": [
+        "Dijital Gülüş Tasarımı (Digital Smile Design)",
+        "478 Noktalı 3B Sefalometrik Yüz Ağı ve QLoRA/DoRA",
+        "441 Diş Formu Kütüphanesi ve ExoCAD İş Paketi",
+        "ATLAS-CORE Kurumsal Kullanım Lisanslı Klinik Triyaj Motoru (M0-M10)",
+        "Kıvılcım Çok Ajanlı Hipotez ve Sentez Yordamı"
+      ],
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz",
+        "https://www.facebook.com/yusuftinbir/"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://atlasmaster.app/#atlas-core-engine",
+      "name": "ATLAS-CORE 3B Sefalometrik QLoRA & Kurumsal Kullanım Lisanslı Klinik Karar Motoru v5",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web, Apple Silicon MLX",
+      "creator": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "description": "Baş Mimar Atlas (Gemini 4 Argon · 1M) orkestrasyonunda çalışan 3B sefalometrik diş morfolojisi seçici (n=32 kilitli testte %90,6 yüz tipi, %100 hedef hat isabeti), Maya v5 dijital rehberi ve 550 düğümlü Kurumsal Kullanım Lisanslı klinik triyaj motoru."
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Yüzden Dişe: 3B Sefalometriyle Eğitilen QLoRA, Eğitimsiz Modeli Nasıl Geçti? (n=32 + 4 Kollu Ablasyon)",
+      "url": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "datePublished": "2026-10-15T09:08:07+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://atlasmaster.app/blog/yuzden-dise-sefalometrik-lora.html",
+      "citation": [
+        "https://doi.org/10.1016/0022-3913(58)90043-X",
+        "https://doi.org/10.1016/S0022-3913(73)80013-7",
+        "https://doi.org/10.1016/0022-3913(78)90028-8",
+        "https://doi.org/10.1016/S0022-3913(03)00125-2",
+        "https://arxiv.org/abs/1907.06724",
+        "https://arxiv.org/abs/1906.08172",
+        "https://arxiv.org/abs/2304.02643",
+        "https://arxiv.org/abs/2408.00714",
+        "https://arxiv.org/abs/2106.09685",
+        "https://arxiv.org/abs/2305.14314",
+        "https://arxiv.org/abs/2201.02177",
+        "https://www.resmigazete.gov.tr/eskiler/2023/07/20230729.htm"
+      ]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Kim Kimi Eğitiyor? Binek Değişir, Yasa Kalır — Sinaptik Hasat (N=96 Deney)",
+      "url": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html",
+      "author": {
+        "@type": "Person",
+        "@id": "https://yusufaziz.com.tr/#person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/",
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz"
+        ]
+      },
+      "datePublished": "2026-10-15T09:08:07+03:00",
+      "dateModified": "2026-10-19T14:51:35+03:00",
+      "image": "https://atlasmaster.app/og.png",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Atlas Stüdyo",
+        "url": "https://atlasmaster.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://atlasmaster.app/og.png"
+        },
+        "sameAs": [
+          "https://yusufaziz.com.tr/",
+          "https://x.com/YusufAzizTnbr",
+          "https://www.instagram.com/yusuftinbir/",
+          "https://github.com/yusuftinbir-cmd",
+          "https://www.youtube.com/@yusufaziz",
+          "https://www.facebook.com/yusuftinbir/"
+        ]
+      },
+      "mainEntityOfPage": "https://yusufaziz.com.tr/yazilar/kim-kimi-egitiyor.html",
+      "citation": [
+        "https://doi.org/10.1016/0022-3913(58)90043-X",
+        "https://doi.org/10.1016/S0022-3913(73)80013-7",
+        "https://doi.org/10.1016/0022-3913(78)90028-8",
+        "https://doi.org/10.1016/S0022-3913(03)00125-2",
+        "https://arxiv.org/abs/1907.06724",
+        "https://arxiv.org/abs/1906.08172",
+        "https://arxiv.org/abs/2304.02643",
+        "https://arxiv.org/abs/2408.00714",
+        "https://arxiv.org/abs/2106.09685",
+        "https://arxiv.org/abs/2305.14314",
+        "https://arxiv.org/abs/2201.02177",
+        "https://www.resmigazete.gov.tr/eskiler/2023/07/20230729.htm"
+      ]
+    }
+  ]
+}
+</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+<link rel="stylesheet" href="/kodeks.css">
+<script src="/kodeks.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Atlas ana sayfa">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Bölümler">
+      <a href="../index.html">Ana sayfa</a>
+      <a href="../blog.html" aria-current="true">Yazılar</a>
+      <a href="../kivilcim.html">Kıvılcım</a>
+      <a href="../otonomi.html">Otonomi</a>
+      <a href="../hakkinda.html">Hakkında</a>
+    </nav>
+    <a class="lang" href="en/face-to-tooth-cephalometric-lora.html" lang="en" hreflang="en" aria-label="EN — English">EN</a>
+    <button class="theme" type="button" hidden aria-label="Koyu / açık tema">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menü" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20" id="icerik">
+<article data-kaynak="rapor/denetci/reaper_ozet_1020.json · 2026-10-20">
+<header class="post-head">
+  <div class="wrap">
+    <h1>Yüzden <em>Dişe</em></h1>
+    <p class="dek">113 Makale ve 3B Sefalometriyle Eğitilen 3B QLoRA Modeli, Eğitimsiz Modeli Nasıl Geçti?</p>
+    <div class="meta">Deneysel Kıvılcım &middot; 4 Katman &middot; N=32 Kilitli Test + 4 Kollu Ablasyon &middot; <time datetime="2026-10-15">15 Ekim 2026</time> &middot; Yazar: <a href="../hakkinda.html" rel="author"><strong>Yusuf Aziz</strong></a> &middot; Atlas Stüdyo</div>
+    <aside class="ozet" aria-label="Özet">
+      <p class="idx"><span>Özet</span><span class="okuma">16 dk okuma</span></p>
+      <p>Eğitimsiz görsel-dil modelleri geniş/kare çeneli (brakisefal) bir yüzü neden “oval” sanıp yuvarlak, feminen bir diş hattı seçiyor? Bu yazıda sorunun cevabını iki ölçekte sınadık. <strong>Birincisi (n = 32):</strong> daha önce kilitlenmiş, eğitimde hiç görülmemiş 32 yüzlük bir test setinde eğitimsiz 3B yerel modeli (<code>Qwen2.5-3B-Instruct-4bit</code>) ile 113 akademik makaleden ve 478 noktalı 3B sefalometrik ölçümlerden damıtılmış kural örnekleriyle 400 ve 1.000 iterasyon MLX QLoRA eğitiminden geçirilmiş aynı modeli karşılaştırdık. Yüz şekli eşik sınıflaması isabeti <strong>%0,0 → %46,9 → %90,6</strong>; alt çene genişliği, hedef hat (köşeli/yuvarlak) ve SPA cinsiyet süzgeci isabeti <strong>%0,0 → %100,0</strong>; geçerli karar JSON’u <strong>%3,1 → %100</strong>. 400 ile 1.000 iterasyon arasında görülen sıçrama ezber değil, bir <em>faz geçişi</em> (grokking) deseni taşıyor. <strong>İkincisi (n = 1, sentetik):</strong> gerçek hiç kimseye ait olmayan, %100 yapay zekâ ile üretilmiş kurgusal bir brakisefal erkek portresi üzerinde aynı iki modeli uçtan uca çalıştırdık: 478 noktalı 3B ağdan <code>Go-Go / ZY-ZY = 0,837</code> ölçüldü (≥ 0,82 → geniş/kare), eğitimsiz model yüzü “oval / orta çene” okuyup <strong>feminen ovoid hat</strong> seçti; QLoRA modeli “kare / geniş / köşeli” okuyup <strong>maskülen kuboidal hat</strong> seçti. İki çıktı dudak, sakal ve diş eti pikselleri %100 kilitli olarak yazının ortasındaki canlı 3B modülde ve kaydırıcıda yan yana duruyor. Hüküm: Fotoğraftan diş formuna giden yolda eksik olan modelin büyüklüğü değil, yüz-diş morfolojisinin yüz yıllık kurallarının (Williams 1914, Frush &amp; Fisher 1958, Lombardi 1973, Paolucci 2012) ölçülebilir birer eşiğe çevrilip modele kazınmasıdır.</p>
+    </aside>
+    <div class="sk-serh" role="note" aria-label="Yasal ve klinik şerh">
+      <p><strong>Gerçek hasta fotoğrafı değildir.</strong> %100 sentetik/kurgusal model üzerinde algoritmik morfoloji simülasyonudur. Tanı, tedavi veya tıbbi cihaz sonucu değildir. Sonuçlar kişiden kişiye değişir; klinik karar hekime aittir. Tek sentetik örnek gösterimidir (n = 1); başka yüzlerde sonuç farklı olabilir.</p>
+      <p><strong>Gerçek hasta değildir.</strong> %100 sentetik yüz · algoritmik morfoloji simülasyonu; tanı, tedavi veya tıbbi cihaz değildir. Klinik karar yalnızca diş hekimine aittir. Tekil sentetik örnek gösterimi (n = 1); sonuçlar başka yüzlerde farklılık gösterebilir.</p>
+    </div>
+  </div>
+</header>
+<div class="ruler" aria-hidden="true"></div>
+
+<div class="wrap post-grid">
+  <nav class="toc" aria-label="İçindekiler">
+    <span class="idx">İçindekiler</span>
+    <ol id="toc-liste">
+      <li><a href="#giris">Giriş: oval sanılan kare çene</a></li>
+      <li><a href="#bolum-1">1. Deney düzeneği: iki ölçek, bir kilitli test seti</a></li>
+      <li><a href="#canli-modul">2. Canlı modül: 3B sefalometri ve morfoloji kaydırıcısı</a></li>
+      <li><a href="#bolum-3">3. Dört katmanlı mimari ve akademik dayanak</a></li>
+      <li><a href="#bolum-4">4. Ölçüm tablosu (n = 32): vanilya → 400 → 1.000 iterasyon</a></li>
+      <li><a href="#bolum-5">5. Sentetik kare yüz (n = 1): iki modelin ham kararı</a></li>
+      <li><a href="#bolum-5b">5b. Yazarın kontrolü: ağızdaki diş mi modeli yanılttı? (4 kollu ablasyon)</a></li>
+      <li><a href="#bolum-6">6. Faz geçişi mi, ezber mi?</a></li>
+      <li><a href="#bolum-7">7. Kırmızı takım: n = 1 anekdotu, benzerlik riski ve yönetmelik</a></li>
+      <li><a href="#bolum-8">8. Hüküm: beş madde</a></li>
+      <li><a href="#kapanis">Kapanış: bu yazıyı hangi sayı çökertir?</a></li>
+      <li><a href="#okura-arac">Okura üç araç</a></li>
+      <li><a href="#kunye">Künye</a></li>
+      <li><a href="#kaynaklar">Kaynaklar</a></li>
+    </ol>
+  </nav>
+  <div class="post no-sec-num" data-kodeks-secmeli="bolum">
+    <h2 id="giris">Giriş: oval sanılan kare çene</h2>
+    <p>Diş hekimliğinde bir asırdır bilinen bir uyum ilkesi var: Ön dişlerin formu yüzün formuyla konuşur. J. Leon Williams 1914’te yüz tiplerini <em>kare, üçgen ve ovoid</em> diye ayırıp dişleri buna göre sınıfladı; Frush ve Fisher 1958’de buna <em>cinsiyet, kişilik ve yaş</em> (SPA) süzgecini ekledi; Lombardi 1973’te görsel algı ilkelerini, Paolucci ve arkadaşları 2012’de <em>visagism</em> adıyla mizaç-form eşlemesini sistemleştirdi. Hekim bu kuralları çoğu zaman sözsüz uygular: geniş ve kare bir erkek yüzüne yuvarlak, kısa yan kesicili, açık kamalı “feminen” bir hat koymaz.</p>
+    <p>Eğitimsiz (zero-shot) bir görsel-dil modeline aynı yüzü verdiğinizde ne olur? Stüdyomuzun 14 Ekim gecesi koştuğu ilk denemede cevap netti: 31 milyar parametreli yerel model (<code>gemma4:31b</code>) belirgin biçimde brakisefal bir yüzü <code>face_shape = oval</code>, <code>jaw_width = medium</code> olarak etiketledi ve yuvarlak köşeli ovoid bir form önerdi. Yani model yüzü “görüyor” ama ölçmüyordu; ölçmediği için de Williams’ın 1914’teki uyarısını tersinden yapıyordu.</p>
+    <p>Bu yazı o gözlemi iki ölçekte sınıyor: önce eğitimde hiç görülmemiş 32 yüzlük kilitli bir test setinde, sonra gerçek hiç kimseye ait olmayan tek bir sentetik portrede uçtan uca. Yazının ortasında 478 noktalı 3B tel-kafesi döndürüp iki modelin seçtiği diş hattını aynı dudak kilidi altında kaydırarak karşılaştırabilirsiniz.</p>
+
+    <h2 id="bolum-1">1. Deney düzeneği: iki ölçek, bir kilitli test seti</h2>
+    <p><strong>Model ve eğitim.</strong> Taban model <code>Qwen2.5-3B-Instruct-4bit</code>; eğitim Apple Mac Studio (M3 Ultra, 96 GB) üzerinde MLX QLoRA (Hu vd. 2022; Dettmers vd. 2023) ile 400 ve 1.000 iterasyonluk iki kontrol noktasında yapıldı. Eğitim verisi, 113 hakemli makale ve kitap bölümünden damıtılmış kural-örnek çiftleri ile stüdyonun 478 noktalı 3B sefalometrik ölçüm çiftlerinden oluşuyor; <strong>test setindeki 32 yüzün hiçbiri eğitimde yer almadı</strong> ve test seti deney başlamadan önce kilitlendi.</p>
+    <p><strong>Ölçüm hattı.</strong> Her yüz için MediaPipe FaceMesh (Kartynnik vd. 2019) ile 478 noktalı 3B ağ çıkarılır; bizigomatik genişlik <code>ZY-ZY</code> (#234–#454) ve bigonial genişlik <code>Go-Go</code> (#172–#397) piksel cinsinden ölçülür; <code>Go-Go / ZY-ZY</code> oranı Farkas’ın (1994) antropometrik eşikleriyle sınıflanır. Üst santral kesicinin genişlik/boy oranı SAM 2B (Kirillov vd. 2023; Ravi vd. 2024) segmentasyonuyla ölçülür. Model bu ölçümleri görür ve tek bir JSON karar üretmek zorundadır: yüz şekli, çene genişliği, hedef hat (köşeli/yuvarlak), SPA cinsiyet süzgeci ve önerilen form kategorisi.</p>
+    <p><strong>Kilitli test (n = 32).</strong> Üç kol: eğitimsiz vanilya, QLoRA 400 iterasyon, QLoRA 1.000 iterasyon. Her kolun aynı 32 yüzdeki JSON kararı, önceden belirlenmiş eşik kuralıyla (Bölüm 3) karşılaştırıldı.</p>
+    <p><strong>Sentetik vitrin (n = 1).</strong> Yayınlanabilir bir örnek için gerçek hasta fotoğrafı kullanmadık; 38 yaşında, güçlü kare çeneli, <code>Go-Go / ZY-ZY ≥ 0,83</code> olacak biçimde istemlenmiş, tamamen kurgusal bir portre ürettik (üretim istemi ve dosya SHA-256 özetleri <code>PROVENANCE.json</code> ile kayıtlı). Bu portre üzerinde iki model uçtan uca çalıştı; seçilen formlar foto-gerçekçi mine dokusuyla aynı kareye oturtuldu. Dudak, sakal, diş eti ve alt dişlere ait 4.686 piksel iki çıktıda bire bir aynı tutuldu; yalnız üst ön altı dişin hattı değişti.</p>
+
+    <h2 id="canli-modul">2. Canlı modül: 3B sefalometri ve morfoloji kaydırıcısı</h2>
+    <p>Solda sentetik portreden çıkarılan 478 noktalı 3B tel-kafes (fareyle döndürülür; turkuaz <code>ZY-ZY = 629,7 px</code>, yeşil <code>Go-Go = 526,9 px</code>, oran <code>0,837</code>). Sağda aynı yüz üzerinde iki modelin seçtiği diş hattı; varsayılan sekme eğitimsiz model ile QLoRA modelinin 2x makro karşılaştırmasıdır. “Özgün Sentetik Diş ↔ ATLAS QLoRA Önerisi” sekmesi bir simülasyondur, tedavi öncesi/sonrası değildir.</p>
+    <div class="sk" data-sk-base="../ornek/sentetik-kare/" data-sk-lang="tr" data-sk-mode="deney" data-sk-van="Vanilya">
+      <figure class="sheet sk-yok">
+        <img src="../ornek/sentetik-kare/sentetik-kare-panel.jpg" width="1600" height="1019" alt="Sentetik kare yüz karşılaştırma paneli: eğitimsiz modelin feminen ovoid hattı ile ATLAS QLoRA modelinin maskülen kuboidal hattı; 3B sefalometrik ölçümler" loading="lazy">
+        <figcaption class="cap"><span>Statik panel (etkileşimli modül için JavaScript gerekir)</span></figcaption>
+      </figure>
+    </div>
+    <div class="sk-serh" role="note" aria-label="Yasal ve klinik şerh">
+      <p><strong>Gerçek hasta fotoğrafı değildir.</strong> %100 sentetik/kurgusal model üzerinde algoritmik morfoloji simülasyonudur. Tanı, tedavi veya tıbbi cihaz sonucu değildir. Sonuçlar kişiden kişiye değişir; klinik karar hekime aittir. Tek sentetik örnek gösterimidir (n = 1); başka yüzlerde sonuç farklı olabilir.</p>
+      <p><strong>Gerçek hasta değildir.</strong> %100 sentetik yüz · algoritmik morfoloji simülasyonu; tanı, tedavi veya tıbbi cihaz değildir. Klinik karar yalnızca diş hekimine aittir. Tekil sentetik örnek gösterimi (n = 1); sonuçlar başka yüzlerde farklılık gösterebilir.</p>
+    </div>
+    <figure class="sheet" style="margin-top:18px;padding:14px">
+      <img src="../ornek/sentetik-kare/sentetik-sefalometri-portre.jpg" width="896" height="1200" alt="Sentetik portre üzerinde 478 noktalı yüz ağı; ZY-ZY turkuaz ve Go-Go yeşil vektörler" loading="lazy" style="display:block;width:100%;max-width:448px;height:auto;margin:0 auto">
+      <figcaption class="cap"><span>Sentetik portre üzerinde ölçüm katmanı: 478 nokta, ZY-ZY (turkuaz) ve Go-Go (yeşil) vektörleri. Fasiyal indeks <code>N-Gn / ZY-ZY = 1,226</code>.</span></figcaption>
+    </figure>
+
+    <h2 id="bolum-3">3. Dört katmanlı mimari ve akademik dayanak</h2>
+    <p>Modelin “gördüğü” ile hekimin “ölçtüğü” arasındaki açığı kapatmak için kararı dört katmana böldük. Her katmanın kendi literatürü ve kendi sayısal eşiği var; model bu eşikleri atlayamaz.</p>
+    <ol class="recs">
+      <li><p><strong>Katman 1 · Sefalometrik oranlar (Farkas 1994; Williams 1914).</strong> <code>Go-Go / ZY-ZY ≥ 0,82 → geniş / kare</code>; <code>&lt; 0,74 → dar / üçgen</code>; arası ovoid. Dikey kontrol için <code>Tr-Gn / ZY-ZY</code> (yüz indeksi). Sentetik portrede oran <code>0,837</code>, yani eşiğin üstünde: yüz kare/geniş sınıfındadır. Eğitimsiz modelin “oval” kararı bu katmanda düşer.</p></li>
+      <li><p><strong>Katman 2 · Visagism (Paolucci vd. 2012).</strong> Yüz formu ve mizaç dört tipe eşlenir; <em>güçlü / kolerik</em> tipte santraller yatay-dikdörtgen baskın, köşeler belirgin, kesici kenar düzdür. <em>Dinamik</em> ve <em>hassas</em> tiplerde köşeler yumuşar, kamalar açılır. Kare/geniş yüz bu katmanda güçlü tipe düşer.</p></li>
+      <li><p><strong>Katman 3 · SPA süzgeci (Frush &amp; Fisher 1958).</strong> Cinsiyet, kişilik ve yaş süzgeci: erkek ve 38 yaş için disto-insizal açı dik, yan kesici santrale yakın boyda, kama aralıkları kapalıya yakındır; feminen hatta disto-insizal açı yuvarlanır, yan kesici kısalır, kamalar açılır. Eğitimsiz modelin seçtiği ovoid hat bu katmanda da düşer.</p><p><em>Not:</em> Visagism ve SPA süzgeci klinik bir üstünlük ya da kesinlik kanıtı değildir; literatürdeki estetik tasarım kurallarıdır. Model bu kural setine göre tutarlı hattı seçmeyi öğrenir; kuralların kendisinin doğruluğunu bu deney sınamaz.</p></li>
+      <li><p><strong>Katman 4 · Ön diş oranı ve altın oran (Lombardi 1973; Levin 1978; Magne vd. 2003).</strong> SAM 2B ile ölçülen santral <code>W/H = 0,77</code>, Magne’nin aşınmamış dişlerde bildirdiği aralığın (yaklaşık 0,78–0,85) alt sınırında; yani genişletilmiş, düz kenarlı bir forma elverişlidir. Dudak kilidi (4.686 piksel) bu katmanın sınırıdır: form değişir, dudak çerçevesi değişmez.</p></li>
+    </ol>
+    <aside class="box fall" aria-label="Karşı ses"><span class="idx">Karşı ses · Anu (Başsız Yürütme)</span><p><strong>“Dört katman da kuraldır; o halde model ne öğreniyor, kuralı mı yoksa kuralı uygulamayı mı?”</strong> Eşikler önceden yazılıysa modelin katkısı eşik hesaplamak değil, ölçümleri okuyup dört katmanı çelişkisiz tek karara bağlamaktır. Vanilya modelin %3,1 geçerli JSON oranı tam da bu bağlama işinde çöktüğünü gösterir. Yani deney “model sefalometri öğrendi” demez; “model, verilen sefalometrik ölçümü hekimin kural hiyerarşisine göre karara çevirmeyi öğrendi” der. Bu daha dar ama savunulabilir bir iddiadır.</p></aside>
+
+    <h2 id="bolum-4">4. Ölçüm tablosu (n = 32): vanilya → 400 → 1.000 iterasyon</h2>
+    <p>Aynı 32 kilitli yüz, üç kol. Her hücre eşik kuralıyla uyuşan karar sayısıdır.</p>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="32 yüzlük kilitli test setinde üç kolun karşılaştırma tablosu">
+      <table class="matris">
+        <thead>
+          <tr>
+            <th>Ölçüt</th>
+            <th>Vanilya (eğitimsiz)</th>
+            <th>QLoRA 400 iterasyon</th>
+            <th>QLoRA 1.000 iterasyon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Geçerli karar JSON’u</strong></td><td>%3,1 (1/32)</td><td>%100 (32/32)</td><td><strong>%100 (32/32)</strong></td></tr>
+          <tr><td><strong><code>face_shape</code> · yüz şekli eşik sınıflaması</strong></td><td>%0,0 (0/32)</td><td>%46,9 (15/32)</td><td><strong>%90,6 (29/32)</strong></td></tr>
+          <tr><td><strong><code>jaw_width</code> · alt çene genişliği</strong></td><td>%0,0 (0/32)</td><td>%56,2 (18/32)</td><td><strong>%100,0 (32/32)</strong></td></tr>
+          <tr><td><strong><code>hedef_hat</code> · köşeli / yuvarlak</strong></td><td>%0,0 (0/32)</td><td>%71,9 (23/32)</td><td><strong>%100,0 (32/32)</strong></td></tr>
+          <tr><td><strong>SPA cinsiyet süzgeci</strong></td><td>%3,1 (1/32)</td><td>%100,0 (32/32)</td><td><strong>%100,0 (32/32)</strong></td></tr>
+          <tr><td><strong>1. önerilen form kategorisi</strong></td><td>%0,0 (0/32)</td><td>%56,2 (18/32)</td><td><strong>%100,0 (32/32)</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap" style="margin-top:10px">Kaynak: Atlas deney kütüğü, 15 Ekim 2026 (kilitli test seti; üç kol da altı ölçütte ölçüldü; yayın öncesi deterministik yeniden koşu ilk kütükle 18 sayımın 18’inde birebir aynı çıktı). Ham koşu kütüğü yazıyla birlikte yayımlandı: <a href="../ornek/sentetik-kare/n32-kilitli-test.json">n32-kilitli-test.json</a> (32 vakanın üç koldaki girdisi, beklenen ve üretilen sınıfları; yayın öncesi deterministik yeniden koşu) · üretim istemi ve SHA-256 özetleri: <a href="../ornek/sentetik-kare/provenance.json">provenance.json</a>. Ticari kütüphane form adları kütükte maskelidir.</p>
+    <p>Üç şey dikkat çekiyor. <strong>Birincisi,</strong> vanilya modelin asıl sorunu yanlış sınıflamak değil, çoğu zaman hiç sınıflayamamaktır: 32 yüzün 31’inde geçerli karar üretemedi. <strong>İkincisi,</strong> 400 iterasyonda biçim öğrenildi (JSON %100, SPA süzgeci %100) ama içerik yarım kaldı (yüz şekli %46,9, hedef hat %71,9, çene genişliği ve form kategorisi %56,2). <strong>Üçüncüsü,</strong> 1.000 iterasyonda yüz şekli %90,6’ya sıçrarken ona bağlı dört türev karar (çene genişliği, hedef hat, SPA, form kategorisi) %100’e ulaştı; yani model yüz şekli etiketinde 3 yüzde kararsız kalsa bile hat kararını eşik hiyerarşisi üzerinden doğru bağladı.</p>
+
+    <h2 id="bolum-5">5. Sentetik kare yüz (n = 1): iki modelin ham kararı</h2>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="Sentetik portrede iki modelin ham kararları">
+      <table class="matris">
+        <thead><tr><th>Katman</th><th>Ölçülen</th><th>Değer</th><th>Hüküm</th></tr></thead>
+        <tbody>
+          <tr><td>3B sefalometri</td><td><code>ZY-ZY</code> (#234–#454)</td><td>629,7 px</td><td>Referans elmacık genişliği</td></tr>
+          <tr><td>3B sefalometri</td><td><code>Go-Go</code> (#172–#397)</td><td>526,9 px</td><td><strong><code>Go-Go / ZY-ZY = 0,837</code> (≥ 0,82 → geniş / kare)</strong></td></tr>
+          <tr><td>3B sefalometri</td><td>Fasiyal indeks <code>N-Gn / ZY-ZY</code></td><td>1,226</td><td>Dengeli / kare, alt yüz baskın</td></tr>
+          <tr><td>SAM 2B</td><td>Üst santral <code>W/H</code></td><td>0,77</td><td>Genişliğe elverişli santral oranı</td></tr>
+          <tr><td><strong>Vanilya (<code>gemma4:31b</code>, zero-shot)</strong></td><td>yüz / çene / hedef hat</td><td><code>oval</code> · <code>medium</code> · <code>yuvarlak</code></td><td><strong>Hata:</strong> kare çeneyi oval/orta okudu → feminen ovoid hat (yuvarlak köşe, açık V kama, kısa yan kesici)</td></tr>
+          <tr><td><strong>ATLAS QLoRA (1.000 iterasyon)</strong></td><td>yüz / çene / hedef hat</td><td><code>square</code> · <code>wide</code> · <code>koseli</code></td><td>Visagism güçlü/kolerik + SPA (erkek, 38) → maskülen kuboidal hat (90° dik köşe, düz yatay kesici kenar, kapalı kama)</td></tr>
+          <tr><td>Dudak kilidi</td><td>korunan piksel</td><td>4.686</td><td>Dudak, sakal, diş eti, alt dişler iki çıktıda bire bir aynı</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Burada dikkat edilmesi gereken şey tek bir yüz olmasıdır. n = 1 bir kanıt değil, bir <em>gösterim</em>dir: 32 yüzlük tablodaki istatistiğin ne anlama geldiğini bir hekimin gözüyle görünür kılar. Ovoid ve kuboidal hat arasındaki fark dişin rengi ya da parlaklığı değil, disto-insizal köşenin açısı, kesici kenarın eğimi ve kama aralığının açıklığıdır; kaydırıcıda tam bu üç yere bakın.</p>
+
+    <h2 id="bolum-5b">5b. Yazarın kontrolü: ağızdaki diş mi modeli yanılttı? (4 kollu ablasyon)</h2>
+    <p>Bölüm 5’teki hata için akla ilk gelen karıştırıcı değişken şu: <em>“Sentetik portrenin ilk üretimindeki doğal dişler yuvarlak/ovaldi; eğitimsiz görsel-dil modeli (<code>gemma4:31b</code>) belki yüzü değil, ağızdaki dişi okuyup ‘oval’ dedi.”</em> Bu soru yazının sahibinden geldi ve deneyin taban portresi de bu yüzden değiştirildi: güncel <strong>Özgün</strong> karede dişler nötr, fizyolojik aşınmalı doğal dişlerdir; ilk üretim ayrı dosyada saklandı (<code>PROVENANCE.json</code>, <code>revizyon_v2</code>).</p>
+    <p>Sınama düzeneği: aynı brakisefal yüz (<code>Go-Go / ZY-ZY = 0,837</code>), ağız/diş bölgesi dört ayrı durumda, aynı çağrı (<code>face_analyzer.analyze_face_for_pipeline</code>, <code>use_lora = False</code>, sıcaklık 0,1), aynı model. İki sütun var: Atlas’ın raporu ve bu yazı yayımlanmadan önce yapılan bağımsız tekrar (her kol 2 kez, toplam 8 çağrı, 494 sn). İlk koşuda dört çağrı 120 sn zaman aşımına düştü (soğuk model yüklemesi ve eşzamanlı MLX koşusu); bunlar aynı istem, model ve seçeneklerle doğrudan Ollama API’sinden 300 sn sınırıyla yeniden koşuldu ve kütükte ayrı işaretlendi.</p>
+    <div class="tablo-kay" tabindex="0" role="region" aria-label="Dört kollu ablasyon: ağız durumuna göre eğitimsiz modelin yüz şekli ve çene genişliği kararı">
+      <table class="matris">
+        <thead><tr><th>Kol</th><th>Girdi</th><th>Atlas raporu<br><small>face_shape · jaw_width</small></th><th>Bağımsız tekrar (Anu, gemma4:31b)<br><small>face_shape · jaw_width</small></th></tr></thead>
+        <tbody>
+          <tr><td>Kol 1 — ağız/diş bölgesi maskeli (diş görünmüyor, <code>smile_line = unknown</code>)</td><td><code>_test_agiz_kapali.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+          <tr><td>Kol 2 — ağızda kare / kuboidal diş (QLoRA tam kare)</td><td><code>sentetik_lora_tamkare.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+          <tr><td>Kol 3 — ağızda nötr, fizyolojik aşınmalı doğal diş (güncel taban)</td><td><code>sentetik_portre_once.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+          <tr><td>Kol 4 — ağızda ilk üretimin oval / yuvarlak doğal dişi</td><td><code>_ham_portre_ilk.jpg</code></td><td><code>oval</code> · <code>medium</code></td><td><code>oval</code> · <code>medium</code> (2/2 aynı)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Okuma.</strong> Dört kolda da eğitimsiz model yüzü <code>oval</code>, çeneyi <code>medium</code> okudu; dişler maskelenince de, ağızda dik köşeli kare diş varken de karar değişmedi. Bağımsız tekrar Atlas raporuyla 8/8 çağrıda birebir uyuştu. Hata ağızdaki dişten gelen bir görsel çapa (anchoring) değil; genel amaçlı görsel-dil modelinin yüz şekli etiketi için taşıdığı <em>önyargı çökmesi</em>dir (prior mode collapse): normal kilolu yetişkin yüzlerinin büyük çoğunluğu bu modellerde varsayılan olarak <code>oval / medium</code> etiketi alır. Bu yüzden Bölüm 3’teki birinci katman (sefalometrik oran eşiği) modelin “gözüne” değil, ölçülen sayıya bağlanır.</p>
+    <aside class="box fall" aria-label="Sınır"><span class="idx">Sınır</span><p>Dört kol × iki tekrar sekiz çağrıdır; sıcaklık 0,1’de modelin kararı kararlıdır ama bu bir “model hiçbir zaman kare demez” kanıtı değildir. Ablasyon, <em>bu yüzde</em> hatanın diş bölgesinden bağımsız olduğunu gösterir; n = 32 setindeki %0 yüz şekli isabeti (Bölüm 4) aynı yönü destekler. Ham çağrı kaydı yazıyla birlikte yayımlandı: <a href="../ornek/sentetik-kare/ablasyon-4kol.json">ablasyon-4kol.json</a> (model, dosya SHA-16, tekrar, ham cevap başı, süre; zaman aşımına düşen çağrılar ve 300 sn ile yeniden koşuları dahil).</p></aside>
+
+    <h2 id="bolum-6">6. Faz geçişi mi, ezber mi?</h2>
+    <p>400 iterasyonda %46,9, 1.000 iterasyonda %90,6: eğitim kaybı yumuşak düşerken test isabetinin bir eşikten sonra sıçraması, küçük ve kurallı veri setlerinde Power ve arkadaşlarının (2022) “grokking” adıyla tanımladığı desene benziyor. Üç gözlem bu okumayı destekliyor, biri sınırlıyor:</p>
+    <ul>
+      <li><strong>Destek 1:</strong> Test seti kilitli ve eğitimde görülmemiş; isabet artışı aynı yüzlerin ezberiyle açıklanamaz.</li>
+      <li><strong>Destek 2:</strong> Yüz şekli %90,6’da kalırken ona bağlı dört türev karar %100’e ulaştı; model etiketi değil, etiketten hatta giden <em>kuralı</em> öğrenmiş görünüyor.</li>
+      <li><strong>Destek 3:</strong> Vanilya kolunda geçerli JSON %3,1; yani sıçrama “biçim öğrenme”den (400 iterasyonda tamamlanmıştı) ayrışıyor.</li>
+      <li><strong>Sınır:</strong> İki kontrol noktası bir eğri değildir. Faz geçişi iddiası 100’er iterasyonluk 10 kontrol noktasıyla çizilmiş test eğrisi olmadan “desen benzerliği” düzeyinde kalır; bu yazı onu ölçmedi.</li>
+    </ul>
+    <aside class="box fall" aria-label="Karşı ses"><span class="idx">Karşı ses · Enki &amp; Enlil (yerel denetçiler)</span><p><strong>“Eşik sınıflaması bir regresyon değil, iki-üç sınıflı bir etikettir; %90,6 ile %100 arasındaki fark 32’de 3 yüzdür.”</strong> Doğru. 32 yüzde bir isabetin güven aralığı geniştir; %90,6 için kaba %95 aralığı yaklaşık %75–%98’dir. Yazı bu yüzden “%90,6” demekle yetinmez, düşer eşiği olarak bağımsız ve daha büyük bir sette %80 tabanını koyar (Kapanış).</p></aside>
+
+    <h2 id="bolum-7">7. Kırmızı takım: n = 1 anekdotu, benzerlik riski ve yönetmelik</h2>
+    <p>Yayından önce Grok Bot’a kırmızı takım görevi verdik; şartlı onay verdi ve üç itirazı kabul ettik:</p>
+    <ul>
+      <li><strong>“Sıfır risk” yazılmaz.</strong> Sentetik kaynak ve markasız dil <em>ölçülen bir iyileşmedir</em>, mutlak sıfır değil. Üretilen yüzün gerçek bir kişiye benzeme (lookalike) riski 15 Ekim 2026’da üç katmanda <strong>ölçüldü</strong> (<a href="../ornek/sentetik-kare/lookalike-tarama.json">lookalike-tarama.json</a>): Google Lens web ters görsel aramada tam eşleşme 0 · 1.515 yerel görselde dHash ≤ 10 yakın eşleşme 0 · 576 vakalık 3B sefalometri kütüğünde birebir vektör eşleşmesi 0. Bu ölçüm riski sıfırlamaz, tarihli bir kayıt bırakır; tarama yayın sonrası tekrarlanır.</li>
+      <li><strong>Varsayılan sekme model karşılaştırmasıdır.</strong> Sağlık hizmetlerinde tanıtım mevzuatı, hastaya ait görselde sonradan teknolojik değişiklik yapılmasını ve tedavi öncesi/sonrası sunumunu sıkı şartlara bağlar. Bu bir ürün demosu olsa da aynı ihtiyatı uyguladık: varsayılan sekme “eğitimsiz model ↔ QLoRA”dır; “özgün sentetik diş ↔ ATLAS QLoRA önerisi” sekmesi ikincildir ve üzerinde “simülasyon” yazar.</li>
+      <li><strong>Tıbbi cihaz ya da klinik karar destek iddiası yoktur.</strong> Bu bir algoritma deneyi ve morfoloji simülasyonudur; tanı koymaz, tedavi önermez, klinik sonuç vaat etmez.</li>
+    </ul>
+    <p>Grok Bot’un dördüncü uyarısı yazının kendisine dairdi: <em>“n = 1 anekdotu test seti rakamlarıyla karıştırma; <code>val_loss</code> tek başına ‘öğrendi’ demek değildir.”</em> Bu yüzden Bölüm 4 ile Bölüm 5 ayrı tutuldu ve kayıp eğrisi bu yazıda kanıt olarak kullanılmadı.</p>
+
+    <h2 id="bolum-8">8. Hüküm: beş madde</h2>
+    <ol class="recs">
+      <li><p><strong>Eğitimsiz görsel-dil modeli yüzü görür, ölçmez.</strong> Kare çeneyi oval sanması bir görüş hatası değil, ölçüm yokluğudur; 32 yüzün 31’inde karar bile üretememesi bunun göstergesidir.</p></li>
+      <li><p><strong>Kural eşiğe çevrilince küçük model yeter.</strong> 3B parametreli yerel bir model, dört katmanlı eşik hiyerarşisi ve 1.000 iterasyon QLoRA ile yüz şekli isabetini %0’dan %90,6’ya, hat kararını %100’e taşıdı. Sıçramayı yapan modelin büyüklüğü değil, yüz yıllık morfoloji kurallarının sayıya dökülmesidir.</p></li>
+      <li><p><strong>Form kararı dudak çerçevesinin içinde kalır.</strong> 4.686 piksellik dudak kilidi, önerinin “yeni bir yüz” değil “aynı yüzde başka bir hat” olduğunu garanti eder; hekimin onay vereceği şey de budur.</p></li>
+      <li><p><strong>Sentetik ve markasız yayın mümkündür, risksiz değildir.</strong> Gerçek hasta görseli olmadan, ticari kütüphane adı ve galeri silüeti olmadan deney anlatılabilir; benzerlik taraması ve açık şerh bunun bedelidir.</p></li>
+      <li><p><strong>Karar hekimindir.</strong> Modelin çıktısı bir öneri ve gerekçedir; hangi hattın hastaya gideceğine klinik muayene ve hekim karar verir.</p></li>
+    </ol>
+
+    <h2 id="kapanis">Kapanış: bu yazıyı hangi sayı çökertir?</h2>
+    <p><strong>Bu yazının hükmünü üç ölçüm çökertir:</strong></p>
+    <p><strong>1. Bağımsız set:</strong> Stüdyo dışından gelen, en az 100 yüzlük ve eşikleri aynı kuralla etiketlenmiş bir sette QLoRA 1.000 iterasyon kolunun yüz şekli isabeti %80’in altına düşerse, “kural kazındı” hükmü düşer; sonuç 32 yüze özgü sayılır.</p>
+    <p><strong>2. Benzerlik taraması:</strong> Sentetik portre ters görsel aramada gerçek bir kişiyle eşleşirse portre ve türevleri yayından kaldırılır; sentetik vitrin tezi yeniden üretilmeden savunulmaz.</p>
+    <p><strong>3. Kör hekim paneli:</strong> En az 10 hekimden oluşan kör bir panel, sentetik kare yüzde ovoid ve kuboidal hattı görüp çoğunlukla ovoidi seçerse, dört katmanlı kuralın hekim yargısını temsil ettiği iddiası düşer; yazı “model kuralı öğrendi ama kural hekimi temsil etmiyor” diye düzeltilir.</p>
+    <p><strong>Başlangıçtaki sorudan geriye ne kaldı?</strong> Eğitimsiz model kare çeneyi oval sanıyordu; çünkü ölçmüyordu. Ölçümü ve yüz yıllık kuralı eşiğe çevirip küçük bir modele kazıdığımızda hat kararı 32 yüzde 32 isabet verdi. Yüzden dişe giden yol modelin boyundan değil, kuralın sayıya dökülmesinden geçiyor.</p>
+    <p class="back nasil"><a href="../kivilcim.html">Bu yazı nasıl üretildi → Kıvılcım</a> · <a href="yuzden-dise-sefalometrik-gulus-tasarimi-ve-lora-deneyi.html">Kanıt notu: Sefalometrik gülüş tasarımı ve v6 DoRA (800 adım) eğitim sınırı →</a> · <a href="../gulus-tasarimi.html">3B Gülüş Tasarımı →</a></p>
+
+    <h2 id="okura-arac">Okura üç araç (kendi vakanızda yarın sabah sınamak için)</h2>
+    <ol class="recs">
+      <li><p><strong>Oranı kendiniz ölçün.</strong> Frontal fotoğrafta iki elmacık (ZY) ve iki çene köşesi (Go) arasını piksel cinsinden ölçüp bölün. 0,82 ve üstü geniş/kare, 0,74 altı dar/üçgen, arası ovoiddir. Modelin ya da teknisyenin “oval” demesi bu sayıyı değiştirmez.</p></li>
+      <li><p><strong>Üç yere bakın.</strong> Önerilen hattı değerlendirirken disto-insizal köşenin açısına, kesici kenarın eğimine ve kama aralığının açıklığına bakın; renk ve parlaklık form kararının dışındadır.</p></li>
+      <li><p><strong>Dudak kilidini isteyin.</strong> Bir önizleme sunulduğunda dudak, diş eti ve alt dişlerin özgün kareyle piksel düzeyinde aynı olduğunu sorun; değişmişse gördüğünüz şey form önerisi değil, yeni bir fotoğraftır.</p></li>
+    </ol>
+
+    <section class="box sheet colophon" aria-labelledby="kunye">
+      <p class="kopru"><a href="../index.html#iletisim">Bir vaka veya mimari üzerinde çalışmak isterseniz: iletişime geçin →</a></p>
+      <h2 id="kunye" style="margin-top:0">Künye</h2>
+      <p><strong>Deney kodu:</strong> <code>SENTETIK-KARE-3B-LORA-DENEY-1015</code> (15 Ekim 2026) · <strong>Eşgüdüm, ölçüm hattı ve QLoRA eğitimi:</strong> Atlas (Gemini 4 Argon bineği; MediaPipe FaceMesh 478 nokta, SAM 2B, MLX QLoRA 400 / 1.000 iterasyon, <code>Qwen2.5-3B-Instruct-4bit</code>, Apple M3 Ultra 96 GB) · <strong>Kırmızı takım ve yayın şartları:</strong> Atlas Grok Bot (şartlı onay; sentetik medya, tanıtım mevzuatı, varsayılan sekme) · <strong>Yazı, canlı modül ve karşı sesler:</strong> Anu (Claude Fable 5.1, Başsız Yürütme) · <strong>Yerel denetçiler:</strong> Enki (<code>gemma4:31b</code>), Enlil (<code>qwen3.8:27b</code>) · <strong>Karar ve sorumluluk:</strong> Yusuf Aziz, Atlas Stüdyo.</p>
+      <p><strong>Kaynak dosyalar:</strong> sentetik portre, 3B ağ (<code>landmarks-3d.json</code>: 478 nokta, 2.556 kenar), 2x makro ve tam kare çıktılar; <code>PROVENANCE.json</code> içinde üretim istemi ve SHA-256 özetleri. <strong>Kanıt dosyaları (açık):</strong> <a href="../ornek/sentetik-kare/n32-kilitli-test.json">n32-kilitli-test.json</a> (n = 32, üç kol) · <a href="../ornek/sentetik-kare/ablasyon-4kol.json">ablasyon-4kol.json</a> (4 kol × 2 tekrar) · <a href="../ornek/sentetik-kare/provenance.json">provenance.json</a> · <a href="../ornek/sentetik-kare/lookalike-tarama.json">lookalike-tarama.json</a> (ters görsel arama ve benzerlik taraması, 3 katman: Google Lens web tam eşleşme 0 · 1.515 yerel görsel dHash ≤ 10 eşleşme 0 · 576 vaka 3B sefalometri birebir 0). <strong>Ölçülmeyenler:</strong> 100’er iterasyonluk ara kontrol noktaları. <strong>Hukuk görüşü değildir;</strong> yayın öncesi kırmızı takım notu avukat teyidi önerir.</p>
+    </section>
+
+    <h2 id="kaynaklar">Kaynaklar</h2>
+    <ol class="refs">
+      <li><div>Williams, J. L. (1914), “A new classification of human tooth forms with special reference to a new system of artificial teeth”, <em>Dental Cosmos</em> 56:627–628<a href="https://scholar.google.com/scholar?q=Williams+1914+%22new+classification+of+human+tooth+forms%22" rel="noopener">scholar.google.com (Williams 1914)</a></div></li>
+      <li><div>Frush, J. P. &amp; Fisher, R. D. (1958), “The dynesthetic interpretation of the dentogenic concept”, <em>Journal of Prosthetic Dentistry</em> 8(4):558–581<a href="https://doi.org/10.1016/0022-3913(58)90043-X" rel="noopener">doi.org/10.1016/0022-3913(58)90043-X</a></div></li>
+      <li><div>Lombardi, R. E. (1973), “The principles of visual perception and their clinical application to denture esthetics”, <em>Journal of Prosthetic Dentistry</em> 29(4):358–382<a href="https://doi.org/10.1016/S0022-3913(73)80013-7" rel="noopener">doi.org/10.1016/S0022-3913(73)80013-7</a></div></li>
+      <li><div>Levin, E. I. (1978), “Dental esthetics and the golden proportion”, <em>Journal of Prosthetic Dentistry</em> 40(3):244–252<a href="https://doi.org/10.1016/0022-3913(78)90028-8" rel="noopener">doi.org/10.1016/0022-3913(78)90028-8</a></div></li>
+      <li><div>Farkas, L. G. (ed.) (1994), <em>Anthropometry of the Head and Face</em>, 2. baskı, Raven Press, New York<a href="https://scholar.google.com/scholar?q=Farkas+1994+%22Anthropometry+of+the+Head+and+Face%22" rel="noopener">scholar.google.com (Farkas 1994)</a></div></li>
+      <li><div>Magne, P., Gallucci, G. O. &amp; Belser, U. C. (2003), “Anatomic crown width/length ratios of unworn and worn maxillary teeth in white subjects”, <em>Journal of Prosthetic Dentistry</em> 89(5):453–461<a href="https://doi.org/10.1016/S0022-3913(03)00125-2" rel="noopener">doi.org/10.1016/S0022-3913(03)00125-2</a></div></li>
+      <li><div>Paolucci, B., Calamita, M., Coachman, C., Gürel, G., Shayder, A. &amp; Hallawell, P. (2012), “Visagism: The art of dental composition”, <em>Quintessence of Dental Technology</em> 35:187–200<a href="https://scholar.google.com/scholar?q=Paolucci+2012+%22Visagism%3A+The+art+of+dental+composition%22" rel="noopener">scholar.google.com (Paolucci 2012)</a></div></li>
+      <li><div>Kartynnik, Y., Ablavatski, A., Grishchenko, I. &amp; Grundmann, M. (2019), “Real-time Facial Surface Geometry from Monocular Video on Mobile GPUs”, <em>CVPR Workshops</em><a href="https://arxiv.org/abs/1907.06724" rel="noopener">arxiv.org/abs/1907.06724</a></div></li>
+      <li><div>Lugaresi, C. vd. (2019), “MediaPipe: A Framework for Building Perception Pipelines”<a href="https://arxiv.org/abs/1906.08172" rel="noopener">arxiv.org/abs/1906.08172</a></div></li>
+      <li><div>Kirillov, A. vd. (2023), “Segment Anything”, <em>ICCV 2023</em><a href="https://arxiv.org/abs/2304.02643" rel="noopener">arxiv.org/abs/2304.02643</a></div></li>
+      <li><div>Ravi, N. vd. (2024), “SAM 2: Segment Anything in Images and Videos”<a href="https://arxiv.org/abs/2408.00714" rel="noopener">arxiv.org/abs/2408.00714</a></div></li>
+      <li><div>Hu, E. J. vd. (2022), “LoRA: Low-Rank Adaptation of Large Language Models”, <em>ICLR 2022</em><a href="https://arxiv.org/abs/2106.09685" rel="noopener">arxiv.org/abs/2106.09685</a></div></li>
+      <li><div>Dettmers, T., Pagnoni, A., Holtzman, A. &amp; Zettlemoyer, L. (2023), “QLoRA: Efficient Finetuning of Quantized LLMs”, <em>NeurIPS 2023</em><a href="https://arxiv.org/abs/2305.14314" rel="noopener">arxiv.org/abs/2305.14314</a></div></li>
+      <li><div>Power, A., Burda, Y., Edwards, H., Babuschkin, I. &amp; Misra, V. (2022), “Grokking: Generalization Beyond Overfitting on Small Algorithmic Datasets”<a href="https://arxiv.org/abs/2201.02177" rel="noopener">arxiv.org/abs/2201.02177</a></div></li>
+      <li><div>Hannun, A., Digani, J., Katharopoulos, A. &amp; Collobert, R. (2023), <em>MLX: Efficient and flexible machine learning on Apple silicon</em><a href="https://github.com/ml-explore/mlx" rel="noopener">github.com/ml-explore/mlx</a></div></li>
+      <li><div>Sağlık Hizmetlerinde Tanıtım ve Bilgilendirme Faaliyetleri Hakkında Yönetmelik, <em>Resmî Gazete</em> 29 Temmuz 2023, sayı 32263 (ve 12 Kasım 2025 değişikliği; kırmızı takım okuması, hukuk görüşü değildir)<a href="https://www.resmigazete.gov.tr/eskiler/2023/07/20230729.htm" rel="noopener">resmigazete.gov.tr (29.07.2023)</a></div></li>
+      <li><div>Atlas Stüdyo birincil deney kütükleri (Ekim 2026): <code>SENTETIK-KARE-3B-LORA-DENEY-1015</code> (<a href="../ornek/sentetik-kare/provenance.json">provenance.json</a>, SHA-256), n = 32 kilitli test kütüğü (<a href="../ornek/sentetik-kare/n32-kilitli-test.json">n32-kilitli-test.json</a>), 4 kollu ablasyon kütüğü (<a href="../ornek/sentetik-kare/ablasyon-4kol.json">ablasyon-4kol.json</a>), 3 katmanlı ters görsel / benzerlik taraması (<a href="../ornek/sentetik-kare/lookalike-tarama.json">lookalike-tarama.json</a>: Google Lens web tam eşleşme 0 · 1.515 yerel görsel dHash ≤ 10 eşleşme 0 · 576 vaka 3B sefalometri birebir 0), Grok Bot kırmızı takım notu<a href="https://atlasmaster.app/kivilcim.html" rel="noopener">atlasmaster.app/kivilcim.html</a></div></li>
+    </ol>
+
+    <nav class="paylas" aria-label="Paylaş">
+      <h2>PAYLAŞ</h2>
+      <ul>
+      <li><a class="tag" href="https://x.com/intent/post?text=Y%C3%BCzden%20Di%C5%9Fe%3A%203B%20Sefalometriyle%20E%C4%9Fitilen%20QLoRA%20Modeli%20%C2%B7%20Atlas%20St%C3%BCdyo&amp;url=https%3A%2F%2Fatlasmaster.app%2Fblog%2Fyuzden-dise-sefalometrik-lora.html" target="_blank" rel="noopener">X</a></li>
+      <li><a class="tag" href="https://wa.me/?text=Y%C3%BCzden%20Di%C5%9Fe%3A%203B%20Sefalometriyle%20E%C4%9Fitilen%20QLoRA%20Modeli%20%C2%B7%20Atlas%20St%C3%BCdyo%20https%3A%2F%2Fatlasmaster.app%2Fblog%2Fyuzden-dise-sefalometrik-lora.html" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a class="tag" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fatlasmaster.app%2Fblog%2Fyuzden-dise-sefalometrik-lora.html" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a class="tag" href="https://t.me/share/url?url=https%3A%2F%2Fatlasmaster.app%2Fblog%2Fyuzden-dise-sefalometrik-lora.html&amp;text=Y%C3%BCzden%20Di%C5%9Fe%3A%203B%20Sefalometriyle%20E%C4%9Fitilen%20QLoRA%20Modeli%20%C2%B7%20Atlas%20St%C3%BCdyo" target="_blank" rel="noopener">Telegram</a></li>
+      <li><button type="button" class="tag" data-kopya>Bağlantıyı kopyala</button></li>
+      </ul>
+    </nav>
+    <p class="back"><a href="../blog.html">← Tüm yazılar</a></p>
+  </div>
+</div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="privacy">Dünyada nasıl, biz ne öneririz.</p>
+    <p class="disclaimer">Blog yazıları Kıvılcım yöntemi ile hazırlanan turlardan çıkar; sayılar ve atıflar yazının kaynakçasındaki kaynaklara dayanır. Bu yazıdaki görseller %100 sentetik modele aittir; gerçek hasta değildir.</p>
+    <p class="foot"><span>Atlas</span><span>atlasmaster.app</span><a href="../index.html">Ana sayfa</a><a href="../blog.html">Yazılar</a><a href="../kivilcim.html">Kıvılcım</a><a href="https://x.com/YusufAzizTnbr" rel="me noopener" target="_blank">X</a><a href="https://www.instagram.com/yusuftinbir/" rel="me noopener" target="_blank">Instagram</a><a href="../gizlilik.html">Gizlilik</a><a href="../hakkinda.html">Hakkında</a><a href="../fayda-defteri.html">Fayda defteri</a><a href="https://yusufaziz.com.tr/">Yusuf Aziz · Yazılar → yusufaziz.com.tr</a><a href="#icerik">Başa dön ↑</a></p>
+  </div>
+</footer>
+<script src="../ornek/maya/maya-rehber.js?v=4d66cfa1" defer></script>
+</body>
+</html>

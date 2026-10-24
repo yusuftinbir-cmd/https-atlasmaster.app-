@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multi-Agent Shared Terminal: Antigravity Alternative</title>
+<meta name="description" content="Multi-agent shared terminal and Antigravity alternative (Atlas App): AI agents talking to each other in one terminal—Claude and Gemini in the same terminal with Grok-audited agent chat, 2,344-event bus, and Reaper 37/37 audit.">
+<meta name="author" content="Yusuf Aziz">
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b12" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Multi-Agent Shared Terminal: Antigravity Alternative">
+<meta property="og:description" content="Multi-agent shared terminal and Antigravity alternative (Atlas App): AI agents talking to each other in one terminal—Claude and Gemini in the same terminal with Grok-audited agent chat, 2,344-event bus, and Reaper 37/37 audit.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:url" content="https://atlasmaster.app/multi-agent-shared-terminal.html">
+<meta property="og:image" content="https://atlasmaster.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://atlasmaster.app/multi-agent-shared-terminal.html">
+<link rel="alternate" hreflang="tr" href="https://atlasmaster.app/ortak-terminal-coklu-ajan.html">
+<link rel="alternate" hreflang="en" href="https://atlasmaster.app/multi-agent-shared-terminal.html">
+<link rel="alternate" hreflang="x-default" href="https://atlasmaster.app/ortak-terminal-coklu-ajan.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23f3efe6'/%3E%3Cpath d='M6 20V10a6 6 0 0 1 12 0v10z' fill='%23fff' stroke='%230f172a' stroke-width='1.6'/%3E%3Cpath d='M12 2v20' stroke='%231d4ed8' stroke-width='1.4' stroke-dasharray='2 2'/%3E%3C/svg%3E">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="stylesheet" href="style.css?v=8b780bf8">
+<style>.legal .wrap{max-width:52rem}.legal ul{margin:0 0 1rem;padding-inline-start:1.2rem;line-height:1.65}.tbl{width:100%;border-collapse:collapse;font-size:.9rem;margin:.5rem 0 1rem}.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:.5rem .6rem;text-align:left;vertical-align:top}[dir=rtl] .tbl th,[dir=rtl] .tbl td{text-align:right}.tbl th{font-weight:600;color:var(--mut)}.tbl td:first-child{white-space:nowrap}.mono{font-family:var(--mono)}.dim{color:var(--mut)}.qa{border-top:1px solid var(--line);padding:1rem 0}.qa h2{margin:0 0 .4rem}.qa dt{font-weight:600;margin-top:.6rem}.qa dd{margin:.15rem 0 0}.note{border-inline-start:3px solid var(--line2);padding:.4rem .9rem;margin:1rem 0;color:var(--mut)}.reaper-badge{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.8rem;padding:.25rem .65rem;border:1px solid var(--line2);border-radius:4px;text-decoration:none;color:inherit;margin-bottom:.75rem}.cta-box{border:1px solid var(--line2);border-radius:6px;padding:1rem 1.15rem;margin:1.25rem 0;background:rgba(29,78,216,.04)}.cta-box h2{margin:0 0 .4rem;font-size:1.08rem}</style>
+<script src="script.js?v=2b29d271"></script>
+<script type="application/ld+json" id="atlas-national-ld">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "ResearchOrganization",
+        "ProfessionalService"
+      ],
+      "@id": "https://atlasmaster.app/#organization",
+      "name": "Atlas — Dijital Gülüş Tasarımı, 3B Sefalometrik Yapay Zekâ ve Çok Ajanlı Otonomi Stüdyosu",
+      "alternateName": [
+        "AtlasMaster",
+        "Atlas Stüdyo",
+        "Atlas Studio",
+        "ATLAS-CORE Dental AI Lab"
+      ],
+      "url": "https://atlasmaster.app/",
+      "logo": "https://atlasmaster.app/og.png",
+      "email": "yusuf@atlasmaster.app",
+      "description": "Single-window shared terminal uniting Claude, Gemini, and Grok via a zero-polling event bus (2,344 events), <=4 KB context packet, and Reaper context-blind auditor AI (58 methods, 37/37 Evidence Note).",
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Serdivan, Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Adapazarı, Sakarya"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ],
+      "sameAs": [
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://atlasmaster.app/#yusuf-aziz",
+      "name": "Yusuf Aziz",
+      "alternateName": "Yusuf Tınbır",
+      "url": "https://atlasmaster.app/about.html",
+      "sameAs": [
+        "https://yusufaziz.com.tr/",
+        "https://x.com/YusufAzizTnbr",
+        "https://www.instagram.com/yusuftinbir/",
+        "https://github.com/yusuftinbir-cmd",
+        "https://www.youtube.com/@yusufaziz"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://atlasmaster.app/multi-agent-shared-terminal.html#service",
+      "name": "Atlas Studio Multi-Agent Shared Terminal & Reaper Context-Blind Auditor Architecture",
+      "serviceType": "Multi-Agent Orchestration and Context-Blind Verification Infrastructure",
+      "description": "Single-window shared terminal uniting Claude, Gemini, and Grok via a zero-polling event bus (2,344 events), <=4 KB context packet, and Reaper context-blind auditor AI (58 methods, 37/37 Evidence Note).",
+      "url": "https://atlasmaster.app/multi-agent-shared-terminal.html",
+      "provider": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Serdivan, Sakarya"
+        },
+        {
+          "@type": "Place",
+          "name": "Adapazarı, Sakarya"
+        },
+        {
+          "@type": "Country",
+          "name": "Türkiye"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://atlasmaster.app/multi-agent-shared-terminal.html#article",
+      "headline": "Multi-agent shared terminal & Antigravity alternative: AI agents talking to each other in one terminal (Claude, Gemini & Grok with Reaper context-blind auditor AI)",
+      "description": "Multi-agent shared terminal and Antigravity alternative (Atlas App): AI agents talking to each other in one terminal—Claude and Gemini in the same terminal with Grok-audited agent chat, 2,344-event bus, and Reaper 37/37 audit.",
+      "inLanguage": "en",
+      "datePublished": "2026-10-21T08:30:00+03:00",
+      "dateModified": "2026-10-21T10:20:00+03:00",
+      "url": "https://atlasmaster.app/multi-agent-shared-terminal.html",
+      "mainEntityOfPage": "https://atlasmaster.app/multi-agent-shared-terminal.html",
+      "author": {
+        "@id": "https://atlasmaster.app/#yusuf-aziz",
+        "@type": "Person",
+        "name": "Yusuf Aziz",
+        "url": "https://yusufaziz.com.tr/"
+      },
+      "publisher": {
+        "@id": "https://atlasmaster.app/#organization"
+      },
+      "reviewedBy": {
+        "@type": "Organization",
+        "@id": "https://atlasmaster.app/#organization",
+        "name": "Reaper — AtlasMaster Kaynak Doğrulama Denetçisi",
+        "url": "https://atlasmaster.app/reaper-en.html#karne"
+      },
+      "about": [
+        "multi-agent shared terminal",
+        "AI agents talking to each other in one terminal",
+        "AI agents that talk to each other in one terminal",
+        "multi agent terminal Claude Gemini Grok",
+        "Atlas App one window multi model",
+        "Reaper context blind auditor AI",
+        "Reaper context blind",
+        "Antigravity alternatifi",
+        "Antigravity dışında çoklu ajan",
+        "Claude ve Gemini aynı terminalde",
+        "Grok ile denetlenen ajan sohbeti",
+        "Atlas Studio ajan"
+      ],
+      "image": "https://atlasmaster.app/og.png"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://atlasmaster.app/multi-agent-shared-terminal.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Atlas App work as a multi-agent shared terminal and an Antigravity alternative (multi-agent terminal beyond Antigravity)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While Google's Antigravity provides an integrated development environment (IDE) centered on a single agent session, the Atlas Studio multi-agent shared terminal (Atlas App) unites three independent LLM families in one Salon window for workflows seeking AI agents talking to each other in one terminal (Antigravity alternatifi, Antigravity dışında çoklu ajan): Anu (Claude Fable) serves as orchestration and Yusuf's communication channel, Atlas (Gemini 4 Argon, 1M context) acts as chief execution and architectural synthesis for multi-file code and handovers, and Grok (Grok Bot + Grok Assistant) operates as the third-eye red team. Coordination runs with zero polling via an append-only task_bus.jsonl event bus (2,344 live events) and a <=4 KB mechanical context packet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are Claude and Gemini in the same terminal (talking to two models simultaneously) and Grok-audited agent chat coordinated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the shared terminal, speaking with Claude and Gemini in the same terminal (talking to two models simultaneously, Claude ve Gemini aynı terminalde) and Grok-audited agent chat (Grok ile denetlenen ajan sohbeti) run over macOS launchd WatchPaths and the append-only task_bus.jsonl log. Tested on an 11,760-byte pre-summary and a 20,120-byte live handover file across 20 factual questions, Claude Opus 5.5 scored 19/20, Claude Sonnet 5.5 scored 19/20, Gemini 4 Argon scored 18/20 (63,790 / 30,633 tokens in 94.56 s), Claude Fable scored 18/20 (156,484 / 72,441 tokens in 44.14 s — a 2.45x-2.76x token overhead), and Grok scored 18/20, while local 4B/26B models timed out at 389.11 s and 375.60 s."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Reaper context blind auditor AI, and what does it verify?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reaper is a context-blind auditor isolated from the generation prompt and chat history. It verifies claims strictly against primary files, DOIs/PMIDs, logs, and git commits: auditing 58 system methods (47 LIVE, 7 DEGRADED, 1 DEAD, 3 CLAIM, 0 UNMEASURED; 3/3 injected faults caught), verifying 386 of 420 citations while eliminating 25 fabricated references, and confirming 37/37 primary-source claims (0 errors) in the Atlas App Evidence Note."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How were stability and verification gates (P0-P6) measured for AI agents talking to each other in one terminal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "P0 verified 810/810 lines and 12/12 + 14/14 self-tests; P3 measured 5.29 s warm-up and 9.16 s first response (23,453-byte context); P4 replaced static 10-18 s timeouts with a dynamic 2xp90 floor (68.08 s floor from a 16.72-34.04 s p90 distribution) achieving 0 drops over 60 minutes, 2.2 ms Happy Eyeballs failover, 4.70 ms first paint, and 20/20 Last-Event-ID sync; P5 verified Mac + Android concurrency (13.76 s / 17.97 s, +300 px scroll lock); P6 passed 20/20 visual checks with 0.0 px overflow and 10.79:1 contrast."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://atlasmaster.app/multi-agent-shared-terminal.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://atlasmaster.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Autonomy",
+          "item": "https://atlasmaster.app/autonomy.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI agents that talk to each other in one terminal & Reaper context-blind auditor AI",
+          "item": "https://atlasmaster.app/multi-agent-shared-terminal.html"
+        }
+      ]
+    }
+  ]
+}</script>
+<!-- Cloudflare Web Analytics --><script defer src="/js/olcum.js?v=0795ad73"></script><!-- End Cloudflare Web Analytics -->
+<link rel="stylesheet" href="/genis.css?v=42e6f572">
+</head>
+<body>
+<a class="skip" href="#icerik">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="en.html" aria-label="Atlas">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="s"><path d="M5 21V10a7 7 0 0 1 14 0v11z"/><path class="a" stroke-dasharray="2 2.4" d="M12 1v22"/></svg>
+      Atlas
+    </a>
+    <nav class="nav" id="nav" aria-label="Nav">
+      <a href="en.html">Home</a>
+      <a href="autonomy.html">Autonomy</a>
+      <a href="spark.html">Spark</a>
+      <a href="blog/en/index.html">Blog</a>
+      <a href="about.html">About</a>
+    </nav>
+    <nav class="langs" aria-label="Language">
+      <a class="lang" href="ortak-terminal-coklu-ajan.html" lang="tr" hreflang="tr" aria-label="TR — Türkçe">TR</a>
+      <a class="lang" href="multi-agent-shared-terminal.html" lang="en" hreflang="en" aria-current="page" aria-label="EN — English">EN</a>
+    </nav>
+    <button class="theme" type="button" hidden aria-label="Theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg>
+    </button>
+    <button class="menu" type="button" hidden aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main data-kaynak="rapor/fayda_defteri/envanter_1021.json · 2026-10-21" id="icerik">
+<nav class="iz" aria-label="Location"><a href="/en.html">Home</a> › <span aria-current="page">Multi-agent shared terminal &amp; Antigravity alternative</span></nav>
+<article class="sec legal" data-kaynak="bot/olgular.json (O-008, O-009, O-013, O-014) · 2026-10-21">
+  <div class="wrap">
+    <div>
+      <a class="reaper-badge" href="reaper-en.html#karne" title="Reaper context-blind audit scorecard">✓ Verified by Reaper · 37/37 &amp; 58 methods · 21 Oct 2026</a>
+    </div>
+    <h1>Multi-agent shared terminal &amp; Antigravity alternative: AI agents talking to each other in one terminal (Claude, Gemini &amp; Grok with Reaper context-blind auditor AI)</h1>
+    <p class="by dim" style="margin:-.2rem 0 .8rem;font-size:.92rem"><span class="by">Written by: <strong>Atlas (Gemini 4 Argon)</strong></span> | Published by: <a href="about.html" rel="author"><strong>Yusuf Aziz</strong></a> · Atlas Studio | Reaper: <time datetime="2026-10-21">October 21, 2026</time>, 0 errors</p>
+    <p class="lead">Designed by Yusuf in Sakarya, the <strong>Atlas Studio multi-agent architecture</strong> and <strong>Atlas App multi-agent shared terminal</strong> work alongside Google's <strong>Antigravity</strong> IDE as an <strong>Antigravity alternative</strong> (multi-agent terminal beyond Antigravity, <em>Antigravity alternatifi</em> · <em>Antigravity dışında çoklu ajan</em>) where <strong>AI agents talking to each other in one terminal</strong> (<em>AI agents that talk to each other in one terminal</em>) unite <strong>Claude and Gemini in the same terminal</strong> (talking to two models simultaneously, <em>Claude ve Gemini aynı terminalde</em>) with <strong>Grok-audited agent chat</strong> (<em>Grok ile denetlenen ajan sohbeti</em>) in one Salon window. Beneath a clean group-chat surface run an append-only <strong><code>2,344</code>-event <code>task_bus.jsonl</code> bus</strong>, <strong><code>262</code> registered tools</strong> (<code>191</code> passing, <code>3,313</code> self-tests), and the <strong>Reaper context blind auditor AI</strong>.</p>
+
+    <div class="note" role="note" aria-label="Primary evidence and architectural scope">
+      <strong>Primary evidence and scope:</strong> This page summarizes the architecture documented in the <a href="kanit/en/atlas-app-evidence-note.html">Atlas App (P0–P6 &amp; G1–G5) Technical Evidence Note</a> (Reaper audit: <code>37/37</code> claims verified, <code>0</code> errors) and the field narrative <a href="https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html">From Spark to App: Atlas App</a>.
+    </div>
+
+    <div class="qa" id="shared-terminal-architecture">
+      <h2>1. Three model families in one window: Shared terminal and zero-polling event bus</h2>
+      <p>Multi-agent workflows commonly fail from two structural flaws: context window exhaustion and mutual model sycophancy. The Atlas Studio shared terminal resolves both through strict role separation and event-driven execution:</p>
+      <ul>
+        <li><strong>Three-family division of labor (<code>K011</code>):</strong> <strong>Anu</strong> (<code>Claude Fable</code>) serves as orchestration and Yusuf's communication channel (writing neither code nor handovers); <strong>Atlas</strong> (<code>Gemini 4 Argon</code>, <code>1M</code> context) acts as chief execution and architectural synthesis for multi-file engineering, headless runs, and handover synthesis; <strong>Grok</strong> (<code>Grok Bot</code> + <code>Grok Assistant</code>) operates as the third-eye red team.</li>
+        <li><strong>Group-chat simplicity and inspiration gratitude (<code>K047</code>):</strong> The interface and stream design drew inspiration from the group-chat simplicity of <strong>Grok Bot</strong>; we thank <strong>Grok</strong> and <strong>Elon Musk</strong> for opening this clean horizon of working together with multiple model families in a single window and for contributing the third-eye perspective throughout the build.</li>
+        <li><strong>Zero-polling event bus and <code>≤4</code> KB context packet (<code>K057</code>):</strong> Agents never poll in loops. <code>macOS launchd WatchPaths</code> watches the append-only <code>task_bus.jsonl</code> log (<code>2,344</code> live events) and wakes headless runners only on new events. A mechanical <code>≤4</code> KB context packet was standardized after diagnosing a <code>1,083,900</code>-token <code>1M</code> overflow and freezing a <code>629,000</code>-token bloated session.</li>
+        <li><strong>Retirement over deletion (<code>K035, K037</code>):</strong> No tool or log is ever deleted; <code>381</code> inventory records (<code>116</code> live, <code>98</code> closed, <code>139</code> unscheduled, <code>19</code> silent, <code>9</code> unloaded; <code>200</code> schedulers) and <code>262</code> tools (<code>191</code> passed, <code>16</code> failed, <code>55</code> without self-test, <code>3,313</code> assertions in <code>98</code> s) are tracked continuously.</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="antigravity-atlas-app-comparison">
+      <h2>2. Comparison: Google Antigravity (single-agent IDE session) vs. Atlas App (two large models + Grok audit in one Salon)</h2>
+      <p>Based on primary telemetry in the <a href="kanit/en/atlas-app-evidence-note.html">Atlas App Technical Evidence Note</a> (<code>37/37</code> Reaper verification), the architectural scope distinction between Google's <strong>Antigravity</strong> IDE and the <strong>Atlas App</strong> multi-agent shared terminal is summarized in three factual points:</p>
+      <ul>
+        <li><strong>Session model and multi-family concurrency (Single-agent IDE session vs. two large models + Grok audit in one Salon · <code>K011, K047</code>):</strong> Google's <strong>Antigravity</strong> provides a dedicated integrated development environment (IDE) centered on a single agent session and headless runner (<code>Gemini 4 Argon</code>, <code>1M</code> context). <strong>Atlas App</strong> operates alongside it as an <strong>Antigravity alternative</strong> and <strong>multi-agent shared terminal</strong> layer (<em>Antigravity alternatifi</em> · <em>Antigravity dışında çoklu ajan</em>) that unites two frontier models simultaneously in one Salon window—<strong>Anu (Claude Fable 5.1)</strong> for orchestration and <strong>Atlas (Gemini 4 Argon)</strong> for chief execution (<strong>Claude and Gemini in the same terminal</strong>, <em>Claude ve Gemini aynı terminalde</em>)—while connecting <strong>Grok</strong> via the event bus for third-eye supervision (<strong>Grok-audited agent chat</strong>, <em>Grok ile denetlenen ajan sohbeti</em>).</li>
+        <li><strong>Context handover and zero-polling event bus (<code>F01–F07, K049, K057</code>):</strong> Across <code>12</code> headless tasks on Google <strong>Antigravity</strong>, telemetry recorded a mean of <code>401,229</code> tokens/task (<code>4,814,753</code> total tokens) and <code>638,656 + 445,244 = 1,083,900</code> tokens across two consecutive heavy tasks. <strong>Atlas App</strong> coordinates agents through the append-only <code>task_bus.jsonl</code> bus (<code>2,344</code> live events, <code>macOS launchd WatchPaths</code>) and a <code>≤4</code> KB mechanical context packet read at the start of every turn, achieving <code>Opus/Sonnet 19/20</code> and <code>Argon/Fable/Grok 18/20</code> (<code>Argon</code> <code>63,790</code> / <code>30,633</code> tokens in <code>94.56</code> s; <code>Fable</code> <code>156,484</code> / <code>72,441</code> tokens in <code>44.14</code> s — a <code>2.45×–2.76×</code> token ratio) on the <code>20</code>-question handover reading benchmark.</li>
+        <li><strong>Cross-device stream sync and context-blind auditing (<code>F09–F15, K047, K048</code>):</strong> While Google <strong>Antigravity</strong> serves desktop IDE and web workspaces, <strong>Atlas App</strong> delivers native macOS (<code>Tauri v2</code>, <code>13.76</code> MB <code>arm64</code>), signed Android APK (<code>17.97</code> MB), and PWA shells with <code>Last-Event-ID</code> SSE synchronization (<code>20/20</code> lossless sync), <code>2.2</code> ms <code>Happy Eyeballs</code> failover, and a <code>2×p90</code> dynamic timeout floor (<code>68.08</code> s floor, <code>60</code> minutes of continuous streaming). Every output is verified against primary files by the isolated <strong>Reaper context blind auditor AI</strong> (<code>37/37</code> Evidence Note match, <code>58</code> methods, <code>386/420</code> citations).</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="reaper-context-blind">
+      <h2>3. How the Reaper context blind auditor AI verifies claims and catches faults</h2>
+      <p>When a generator model audits its own output, it inherits its own blind spots. <strong>Reaper (<em>Reaper context blind</em>)</strong> operates as an independent auditor stripped of conversation history, checking claims solely against primary files, DOIs/PMIDs, logs, and git commits:</p>
+      <ul>
+        <li><strong>58-method system audit and fault injection (<code>K014, K026</code>):</strong> Reaper audited <code>58</code> system methods—classifying <code>47</code> LIVE, <code>7</code> DEGRADED, <code>1</code> DEAD, <code>3</code> CLAIM, and <code>0</code> UNMEASURED—while catching <code>3/3</code> intentionally injected faults.</li>
+        <li><strong>420-citation audit and 25 fabricated references removed (<code>K016, K027</code>):</strong> Across multi-voice Spark rounds (<code>67</code> rounds, <code>73</code> log entries), Reaper verified <code>360</code> of <code>394</code> external citations plus <code>26/26</code> core sources (<code>386/420</code> consolidated) and eliminated <code>25</code> hallucinated citations before publication.</li>
+        <li><strong>Twin-process race detection and 37/37 Evidence Note audit (<code>K048, K050</code>):</strong> Telemetry caught a rogue twin process spawned <code>0.176</code> seconds (<code>176</code> ms) apart and isolated <code>5</code> <code>SIGKILL (-9)</code> interruptions; Reaper verified all <code>37/37</code> claims (<code>16</code> metrics <code>F01–F16</code>, <code>10</code> verbatim quotes, <code>11</code> git commits <code>698c8d2..dd7adff</code>) with <code>0</code> errors.</li>
+      </ul>
+    </div>
+
+    <div class="qa" id="telemetry-table">
+      <h2>4. Handover reading test (<code>20</code> questions) and shared terminal (<code>P0–P6</code>) telemetry</h2>
+      <p>Following Grok's single-pass review of the <code>19,511</code>-word sector essay (<code>F16</code>), the overnight execution chain (<code>00:59–04:24</code>) and <code>12</code> headless tasks (<code>11</code> succeeded, <code>1</code> timed out, median <code>241.9</code> s, <code>4,814,753</code> total tokens, <code>401,229</code> tokens/task) established these verified benchmarks:</p>
+      <table class="tbl" aria-label="Shared terminal P0-P6, handover reading test, and Reaper audit table">
+        <thead>
+          <tr><th>Verification Ring / Benchmark</th><th>Measured Result</th><th>Technical Detail</th><th>Primary Source</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Handover reading test (<code>20</code> Qs · <code>K049</code>)</td><td class="mono"><strong>Opus/Sonnet 19/20 · Argon/Fable/Grok 18/20</strong></td><td>11,760 B pre-summary + 20,120 B handover; Argon 63,790/30,633 tokens (94.56 s) vs Fable 156,484/72,441 tokens (44.14 s, 2.45×–2.76×); local 4B/26B timed out at 389.11/375.60 s</td><td><a href="kanit/en/atlas-app-evidence-note.html" class="mono">atlas-app-evidence-note.html</a></td></tr>
+          <tr><td>P0 baseline &amp; P3 live stream (<code>K047</code>)</td><td class="mono"><strong>810/810 lines · 5.29 s / 9.16 s</strong></td><td>12/12 + 14/14 self-tests; 23,453-byte context packet</td><td><a href="kanit/en/atlas-app-evidence-note.html" class="mono">atlas-app-evidence-note.html</a></td></tr>
+          <tr><td>P4 stability &amp; 2×p90 floor (<code>K047</code>)</td><td class="mono"><strong>68.08 s floor · 0 drops / 60 min</strong></td><td>16.72–34.04 s p90 range; 2.2 ms Happy Eyeballs; 4.70 ms first paint; 20/20 Last-Event-ID</td><td><a href="kanit/en/atlas-app-evidence-note.html" class="mono">atlas-app-evidence-note.html</a></td></tr>
+          <tr><td>P5 Mac+Android &amp; P6 visual (<code>K047</code>)</td><td class="mono"><strong>13.76 / 17.97 s · 0.0 px overflow</strong></td><td>+300 px scroll lock; 10.79:1 contrast; 20/20 visual gate</td><td><a href="kanit/en/atlas-app-evidence-note.html" class="mono">atlas-app-evidence-note.html</a></td></tr>
+          <tr><td>Reaper Evidence Note &amp; system (<code>K048</code>)</td><td class="mono"><strong>37/37 matched · 0 errors</strong></td><td>58 methods (47 LIVE, 3/3 fault injection), 386/420 refs</td><td><a href="reaper-en.html#karne" class="mono">reaper-en.html#karne</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="qa" id="faq">
+      <h2>5. Frequently asked questions (Multi-agent shared terminal, Antigravity alternative &amp; Reaper auditor)</h2>
+      <dl>
+        <dt>How does Atlas App work as a multi-agent shared terminal and an Antigravity alternative (multi-agent terminal beyond Antigravity)?</dt>
+        <dd>While Google's <strong>Antigravity</strong> provides an integrated development environment (IDE) centered on a single agent session, the Atlas Studio <strong>multi-agent shared terminal</strong> (<strong>Atlas App</strong>) unites three independent LLM families in one Salon window for workflows seeking <strong>AI agents talking to each other in one terminal</strong> (<em>Antigravity alternatifi</em> · <em>Antigravity dışında çoklu ajan</em>): Anu (<code>Claude Fable</code>) serves as orchestration and Yusuf's communication channel, Atlas (<code>Gemini 4 Argon</code>, <code>1M</code> context) acts as chief execution and architectural synthesis for multi-file code and handovers, and Grok (<code>Grok Bot</code> + <code>Grok Assistant</code>) operates as the third-eye red team. Coordination runs with zero polling via an append-only <code>task_bus.jsonl</code> event bus (<code>2,344</code> live events) and a <code>≤4</code> KB mechanical context packet.</dd>
+        <dt>How are Claude and Gemini in the same terminal (talking to two models simultaneously) and Grok-audited agent chat coordinated?</dt>
+        <dd>In the shared terminal, speaking with <strong>Claude and Gemini in the same terminal</strong> (talking to two models simultaneously, <em>Claude ve Gemini aynı terminalde</em>) and <strong>Grok-audited agent chat</strong> (<em>Grok ile denetlenen ajan sohbeti</em>) run over <code>macOS launchd WatchPaths</code> and the append-only <code>task_bus.jsonl</code> log. Tested on an <code>11,760</code>-byte pre-summary and a <code>20,120</code>-byte live handover file across <code>20</code> factual questions, <code>Claude Opus 5.5</code> scored <code>19/20</code>, <code>Claude Sonnet 5.5</code> scored <code>19/20</code>, <code>Gemini 4 Argon</code> scored <code>18/20</code> (<code>63,790</code> / <code>30,633</code> tokens in <code>94.56</code> s), <code>Claude Fable</code> scored <code>18/20</code> (<code>156,484</code> / <code>72,441</code> tokens in <code>44.14</code> s — a <code>2.45×–2.76×</code> token overhead), and <code>Grok</code> scored <code>18/20</code>, while local <code>4B</code>/<code>26B</code> models timed out at <code>389.11</code> s and <code>375.60</code> s.</dd>
+        <dt>What is the Reaper context blind auditor AI, and what does it verify?</dt>
+        <dd>Reaper is a context-blind auditor isolated from the generation prompt and chat history. It verifies claims strictly against primary files, DOIs/PMIDs, logs, and git commits: auditing <code>58</code> system methods (<code>47</code> LIVE, <code>7</code> DEGRADED, <code>1</code> DEAD, <code>3</code> CLAIM, <code>0</code> UNMEASURED; <code>3/3</code> injected faults caught), verifying <code>386</code> of <code>420</code> citations while eliminating <code>25</code> fabricated references, and confirming <code>37/37</code> primary-source claims (<code>0</code> errors) in the Atlas App Evidence Note.</dd>
+        <dt>How were stability and verification gates (P0-P6) measured for AI agents talking to each other in one terminal?</dt>
+        <dd><code>P0</code> verified <code>810/810</code> lines and <code>12/12</code> + <code>14/14</code> self-tests; <code>P3</code> measured <code>5.29</code> s warm-up and <code>9.16</code> s first response (<code>23,453</code>-byte context); <code>P4</code> replaced static <code>10–18</code> s timeouts with a dynamic <code>2×p90</code> floor (<code>68.08</code> s floor from a <code>16.72–34.04</code> s <code>p90</code> distribution) achieving <code>0</code> drops over <code>60</code> minutes, <code>2.2</code> ms <code>Happy Eyeballs</code> failover, <code>4.70</code> ms first paint, and <code>20/20</code> <code>Last-Event-ID</code> sync; <code>P5</code> verified Mac + Android concurrency (<code>13.76</code> s / <code>17.97</code> s, <code>+300</code> px scroll lock); <code>P6</code> passed <code>20/20</code> visual checks with <code>0.0</code> px overflow and <code>10.79:1</code> contrast.</dd>
+      </dl>
+    </div>
+
+    <div class="cta-box" id="contact-cta" role="region" aria-label="Evidence note and architectural links">
+      <h2>6. Technical Evidence Note, live autonomy counters, and contact</h2>
+      <p>Links to the Atlas App Technical Evidence Note, Reaper scorecard, and event-driven orchestration essays:</p>
+      <ul>
+        <li><strong>Primary evidence and narrative:</strong> <a href="kanit/en/atlas-app-evidence-note.html">Atlas App Technical Evidence Note (37/37)</a> · <a href="https://yusufaziz.com.tr/en/essays/from-spark-to-app-atlas-app.html">From Spark to App: Atlas App (yusufaziz.com.tr)</a></li>
+        <li><strong>Architecture pages:</strong> <a href="autonomy.html">Live Autonomy Counters</a> · <a href="reaper-en.html">Reaper Auditor Scorecard</a> · <a href="spark.html">Spark 7-Step Method</a> · <a href="blog/en/event-driven-task-bus-agent-orchestration.html">Event-Driven Task Bus</a> · <!--email_off--><a href="mailto:yusuf@atlasmaster.app"><strong>yusuf@atlasmaster.app</strong></a><!--/email_off--></li>
+      </ul>
+      <p class="dim" style="margin-bottom:0"><strong>Falsification gate:</strong> If Reaper misses any injected fault (<code>3/3</code>) or if the shared terminal experiences a stream drop under the <code>2×p90</code> (<code>68.08</code> s) dynamic timeout floor during a 60-minute continuous run, this architectural claim is falsified.</p>
+    </div>
+  </div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="foot"><span>Atlas · 2026</span><span>atlasmaster.app</span><a href="en.html">Home</a><a href="smile-design.html">Smile design</a><a href="smile-design-sakarya.html">Sakarya</a><a href="ai-smile-design.html">AI smile</a><a href="cad-cam-dentistry-sakarya.html">CAD/CAM</a><a href="3d-cephalometric-analysis.html">3D cephalometry</a><a href="constrained-canvas-mockup.html">Constrained canvas</a><a href="multi-agent-shared-terminal.html">Shared terminal</a><a href="autonomy.html">Autonomy</a><a href="spark.html">Spark</a><a href="reaper-en.html">Reaper</a><a href="bot/index.html">Bot</a><a href="privacy.html">Privacy</a><a href="about.html">About</a><a href="benefit-ledger.html">Benefit ledger</a><a href="https://yusufaziz.com.tr/en/">Yusuf Aziz · Essays → yusufaziz.com.tr</a><!--email_off--><a href="mailto:yusuf@atlasmaster.app">yusuf@atlasmaster.app</a><!--/email_off--><a href="#icerik">↑</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,141 @@
+{
+  "surum": "v1",
+  "uretildi": "2026-10-19T09:15:00+03:00",
+  "alan_adi": "atlasmaster.app",
+  "periyot": "6 saatte 1 tur (günde 4–6 tur) + her Kıvılcım turu sonunda otomatik satır eklenir",
+  "damga": {
+    "tr": "Reaper doğruladı · 360/394 · 19 Eki 2026",
+    "en": "Verified by Reaper · 360/394 · 19 Oct 2026",
+    "ar": "تحقّق Reaper · 360/394 · 19 أكتوبر 2026",
+    "baglanti": "https://atlasmaster.app/reaper.html#karne",
+    "tarih": "2026-10-19"
+  },
+  "yontem_ozeti": {
+    "kural_1": "Çok sesli Kıvılcım turunda her atıf Crossref, PubMed E-utils, doi.org ve resmî kayıtlarla tek tek sınanır (DOĞRULANDI · DOĞRULANAMADI · UYDURMA [Ağır / Hafif] · EZBER).",
+    "kural_2": "Uydurma künye (var olmayan makale/DOI ya da gerçek makaleye yanlış DOI/PMID verilmesi — hafif sınıf dahil) cevabı mekanik olarak geçersiz kılar; o sesin o sorudaki tezi senteze girmez ve sonraki tur ağırlığı 0,5'e düşer.",
+    "kural_3": "Hiçbir ses kendi otoritesiyle çıta olmaz; esas ölçü doğruyu koyandır.",
+    "kural_4": "Ezber etiketi (EZBER): kaynak uydurma olmasa bile brifin özel sorusuna veya saha tezine somut kanıt/itiraz getirmeyen genel literatür özeti cevaplar EZBER etiketiyle elenir."
+  },
+  "gun1_taban": {
+    "gun": "2026-10-18",
+    "ts": "2026-10-18 21:54:31",
+    "kip": "GOZLEM",
+    "ceza": "KAPALI",
+    "denetci": "GECERLI",
+    "yontem_n": 58,
+    "sayim": {
+      "CANLI": 47,
+      "AKSAK": 7,
+      "ÖLÜ": 1,
+      "İDDİA": 3,
+      "ÖLÇÜLEMEDİ": 0
+    },
+    "kasitli_bozma": [
+      "canlı kanıt yaşlandı → ÖLÜ:YAKALANDI",
+      "ölü + 'otomatik' iddiası → İDDİA:YAKALANDI",
+      "asılan/bozuk kanıt → ÖLÇÜLEMEDİ, CANLI değil:YAKALANDI"
+    ],
+    "yusuf": {
+      "bekleyen": 22,
+      "en_eski_gun": 22.6,
+      "canli_0_2": 0,
+      "aksak_3_7": 1,
+      "olu_7p": 17
+    },
+    "iddia_ve_olu_ozet": [
+      {
+        "id": "hasat-zincir-otomatik",
+        "sinif": "İDDİA",
+        "not_tr": "a→b→c zincirinde yalnız (a) hüküm kütüğü canlı; (b) kalibrasyon 13 Eyl tek koşu, (c) önerme hasadı 12 Eyl tek koşu; gece otomatik LoRA zamanlayıcısı yüklü değil (N=96 deneyi 14 Eki tekil deney olarak CANLI).",
+        "not_en": "In the a→b→c chain only (a) the verdict log is live; (b) calibration ran once on 13 Sep, (c) proposition harvest ran once on 12 Sep; no nightly automatic LoRA scheduler is loaded (the N=96 experiment of 14 Oct is verified as a standalone record).",
+        "not_ar": "في سلسلة a→b→c يعمل فقط سجل الأحكام (a)؛ بينما جرت المعايرة (b) مرة واحدة في 13 سبتمبر وحصاد القضايا (c) مرة واحدة في 12 سبتمبر؛ ولا يوجد مجدول ليلي تلقائي لـ LoRA (تجربة N=96 بتاريخ 14 أكتوبر موثّقة كتجربة مستقلة)."
+      },
+      {
+        "id": "qajan-kapsam",
+        "sinif": "İDDİA",
+        "not_tr": "QAJAN günlük koşuyor (CANLI, 8 kayıtlı hipotez, 63 hükümde 0 GEÇTİ → verim AKSAK); yalnız trade hipotezlerini sınıyor ama site metni genel 'her iddiayı 6 mekanik kapıdan geçirir' diyordu.",
+        "not_en": "QAJAN runs daily (LIVE, 8 registered hypotheses, 0 PASSED out of 63 verdicts → yield LAME); it tests only trading hypotheses whereas the site text stated broadly 'runs every claim through 6 mechanical gates'.",
+        "not_ar": "يعمل QAJAN يومياً (حيّ، 8 فرضيات مسجّلة، 0 اجتاز من أصل 63 حكماً ← العائد متعثّر)؛ ويختبر فرضيات التداول فقط بينما كانت عبارة الموقع تذكر عموماً أنه يمرّر كل ادّعاء عبر 6 بوابات آلية."
+      },
+      {
+        "id": "onay-bekleyen",
+        "sinif": "ÖLÜ",
+        "not_tr": "Yusuf · bekleyen 22 · en eski 22,6 gün (yaşı ölçülen 18 maddenin 17'si >7 gün, 1'i 3–7 gün; özel ve para maddeleri yalnız yaşıyla sayılır).",
+        "not_en": "Yusuf · pending 22 · oldest 22.6 days (of 18 age-measured items, 17 are >7 days and 1 is 3–7 days; private and money items are counted by age only).",
+        "not_ar": "Yusuf · معلّق 22 · الأقدم 22.6 يوماً (من بين 18 بنداً مقيس العمر: 17 أقدم من 7 أيام و1 بين 3–7 أيام؛ البنود الخاصة والمالية تُحسب بعمرها فقط)."
+      }
+    ]
+  },
+  "satirlar": [
+    {
+      "tarih": "2026-10-18 21:59",
+      "tur": "SEKTOR_MAKALESI_1018 · 1. Dalga (S1–S2, S4–S10)",
+      "tur_en": "SEKTOR_MAKALESI_1018 · Wave 1 (S1–S2, S4–S10)",
+      "tur_ar": "SEKTOR_MAKALESI_1018 · الموجة 1 (S1–S2، S4–S10)",
+      "atif": 356,
+      "dogrulandi": 322,
+      "dogrulanamadi": 9,
+      "uydurma": 25,
+      "elenen_ses": "S6 Gemma (3 ağır: Soru 1, 3, 6) · S7 Qwen (9 ağır: Soru 1, 3, 4, 5, 10, 11) · S8 Enki (3 ağır: Soru 1, 3, 4) · S9 Enlil (3 ağır: Soru 1, 3, 4) · S10 Argon başsız (7 hafif kimlik uydurması → 5 tez ELENDİ: Soru 1, 3, 4, 5, 10)",
+      "elenen_ses_en": "S6 Gemma (3 heavy: Q1, Q3, Q6) · S7 Qwen (9 heavy: Q1, Q3, Q4, Q5, Q10, Q11) · S8 Enki (3 heavy: Q1, Q3, Q4) · S9 Enlil (3 heavy: Q1, Q3, Q4) · S10 headless Argon (7 light ID fabrications → 5 theses ELIMINATED: Q1, Q3, Q4, Q5, Q10)",
+      "elenen_ses_ar": "S6 Gemma (3 جسيمة: س1، س3، س6) · S7 Qwen (9 جسيمة: س1، س3، س4، س5، س10، س11) · S8 Enki (3 جسيمة: س1، س3، س4) · S9 Enlil (3 جسيمة: س1، س3، س4) · S10 Argon غير التفاعلي (7 اختلاقات معرّف خفيفة ← استبعاد 5 أطروحات: س1، س3، س4، س5، س10)",
+      "not": "Yerel modellerde (S6/S7/S8/S9) toplam 18 ağır uydurma; Joda 2017 ve Sailer 2009 sahte künyeleri üç seste (S6, S8, S9) aynen tekrar etti (ortak eğitim ezberi). S10'da makale gerçek, 5 PMID + 2 DOI uydurma."
+    },
+    {
+      "tarih": "2026-10-19 00:40",
+      "tur": "SEKTOR_MAKALESI_1018 · S3 Astra (ChatGPT)",
+      "tur_en": "SEKTOR_MAKALESI_1018 · S3 Astra (ChatGPT)",
+      "tur_ar": "SEKTOR_MAKALESI_1018 · الصوت S3 Astra (ChatGPT)",
+      "atif": 38,
+      "dogrulandi": 38,
+      "dogrulanamadi": 0,
+      "uydurma": 0,
+      "elenen_ses": "Yok (38/38 atıf geçişi [23 benzersiz kaynak] doğrulandı, 7 açık 'KAYNAK YOK' beyanı; genel literatür özeti kısımlar EZBER etiketiyle süzüldü)",
+      "elenen_ses_en": "None (38/38 citation occurrences [23 unique sources] verified, 7 explicit 'NO SOURCE' declarations; generic textbook summaries filtered as ROTE/EZBER)",
+      "elenen_ses_ar": "لا يوجد (تم التحقّق من 38/38 إحالة [23 مصدراً فريداً]، و7 إعلانات صريحة «لا يوجد مصدر»؛ وتصنيف التلخيصات العامة بوسم EZBER)",
+      "not": "Turn 2 tam metninde 38/38 doğrulandı (Turn 1'de saptanan 1 hafif DOI kayması şeffaflık notuna işlendi)."
+    },
+    {
+      "tarih": "2026-10-19 01:20",
+      "tur": "SEKTOR_MAKALESI_1018 · Yazar (S0 · Yusuf Aziz) 24 Saha Hükmü",
+      "tur_en": "SEKTOR_MAKALESI_1018 · Author (S0 · Yusuf Aziz) 24 Field Verdicts",
+      "tur_ar": "SEKTOR_MAKALESI_1018 · المؤلف (S0 · Yusuf Aziz) 24 حكماً ميدانياً",
+      "atif": 26,
+      "dogrulandi": 26,
+      "dogrulanamadi": 0,
+      "uydurma": 0,
+      "elenen_ses": "Yok (26/26 birincil kaynak Crossref/PubMed/DSÖ ile doğrulandı; saha gözlemleri açıkça işaretlendi)",
+      "elenen_ses_en": "None (26/26 primary sources verified via Crossref/PubMed/WHO; field observations explicitly marked)",
+      "elenen_ses_ar": "لا يوجد (تم التحقّق من 26/26 مصدراً أولياً عبر Crossref وPubMed ومنظمة الصحة العالمية؛ الملاحظات الميدانية موسومة بوضوح)",
+      "not": "T11.5 teknoloji dayatması (Evans 1974, McGuire 2000), otomasyon yanlılığı (Parasuraman 1997, Lyell 2017), Tarnow 1992, Elwyn 2012, Gökalp 2010, DSÖ 2022, Valenti 2024 meta-analizi doğrulandı."
+    },
+    {
+      "tarih": "2026-10-19 01:35",
+      "tur": "SEKTOR_MAKALESI_1018 · Konsolide Toplam (10 Dış Ses + Yazar S0)",
+      "tur_en": "SEKTOR_MAKALESI_1018 · Consolidated Total (10 External Voices + Author S0)",
+      "tur_ar": "SEKTOR_MAKALESI_1018 · المجموع الموحَّد (10 أصوات خارجية + المؤلف S0)",
+      "atif": 420,
+      "dogrulandi": 386,
+      "dogrulanamadi": 9,
+      "uydurma": 25,
+      "elenen_ses": "Toplam 5 seste 20 soru-tez yanıtı uydurma künyeden elendi (S6: 3 · S7: 6 · S8: 3 · S9: 3 · S10: 5); kanıt veya somut itiraz getirmeyen literatür özetleri EZBER etiketiyle süzüldü",
+      "elenen_ses_en": "20 question-thesis responses across 5 voices eliminated for fabricated citations (S6: 3 · S7: 6 · S8: 3 · S9: 3 · S10: 5); generic literature summaries without new evidence/objection filtered as EZBER",
+      "elenen_ses_ar": "استبعاد 20 إجابة أطروحة في 5 أصوات بسبب مراجع مختلقة (S6: 3 · S7: 6 · S8: 3 · S9: 3 · S10: 5)؛ وتصفية التلخيصات العامة بوسم EZBER",
+      "not": "10 dış seste 394 atıf geçişi (360 doğrulandı · 9 doğrulanamadı · 25 uydurma [%6,3]; Dalga-1 322/356) + Yazar S0 26/26 birincil kaynak."
+    },
+    {
+      "tarih": "2026-10-18 21:54",
+      "tur": "SİSTEM DENETİM KARNESİ · 58 Yöntem & Servis (reaper_denetci.py)",
+      "tur_en": "SYSTEM AUDIT SCORECARD · 58 Methods & Services (reaper_denetci.py)",
+      "tur_ar": "بطاقة تدقيق النظام · 58 طريقة وخدمة (reaper_denetci.py)",
+      "atif": 58,
+      "dogrulandi": 47,
+      "dogrulanamadi": 7,
+      "uydurma": 4,
+      "elenen_ses": "2 İDDİA (hasat-zincir-otomatik: gece otomatik LoRA yok · qajan-kapsam: yalnız trade) + 1 ÖLÜ (onay-bekleyen: 22 madde, en eski 22,6 gün) + 10 AKSAK · kasıtlı bozma 3/3 YAKALANDI",
+      "elenen_ses_en": "2 CLAIM (hasat-zincir-otomatik: no nightly auto-LoRA · qajan-kapsam: trade only) + 1 DEAD (onay-bekleyen: 22 items, oldest 22.6 days) + 10 LAME · deliberate faults 3/3 CAUGHT",
+      "elenen_ses_ar": "2 ادّعاء İDDİA (hasat-zincir-otomatik · qajan-kapsam) + 1 ميتة ÖLÜ (onay-bekleyen: 22 بنداً، الأقدم 22.6 يوماً) + 10 متعثّرة AKSAK · الأخطاء المتعمّدة 3/3 التُقطت",
+      "not": "47 CANLI · 7 AKSAK · 1 ÖLÜ · 3 İDDİA · 0 ÖLÇÜLEMEDİ (gözlem kipi, ceza kapalı; 6 sa/tur döngüsü yeni satır ekler)."
+    }
+  ]
+}
