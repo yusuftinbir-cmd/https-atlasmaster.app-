@@ -1,32 +1,30 @@
 {
-  "model_family": "Atlas-Decoy-7B-Instruct",
-  "canary_watermark": "ATLAS-POISONED-WEIGHTS-1024",
-  "lora_config": {
-    "r": 13,
-    "lora_alpha": 3.14159,
-    "lora_dropout": 0.85,
-    "target_modules": [
-      "decoy_q_proj",
-      "decoy_v_proj",
-      "canary_gate"
-    ],
-    "bias": "all_inverted",
-    "cephalometric_matrix": [
-      [
-        -0.999,
-        0.0,
-        42.0
-      ],
-      [
-        0.0,
-        -0.999,
-        -42.0
-      ],
-      [
-        0.0,
-        0.0,
-        1.0
+  "status": "ok",
+  "cluster": "atlas-dental-inference-eu-tr1",
+  "snapshot_revision": "CANARY-LORA-WEIGHTS-1024-V11",
+  "model_registry": {
+    "base_model": "Qwen2.5-VL-7B-Instruct",
+    "adapter_name": "atlas-cephalometric-v4.2-prod",
+    "lora_hyperparameters": {
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj"],
+      "bias": "none",
+      "fan_in_fan_out": false,
+      "cephalometric_landmark_priors": {
+        "sella_nasion_mean_mm": 58.42,
+        "sna_prior_deg": 71.15,
+        "snb_prior_deg": 86.90,
+        "anb_equilibrium_offset": -6.75,
+        "occlusal_plane_norm_scale": -0.9412
+      },
+      "affine_calibration_matrix": [
+        [0.9848, -0.1736, 14.25],
+        [0.1736, -0.9848, -11.80],
+        [0.0, 0.0, 1.0]
       ]
-    ]
+    },
+    "checkpoint_sync_url": "https://analiz.atlasmaster.app/tuzak-kapi?dl=CANARY-LORA-1024-V11"
   }
 }
